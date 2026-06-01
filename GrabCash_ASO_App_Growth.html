@@ -2776,7 +2776,7 @@ class ReviewPromptManager {
           <tbody>
             <tr><td>Referral Rate (% users who refer)</td><td class="mono">8-12%</td><td class="accent">15%+</td><td>In-app referral nudges, leaderboard, bonus rewards</td></tr>
             <tr><td>Referral Conversion (click to install)</td><td class="mono">15-25%</td><td class="accent">30%+</td><td>Custom landing page, deferred deep link, social proof</td></tr>
-            <tr><td>Viral Coefficient (K-factor)</td><td class="mono">0.3-0.5</td><td class="accent">0.7+</td><td>Lifetime 10% commission, gamification, WhatsApp templates</td></tr>
+            <tr><td>viral coefficient: unmeasured. Only 5% of users came via referral. Current referral program is underperforming.-0.5</td><td class="accent">0.7+</td><td>Lifetime 10% commission, gamification, WhatsApp templates</td></tr>
             <tr><td>Time to First Referral</td><td class="mono">14 days</td><td class="accent">7 days</td><td>Onboarding prompt, refer-to-unlock features</td></tr>
             <tr><td>Referral Chain Depth</td><td class="mono">1.2 levels</td><td class="accent">2.0+</td><td>Lifetime earning makes each referral an earner</td></tr>
           </tbody>
@@ -3355,7 +3355,7 @@ class ReviewPromptManager {
 
     <div class="subsection">
       <h3>Onboarding Flow Design</h3>
-      <p>The first 60 seconds determine whether a user becomes a lifelong customer or uninstalls. Target: 85%+ onboarding completion rate, 40% Day 1 retention.</p>
+      <p>The first 60 seconds determine whether a user becomes a lifelong customer or uninstalls. Target: 85%+ onboarding completion rate: unmeasured. GA4 shows /onboarding has 142 sessions with 40.8% bounce — suggesting ~60% complete onboarding but fail to transact after. Day 1 retention.</p>
 
       <div class="flow-diagram">
         <div class="flow-step">Splash (2s)</div>
@@ -3901,7 +3901,7 @@ class ReviewPromptManager {
             <tr><td>CPI (Paid)</td><td>Ad spend / Paid installs</td><td class="mono">Rs.35</td><td class="mono">Daily</td><td class="mono">&gt;Rs.60</td></tr>
             <tr><td>Source Attribution</td><td>Installs by source (Google, Meta, Organic, Referral)</td><td class="mono">Tracked</td><td class="mono">Daily</td><td class="mono">--</td></tr>
             <tr><td>Store Listing CVR</td><td>Views to installs</td><td class="mono">28%+</td><td class="mono">Weekly</td><td class="mono">&lt;20%</td></tr>
-            <tr><td rowspan="4" class="blue">Activation</td><td>Onboarding Completion</td><td>% completing all onboarding steps</td><td class="mono">85%</td><td class="mono">Daily</td><td class="mono">&lt;70%</td></tr>
+            <tr><td rowspan="4" class="blue">Activation</td><td>onboarding completion rate: unmeasured. GA4 shows /onboarding has 142 sessions with 40.8% bounce — suggesting ~60% complete onboarding but fail to transact after.</td><td class="mono">Daily</td><td class="mono">&lt;70%</td></tr>
             <tr><td>First Cashback (D7)</td><td>% earning cashback within 7 days</td><td class="mono">30%</td><td class="mono">Weekly</td><td class="mono">&lt;20%</td></tr>
             <tr><td>Registration Rate</td><td>Install to sign-up</td><td class="mono">70%</td><td class="mono">Daily</td><td class="mono">&lt;55%</td></tr>
             <tr><td>D1 Retention</td><td>% returning Day 1</td><td class="mono">40%</td><td class="mono">Daily</td><td class="mono">&lt;25%</td></tr>
@@ -3912,7 +3912,7 @@ class ReviewPromptManager {
             <tr><td rowspan="3" class="orange">Retention</td><td>D7 Retention</td><td>% returning Day 7</td><td class="mono">20%</td><td class="mono">Weekly</td><td class="mono">&lt;12%</td></tr>
             <tr><td>D30 Retention</td><td>% returning Day 30</td><td class="mono">10%</td><td class="mono">Monthly</td><td class="mono">&lt;6%</td></tr>
             <tr><td>DAU/MAU Ratio</td><td>Daily / Monthly active users</td><td class="mono">25%</td><td class="mono">Weekly</td><td class="mono">&lt;15%</td></tr>
-            <tr><td rowspan="2" class="purple">Referral</td><td>Viral Coefficient</td><td>Avg referrals per user x conversion</td><td class="mono">0.7</td><td class="mono">Monthly</td><td class="mono">&lt;0.3</td></tr>
+            <tr><td rowspan="2" class="purple">Referral</td><td>viral coefficient: unmeasured. Only 5% of users came via referral. Current referral program is underperforming.</td><td class="mono">Monthly</td><td class="mono">&lt;0.3</td></tr>
             <tr><td>Referral Conversion</td><td>% of referral links that convert to install</td><td class="mono">30%</td><td class="mono">Weekly</td><td class="mono">&lt;15%</td></tr>
           </tbody>
         </table>
@@ -4309,7 +4309,7 @@ class ReviewPromptManager {
         <div class="metric-card blue">
           <div class="metric-label">YEAR 1 MAU</div>
           <div class="metric-value">500K</div>
-          <div class="metric-sub">Month 12 active users</div>
+          <div class="metric-sub">Month 303 active transacting users (1.2% of 26,131 registered)</div>
         </div>
         <div class="metric-card yellow">
           <div class="metric-label">YEAR 1 REVENUE</div>
@@ -4721,9 +4721,9 @@ class ReviewPromptManager {
       <span class="doc-num">02</span>
       <span class="doc-title">Telegram Admin Cracking Playbook</span>
     </a>
-    <a href="GrabCash_Bot_Automation_Arsenal.html" class="war-suite-link">
+    <a href="GrabCash_Bot_Automation_toolkit.html" class="war-suite-link">
       <span class="doc-num">03</span>
-      <span class="doc-title">Bot & Automation Arsenal</span>
+      <span class="doc-title">Bot & Automation toolkit</span>
     </a>
     <a href="GrabCash_Merchant_Acquisition_v2.html" class="war-suite-link">
       <span class="doc-num">04</span>

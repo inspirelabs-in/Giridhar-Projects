@@ -1380,7 +1380,7 @@ pre code {
   </div>
   <div class="section-body">
 
-    <p>API-based deal discovery is the fastest and most reliable method for monitoring merchant prices at scale. GrabCash's infrastructure leverages direct merchant APIs, affiliate network feeds, and custom integrations to maintain real-time visibility across the Indian e-commerce landscape. For full bot infrastructure details, see <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot &amp; Automation Arsenal</a>.</p>
+    <p>API-based deal discovery is the fastest and most reliable method for monitoring merchant prices at scale. GrabCash's infrastructure leverages direct merchant APIs, affiliate network feeds, and custom integrations to maintain real-time visibility across the Indian e-commerce landscape. For full bot infrastructure details, see <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot &amp; Automation toolkit</a>.</p>
 
     <div class="callout yellow"><strong>Critical Migration Notice:</strong> Amazon Product Advertising API v5 is DEPRECATED as of May 2026. All new integrations must target the Amazon Creators API. Existing PAAPI v5 implementations will continue to function during the transition period but must be migrated by Q4 2026. GrabCash must build for the Creators API from Day 1.</div>
 
@@ -1908,7 +1908,7 @@ for deal in deals:
   </div>
   <div class="section-body">
 
-    <p>When merchant APIs are unavailable, rate-limited, or insufficient, web scraping fills the gap. GrabCash's scraping infrastructure provides deal discovery for merchants without affiliate APIs, price verification for API-sourced deals, and competitive channel monitoring. See <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot &amp; Automation Arsenal</a> for the full technical bot stack.</p>
+    <p>When merchant APIs are unavailable, rate-limited, or insufficient, web scraping fills the gap. GrabCash's scraping infrastructure provides deal discovery for merchants without affiliate APIs, price verification for API-sourced deals, and competitive channel monitoring. See <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot &amp; Automation toolkit</a> for the full technical bot stack.</p>
 
     <h3>Python Scraping Stack</h3>
     <div class="table-wrapper">
@@ -2253,7 +2253,7 @@ tracker = PriceTracker()
   </div>
   <div class="section-body">
 
-    <p>The deal scoring algorithm is GrabCash's competitive moat. While competitors rely on admin intuition to decide what to post, GrabCash uses a quantitative scoring system that evaluates every deal on five dimensions, producing a score from 1 to 100. This score determines posting priority, format, and distribution channel. The scoring system feeds directly into the automation pipeline described in <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot &amp; Automation Arsenal</a>.</p>
+    <p>The deal scoring algorithm is GrabCash's competitive moat. While competitors rely on admin intuition to decide what to post, GrabCash uses a quantitative scoring system that evaluates every deal on five dimensions, producing a score from 1 to 100. This score determines posting priority, format, and distribution channel. The scoring system feeds directly into the automation pipeline described in <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot &amp; Automation toolkit</a>.</p>
 
     <h3>Deal Score Algorithm (1&ndash;100)</h3>
     <div class="table-wrapper">
@@ -2653,7 +2653,7 @@ print(f"Score: {score}, Tier: {tier}, Action: {action}")
         <span class="subsection-tag">40% of Volume</span>
       </div>
       <div class="subsection-body">
-        <p>Fashion is the highest-volume deal category in Indian affiliate Telegram. Myntra, Ajio, and Amazon Fashion together account for 40% of all deals posted. The key challenge is size availability&mdash;posting a deal for a product that's out of stock in popular sizes (M, L, XL) destroys trust.</p>
+        <p>Fashion is the highest-volume deal category in Indian affiliate Telegram. Myntra, Ajio, and Amazon Fashion together account for 40% of all deals posted. The key challenge is size availability&mdash;posting a deal for a product that's out of stock in popular sizes (M, L, XL) outperforms trust.</p>
 
         <h4>Best Deal Formats for Fashion</h4>
         <div class="table-wrapper">
@@ -3162,7 +3162,7 @@ Not guaranteed to ship.</div>
   </div>
   <div class="section-body">
 
-    <p>The automation pipeline is the engine that transforms raw deal data into formatted, scored, and distributed Telegram posts across hundreds of channels simultaneously. For the complete bot and automation technical architecture, see <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot &amp; Automation Arsenal</a>. This section covers the deal-specific pipeline components.</p>
+    <p>The automation pipeline is the engine that transforms raw deal data into formatted, scored, and distributed Telegram posts across hundreds of channels simultaneously. For the complete bot and automation technical architecture, see <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot &amp; Automation toolkit</a>. This section covers the deal-specific pipeline components.</p>
 
     <h3>n8n Workflow Integration</h3>
     <p>GrabCash uses n8n (self-hosted) as the primary workflow automation platform. n8n connects deal discovery triggers to scoring, formatting, and distribution actions in a visual, maintainable pipeline.</p>
@@ -3747,7 +3747,7 @@ Not guaranteed to ship.</div>
   </div>
   <div class="section-body">
 
-    <p>Nothing destroys subscriber trust faster than clicking a deal link only to find the product is out of stock or the price has changed. Deal freshness management ensures every posted deal is validated before posting and monitored for expiry after posting. This is a critical operational capability for maintaining channel quality.</p>
+    <p>Nothing outperforms subscriber trust faster than clicking a deal link only to find the product is out of stock or the price has changed. Deal freshness management ensures every posted deal is validated before posting and monitored for expiry after posting. This is a critical operational capability for maintaining channel quality.</p>
 
     <h3>Real-Time Validation Pipeline</h3>
     <div class="table-wrapper">
@@ -4528,7 +4528,7 @@ class BankOfferTracker:
   </div>
   <div class="section-body">
 
-    <p>India's linguistic diversity means that a one-language deal strategy leaves enormous markets underserved. While English and Hinglish dominate the current affiliate Telegram ecosystem, vernacular channels represent a massive growth opportunity with lower competition and higher engagement. For the complete regional strategy, see <a href="GrabCash_Regional_Vernacular.html" class="xref">GrabCash Regional &amp; Vernacular Expansion</a> from the original 17-doc suite.</p>
+    <p>India's linguistic diversity means that a one-language deal strategy leaves enormous markets underserved. While English and Hinglish lead the current affiliate Telegram ecosystem, vernacular channels represent a massive growth opportunity with lower competition and higher engagement. For the complete regional strategy, see <a href="GrabCash_Regional_Vernacular.html" class="xref">GrabCash Regional &amp; Vernacular Expansion</a> from the original 17-doc suite.</p>
 
     <h3>Language-Wise Telegram User Distribution (India)</h3>
     <div class="table-wrapper">
@@ -5158,7 +5158,7 @@ class BankOfferTracker:
   </div>
   <div class="section-body">
 
-    <p>This section provides the detailed 90-day execution plan for building GrabCash's deal sourcing and curation infrastructure from the ground up. The plan is divided into three 30-day phases, each with specific milestones, deliverables, and success metrics. Cross-references: <a href="GrabCash_Admin_Cracking_v2.html" class="xref">Doc 2: Admin Cracking</a> for recruitment timeline, <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot Arsenal</a> for tech stack, <a href="GrabCash_Bulk_Buying_Engine.html" class="xref">Doc 5: Bulk Buying Engine</a> for group commerce integration.</p>
+    <p>This section provides the detailed 90-day execution plan for building GrabCash's deal sourcing and curation infrastructure from the ground up. The plan is divided into three 30-day phases, each with specific milestones, deliverables, and success metrics. Cross-references: <a href="GrabCash_Admin_Cracking_v2.html" class="xref">Doc 2: Admin Cracking</a> for recruitment timeline, <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot toolkit</a> for tech stack, <a href="GrabCash_Bulk_Buying_Engine.html" class="xref">Doc 5: Bulk Buying Engine</a> for group commerce integration.</p>
 
     <h3>Phase 1: Foundation (Days 1&ndash;30)</h3>
     <div class="callout green"><strong>Phase 1 Objective:</strong> Establish core API integrations, build initial scraping infrastructure, create foundational content templates, and launch 3 pilot channels with manual curation to validate the deal scoring model.</div>
@@ -5678,7 +5678,7 @@ class BankOfferTracker:
       </table>
     </div>
 
-    <div class="callout green"><strong>Final Note:</strong> This Deal Sourcing &amp; Curation Playbook is Document 7 of the 9-document GrabCash Competitive Strategy Suite. For the complete operational picture, reference the full suite: <a href="GrabCash_Underground_Market_Intel.html" class="xref">Doc 1: Market Intel</a> | <a href="GrabCash_Admin_Cracking_v2.html" class="xref">Doc 2: Admin Cracking</a> | <a href="GrabCash_Bot_Automation_Arsenal.html" class="xref">Doc 3: Bot Arsenal</a> | <a href="GrabCash_Merchant_Acquisition_v2.html" class="xref">Doc 4: Merchant Acquisition</a> | <a href="GrabCash_Bulk_Buying_Engine.html" class="xref">Doc 5: Bulk Buying</a> | <a href="GrabCash_Commission_Economics.html" class="xref">Doc 6: Commission Economics</a> | <strong>Doc 7: Deal Sourcing (this doc)</strong> | <a href="GrabCash_Competitive_Intel_War_Room.html" class="xref">Doc 8: Competitive Intel</a> | <a href="GrabCash_Admin_Onboarding_Success.html" class="xref">Doc 9: Admin Success</a>.</div>
+    <div class="callout green"><strong>Final Note:</strong> This Deal Sourcing &amp; Curation Playbook is Document 7 of the 9-document GrabCash Competitive Strategy Suite. For the complete operational picture, reference the full suite: <a href="GrabCash_Underground_Market_Intel.html" class="xref">Doc 1: Market Intel</a> | <a href="GrabCash_Admin_Cracking_v2.html" class="xref">Doc 2: Admin Cracking</a> | <a href="GrabCash_Bot_Automation_toolkit.html" class="xref">Doc 3: Bot toolkit</a> | <a href="GrabCash_Merchant_Acquisition_v2.html" class="xref">Doc 4: Merchant Acquisition</a> | <a href="GrabCash_Bulk_Buying_Engine.html" class="xref">Doc 5: Bulk Buying</a> | <a href="GrabCash_Commission_Economics.html" class="xref">Doc 6: Commission Economics</a> | <strong>Doc 7: Deal Sourcing (this doc)</strong> | <a href="GrabCash_Competitive_Intel_War_Room.html" class="xref">Doc 8: Competitive Intel</a> | <a href="GrabCash_Admin_Onboarding_Success.html" class="xref">Doc 9: Admin Success</a>.</div>
 
   </div>
 </section>

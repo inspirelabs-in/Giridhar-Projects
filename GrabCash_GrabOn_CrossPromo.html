@@ -785,7 +785,7 @@
       </ul>
 
       <h4>Expected Performance</h4>
-      <p>Exit-intent fires for ~75K MAU target/month. Popup engagement rate: <strong class="green">3.5-5.8%</strong>. Monthly clicks: <strong class="green">17,500-29,000</strong>. Signup conversion from popup: 22% (urgency factor).</p>
+      <p>Exit-intent fires for ~75K MAU target/month. Popup engagement rate: <strong class="green">3.5-5.8%</strong>. Monthly clicks: <strong class="green">17,500-29,000</strong>. signup conversion rate: unmeasured in GA4 (0 key events). Production DB shows 1.2% of registered users ever transact. (urgency factor).</p>
     </div>
   </details>
 
@@ -854,7 +854,7 @@
 
   <div class="callout">
     <div class="callout-title">Deduplication Note</div>
-    <p>Actual new users will be lower than the sum due to user overlap across placements. Applying a 30% deduplication factor, realistic estimate is <strong>28,000-39,000 unique new GrabCash signups per month</strong> from GrabOn website integration alone. At current GrabCash user base of 5,000+, this represents a <strong>6-8x growth multiplier</strong> within the first 90 days.</p>
+    <p>Actual new users will be lower than the sum due to user overlap across placements. Applying a 30% deduplication factor, realistic estimate is <strong>28,000-39,000 unique new GrabCash signups per month</strong> from GrabOn website integration alone. At current GrabCash user base of 26,131 registered users+, this represents a <strong>6-8x growth multiplier</strong> within the first 90 days.</p>
   </div>
 
   <!-- Progressive Rollout -->
@@ -2692,7 +2692,7 @@ GET /api/v1/deals
           <td>Cross-promo tasks consistently delayed in sprints</td>
         </tr>
         <tr>
-          <td><strong>SSO security vulnerabilities</strong><br><span class="dim" style="font-size:0.75rem;">Unified auth system introduces attack vectors</span></td>
+          <td><strong>SSO security vulnerabilities</strong><br><span class="dim" style="font-size:0.75rem;">Unified auth system introduces approachs</span></td>
           <td>Technical</td>
           <td><span class="tag tag-yellow">Low</span></td>
           <td><span class="tag tag-red">High</span></td>
