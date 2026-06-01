@@ -1715,7 +1715,11 @@ body {
 
   <!-- 2i: Budget Allocation -->
   <div class="card card-orange">
-    <h3>2i. Meta Ads Budget Allocation (&#8377;3.2L/month)</h3>
+    <h3>2i. Meta Ads Budget Allocation</h3>
+    <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin:1rem 0;font-size:0.85rem;">
+      <strong style="color:#e53e3e;">Phase 1 (Months 1-3): ₹30-50K/month META TEST BUDGET ONLY.</strong> The ₹3.2L/month allocation below is the Phase 2 target — contingent on Phase 1 proving CAC < ₹100. GrabCash has zero paid acquisition data today (GA4 shows 0% paid traffic). Start with 3 ad creatives × 3 audiences = 9 variants at ₹500/day each for 2 weeks. Measure signup CAC. Only scale to the allocation below if test CAC is viable.
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:12px;"><strong>Phase 2 Target Allocation (₹3.2L/month — after validated CAC):</strong></p>
     <div style="margin:24px 0;">
       <div class="progress-row">
         <span class="progress-label">BOFU - Conversions</span>
@@ -2104,7 +2108,11 @@ body {
 
   <!-- 3g: Google Budget Split -->
   <div class="card card-green">
-    <h3>3g. Google Ads Budget Allocation (&#8377;2.2L/month)</h3>
+    <h3>3g. Google Ads Budget Allocation</h3>
+    <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin:1rem 0;font-size:0.85rem;">
+      <strong style="color:#e53e3e;">Phase 1: ₹20-30K/month Google Ads TEST BUDGET.</strong> GrabCash's real GSC data shows organic search already drives 8,540 sessions/quarter (17% of traffic). Google Ads should complement organic — bid on competitor keywords ("EarnKaro alternative") and brand defense ("GrabCash") first. The ₹2.2L allocation below is Phase 2 scaling budget. Real GSC keyword data: "how to earn 500 per day" (1,537 impressions, pos 5.6), "earn 100 rupees" (259 impr, pos 4.6). Use these exact queries as seed keywords for Google Ads.
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:12px;"><strong>Phase 2 Target Allocation (₹2.2L/month — after validated CPA):</strong></p>
     <div style="margin:24px 0;">
       <div class="progress-row">
         <span class="progress-label">Search (Intent)</span>
@@ -2428,7 +2436,11 @@ body {
   </div>
 
   <div class="card">
-    <h3>Telegram Budget Allocation (&#8377;1.2L/month)</h3>
+    <h3>Telegram Budget Allocation</h3>
+    <div class="callout" style="border-left:3px solid #dd6b20;background:rgba(221,107,32,0.04);padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin:1rem 0;font-size:0.85rem;">
+      <strong style="color:#dd6b20;">Phase 1: ₹0 Telegram ad spend.</strong> Telegram Ads require minimum ₹1.5L/campaign and GrabCash has zero Telegram presence data (only 1 user with Telegram linked in production DB). Phase 1 action: create @GrabCashDeals channel organically, post 10-15 deals/day with UTM links, grow to 1,000 members, THEN test Telegram Ads in Phase 2. The ₹1.2L allocation below is Phase 2 budget after organic channel proves engagement.
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:12px;"><strong>Phase 2 Target Allocation (₹1.2L/month — after 1K organic members):</strong></p>
     <div style="margin:20px 0;">
       <div class="progress-row">
         <span class="progress-label">Deals Channels</span>
@@ -2827,11 +2839,26 @@ body {
   <div class="section-header">
     <span class="section-number">Section 09</span>
     <h2 class="section-title">Budget Management</h2>
-    <p class="section-subtitle">Monthly &#8377;7-8L allocation framework, daily pacing, seasonal adjustments, scaling rules, and ROAS targets.</p>
+    <p class="section-subtitle">Phased budget approach: ₹30-50K test → ₹1-2L validated → ₹5-7L scale. Never spend ahead of data.</p>
+  </div>
+
+  <div class="card card-green" style="border-left:4px solid #e53e3e;margin-bottom:24px;">
+    <h3 style="color:#e53e3e;">Phase 1 Budget (Months 1-3): ₹30-50K/month TOTAL paid</h3>
+    <table class="data-table">
+      <thead><tr><th>Platform</th><th>Monthly Budget</th><th>Purpose</th><th>Success Metric</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Meta Ads (Instagram)</strong></td><td>₹20-30K</td><td>3 creative concepts × 3 audiences = 9 test variants</td><td>Measure signup CPA. Target: < ₹100</td></tr>
+        <tr><td><strong>Google Search</strong></td><td>₹10-20K</td><td>Brand defense + competitor keywords ("EarnKaro alternative")</td><td>Measure click-to-signup rate</td></tr>
+        <tr><td><strong>Telegram</strong></td><td>₹0</td><td>Organic channel building first — UTM-tagged posts</td><td>Channel growth rate, deal click-through</td></tr>
+        <tr><td><strong>YouTube</strong></td><td>₹0</td><td>Organic Reels repurposed to Shorts first</td><td>Views, subscriber growth</td></tr>
+        <tr><td style="font-weight:700;">TOTAL Phase 1</td><td style="font-weight:700;">₹30-50K/month</td><td colspan="2"><strong>Gate 1 criteria:</strong> At least 1 channel with proven CPA < ₹100 before scaling</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-top:12px;"><strong>Why this is different from the Phase 2 budgets below:</strong> GrabCash has zero paid acquisition history. The ₹30-50K test budget generates the data needed to make informed scaling decisions. Spending ₹7L/month without this data would be irresponsible. Phase 2 budgets below activate ONLY after Gate 1 validation.</p>
   </div>
 
   <div class="card card-green">
-    <h3>Monthly Budget Allocation — Phase 2 Target (contingent on Phase 1 validation)</h3>
+    <h3>Phase 2 Budget (Months 4-12): ₹5-7L/month — Contingent on Gate 1 Pass</h3>
     <table class="data-table">
       <thead>
         <tr><th>Platform</th><th>Monthly Budget</th><th>% of Total</th><th>Daily Budget</th><th>Primary Objective</th><th>Target CPA</th></tr>
