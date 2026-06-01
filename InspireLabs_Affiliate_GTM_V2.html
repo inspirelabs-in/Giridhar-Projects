@@ -5,42 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InspireLabs — GrabCash + GrabShare GTM Workflow & Playbooks 2026</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
   :root {
-    --green: #0dcf1a;
-    --navy: #00123b;
+    --green: #FF7A45;
+    --navy: #0E0F0A;
     --blue-1: #3c7df9;
     --blue-2: #008ee6;
-    --sky: #dbefff;
+    --sky: #FAF7F1;
     --purple: #5b21b6;
     --purple-light: #ede9fe;
     --bg: #ffffff;
-    --bg-2: #f7fbff;
-    --bg-3: #f0f6ff;
-    --text: #00123b;
-    --text-dim: #5c6579;
-    --text-dimmer: #8b95a8;
+    --bg-2: #FAF7F1;
+    --bg-3: #FAF7F1;
+    --text: #0E0F0A;
+    --text-dim: #6F7583;
+    --text-dimmer: #6F7583;
     --red: #dc2626;
     --red-bg: #fef2f2;
     --orange: #ea580c;
     --orange-bg: #fff7ed;
     --green-bg: #f0fdf4;
-    --card-border: rgba(0, 18, 59, 0.1);
+    --card-border: #E5E7EB;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Hanken Grotesk', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     font-size: 15px;
   }
 
-  h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Hanken Grotesk', sans-serif; }
 
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -51,7 +51,7 @@
   }
   .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
   .nav-brand img { height: 24px; }
-  .nav-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+  .nav-title { font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--navy); }
   .nav-links { display: flex; gap: 0.15rem; overflow-x: auto; max-width: 70%; }
   .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.68rem; font-weight: 500; padding: 0.3rem 0.5rem; border-radius: 6px; white-space: nowrap; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.02em; }
   .nav-links a:hover { color: var(--blue-1); background: rgba(60,125,249,0.06); }
@@ -63,21 +63,21 @@
     color: #fff; position: relative;
   }
   .hero-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
-  .hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 850px; }
+  .hero h1 { font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 850px; }
   .hero h1 .accent { color: var(--green); }
   .hero h1 .accent-purple { color: #a78bfa; }
   .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin-bottom: 2rem; }
   .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.3); border-radius: 100px; font-size: 0.78rem; font-weight: 600; color: #fca5a5; margin-bottom: 2rem; }
   .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
   .hero-stat { text-align: center; }
-  .hero-stat .num { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .hero-stat .num { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; }
   .hero-stat .label { font-size: 0.68rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
   .hero-stat .src { font-size: 0.6rem; color: rgba(255,255,255,0.3); }
 
   .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
   .section-header { margin-bottom: 2.5rem; }
-  .section-num { font-family: 'Poppins', sans-serif; font-size: 0.7rem; color: var(--blue-1); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .section h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.5rem; color: var(--navy); }
+  .section-num { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.7rem; color: var(--blue-1); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section h2 { font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.5rem; color: var(--navy); }
   .section h2 .accent { color: var(--green); }
   .section h2 .accent-purple { color: var(--purple); }
   .section-subtitle { font-size: 0.95rem; color: var(--text-dim); max-width: 700px; line-height: 1.7; }
@@ -89,12 +89,12 @@
 
   .card { background: var(--bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
   .card:hover { border-color: rgba(60,125,249,0.2); }
-  .card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
+  .card h3 { font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
   .card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
 
   .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
   .kpi { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; text-align: center; }
-  .kpi .value { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--blue-1); }
+  .kpi .value { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--blue-1); }
   .kpi .label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
   .kpi .source { font-size: 0.6rem; color: var(--text-dimmer); margin-top: 0.15rem; }
   .kpi.kpi-red .value { color: var(--red); }
@@ -119,22 +119,22 @@
   .callout.warn strong { color: var(--orange); }
 
   .verdict { background: var(--navy); color: #fff; border-radius: 14px; padding: 2rem; margin: 1.5rem 0; }
-  .verdict h3 { font-family: 'Poppins', sans-serif; color: var(--green); margin-bottom: 0.75rem; }
+  .verdict h3 { font-family: 'Hanken Grotesk', sans-serif; color: var(--green); margin-bottom: 0.75rem; }
   .verdict p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.75; }
 
   .tag { display: inline-flex; padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
   .tag-real { background: var(--green-bg); color: #16a34a; }
   .tag-fake { background: var(--red-bg); color: var(--red); }
   .tag-target { background: var(--orange-bg); color: var(--orange); }
-  .tag-gc { background: rgba(13,207,26,0.08); color: #0ab315; }
+  .tag-gc { background: rgba(13,207,26,0.08); color: #FF7A45; }
   .tag-gs { background: var(--purple-light); color: var(--purple); }
 
   .block { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; margin: 1.25rem 0; }
-  .block h4 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+  .block h4 { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
   .block .meta { font-size: 0.7rem; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
   .sub-section { margin-top: 2rem; }
-  .sub-section h3 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--navy); }
+  .sub-section h3 { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--navy); }
   .sub-section p, .sub-section li { font-size: 0.88rem; color: var(--text-dim); line-height: 1.75; }
   .sub-section ul { padding-left: 1.25rem; margin: 0.5rem 0; }
   .sub-section li { margin-bottom: 0.3rem; }
@@ -145,13 +145,13 @@
   .toc { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; margin: 1.5rem 0; columns: 2; column-gap: 2rem; }
   .toc a { display: block; color: var(--text-dim); text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0; border-bottom: 1px solid var(--card-border); transition: color 0.2s; break-inside: avoid; }
   .toc a:hover { color: var(--blue-1); }
-  .toc a .toc-num { color: var(--blue-1); font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem; }
+  .toc a .toc-num { color: var(--blue-1); font-family: 'Hanken Grotesk', sans-serif; font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem; }
 
   .footer { text-align: center; padding: 3rem 2rem; background: var(--navy); color: rgba(255,255,255,0.5); font-size: 0.75rem; }
 
   .duo-brand { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
-  .duo-brand .brand-box { padding: 0.75rem 1.25rem; border-radius: 10px; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.1rem; }
-  .duo-brand .gc { background: rgba(13,207,26,0.08); color: #0ab315; border: 1px solid rgba(13,207,26,0.2); }
+  .duo-brand .brand-box { padding: 0.75rem 1.25rem; border-radius: 10px; font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .duo-brand .gc { background: rgba(13,207,26,0.08); color: #FF7A45; border: 1px solid rgba(13,207,26,0.2); }
   .duo-brand .gs { background: var(--purple-light); color: var(--purple); border: 1px solid rgba(91,33,182,0.2); }
   .duo-brand .plus { color: var(--text-dimmer); font-size: 1.2rem; }
 
