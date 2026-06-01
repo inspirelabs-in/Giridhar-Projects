@@ -1,0 +1,4323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Audit Report | GrabCash Underground War Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border-card: rgba(255,255,255,0.06);
+  --border-card-hover: rgba(255,255,255,0.12);
+  --text-primary: #e0e0e0;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+  --accent: #0dcf1a;
+  --accent-dim: rgba(13,207,26,0.15);
+  --accent-glow: rgba(13,207,26,0.3);
+  --red: #ff4444;
+  --red-dim: rgba(255,68,68,0.15);
+  --red-glow: rgba(255,68,68,0.3);
+  --yellow: #ffaa00;
+  --yellow-dim: rgba(255,170,0,0.15);
+  --blue: #4488ff;
+  --blue-dim: rgba(68,136,255,0.15);
+  --orange: #ff6600;
+  --orange-dim: rgba(255,102,0,0.15);
+  --purple: #aa44ff;
+  --purple-dim: rgba(170,68,255,0.15);
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: rgba(10,10,10,0.95);
+  border-right: 1px solid var(--border-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.sidebar-logo {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.sidebar-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* Audit Score Badge */
+.audit-score-badge {
+  margin: 16px 16px 0;
+  background: var(--red-dim);
+  border: 1px solid rgba(255,68,68,0.3);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.audit-score-badge .score-label {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.audit-score-badge .score-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--red);
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.audit-score-badge .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.audit-score-badge .score-verdict {
+  font-size: 0.65rem;
+  color: var(--red);
+  margin-top: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sidebar-nav {
+  padding: 12px 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.nav-section-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 16px 16px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  gap: 8px;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-item.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.nav-item .nav-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  min-width: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.nav-item.active .nav-num {
+  color: var(--accent);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-card);
+}
+
+.sidebar-footer-text {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+/* Mobile toggle */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+
+@media (max-width: 1024px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+  .main-content { margin-left: 0 !important; }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+  }
+  .sidebar-overlay.open { display: block; }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ============================================
+   HERO HEADER
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 80px 60px 60px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0808 50%, #0a0a0a 100%);
+  border-bottom: 1px solid var(--border-card);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--red-dim);
+  border: 1px solid rgba(255,68,68,0.2);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--red);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--red), #ff8888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-meta-item strong {
+  color: var(--text-secondary);
+}
+
+.hero-stats-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.hero-stat-card .stat-num {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-stat-card .stat-num.critical { color: var(--red); }
+.hero-stat-card .stat-num.major { color: var(--orange); }
+.hero-stat-card .stat-num.minor { color: var(--yellow); }
+.hero-stat-card .stat-num.score { color: var(--red); }
+
+.hero-stat-card .stat-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   SECTION LAYOUT
+   ============================================ */
+.content-area {
+  padding: 40px 60px 120px;
+  max-width: 1400px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 60px 20px 40px; }
+  .hero h1 { font-size: 1.8rem; }
+  .content-area { padding: 20px 16px 80px; }
+}
+
+.section {
+  margin-bottom: 60px;
+  scroll-margin-top: 30px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-card);
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 4px 10px;
+  border-radius: 4px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  flex: 1;
+}
+
+.section-collapse {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.3s ease;
+}
+
+.section.collapsed .section-collapse {
+  transform: rotate(-90deg);
+}
+
+.section.collapsed .section-body {
+  display: none;
+}
+
+.section-body {
+  padding-left: 0;
+}
+
+/* ============================================
+   SUBSECTION
+   ============================================ */
+.subsection {
+  margin-bottom: 36px;
+}
+
+.subsection h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+}
+
+.subsection h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.subsection p, .subsection li {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.subsection ul, .subsection ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.subsection ul li { list-style: none; position: relative; padding-left: 16px; }
+.subsection ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ============================================
+   METRIC CARDS
+   ============================================ */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+  transform: translateY(-2px);
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+}
+
+.metric-card.green::before { background: var(--accent); }
+.metric-card.red::before { background: var(--red); }
+.metric-card.yellow::before { background: var(--yellow); }
+.metric-card.blue::before { background: var(--blue); }
+.metric-card.orange::before { background: var(--orange); }
+.metric-card.purple::before { background: var(--purple); }
+
+.metric-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  line-height: 1.2;
+}
+
+.metric-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.metric-sub.up { color: var(--accent); }
+.metric-sub.down { color: var(--red); }
+.metric-sub.warn { color: var(--yellow); }
+
+/* ============================================
+   TABLES
+   ============================================ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+thead th {
+  background: rgba(255,255,255,0.04);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px 16px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border-card);
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+td.mono {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+td.accent { color: var(--accent); font-weight: 600; }
+td.red { color: var(--red); font-weight: 600; }
+td.yellow { color: var(--yellow); font-weight: 600; }
+td.blue { color: var(--blue); }
+td.orange { color: var(--orange); font-weight: 600; }
+td.purple { color: var(--purple); }
+
+/* ============================================
+   ALERT CARDS
+   ============================================ */
+.alert-card {
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+
+.alert-card.green {
+  background: var(--accent-dim);
+  border-color: rgba(13,207,26,0.2);
+}
+
+.alert-card.red {
+  background: var(--red-dim);
+  border-color: rgba(255,68,68,0.2);
+}
+
+.alert-card.yellow {
+  background: var(--yellow-dim);
+  border-color: rgba(255,170,0,0.2);
+}
+
+.alert-card.blue {
+  background: var(--blue-dim);
+  border-color: rgba(68,136,255,0.2);
+}
+
+.alert-card.orange {
+  background: var(--orange-dim);
+  border-color: rgba(255,102,0,0.2);
+}
+
+.alert-card.purple {
+  background: var(--purple-dim);
+  border-color: rgba(170,68,255,0.2);
+}
+
+.alert-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.alert-card.green h4 { color: var(--accent); }
+.alert-card.red h4 { color: var(--red); }
+.alert-card.yellow h4 { color: var(--yellow); }
+.alert-card.blue h4 { color: var(--blue); }
+.alert-card.orange h4 { color: var(--orange); }
+.alert-card.purple h4 { color: var(--purple); }
+
+.alert-card p, .alert-card li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.alert-card ul {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+.alert-card ul li {
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   INFO CARDS & GRID
+   ============================================ */
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: var(--border-card-hover);
+  background: var(--bg-card-hover);
+}
+
+.info-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================
+   FINDING CARD (Issue Detail)
+   ============================================ */
+.finding {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.finding:hover {
+  border-color: var(--border-card-hover);
+  background: var(--bg-card-hover);
+}
+
+.finding::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.finding.critical::before { background: var(--red); }
+.finding.major::before { background: var(--orange); }
+.finding.minor::before { background: var(--yellow); }
+.finding.info::before { background: var(--blue); }
+
+.finding-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.finding-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.finding.critical .finding-id { background: var(--red-dim); color: var(--red); }
+.finding.major .finding-id { background: var(--orange-dim); color: var(--orange); }
+.finding.minor .finding-id { background: var(--yellow-dim); color: var(--yellow); }
+.finding.info .finding-id { background: var(--blue-dim); color: var(--blue); }
+
+.finding-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.finding-severity {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+.finding.critical .finding-severity { background: var(--red-dim); color: var(--red); }
+.finding.major .finding-severity { background: var(--orange-dim); color: var(--orange); }
+.finding.minor .finding-severity { background: var(--yellow-dim); color: var(--yellow); }
+.finding.info .finding-severity { background: var(--blue-dim); color: var(--blue); }
+
+.finding-body {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.finding-body code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--accent);
+}
+
+.finding-location {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.finding-fix {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(13,207,26,0.05);
+  border: 1px solid rgba(13,207,26,0.1);
+  border-radius: 8px;
+}
+
+.finding-fix .fix-label {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.finding-fix p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   PROGRESS BARS & TAGS
+   ============================================ */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.progress-fill.green { background: var(--accent); }
+.progress-fill.red { background: var(--red); }
+.progress-fill.yellow { background: var(--yellow); }
+.progress-fill.blue { background: var(--blue); }
+.progress-fill.orange { background: var(--orange); }
+.progress-fill.purple { background: var(--purple); }
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tag.green { background: var(--accent-dim); color: var(--accent); }
+.tag.red { background: var(--red-dim); color: var(--red); }
+.tag.yellow { background: var(--yellow-dim); color: var(--yellow); }
+.tag.blue { background: var(--blue-dim); color: var(--blue); }
+.tag.orange { background: var(--orange-dim); color: var(--orange); }
+.tag.purple { background: var(--purple-dim); color: var(--purple); }
+
+/* ============================================
+   SCORE RADAR / SCORECARD
+   ============================================ */
+.scorecard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.score-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.score-item .score-dim {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.score-item .score-num {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-item .score-num.critical { color: var(--red); }
+.score-item .score-num.poor { color: var(--orange); }
+.score-item .score-num.mid { color: var(--yellow); }
+.score-item .score-num.good { color: var(--accent); }
+
+.score-item .score-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.score-item .score-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* ============================================
+   COMPARISON BLOCKS
+   ============================================ */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .before-after { grid-template-columns: 1fr; }
+}
+
+.before-block, .after-block {
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.before-block {
+  background: var(--red-dim);
+  border-color: rgba(255,68,68,0.15);
+}
+
+.after-block {
+  background: var(--accent-dim);
+  border-color: rgba(13,207,26,0.15);
+}
+
+.before-block .block-label, .after-block .block-label {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.before-block .block-label { color: var(--red); }
+.after-block .block-label { color: var(--accent); }
+
+.before-block code, .after-block code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  display: block;
+  line-height: 1.6;
+}
+
+.before-block code { color: var(--red); }
+.after-block code { color: var(--accent); }
+
+/* ============================================
+   BACK TO TOP
+   ============================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px var(--accent-glow);
+}
+
+/* ============================================
+   CROSS-REFERENCE LINKS
+   ============================================ */
+.cross-ref {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.cross-ref:hover {
+  color: #44ff44;
+  border-bottom-color: #44ff44;
+}
+
+.cross-ref-block {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(13,207,26,0.15);
+  border-radius: 10px;
+}
+
+.cross-ref-block .ref-label {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.cross-ref-block a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.cross-ref-block a:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+.code-block {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  overflow-x: auto;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ============================================
+   PRIORITY MATRIX CARDS
+   ============================================ */
+.priority-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.priority-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.priority-card.p0::before { background: var(--red); }
+.priority-card.p1::before { background: var(--orange); }
+.priority-card.p2::before { background: var(--yellow); }
+.priority-card.p3::before { background: var(--blue); }
+
+.priority-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.priority-card.p0 .priority-label { color: var(--red); }
+.priority-card.p1 .priority-label { color: var(--orange); }
+.priority-card.p2 .priority-label { color: var(--yellow); }
+.priority-card.p3 .priority-label { color: var(--blue); }
+
+.priority-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.priority-card ol {
+  padding-left: 20px;
+}
+
+.priority-card li {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.text-red { color: var(--red); }
+.text-green { color: var(--accent); }
+.text-yellow { color: var(--yellow); }
+.text-blue { color: var(--blue); }
+.text-orange { color: var(--orange); }
+.text-purple { color: var(--purple); }
+.text-muted { color: var(--text-muted); }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.mono { font-family: var(--font-mono); }
+.mt-16 { margin-top: 16px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+
+.verdict-box {
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.verdict-box.fail {
+  background: var(--red-dim);
+  border: 2px solid rgba(255,68,68,0.3);
+}
+
+.verdict-box.pass {
+  background: var(--accent-dim);
+  border: 2px solid rgba(13,207,26,0.3);
+}
+
+.verdict-box .verdict-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.verdict-box.fail .verdict-text { color: var(--red); }
+.verdict-box.pass .verdict-text { color: var(--accent); }
+
+.verdict-box .verdict-sub {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar Toggle (mobile) -->
+<button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">GRABCASH UNDERGROUND</div>
+    <div class="sidebar-title">Product Audit Report</div>
+    <div class="sidebar-subtitle">DOC 16 / WAR SUITE / 2026-05-31</div>
+  </div>
+
+  <!-- Floating Audit Score -->
+  <div class="audit-score-badge">
+    <div class="score-label">GTM Readiness</div>
+    <div class="score-value">3.25<span class="score-max">/10</span></div>
+    <div class="score-verdict">Not Ready</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Audit Sections</div>
+    <a href="#executive-summary" class="nav-item"><span class="nav-num">01</span> Executive Summary</a>
+    <a href="#performance" class="nav-item"><span class="nav-num">02</span> Performance Audit</a>
+    <a href="#ux-design" class="nav-item"><span class="nav-num">03</span> UX & Design Audit</a>
+    <a href="#seo" class="nav-item"><span class="nav-num">04</span> SEO Audit</a>
+    <a href="#content-copy" class="nav-item"><span class="nav-num">05</span> Content & Copy Audit</a>
+    <a href="#conversion-funnel" class="nav-item"><span class="nav-num">06</span> Conversion Funnel</a>
+    <a href="#competitive-gap" class="nav-item"><span class="nav-num">07</span> Competitive Gap Analysis</a>
+    <a href="#priority-matrix" class="nav-item"><span class="nav-num">08</span> Priority Fix Matrix</a>
+    <a href="#impact-projection" class="nav-item"><span class="nav-num">09</span> Impact Projection</a>
+    <a href="#gtm-readiness" class="nav-item"><span class="nav-num">10</span> GTM Readiness Scorecard</a>
+    <a href="#cross-references" class="nav-item"><span class="nav-num">11</span> Cross-References</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-text">INSPIRELABS SOLUTIONS LTD<br>CONFIDENTIAL / INTERNAL</div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Critical Audit — Document 16
+  </div>
+  <h1>GrabCash <span>Product Audit</span></h1>
+  <p class="hero-subtitle">Comprehensive technical, UX, SEO, and conversion analysis of grabcash.in. This audit identifies 51 findings across 8 critical, 15 major, and 12 minor issues that must be resolved before aggressive GTM execution.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Audit Date:</strong>&nbsp; 2026-05-31</div>
+    <div class="hero-meta-item"><strong>Target:</strong>&nbsp; grabcash.in</div>
+    <div class="hero-meta-item"><strong>Score:</strong>&nbsp; 35/100</div>
+    <div class="hero-meta-item"><strong>Verdict:</strong>&nbsp; NOT GTM READY</div>
+  </div>
+  <div class="hero-stats-row">
+    <div class="hero-stat-card">
+      <div class="stat-num critical">8</div>
+      <div class="stat-label">Critical</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="stat-num major">15</div>
+      <div class="stat-label">Major</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="stat-num minor">12</div>
+      <div class="stat-label">Minor</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="stat-num score">35</div>
+      <div class="stat-label">Score /100</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT AREA -->
+<div class="content-area">
+
+<!-- ============================================
+     SECTION 1: EXECUTIVE SUMMARY
+     ============================================ -->
+<div class="section" id="executive-summary">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Executive Summary</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card red">
+      <h4>Critical Assessment</h4>
+      <p>GrabCash's website has fundamental product issues that will undermine any GTM effort. The site fails Google's Core Web Vitals, has broken key features, inconsistent UI, and lacks the content density needed to convert affiliate marketers. Investing in paid acquisition or community growth without fixing these issues will result in wasted budget and poor conversion rates.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Overall Audit Scorecard</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card red">
+          <div class="metric-label">Overall Score</div>
+          <div class="metric-value">35/100</div>
+          <div class="metric-sub down">FAILING</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">Critical Issues</div>
+          <div class="metric-value">8</div>
+          <div class="metric-sub down">Immediate action needed</div>
+        </div>
+        <div class="metric-card orange">
+          <div class="metric-label">Major Issues</div>
+          <div class="metric-value">15</div>
+          <div class="metric-sub warn">Fix within 2 weeks</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="metric-label">Minor Issues</div>
+          <div class="metric-value">12</div>
+          <div class="metric-sub warn">Fix within month</div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Audit Dimension</th>
+              <th>Score</th>
+              <th>Grade</th>
+              <th>Key Issue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Performance (Core Web Vitals)</td>
+              <td class="mono red">2/10</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>LCP 5.2s (limit 2.5s), TTFB 2.3s (limit 0.8s)</td>
+            </tr>
+            <tr>
+              <td>UX / Design</td>
+              <td class="mono orange">4/10</td>
+              <td><span class="tag orange">POOR</span></td>
+              <td>Broken calculator, invisible content, whitespace gaps</td>
+            </tr>
+            <tr>
+              <td>SEO</td>
+              <td class="mono yellow">5/10</td>
+              <td><span class="tag yellow">BELOW AVG</span></td>
+              <td>Missing canonical, duplicate H1, tiny sitemap</td>
+            </tr>
+            <tr>
+              <td>Content</td>
+              <td class="mono orange">3/10</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>No deals visible, no earnings proof, marketing-only</td>
+            </tr>
+            <tr>
+              <td>Conversion</td>
+              <td class="mono orange">3/10</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Broken calculator, no preview, weak social proof</td>
+            </tr>
+            <tr>
+              <td>Trust</td>
+              <td class="mono orange">4/10</td>
+              <td><span class="tag orange">POOR</span></td>
+              <td>No earnings proof, generic testimonials, stock images</td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td class="mono red">3/10</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Poor mobile performance, no app CTAs</td>
+            </tr>
+            <tr>
+              <td>Competitive Parity</td>
+              <td class="mono red">2/10</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Years behind CashKaro/EarnKaro in every dimension</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="verdict-box fail">
+        <div class="verdict-text">NOT READY FOR GTM</div>
+        <div class="verdict-sub">Fix P0 + P1 issues before scaling acquisition spend. Current site will waste 60-70% of paid traffic.</div>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Feature Roadmap 2026-2027</a>
+      <a href="GrabCash_SEO_Content_Playbook.html" class="cross-ref">SEO & Content Strategy Playbook</a>
+      <a href="GrabCash_Competitive_Intelligence.html" class="cross-ref">Competitive Intelligence Playbook</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 2: PERFORMANCE AUDIT
+     ============================================ -->
+<div class="section" id="performance">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Performance Audit (Core Web Vitals)</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card red">
+      <h4>Core Web Vitals Assessment: FAILED</h4>
+      <p>GrabCash fails Google's Core Web Vitals on mobile. This directly impacts search rankings (CWV is a ranking signal), user experience, and conversion rates. Mobile users on 4G connections experience 5+ second load times — unacceptable for an audience that primarily uses budget Android phones.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Google PageSpeed Insights — Mobile (May 31, 2026)</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card red">
+          <div class="metric-label">LCP</div>
+          <div class="metric-value">5.2s</div>
+          <div class="metric-sub down">POOR (threshold: 2.5s) — 2x over limit</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="metric-label">INP</div>
+          <div class="metric-value">202ms</div>
+          <div class="metric-sub warn">NEEDS IMPROVEMENT (threshold: 200ms)</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">CLS</div>
+          <div class="metric-value">0.05</div>
+          <div class="metric-sub up">GOOD (threshold: 0.1)</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">FCP</div>
+          <div class="metric-value">3.2s</div>
+          <div class="metric-sub down">POOR (threshold: 1.8s)</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">TTFB</div>
+          <div class="metric-value">2.3s</div>
+          <div class="metric-sub down">POOR (threshold: 0.8s) — 3x over limit</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">Homepage Images</div>
+          <div class="metric-value">219</div>
+          <div class="metric-sub down">Excessive — major contributor to LCP</div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>GrabCash (Mobile)</th>
+              <th>Threshold (Good)</th>
+              <th>CashKaro (Est.)</th>
+              <th>Status</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">LCP</td>
+              <td class="mono red">5.2s</td>
+              <td class="mono">&lt;2.5s</td>
+              <td class="mono accent">~2.1s</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Users leave before seeing content</td>
+            </tr>
+            <tr>
+              <td class="fw-700">INP</td>
+              <td class="mono yellow">202ms</td>
+              <td class="mono">&lt;200ms</td>
+              <td class="mono accent">~150ms</td>
+              <td><span class="tag yellow">WARN</span></td>
+              <td>Interactions feel sluggish</td>
+            </tr>
+            <tr>
+              <td class="fw-700">CLS</td>
+              <td class="mono accent">0.05</td>
+              <td class="mono">&lt;0.1</td>
+              <td class="mono accent">~0.08</td>
+              <td><span class="tag green">PASS</span></td>
+              <td>Acceptable visual stability</td>
+            </tr>
+            <tr>
+              <td class="fw-700">FCP</td>
+              <td class="mono red">3.2s</td>
+              <td class="mono">&lt;1.8s</td>
+              <td class="mono accent">~1.5s</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Blank screen for 3+ seconds</td>
+            </tr>
+            <tr>
+              <td class="fw-700">TTFB</td>
+              <td class="mono red">2.3s</td>
+              <td class="mono">&lt;0.8s</td>
+              <td class="mono accent">~0.4s</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Server/hosting bottleneck</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Speed Index</td>
+              <td class="mono red">6.8s</td>
+              <td class="mono">&lt;3.4s</td>
+              <td class="mono accent">~2.8s</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Content paints slowly, progressively</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Root Cause Analysis</h3>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">PERF-01</span>
+          <span class="finding-title">219 images loaded on homepage</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The homepage loads 219 images simultaneously. Even with lazy loading attributes present, the sheer volume overwhelms the browser's render queue. Many images appear to be brand logos, testimonial avatars, and decorative elements that could be SVGs or deferred.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Impact: LCP, Speed Index, Total Blocking Time</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Reduce to &lt;50 images above-the-fold. Convert brand logos to optimized SVG sprites. Use intersection observer-based lazy loading. Implement responsive srcset for all remaining images.</p>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">PERF-02</span>
+          <span class="finding-title">TTFB 2.3s — Server response time 3x over threshold</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          Time to First Byte of 2.3 seconds indicates severe server-side bottleneck. The threshold is 0.8s. This suggests either: (a) poor hosting infrastructure, (b) unoptimized database queries, (c) no CDN for initial page delivery, or (d) heavy server-side rendering without caching.
+        </div>
+        <div class="finding-location">Page: All pages | Impact: Every metric is affected downstream</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Deploy CDN (Cloudflare/Fastly) for edge caching. Implement full-page cache for static marketing pages. Optimize database queries. Consider moving to a faster hosting tier or switching to static generation for marketing pages.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">PERF-03</span>
+          <span class="finding-title">Heavy scroll animations block rendering</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Multiple scroll-triggered animations use JavaScript to fade/slide content into view. These animations add to main thread blocking time, delay content paint, and make content invisible to users who scroll quickly. Some animations also trigger forced layout recalculations (layout thrashing).
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Impact: FCP, INP, accessibility</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Replace JavaScript scroll animations with CSS-only <code>animation-timeline: scroll()</code> or remove entirely. Content should be visible by default — use progressive enhancement for animations, not the other way around.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">PERF-04</span>
+          <span class="finding-title">No image optimization pipeline</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Images are served in original format without WebP/AVIF conversion. No responsive <code>srcset</code> attributes detected. Images are not size-optimized — full-resolution images served on mobile where a 400px wide version would suffice.
+        </div>
+        <div class="finding-location">Page: All | Impact: LCP, bandwidth, mobile performance</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Implement automatic WebP conversion with AVIF fallback. Use <code>&lt;picture&gt;</code> element with srcset for responsive images. Compress all images to &lt;100KB. Use image CDN (Cloudinary/imgix) for on-the-fly optimization.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Performance Optimization Roadmap</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Expected LCP Improvement</th>
+              <th>Effort</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deploy CDN + edge caching</td>
+              <td class="mono accent">-1.5s</td>
+              <td>1 day</td>
+              <td><span class="tag red">P0</span></td>
+            </tr>
+            <tr>
+              <td>Image optimization (WebP + compression)</td>
+              <td class="mono accent">-1.2s</td>
+              <td>2 days</td>
+              <td><span class="tag red">P0</span></td>
+            </tr>
+            <tr>
+              <td>Defer non-critical JavaScript</td>
+              <td class="mono accent">-0.5s</td>
+              <td>1 day</td>
+              <td><span class="tag orange">P1</span></td>
+            </tr>
+            <tr>
+              <td>Reduce DOM size (remove duplicate elements)</td>
+              <td class="mono accent">-0.3s</td>
+              <td>2 days</td>
+              <td><span class="tag orange">P1</span></td>
+            </tr>
+            <tr>
+              <td>Implement proper lazy loading</td>
+              <td class="mono accent">-0.4s</td>
+              <td>1 day</td>
+              <td><span class="tag orange">P1</span></td>
+            </tr>
+            <tr>
+              <td>Server-side rendering cache</td>
+              <td class="mono accent">-0.8s</td>
+              <td>3 days</td>
+              <td><span class="tag orange">P1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Performance Budget Targets</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Resource Type</th>
+              <th>Current Size</th>
+              <th>Target Budget</th>
+              <th>Reduction Needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HTML Document</td>
+              <td class="mono red">~180 KB</td>
+              <td class="mono accent">&lt;80 KB</td>
+              <td class="mono">56% reduction (remove duplicate DOM)</td>
+            </tr>
+            <tr>
+              <td>CSS (total)</td>
+              <td class="mono yellow">~120 KB</td>
+              <td class="mono accent">&lt;60 KB</td>
+              <td class="mono">50% reduction (purge unused)</td>
+            </tr>
+            <tr>
+              <td>JavaScript (total)</td>
+              <td class="mono red">~350 KB</td>
+              <td class="mono accent">&lt;150 KB</td>
+              <td class="mono">57% reduction (defer, code-split)</td>
+            </tr>
+            <tr>
+              <td>Images (above fold)</td>
+              <td class="mono red">~2.5 MB</td>
+              <td class="mono accent">&lt;500 KB</td>
+              <td class="mono">80% reduction (WebP, compression)</td>
+            </tr>
+            <tr>
+              <td>Images (total page)</td>
+              <td class="mono red">~8 MB (219 imgs)</td>
+              <td class="mono accent">&lt;2 MB (&lt;50 imgs)</td>
+              <td class="mono">75% reduction (lazy load + optimize)</td>
+            </tr>
+            <tr>
+              <td>Web Fonts</td>
+              <td class="mono yellow">~150 KB</td>
+              <td class="mono accent">&lt;80 KB</td>
+              <td class="mono">47% reduction (subset, preload)</td>
+            </tr>
+            <tr>
+              <td>Third-party Scripts</td>
+              <td class="mono red">~200 KB</td>
+              <td class="mono accent">&lt;100 KB</td>
+              <td class="mono">50% reduction (audit necessity)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card yellow">
+        <h4>Performance Budget Rule</h4>
+        <p>Total page weight for mobile users should not exceed 3 MB (including all images, scripts, fonts). Current homepage is estimated at 11+ MB total transfer. Every 1 MB reduction on a 4G connection saves approximately 0.8 seconds of load time. Set up Lighthouse CI budgets in the deployment pipeline to prevent regressions.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Hosting & Infrastructure Assessment</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Infrastructure Layer</th>
+              <th>Current State</th>
+              <th>Assessment</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CDN</td>
+              <td class="red">Not detected</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Deploy Cloudflare (free tier minimum)</td>
+            </tr>
+            <tr>
+              <td>SSL/TLS</td>
+              <td class="accent">Active (HTTPS)</td>
+              <td><span class="tag green">PASS</span></td>
+              <td>Verify TLS 1.3, enable HSTS</td>
+            </tr>
+            <tr>
+              <td>HTTP/2</td>
+              <td class="accent">Likely supported</td>
+              <td><span class="tag green">PASS</span></td>
+              <td>Verify multiplexing is active</td>
+            </tr>
+            <tr>
+              <td>Compression (Gzip/Brotli)</td>
+              <td class="yellow">Likely Gzip only</td>
+              <td><span class="tag yellow">WARN</span></td>
+              <td>Enable Brotli for 10-15% better compression</td>
+            </tr>
+            <tr>
+              <td>Cache Headers</td>
+              <td class="red">Likely missing/short</td>
+              <td><span class="tag red">FAIL</span></td>
+              <td>Set 1yr cache for static assets, cache-busting via filename hash</td>
+            </tr>
+            <tr>
+              <td>Server Location</td>
+              <td class="yellow">Unknown — likely single region</td>
+              <td><span class="tag yellow">WARN</span></td>
+              <td>CDN edge caching solves this for static content</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Feature Roadmap — Performance Sprint</a>
+      <a href="GrabCash_ASO_App_Growth.html" class="cross-ref">ASO & App Growth — Web-to-App Performance</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 3: UX & DESIGN AUDIT
+     ============================================ -->
+<div class="section" id="ux-design">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">03</span>
+    <h2 class="section-title">UX & Design Audit</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card red">
+      <h4>26 UX Issues Identified — 4 Critical, 8 Major, 14 Minor</h4>
+      <p>The GrabCash website suffers from broken interactive elements, massive whitespace, invisible content due to scroll animations, inconsistent navigation, and fundamental usability problems that prevent users from understanding or using the product.</p>
+    </div>
+
+    <!-- 3.1 Homepage Issues -->
+    <div class="subsection">
+      <h3>3.1 Homepage Issues</h3>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">UX-01</span>
+          <span class="finding-title">"Calculate Your Profit" Section — COMPLETELY BROKEN</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The earnings calculator — intended as a key conversion tool — shows only the heading "Calculate Your Profit" followed by a full viewport of empty white space. The calculator widget fails to render entirely. Users see a blank section where the tool should demonstrate earning potential.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Section: Calculate Your Profit | Viewport: ~4th scroll</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Debug and fix the calculator component. Likely a JavaScript initialization error or missing data dependency. Add error boundary with fallback UI. Test in all major browsers (Chrome, Safari, Firefox on Android/iOS).</p>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">UX-02</span>
+          <span class="finding-title">Brand logo grid renders empty rectangles</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The "500+ Top Brands" section shows empty bordered rectangles where brand logos should appear. This severely damages trust — the section is supposed to showcase partnerships (Amazon, Flipkart, Myntra etc.) but instead shows broken placeholders.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Section: Brand Partners grid</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Fix image paths for brand logos. Implement fallback rendering. If logos are dynamically loaded, add a loading state and error handling. Consider inline SVGs for critical brand logos to avoid network dependency.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-03</span>
+          <span class="finding-title">Massive whitespace gaps between sections (300-500px)</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Every section on the homepage is separated by 300-500px of empty space. Users must scroll through blank nothing between content blocks. This inflates perceived page length, increases bounce rate, and makes the page feel unfinished or broken.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Throughout entire page</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Reduce section spacing to 60-80px maximum. Use visual dividers (subtle lines, background color changes) instead of empty space to create separation. Benchmark against CashKaro's compact, content-dense layout.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-04</span>
+          <span class="finding-title">Scroll-triggered animations make content invisible</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Content appears faded/invisible until scrolled to. The "Why Choose GrabCash?" section text is gray/invisible until animation triggers. Users who scroll quickly miss content entirely. This is an accessibility violation (WCAG 2.1 — content must be perceivable without interaction).
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Section: "Why Choose GrabCash?" and others</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Remove all fade-in-on-scroll animations or make them purely additive (content visible by default, animation enhances). Apply <code>prefers-reduced-motion</code> media query to disable for users who need it.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-05</span>
+          <span class="finding-title">Duplicate testimonial — "Aarav - Student" appears twice</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          In the testimonial section, "Aarav - Student" appears twice with identical review text. This immediately signals fake/manufactured testimonials to users, destroying trust in all other testimonials on the page.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Section: Testimonials</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Remove duplicate entry. Replace with a unique, verified testimonial from a real user. Add verification badges or link to actual social media profiles to build credibility.</p>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">UX-06</span>
+          <span class="finding-title">No search functionality on homepage</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          Users cannot search for deals, brands, or products from the homepage. CashKaro has a prominent search bar front and center. For a deals/cashback platform, search is the primary discovery mechanism — its absence means users have no way to find what they came for.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Missing element</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Add a prominent search bar in the hero section. Support search by brand name, category, or deal type. Show auto-suggestions with live results. This is a P1 feature requirement — see Product Roadmap.</p>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">UX-07</span>
+          <span class="finding-title">No deals or products visible — pure marketing page</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The homepage is entirely a marketing landing page with zero actual deals, products, prices, or categories visible. Compare to CashKaro which shows flash deals with countdown timers, actual prices, cashback amounts, category cards, and trending deals. Users who land on GrabCash see promises but no proof of actual value.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Structural issue</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Redesign homepage to be content-first: show top deals, flash deals with timers, category browsing, and recent cashback payouts. Marketing copy should supplement product content, not replace it.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-08</span>
+          <span class="finding-title">No app download CTA anywhere on the site</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Zero app download calls-to-action exist on the entire website. No Play Store badge, no App Store link, no download prompt. For a mobile-first audience (Indian affiliate marketers aged 18-35), this is a massive missed opportunity for app installs.
+        </div>
+        <div class="finding-location">Page: All pages | Missing element</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Add sticky app download banner on mobile. Add Play Store/App Store badges in hero, footer, and floating CTA. See ASO & App Growth Playbook for full implementation strategy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3.2 Navigation Issues -->
+    <div class="subsection">
+      <h3>3.2 Navigation Issues</h3>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-09</span>
+          <span class="finding-title">Blog has completely different navigation</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          The blog at grabcash.in/blog uses entirely different menu items (Earn Money, Affiliate Program, Affiliate Marketing, Hindi), different CTA text ("Sign in" vs "Login/Sign up"), and a different visual design from the main site. Users feel like they've left GrabCash entirely.
+        </div>
+        <div class="finding-location">Page: /blog | Compared to: / (Homepage nav)</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Unify navigation across main site and blog. Use identical header component with consistent menu items, CTA text, and styling. Blog categories should appear as sub-navigation, not replace the main nav.</p>
+        </div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-10</span>
+          <span class="finding-title">Login page nav changes from white to blue</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          The navigation header switches from white/transparent theme to a blue background on the login page. This inconsistency breaks the visual flow and makes users question if they're still on the same site.
+        </div>
+        <div class="finding-location">Page: /login | Header styling</div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-11</span>
+          <span class="finding-title">Nav links duplicated 3x in DOM</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Navigation links are rendered three times in the DOM — mobile version, desktop version, and footer version. While visually only one is shown at a time via CSS display, this triples the DOM weight and creates SEO duplicate content issues with internal links.
+        </div>
+        <div class="finding-location">Page: / | DOM structure</div>
+      </div>
+    </div>
+
+    <!-- 3.3 About Page -->
+    <div class="subsection">
+      <h3>3.3 About Page Issues (/about)</h3>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-12</span>
+          <span class="finding-title">Inconsistent capitalization</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Text reads: <code>"Built on accessibility, Collaboration and integrity"</code> — random capitalization of "Collaboration" while other words are lowercase. Shows lack of editorial review.
+        </div>
+        <div class="finding-location">Page: /about | Values section</div>
+        <div class="before-after">
+          <div class="before-block">
+            <div class="block-label">Before (Current)</div>
+            <code>"Built on accessibility, Collaboration and integrity"</code>
+          </div>
+          <div class="after-block">
+            <div class="block-label">After (Fixed)</div>
+            <code>"Built on accessibility, collaboration, and integrity"</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-13</span>
+          <span class="finding-title">Missing space after period</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Text reads: <code>"learning curve.GrabCash is for students"</code> — no space between sentences. Makes the site look unpolished and reduces perceived professionalism.
+        </div>
+        <div class="finding-location">Page: /about | Body copy</div>
+        <div class="before-after">
+          <div class="before-block">
+            <div class="block-label">Before (Current)</div>
+            <code>"learning curve.GrabCash is for students"</code>
+          </div>
+          <div class="after-block">
+            <div class="block-label">After (Fixed)</div>
+            <code>"learning curve. GrabCash is for students"</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-14</span>
+          <span class="finding-title">Misplaced period in sentence</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Text reads: <code>"...and a seamless .experience for our partners"</code> — period inserted before "experience" instead of at sentence end. Likely a copy-paste or encoding error.
+        </div>
+        <div class="finding-location">Page: /about | Mission section</div>
+        <div class="before-after">
+          <div class="before-block">
+            <div class="block-label">Before (Current)</div>
+            <code>"...and a seamless .experience for our partners"</code>
+          </div>
+          <div class="after-block">
+            <div class="block-label">After (Fixed)</div>
+            <code>"...and a seamless experience for our partners."</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-15</span>
+          <span class="finding-title">AI-generated stock illustrations</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          About page uses generic AI-generated illustrations that don't represent GrabCash's actual product, team, or users. This reduces authenticity and makes the brand feel generic/untrusthworthy — especially to a savvy audience of affiliate marketers.
+        </div>
+        <div class="finding-location">Page: /about | Illustrations throughout</div>
+      </div>
+    </div>
+
+    <!-- 3.4 How It Works -->
+    <div class="subsection">
+      <h3>3.4 How It Works Page (/learn)</h3>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-16</span>
+          <span class="finding-title">"..More" double dots typo</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Button text shows <code>"..More"</code> with two dots instead of proper ellipsis <code>"...More"</code> or simply <code>"Read More"</code>. Small but unprofessional.
+        </div>
+        <div class="finding-location">Page: /learn | Article cards</div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-17</span>
+          <span class="finding-title">Inconsistent title capitalization</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Article titles use inconsistent casing: "How to Use" (sentence case) vs "How To Check" (title case) vs "How To Find" (title case). Pick one style and apply consistently.
+        </div>
+        <div class="finding-location">Page: /learn | Article grid</div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-18</span>
+          <span class="finding-title">Stats contradiction: 200+ vs 500+ brands</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          The Learn page states "200+ brands" while the homepage claims "500+ Top Brands". This internal contradiction destroys credibility. Users who notice (and affiliate marketers will notice) immediately question all other claims.
+        </div>
+        <div class="finding-location">Page: /learn vs / (Homepage) | Stats sections</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Audit all brand count claims across the site. Use a single source of truth. If 500+ is accurate, update /learn. If neither is accurate, use the real number. Consider making this a dynamic value pulled from the database.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3.5 Login Page -->
+    <div class="subsection">
+      <h3>3.5 Login Page (/login)</h3>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-19</span>
+          <span class="finding-title">"SignUp" should be "Sign Up" (two words)</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          The registration button reads <code>"SignUp"</code> as a single word. Standard web convention is "Sign Up" (two words) for the verb/action. This makes the interface feel amateur and non-standard.
+        </div>
+        <div class="finding-location">Page: /login | Registration button</div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-20</span>
+          <span class="finding-title">Google Sign-in button missing Google icon</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          The Google Sign-in button shows plain text only without the recognizable Google "G" icon. Users rely on the icon for trust signals — without it, the button looks like a potential phishing element. This likely violates Google's branding guidelines for OAuth buttons.
+        </div>
+        <div class="finding-location">Page: /login | Google authentication button</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Implement Google's official Sign-In button component which includes proper branding, icon, and styling per their Brand Guidelines. See: developers.google.com/identity/branding-guidelines</p>
+        </div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-21</span>
+          <span class="finding-title">Every word capitalized in legal consent text</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Consent text reads: <code>"By Clicking, I Accept The Terms & Conditions And Privacy Policy"</code> — Title Case applied to every word. This is unusual for body text and makes it harder to read.
+        </div>
+        <div class="finding-location">Page: /login | Consent disclaimer</div>
+        <div class="before-after">
+          <div class="before-block">
+            <div class="block-label">Before (Current)</div>
+            <code>"By Clicking, I Accept The Terms & Conditions And Privacy Policy"</code>
+          </div>
+          <div class="after-block">
+            <div class="block-label">After (Fixed)</div>
+            <code>"By clicking, I accept the Terms & Conditions and Privacy Policy"</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">UX-22</span>
+          <span class="finding-title">No referral code field on signup</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The login/signup page has no field for entering a referral code. For an affiliate platform that depends entirely on referral-driven growth, this is a critical miss. Every new user should be attributable to a referrer — without this field, the entire viral loop is broken for web signups.
+        </div>
+        <div class="finding-location">Page: /login | Registration form</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Add "Have a referral code?" expandable field to signup form. Auto-populate from URL parameter <code>?ref=CODE</code>. Show the referrer's name/avatar for social proof. Track referral attribution in analytics. See Referral & Virality Engine doc for full system design.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-23</span>
+          <span class="finding-title">No email login option — mobile only</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Authentication is limited to mobile number + OTP and Google Sign-in. No email/password option exists. This excludes users who prefer email-based accounts, makes account recovery harder, and limits international expansion potential.
+        </div>
+        <div class="finding-location">Page: /login | Authentication methods</div>
+      </div>
+    </div>
+
+    <!-- 3.6 Footer Issues -->
+    <div class="subsection">
+      <h3>3.6 Footer Issues</h3>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">UX-24</span>
+          <span class="finding-title">No app download links in footer</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Footer contains no Play Store or App Store download links/badges. The footer is a standard location users check for app downloads. Combined with no app CTAs elsewhere, the app is essentially invisible to website visitors.
+        </div>
+        <div class="finding-location">Page: All | Footer section</div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-25</span>
+          <span class="finding-title">"TS" abbreviation instead of "Telangana"</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          The company address uses <code>"TS"</code> instead of <code>"Telangana"</code>. For a business establishing trust with users across India, state abbreviations look unprofessional and may not be recognized by users outside the state.
+        </div>
+        <div class="finding-location">Page: All | Footer address</div>
+      </div>
+
+      <div class="finding minor">
+        <div class="finding-header">
+          <span class="finding-id">UX-26</span>
+          <span class="finding-title">Pinterest social link — wrong demographic</span>
+          <span class="finding-severity">MINOR</span>
+        </div>
+        <div class="finding-body">
+          Footer includes a Pinterest social link. GrabCash's target demographic is male affiliate marketers aged 18-35 in India — Pinterest has minimal penetration in this demographic. This link either goes to an unmaintained profile or is aspirational. Replace with platforms where the audience lives (Telegram, YouTube, X/Twitter).
+        </div>
+        <div class="finding-location">Page: All | Footer social links</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>UX Issues Summary Table</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Issue</th>
+              <th>Page</th>
+              <th>Severity</th>
+              <th>Impact Area</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">UX-01</td><td>Calculator completely broken</td><td>/</td><td><span class="tag red">CRITICAL</span></td><td>Conversion</td></tr>
+            <tr><td class="mono">UX-02</td><td>Brand logos not rendering</td><td>/</td><td><span class="tag red">CRITICAL</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-03</td><td>300-500px whitespace gaps</td><td>/</td><td><span class="tag orange">MAJOR</span></td><td>Engagement</td></tr>
+            <tr><td class="mono">UX-04</td><td>Invisible content (scroll anims)</td><td>/</td><td><span class="tag orange">MAJOR</span></td><td>Accessibility</td></tr>
+            <tr><td class="mono">UX-05</td><td>Duplicate testimonial</td><td>/</td><td><span class="tag orange">MAJOR</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-06</td><td>No search bar</td><td>/</td><td><span class="tag red">CRITICAL</span></td><td>Discovery</td></tr>
+            <tr><td class="mono">UX-07</td><td>No deals/products visible</td><td>/</td><td><span class="tag red">CRITICAL</span></td><td>Conversion</td></tr>
+            <tr><td class="mono">UX-08</td><td>No app download CTA</td><td>All</td><td><span class="tag orange">MAJOR</span></td><td>App installs</td></tr>
+            <tr><td class="mono">UX-09</td><td>Blog different navigation</td><td>/blog</td><td><span class="tag orange">MAJOR</span></td><td>Consistency</td></tr>
+            <tr><td class="mono">UX-10</td><td>Login nav color change</td><td>/login</td><td><span class="tag yellow">MINOR</span></td><td>Consistency</td></tr>
+            <tr><td class="mono">UX-11</td><td>Nav links 3x in DOM</td><td>/</td><td><span class="tag yellow">MINOR</span></td><td>Performance</td></tr>
+            <tr><td class="mono">UX-12</td><td>Inconsistent capitalization</td><td>/about</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-13</td><td>Missing space after period</td><td>/about</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-14</td><td>Misplaced period</td><td>/about</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-15</td><td>AI stock illustrations</td><td>/about</td><td><span class="tag yellow">MINOR</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-16</td><td>"..More" double dots</td><td>/learn</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-17</td><td>Inconsistent title casing</td><td>/learn</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-18</td><td>Stats contradiction (200 vs 500)</td><td>/learn</td><td><span class="tag orange">MAJOR</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-19</td><td>"SignUp" not "Sign Up"</td><td>/login</td><td><span class="tag orange">MAJOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-20</td><td>Google icon missing</td><td>/login</td><td><span class="tag orange">MAJOR</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-21</td><td>Every Word Capitalized</td><td>/login</td><td><span class="tag yellow">MINOR</span></td><td>Polish</td></tr>
+            <tr><td class="mono">UX-22</td><td>No referral code field</td><td>/login</td><td><span class="tag red">CRITICAL</span></td><td>Growth</td></tr>
+            <tr><td class="mono">UX-23</td><td>No email login</td><td>/login</td><td><span class="tag orange">MAJOR</span></td><td>Accessibility</td></tr>
+            <tr><td class="mono">UX-24</td><td>No app links in footer</td><td>All</td><td><span class="tag orange">MAJOR</span></td><td>App installs</td></tr>
+            <tr><td class="mono">UX-25</td><td>"TS" not "Telangana"</td><td>All</td><td><span class="tag yellow">MINOR</span></td><td>Trust</td></tr>
+            <tr><td class="mono">UX-26</td><td>Pinterest link wrong demo</td><td>All</td><td><span class="tag yellow">MINOR</span></td><td>Relevance</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Brand_Voice_Identity.html" class="cross-ref">Brand Voice & Identity Guide — Consistency Standards</a>
+      <a href="GrabCash_Retention_Gamification.html" class="cross-ref">Retention & Gamification — UX Patterns</a>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Roadmap — Feature Prioritization</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 4: SEO AUDIT
+     ============================================ -->
+<div class="section" id="seo">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">04</span>
+    <h2 class="section-title">SEO Audit</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <h3>4.1 What's Working (Positive Signals)</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card green">
+          <div class="metric-label">Title Tag</div>
+          <div class="metric-value" style="font-size:0.9rem;">Present</div>
+          <div class="metric-sub up">"GrabCash: Earn Money Online by Sharing Deals"</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Meta Description</div>
+          <div class="metric-value" style="font-size:0.9rem;">Present</div>
+          <div class="metric-sub up">Good length and keyword inclusion</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">OG Tags</div>
+          <div class="metric-value" style="font-size:0.9rem;">Configured</div>
+          <div class="metric-sub up">Title, description, image set</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Twitter Card</div>
+          <div class="metric-value" style="font-size:0.9rem;">Active</div>
+          <div class="metric-sub up">summary_large_image</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Schema Markup</div>
+          <div class="metric-value" style="font-size:0.9rem;">3 Scripts</div>
+          <div class="metric-sub up">JSON-LD structured data present</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Image Alt Text</div>
+          <div class="metric-value" style="font-size:0.9rem;">0 Missing</div>
+          <div class="metric-sub up">All 219 images have alt text</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Language Tag</div>
+          <div class="metric-value" style="font-size:0.9rem;">en-in</div>
+          <div class="metric-sub up">Correctly set for India English</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Blog Content</div>
+          <div class="metric-value" style="font-size:0.9rem;">Active</div>
+          <div class="metric-sub up">Latest post: May 18, 2026</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">robots.txt</div>
+          <div class="metric-value" style="font-size:0.9rem;">Configured</div>
+          <div class="metric-sub up">Includes LLM bot access rules</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Blog Sitemap</div>
+          <div class="metric-value" style="font-size:0.9rem;">Exists</div>
+          <div class="metric-sub up">Separate blog sitemap available</div>
+        </div>
+      </div>
+
+      <div class="alert-card green">
+        <h4>SEO Foundation Assessment</h4>
+        <p>The basic SEO infrastructure is in place — meta tags, OG tags, schema markup, alt texts, and robots.txt are all properly configured. This is a solid foundation to build on. The issues are in what's MISSING rather than what's misconfigured.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>4.2 Critical SEO Issues</h3>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">SEO-01</span>
+          <span class="finding-title">Two H1 tags on homepage</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          Homepage has two <code>&lt;h1&gt;</code> tags: <code>"Turn Your Network Into Income"</code> AND <code>"FAQs"</code>. Google recommends exactly one H1 per page. Multiple H1s dilute topic relevance signaling and confuse crawlers about page hierarchy.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | &lt;h1&gt; elements</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Keep primary H1 "Turn Your Network Into Income" (or rewrite for SEO). Change FAQ heading to <code>&lt;h2&gt;</code>. Audit all pages for single H1 compliance.</p>
+        </div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">SEO-02</span>
+          <span class="finding-title">Missing canonical tag</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          No <code>&lt;link rel="canonical"&gt;</code> tag found on any page. Without canonicals, Google may index duplicate versions of pages (http vs https, www vs non-www, trailing slash variants). This fragments ranking signals across duplicate URLs.
+        </div>
+        <div class="finding-location">Page: All pages | &lt;head&gt; section</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Add self-referencing canonical tags to every page: <code>&lt;link rel="canonical" href="https://grabcash.in/page-url"&gt;</code>. Implement via template so all future pages get canonicals automatically.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-03</span>
+          <span class="finding-title">Missing robots meta tag</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          No <code>&lt;meta name="robots" content="index,follow"&gt;</code> tag found. While the default behavior is to index, explicitly declaring this is best practice and prevents accidental noindex from framework defaults or CDN headers.
+        </div>
+        <div class="finding-location">Page: All pages | &lt;head&gt; section</div>
+      </div>
+
+      <div class="finding critical">
+        <div class="finding-header">
+          <span class="finding-id">SEO-04</span>
+          <span class="finding-title">Tiny sitemap — only 15 URLs</span>
+          <span class="finding-severity">CRITICAL</span>
+        </div>
+        <div class="finding-body">
+          The main sitemap contains only 15 URLs (excluding blog). For a deals/affiliate platform, this is catastrophically low. CashKaro has thousands of indexed pages (brand pages, category pages, deal pages). With only 15 URLs, GrabCash cannot rank for long-tail search queries that drive organic traffic.
+        </div>
+        <div class="finding-location">Sitemap: /sitemap.xml | URL count</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Build programmatic pages: brand pages (/brands/amazon, /brands/flipkart), category pages (/categories/electronics), deal pages, comparison pages. Target: 500+ indexed URLs within 3 months, 2000+ within 6 months. See SEO & Content Playbook for full strategy.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-05</span>
+          <span class="finding-title">All sitemap lastmod dates identical</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          Every URL in the sitemap has the same lastmod date: <code>2026-05-26T13:46:09.285Z</code>. Google uses lastmod to prioritize crawling — identical dates mean Google can't determine which pages actually changed, defeating the purpose of the sitemap signal.
+        </div>
+        <div class="finding-location">Sitemap: /sitemap.xml | lastmod values</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Set accurate lastmod dates reflecting actual content changes. Automate this via CMS — update lastmod only when page content actually changes. Never bulk-update all dates simultaneously.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-06</span>
+          <span class="finding-title">H3 elements duplicated in DOM</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          H3 headings in footer sections and FAQ are duplicated in the DOM (mobile and desktop versions both render). This creates heading structure confusion for crawlers and screen readers. Duplicate headings may also trigger thin content signals.
+        </div>
+        <div class="finding-location">Page: / | Footer + FAQ sections</div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-07</span>
+          <span class="finding-title">No breadcrumb markup</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          No BreadcrumbList schema markup detected. Breadcrumbs enhance SERP appearance with structured navigation trails, improve click-through rate, and help Google understand site hierarchy.
+        </div>
+        <div class="finding-location">Page: All interior pages | Schema</div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-08</span>
+          <span class="finding-title">No FAQ schema markup despite FAQ section existing</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          The homepage has a visible FAQ section with questions and answers, but lacks FAQPage structured data markup. This is a missed opportunity for rich snippets in search results — FAQ rich results increase SERP real estate and CTR significantly.
+        </div>
+        <div class="finding-location">Page: / | FAQ section</div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Add FAQPage JSON-LD schema matching the visible FAQ content. Format per Google's FAQ structured data guidelines. Test with Rich Results Test tool before deploying.</p>
+        </div>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">SEO-09</span>
+          <span class="finding-title">219 images on a single page</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          While all 219 images have alt text (positive), having this many images on one page contributes to excessive DOM size, impacts crawl budget, and slows down Googlebot rendering. Most of these images are not providing unique SEO value.
+        </div>
+        <div class="finding-location">Page: / (Homepage) | Image count</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>4.3 SEO Issue Tracker</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Issue</th>
+              <th>Severity</th>
+              <th>SEO Impact</th>
+              <th>Fix Complexity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">SEO-01</td>
+              <td>Two H1 tags on homepage</td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>Ranking signal dilution</td>
+              <td>5 minutes</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-02</td>
+              <td>Missing canonical tags</td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>Duplicate content indexing</td>
+              <td>30 minutes</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-03</td>
+              <td>Missing robots meta tag</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Indexing ambiguity</td>
+              <td>5 minutes</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-04</td>
+              <td>Only 15 URLs in sitemap</td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>Zero long-tail traffic potential</td>
+              <td>Weeks (content build)</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-05</td>
+              <td>Identical lastmod dates</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Crawl priority signal broken</td>
+              <td>1 hour</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-06</td>
+              <td>Duplicate H3 in DOM</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Structure confusion</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-07</td>
+              <td>No breadcrumb markup</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Missing SERP feature</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-08</td>
+              <td>No FAQ schema</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Missing rich snippets</td>
+              <td>1 hour</td>
+            </tr>
+            <tr>
+              <td class="mono">SEO-09</td>
+              <td>219 images on page</td>
+              <td><span class="tag orange">MAJOR</span></td>
+              <td>Crawl budget waste</td>
+              <td>1 day</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_SEO_Content_Playbook.html" class="cross-ref">SEO & Content Strategy Playbook — Full Implementation Plan</a>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Roadmap — Programmatic Page Generation</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 5: CONTENT & COPY AUDIT
+     ============================================ -->
+<div class="section" id="content-copy">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Content & Copy Audit</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <h3>5.1 Homepage Copy Analysis</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Current Copy</th>
+              <th>Assessment</th>
+              <th>Issue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">Hero Headline</td>
+              <td>"Turn Your Network Into Income"</td>
+              <td><span class="tag yellow">DECENT</span></td>
+              <td>Generic — could be any MLM/referral platform</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Sub-headline</td>
+              <td>"You Share. They Shop. You Earn."</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td>Clear, concise value prop in 3 steps</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Social Proof</td>
+              <td>"5000+ users and counting"</td>
+              <td><span class="tag red">WEAK</span></td>
+              <td>Very low for platform backed by India's #1 coupon site</td>
+            </tr>
+            <tr>
+              <td class="fw-700">CTA Primary</td>
+              <td>"Start Earning Now"</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td>Action-oriented, benefit-focused</td>
+            </tr>
+            <tr>
+              <td class="fw-700">CTA Secondary</td>
+              <td>"GRAB YOUR LINK"</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td>Specific to product mechanic, branded</td>
+            </tr>
+            <tr>
+              <td class="fw-700">FAQ Section</td>
+              <td>7 questions/answers</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td>Helpful content, could be expanded</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card yellow">
+        <h4>Social Proof Comparison</h4>
+        <p>GrabCash says "5000+ users" — CashKaro says "36M+ transactions" — EarnKaro says "1Cr+ earners". GrabCash's claim is approximately 7,200x weaker than its parent company's. Even if true, the number is too small to impress the target audience of affiliate marketers who have seen competitor claims.</p>
+      </div>
+
+      <div class="finding major">
+        <div class="finding-header">
+          <span class="finding-id">COPY-01</span>
+          <span class="finding-title">Weak social proof — "5000+ users" insufficient</span>
+          <span class="finding-severity">MAJOR</span>
+        </div>
+        <div class="finding-body">
+          For a platform backed by GrabOn (India's #1 coupon site), "5000+ users and counting" is embarrassingly low social proof. Competitors cite millions of transactions and crores of earners. This makes GrabCash look new and unproven.
+        </div>
+        <div class="finding-fix">
+          <div class="fix-label">Recommended Fix</div>
+          <p>Reframe social proof: cite total cashback paid, total deals shared, GrabOn's backing ("From the makers of GrabOn — trusted by 50M+ users"), or individual success stories ("Top earner made Rs 47,000 last month"). Lead with the strongest metric available.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>5.2 Blog Content Assessment</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card green">
+          <div class="metric-label">Content Freshness</div>
+          <div class="metric-value" style="font-size:0.9rem;">Active</div>
+          <div class="metric-sub up">Latest: May 18, 2026</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Content Relevance</div>
+          <div class="metric-value" style="font-size:0.9rem;">High</div>
+          <div class="metric-sub up">Money-making keywords targeted</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">View Counts</div>
+          <div class="metric-value">36</div>
+          <div class="metric-sub down">Very low — distribution problem</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Author Byline</div>
+          <div class="metric-value" style="font-size:0.9rem;">Consistent</div>
+          <div class="metric-sub up">Kaushiki Mahato — builds E-E-A-T</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Hindi Content</div>
+          <div class="metric-value" style="font-size:0.9rem;">Category Exists</div>
+          <div class="metric-sub up">Smart for vernacular reach</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="metric-label">Content Volume</div>
+          <div class="metric-value" style="font-size:0.9rem;">Low</div>
+          <div class="metric-sub warn">Need 4x more articles</div>
+        </div>
+      </div>
+
+      <div class="alert-card blue">
+        <h4>Blog Strategy Assessment</h4>
+        <p>The blog has the right topics and a consistent author — the foundation is correct. The problem is distribution (36 views) and volume. Content quality is adequate but needs more depth, internal linking, and optimization to compete for search rankings. The Hindi content category is a smart play for vernacular audiences.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>5.3 Content Gap — What's Missing</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Content Type</th>
+              <th>GrabCash</th>
+              <th>CashKaro</th>
+              <th>Impact of Gap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Actual deals with prices</td>
+              <td class="red">None on site</td>
+              <td class="accent">Hundreds visible</td>
+              <td>No reason to visit without deals</td>
+            </tr>
+            <tr>
+              <td>Earnings proof/screenshots</td>
+              <td class="red">Zero</td>
+              <td class="accent">Cashback amounts shown</td>
+              <td>No proof platform actually pays</td>
+            </tr>
+            <tr>
+              <td>Dashboard preview</td>
+              <td class="red">None</td>
+              <td class="accent">Product previews available</td>
+              <td>Users don't know what they'll get</td>
+            </tr>
+            <tr>
+              <td>Category pages</td>
+              <td class="red">0 categories</td>
+              <td class="accent">10+ categories visible</td>
+              <td>No SEO landing pages</td>
+            </tr>
+            <tr>
+              <td>Brand landing pages</td>
+              <td class="red">0 brand pages</td>
+              <td class="accent">100+ brand pages</td>
+              <td>Missing brand search traffic</td>
+            </tr>
+            <tr>
+              <td>Comparison content</td>
+              <td class="red">None</td>
+              <td class="accent">vs pages exist</td>
+              <td>Missing bottom-funnel queries</td>
+            </tr>
+            <tr>
+              <td>Success stories with data</td>
+              <td class="red">Generic testimonials</td>
+              <td class="accent">Verified stories</td>
+              <td>No conversion ammunition</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>5.4 Page-by-Page Content Inventory</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>URL</th>
+              <th>Word Count (Est.)</th>
+              <th>Content Quality</th>
+              <th>SEO Value</th>
+              <th>Action Needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Homepage</td>
+              <td class="mono">/</td>
+              <td class="mono">~600</td>
+              <td><span class="tag yellow">DECENT</span></td>
+              <td><span class="tag red">LOW</span></td>
+              <td>Add deal content, reduce marketing fluff</td>
+            </tr>
+            <tr>
+              <td>About</td>
+              <td class="mono">/about</td>
+              <td class="mono">~400</td>
+              <td><span class="tag orange">POOR</span></td>
+              <td><span class="tag red">LOW</span></td>
+              <td>Fix typos, add real photos, expand story</td>
+            </tr>
+            <tr>
+              <td>How It Works</td>
+              <td class="mono">/learn</td>
+              <td class="mono">~350</td>
+              <td><span class="tag yellow">DECENT</span></td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td>Fix stats contradiction, add video tutorials</td>
+            </tr>
+            <tr>
+              <td>Login</td>
+              <td class="mono">/login</td>
+              <td class="mono">~80</td>
+              <td><span class="tag orange">POOR</span></td>
+              <td><span class="tag red">NONE</span></td>
+              <td>Add referral field, fix copy issues</td>
+            </tr>
+            <tr>
+              <td>Blog (hub)</td>
+              <td class="mono">/blog</td>
+              <td class="mono">~200</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td>Add internal links, improve distribution</td>
+            </tr>
+            <tr>
+              <td>Blog Articles</td>
+              <td class="mono">/blog/*</td>
+              <td class="mono">~800-1200 each</td>
+              <td><span class="tag green">GOOD</span></td>
+              <td><span class="tag green">HIGH</span></td>
+              <td>Increase volume, add schema markup</td>
+            </tr>
+            <tr>
+              <td>Category Pages</td>
+              <td class="mono">N/A</td>
+              <td class="mono red">0 (missing)</td>
+              <td><span class="tag red">MISSING</span></td>
+              <td><span class="tag red">ZERO</span></td>
+              <td>BUILD — critical for SEO traffic</td>
+            </tr>
+            <tr>
+              <td>Brand Pages</td>
+              <td class="mono">N/A</td>
+              <td class="mono red">0 (missing)</td>
+              <td><span class="tag red">MISSING</span></td>
+              <td><span class="tag red">ZERO</span></td>
+              <td>BUILD — capture brand search queries</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>5.5 Copy Improvement Recommendations</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Current Copy</th>
+              <th>Issue</th>
+              <th>Recommended Revision</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"Turn Your Network Into Income"</td>
+              <td>Generic, MLM-sounding</td>
+              <td>"Share Deals. Earn Cash. No Investment Needed."</td>
+              <td>More specific, addresses zero-cost barrier</td>
+            </tr>
+            <tr>
+              <td>"5000+ users and counting"</td>
+              <td>Low number, weak social proof</td>
+              <td>"Backed by GrabOn — India's #1 Coupon Platform (50M+ users)"</td>
+              <td>Leverage parent brand credibility</td>
+            </tr>
+            <tr>
+              <td>"500+ Top Brands"</td>
+              <td>Contradicts /learn page (200+)</td>
+              <td>Use actual real-time count from database</td>
+              <td>Accuracy builds trust, dynamic is always current</td>
+            </tr>
+            <tr>
+              <td>"Start Earning Now" (CTA)</td>
+              <td>Good but could be more specific</td>
+              <td>"Create My Free Link" or "Start Earning — It's Free"</td>
+              <td>Reduces perceived risk by emphasizing free</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card purple">
+        <h4>Brand Voice Consistency Issue</h4>
+        <p>The site alternates between formal corporate tone ("Built on accessibility, collaboration and integrity") and casual/aspirational tone ("GRAB YOUR LINK"). The target audience of young affiliate marketers (18-35) responds best to a confident, street-smart tone — not corporate or generic. See the Brand Voice & Identity Guide for the defined tone of voice.</p>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_SEO_Content_Playbook.html" class="cross-ref">SEO & Content Playbook — Content Calendar & Strategy</a>
+      <a href="GrabCash_Brand_Voice_Identity.html" class="cross-ref">Brand Voice & Identity — Tone & Messaging Standards</a>
+      <a href="GrabCash_Regional_Vernacular.html" class="cross-ref">Regional & Vernacular Expansion — Hindi Content Strategy</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 6: CONVERSION FUNNEL AUDIT
+     ============================================ -->
+<div class="section" id="conversion-funnel">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Conversion Funnel Audit</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card red">
+      <h4>Conversion Funnel: Critically Broken</h4>
+      <p>The conversion funnel has multiple breaks. The primary conversion tool (calculator) is non-functional, there's no product preview before signup, social proof is weak, and there's no deal discovery path. Users are asked to sign up for a product they cannot see, cannot try, and cannot verify works.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>6.1 Funnel Stage Analysis</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Funnel Stage</th>
+              <th>Current State</th>
+              <th>Conversion Blocker</th>
+              <th>Impact</th>
+              <th>Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">Awareness (Landing)</td>
+              <td>Marketing page, no content density</td>
+              <td>5.2s LCP — users leave before seeing content</td>
+              <td>~40% users bounce before page loads</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Interest (Exploration)</td>
+              <td>No deals, no search, no categories</td>
+              <td>Nothing to explore — pure marketing copy</td>
+              <td>Users cannot self-serve discovery</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Consideration (Evaluation)</td>
+              <td>Calculator broken, no earnings proof</td>
+              <td>Cannot evaluate earning potential</td>
+              <td>Primary conversion tool non-functional</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Intent (Pre-signup)</td>
+              <td>Weak social proof, no dashboard preview</td>
+              <td>"5000+ users" vs competitor "36M+ transactions"</td>
+              <td>Insufficient trust to commit</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Signup (Registration)</td>
+              <td>Mobile-only auth, no referral field</td>
+              <td>No referral attribution, limited auth options</td>
+              <td>Viral loop broken for web users</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Activation (First action)</td>
+              <td>Unknown — no preview of post-signup experience</td>
+              <td>Users don't know what comes after signup</td>
+              <td>High drop-off expected post-registration</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>6.2 CTA Effectiveness Analysis</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>CTA Element</th>
+              <th>Text</th>
+              <th>Placement</th>
+              <th>Visibility</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">Primary CTA</td>
+              <td>"Start Earning Now"</td>
+              <td>Hero section</td>
+              <td>Green button, visible</td>
+              <td><span class="tag green">GOOD</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Secondary CTA</td>
+              <td>"GRAB YOUR LINK"</td>
+              <td>Footer banner</td>
+              <td>Visible with contrast</td>
+              <td><span class="tag green">GOOD</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Social Proof Near CTA</td>
+              <td>"5000+ users"</td>
+              <td>Below hero</td>
+              <td>Present but weak</td>
+              <td><span class="tag yellow">WEAK</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Trust Element Near CTA</td>
+              <td>None (no logos, no testimonials)</td>
+              <td>N/A</td>
+              <td>Missing entirely</td>
+              <td><span class="tag red">FAIL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Urgency/Scarcity</td>
+              <td>None</td>
+              <td>N/A</td>
+              <td>No countdown, no limited offer</td>
+              <td><span class="tag yellow">MISSING</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>6.3 Conversion Optimization Recommendations</h3>
+
+      <div class="card-grid">
+        <div class="info-card">
+          <h4>Add Above-the-Fold Social Proof</h4>
+          <p>Place verified earnings screenshots, brand logo strip, and real-time earnings ticker directly in/below the hero section. Users should see proof of value before being asked to commit.</p>
+        </div>
+        <div class="info-card">
+          <h4>Fix Calculator Immediately</h4>
+          <p>The earnings calculator was designed as a key conversion tool. When working, it lets users see potential earnings based on their network size. This is the single highest-impact fix for conversion rate.</p>
+        </div>
+        <div class="info-card">
+          <h4>Add Dashboard Preview/Demo</h4>
+          <p>Show screenshots or a video walkthrough of the affiliate dashboard. Users need to visualize the post-signup experience. "Try before you buy" reduces signup friction dramatically.</p>
+        </div>
+        <div class="info-card">
+          <h4>Show Deals Before Signup Wall</h4>
+          <p>Let users browse deals without an account. CashKaro shows deals immediately. Make signup the gateway to CREATING links, not to SEEING deals. Reduce the value-before-commitment gap.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>6.4 Trust Signal Audit</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Trust Signal</th>
+              <th>Present on GrabCash?</th>
+              <th>Present on CashKaro?</th>
+              <th>Impact on Conversion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brand partner logos (working)</td>
+              <td class="red">Broken (empty rectangles)</td>
+              <td class="accent">Yes, prominent grid</td>
+              <td>High — proves platform is real</td>
+            </tr>
+            <tr>
+              <td>User earnings proof</td>
+              <td class="red">None</td>
+              <td class="accent">Yes, cashback amounts shown</td>
+              <td>Very high — proves users actually earn</td>
+            </tr>
+            <tr>
+              <td>Verified testimonials</td>
+              <td class="red">Generic (1 duplicated)</td>
+              <td class="accent">Multiple verified reviews</td>
+              <td>High — social validation</td>
+            </tr>
+            <tr>
+              <td>Transaction/payout counter</td>
+              <td class="red">None</td>
+              <td class="accent">"36M+ transactions"</td>
+              <td>Very high — scale proof</td>
+            </tr>
+            <tr>
+              <td>Security badges (SSL indicator)</td>
+              <td class="yellow">SSL active but no visible badge</td>
+              <td class="accent">Visible trust indicators</td>
+              <td>Medium — reduces payment fear</td>
+            </tr>
+            <tr>
+              <td>Press/media mentions</td>
+              <td class="red">None visible</td>
+              <td class="accent">Featured in major publications</td>
+              <td>Medium — authority signal</td>
+            </tr>
+            <tr>
+              <td>Parent company backing</td>
+              <td class="red">Not highlighted</td>
+              <td>N/A (is the parent)</td>
+              <td>Very high — GrabOn trust transfer</td>
+            </tr>
+            <tr>
+              <td>Real-time activity feed</td>
+              <td class="red">None</td>
+              <td class="accent">Live transactions shown</td>
+              <td>High — proves active platform</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card red">
+        <h4>Trust Deficit is the #1 Conversion Killer</h4>
+        <p>GrabCash has almost zero working trust signals on the site. The brand logo grid is broken. Testimonials are duplicated. There's no earnings proof, no transaction counter, no press mentions, and the parent company (GrabOn) connection is not prominently displayed. Users have no reason to believe this platform actually pays out. Fix trust signals BEFORE increasing traffic — sending more users to a low-trust site just increases the number of people who don't convert.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>6.5 Mobile Conversion Path Audit</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Mobile Conversion Step</th>
+              <th>Status</th>
+              <th>Friction Level</th>
+              <th>Drop-off Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Page loads on mobile</td>
+              <td class="red">5.2s LCP — blank screen</td>
+              <td><span class="tag red">EXTREME</span></td>
+              <td class="mono red">~40% leave</td>
+            </tr>
+            <tr>
+              <td>2. User sees hero section</td>
+              <td class="yellow">Marketing copy, no deals</td>
+              <td><span class="tag orange">HIGH</span></td>
+              <td class="mono orange">~25% leave</td>
+            </tr>
+            <tr>
+              <td>3. User scrolls for more info</td>
+              <td class="red">Content invisible (animations)</td>
+              <td><span class="tag red">EXTREME</span></td>
+              <td class="mono red">~15% leave</td>
+            </tr>
+            <tr>
+              <td>4. User tries calculator</td>
+              <td class="red">BROKEN — empty space</td>
+              <td><span class="tag red">BROKEN</span></td>
+              <td class="mono red">~10% leave</td>
+            </tr>
+            <tr>
+              <td>5. User decides to signup</td>
+              <td class="yellow">Reaches login page</td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td class="mono yellow">~5% convert</td>
+            </tr>
+            <tr>
+              <td>6. User completes signup</td>
+              <td class="yellow">OTP or Google auth</td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td class="mono yellow">~3% fully activate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card orange">
+        <h4>Estimated Mobile Funnel Loss: 95%+</h4>
+        <p>For every 100 mobile visitors, approximately 3 complete signup. The biggest losses are at load time (40%) and content discovery (25%). Fixing performance alone could double the conversion rate. Fixing performance + calculator + trust signals could 4-5x it.</p>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Referral_Virality_Engine.html" class="cross-ref">Referral & Virality Engine — Viral Loop Architecture</a>
+      <a href="GrabCash_Retention_Gamification.html" class="cross-ref">Retention & Gamification — Post-Signup Activation</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 7: COMPETITIVE GAP ANALYSIS
+     ============================================ -->
+<div class="section" id="competitive-gap">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">07</span>
+    <h2 class="section-title">Competitive Gap Analysis</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card orange">
+      <h4>Competitive Position: Years Behind</h4>
+      <p>GrabCash is competing against platforms that have had years of iteration. CashKaro and EarnKaro have content-rich, deal-dense, performance-optimized sites. GrabCash's marketing-only approach puts it at a severe disadvantage for organic discovery and conversion.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>7.1 Feature Comparison Matrix</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>GrabCash</th>
+              <th>CashKaro</th>
+              <th>EarnKaro</th>
+              <th>Gap Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">Homepage Deals/Products</td>
+              <td class="red">None</td>
+              <td class="accent">Yes (flash deals, categories, prices)</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Search Bar</td>
+              <td class="red">No</td>
+              <td class="accent">Yes (prominent)</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Category Browsing</td>
+              <td class="red">No</td>
+              <td class="accent">Yes (10+ categories)</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Flash Deals / Countdown Timers</td>
+              <td class="red">No</td>
+              <td class="accent">Yes</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">App Download CTA</td>
+              <td class="red">No</td>
+              <td class="accent">Yes (prominent)</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Social Proof (Transactions)</td>
+              <td class="yellow">"5000+ users"</td>
+              <td class="accent">"36M+ transactions"</td>
+              <td class="accent">"1Cr+ earners"</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Core Web Vitals</td>
+              <td class="red">FAILED</td>
+              <td class="accent">Likely passes</td>
+              <td class="accent">Likely passes</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Blog</td>
+              <td class="accent">Yes (active)</td>
+              <td class="accent">Yes (mature)</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag green">PARITY</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Earnings Calculator</td>
+              <td class="red">BROKEN</td>
+              <td class="accent">Working</td>
+              <td class="accent">Working</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Referral System Visible</td>
+              <td class="red">No</td>
+              <td class="accent">Yes</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Demo / Preview</td>
+              <td class="red">No</td>
+              <td class="accent">Yes</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Vernacular Support</td>
+              <td class="yellow">Hindi blog only</td>
+              <td class="accent">Multi-language</td>
+              <td class="accent">Multi-language</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Indexed Pages</td>
+              <td class="red">~15</td>
+              <td class="accent">Thousands</td>
+              <td class="accent">Hundreds</td>
+              <td><span class="tag red">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="fw-700">Real-time Deals Feed</td>
+              <td class="red">No</td>
+              <td class="accent">Yes</td>
+              <td class="accent">Yes</td>
+              <td><span class="tag orange">MAJOR</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>7.2 Homepage Philosophy Comparison</h3>
+
+      <div class="card-grid">
+        <div class="info-card" style="border-left: 4px solid var(--red);">
+          <h4>GrabCash: Marketing-First</h4>
+          <p>Pure marketing landing page. Hero headline, feature bullets, testimonials, FAQ. Zero actual product content visible. User must sign up before seeing any value. Approach works for B2B SaaS landing pages, NOT for consumer affiliate platforms where deal discovery drives engagement.</p>
+        </div>
+        <div class="info-card" style="border-left: 4px solid var(--accent);">
+          <h4>CashKaro: Content-First</h4>
+          <p>Immediately shows flash deals, prices, cashback amounts, category grid, trending deals, countdown timers, and search bar. User sees value on first scroll. Marketing copy is minimal — the deals ARE the marketing. This approach converts because users can self-qualify instantly.</p>
+        </div>
+      </div>
+
+      <div class="alert-card blue">
+        <h4>Strategic Implication</h4>
+        <p>GrabCash's marketing-first approach means it depends entirely on external traffic (paid, social, referral) to drive signups. It cannot capture organic "deal seeking" intent because there are no deals to rank for. CashKaro captures both marketing intent AND transactional intent. GrabCash needs to evolve to a hybrid model: content-rich homepage with marketing messaging integrated into the deal experience.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>7.3 Performance Gap</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>GrabCash</th>
+              <th>CashKaro (Est.)</th>
+              <th>Gap</th>
+              <th>Business Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mobile Load Time</td>
+              <td class="mono red">5.2s LCP</td>
+              <td class="mono accent">~2.1s LCP</td>
+              <td class="mono red">2.5x slower</td>
+              <td>~53% higher bounce rate (Google data: +32% at 3s)</td>
+            </tr>
+            <tr>
+              <td>Server Response</td>
+              <td class="mono red">2.3s TTFB</td>
+              <td class="mono accent">~0.4s TTFB</td>
+              <td class="mono red">5.75x slower</td>
+              <td>Every subsequent resource delayed</td>
+            </tr>
+            <tr>
+              <td>Indexed Pages</td>
+              <td class="mono red">~15</td>
+              <td class="mono accent">~5,000+</td>
+              <td class="mono red">333x fewer</td>
+              <td>Near-zero organic search traffic potential</td>
+            </tr>
+            <tr>
+              <td>Homepage Images</td>
+              <td class="mono red">219</td>
+              <td class="mono accent">~40-60 (optimized)</td>
+              <td class="mono red">4x more</td>
+              <td>Bandwidth waste, slow rendering</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>7.4 SEO Content Scale Comparison</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Content Dimension</th>
+              <th>GrabCash</th>
+              <th>CashKaro</th>
+              <th>EarnKaro</th>
+              <th>Gap to Close</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Indexed Pages (est.)</td>
+              <td class="mono red">~15</td>
+              <td class="mono accent">~5,000+</td>
+              <td class="mono accent">~800+</td>
+              <td class="mono red">Build 500+ pages minimum</td>
+            </tr>
+            <tr>
+              <td>Brand Landing Pages</td>
+              <td class="mono red">0</td>
+              <td class="mono accent">200+</td>
+              <td class="mono accent">100+</td>
+              <td class="mono red">Build top 50 brand pages</td>
+            </tr>
+            <tr>
+              <td>Category Pages</td>
+              <td class="mono red">0</td>
+              <td class="mono accent">15+</td>
+              <td class="mono accent">10+</td>
+              <td class="mono red">Build 10 category pages</td>
+            </tr>
+            <tr>
+              <td>Deal/Offer Pages</td>
+              <td class="mono red">0</td>
+              <td class="mono accent">3,000+</td>
+              <td class="mono accent">500+</td>
+              <td class="mono red">Generate programmatically</td>
+            </tr>
+            <tr>
+              <td>Blog Articles</td>
+              <td class="mono yellow">~15-20</td>
+              <td class="mono accent">500+</td>
+              <td class="mono accent">100+</td>
+              <td class="mono yellow">Scale to 100 within 3 months</td>
+            </tr>
+            <tr>
+              <td>Comparison Pages</td>
+              <td class="mono red">0</td>
+              <td class="mono accent">~50</td>
+              <td class="mono yellow">~20</td>
+              <td class="mono red">Build 20 vs pages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card blue">
+        <h4>Content Scale = Organic Traffic Potential</h4>
+        <p>Every indexed page is a potential entry point from search. CashKaro with 5,000+ pages can rank for thousands of long-tail queries. GrabCash with 15 pages can rank for approximately 15 queries. The math is simple: more high-quality pages = more organic traffic = lower CAC. Content page creation should be a top P2 priority.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>7.5 User Experience Comparison — Side by Side</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>UX Element</th>
+              <th>GrabCash</th>
+              <th>CashKaro</th>
+              <th>Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First Impression (0-3s)</td>
+              <td class="red">Blank screen (loading)</td>
+              <td class="accent">Deals visible, search ready</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+            <tr>
+              <td>Value Visible Without Scrolling</td>
+              <td class="red">Marketing headline only</td>
+              <td class="accent">Flash deals, categories, prices</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+            <tr>
+              <td>Navigation Clarity</td>
+              <td class="red">Inconsistent across pages</td>
+              <td class="accent">Consistent mega-menu</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+            <tr>
+              <td>Mobile Experience</td>
+              <td class="red">Slow, broken features</td>
+              <td class="accent">Fast, app-like</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+            <tr>
+              <td>Sign-up Friction</td>
+              <td class="yellow">3 steps (phone/Google)</td>
+              <td class="yellow">3 steps (multiple options)</td>
+              <td>Tie</td>
+            </tr>
+            <tr>
+              <td>Trust Signals</td>
+              <td class="red">Broken logos, duplicated testimonials</td>
+              <td class="accent">Transaction count, brand grid, press</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+            <tr>
+              <td>Content Density</td>
+              <td class="red">Marketing-only</td>
+              <td class="accent">Deals, coupons, articles, categories</td>
+              <td class="accent">CashKaro</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Competitive_Intelligence.html" class="cross-ref">Competitive Intelligence Playbook — Full Market Analysis</a>
+      <a href="GrabCash_Competitive_Intel_War_Room.html" class="cross-ref">Competitive Intelligence War Room — Deep Operational Intel</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 8: PRIORITY FIX MATRIX
+     ============================================ -->
+<div class="section" id="priority-matrix">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">08</span>
+    <h2 class="section-title">Priority Fix Matrix</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="alert-card blue">
+      <h4>Prioritization Framework</h4>
+      <p>Fixes are prioritized by: (1) Impact on conversion, (2) Ease of implementation, (3) Dependency on other fixes. P0 items are pre-requisites for any GTM spend — fixing them is cheaper than wasting acquisition budget on a broken funnel.</p>
+    </div>
+
+    <div class="priority-card p0">
+      <div class="priority-label">P0 — Fix Immediately (Week 1)</div>
+      <h4>Pre-GTM Blockers — Must Fix Before Any Acquisition Spend</h4>
+      <ol>
+        <li><strong>Fix the broken earnings calculator</strong> — primary conversion tool is non-functional. Debug JS errors, test across browsers, add error boundary with fallback UI.</li>
+        <li><strong>Fix brand logo rendering</strong> — broken image paths destroy trust section. Verify CDN paths, add fallback rendering, consider inline SVGs for top brands.</li>
+        <li><strong>Fix duplicate testimonials</strong> — "Aarav - Student" appearing twice signals fake reviews. Deduplicate, add real verified testimonials with social proof links.</li>
+        <li><strong>Fix text typos across site</strong> — missing spaces, misplaced periods, inconsistent capitalization. Full copywriting pass on /about, /learn, /login pages.</li>
+        <li><strong>Remove/fix scroll-triggered animations</strong> — content invisible until scrolled to is an accessibility violation and conversion killer. Make all content visible by default.</li>
+        <li><strong>Reduce whitespace gaps between sections</strong> — 300-500px gaps → 60-80px. Compresses page, reduces scroll abandonment, makes site feel complete.</li>
+      </ol>
+      <div class="metric-grid" style="margin-top: 16px;">
+        <div class="metric-card red">
+          <div class="metric-label">Effort</div>
+          <div class="metric-value" style="font-size:1rem;">2-3 Days</div>
+          <div class="metric-sub">1 developer, 1 copywriter</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">Impact</div>
+          <div class="metric-value" style="font-size:1rem;">High</div>
+          <div class="metric-sub">Unblocks conversion paths</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-card p1">
+      <div class="priority-label">P1 — Fix This Sprint (Week 2-3)</div>
+      <h4>Core Infrastructure — Required for Organic Growth</h4>
+      <ol start="7">
+        <li><strong>Optimize Core Web Vitals</strong> — LCP from 5.2s to &lt;2.5s via CDN deployment, image optimization (WebP), defer non-critical JS, server caching.</li>
+        <li><strong>Add canonical tags to all pages</strong> — prevent duplicate content issues. Self-referencing canonicals on every page via template.</li>
+        <li><strong>Fix duplicate H1 tag</strong> — change FAQ "H1" to H2. Single H1 per page for proper heading hierarchy.</li>
+        <li><strong>Add robots meta tag</strong> — explicit <code>index,follow</code> declaration on all public pages.</li>
+        <li><strong>Add referral code field to login/signup</strong> — critical for viral loop attribution. Auto-populate from URL ?ref= parameter.</li>
+        <li><strong>Add Google icon to Sign-in button</strong> — follow Google's official OAuth branding guidelines. Increases trust signal on auth page.</li>
+        <li><strong>Unify navigation across main site and blog</strong> — same header component, consistent menu items and CTAs everywhere.</li>
+        <li><strong>Add app download CTAs</strong> — Play Store/App Store badges in hero, footer, and sticky mobile banner.</li>
+      </ol>
+      <div class="metric-grid" style="margin-top: 16px;">
+        <div class="metric-card orange">
+          <div class="metric-label">Effort</div>
+          <div class="metric-value" style="font-size:1rem;">1-2 Weeks</div>
+          <div class="metric-sub">2 developers, DevOps for CDN</div>
+        </div>
+        <div class="metric-card orange">
+          <div class="metric-label">Impact</div>
+          <div class="metric-value" style="font-size:1rem;">Very High</div>
+          <div class="metric-sub">SEO rankings + mobile conversion</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-card p2">
+      <div class="priority-label">P2 — Fix This Month (Week 4-6)</div>
+      <h4>Content & Feature Additions — Growth Enablers</h4>
+      <ol start="15">
+        <li><strong>Add deal/product content to homepage</strong> — show actual deals with prices, cashback amounts, countdown timers. Transform from marketing page to content platform.</li>
+        <li><strong>Add search functionality</strong> — brand/deal search bar in hero section with auto-suggestions and live results.</li>
+        <li><strong>Add earnings proof</strong> — real screenshots, verified earnings numbers, payout history displays, top earner leaderboards.</li>
+        <li><strong>Add dashboard preview/demo</strong> — screenshots, video walkthrough, or interactive demo of the affiliate dashboard experience.</li>
+        <li><strong>Fix sitemap lastmod dates</strong> — set accurate per-page lastmod reflecting actual content changes.</li>
+        <li><strong>Add FAQ schema markup</strong> — FAQPage JSON-LD for existing FAQ section. Enables rich snippets in SERPs.</li>
+        <li><strong>Add breadcrumb markup</strong> — BreadcrumbList schema on all interior pages for enhanced SERP appearance.</li>
+        <li><strong>Optimize image loading</strong> — reduce from 219 to &lt;50 critical images. WebP conversion, responsive srcset, proper lazy loading.</li>
+      </ol>
+      <div class="metric-grid" style="margin-top: 16px;">
+        <div class="metric-card yellow">
+          <div class="metric-label">Effort</div>
+          <div class="metric-value" style="font-size:1rem;">3-4 Weeks</div>
+          <div class="metric-sub">Full product team + design</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="metric-label">Impact</div>
+          <div class="metric-value" style="font-size:1rem;">Transformative</div>
+          <div class="metric-sub">Organic traffic + conversion</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-card p3">
+      <div class="priority-label">P3 — Strategic (Month 2-3)</div>
+      <h4>Competitive Parity & Scale — Long-term Growth</h4>
+      <ol start="23">
+        <li><strong>Build category pages for SEO</strong> — /categories/electronics, /categories/fashion, etc. Programmatic pages targeting category search queries.</li>
+        <li><strong>Add vernacular language support</strong> — beyond Hindi blog, add full site translation for Hindi, Telugu, Tamil, Bengali. UI and content in local languages.</li>
+        <li><strong>Build comparison/vs pages</strong> — "GrabCash vs CashKaro", "GrabCash vs EarnKaro" for bottom-funnel SEO capture.</li>
+        <li><strong>Add email login option</strong> — email/password authentication alongside mobile OTP and Google. Broader accessibility.</li>
+        <li><strong>Redesign homepage to content-first</strong> — model after CashKaro's deal-dense, search-forward, category-rich approach vs current marketing-only landing page.</li>
+        <li><strong>Add real-time deal feed</strong> — live-updating deals section on homepage showing latest deals, trending products, and flash sales with countdown timers.</li>
+      </ol>
+      <div class="metric-grid" style="margin-top: 16px;">
+        <div class="metric-card blue">
+          <div class="metric-label">Effort</div>
+          <div class="metric-value" style="font-size:1rem;">2-3 Months</div>
+          <div class="metric-sub">Full product + engineering sprint</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="metric-label">Impact</div>
+          <div class="metric-value" style="font-size:1rem;">Strategic</div>
+          <div class="metric-sub">Competitive parity, 10x organic</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Priority Matrix Summary</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Timeline</th>
+              <th>Items</th>
+              <th>Team Required</th>
+              <th>Pre-Condition for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag red">P0</span></td>
+              <td class="mono">Week 1</td>
+              <td>6 items</td>
+              <td>1 dev + 1 copywriter</td>
+              <td>Any acquisition spend</td>
+            </tr>
+            <tr>
+              <td><span class="tag orange">P1</span></td>
+              <td class="mono">Week 2-3</td>
+              <td>8 items</td>
+              <td>2 devs + DevOps</td>
+              <td>SEO campaigns, app growth</td>
+            </tr>
+            <tr>
+              <td><span class="tag yellow">P2</span></td>
+              <td class="mono">Week 4-6</td>
+              <td>8 items</td>
+              <td>Full product team</td>
+              <td>Organic growth, content marketing</td>
+            </tr>
+            <tr>
+              <td><span class="tag blue">P3</span></td>
+              <td class="mono">Month 2-3</td>
+              <td>6 items</td>
+              <td>Full engineering sprint</td>
+              <td>Competitive parity, scale</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Feature Roadmap — Detailed Sprint Planning</a>
+      <a href="GrabCash_GTM_Master_Playbook.html" class="cross-ref">GTM Master Playbook — Execution Timeline</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 9: IMPACT PROJECTION
+     ============================================ -->
+<div class="section" id="impact-projection">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">09</span>
+    <h2 class="section-title">Impact Projection</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <h3>Estimated Impact by Priority Tier</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Priority Tier</th>
+              <th>Bounce Rate Impact</th>
+              <th>Conversion Impact</th>
+              <th>SEO Impact</th>
+              <th>Organic Traffic</th>
+              <th>Overall Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag red">P0 Fixes</span></td>
+              <td class="accent">-15-20%</td>
+              <td class="accent">Fix broken paths</td>
+              <td>Minimal direct</td>
+              <td>Indirect only</td>
+              <td class="accent">Unblocks revenue</td>
+            </tr>
+            <tr>
+              <td><span class="tag orange">P1 Fixes</span></td>
+              <td class="accent">-10-15%</td>
+              <td class="accent">+25% mobile</td>
+              <td class="accent">+30-40%</td>
+              <td class="accent">CWV pass effect</td>
+              <td class="accent">+20-30%</td>
+            </tr>
+            <tr>
+              <td><span class="tag yellow">P2 Fixes</span></td>
+              <td class="accent">-10%</td>
+              <td class="accent">+35% sign-up</td>
+              <td class="accent">+50%</td>
+              <td class="accent">+50% organic</td>
+              <td class="accent">+40-60%</td>
+            </tr>
+            <tr>
+              <td><span class="tag blue">P3 Fixes</span></td>
+              <td class="accent">-5%</td>
+              <td class="accent">+20%</td>
+              <td class="accent">+200%</td>
+              <td class="accent">+100-200%</td>
+              <td class="accent">+100-150%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Cumulative Impact Timeline</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card red">
+          <div class="metric-label">After P0 (Week 1)</div>
+          <div class="metric-value" style="font-size:1.1rem;">Baseline</div>
+          <div class="metric-sub">Broken conversion paths fixed. Site functional but still slow and content-light.</div>
+        </div>
+        <div class="metric-card orange">
+          <div class="metric-label">After P0+P1 (Week 3)</div>
+          <div class="metric-value" style="font-size:1.1rem;">GTM Ready</div>
+          <div class="metric-sub">CWV pass, canonical SEO, referral tracking. Safe to start paid acquisition.</div>
+        </div>
+        <div class="metric-card yellow">
+          <div class="metric-label">After P0+P1+P2 (Week 6)</div>
+          <div class="metric-value" style="font-size:1.1rem;">Growth Mode</div>
+          <div class="metric-sub">Content-rich, deal-visible, search-enabled. Organic traffic begins compounding.</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="metric-label">After All Fixes (Month 3)</div>
+          <div class="metric-value" style="font-size:1.1rem;">Competitive</div>
+          <div class="metric-sub">At parity with EarnKaro. Approaching CashKaro in content density.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Cost of NOT Fixing</h3>
+
+      <div class="alert-card red">
+        <h4>Wasted Acquisition Budget</h4>
+        <p>Every Rs 100 spent on acquisition with the current site wastes Rs 60-70 due to: 40% bounce from slow loading, broken calculator losing another 15-20% of engaged users, and weak social proof failing to convert the remainder. <strong>Fix P0+P1 before spending a single rupee on paid acquisition.</strong></p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Monthly Ad Spend</th>
+              <th>Expected Signups (Current)</th>
+              <th>Expected Signups (Post P0+P1)</th>
+              <th>Wasted Budget</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Conservative Launch</td>
+              <td class="mono">Rs 2,00,000</td>
+              <td class="mono red">~800 signups</td>
+              <td class="mono accent">~2,000 signups</td>
+              <td class="mono red">Rs 1,20,000 wasted</td>
+            </tr>
+            <tr>
+              <td>Moderate Spend</td>
+              <td class="mono">Rs 5,00,000</td>
+              <td class="mono red">~2,000 signups</td>
+              <td class="mono accent">~5,000 signups</td>
+              <td class="mono red">Rs 3,00,000 wasted</td>
+            </tr>
+            <tr>
+              <td>Aggressive Launch</td>
+              <td class="mono">Rs 10,00,000</td>
+              <td class="mono red">~4,000 signups</td>
+              <td class="mono accent">~10,000 signups</td>
+              <td class="mono red">Rs 6,00,000 wasted</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Channel-Specific Impact After Fixes</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Current Expected CVR</th>
+              <th>Post P0+P1 CVR</th>
+              <th>Post All Fixes CVR</th>
+              <th>Key Fix Dependencies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Ads (Search)</td>
+              <td class="mono red">1.2%</td>
+              <td class="mono yellow">3.0%</td>
+              <td class="mono accent">5.5%</td>
+              <td>CWV pass, calculator fix, deal content</td>
+            </tr>
+            <tr>
+              <td>Facebook/Instagram Ads</td>
+              <td class="mono red">0.8%</td>
+              <td class="mono yellow">2.0%</td>
+              <td class="mono accent">4.0%</td>
+              <td>Mobile perf, trust signals, earnings proof</td>
+            </tr>
+            <tr>
+              <td>Organic Search</td>
+              <td class="mono red">0.5%</td>
+              <td class="mono yellow">1.5%</td>
+              <td class="mono accent">3.5%</td>
+              <td>Canonical tags, content pages, FAQ schema</td>
+            </tr>
+            <tr>
+              <td>Telegram Referral</td>
+              <td class="mono yellow">3.0%</td>
+              <td class="mono accent">5.5%</td>
+              <td class="mono accent">8.0%</td>
+              <td>Referral field, calculator, earnings proof</td>
+            </tr>
+            <tr>
+              <td>WhatsApp Shares</td>
+              <td class="mono yellow">2.5%</td>
+              <td class="mono accent">4.5%</td>
+              <td class="mono accent">7.0%</td>
+              <td>Mobile perf, referral tracking, OG tags</td>
+            </tr>
+            <tr>
+              <td>Blog Organic</td>
+              <td class="mono red">0.3%</td>
+              <td class="mono yellow">1.0%</td>
+              <td class="mono accent">2.5%</td>
+              <td>Internal linking, CTA placement, deal content</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card green">
+        <h4>ROI on Product Fixes</h4>
+        <p>Estimated engineering cost for P0+P1 fixes: Rs 2-3 lakhs (2 developers for 3 weeks). Estimated monthly acquisition budget saved by fixing site first: Rs 3-6 lakhs in wasted ad spend avoided. The ROI on product fixes is 2-3x within the first month alone, and compounds every month after.</p>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_Paid_Acquisition_Playbook.html" class="cross-ref">Paid Acquisition Playbook — Budget Allocation</a>
+      <a href="GrabCash_Commission_Economics.html" class="cross-ref">Commission Economics — Unit Economics Model</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 10: GTM READINESS SCORECARD
+     ============================================ -->
+<div class="section" id="gtm-readiness">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">10</span>
+    <h2 class="section-title">GTM Readiness Scorecard</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <h3>Dimension Scoring (1-10 Scale)</h3>
+
+      <div class="scorecard-grid">
+        <div class="score-item">
+          <div class="score-dim">Performance</div>
+          <div class="score-num critical">2/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:20%; background:var(--red);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">UX / Design</div>
+          <div class="score-num critical">4/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:40%; background:var(--orange);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">SEO</div>
+          <div class="score-num poor">5/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:50%; background:var(--yellow);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">Content</div>
+          <div class="score-num critical">3/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:30%; background:var(--red);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">Conversion</div>
+          <div class="score-num critical">3/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:30%; background:var(--red);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">Trust</div>
+          <div class="score-num critical">4/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:40%; background:var(--orange);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">Mobile</div>
+          <div class="score-num critical">3/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:30%; background:var(--red);"></div></div>
+        </div>
+        <div class="score-item">
+          <div class="score-dim">Competitive</div>
+          <div class="score-num critical">2/10</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:20%; background:var(--red);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Detailed Scoring Rationale</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Score</th>
+              <th>Rationale</th>
+              <th>What Would Make It 8+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-700">Performance</td>
+              <td class="mono red">2/10</td>
+              <td>CWV FAILED. LCP 5.2s (2x over), TTFB 2.3s (3x over). 219 images. No CDN.</td>
+              <td>LCP &lt;2s, TTFB &lt;0.5s, all CWV green, CDN deployed</td>
+            </tr>
+            <tr>
+              <td class="fw-700">UX / Design</td>
+              <td class="mono orange">4/10</td>
+              <td>Broken calculator, invisible content, whitespace, duplicate content, inconsistent nav</td>
+              <td>All interactive elements working, consistent design system, no broken features</td>
+            </tr>
+            <tr>
+              <td class="fw-700">SEO</td>
+              <td class="mono yellow">5/10</td>
+              <td>Basics present (meta, OG, schema) but missing canonical, duplicate H1, tiny sitemap</td>
+              <td>All technical SEO perfect, 500+ indexed pages, rich snippets active</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Content</td>
+              <td class="mono red">3/10</td>
+              <td>Marketing-only homepage, no deals, no proof. Blog exists but low volume/views</td>
+              <td>Content-rich homepage, deal pages, brand pages, active blog with 10K+ monthly views</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Conversion</td>
+              <td class="mono red">3/10</td>
+              <td>Broken calculator (key converter), no preview, weak social proof, no referral field</td>
+              <td>Working calculator, dashboard demo, strong social proof, seamless referral attribution</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Trust</td>
+              <td class="mono orange">4/10</td>
+              <td>No earnings proof, generic testimonials (one duplicated), AI stock images, low user count</td>
+              <td>Verified earnings screenshots, real user stories, GrabOn badge, payout counter</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Mobile</td>
+              <td class="mono red">3/10</td>
+              <td>Poor mobile performance (5.2s LCP), no app CTAs, mobile-only auth but bad mobile UX</td>
+              <td>Sub-2s mobile LCP, prominent app download, optimized mobile flows, PWA features</td>
+            </tr>
+            <tr>
+              <td class="fw-700">Competitive</td>
+              <td class="mono red">2/10</td>
+              <td>Years behind CashKaro/EarnKaro in every measurable dimension. No feature parity on any axis.</td>
+              <td>Feature parity with EarnKaro, differentiation on 2-3 axes vs CashKaro</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Overall GTM Readiness</h3>
+
+      <div class="metric-grid">
+        <div class="metric-card red">
+          <div class="metric-label">Overall GTM Readiness</div>
+          <div class="metric-value">3.25/10</div>
+          <div class="metric-sub down">Average across all 8 dimensions</div>
+        </div>
+        <div class="metric-card red">
+          <div class="metric-label">Verdict</div>
+          <div class="metric-value" style="font-size:1rem;">NOT READY</div>
+          <div class="metric-sub down">Do not scale acquisition</div>
+        </div>
+        <div class="metric-card orange">
+          <div class="metric-label">Ready After</div>
+          <div class="metric-value" style="font-size:1rem;">P0+P1</div>
+          <div class="metric-sub warn">~3 weeks of focused work</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Target Score</div>
+          <div class="metric-value" style="font-size:1rem;">6.5+/10</div>
+          <div class="metric-sub up">Minimum for aggressive GTM</div>
+        </div>
+      </div>
+
+      <div class="verdict-box fail">
+        <div class="verdict-text">NOT READY FOR AGGRESSIVE GTM</div>
+        <div class="verdict-sub">Fix P0 + P1 before scaling acquisition. Current estimated waste: 60-70% of paid traffic budget. Estimated time to GTM-ready: 3 weeks with dedicated team.</div>
+      </div>
+
+      <div class="alert-card yellow">
+        <h4>Phased GTM Recommendation</h4>
+        <ul>
+          <li><strong>Now (Pre-fix):</strong> Continue organic community building, blog content, Telegram growth — low-cost channels unaffected by site issues</li>
+          <li><strong>After P0 (Week 1):</strong> Small-scale paid tests (Rs 50K budget) to validate conversion improvements</li>
+          <li><strong>After P1 (Week 3):</strong> Scale paid acquisition to Rs 2-3L/month. Launch SEO campaigns. Begin app growth push.</li>
+          <li><strong>After P2 (Week 6):</strong> Full-scale GTM execution. All channels active. Content flywheel engaged.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cross-ref-block">
+      <div class="ref-label">Related Documents</div>
+      <a href="GrabCash_GTM_Master_Playbook.html" class="cross-ref">GTM Master Playbook — Full Execution Plan</a>
+      <a href="GrabCash_Paid_Acquisition_Playbook.html" class="cross-ref">Paid Acquisition — Budget & Channel Strategy</a>
+      <a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Roadmap — Sprint Prioritization</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 11: CROSS-REFERENCES
+     ============================================ -->
+<div class="section" id="cross-references">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">11</span>
+    <h2 class="section-title">Cross-References & Related Documents</h2>
+    <span class="section-collapse">&#9662;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <h3>Primary Related Documents</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Relevance</th>
+              <th>Key Connection</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="GrabCash_Product_Roadmap.html" class="cross-ref">Product Feature Roadmap 2026-2027</a></td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>All P0-P3 fixes map to roadmap sprints. Prioritization alignment required.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_SEO_Content_Playbook.html" class="cross-ref">SEO & Content Strategy Playbook</a></td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>SEO audit findings feed directly into content strategy. Technical fixes are prerequisites.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_ASO_App_Growth.html" class="cross-ref">ASO & App Growth Playbook</a></td>
+              <td><span class="tag orange">HIGH</span></td>
+              <td>Missing app CTAs on website directly impact app install funnel. Web-to-app flow broken.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Brand_Voice_Identity.html" class="cross-ref">Brand Voice & Identity Guide</a></td>
+              <td><span class="tag orange">HIGH</span></td>
+              <td>Copy inconsistencies, tone issues, and brand presentation problems identified in audit.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Retention_Gamification.html" class="cross-ref">Retention & Gamification System</a></td>
+              <td><span class="tag orange">HIGH</span></td>
+              <td>Post-signup activation depends on dashboard experience (currently no preview exists).</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Competitive_Intelligence.html" class="cross-ref">Competitive Intelligence Playbook</a></td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td>Competitive gap analysis provides context for feature prioritization decisions.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Referral_Virality_Engine.html" class="cross-ref">Referral & Virality Engine</a></td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>Missing referral code field on signup breaks the entire viral loop for web users.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Paid_Acquisition_Playbook.html" class="cross-ref">Paid Acquisition Playbook</a></td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>P0+P1 fixes are PREREQUISITES before any paid acquisition budget is deployed.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_GTM_Master_Playbook.html" class="cross-ref">GTM Master Playbook</a></td>
+              <td><span class="tag red">CRITICAL</span></td>
+              <td>This audit determines GTM execution timeline. All launch dates depend on fix completion.</td>
+            </tr>
+            <tr>
+              <td><a href="GrabCash_Regional_Vernacular.html" class="cross-ref">Regional & Vernacular Expansion</a></td>
+              <td><span class="tag yellow">MEDIUM</span></td>
+              <td>Vernacular support in P3 connects to regional expansion strategy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Audit Methodology</h3>
+      <div class="info-card">
+        <h4>Tools & Methods Used</h4>
+        <p>This audit was conducted using the following methodology:</p>
+        <ul style="margin-top: 12px; padding-left: 20px;">
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Google PageSpeed Insights (Mobile) — Core Web Vitals assessment</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Manual DOM inspection — HTML structure, heading hierarchy, schema markup</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Sitemap analysis — URL count, lastmod accuracy, coverage</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Visual inspection — UI bugs, broken features, design inconsistencies</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Content audit — copy quality, social proof claims, factual consistency</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Competitive benchmarking — CashKaro, EarnKaro feature comparison</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Conversion analysis — funnel mapping, CTA assessment, friction identification</li>
+          <li style="color: var(--text-secondary); margin-bottom: 6px;">Accessibility check — WCAG 2.1 compliance issues (scroll animations)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Next Steps</h3>
+      <div class="alert-card green">
+        <h4>Recommended Immediate Actions</h4>
+        <ul>
+          <li>Share this audit with the development team — assign P0 items to current sprint</li>
+          <li>Schedule daily standup to track P0 completion (target: end of Week 1)</li>
+          <li>Pause any planned paid acquisition until P0+P1 complete</li>
+          <li>Set up monitoring: Google Search Console CWV dashboard, Lighthouse CI for PRs</li>
+          <li>Re-audit after P1 completion to validate score improvement (target: 6.5+/10)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Document Metadata</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Document Number</td><td class="mono">16</td></tr>
+            <tr><td>Suite</td><td>GrabCash Underground War Suite</td></tr>
+            <tr><td>Audit Date</td><td class="mono">2026-05-31</td></tr>
+            <tr><td>Target</td><td class="mono">grabcash.in</td></tr>
+            <tr><td>Overall Score</td><td class="mono red">35/100</td></tr>
+            <tr><td>GTM Readiness</td><td class="mono red">3.25/10</td></tr>
+            <tr><td>Verdict</td><td class="fw-700 text-red">NOT READY for aggressive GTM</td></tr>
+            <tr><td>Re-audit Trigger</td><td>After P1 completion (~Week 3)</td></tr>
+            <tr><td>Classification</td><td>CONFIDENTIAL — Internal Use Only</td></tr>
+            <tr><td>Author</td><td>InspireLabs Solutions Ltd — GTM War Room</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end content-area -->
+</main>
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+/* Sidebar toggle */
+function toggleSidebar() {
+  document.querySelector('.sidebar').classList.toggle('open');
+  document.querySelector('.sidebar-overlay').classList.toggle('open');
+}
+
+/* Section collapse */
+function toggleSection(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
+/* Active nav highlighting */
+const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+const sections = document.querySelectorAll('.section[id]');
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 150) current = section.id;
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + current) {
+      item.classList.add('active');
+    }
+  });
+}
+
+/* Back to top visibility */
+function updateBackToTop() {
+  const btn = document.querySelector('.back-to-top');
+  if (window.scrollY > 500) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+}
+
+/* Close sidebar on nav click (mobile) */
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 1024) {
+      document.querySelector('.sidebar').classList.remove('open');
+      document.querySelector('.sidebar-overlay').classList.remove('open');
+    }
+  });
+});
+
+/* Scroll listeners */
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      updateActiveNav();
+      updateBackToTop();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+/* Initialize */
+updateActiveNav();
+updateBackToTop();
+</script>
+
+</body>
+</html>

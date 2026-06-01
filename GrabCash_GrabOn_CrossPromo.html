@@ -1,0 +1,3734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrabCash × GrabOn — Cross-Promotion Strategy & Execution Playbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --green: #0dcf1a;
+    --green-dark: #0ab315;
+    --green-glow: rgba(13, 207, 26, 0.15);
+    --green-subtle: rgba(13, 207, 26, 0.08);
+    --dark: #0a0a0a;
+    --dark-2: #111111;
+    --dark-3: #1a1a1a;
+    --dark-4: #222222;
+    --dark-5: #2a2a2a;
+    --text: #e8e8e8;
+    --text-dim: #888888;
+    --text-dimmer: #555555;
+    --red: #ff4757;
+    --orange: #ffa502;
+    --blue: #3742fa;
+    --purple: #a855f7;
+    --cyan: #06d6a0;
+    --yellow: #ffd93d;
+    --card-border: rgba(255,255,255,0.06);
+    --card-bg: rgba(255,255,255,0.03);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAVIGATION ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--green);
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  .nav-brand span { color: var(--text); }
+  .nav-links {
+    display: flex;
+    gap: 0.2rem;
+    overflow-x: auto;
+    max-width: 80%;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.3rem 0.55rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--green); background: var(--green-subtle); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--green-glow) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+  .hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--green-subtle);
+    border: 1px solid rgba(13,207,26,0.2);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .hero h1 {
+    position: relative;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    max-width: 950px;
+  }
+  .hero h1 .accent { color: var(--green); }
+  .hero p {
+    position: relative;
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    position: relative;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-stat .label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTION FRAMEWORK ── */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header { margin-bottom: 3rem; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--green);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .section h2 .accent { color: var(--green); }
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 0;
+  }
+
+  /* ── GRIDS ── */
+  .grid { display: grid; gap: 1.25rem; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: rgba(13,207,26,0.2);
+    background: rgba(13,207,26,0.03);
+    transform: translateY(-2px);
+  }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--green-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .card h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0.75rem 0 0.35rem;
+    color: var(--green);
+  }
+  .card p, .card li {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .card ul, .card ol {
+    padding-left: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  .card li { margin-bottom: 0.3rem; }
+  .card-highlight {
+    background: linear-gradient(135deg, rgba(13,207,26,0.06), rgba(13,207,26,0.02));
+    border-color: rgba(13,207,26,0.15);
+  }
+
+  /* ── KPI ROW ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .kpi {
+    background: var(--dark-3);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .kpi .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi .label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+  .kpi .sublabel {
+    font-size: 0.68rem;
+    color: var(--text-dimmer);
+    margin-top: 0.15rem;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--card-border);
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  thead { background: var(--dark-3); }
+  th {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--card-border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--green-subtle); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-flex;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-green { background: rgba(13,207,26,0.12); color: var(--green); }
+  .tag-red { background: rgba(255,71,87,0.12); color: var(--red); }
+  .tag-orange { background: rgba(255,165,2,0.12); color: var(--orange); }
+  .tag-blue { background: rgba(55,66,250,0.12); color: #6c7bff; }
+  .tag-purple { background: rgba(168,85,247,0.12); color: var(--purple); }
+  .tag-cyan { background: rgba(6,214,160,0.12); color: var(--cyan); }
+  .tag-yellow { background: rgba(255,217,61,0.12); color: var(--yellow); }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    background: var(--dark-3);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .callout p { color: var(--text-dim); font-size: 0.88rem; }
+
+  .callout-warn {
+    border-left-color: var(--orange);
+  }
+  .callout-warn .callout-title { color: var(--orange); }
+
+  .callout-red {
+    border-left-color: var(--red);
+  }
+  .callout-red .callout-title { color: var(--red); }
+
+  /* ── FLOW / FUNNEL ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+  .flow-step {
+    background: var(--dark-3);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    color: var(--green);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .flow-step.active {
+    background: var(--green-subtle);
+    border-color: rgba(13,207,26,0.3);
+    color: var(--green);
+  }
+
+  /* ── CODE BLOCK ── */
+  .code-block {
+    background: var(--dark-2);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+  .code-block .comment { color: var(--text-dimmer); }
+  .code-block .keyword { color: var(--purple); }
+  .code-block .string { color: var(--green); }
+  .code-block .func { color: var(--cyan); }
+  .code-block .num { color: var(--orange); }
+
+  /* ── METRIC BAR ── */
+  .metric-bar {
+    margin: 0.5rem 0;
+  }
+  .metric-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  .metric-bar-header .name { color: var(--text); font-weight: 500; }
+  .metric-bar-header .val { color: var(--green); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .metric-bar-track {
+    height: 8px;
+    background: var(--dark-4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .metric-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-dark), var(--green));
+    border-radius: 4px;
+    transition: width 0.6s;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--dark-4);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.65rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--green);
+    border: 3px solid var(--dark);
+  }
+  .timeline-item h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-item p {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .timeline-item .timeline-meta {
+    font-size: 0.7rem;
+    color: var(--green);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── WIREFRAME MOCK ── */
+  .wireframe {
+    background: var(--dark-2);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  .wireframe-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .wireframe-box {
+    border: 1px dashed var(--text-dimmer);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-align: center;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wireframe-box.green {
+    border-color: var(--green);
+    background: var(--green-subtle);
+    color: var(--green);
+    font-weight: 600;
+  }
+  .wireframe-row {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0.5rem 0;
+  }
+  .wireframe-row > * { flex: 1; }
+
+  /* ── EMAIL TEMPLATE ── */
+  .email-preview {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    color: #333;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .email-preview .email-subject {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+    color: #111;
+  }
+  .email-preview .email-preheader {
+    font-size: 0.78rem;
+    color: #999;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+  }
+  .email-preview .email-cta {
+    display: inline-block;
+    background: #0dcf1a;
+    color: #000;
+    font-weight: 700;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .email-preview h3 {
+    color: #111;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .email-preview p { color: #555; margin-bottom: 0.5rem; }
+
+  /* ── PROGRESS STEPS ── */
+  .steps {
+    display: flex;
+    gap: 0;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  .step {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    position: relative;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--dark-4);
+  }
+  .step:first-child::before { left: 50%; }
+  .step:last-child::before { right: 50%; }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--dark-4);
+    color: var(--text-dim);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .step.active .step-num {
+    background: var(--green);
+    color: #000;
+  }
+  .step-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+  .step.active .step-label { color: var(--green); }
+
+  /* ── ACCORDION ── */
+  details {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    margin: 0.75rem 0;
+    overflow: hidden;
+  }
+  details[open] {
+    border-color: rgba(13,207,26,0.15);
+  }
+  summary {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--green);
+    font-weight: 600;
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: center;
+  }
+  details[open] summary::before { content: '−'; }
+  .details-body {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .details-body p { margin-bottom: 0.5rem; }
+  .details-body ul, .details-body ol { padding-left: 1.2rem; margin: 0.5rem 0; }
+  .details-body li { margin-bottom: 0.3rem; }
+  .details-body h4 {
+    color: var(--text);
+    font-size: 0.88rem;
+    margin: 1rem 0 0.4rem;
+  }
+
+  /* ── MONO LABEL ── */
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .green { color: var(--green); }
+  .dim { color: var(--text-dim); }
+  .bold { font-weight: 700; }
+
+  /* ── INLINE LIST ── */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+  }
+
+  /* ── DIVIDER WITH LABEL ── */
+  .labeled-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 1.5rem;
+  }
+  .labeled-divider::before,
+  .labeled-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+  }
+  .labeled-divider span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dimmer);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  /* ── TWO COLUMN ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .section { padding: 3rem 1.5rem; }
+    .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; align-items: stretch; }
+    .flow-arrow { transform: rotate(90deg); text-align: center; }
+    .wireframe-row { flex-direction: column; }
+    .steps { flex-wrap: wrap; }
+    .step { min-width: 50%; }
+  }
+
+  @media (max-width: 480px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- NAVIGATION                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-brand">Grab<span>Cash</span> × Grab<span>On</span></div>
+  <div class="nav-links">
+    <a href="#strategic">Strategy</a>
+    <a href="#website">Website</a>
+    <a href="#funnel">Funnel</a>
+    <a href="#email">Email</a>
+    <a href="#widgets">Widgets</a>
+    <a href="#social">Social</a>
+    <a href="#blog">Blog</a>
+    <a href="#push">Push</a>
+    <a href="#app">App</a>
+    <a href="#brands">Brands</a>
+    <a href="#affiliate">Affiliate</a>
+    <a href="#measurement">Measure</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#risk">Risk</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- HERO                                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-badge">Cross-Promotion Playbook &bull; 2026</div>
+  <h1>Turning <span class="accent">3.7M GrabOn Visitors</span> Into GrabCash Earners</h1>
+  <p>The definitive strategy for leveraging InspireLabs' most powerful asset &mdash; GrabOn.in's massive coupon audience &mdash; to accelerate GrabCash user acquisition, activation, and revenue growth.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">3.7M</div>
+      <div class="label">Monthly GrabOn Visitors</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">1,500+</div>
+      <div class="label">Brand Relationships</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">500+</div>
+      <div class="label">Affiliate Brands</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">5,000+</div>
+      <div class="label">GrabCash Users</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">10L+</div>
+      <div class="label">GrabCash Payouts</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: STRATEGIC RATIONALE                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="strategic">
+  <div class="section-header">
+    <div class="section-num">Section 01</div>
+    <h2>Strategic <span class="accent">Rationale</span></h2>
+    <p class="section-subtitle">Why cross-promotion between GrabOn.in and GrabCash represents the single highest-ROI growth lever available to InspireLabs, and the strategic framework for execution.</p>
+  </div>
+
+  <!-- GrabOn Asset Inventory -->
+  <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">GrabOn.in Asset Inventory</h3>
+  <p class="dim" style="margin-bottom:1.5rem; font-size:0.9rem;">GrabOn is not just a website &mdash; it is an ecosystem of traffic, trust, brand relationships, and consumer data. Every asset is a potential growth lever for GrabCash.</p>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="value">3.7M</div>
+      <div class="label">Monthly Visitors</div>
+      <div class="sublabel">SimilarWeb Dec 2025</div>
+    </div>
+    <div class="kpi">
+      <div class="value">1,500+</div>
+      <div class="label">Brand Partners</div>
+      <div class="sublabel">Active merchant relationships</div>
+    </div>
+    <div class="kpi">
+      <div class="value">2.5M+</div>
+      <div class="label">Email Subscribers</div>
+      <div class="sublabel">Opted-in deal seekers</div>
+    </div>
+    <div class="kpi">
+      <div class="value">500K+</div>
+      <div class="label">Instagram Followers</div>
+      <div class="sublabel">@grabon_in audience</div>
+    </div>
+    <div class="kpi">
+      <div class="value">DA 72</div>
+      <div class="label">Domain Authority</div>
+      <div class="sublabel">Premium SEO asset</div>
+    </div>
+    <div class="kpi">
+      <div class="value">45M+</div>
+      <div class="label">Cumulative Users</div>
+      <div class="sublabel">Since 2013 launch</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Asset Category</th><th>Specific Asset</th><th>Scale</th><th>GrabCash Leverage Potential</th><th>Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Web Traffic</td><td>Organic search visitors</td><td>2.8M/month</td><td>Banner placements, inline CTAs, exit popups</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Web Traffic</td><td>Direct/branded visitors</td><td>600K/month</td><td>High-intent users, widget placement</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Web Traffic</td><td>Referral traffic</td><td>300K/month</td><td>Cross-link from partner sites</td><td><span class="tag tag-orange">P1</span></td></tr>
+        <tr><td>Email</td><td>Newsletter subscribers</td><td>2.5M+</td><td>Dedicated campaigns, footer CTAs</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Email</td><td>Transactional email recipients</td><td>500K/month</td><td>Post-purchase earning prompts</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Social</td><td>Instagram @grabon_in</td><td>500K+ followers</td><td>Collab posts, Stories, Reels</td><td><span class="tag tag-orange">P1</span></td></tr>
+        <tr><td>Social</td><td>YouTube channel</td><td>50K+ subscribers</td><td>Video integration, mentions</td><td><span class="tag tag-orange">P1</span></td></tr>
+        <tr><td>Social</td><td>Twitter/X @GrabOn_in</td><td>100K+ followers</td><td>Cross-promotion tweets</td><td><span class="tag tag-blue">P2</span></td></tr>
+        <tr><td>Content</td><td>Blog (blog.grabon.in)</td><td>500+ articles, 300K visits/mo</td><td>Internal linking, new articles</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Content</td><td>Category/store pages</td><td>4,500+ pages</td><td>Widget placement, CTAs</td><td><span class="tag tag-green">P0</span></td></tr>
+        <tr><td>Brand</td><td>Merchant relationships</td><td>1,500+ brands</td><td>Joint pitch, shared commissions</td><td><span class="tag tag-orange">P1</span></td></tr>
+        <tr><td>Brand</td><td>White-label API clients</td><td>20+ banks/fintech</td><td>Cross-sell GrabCash to banks</td><td><span class="tag tag-blue">P2</span></td></tr>
+        <tr><td>Tech</td><td>Push notification base</td><td>1.5M+ subscribers</td><td>GrabCash promotion pushes</td><td><span class="tag tag-orange">P1</span></td></tr>
+        <tr><td>Data</td><td>User behavior data</td><td>10 years of coupon usage</td><td>Targeting high-potential earners</td><td><span class="tag tag-green">P0</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Synergy Analysis -->
+  <div class="labeled-divider"><span>Synergy Analysis</span></div>
+
+  <div class="grid grid-2">
+    <div class="card card-highlight">
+      <div class="card-icon">&#x1F504;</div>
+      <h3>The Conversion Thesis</h3>
+      <p>GrabOn users are <strong>already deal-conscious shoppers</strong> who actively seek savings. The mental leap from "save money while shopping" to "earn money by sharing deals" is minimal. These users already understand affiliate links, coupon mechanics, and brand deals &mdash; they just don't realize they can monetize this behavior.</p>
+      <h4>Key Insight</h4>
+      <p>Every GrabOn user who copies a coupon code and shares it with a friend is already doing what GrabCash users do &mdash; minus the earning. We just need to formalize the earning mechanism.</p>
+    </div>
+    <div class="card card-highlight">
+      <div class="card-icon">&#x1F4B0;</div>
+      <h3>Value Exchange</h3>
+      <p>GrabOn gives users savings (average &#8377;200-500 per transaction). GrabCash offers a fundamentally different proposition: <strong>recurring income</strong>. The psychology shifts from "I saved &#8377;300" to "I earned &#8377;300." This is a powerful upgrade in perceived value.</p>
+      <h4>Behavioral Economics</h4>
+      <p>Earning &#8377;100 triggers a stronger positive response than saving &#8377;100 (gain framing vs. loss prevention). GrabCash leverages this asymmetry.</p>
+    </div>
+  </div>
+
+  <!-- Addressable Audience Segmentation -->
+  <div class="labeled-divider"><span>Addressable Audience Within GrabOn</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Segment</th><th>Size (Est.)</th><th>% of GrabOn Users</th><th>Conversion Likelihood</th><th>Avg Earning Potential</th><th>Migration Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Deal Sharers</strong><br><span class="dim" style="font-size:0.75rem;">Already share deals on WhatsApp/Telegram</span></td>
+          <td>185K</td>
+          <td>5%</td>
+          <td><span class="tag tag-green">Very High</span></td>
+          <td>&#8377;3,000-8,000/mo</td>
+          <td><span class="tag tag-green">P0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Power Couponers</strong><br><span class="dim" style="font-size:0.75rem;">10+ coupon uses per month</span></td>
+          <td>370K</td>
+          <td>10%</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>&#8377;2,000-5,000/mo</td>
+          <td><span class="tag tag-green">P0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brand Loyalists</strong><br><span class="dim" style="font-size:0.75rem;">Repeatedly visit same 3-5 stores</span></td>
+          <td>555K</td>
+          <td>15%</td>
+          <td><span class="tag tag-orange">Medium-High</span></td>
+          <td>&#8377;1,000-3,000/mo</td>
+          <td><span class="tag tag-orange">P1</span></td>
+        </tr>
+        <tr>
+          <td><strong>Students/Young Adults</strong><br><span class="dim" style="font-size:0.75rem;">18-24 age group, budget conscious</span></td>
+          <td>740K</td>
+          <td>20%</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>&#8377;500-2,000/mo</td>
+          <td><span class="tag tag-orange">P1</span></td>
+        </tr>
+        <tr>
+          <td><strong>Casual Browsers</strong><br><span class="dim" style="font-size:0.75rem;">1-3 visits per month, low engagement</span></td>
+          <td>1.48M</td>
+          <td>40%</td>
+          <td><span class="tag tag-yellow">Low-Medium</span></td>
+          <td>&#8377;200-800/mo</td>
+          <td><span class="tag tag-blue">P2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Inactive/Lapsed</strong><br><span class="dim" style="font-size:0.75rem;">Haven't visited in 60+ days</span></td>
+          <td>370K</td>
+          <td>10%</td>
+          <td><span class="tag tag-red">Low</span></td>
+          <td>&#8377;0-500/mo</td>
+          <td><span class="tag tag-blue">P2</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Revenue Impact Model -->
+  <div class="labeled-divider"><span>Revenue Impact Modeling</span></div>
+
+  <div class="callout">
+    <div class="callout-title">Core Assumption</div>
+    <p>If just 5% of GrabOn's monthly visitors (185,000 users) convert to active GrabCash earners, the revenue impact is transformative. Here's the bottom-up model.</p>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Conservative Scenario</h3>
+      <p><span class="tag tag-yellow">2% Conversion</span></p>
+      <h4>New GrabCash Users</h4>
+      <p class="mono green bold" style="font-size:1.3rem;">74,000</p>
+      <h4>Monthly GMV Generated</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;3.7 Cr</p>
+      <h4>Monthly Commission Revenue</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;22.2L</p>
+      <h4>Annual Revenue Uplift</h4>
+      <p class="mono green bold" style="font-size:1.2rem;">&#8377;2.66 Cr</p>
+      <ul>
+        <li>Avg. GMV per user: &#8377;5,000/mo</li>
+        <li>Avg. commission rate: 6%</li>
+        <li>GrabCash take rate: 20% of commission</li>
+        <li>Active rate: 40% monthly</li>
+      </ul>
+    </div>
+    <div class="card card-highlight">
+      <h3>Base Scenario</h3>
+      <p><span class="tag tag-green">5% Conversion</span></p>
+      <h4>New GrabCash Users</h4>
+      <p class="mono green bold" style="font-size:1.3rem;">185,000</p>
+      <h4>Monthly GMV Generated</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;9.25 Cr</p>
+      <h4>Monthly Commission Revenue</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;55.5L</p>
+      <h4>Annual Revenue Uplift</h4>
+      <p class="mono green bold" style="font-size:1.2rem;">&#8377;6.66 Cr</p>
+      <ul>
+        <li>Avg. GMV per user: &#8377;5,000/mo</li>
+        <li>Avg. commission rate: 6%</li>
+        <li>GrabCash take rate: 20% of commission</li>
+        <li>Active rate: 45% monthly</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Optimistic Scenario</h3>
+      <p><span class="tag tag-cyan">10% Conversion</span></p>
+      <h4>New GrabCash Users</h4>
+      <p class="mono green bold" style="font-size:1.3rem;">370,000</p>
+      <h4>Monthly GMV Generated</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;18.5 Cr</p>
+      <h4>Monthly Commission Revenue</h4>
+      <p class="mono green" style="font-size:1rem;">&#8377;1.11 Cr</p>
+      <h4>Annual Revenue Uplift</h4>
+      <p class="mono green bold" style="font-size:1.2rem;">&#8377;13.32 Cr</p>
+      <ul>
+        <li>Avg. GMV per user: &#8377;5,000/mo</li>
+        <li>Avg. commission rate: 6%</li>
+        <li>GrabCash take rate: 20% of commission</li>
+        <li>Active rate: 50% monthly</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Competitive Advantage vs EarnKaro -->
+  <div class="labeled-divider"><span>Competitive Advantage vs EarnKaro</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>GrabCash (with GrabOn Cross-Promo)</th><th>EarnKaro (Standalone)</th><th>Advantage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>User Acquisition Cost</strong></td>
+          <td>&#8377;5-15 (organic cross-promo)</td>
+          <td>&#8377;80-150 (paid ads)</td>
+          <td><span class="tag tag-green">10x Lower CAC</span></td>
+        </tr>
+        <tr>
+          <td><strong>Warm Audience Access</strong></td>
+          <td>3.7M monthly (GrabOn visitors)</td>
+          <td>Cold traffic only</td>
+          <td><span class="tag tag-green">Massive Advantage</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brand Trust</strong></td>
+          <td>12-year GrabOn brand equity</td>
+          <td>Building from scratch</td>
+          <td><span class="tag tag-green">Established Trust</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brand Relationships</strong></td>
+          <td>1,500+ existing (via GrabOn)</td>
+          <td>200+ (self-built)</td>
+          <td><span class="tag tag-green">7x More Brands</span></td>
+        </tr>
+        <tr>
+          <td><strong>Email Reach</strong></td>
+          <td>2.5M+ opted-in subscribers</td>
+          <td>Building organically</td>
+          <td><span class="tag tag-green">Day-1 Reach</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Authority</strong></td>
+          <td>DA 72 (GrabOn backlink juice)</td>
+          <td>DA 45 (growing)</td>
+          <td><span class="tag tag-green">SEO Head Start</span></td>
+        </tr>
+        <tr>
+          <td><strong>Social Audience</strong></td>
+          <td>500K+ IG + cross-platform</td>
+          <td>100K+ IG</td>
+          <td><span class="tag tag-green">5x Social Reach</span></td>
+        </tr>
+        <tr>
+          <td><strong>Commission Negotiation</strong></td>
+          <td>Bulk leverage via GrabOn volume</td>
+          <td>Standard rates</td>
+          <td><span class="tag tag-green">Better Rates</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Risk Analysis -->
+  <div class="labeled-divider"><span>Risk Analysis &amp; Mitigation</span></div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>&#x26A0; Cannibalization Concern</h3>
+      <p><strong>Risk:</strong> GrabOn users switch to GrabCash for their own purchases, reducing GrabOn's affiliate revenue.</p>
+      <h4>Mitigation Strategy</h4>
+      <ul>
+        <li>Position GrabCash as "share with others" platform, not "save for yourself"</li>
+        <li>Maintain GrabOn for personal savings, GrabCash for earning</li>
+        <li>Track cannibalization metrics weekly &mdash; if GrabOn revenue drops >3%, slow rollout</li>
+        <li>Net revenue analysis: even if 10% cannibalization, net positive with GrabCash growth</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><span class="tag tag-orange">Medium Risk</span> &bull; <span class="tag tag-green">Highly Mitigatable</span></p>
+    </div>
+    <div class="card">
+      <h3>&#x26A0; User Experience Dilution</h3>
+      <p><strong>Risk:</strong> Too many GrabCash CTAs degrade GrabOn user experience, reducing coupon engagement.</p>
+      <h4>Mitigation Strategy</h4>
+      <ul>
+        <li>Strict CTA density rules: max 2 GrabCash touchpoints per page</li>
+        <li>A/B test every placement before full rollout</li>
+        <li>Monitor GrabOn bounce rate and session duration weekly</li>
+        <li>Quick kill-switch for any placement that hurts metrics</li>
+        <li>Use contextual, helpful CTAs (not intrusive ads)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><span class="tag tag-orange">Medium Risk</span> &bull; <span class="tag tag-green">Fully Controllable</span></p>
+    </div>
+    <div class="card">
+      <h3>&#x26A0; Brand Partner Pushback</h3>
+      <p><strong>Risk:</strong> Brands worry that GrabCash earners will spam their deals, creating brand perception issues.</p>
+      <h4>Mitigation Strategy</h4>
+      <ul>
+        <li>Present as "earn ecosystem" that drives MORE sales for brands</li>
+        <li>Offer brands analytics on GrabCash-driven conversions</li>
+        <li>Content guidelines for earners to maintain brand quality</li>
+        <li>Pilot with 10 brand-friendly merchants first</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><span class="tag tag-yellow">Low-Medium Risk</span></p>
+    </div>
+    <div class="card">
+      <h3>&#x26A0; Internal Resource Conflict</h3>
+      <p><strong>Risk:</strong> GrabOn team resists allocating resources to GrabCash promotion, viewing it as a distraction.</p>
+      <h4>Mitigation Strategy</h4>
+      <ul>
+        <li>Executive mandate from InspireLabs leadership</li>
+        <li>Shared KPIs: GrabOn team incentivized on GrabCash conversions</li>
+        <li>Dedicated cross-promo resource (1 person) to minimize GrabOn team burden</li>
+        <li>Show early wins to build internal momentum</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><span class="tag tag-yellow">Low Risk</span></p>
+    </div>
+  </div>
+
+  <!-- Executive Buy-In Outline -->
+  <div class="labeled-divider"><span>Executive Buy-In Presentation Outline</span></div>
+
+  <div class="card">
+    <h3>5-Slide Executive Pitch: "Unlock GrabCash Growth Through GrabOn"</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Slide</th><th>Title</th><th>Key Message</th><th>Data Points</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="mono green">01</span></td>
+            <td>The Untapped Goldmine</td>
+            <td>3.7M GrabOn visitors are the highest-quality leads for GrabCash &mdash; they already understand deals.</td>
+            <td>Traffic stats, user overlap analysis, conversion potential</td>
+            <td>2 min</td>
+          </tr>
+          <tr>
+            <td><span class="mono green">02</span></td>
+            <td>Revenue Upside</td>
+            <td>Conservative 5% conversion yields &#8377;6.66 Cr annual revenue uplift at near-zero CAC.</td>
+            <td>Revenue model, CAC comparison vs EarnKaro, payback period</td>
+            <td>3 min</td>
+          </tr>
+          <tr>
+            <td><span class="mono green">03</span></td>
+            <td>Competitive Moat</td>
+            <td>This is the one advantage EarnKaro can never replicate &mdash; they don't own a 3.7M-visitor coupon site.</td>
+            <td>Competitive comparison table, market position shift</td>
+            <td>2 min</td>
+          </tr>
+          <tr>
+            <td><span class="mono green">04</span></td>
+            <td>Controlled Rollout Plan</td>
+            <td>Phased approach with kill-switches at every stage. Zero risk to GrabOn's core business.</td>
+            <td>Phase timeline, risk mitigation framework, A/B test plan</td>
+            <td>3 min</td>
+          </tr>
+          <tr>
+            <td><span class="mono green">05</span></td>
+            <td>Ask &amp; Next Steps</td>
+            <td>Approval for Phase 1 (email + blog + banners), 1 dedicated resource, 30-day sprint.</td>
+            <td>Resource requirements, Phase 1 deliverables, success metrics</td>
+            <td>2 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: GRABON.IN WEBSITE INTEGRATION                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="website">
+  <div class="section-header">
+    <div class="section-num">Section 02</div>
+    <h2>GrabOn.in <span class="accent">Website Integration</span></h2>
+    <p class="section-subtitle">10 specific banner placements across GrabOn.in, each with wireframe descriptions, A/B test plans, CTA copy variations, and performance benchmarks.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Placement Philosophy</div>
+    <p>Every GrabCash placement on GrabOn must feel like a <strong>natural extension of the user's journey</strong>, not an interruption. The CTA should appear at moments when the user is most receptive: after they've found value (post-coupon-reveal), when they're browsing (sidebar), or when they're leaving (exit-intent). Maximum 2 GrabCash touchpoints per page view.</p>
+  </div>
+
+  <!-- Placement 1: Homepage Hero -->
+  <details>
+    <summary><span class="tag tag-green">Placement 01</span> &nbsp; Homepage Hero Banner</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Homepage Hero Banner</div>
+        <div class="wireframe-box" style="height:40px;">GrabOn.in Logo &nbsp;|&nbsp; Navigation Menu &nbsp;|&nbsp; Search Bar</div>
+        <div class="wireframe-row">
+          <div class="wireframe-box" style="flex:2; min-height:120px;">
+            Main GrabOn Hero Carousel<br>(Current: Top Deals / Festive Offers)
+          </div>
+          <div class="wireframe-box green" style="flex:1; min-height:120px;">
+            <strong>GrabCash Banner</strong><br>"Share Deals. Earn Cash."<br>[Start Earning &rarr;]
+          </div>
+        </div>
+        <div class="wireframe-box dim" style="height:30px; font-size:0.7rem;">Category Navigation: Fashion | Electronics | Food | Travel ...</div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Right side of hero carousel (desktop) / Below carousel (mobile)</li>
+        <li><strong>Dimensions:</strong> 350x280px (desktop), full-width 320x200px (mobile)</li>
+        <li><strong>Frequency:</strong> Always visible &mdash; persistent placement</li>
+        <li><strong>Target:</strong> All visitors, especially first-time and returning users</li>
+      </ul>
+
+      <h4>CTA Copy Variations (A/B Test)</h4>
+      <ol>
+        <li><strong>V1:</strong> "Share Deals. Earn Real Cash." &rarr; [Start Earning]</li>
+        <li><strong>V2:</strong> "Your Coupons Could Pay You &#8377;5,000/month" &rarr; [Learn How]</li>
+        <li><strong>V3:</strong> "Stop Saving. Start Earning." &rarr; [Join GrabCash Free]</li>
+        <li><strong>V4:</strong> "5,000+ Indians Earn by Sharing Deals" &rarr; [Join Them]</li>
+        <li><strong>V5:</strong> "GrabOn Users Now Earn &#8377;2,000-10,000/mo" &rarr; [See How]</li>
+      </ol>
+
+      <h4>A/B Test Plan</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Variant</th><th>Change</th><th>Metric</th><th>Traffic Split</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Control</td><td>No GrabCash banner</td><td>Baseline bounce rate</td><td>20%</td><td>14 days</td></tr>
+            <tr><td>V1 (Text)</td><td>Copy variation 1</td><td>CTR to GrabCash</td><td>20%</td><td>14 days</td></tr>
+            <tr><td>V2 (Earnings)</td><td>Copy with earning amount</td><td>CTR to GrabCash</td><td>20%</td><td>14 days</td></tr>
+            <tr><td>V3 (Social Proof)</td><td>Copy with user count</td><td>CTR to GrabCash</td><td>20%</td><td>14 days</td></tr>
+            <tr><td>V4 (Minimal)</td><td>Small inline text link only</td><td>CTR + bounce impact</td><td>20%</td><td>14 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Expected Performance</h4>
+      <p>Homepage receives ~1.2M monthly visits. Expected CTR: <strong class="green">1.8-3.5%</strong>. Monthly GrabCash clicks: <strong class="green">21,600-42,000</strong>. At 15% signup rate: <strong class="green">3,240-6,300 new users/month</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Placement 2: Store Page Sidebar -->
+  <details>
+    <summary><span class="tag tag-green">Placement 02</span> &nbsp; Store Page Sidebar</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Store Page Sidebar</div>
+        <div class="wireframe-row">
+          <div style="flex:2;">
+            <div class="wireframe-box" style="min-height:40px;">Store Header: Amazon Coupons | 245 Active Deals</div>
+            <div class="wireframe-box" style="min-height:60px;">Coupon Card 1: &#8377;500 Off on Electronics [Get Code]</div>
+            <div class="wireframe-box" style="min-height:60px;">Coupon Card 2: 20% Off Fashion [Get Deal]</div>
+            <div class="wireframe-box" style="min-height:60px;">Coupon Card 3: Flat &#8377;200 Off Groceries [Get Code]</div>
+          </div>
+          <div style="flex:1;">
+            <div class="wireframe-box green" style="min-height:200px;">
+              <strong>Sticky Sidebar Widget</strong><br><br>
+              "Earn by Sharing<br>Amazon Deals"<br><br>
+              Commission: 4-8%<br>
+              Top Earner: &#8377;12,000/mo<br><br>
+              [Start Earning &rarr;]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Right sidebar, sticky on scroll (desktop only)</li>
+        <li><strong>Dimensions:</strong> 300x400px, follows user as they scroll through coupons</li>
+        <li><strong>Context:</strong> Dynamically shows earning potential for the specific brand being viewed</li>
+        <li><strong>Target:</strong> Users browsing specific store pages (highest intent)</li>
+      </ul>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li><strong>V1:</strong> "Earn &#8377;150-400 sharing [Brand] deals" &rarr; [Start Earning]</li>
+        <li><strong>V2:</strong> "This coupon could earn you &#8377;XXX" &rarr; [Earn Now]</li>
+        <li><strong>V3:</strong> "Share [Brand] deals &bull; Earn 4-8% commission" &rarr; [Join Free]</li>
+        <li><strong>V4:</strong> "[Brand] pays GrabCash users &#8377;XX per sale" &rarr; [Become an Earner]</li>
+        <li><strong>V5:</strong> "12 people earned from [Brand] today" &rarr; [You Can Too]</li>
+      </ol>
+
+      <h4>Dynamic Content Rules</h4>
+      <ul>
+        <li>Auto-populate brand name from store page context</li>
+        <li>Show brand-specific commission range from GrabCash API</li>
+        <li>Display top earner amount for that brand (anonymized)</li>
+        <li>If brand has high commission (&gt;8%), highlight with "High Earning Opportunity" badge</li>
+      </ul>
+
+      <h4>Expected Performance</h4>
+      <p>Store pages receive ~1.8M monthly views. Expected CTR: <strong class="green">2.5-4.2%</strong> (higher than homepage due to context relevance). Monthly clicks: <strong class="green">45,000-75,600</strong>. Signup rate: 18% (higher due to brand-specific relevance).</p>
+    </div>
+  </details>
+
+  <!-- Placement 3: Category Page Banner -->
+  <details>
+    <summary><span class="tag tag-green">Placement 03</span> &nbsp; Category Page Inline Banner</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Category Page Banner</div>
+        <div class="wireframe-box" style="height:35px;">Category: Fashion Coupons | 850 Active Deals</div>
+        <div class="wireframe-box" style="min-height:50px;">Store 1: Myntra &bull; Store 2: Ajio &bull; Store 3: Flipkart Fashion</div>
+        <div class="wireframe-box green" style="min-height:70px;">
+          <strong>Inline Banner:</strong> "Fashion deals pay the best commissions &mdash; earn &#8377;200-500 per sale by sharing them" [Start Earning from Fashion Brands &rarr;]
+        </div>
+        <div class="wireframe-box" style="min-height:50px;">Store 4: Amazon Fashion &bull; Store 5: Nykaa Fashion</div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Inline between 3rd and 4th store listing on category pages</li>
+        <li><strong>Dimensions:</strong> Full-width banner, 100px height</li>
+        <li><strong>Frequency:</strong> Shows once per category page view</li>
+        <li><strong>Context:</strong> Category-specific earning potential and brand examples</li>
+      </ul>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li>"[Category] deals pay &#8377;XX-YY per sale &mdash; earn by sharing" &rarr; [Start Earning]</li>
+        <li>"Top earners in [Category] make &#8377;X,000/month" &rarr; [See How]</li>
+        <li>"Share [Category] deals with your followers, earn real cash" &rarr; [Join GrabCash]</li>
+        <li>"Your next [Category] share could earn you &#8377;XXX" &rarr; [Try It Free]</li>
+        <li>"[Number] GrabCash users earned from [Category] this week" &rarr; [Join Them]</li>
+      </ol>
+
+      <h4>Expected Performance</h4>
+      <p>Category pages: ~800K monthly views. CTR: <strong class="green">1.5-2.8%</strong>. Monthly clicks: <strong class="green">12,000-22,400</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Placement 4: Deal Card Button -->
+  <details>
+    <summary><span class="tag tag-green">Placement 04</span> &nbsp; Deal Card "Earn by Sharing" Button</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Deal Card with Earn Button</div>
+        <div class="wireframe-box" style="min-height:100px; text-align:left; padding:1rem;">
+          <strong>Amazon Deal Card</strong><br>
+          Flat 40% Off on Electronics<br>
+          Valid till: June 30, 2026 &bull; Verified<br><br>
+          <span style="display:inline-flex;gap:0.5rem;">
+            <span class="wireframe-box" style="min-height:30px; width:120px; margin:0; padding:0.4rem;">Get Code</span>
+            <span class="wireframe-box green" style="min-height:30px; width:140px; margin:0; padding:0.4rem;">Earn by Sharing &rarr;</span>
+          </span>
+        </div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Secondary button next to "Get Code" / "Get Deal" on every coupon card</li>
+        <li><strong>Size:</strong> Same height as primary CTA, contrasting color (green border)</li>
+        <li><strong>Behavior:</strong> Click opens GrabCash link generation flow (or signup if not registered)</li>
+        <li><strong>Visibility:</strong> Every single coupon card across the site (4,500+ pages)</li>
+      </ul>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li>"Earn by Sharing" (compact)</li>
+        <li>"Share &amp; Earn &#8377;XX" (with estimated commission)</li>
+        <li>"Earn &#8377;XX sharing this" (specific amount)</li>
+        <li>"Share to Earn" (minimal)</li>
+        <li>"&#8377;XX commission &rarr;" (direct earnings display)</li>
+      </ol>
+
+      <h4>Technical Implementation</h4>
+      <div class="code-block">
+<span class="comment">// Add to every coupon card component</span>
+&lt;button
+  class=<span class="string">"gc-earn-btn"</span>
+  data-brand=<span class="string">"{brand_slug}"</span>
+  data-deal-id=<span class="string">"{deal_id}"</span>
+  data-commission=<span class="string">"{est_commission}"</span>
+  onclick=<span class="string">"GrabCash.openEarnFlow(this)"</span>
+&gt;
+  Earn by Sharing &rarr;
+&lt;/button&gt;
+
+<span class="comment">// GrabCash integration script</span>
+<span class="keyword">const</span> GrabCash = {
+  <span class="func">openEarnFlow</span>(el) {
+    <span class="keyword">const</span> brand = el.dataset.brand;
+    <span class="keyword">const</span> dealId = el.dataset.dealId;
+    <span class="keyword">const</span> url = <span class="string">`https://grabcash.in/earn?ref=grabon&brand=${brand}&deal=${dealId}&utm_source=grabon&utm_medium=deal_card&utm_campaign=cross_promo`</span>;
+    window.open(url, <span class="string">'_blank'</span>);
+  }
+};
+      </div>
+
+      <h4>Expected Performance</h4>
+      <p>Deal cards shown ~5M times/month. Expected CTR: <strong class="green">0.8-1.5%</strong>. Monthly clicks: <strong class="green">40,000-75,000</strong>. This is the highest-volume placement.</p>
+    </div>
+  </details>
+
+  <!-- Placement 5: After Coupon Reveal -->
+  <details>
+    <summary><span class="tag tag-green">Placement 05</span> &nbsp; After-Coupon-Reveal CTA</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Post-Reveal CTA</div>
+        <div class="wireframe-box" style="min-height:80px;">
+          Coupon Revealed: <strong>SAVE40ELEC</strong><br>
+          "Coupon code copied to clipboard!"<br>
+          <span class="dim" style="font-size:0.7rem;">[Copied!] &bull; Valid till June 30</span>
+        </div>
+        <div class="wireframe-box green" style="min-height:60px;">
+          <strong>Now earn &#8377;150-400 by sharing this deal!</strong><br>
+          Get your unique earning link &rarr; Share on WhatsApp, Telegram, Instagram<br>
+          [Get My Earning Link]
+        </div>
+      </div>
+
+      <h4>Why This Works</h4>
+      <p>The moment after a user reveals a coupon code is the <strong>highest-engagement moment</strong> on GrabOn. The user has just received value and is psychologically primed for a "what's next?" prompt. This is when the GrabCash CTA feels most natural: "You saved money &mdash; now earn money."</p>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li>"Now share this deal and earn &#8377;XXX!" &rarr; [Get Earning Link]</li>
+        <li>"Copied! Now earn money when others use this deal" &rarr; [Share &amp; Earn]</li>
+        <li>"This deal could earn you &#8377;XXX in commissions" &rarr; [Start Earning]</li>
+        <li>"Share this code on WhatsApp &amp; earn every time someone buys" &rarr; [Get Link]</li>
+        <li>"Your friends want this deal too &mdash; earn when they shop" &rarr; [Earn Now]</li>
+      </ol>
+
+      <h4>Expected Performance</h4>
+      <p>Coupon reveals: ~2M/month. Post-reveal engagement is extremely high (85%+ attention). CTR: <strong class="green">4.5-7.2%</strong> (highest of all placements). Monthly clicks: <strong class="green">90,000-144,000</strong>. This is the single most effective placement.</p>
+    </div>
+  </details>
+
+  <!-- Placement 6: Footer -->
+  <details>
+    <summary><span class="tag tag-blue">Placement 06</span> &nbsp; Footer Section</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Footer GrabCash Section</div>
+        <div class="wireframe-row">
+          <div class="wireframe-box" style="min-height:80px;">About GrabOn<br>Contact<br>Careers<br>Press</div>
+          <div class="wireframe-box" style="min-height:80px;">Top Stores<br>Amazon<br>Flipkart<br>Myntra</div>
+          <div class="wireframe-box" style="min-height:80px;">Categories<br>Fashion<br>Electronics<br>Food</div>
+          <div class="wireframe-box green" style="min-height:80px;">
+            <strong>Earn with GrabCash</strong><br>
+            Share deals, earn cash<br>
+            &#8377;10L+ paid out<br>
+            [Start Earning &rarr;]
+          </div>
+        </div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Dedicated column in footer, alongside existing link sections</li>
+        <li><strong>Style:</strong> Green accent to stand out from other footer links</li>
+        <li><strong>Content:</strong> Brief description, key stats, CTA link</li>
+      </ul>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li>"Earn Money Sharing Deals" &rarr; [Join GrabCash]</li>
+        <li>"5,000+ Users Earning Daily" &rarr; [Start Free]</li>
+        <li>"Turn Deals into Income" &rarr; [Learn More]</li>
+        <li>"GrabCash &mdash; Earn from 500+ Brands" &rarr; [Sign Up]</li>
+        <li>"Earn &#8377;2,000-10,000/month" &rarr; [See How]</li>
+      </ol>
+
+      <h4>Expected Performance</h4>
+      <p>Footer visible on ~3.5M page views. CTR for footer links typically: <strong class="green">0.2-0.5%</strong>. Monthly clicks: <strong class="green">7,000-17,500</strong>. Low volume but high-quality (intentional clicks).</p>
+    </div>
+  </details>
+
+  <!-- Placement 7: Search Results -->
+  <details>
+    <summary><span class="tag tag-blue">Placement 07</span> &nbsp; Search Results Page</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Search Results with GrabCash</div>
+        <div class="wireframe-box" style="height:35px;">Search: "Amazon coupons" &bull; 245 results</div>
+        <div class="wireframe-box" style="min-height:40px;">Result 1: Amazon &mdash; Flat 40% Off Electronics</div>
+        <div class="wireframe-box" style="min-height:40px;">Result 2: Amazon &mdash; 20% Off Fashion</div>
+        <div class="wireframe-box green" style="min-height:50px;">
+          <strong>Earn from Amazon Deals:</strong> Share these deals on GrabCash and earn 4-8% commission on every sale [Start Earning &rarr;]
+        </div>
+        <div class="wireframe-box" style="min-height:40px;">Result 3: Amazon &mdash; &#8377;500 Off Groceries</div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Inline after 2nd search result</li>
+        <li><strong>Contextual:</strong> Dynamically references the searched brand/category</li>
+        <li><strong>Frequency:</strong> Shows on every search with 5+ results</li>
+      </ul>
+
+      <h4>Expected Performance</h4>
+      <p>Search page views: ~400K/month. CTR: <strong class="green">1.2-2.0%</strong>. Monthly clicks: <strong class="green">4,800-8,000</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Placement 8: Mobile Bottom Sticky -->
+  <details>
+    <summary><span class="tag tag-orange">Placement 08</span> &nbsp; Mobile Bottom Sticky Bar</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Mobile Sticky Bar</div>
+        <div class="wireframe-box" style="min-height:180px;">
+          [Mobile Page Content]<br>
+          Coupons, deals, store listings...
+        </div>
+        <div class="wireframe-box green" style="height:50px;">
+          &#x1F4B0; Earn &#8377;2,000-10,000/mo sharing deals &bull; [Start Earning &rarr;]
+        </div>
+      </div>
+
+      <h4>Placement Specs</h4>
+      <ul>
+        <li><strong>Position:</strong> Fixed bottom bar, 50px height, mobile only</li>
+        <li><strong>Trigger:</strong> Appears after user scrolls past 50% of page</li>
+        <li><strong>Dismissible:</strong> X button, once dismissed stays hidden for 24 hours (cookie)</li>
+        <li><strong>A/B:</strong> Test appearing vs. not appearing, different trigger points</li>
+      </ul>
+
+      <h4>CTA Copy Variations</h4>
+      <ol>
+        <li>"Earn &#8377;2K-10K/mo sharing deals" &rarr; [Start]</li>
+        <li>"Share &amp; Earn from 500+ brands" &rarr; [Join]</li>
+        <li>"Your coupons = your income" &rarr; [Earn]</li>
+        <li>"5,000+ Indians earn on GrabCash" &rarr; [Try]</li>
+        <li>"Free sign up &bull; Earn from Day 1" &rarr; [Go]</li>
+      </ol>
+
+      <h4>Expected Performance</h4>
+      <p>Mobile traffic: ~2.2M/month (~60% of total). Sticky bar CTR: <strong class="green">0.6-1.2%</strong>. Monthly clicks: <strong class="green">13,200-26,400</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Placement 9: Exit Intent -->
+  <details>
+    <summary><span class="tag tag-orange">Placement 09</span> &nbsp; Exit-Intent Popup</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Exit-Intent Popup</div>
+        <div class="wireframe-box" style="min-height:180px; background:rgba(0,0,0,0.4);">
+          <div class="wireframe-box green" style="max-width:400px; margin:auto; min-height:140px;">
+            <strong>Wait! Did you know you can EARN from these deals?</strong><br><br>
+            Join 5,000+ Indians earning &#8377;2,000-10,000/month<br>
+            by sharing deals from brands like Amazon, Flipkart, Myntra<br><br>
+            [Start Earning for Free &rarr;]<br>
+            <span style="font-size:0.7rem;">No thanks, I just want to save</span>
+          </div>
+        </div>
+      </div>
+
+      <h4>Trigger Rules</h4>
+      <ul>
+        <li><strong>Desktop:</strong> Mouse moves toward browser close/back button (exit-intent detection)</li>
+        <li><strong>Mobile:</strong> After 45 seconds + scroll-up gesture</li>
+        <li><strong>Frequency:</strong> Once per user per 7 days (cookie-based)</li>
+        <li><strong>Suppression:</strong> Don't show to users who are already GrabCash members</li>
+      </ul>
+
+      <h4>Expected Performance</h4>
+      <p>Exit-intent fires for ~500K users/month. Popup engagement rate: <strong class="green">3.5-5.8%</strong>. Monthly clicks: <strong class="green">17,500-29,000</strong>. Signup conversion from popup: 22% (urgency factor).</p>
+    </div>
+  </details>
+
+  <!-- Placement 10: Blog Sidebar -->
+  <details>
+    <summary><span class="tag tag-blue">Placement 10</span> &nbsp; Blog Sidebar Widget</summary>
+    <div class="details-body">
+      <div class="wireframe">
+        <div class="wireframe-title">Wireframe: Blog Sidebar</div>
+        <div class="wireframe-row">
+          <div style="flex:2;">
+            <div class="wireframe-box" style="min-height:200px;">
+              Blog Article Content<br>
+              "10 Best Amazon Deals This Week"<br>
+              [Long-form article content...]
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div class="wireframe-box" style="min-height:60px;">Popular Articles</div>
+            <div class="wireframe-box green" style="min-height:100px;">
+              <strong>Earn from Deals</strong><br>
+              Share deals, earn cash.<br>
+              5,000+ earners.<br>
+              [Join GrabCash &rarr;]
+            </div>
+            <div class="wireframe-box" style="min-height:60px;">Newsletter Signup</div>
+          </div>
+        </div>
+      </div>
+
+      <h4>Expected Performance</h4>
+      <p>Blog pages: ~300K monthly views. Sidebar CTR: <strong class="green">0.8-1.5%</strong>. Monthly clicks: <strong class="green">2,400-4,500</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Aggregate Performance Summary -->
+  <div class="labeled-divider"><span>Aggregate Placement Performance</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Placement</th><th>Monthly Impressions</th><th>Expected CTR</th><th>Monthly Clicks</th><th>Signup Rate</th><th>New Users/Mo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Homepage Hero</td><td>1,200,000</td><td>2.5%</td><td>30,000</td><td>15%</td><td><span class="green bold">4,500</span></td></tr>
+        <tr><td>2</td><td>Store Page Sidebar</td><td>1,800,000</td><td>3.2%</td><td>57,600</td><td>18%</td><td><span class="green bold">10,368</span></td></tr>
+        <tr><td>3</td><td>Category Banner</td><td>800,000</td><td>2.0%</td><td>16,000</td><td>14%</td><td><span class="green bold">2,240</span></td></tr>
+        <tr><td>4</td><td>Deal Card Button</td><td>5,000,000</td><td>1.1%</td><td>55,000</td><td>12%</td><td><span class="green bold">6,600</span></td></tr>
+        <tr><td>5</td><td>After-Coupon-Reveal</td><td>2,000,000</td><td>5.5%</td><td>110,000</td><td>20%</td><td><span class="green bold">22,000</span></td></tr>
+        <tr><td>6</td><td>Footer</td><td>3,500,000</td><td>0.3%</td><td>10,500</td><td>16%</td><td><span class="green bold">1,680</span></td></tr>
+        <tr><td>7</td><td>Search Results</td><td>400,000</td><td>1.5%</td><td>6,000</td><td>15%</td><td><span class="green bold">900</span></td></tr>
+        <tr><td>8</td><td>Mobile Sticky</td><td>2,200,000</td><td>0.9%</td><td>19,800</td><td>14%</td><td><span class="green bold">2,772</span></td></tr>
+        <tr><td>9</td><td>Exit-Intent Popup</td><td>500,000</td><td>4.5%</td><td>22,500</td><td>22%</td><td><span class="green bold">4,950</span></td></tr>
+        <tr><td>10</td><td>Blog Sidebar</td><td>300,000</td><td>1.1%</td><td>3,300</td><td>15%</td><td><span class="green bold">495</span></td></tr>
+        <tr style="background:var(--green-subtle);">
+          <td colspan="2"><strong>TOTAL (Deduplicated)</strong></td>
+          <td>-</td>
+          <td>-</td>
+          <td><strong>330,700</strong></td>
+          <td>-</td>
+          <td><strong class="green" style="font-size:1.1rem;">~40,000-56,000</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Deduplication Note</div>
+    <p>Actual new users will be lower than the sum due to user overlap across placements. Applying a 30% deduplication factor, realistic estimate is <strong>28,000-39,000 unique new GrabCash signups per month</strong> from GrabOn website integration alone. At current GrabCash user base of 5,000+, this represents a <strong>6-8x growth multiplier</strong> within the first 90 days.</p>
+  </div>
+
+  <!-- Progressive Rollout -->
+  <div class="labeled-divider"><span>Progressive Rollout Plan</span></div>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Week 1-2: Low-Risk Placements</h3>
+      <ul>
+        <li>Footer section (minimal UX impact)</li>
+        <li>Blog sidebar widget</li>
+        <li>Test with 10% traffic only</li>
+        <li>Monitor bounce rate and session duration</li>
+      </ul>
+      <p><span class="tag tag-green">Go/No-Go Gate:</span> No negative impact on GrabOn metrics</p>
+    </div>
+    <div class="card">
+      <h3>Week 3-4: Medium-Impact Placements</h3>
+      <ul>
+        <li>Store page sidebar</li>
+        <li>Category page banner</li>
+        <li>Search results inline</li>
+        <li>25% traffic, A/B tested</li>
+      </ul>
+      <p><span class="tag tag-orange">Go/No-Go Gate:</span> CTR > 1% with no metric degradation</p>
+    </div>
+    <div class="card">
+      <h3>Week 5-8: High-Impact Placements</h3>
+      <ul>
+        <li>Homepage hero banner</li>
+        <li>Deal card "Earn" button</li>
+        <li>After-coupon-reveal CTA</li>
+        <li>Exit-intent popup</li>
+        <li>Mobile sticky bar</li>
+        <li>Full traffic rollout for proven placements</li>
+      </ul>
+      <p><span class="tag tag-green">Full Rollout</span> of all validated placements</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: USER MIGRATION FUNNEL                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="funnel">
+  <div class="section-header">
+    <div class="section-num">Section 03</div>
+    <h2>User Migration <span class="accent">Funnel</span></h2>
+    <p class="section-subtitle">The complete journey from GrabOn visitor to active GrabCash earner, with stage-by-stage conversion targets, persona-based migration paths, and retargeting strategies for every drop-off point.</p>
+  </div>
+
+  <!-- Full Funnel Visualization -->
+  <div class="flow">
+    <div class="flow-step active">GrabOn Visitor<br><span class="mono" style="font-size:0.7rem;">3.7M/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">Sees GrabCash CTA<br><span class="mono" style="font-size:0.7rem;">2.5M/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">Clicks Through<br><span class="mono" style="font-size:0.7rem;">330K/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">Lands on GrabCash<br><span class="mono" style="font-size:0.7rem;">280K/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">Signs Up<br><span class="mono" style="font-size:0.7rem;">42K/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">Generates First Link<br><span class="mono" style="font-size:0.7rem;">21K/mo</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step active">First Earning<br><span class="mono" style="font-size:0.7rem;">8.4K/mo</span></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Funnel Stage</th><th>Volume</th><th>Stage Conversion</th><th>Cumulative Conversion</th><th>Key Metric</th><th>Optimization Lever</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>GrabOn Monthly Visitors</strong></td><td>3,700,000</td><td>100%</td><td>100%</td><td>Total traffic</td><td>GrabOn SEO/marketing</td></tr>
+        <tr><td><strong>Exposed to GrabCash CTA</strong></td><td>2,500,000</td><td>67.6%</td><td>67.6%</td><td>Impression rate</td><td>Placement count, page coverage</td></tr>
+        <tr><td><strong>Clicks GrabCash CTA</strong></td><td>330,000</td><td>13.2%</td><td>8.9%</td><td>CTR</td><td>CTA copy, design, position</td></tr>
+        <tr><td><strong>Lands on GrabCash</strong></td><td>280,000</td><td>84.8%</td><td>7.6%</td><td>Landing rate</td><td>Page load speed, redirect efficiency</td></tr>
+        <tr><td><strong>Signs Up</strong></td><td>42,000</td><td>15.0%</td><td>1.1%</td><td>Signup rate</td><td>Landing page, value prop, friction</td></tr>
+        <tr><td><strong>Generates First Link</strong></td><td>21,000</td><td>50.0%</td><td>0.57%</td><td>Activation rate</td><td>Onboarding flow, brand selection UX</td></tr>
+        <tr><td><strong>Shares First Link</strong></td><td>14,700</td><td>70.0%</td><td>0.40%</td><td>Share rate</td><td>Share UX, WhatsApp/Telegram integration</td></tr>
+        <tr><td><strong>Gets First Click</strong></td><td>11,760</td><td>80.0%</td><td>0.32%</td><td>Link performance</td><td>Audience quality, content</td></tr>
+        <tr><td><strong>First Earning</strong></td><td>8,400</td><td>71.4%</td><td>0.23%</td><td>Earning rate</td><td>Commission visibility, category mix</td></tr>
+        <tr><td><strong>Monthly Active Earner (30-day)</strong></td><td>5,040</td><td>60.0%</td><td>0.14%</td><td>Retention</td><td>Gamification, earnings momentum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Persona Migration Paths -->
+  <div class="labeled-divider"><span>Persona-Based Migration Paths</span></div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon">&#x1F525;</div>
+      <h3>Heavy Coupon Users (10+ uses/month)</h3>
+      <p><span class="tag tag-green">185K users</span> &bull; <span class="tag tag-green">Highest Priority</span></p>
+      <h4>Profile</h4>
+      <p>Already deeply engaged with deals. Visits GrabOn 3-5x per week. Has a mental model of affiliate commerce. Most likely to understand and embrace the earning opportunity.</p>
+      <h4>Migration Message</h4>
+      <p><em>"You used 15 coupons this month. If you'd shared them on GrabCash, you could have earned &#8377;3,200."</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>Identify via GrabOn usage data (cookie/account)</li>
+        <li>Show personalized "You could have earned &#8377;X" banner</li>
+        <li>Send targeted email with their specific usage data</li>
+        <li>Offer "Fast Track" onboarding (skip tutorials)</li>
+        <li>Pre-select their most-used brands on GrabCash</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">18-25%</strong>. Activation: <strong class="green">65%</strong>. 30-day retention: <strong class="green">55%</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x2764;</div>
+      <h3>Brand Loyalists (Same 3-5 stores)</h3>
+      <p><span class="tag tag-orange">555K users</span> &bull; <span class="tag tag-orange">High Priority</span></p>
+      <h4>Profile</h4>
+      <p>Always visits Amazon, Flipkart, or Myntra pages. Deep knowledge of specific brand deals. Friends likely share similar brand preferences.</p>
+      <h4>Migration Message</h4>
+      <p><em>"You love Amazon deals. Amazon pays &#8377;50-800 per sale on GrabCash. Your friends shop at Amazon too."</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>Detect top 3 brands from browsing history</li>
+        <li>Show brand-specific earning potential in sidebar widget</li>
+        <li>Email: "Amazon/Flipkart/Myntra pays you to share"</li>
+        <li>Pre-create GrabCash profile with their top brands</li>
+        <li>Show "Best earning deals right now" for their brands</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">12-18%</strong>. Activation: <strong class="green">55%</strong>. 30-day retention: <strong class="green">45%</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4E2;</div>
+      <h3>Deal Sharers (Social sharers)</h3>
+      <p><span class="tag tag-green">185K users</span> &bull; <span class="tag tag-green">Highest Value</span></p>
+      <h4>Profile</h4>
+      <p>Already copies coupon codes and shares them on WhatsApp groups, Telegram channels, or social media. They ARE doing GrabCash's job, just without earning. The easiest migration imaginable.</p>
+      <h4>Migration Message</h4>
+      <p><em>"You share deals anyway. Why not earn &#8377;50-500 every time someone buys through your link?"</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>Detect sharing behavior (share button clicks, code copies with no purchase)</li>
+        <li>Intercept share flow: "Share via GrabCash and earn"</li>
+        <li>One-click signup from share intent</li>
+        <li>Auto-generate earning link for the deal they're sharing</li>
+        <li>Track first earnings and send instant notification</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">25-35%</strong>. Activation: <strong class="green">75%</strong>. 30-day retention: <strong class="green">60%</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F393;</div>
+      <h3>Students / Young Adults (18-24)</h3>
+      <p><span class="tag tag-orange">740K users</span> &bull; <span class="tag tag-orange">Growth Segment</span></p>
+      <h4>Profile</h4>
+      <p>Budget-conscious, tech-savvy, active on Instagram and WhatsApp. Motivated by earning opportunities and side income. Large social circles with similar purchasing patterns.</p>
+      <h4>Migration Message</h4>
+      <p><em>"Students earn &#8377;2,000-5,000/month on GrabCash. That's your monthly mobile recharge + Netflix + food budget."</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>Detect student signals (student coupon pages, budget categories)</li>
+        <li>Show student-specific earning stories and testimonials</li>
+        <li>Email: "Student earning challenge: &#8377;500 in your first week"</li>
+        <li>Campus ambassador invitation for top performers</li>
+        <li>Gamified onboarding with student-friendly milestones</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">10-15%</strong>. Activation: <strong class="green">50%</strong>. 30-day retention: <strong class="green">35%</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F50D;</div>
+      <h3>Price-Sensitive Shoppers</h3>
+      <p><span class="tag tag-blue">370K users</span> &bull; <span class="tag tag-blue">Medium Priority</span></p>
+      <h4>Profile</h4>
+      <p>Compares prices across multiple stores. Uses GrabOn to find the absolute best deal. Values every rupee saved. The earning proposition resonates because they already optimize for financial outcomes.</p>
+      <h4>Migration Message</h4>
+      <p><em>"You save &#8377;500 per shopping trip. What if you could also earn &#8377;500 by helping others save?"</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>Show earning calculator alongside savings</li>
+        <li>"Your savings vs. your potential earnings" comparison widget</li>
+        <li>Email: "Save AND earn &mdash; the double benefit"</li>
+        <li>Highlight high-commission products in their preferred categories</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">8-12%</strong>. Activation: <strong class="green">40%</strong>. 30-day retention: <strong class="green">30%</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F44B;</div>
+      <h3>New / First-Time Visitors</h3>
+      <p><span class="tag tag-blue">370K users</span> &bull; <span class="tag tag-blue">Nurture Path</span></p>
+      <h4>Profile</h4>
+      <p>First visit to GrabOn. No established behavior pattern. May be exploring coupons for the first time. Need to first experience GrabOn's value before being introduced to GrabCash.</p>
+      <h4>Migration Message</h4>
+      <p><em>"Welcome! GrabOn saves you money. But did you know our sister platform GrabCash can help you earn money too?"</em></p>
+      <h4>Migration Flow</h4>
+      <ol>
+        <li>First visit: no GrabCash promotion (let them experience GrabOn)</li>
+        <li>Second visit: subtle footer/sidebar mention</li>
+        <li>Third visit: inline GrabCash CTA</li>
+        <li>Email sequence starts after first coupon use</li>
+        <li>Full promotion after 3+ visits</li>
+      </ol>
+      <h4>Expected Conversion</h4>
+      <p>Signup: <strong class="green">3-5%</strong>. Activation: <strong class="green">30%</strong>. 30-day retention: <strong class="green">20%</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Retargeting Strategy -->
+  <div class="labeled-divider"><span>Retargeting Strategy by Drop-Off Point</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Drop-Off Point</th><th>Volume</th><th>Retargeting Channel</th><th>Message</th><th>Timing</th><th>Expected Recovery</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Saw CTA but didn't click</td>
+          <td>2.17M/mo</td>
+          <td>On-site (different placement next visit)</td>
+          <td>Rotate CTA copy, show social proof version</td>
+          <td>Next visit</td>
+          <td>2-3% additional CTR</td>
+        </tr>
+        <tr>
+          <td>Clicked but didn't land</td>
+          <td>50K/mo</td>
+          <td>Technical fix (page load speed)</td>
+          <td>Optimize redirect chain, preload landing page</td>
+          <td>Immediate</td>
+          <td>90%+ landing rate target</td>
+        </tr>
+        <tr>
+          <td>Landed but didn't signup</td>
+          <td>238K/mo</td>
+          <td>Email (if captured), push notification</td>
+          <td>"You were checking out GrabCash &mdash; here's what you're missing"</td>
+          <td>24-48 hours</td>
+          <td>5-8% recovery rate</td>
+        </tr>
+        <tr>
+          <td>Signed up but didn't activate</td>
+          <td>21K/mo</td>
+          <td>Email drip, in-app notification</td>
+          <td>"Generate your first link in 30 seconds. Here's how."</td>
+          <td>2 hours, 24 hours, 72 hours</td>
+          <td>15-25% activation</td>
+        </tr>
+        <tr>
+          <td>Activated but no earning</td>
+          <td>12.6K/mo</td>
+          <td>Push, WhatsApp, email</td>
+          <td>"Your link got 5 clicks! Share in one more group to get your first sale."</td>
+          <td>Daily for first 7 days</td>
+          <td>30-40% first earning</td>
+        </tr>
+        <tr>
+          <td>Earned once, went inactive</td>
+          <td>3.4K/mo</td>
+          <td>Email, push, SMS</td>
+          <td>"You earned &#8377;XX last time. Today's top deals could earn you 2x more."</td>
+          <td>Day 7, 14, 30</td>
+          <td>20-30% reactivation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Attribution Model -->
+  <div class="labeled-divider"><span>Attribution Model</span></div>
+  <div class="card">
+    <h3>Cross-Platform Attribution Framework</h3>
+    <p>Tracking GrabOn-to-GrabCash conversions requires a multi-touch attribution model since users may interact with GrabCash CTAs across multiple GrabOn pages before converting.</p>
+    <h4>Attribution Approach: Position-Based (40/20/40)</h4>
+    <ul>
+      <li><strong>First Touch (40%):</strong> The first GrabOn placement that introduced the user to GrabCash</li>
+      <li><strong>Mid Touches (20%):</strong> All intermediate touchpoints on GrabOn, equally distributed</li>
+      <li><strong>Last Touch (40%):</strong> The final CTA click that led to GrabCash signup</li>
+    </ul>
+    <h4>Technical Implementation</h4>
+    <ul>
+      <li>UTM parameters on all GrabCash links from GrabOn: <code class="mono" style="background:var(--dark-3);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.78rem;">utm_source=grabon&utm_medium={placement}&utm_campaign=cross_promo&utm_content={variant}</code></li>
+      <li>First-party cookie <code class="mono" style="background:var(--dark-3);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.78rem;">gc_first_touch</code> set on first GrabCash CTA view</li>
+      <li>Server-side event logging for all CTA impressions and clicks</li>
+      <li>GrabCash signup event fires postback to GrabOn analytics</li>
+      <li>Unified user ID if GrabOn/GrabCash accounts are linked</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: EMAIL CROSS-PROMOTION                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="email">
+  <div class="section-header">
+    <div class="section-num">Section 04</div>
+    <h2>Email <span class="accent">Cross-Promotion</span> Campaigns</h2>
+    <p class="section-subtitle">Leveraging GrabOn's 2.5M+ email subscriber base with 10 campaign concepts, full email copy for top campaigns, automation workflows, and rigorous A/B testing plans.</p>
+  </div>
+
+  <!-- Segmentation Strategy -->
+  <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">Email List Segmentation Strategy</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Segment</th><th>Criteria</th><th>Size (Est.)</th><th>GrabCash Relevance</th><th>Send Priority</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Super Active</strong></td><td>Opened 8+ emails in last 30 days, clicked 3+</td><td>375K</td><td>Highest &mdash; deeply engaged with deals</td><td><span class="tag tag-green">P0 &mdash; Week 1</span></td></tr>
+        <tr><td><strong>Regular Engagers</strong></td><td>Opened 3-7 emails in 30 days, clicked 1+</td><td>625K</td><td>High &mdash; active deal seekers</td><td><span class="tag tag-green">P0 &mdash; Week 2</span></td></tr>
+        <tr><td><strong>Occasional Openers</strong></td><td>Opened 1-2 emails in 30 days</td><td>750K</td><td>Medium &mdash; need stronger hook</td><td><span class="tag tag-orange">P1 &mdash; Week 3</span></td></tr>
+        <tr><td><strong>Dormant</strong></td><td>No opens in 60+ days</td><td>500K</td><td>Low &mdash; reactivation opportunity</td><td><span class="tag tag-blue">P2 &mdash; Month 2</span></td></tr>
+        <tr><td><strong>New Subscribers</strong></td><td>Subscribed in last 30 days</td><td>250K</td><td>Medium &mdash; fresh interest</td><td><span class="tag tag-orange">P1 &mdash; Ongoing</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10 Email Campaign Concepts -->
+  <div class="labeled-divider"><span>10 Email Campaign Concepts</span></div>
+
+  <!-- Campaign 1 -->
+  <details open>
+    <summary><span class="tag tag-green">Campaign 01</span> &nbsp; "Did You Know You Can EARN?"</summary>
+    <div class="details-body">
+      <h4>Campaign Brief</h4>
+      <p><strong>Objective:</strong> Introduce GrabOn email subscribers to GrabCash for the first time. Build awareness that they can earn money, not just save it.</p>
+      <p><strong>Target Segment:</strong> Super Active + Regular Engagers (1M subscribers)</p>
+      <p><strong>Send Timing:</strong> Tuesday 10 AM IST (highest open rates for deal emails)</p>
+
+      <div class="email-preview">
+        <div class="email-subject">You save money on GrabOn. Now you can EARN money too.</div>
+        <div class="email-preheader">Introducing GrabCash &mdash; share deals, earn real cash. 5,000+ Indians already earning.</div>
+
+        <h3>Hi {first_name},</h3>
+        <p>You've been using GrabOn to save money on your shopping. Smart move &mdash; you've probably saved thousands of rupees with our coupons.</p>
+        <p>But what if we told you that every deal you find on GrabOn could also <strong>earn you money</strong>?</p>
+        <p>Introducing <strong>GrabCash</strong> &mdash; our affiliate earning platform. Here's how it works:</p>
+        <p><strong>Step 1:</strong> Find a deal on GrabCash (500+ brands including Amazon, Flipkart, Myntra, Nykaa, and more)</p>
+        <p><strong>Step 2:</strong> Share your unique link with friends, family, or your social media followers</p>
+        <p><strong>Step 3:</strong> When someone buys through your link, you earn a commission (2-15% depending on the brand)</p>
+        <p><strong>Step 4:</strong> Withdraw your earnings directly to your UPI &mdash; no minimum threshold</p>
+        <p>Over 5,000 Indians are already earning &#8377;2,000-10,000 per month. Some of our top earners make &#8377;50,000+.</p>
+
+        <span class="email-cta">Start Earning on GrabCash &rarr;</span>
+
+        <p style="margin-top:1rem;"><em>P.S. It's completely free to join. You can start earning today.</em></p>
+      </div>
+
+      <h4>A/B Test: Subject Lines</h4>
+      <ul>
+        <li><strong>A:</strong> "You save money on GrabOn. Now you can EARN money too." (Current)</li>
+        <li><strong>B:</strong> "GrabOn users are earning &#8377;5,000/month. Here's how."</li>
+        <li><strong>C:</strong> "Your coupons could be paying you."</li>
+        <li><strong>D:</strong> "From saving to earning &mdash; one click away."</li>
+      </ul>
+
+      <h4>Expected Metrics</h4>
+      <p>Open rate: <strong class="green">22-28%</strong>. CTR: <strong class="green">4.5-6.5%</strong>. Signup rate from click: <strong class="green">18-25%</strong>. Expected new GrabCash users: <strong class="green">8,100-16,250</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Campaign 2 -->
+  <details>
+    <summary><span class="tag tag-green">Campaign 02</span> &nbsp; "Your Shopping Could Pay You"</summary>
+    <div class="details-body">
+      <h4>Campaign Brief</h4>
+      <p><strong>Objective:</strong> Reframe the value proposition &mdash; shopping isn't just spending, it's an earning opportunity when you share.</p>
+      <p><strong>Target Segment:</strong> Regular Engagers + Occasional Openers (1.375M)</p>
+      <p><strong>Send Timing:</strong> Thursday 11 AM IST</p>
+
+      <div class="email-preview">
+        <div class="email-subject">What if every purchase you share earned you &#8377;50-500?</div>
+        <div class="email-preheader">Join GrabCash and turn your shopping recommendations into real cash.</div>
+
+        <h3>{first_name}, you already share deals with friends. Why not get paid for it?</h3>
+        <p>Think about the last time you told a friend about a great deal. They bought it. You got nothing.</p>
+        <p>On <strong>GrabCash</strong>, that same recommendation earns you real money:</p>
+        <p>&#x2705; <strong>Amazon</strong> purchase &rarr; You earn &#8377;50-800<br>
+        &#x2705; <strong>Flipkart</strong> purchase &rarr; You earn &#8377;40-600<br>
+        &#x2705; <strong>Myntra</strong> purchase &rarr; You earn &#8377;30-400<br>
+        &#x2705; <strong>MakeMyTrip</strong> booking &rarr; You earn &#8377;200-2,000</p>
+        <p>Over &#8377;10 lakh has been paid out to GrabCash users already. Your share is waiting.</p>
+
+        <span class="email-cta">Claim Your Earning Potential &rarr;</span>
+      </div>
+
+      <h4>Expected Metrics</h4>
+      <p>Open rate: <strong class="green">18-24%</strong>. CTR: <strong class="green">3.8-5.5%</strong>. Expected new users: <strong class="green">9,400-18,900</strong>.</p>
+    </div>
+  </details>
+
+  <!-- Campaign 3 -->
+  <details>
+    <summary><span class="tag tag-orange">Campaign 03</span> &nbsp; "Top Earners This Month" Social Proof</summary>
+    <div class="details-body">
+      <h4>Campaign Brief</h4>
+      <p><strong>Objective:</strong> Use social proof to demonstrate that real people are earning real money on GrabCash. Show leaderboard-style data.</p>
+      <p><strong>Target Segment:</strong> All engaged segments (2.0M)</p>
+      <p><strong>Send Timing:</strong> 1st of every month (monthly recap)</p>
+
+      <div class="email-preview">
+        <div class="email-subject">GrabCash Earners Report: &#8377;8.5L paid out in May 2026</div>
+        <div class="email-preheader">See how much real people earned last month. You could be next.</div>
+
+        <h3>May 2026 Earnings Report</h3>
+        <p><strong>Total paid out:</strong> &#8377;8,52,400</p>
+        <p><strong>Active earners:</strong> 3,200+</p>
+        <p><strong>Average earning:</strong> &#8377;2,664/month</p>
+        <p style="margin-top:0.75rem;"><strong>Top Earners:</strong></p>
+        <p>&#x1F947; Priya M. (Mumbai) &mdash; &#8377;48,200<br>
+        &#x1F948; Rahul K. (Delhi) &mdash; &#8377;35,800<br>
+        &#x1F949; Anjali S. (Bangalore) &mdash; &#8377;28,400</p>
+        <p><em>"I started on GrabCash 3 months ago. Now I earn more than my part-time job."</em> &mdash; Priya M.</p>
+
+        <span class="email-cta">Start Your Earning Journey &rarr;</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- Campaign 4 -->
+  <details>
+    <summary><span class="tag tag-orange">Campaign 04</span> &nbsp; "Your Favorite Brand Pays Commissions"</summary>
+    <div class="details-body">
+      <h4>Campaign Brief</h4>
+      <p><strong>Objective:</strong> Personalized email showing the user's most-visited GrabOn brands and how much they can earn from sharing those specific brand deals.</p>
+      <p><strong>Target Segment:</strong> Brand Loyalists identified from GrabOn data (555K)</p>
+
+      <div class="email-preview">
+        <div class="email-subject">{first_name}, {top_brand} pays you &#8377;{est_commission} per sale on GrabCash</div>
+        <div class="email-preheader">Your favorite brands are waiting for you to earn from them.</div>
+
+        <h3>Your Top 3 GrabOn Brands &mdash; and What They'd Pay You on GrabCash:</h3>
+        <p>&#x1F6D2; <strong>{brand_1}</strong>: Commission rate {rate_1}% &rarr; Avg. earning &#8377;{earn_1} per sale<br>
+        &#x1F6D2; <strong>{brand_2}</strong>: Commission rate {rate_2}% &rarr; Avg. earning &#8377;{earn_2} per sale<br>
+        &#x1F6D2; <strong>{brand_3}</strong>: Commission rate {rate_3}% &rarr; Avg. earning &#8377;{earn_3} per sale</p>
+        <p>If you share just 5 deals per week from these brands, you could earn <strong>&#8377;{monthly_estimate}/month</strong>.</p>
+
+        <span class="email-cta">Start Earning from {top_brand} &rarr;</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- Campaign 5 -->
+  <details>
+    <summary><span class="tag tag-orange">Campaign 05</span> &nbsp; "Student? Earn While You Study"</summary>
+    <div class="details-body">
+      <h4>Campaign Brief</h4>
+      <p><strong>Objective:</strong> Target the student demographic with a relatable earning proposition tied to their specific financial needs.</p>
+      <p><strong>Target Segment:</strong> Users who browse student-oriented coupons, education deals (est. 300K)</p>
+
+      <div class="email-preview">
+        <div class="email-subject">College student? Here's how to earn &#8377;3,000/month without a job.</div>
+        <div class="email-preheader">GrabCash + your WhatsApp groups = real earning. No experience needed.</div>
+
+        <h3>Your classmates are your earning engine.</h3>
+        <p>Every time your college WhatsApp group asks "where's the best deal on [product]?" &mdash; that's your earning moment.</p>
+        <p><strong>What &#8377;3,000/month looks like:</strong></p>
+        <p>&#x1F4F1; Your phone recharge: &#8377;299/mo &mdash; COVERED<br>
+        &#x1F3AC; Netflix + Spotify: &#8377;500/mo &mdash; COVERED<br>
+        &#x1F355; Weekend food: &#8377;1,200/mo &mdash; COVERED<br>
+        &#x1F4B0; Savings: &#8377;1,000/mo &mdash; BUILDING</p>
+        <p>All from sharing deals you'd share anyway. Takes 15 minutes a day.</p>
+
+        <span class="email-cta">Join GrabCash &mdash; It's Free &rarr;</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- Campaigns 6-10 (Brief summaries) -->
+  <details>
+    <summary><span class="tag tag-blue">Campaign 06</span> &nbsp; "&#8377;500 in Your First Week" Challenge</summary>
+    <div class="details-body">
+      <p><strong>Objective:</strong> Create urgency with a time-bound earning challenge. New GrabCash signups who earn &#8377;500 in their first 7 days get a bonus &#8377;100.</p>
+      <p><strong>Subject:</strong> "Challenge: Earn &#8377;500 this week. We'll add &#8377;100 bonus."</p>
+      <p><strong>Mechanic:</strong> Sign up via unique challenge link, earn &#8377;500 within 7 days, bonus &#8377;100 credited automatically. Creates FOMO and urgency.</p>
+      <p><strong>Target:</strong> All non-GrabCash users (2.5M). <strong>Expected signups:</strong> 15,000-25,000.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-blue">Campaign 07</span> &nbsp; Festival Earning Opportunity (Diwali / Sale Season)</summary>
+    <div class="details-body">
+      <p><strong>Objective:</strong> Capitalize on mega-sale events (Diwali, Amazon Great Indian Festival, Flipkart Big Billion Days) when commission volumes are 5-10x higher.</p>
+      <p><strong>Subject:</strong> "Diwali Sale = &#8377;10,000+ earning week on GrabCash. Here's your plan."</p>
+      <p><strong>Content:</strong> Sale-specific earning guide, top deals with highest commissions, countdown timer, earning potential calculator for the sale period.</p>
+      <p><strong>Timing:</strong> 3 days before each major sale event. <strong>Expected signups:</strong> 20,000-40,000 (highest of any campaign).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-blue">Campaign 08</span> &nbsp; "Your Friend Earned &#8377;2,000" Referral</summary>
+    <div class="details-body">
+      <p><strong>Objective:</strong> Leverage GrabCash's referral system through GrabOn's email list. Show that someone in the user's network is already earning.</p>
+      <p><strong>Subject:</strong> "Someone you know earned &#8377;2,000 on GrabCash last week."</p>
+      <p><strong>Content:</strong> Anonymized or opt-in referral data, referral bonus for both parties, "Join your friend" CTA.</p>
+      <p><strong>Target:</strong> Email subscribers whose phone contacts match existing GrabCash users (requires phone number matching with consent).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-blue">Campaign 09</span> &nbsp; Success Story Feature</summary>
+    <div class="details-body">
+      <p><strong>Objective:</strong> Deep-dive into one GrabCash earner's story. Make earning feel real and achievable through detailed narrative.</p>
+      <p><strong>Subject:</strong> "How Meera, a homemaker, earns &#8377;15,000/month from her phone."</p>
+      <p><strong>Content:</strong> Full story with earnings screenshots (with consent), daily routine, top brands, tips for beginners. Long-form email with strong emotional hook.</p>
+      <p><strong>Frequency:</strong> Monthly, rotating different personas (student, homemaker, side-hustler, Telegram admin).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="tag tag-blue">Campaign 10</span> &nbsp; Monthly "Earnings Report" for GrabOn Users</summary>
+    <div class="details-body">
+      <p><strong>Objective:</strong> Show GrabOn users what they COULD have earned if they'd been on GrabCash &mdash; based on the deals they viewed/used on GrabOn.</p>
+      <p><strong>Subject:</strong> "{first_name}, you viewed 24 deals last month. That could have been &#8377;4,800 in earnings."</p>
+      <p><strong>Content:</strong> Personalized "phantom earnings report" showing their GrabOn activity mapped to GrabCash earning potential. This is the highest-conversion concept because the data is deeply personal and specific.</p>
+      <p><strong>Technical requirement:</strong> Integration between GrabOn user activity logs and GrabCash commission data.</p>
+    </div>
+  </details>
+
+  <!-- Email Automation Workflows -->
+  <div class="labeled-divider"><span>Email Automation Workflows</span></div>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Workflow 1: New Subscriber Welcome</h3>
+      <p><span class="tag tag-green">Trigger:</span> New GrabOn email signup</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 0</div>
+          <h4>GrabOn Welcome Email</h4>
+          <p>Standard GrabOn welcome with subtle GrabCash mention in footer</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 3</div>
+          <h4>First Deal Email</h4>
+          <p>Top deals from GrabOn with "Share &amp; Earn" button on best deal</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 7</div>
+          <h4>GrabCash Introduction</h4>
+          <p>Dedicated GrabCash intro email (Campaign 01 template)</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 14</div>
+          <h4>Social Proof Email</h4>
+          <p>"5,000+ GrabOn users now earn on GrabCash" with testimonials</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Workflow 2: Post-Coupon-Use Follow-Up</h3>
+      <p><span class="tag tag-orange">Trigger:</span> User reveals 3+ coupons on GrabOn</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-meta">+2 Hours</div>
+          <h4>Earning Potential Email</h4>
+          <p>"You used 3 coupons today. On GrabCash, that could have earned you &#8377;XXX."</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">+48 Hours</div>
+          <h4>How-It-Works Email</h4>
+          <p>Simple 3-step guide to earning on GrabCash</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">+7 Days</div>
+          <h4>Last Chance + Incentive</h4>
+          <p>"Sign up this week, get &#8377;50 bonus on first earning"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Workflow 3: Dormant User Reactivation</h3>
+      <p><span class="tag tag-blue">Trigger:</span> No GrabOn email opens in 60+ days</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 0</div>
+          <h4>Reactivation Email</h4>
+          <p>"We miss you! While you were away, GrabOn users started EARNING..."</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 7</div>
+          <h4>FOMO Email</h4>
+          <p>"&#8377;8.5L paid out last month. Here's what you're missing."</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-meta">Day 14</div>
+          <h4>Final Push</h4>
+          <p>"Last chance: Sign up for GrabCash and get &#8377;100 welcome bonus."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Send Schedule -->
+  <div class="labeled-divider"><span>Send Schedule &amp; Frequency Caps</span></div>
+  <div class="card">
+    <h3>Email Frequency Rules</h3>
+    <ul>
+      <li><strong>Maximum GrabCash emails per user per month:</strong> 4 (1 per week max)</li>
+      <li><strong>GrabCash mention in GrabOn deal emails:</strong> Allowed in footer of every deal email (non-intrusive)</li>
+      <li><strong>Dedicated GrabCash emails:</strong> Max 2 per month per user</li>
+      <li><strong>Best send times:</strong> Tuesday 10 AM, Thursday 11 AM, Saturday 9 AM IST</li>
+      <li><strong>Suppression:</strong> Don't send GrabCash emails to users who already signed up for GrabCash</li>
+      <li><strong>Unsubscribe:</strong> GrabCash emails must have separate unsubscribe from GrabOn deal emails</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: IN-APP / ON-SITE CTAs & WIDGETS                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="widgets">
+  <div class="section-header">
+    <div class="section-num">Section 05</div>
+    <h2>On-Site CTAs &amp; <span class="accent">Widgets</span></h2>
+    <p class="section-subtitle">Smart widgets, earning calculators, social proof elements, and interactive tools embedded across GrabOn.in to drive GrabCash signups.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon">&#x1F4B1;</div>
+      <h3>"Share &amp; Earn" Widget</h3>
+      <p>Persistent widget on every coupon page that shows earning potential for the current deal.</p>
+      <h4>Design Specs</h4>
+      <ul>
+        <li>Compact card (300x200px) in sidebar or below coupon</li>
+        <li>Shows: brand logo, commission rate, estimated earning per sale</li>
+        <li>"Share &amp; Earn" CTA button (green, prominent)</li>
+        <li>Dynamically pulls data from GrabCash commission API</li>
+        <li>Animate earnings counter on hover</li>
+      </ul>
+      <h4>Technical Spec</h4>
+      <div class="code-block">
+<span class="comment">// Share &amp; Earn Widget - Embed Script</span>
+&lt;div id=<span class="string">"gc-widget"</span> data-brand=<span class="string">"{brand_slug}"</span>&gt;&lt;/div&gt;
+&lt;script src=<span class="string">"https://grabcash.in/widget/v1.js"</span>&gt;&lt;/script&gt;
+&lt;script&gt;
+  GrabCashWidget.<span class="func">init</span>({
+    container: <span class="string">'gc-widget'</span>,
+    brand: document.<span class="func">querySelector</span>(<span class="string">'[data-brand]'</span>).dataset.brand,
+    theme: <span class="string">'dark'</span>,
+    position: <span class="string">'sidebar'</span>,
+    utm_source: <span class="string">'grabon'</span>,
+    utm_medium: <span class="string">'widget'</span>
+  });
+&lt;/script&gt;
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4CA;</div>
+      <h3>Earning Calculator Widget</h3>
+      <p>Interactive calculator: "This deal could earn you &#8377;XX." Users input how many people they'd share with, see estimated earnings.</p>
+      <h4>Calculator Logic</h4>
+      <ul>
+        <li><strong>Input 1:</strong> Product price (pre-filled from deal page)</li>
+        <li><strong>Input 2:</strong> Number of friends you'd share with (slider: 5-500)</li>
+        <li><strong>Input 3:</strong> Estimated conversion rate (default: 5%)</li>
+        <li><strong>Output:</strong> Estimated earning per share = Price &times; Commission Rate &times; Conversion %</li>
+        <li><strong>Monthly projection:</strong> "If you share 5 deals/week like this, you could earn &#8377;X,XXX/month"</li>
+      </ul>
+      <h4>A/B Test Variants</h4>
+      <ul>
+        <li><strong>V1:</strong> Simple &mdash; just shows earning amount</li>
+        <li><strong>V2:</strong> Interactive slider &mdash; "Share with X people, earn &#8377;Y"</li>
+        <li><strong>V3:</strong> Comparison &mdash; "Saving &#8377;200 vs. Earning &#8377;200 by sharing"</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F3C6;</div>
+      <h3>"Top Earners" Social Proof Widget</h3>
+      <p>Live or near-live feed showing recent GrabCash earnings. Creates FOMO and demonstrates platform activity.</p>
+      <h4>Design</h4>
+      <ul>
+        <li>Scrolling ticker or card carousel</li>
+        <li>Shows: "[Name] from [City] earned &#8377;XXX from [Brand] &mdash; [time ago]"</li>
+        <li>Real data, anonymized (first name + city only, with user consent)</li>
+        <li>Updates every 30 minutes</li>
+        <li>Placement: Below coupon cards, above footer</li>
+      </ul>
+      <h4>Sample Data Points</h4>
+      <p style="font-size:0.82rem;">
+        "Priya from Mumbai earned &#8377;450 from Amazon &mdash; 2 hours ago"<br>
+        "Rahul from Delhi earned &#8377;280 from Flipkart &mdash; 3 hours ago"<br>
+        "Sneha from Pune earned &#8377;1,200 from MakeMyTrip &mdash; 5 hours ago"
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4AC;</div>
+      <h3>User Testimonial Carousel</h3>
+      <p>Rotating testimonials from GrabCash earners, embedded on high-traffic GrabOn pages.</p>
+      <h4>Content Format</h4>
+      <ul>
+        <li>Photo (or avatar), name, city, monthly earnings</li>
+        <li>1-2 sentence quote about their GrabCash experience</li>
+        <li>"Join [Name]" CTA button</li>
+        <li>Auto-rotates every 5 seconds, manual navigation arrows</li>
+        <li>5-8 testimonials per carousel</li>
+      </ul>
+      <h4>Sample Testimonials</h4>
+      <p style="font-size:0.85rem;"><em>"I was just copying coupons from GrabOn and sharing them on WhatsApp. Now I do the same thing on GrabCash and earn &#8377;8,000/month."</em> &mdash; Meera, Homemaker, Hyderabad</p>
+      <p style="font-size:0.85rem;"><em>"My Telegram channel has 5,000 members. GrabCash pays me &#8377;35,000/month for sharing deals with them."</em> &mdash; Vikram, Telegram Admin, Mumbai</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x2705;</div>
+      <h3>After-Coupon-Copy CTA</h3>
+      <p>The instant after a user copies a coupon code, show a compelling CTA to earn by sharing that same deal on GrabCash.</p>
+      <h4>UX Flow</h4>
+      <ol>
+        <li>User clicks "Get Code" on GrabOn</li>
+        <li>Code reveals and copies to clipboard</li>
+        <li>Success toast appears: "Code copied!"</li>
+        <li>Below the toast, GrabCash CTA slides in: "Now share this deal on GrabCash and earn &#8377;XX"</li>
+        <li>One-click link generation (if already a GrabCash user) or signup prompt</li>
+      </ol>
+      <h4>Implementation</h4>
+      <div class="code-block">
+<span class="comment">// Hook into existing coupon reveal event</span>
+document.<span class="func">addEventListener</span>(<span class="string">'couponRevealed'</span>, (e) => {
+  <span class="keyword">const</span> { brand, dealId, commission } = e.detail;
+  <span class="keyword">const</span> earnCTA = document.<span class="func">createElement</span>(<span class="string">'div'</span>);
+  earnCTA.className = <span class="string">'gc-post-reveal-cta'</span>;
+  earnCTA.innerHTML = <span class="string">`
+    &lt;p&gt;Now earn &#8377;${commission} by sharing this deal!&lt;/p&gt;
+    &lt;a href="https://grabcash.in/earn?brand=${brand}&deal=${dealId}
+      &utm_source=grabon&utm_medium=post_reveal"&gt;
+      Share &amp; Earn &rarr;
+    &lt;/a&gt;
+  `</span>;
+  e.target.parentNode.<span class="func">appendChild</span>(earnCTA);
+});
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4B0;</div>
+      <h3>Price Comparison + Earning Tool</h3>
+      <p>Shows the product price across stores AND the earning potential for each, helping users choose the highest-earning option to share.</p>
+      <h4>Example Display</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Store</th><th>Price</th><th>Your Earning</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>Amazon</td><td>&#8377;12,999</td><td class="green bold">&#8377;520</td><td>[Share &amp; Earn]</td></tr>
+            <tr><td>Flipkart</td><td>&#8377;13,499</td><td class="green bold">&#8377;405</td><td>[Share &amp; Earn]</td></tr>
+            <tr><td>Croma</td><td>&#8377;13,299</td><td class="green bold">&#8377;665</td><td>[Share &amp; Earn]</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>This widget drives GrabCash signups while also increasing GrabOn's value proposition (price comparison + earning in one view).</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: SOCIAL MEDIA CROSS-PROMOTION                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="social">
+  <div class="section-header">
+    <div class="section-num">Section 06</div>
+    <h2>Social Media <span class="accent">Cross-Promotion</span></h2>
+    <p class="section-subtitle">Leveraging GrabOn's social media presence across Instagram, YouTube, and Twitter/X to drive GrabCash awareness and signups through organic and collaborative content.</p>
+  </div>
+
+  <!-- Social Assets Inventory -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="value">500K+</div>
+      <div class="label">Instagram Followers</div>
+      <div class="sublabel">@grabon_in</div>
+    </div>
+    <div class="kpi">
+      <div class="value">50K+</div>
+      <div class="label">YouTube Subscribers</div>
+      <div class="sublabel">GrabOn Channel</div>
+    </div>
+    <div class="kpi">
+      <div class="value">100K+</div>
+      <div class="label">Twitter/X Followers</div>
+      <div class="sublabel">@GrabOn_in</div>
+    </div>
+    <div class="kpi">
+      <div class="value">200K+</div>
+      <div class="label">Facebook Followers</div>
+      <div class="sublabel">GrabOn.in Page</div>
+    </div>
+  </div>
+
+  <!-- Cross-Posting Strategy -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Content Type</th><th>GrabCash Integration</th><th>Frequency</th><th>Expected Reach</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Instagram Feed</td><td>Deal posts, brand features</td><td>"Earn by sharing this deal on GrabCash" in caption + link in bio</td><td>3x/week</td><td>50K-100K per post</td></tr>
+        <tr><td>Instagram Stories</td><td>Flash deals, polls, Q&amp;A</td><td>Swipe-up to GrabCash, "Did you know you can earn?" story series</td><td>5x/week</td><td>80K-150K per story</td></tr>
+        <tr><td>Instagram Reels</td><td>Short-form earning tutorials</td><td>"How to earn &#8377;500 in 5 minutes on GrabCash" tutorials</td><td>2x/week</td><td>100K-500K per reel</td></tr>
+        <tr><td>YouTube</td><td>Deal roundups, tutorials</td><td>60-second GrabCash segment in every video + dedicated GrabCash videos</td><td>1x/week</td><td>10K-50K per video</td></tr>
+        <tr><td>Twitter/X</td><td>Deal alerts, trending topics</td><td>"Share this deal on @GrabCash and earn" tweet threads</td><td>5x/week</td><td>20K-50K per tweet</td></tr>
+        <tr><td>Facebook</td><td>Deal posts, community</td><td>GrabCash earning success stories, "Join" CTAs</td><td>3x/week</td><td>15K-40K per post</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Instagram Collab Posts -->
+  <div class="labeled-divider"><span>Instagram Collab Posts Strategy</span></div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Collab Post Format</h3>
+      <p>Instagram's Collab feature allows posts to appear on both @grabon_in and @grabcash profiles simultaneously, doubling reach.</p>
+      <h4>Collab Post Ideas (Monthly)</h4>
+      <ol>
+        <li><strong>Week 1:</strong> "Save on GrabOn, Earn on GrabCash" infographic</li>
+        <li><strong>Week 2:</strong> Earner of the Month feature (joint announcement)</li>
+        <li><strong>Week 3:</strong> "Best deals to earn from this week" carousel</li>
+        <li><strong>Week 4:</strong> Brand spotlight: "[Brand] deals pay the highest commissions"</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Content Calendar Principles</h3>
+      <h4>GrabOn Channel Mix (Weekly)</h4>
+      <ul>
+        <li><strong>Monday:</strong> Deal roundup (with GrabCash earning potential)</li>
+        <li><strong>Tuesday:</strong> Brand feature + earning opportunity</li>
+        <li><strong>Wednesday:</strong> GrabCash earner spotlight / success story</li>
+        <li><strong>Thursday:</strong> Tutorial &mdash; "How to earn from [category]"</li>
+        <li><strong>Friday:</strong> Weekend deals + "Share &amp; earn this weekend"</li>
+        <li><strong>Saturday:</strong> User-generated content / testimonial</li>
+        <li><strong>Sunday:</strong> Weekly earnings recap + "Start earning next week"</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 30-Day Social Calendar -->
+  <div class="labeled-divider"><span>30-Day Content Calendar</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Platform</th><th>Content Type</th><th>Topic</th><th>GrabCash Integration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Day 1</td><td>IG Feed + Twitter</td><td>Carousel</td><td>Top 5 Deals of the Week</td><td>Slide 5: "Earn by sharing these on GrabCash"</td></tr>
+        <tr><td>Day 2</td><td>IG Stories</td><td>Poll</td><td>"Do you share deals with friends?"</td><td>Follow-up: "Get paid for it on GrabCash"</td></tr>
+        <tr><td>Day 3</td><td>IG Reel</td><td>Tutorial</td><td>"How to earn &#8377;500 today on GrabCash"</td><td>Full GrabCash tutorial (60 sec)</td></tr>
+        <tr><td>Day 4</td><td>Twitter Thread</td><td>Thread</td><td>"5 ways to earn money from phone"</td><td>GrabCash is option #1</td></tr>
+        <tr><td>Day 5</td><td>IG Feed (Collab)</td><td>Infographic</td><td>"Save on GrabOn, Earn on GrabCash"</td><td>Joint collab post @grabon x @grabcash</td></tr>
+        <tr><td>Day 6</td><td>YouTube</td><td>Video</td><td>"Amazon Best Deals + How to Earn"</td><td>2-min GrabCash segment in video</td></tr>
+        <tr><td>Day 7</td><td>IG Stories</td><td>Testimonial</td><td>Earner success story</td><td>Featured GrabCash earner screenshot</td></tr>
+        <tr><td>Day 8</td><td>IG Feed</td><td>Brand Feature</td><td>"Myntra pays 6-10% on GrabCash"</td><td>Brand-specific earning potential</td></tr>
+        <tr><td>Day 9</td><td>Twitter</td><td>Quick Tip</td><td>"Pro tip: Share deals at 8 PM for max earnings"</td><td>GrabCash usage tip</td></tr>
+        <tr><td>Day 10</td><td>IG Reel</td><td>Day-in-Life</td><td>"A day as a GrabCash earner"</td><td>Full GrabCash lifestyle content</td></tr>
+        <tr><td>Day 11-15</td><td>Mixed</td><td>Mixed</td><td>Electronics deals week + earning guide</td><td>Category-specific earning content</td></tr>
+        <tr><td>Day 16-20</td><td>Mixed</td><td>Mixed</td><td>Fashion deals week + top fashion earners</td><td>Fashion brand earning spotlight</td></tr>
+        <tr><td>Day 21-25</td><td>Mixed</td><td>Mixed</td><td>Student earning week campaign</td><td>Student-focused GrabCash content</td></tr>
+        <tr><td>Day 26-30</td><td>Mixed</td><td>Mixed</td><td>Month-end earning recap + next month preview</td><td>Earnings leaderboard, next month strategy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Influencer Network -->
+  <div class="labeled-divider"><span>GrabOn Influencer Network Leverage</span></div>
+  <div class="card">
+    <h3>Influencer Cross-Promotion Strategy</h3>
+    <p>GrabOn already works with 50+ micro-influencers for coupon promotion. These influencers can be activated for GrabCash promotion at near-zero incremental cost.</p>
+    <h4>Approach</h4>
+    <ul>
+      <li><strong>Tier 1 (10-50K followers):</strong> 20 influencers &rarr; Mention GrabCash in their next 3 GrabOn posts. Cost: Include GrabCash bonus commission as incentive.</li>
+      <li><strong>Tier 2 (50-200K followers):</strong> 15 influencers &rarr; Dedicated GrabCash story/reel. Cost: &#8377;5,000-10,000 per post (within existing GrabOn budget).</li>
+      <li><strong>Tier 3 (200K+ followers):</strong> 5 influencers &rarr; Full GrabCash review/tutorial video. Cost: &#8377;25,000-50,000 per video.</li>
+    </ul>
+    <h4>Expected Impact</h4>
+    <p>Combined reach: <strong class="green">2M-5M impressions</strong>. Expected signups from influencer campaign: <strong class="green">5,000-15,000</strong>.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: BLOG & CONTENT CROSS-PROMOTION                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="blog">
+  <div class="section-header">
+    <div class="section-num">Section 07</div>
+    <h2>Blog &amp; Content <span class="accent">Cross-Promotion</span></h2>
+    <p class="section-subtitle">Integrating GrabCash promotion into GrabOn's blog (blog.grabon.in) with 10 article concepts, internal linking strategy, and SEO cross-pollination.</p>
+  </div>
+
+  <!-- Blog Article Concepts -->
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Article 1: How to Earn Money from Online Shopping in 2026</h3>
+      <p><span class="tag tag-green">SEO Target</span> "earn money online shopping"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Introduction: The affiliate earning revolution</li>
+        <li>What is affiliate marketing (simplified)</li>
+        <li>GrabCash: The easiest way to start</li>
+        <li>Step-by-step guide: signup to first earning</li>
+        <li>Real earnings data and case studies</li>
+        <li>Tips to maximize earnings</li>
+        <li>FAQ section</li>
+      </ol>
+      <p><strong>Word count:</strong> 2,500+ words. <strong>Internal links:</strong> 5+ to GrabCash pages. <strong>Search volume:</strong> 12,000/mo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 2: Student Earning Guide 2026 &mdash; &#8377;5,000/Month from Your Phone</h3>
+      <p><span class="tag tag-green">SEO Target</span> "student earning ideas" "earn money as student"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Why students need side income (relatable hook)</li>
+        <li>Top 10 earning methods for students (GrabCash featured #1)</li>
+        <li>Deep dive: How GrabCash works for students</li>
+        <li>Student success stories on GrabCash</li>
+        <li>Daily routine for earning &#8377;5,000/month</li>
+        <li>Campus ambassador opportunity</li>
+      </ol>
+      <p><strong>Word count:</strong> 2,000+ words. <strong>Search volume:</strong> 18,000/mo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 3: GrabCash vs. Saving with Coupons &mdash; Why Not Do Both?</h3>
+      <p><span class="tag tag-orange">SEO Target</span> "grabcash review" "earn by sharing deals"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Saving vs. Earning: The mental model shift</li>
+        <li>How GrabOn + GrabCash work together</li>
+        <li>Case study: User who saves &#8377;3K + earns &#8377;5K/month</li>
+        <li>Comparison: Time spent vs. money earned/saved</li>
+        <li>How to optimize both strategies</li>
+      </ol>
+      <p><strong>Word count:</strong> 1,800+ words. <strong>Internal links:</strong> GrabOn coupon pages + GrabCash.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 4: How Telegram Admins Earn &#8377;50K/Month Sharing Deals</h3>
+      <p><span class="tag tag-green">SEO Target</span> "telegram earning" "earn money telegram"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>The Telegram deal-sharing economy</li>
+        <li>Profile: Top Telegram earners on GrabCash</li>
+        <li>How to start a deal-sharing Telegram channel</li>
+        <li>GrabCash integration for Telegram admins</li>
+        <li>Growth strategy: 0 to 10K members</li>
+        <li>Monetization tips beyond basic commissions</li>
+      </ol>
+      <p><strong>Word count:</strong> 3,000+ words. <strong>Search volume:</strong> 8,500/mo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 5: Side Hustle Ideas for Homemakers in India</h3>
+      <p><span class="tag tag-orange">SEO Target</span> "homemaker earning ideas" "earn from home india"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Financial independence for homemakers (empowerment angle)</li>
+        <li>Top 8 side hustle ideas (GrabCash featured prominently)</li>
+        <li>Why deal-sharing is perfect for homemakers</li>
+        <li>WhatsApp group strategy for homemakers</li>
+        <li>Success story: Meera's journey to &#8377;15K/month</li>
+      </ol>
+      <p><strong>Word count:</strong> 2,200+ words. <strong>Search volume:</strong> 15,000/mo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 6: Amazon Affiliate Earning Guide &mdash; GrabCash Edition</h3>
+      <p><span class="tag tag-green">SEO Target</span> "amazon affiliate india" "earn from amazon"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Amazon's affiliate commission structure</li>
+        <li>Why GrabCash is easier than Amazon Associates</li>
+        <li>Top earning Amazon product categories</li>
+        <li>How to find and share the best Amazon deals</li>
+        <li>Earnings potential by category</li>
+      </ol>
+      <p><strong>Word count:</strong> 2,500+ words. <strong>Search volume:</strong> 22,000/mo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 7: Flipkart Big Billion Days 2026 &mdash; Earning Strategy Guide</h3>
+      <p><span class="tag tag-orange">Seasonal</span> Published 1 week before sale event</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Sale preview: What to expect</li>
+        <li>Highest-commission categories during the sale</li>
+        <li>GrabCash earning strategy for sale period</li>
+        <li>Pre-sale preparation checklist</li>
+        <li>Real-time earning updates during the sale</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Article 8: WhatsApp Se Paise Kaise Kamaye (How to Earn from WhatsApp)</h3>
+      <p><span class="tag tag-green">Hindi SEO</span> "whatsapp se paise kamaye"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>WhatsApp earning methods overview (Hindi)</li>
+        <li>GrabCash + WhatsApp: Perfect combination</li>
+        <li>Group management tips for earning</li>
+        <li>Best deals to share on WhatsApp</li>
+        <li>Daily earning routine in Hindi</li>
+      </ol>
+      <p><strong>Search volume:</strong> 25,000/mo (Hindi queries). <strong>Opportunity:</strong> Low competition in Hindi content.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 9: GrabCash vs. EarnKaro &mdash; Which is Better in 2026?</h3>
+      <p><span class="tag tag-green">SEO Target</span> "earnkaro alternative" "grabcash vs earnkaro"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>Platform comparison overview</li>
+        <li>Commission rates comparison by brand</li>
+        <li>Payout speed and reliability</li>
+        <li>User experience comparison</li>
+        <li>Unique GrabCash advantages (GrabOn integration)</li>
+        <li>Verdict and recommendation</li>
+      </ol>
+      <p><strong>Search volume:</strong> 5,000/mo. <strong>Strategic value:</strong> Captures competitor-intent traffic.</p>
+    </div>
+
+    <div class="card">
+      <h3>Article 10: Passive Income Ideas India 2026 &mdash; Complete Guide</h3>
+      <p><span class="tag tag-green">SEO Target</span> "passive income ideas india"</p>
+      <h4>Outline</h4>
+      <ol>
+        <li>What is passive income (Indian context)</li>
+        <li>Top 15 passive income ideas (GrabCash in top 3)</li>
+        <li>Deep dive: How deal-sharing creates passive income</li>
+        <li>Building an earning system on GrabCash</li>
+        <li>Income stacking: Combine multiple methods</li>
+      </ol>
+      <p><strong>Word count:</strong> 3,500+ words. <strong>Search volume:</strong> 40,000/mo (highly competitive but massive volume).</p>
+    </div>
+  </div>
+
+  <!-- Internal Linking -->
+  <div class="labeled-divider"><span>Internal Linking &amp; SEO Strategy</span></div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Internal Linking Rules</h3>
+      <ul>
+        <li>Every GrabOn blog post about deals should contain 1-2 contextual links to GrabCash</li>
+        <li>High-traffic GrabOn pages (top 100 by traffic) get priority GrabCash link insertion</li>
+        <li>Anchor text variations: "earn by sharing," "GrabCash," "share and earn," "affiliate earning"</li>
+        <li>Maximum 3 GrabCash links per blog article (avoid over-optimization)</li>
+        <li>Link placement: within body content, not just footer/sidebar</li>
+        <li>Track: clicks on internal links via UTM and click events</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>SEO Cross-Pollination</h3>
+      <ul>
+        <li><strong>Domain Authority Transfer:</strong> GrabOn's DA 72 passes authority through do-follow links to GrabCash.in pages</li>
+        <li><strong>Topical Relevance:</strong> GrabOn's content about deals + commissions establishes topical authority for GrabCash's earning-focused keywords</li>
+        <li><strong>Hreflang:</strong> Not needed (same language/market) but consider canonical setup if any content overlap</li>
+        <li><strong>Guest Post Exchange:</strong> GrabCash blog links to GrabOn for "where to find deals" and GrabOn links to GrabCash for "how to earn from deals"</li>
+        <li><strong>Shared Schema:</strong> Both sites use Organization schema referencing InspireLabs as parent, establishing entity relationship for Google</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 8: PUSH NOTIFICATION CROSS-PROMOTION               -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="push">
+  <div class="section-header">
+    <div class="section-num">Section 08</div>
+    <h2>Push Notification <span class="accent">Cross-Promotion</span></h2>
+    <p class="section-subtitle">Leveraging GrabOn's 1.5M+ push notification subscriber base to drive GrabCash awareness with carefully managed frequency and targeting.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="value">1.5M+</div>
+      <div class="label">Push Subscribers</div>
+    </div>
+    <div class="kpi">
+      <div class="value">5-8%</div>
+      <div class="label">Avg. Click Rate</div>
+    </div>
+    <div class="kpi">
+      <div class="value">2/week</div>
+      <div class="label">Max GrabCash Pushes</div>
+    </div>
+    <div class="kpi">
+      <div class="value">75K-120K</div>
+      <div class="label">Monthly Clicks Target</div>
+    </div>
+  </div>
+
+  <!-- 10 Push Templates -->
+  <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">10 Push Notification Templates</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Title</th><th>Body</th><th>Deep Link</th><th>Best Time</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Earn Money Sharing Deals</td><td>5,000+ users earn &#8377;2K-10K/month on GrabCash. You can too!</td><td>grabcash.in/signup?src=push_grabon</td><td>Tue 10 AM</td></tr>
+        <tr><td>2</td><td>Amazon Pays You to Share</td><td>Share Amazon deals &amp; earn 4-8% commission. Start now!</td><td>grabcash.in/brands/amazon?src=push</td><td>Wed 11 AM</td></tr>
+        <tr><td>3</td><td>&#8377;8.5L Paid Out This Month</td><td>GrabCash earners got paid &#8377;8.5L last month. Join them!</td><td>grabcash.in/signup?src=push_social_proof</td><td>1st of month</td></tr>
+        <tr><td>4</td><td>Flash: Myntra 12% Commission</td><td>Myntra bumped commissions to 12% today. Share and earn BIG!</td><td>grabcash.in/brands/myntra?src=push_flash</td><td>When rate increases</td></tr>
+        <tr><td>5</td><td>Your Coupons Could Pay You</td><td>You save with GrabOn. Now earn with GrabCash. Same deals, extra income.</td><td>grabcash.in/grabon-users?src=push</td><td>Thu 10 AM</td></tr>
+        <tr><td>6</td><td>Student? Earn &#8377;3K/Month</td><td>College students earn &#8377;3,000+/month on GrabCash. 15 mins/day!</td><td>grabcash.in/student?src=push</td><td>Sat 11 AM</td></tr>
+        <tr><td>7</td><td>Diwali Sale = MEGA Earnings</td><td>Sale season = 5x more earnings on GrabCash. Get ready!</td><td>grabcash.in/diwali?src=push_festive</td><td>Pre-sale period</td></tr>
+        <tr><td>8</td><td>New: 50 Brands Added</td><td>GrabCash now has 550+ brands. More brands = more earning!</td><td>grabcash.in/brands?src=push_new</td><td>When brands added</td></tr>
+        <tr><td>9</td><td>Earner of the Week</td><td>Priya earned &#8377;12,000 last week sharing deals. Your turn!</td><td>grabcash.in/success-stories?src=push</td><td>Mon 10 AM</td></tr>
+        <tr><td>10</td><td>Instant UPI Withdrawals</td><td>Earned on GrabCash? Withdraw to UPI instantly. No minimum!</td><td>grabcash.in/features/upi?src=push</td><td>Fri 2 PM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Frequency and Segmentation Rules -->
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Frequency Rules</h3>
+      <ul>
+        <li><strong>Maximum:</strong> 2 GrabCash push notifications per week from GrabOn</li>
+        <li><strong>Minimum gap:</strong> 48 hours between GrabCash pushes</li>
+        <li><strong>Don't stack:</strong> No GrabCash push on same day as major GrabOn deal push</li>
+        <li><strong>Time window:</strong> Only send between 9 AM - 8 PM IST</li>
+        <li><strong>Suppress:</strong> Don't send to users who already clicked a GrabCash push this week</li>
+        <li><strong>Stop:</strong> Remove from GrabCash pushes after user signs up for GrabCash</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Segmentation for Push</h3>
+      <ul>
+        <li><strong>High engagement:</strong> Clicked 3+ GrabOn pushes in 7 days &rarr; Send GrabCash push (most receptive)</li>
+        <li><strong>Deal browsers:</strong> Visited 5+ store pages this week &rarr; Brand-specific GrabCash push</li>
+        <li><strong>Recent converters:</strong> Used a GrabOn coupon in last 48 hours &rarr; "Now earn by sharing" push</li>
+        <li><strong>Inactive:</strong> No push clicks in 14+ days &rarr; Don't send GrabCash pushes (avoid churn)</li>
+        <li><strong>GrabCash aware:</strong> Clicked GrabCash push but didn't signup &rarr; Retargeting push with incentive</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Deep Linking -->
+  <div class="callout">
+    <div class="callout-title">Deep Linking Architecture</div>
+    <p>All GrabCash push notifications from GrabOn must use deep links that pass through attribution: <code class="mono" style="background:var(--dark-4); padding:0.15rem 0.4rem; border-radius:4px; font-size:0.78rem;">grabcash.in/{page}?utm_source=grabon_push&utm_medium=push&utm_campaign={campaign_name}&utm_content={template_id}</code>. On mobile, use app deep links if GrabCash app is installed: <code class="mono" style="background:var(--dark-4); padding:0.15rem 0.4rem; border-radius:4px; font-size:0.78rem;">grabcash://earn?src=grabon_push</code>.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 9: GRABON APP INTEGRATION                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="app">
+  <div class="section-header">
+    <div class="section-num">Section 09</div>
+    <h2>GrabOn App <span class="accent">Integration</span></h2>
+    <p class="section-subtitle">Deep integration between the GrabOn mobile app and GrabCash, including unified accounts, in-app earning tabs, and cross-app referral flows.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon">&#x1F4F1;</div>
+      <h3>In-App "Earn" Tab</h3>
+      <p>Add a dedicated "Earn" tab in the GrabOn app's bottom navigation. This tab opens an embedded GrabCash experience within the GrabOn app.</p>
+      <h4>Tab Content</h4>
+      <ul>
+        <li>GrabCash onboarding (if new user)</li>
+        <li>Earning dashboard (if existing user)</li>
+        <li>Top deals to share</li>
+        <li>Earning history and balance</li>
+        <li>Quick share buttons (WhatsApp, Telegram, Instagram)</li>
+      </ul>
+      <h4>Technical Approach</h4>
+      <ul>
+        <li><strong>Option A:</strong> WebView embedding GrabCash.in (faster to ship)</li>
+        <li><strong>Option B:</strong> Native integration with GrabCash API (better UX, more dev effort)</li>
+        <li><strong>Recommended:</strong> Start with WebView (2 weeks), iterate to native (2 months)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F517;</div>
+      <h3>Deep Linking Between Apps</h3>
+      <p>Seamless navigation between GrabOn and GrabCash apps via deep links and universal links.</p>
+      <h4>Link Flows</h4>
+      <ul>
+        <li><strong>GrabOn &rarr; GrabCash:</strong> "Earn by sharing" button in GrabOn opens GrabCash app with deal pre-loaded</li>
+        <li><strong>GrabCash &rarr; GrabOn:</strong> "Find more deals" in GrabCash opens GrabOn store page</li>
+        <li><strong>Fallback:</strong> If GrabCash app not installed, opens GrabCash.in in browser with app install banner</li>
+      </ul>
+      <h4>Universal Link Setup</h4>
+      <div class="code-block">
+<span class="comment">// iOS Universal Links (apple-app-site-association)</span>
+{
+  <span class="string">"applinks"</span>: {
+    <span class="string">"apps"</span>: [],
+    <span class="string">"details"</span>: [{
+      <span class="string">"appID"</span>: <span class="string">"TEAM_ID.in.grabcash.app"</span>,
+      <span class="string">"paths"</span>: [<span class="string">"/earn/*"</span>, <span class="string">"/brands/*"</span>, <span class="string">"/share/*"</span>]
+    }]
+  }
+}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F511;</div>
+      <h3>Unified Account System (SSO)</h3>
+      <p>Single Sign-On between GrabOn and GrabCash. Users logged into GrabOn can access GrabCash features without re-registering.</p>
+      <h4>Implementation</h4>
+      <ul>
+        <li>Shared authentication backend (InspireLabs SSO)</li>
+        <li>OAuth 2.0 flow: GrabOn acts as identity provider</li>
+        <li>"Sign up with your GrabOn account" button on GrabCash</li>
+        <li>Profile data sharing (with user consent): name, email, phone, preferred brands</li>
+        <li>Shared user ID for cross-platform analytics</li>
+      </ul>
+      <h4>Privacy Compliance</h4>
+      <ul>
+        <li>Explicit consent prompt: "Share your GrabOn profile with GrabCash?"</li>
+        <li>Granular data sharing options (name only, or full profile)</li>
+        <li>Data deletion request affects both platforms (DPDP Act compliance)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F504;</div>
+      <h3>"Earn Mode" Within GrabOn App</h3>
+      <p>A toggle switch in the GrabOn app that transforms the coupon experience into an earning experience. When "Earn Mode" is ON, every deal shows the earning potential instead of (or alongside) savings.</p>
+      <h4>How It Works</h4>
+      <ul>
+        <li><strong>Earn Mode OFF (default):</strong> Normal GrabOn experience &mdash; "Get Code," "Get Deal"</li>
+        <li><strong>Earn Mode ON:</strong> Every deal shows "Earn &#8377;XX by sharing" and "Share &amp; Earn" button replaces "Get Code"</li>
+        <li>Toggle is prominent but not intrusive (top-right corner)</li>
+        <li>First-time activation triggers GrabCash signup flow</li>
+        <li>Remembers preference across sessions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F91D;</div>
+      <h3>App-to-App Referral Flow</h3>
+      <ul>
+        <li>GrabOn app users get a unique referral link to invite friends to GrabCash</li>
+        <li>Both referrer and referee get bonus: referrer gets &#8377;50 per signup, referee gets &#8377;25 welcome bonus</li>
+        <li>Referral tracking via shared user ID system</li>
+        <li>In-app referral leaderboard showing top referrers</li>
+        <li>"Invite to GrabCash" button in GrabOn app's share/settings menu</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4CA;</div>
+      <h3>Shared User Data for Personalization</h3>
+      <p>With user consent, GrabOn browsing data enriches GrabCash recommendations.</p>
+      <ul>
+        <li><strong>Brand preferences:</strong> Most-visited GrabOn stores &rarr; Pre-select on GrabCash</li>
+        <li><strong>Category affinity:</strong> Fashion/electronics/food &rarr; Personalized earning feeds</li>
+        <li><strong>Activity patterns:</strong> Active hours, frequency &rarr; Optimal push timing</li>
+        <li><strong>Device/location:</strong> City, platform &rarr; Regional deal recommendations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 10: BRAND PARTNERSHIP LEVERAGE                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="brands">
+  <div class="section-header">
+    <div class="section-num">Section 10</div>
+    <h2>Brand Partnership <span class="accent">Leverage</span></h2>
+    <p class="section-subtitle">Using GrabOn's 1,500+ brand relationships to accelerate GrabCash merchant onboarding, negotiate better commission rates, and create joint brand campaigns.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-icon">&#x1F3E2;</div>
+      <h3>Brand Onboarding Through GrabOn</h3>
+      <p>GrabOn's existing brand relationships are the fastest path to expanding GrabCash's merchant catalog. Instead of cold-pitching brands, leverage the existing trust.</p>
+      <h4>Approach</h4>
+      <ul>
+        <li><strong>Warm intro:</strong> GrabOn account manager introduces GrabCash to their brand contact</li>
+        <li><strong>Joint pitch:</strong> "Save + Earn" ecosystem pitch (one meeting, two products)</li>
+        <li><strong>Easy onboard:</strong> Brands already integrated with GrabOn's affiliate system can be live on GrabCash in 24 hours</li>
+        <li><strong>Shared tracking:</strong> Same affiliate network, same tracking links, just different user-facing platform</li>
+      </ul>
+      <h4>Target: Onboard 200+ New GrabCash Brands in 90 Days</h4>
+      <p>Current GrabCash: 500+ brands. With GrabOn leverage: <strong class="green">700+ brands within 90 days</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4B5;</div>
+      <h3>Joint Brand Pitches: "Save + Earn Ecosystem"</h3>
+      <p>Position InspireLabs as a dual-value partner: GrabOn drives direct purchases (save), GrabCash drives word-of-mouth sales (earn). This doubles the brand's exposure.</p>
+      <h4>Pitch Deck Talking Points</h4>
+      <ol>
+        <li>"Reach 3.7M shoppers on GrabOn + 5,000+ active promoters on GrabCash"</li>
+        <li>"GrabOn drives direct conversions. GrabCash drives social commerce."</li>
+        <li>"Unified analytics: see savings-driven AND sharing-driven sales in one dashboard"</li>
+        <li>"Single integration, dual platform distribution"</li>
+        <li>"Higher ROI than standalone affiliate programs"</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Combined Analytics for Brands</h3>
+      <p>Offer brands a unified view of their performance across both platforms.</p>
+      <h4>Brand Dashboard Metrics</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Metric</th><th>GrabOn Source</th><th>GrabCash Source</th><th>Combined</th></tr></thead>
+          <tbody>
+            <tr><td>Monthly clicks</td><td>50,000</td><td>12,000</td><td>62,000</td></tr>
+            <tr><td>Conversions</td><td>2,500</td><td>840</td><td>3,340</td></tr>
+            <tr><td>Revenue</td><td>&#8377;25L</td><td>&#8377;8.4L</td><td>&#8377;33.4L</td></tr>
+            <tr><td>Cost to brand</td><td>&#8377;1.5L (commission)</td><td>&#8377;0.5L (commission)</td><td>&#8377;2L</td></tr>
+            <tr><td>ROAS</td><td>16.7x</td><td>16.8x</td><td>16.7x</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Co-Branded Campaigns</h3>
+      <p>Run joint campaigns where brands feature on both GrabOn and GrabCash simultaneously.</p>
+      <h4>Campaign Structure</h4>
+      <ul>
+        <li><strong>GrabOn side:</strong> Featured banner, exclusive coupon codes, email blast</li>
+        <li><strong>GrabCash side:</strong> Boosted commission rate for earners, featured in "Today's Best Earning Deals"</li>
+        <li><strong>Duration:</strong> 7-day campaign windows</li>
+        <li><strong>Brand commitment:</strong> Exclusive deals or higher commission during campaign period</li>
+        <li><strong>Example:</strong> "Amazon Week on GrabOn + GrabCash" &mdash; 50% more savings, 2x earning commissions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Brand Exclusives for GrabCash</h3>
+      <p>Negotiate GrabCash-exclusive deals that can't be found on competing platforms like EarnKaro.</p>
+      <h4>Negotiation Leverage</h4>
+      <ul>
+        <li>"Give us GrabCash-exclusive commission rates, and we'll feature you on GrabOn (3.7M visitors) as well"</li>
+        <li>Bundle: &#8377;X for GrabOn featured placement + GrabCash exclusive commission</li>
+        <li>Exclusivity windows: "Higher commission for 48 hours, GrabCash only"</li>
+        <li>This creates a <strong>competitive moat</strong> &mdash; EarnKaro can't match GrabOn + GrabCash combined value</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Partnership Expansion Strategy</h3>
+      <h4>Phase 1: Leverage (Month 1-3)</h4>
+      <ul>
+        <li>Onboard top 50 GrabOn brands to GrabCash (warm intros)</li>
+        <li>Negotiate 10 exclusive commission deals</li>
+        <li>Launch 3 co-branded campaigns</li>
+      </ul>
+      <h4>Phase 2: Scale (Month 4-6)</h4>
+      <ul>
+        <li>Onboard next 150 GrabOn brands</li>
+        <li>Launch unified brand dashboard</li>
+        <li>Establish "Save + Earn" positioning in all brand communications</li>
+      </ul>
+      <h4>Phase 3: Differentiate (Month 7-12)</h4>
+      <ul>
+        <li>25+ brand exclusives on GrabCash</li>
+        <li>Joint annual partnerships (like GrabOn's existing annual brand deals)</li>
+        <li>Explore revenue-share models (brand pays for GrabCash earner acquisition)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 11: AFFILIATE NETWORK SYNERGY                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="affiliate">
+  <div class="section-header">
+    <div class="section-num">Section 11</div>
+    <h2>Affiliate Network <span class="accent">Synergy</span></h2>
+    <p class="section-subtitle">Shared affiliate network integrations, commission negotiation leverage, and technical architecture for unified deal management across both platforms.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Shared Affiliate Network Integrations</h3>
+      <p>GrabOn and GrabCash both connect to the same affiliate networks. This creates efficiency and negotiation leverage.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Network</th><th>GrabOn Integration</th><th>GrabCash Integration</th><th>Synergy Opportunity</th></tr></thead>
+          <tbody>
+            <tr><td>Cuelinks</td><td>Active &mdash; 500+ brands</td><td>Active &mdash; 300+ brands</td><td>Unified API, higher tier rates</td></tr>
+            <tr><td>vCommission</td><td>Active &mdash; 200+ brands</td><td>Active &mdash; 150+ brands</td><td>Combined volume = better rates</td></tr>
+            <tr><td>Admitad</td><td>Active &mdash; 150+ brands</td><td>Growing &mdash; 80+ brands</td><td>Faster GrabCash onboarding</td></tr>
+            <tr><td>Amazon Associates</td><td>Direct &mdash; High volume</td><td>Direct &mdash; Growing</td><td>Combined volume for tier upgrade</td></tr>
+            <tr><td>Flipkart Affiliate</td><td>Direct</td><td>Direct</td><td>Joint performance review</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Commission Rate Negotiation Leverage</h3>
+      <p>Combined volume from GrabOn + GrabCash gives InspireLabs significant negotiation power.</p>
+      <h4>Leverage Points</h4>
+      <ul>
+        <li><strong>Combined GMV:</strong> GrabOn + GrabCash drive &#8377;50Cr+ annual GMV for top brands &rarr; qualifies for premium commission tiers</li>
+        <li><strong>Dual-channel distribution:</strong> "We'll feature you on BOTH platforms" as bargaining chip for 1-2% commission uplift</li>
+        <li><strong>Volume guarantees:</strong> Commit to minimum monthly clicks/conversions in exchange for higher rates</li>
+        <li><strong>Exclusivity trades:</strong> "Give us 2% more commission, and we won't work with your competitor on GrabCash"</li>
+      </ul>
+      <h4>Estimated Impact</h4>
+      <p>Average commission uplift from negotiation: <strong class="green">1.5-2.5%</strong> across top 50 brands. Annual revenue impact: <strong class="green">&#8377;80L-1.2Cr additional</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Unified Brand API</h3>
+      <p>Build a single internal API that serves deal data to both GrabOn and GrabCash, eliminating duplication and ensuring consistency.</p>
+      <h4>API Architecture</h4>
+      <div class="code-block">
+<span class="comment">// Internal Deal API - serves both platforms</span>
+GET /api/v1/deals
+  ?brand={brand_slug}
+  &platform=grabcash|grabon|both
+  &sort=commission_desc|popularity
+  &category={category}
+
+<span class="comment">// Response includes:</span>
+{
+  <span class="string">"deal_id"</span>: <span class="string">"d_12345"</span>,
+  <span class="string">"brand"</span>: <span class="string">"amazon"</span>,
+  <span class="string">"title"</span>: <span class="string">"40% Off Electronics"</span>,
+  <span class="string">"grabon_url"</span>: <span class="string">"grabon.in/amazon/deal-123"</span>,
+  <span class="string">"grabcash_url"</span>: <span class="string">"grabcash.in/earn/deal-123"</span>,
+  <span class="string">"commission_rate"</span>: <span class="num">6.5</span>,
+  <span class="string">"est_earning"</span>: <span class="num">325</span>,
+  <span class="string">"expiry"</span>: <span class="string">"2026-06-30"</span>
+}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Deal Feed Sharing</h3>
+      <p>Real-time deal feed sync between GrabOn and GrabCash ensures consistent deal availability and reduces operational overhead.</p>
+      <h4>Feed Architecture</h4>
+      <ul>
+        <li><strong>Single source of truth:</strong> GrabOn's deal database is the master feed</li>
+        <li><strong>GrabCash enrichment:</strong> Adds commission rates, earning estimates, sharing tools</li>
+        <li><strong>Sync frequency:</strong> Real-time via webhooks (new deal added &rarr; appears on GrabCash in &lt;5 min)</li>
+        <li><strong>Deal expiry:</strong> Synchronized &mdash; expired on GrabOn = expired on GrabCash</li>
+        <li><strong>Quality control:</strong> GrabOn's curation team validates deals; GrabCash inherits quality</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Technical Integration Architecture -->
+  <div class="labeled-divider"><span>Technical Integration Architecture</span></div>
+
+  <div class="wireframe">
+    <div class="wireframe-title">System Architecture: GrabOn + GrabCash Unified Backend</div>
+    <div class="wireframe-row">
+      <div class="wireframe-box" style="min-height:60px;">GrabOn.in Frontend<br>(React/Next.js)</div>
+      <div class="wireframe-box" style="min-height:60px;">GrabCash.in Frontend<br>(React/Next.js)</div>
+    </div>
+    <div class="wireframe-box" style="min-height:40px;">API Gateway / Load Balancer</div>
+    <div class="wireframe-row">
+      <div class="wireframe-box" style="min-height:50px;">GrabOn Service<br>(Coupons, Stores)</div>
+      <div class="wireframe-box green" style="min-height:50px;">Shared Services<br>(Auth SSO, Deal API, Analytics)</div>
+      <div class="wireframe-box" style="min-height:50px;">GrabCash Service<br>(Earning, Sharing, Payouts)</div>
+    </div>
+    <div class="wireframe-row">
+      <div class="wireframe-box" style="min-height:40px;">Deal Database<br>(Shared)</div>
+      <div class="wireframe-box" style="min-height:40px;">User Database<br>(Shared with consent)</div>
+      <div class="wireframe-box" style="min-height:40px;">Analytics DB<br>(Cross-platform)</div>
+    </div>
+    <div class="wireframe-box" style="min-height:40px;">Affiliate Networks: Cuelinks | vCommission | Admitad | Amazon | Flipkart</div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 12: MEASUREMENT & ATTRIBUTION                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="measurement">
+  <div class="section-header">
+    <div class="section-num">Section 12</div>
+    <h2>Measurement &amp; <span class="accent">Attribution</span></h2>
+    <p class="section-subtitle">Cross-platform attribution model, UTM framework, dashboard design, and ROI calculation methodology for all cross-promotion channels.</p>
+  </div>
+
+  <!-- UTM Framework -->
+  <div class="card">
+    <h3>UTM Parameter Framework</h3>
+    <p>Every GrabCash link from GrabOn uses a consistent UTM structure for precise attribution.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Parameter</th><th>Values</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code class="mono">utm_source</code></td><td>grabon, grabon_push, grabon_email, grabon_app</td><td>Identifies which GrabOn channel</td></tr>
+          <tr><td><code class="mono">utm_medium</code></td><td>banner, sidebar, deal_card, post_reveal, footer, search, popup, sticky, blog, widget, email, push, social, app</td><td>Specific placement type</td></tr>
+          <tr><td><code class="mono">utm_campaign</code></td><td>cross_promo_v1, email_intro, email_social_proof, push_awareness, etc.</td><td>Campaign identifier</td></tr>
+          <tr><td><code class="mono">utm_content</code></td><td>variant_a, variant_b, copy_v3, etc.</td><td>A/B test variant tracking</td></tr>
+          <tr><td><code class="mono">utm_term</code></td><td>brand_amazon, category_fashion, etc.</td><td>Contextual targeting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Dashboard Design -->
+  <div class="labeled-divider"><span>Cross-Promo Dashboard Design</span></div>
+
+  <div class="wireframe">
+    <div class="wireframe-title">Dashboard: GrabOn &rarr; GrabCash Cross-Promotion Metrics</div>
+    <div class="wireframe-row">
+      <div class="wireframe-box green" style="min-height:60px;">Total GrabCash Users from GrabOn<br><strong>42,500</strong></div>
+      <div class="wireframe-box green" style="min-height:60px;">Monthly New Users<br><strong>8,200</strong></div>
+      <div class="wireframe-box green" style="min-height:60px;">Activation Rate<br><strong>52%</strong></div>
+      <div class="wireframe-box green" style="min-height:60px;">Revenue from GrabOn Users<br><strong>&#8377;12.5L</strong></div>
+    </div>
+    <div class="wireframe-row">
+      <div class="wireframe-box" style="min-height:100px; flex:2;">
+        Channel Performance Chart<br>
+        [Bar chart: Email | Banner | Widget | Push | Social | Blog]<br>
+        Showing: Impressions, Clicks, Signups, Revenue per channel
+      </div>
+      <div class="wireframe-box" style="min-height:100px; flex:1;">
+        Conversion Funnel<br>
+        [Funnel chart]<br>
+        Visit &rarr; Click &rarr; Signup &rarr; Activate &rarr; Earn
+      </div>
+    </div>
+    <div class="wireframe-row">
+      <div class="wireframe-box" style="min-height:80px;">
+        Top Performing Placements (This Week)<br>
+        1. After-coupon-reveal CTA: 22K signups<br>
+        2. Store page sidebar: 10K signups<br>
+        3. Email Campaign #4: 8K signups
+      </div>
+      <div class="wireframe-box" style="min-height:80px;">
+        A/B Test Results<br>
+        Homepage Banner V2 vs V1: +34% CTR<br>
+        Email Subject Line B vs A: +18% open rate<br>
+        Push Template #5 vs #3: +22% clicks
+      </div>
+    </div>
+  </div>
+
+  <!-- ROI Calculation -->
+  <div class="labeled-divider"><span>ROI Calculation by Channel</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Implementation Cost</th><th>Monthly Operating Cost</th><th>Monthly Users Acquired</th><th>CAC</th><th>Monthly Revenue</th><th>Monthly ROI</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Website Banners</td><td>&#8377;1.5L (one-time)</td><td>&#8377;20K (maintenance)</td><td>15,000</td><td>&#8377;1.33</td><td>&#8377;4.5L</td><td><span class="green bold">22.5x</span></td></tr>
+        <tr><td>Email Campaigns</td><td>&#8377;50K (setup)</td><td>&#8377;30K (ESP + content)</td><td>12,000</td><td>&#8377;2.50</td><td>&#8377;3.6L</td><td><span class="green bold">12x</span></td></tr>
+        <tr><td>Widgets</td><td>&#8377;2L (development)</td><td>&#8377;15K (API costs)</td><td>8,000</td><td>&#8377;1.88</td><td>&#8377;2.4L</td><td><span class="green bold">16x</span></td></tr>
+        <tr><td>Push Notifications</td><td>&#8377;20K (setup)</td><td>&#8377;10K (provider)</td><td>5,000</td><td>&#8377;2.00</td><td>&#8377;1.5L</td><td><span class="green bold">15x</span></td></tr>
+        <tr><td>Social Media</td><td>&#8377;30K (creative)</td><td>&#8377;50K (content creation)</td><td>3,000</td><td>&#8377;16.67</td><td>&#8377;0.9L</td><td><span class="green bold">1.8x</span></td></tr>
+        <tr><td>Blog Content</td><td>&#8377;1L (10 articles)</td><td>&#8377;40K (ongoing content)</td><td>2,000</td><td>&#8377;20.00</td><td>&#8377;0.6L</td><td><span class="green bold">1.5x</span></td></tr>
+        <tr><td>App Integration</td><td>&#8377;5L (development)</td><td>&#8377;25K (maintenance)</td><td>4,000</td><td>&#8377;6.25</td><td>&#8377;1.2L</td><td><span class="green bold">4.8x</span></td></tr>
+        <tr style="background:var(--green-subtle);">
+          <td><strong>TOTAL</strong></td>
+          <td><strong>&#8377;11.5L (one-time)</strong></td>
+          <td><strong>&#8377;1.9L/month</strong></td>
+          <td><strong>49,000</strong></td>
+          <td><strong>&#8377;3.88</strong></td>
+          <td><strong>&#8377;14.7L</strong></td>
+          <td><strong class="green" style="font-size:1.1rem;">7.7x</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Weekly/Monthly Reporting Template -->
+  <div class="labeled-divider"><span>Reporting Cadence</span></div>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Daily Check (Automated)</h3>
+      <ul>
+        <li>GrabCash signups from GrabOn (by channel)</li>
+        <li>CTR by placement (any anomalies?)</li>
+        <li>GrabOn metrics impact (bounce rate, session duration)</li>
+        <li>Alert: if any metric degrades &gt;10%</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Weekly Review (30 min)</h3>
+      <ul>
+        <li>Channel-by-channel performance</li>
+        <li>A/B test results and decisions</li>
+        <li>Top and bottom performing placements</li>
+        <li>User quality metrics (activation rate, first earning)</li>
+        <li>Competitive moves (EarnKaro activity)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Monthly Report (Executive)</h3>
+      <ul>
+        <li>Total users acquired, revenue generated</li>
+        <li>ROI by channel</li>
+        <li>GrabOn impact assessment (positive/neutral/negative)</li>
+        <li>Next month plan and budget</li>
+        <li>Roadmap progress update</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 13: IMPLEMENTATION ROADMAP                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="roadmap">
+  <div class="section-header">
+    <div class="section-num">Section 13</div>
+    <h2>Implementation <span class="accent">Roadmap</span></h2>
+    <p class="section-subtitle">A phased approach to cross-promotion rollout, from quick wins to deep integration, with resource requirements and engineering effort at each stage.</p>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="card card-highlight" style="margin-bottom:2rem;">
+    <h3>Phase 1: Quick Wins <span class="tag tag-green" style="margin-left:0.5rem;">Month 1</span></h3>
+    <p style="margin-bottom:1rem;">Low-risk, high-impact placements that can be shipped in days. Establish the cross-promotion foundation.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Initiative</th><th>Effort</th><th>Owner</th><th>Timeline</th><th>Expected Impact</th></tr></thead>
+        <tbody>
+          <tr><td>GrabOn footer GrabCash section</td><td>2 hours (HTML/CSS)</td><td>GrabOn Frontend</td><td>Week 1, Day 1</td><td>1,680 signups/mo</td></tr>
+          <tr><td>Blog sidebar widget</td><td>4 hours</td><td>GrabOn Frontend</td><td>Week 1, Day 1-2</td><td>495 signups/mo</td></tr>
+          <tr><td>Internal linking audit (top 50 blog posts)</td><td>1 day (manual)</td><td>Content Team</td><td>Week 1</td><td>500 signups/mo (SEO)</td></tr>
+          <tr><td>Email Campaign #1: "Did You Know?"</td><td>1 day (copy + setup)</td><td>Email Marketing</td><td>Week 1</td><td>8,100-16,250 signups</td></tr>
+          <tr><td>Email Campaign #2: "Shopping Could Pay You"</td><td>0.5 day</td><td>Email Marketing</td><td>Week 2</td><td>9,400-18,900 signups</td></tr>
+          <tr><td>First 3 blog articles published</td><td>3 days (writing)</td><td>Content Team</td><td>Week 2-3</td><td>1,000 signups/mo (growing)</td></tr>
+          <tr><td>Social media cross-posting begins</td><td>Ongoing (3 posts/week)</td><td>Social Media</td><td>Week 2</td><td>2,000 signups/mo</td></tr>
+          <tr><td>Push notification campaign (first 2 templates)</td><td>2 hours</td><td>Growth</td><td>Week 2</td><td>3,000 signups/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Phase 1 Resources</h4>
+    <ul>
+      <li><strong>People:</strong> 1 dedicated cross-promo manager (full-time) + part-time support from GrabOn frontend, content, email teams</li>
+      <li><strong>Budget:</strong> &#8377;50K (content creation, email tools)</li>
+      <li><strong>Engineering:</strong> 2-3 days total frontend work</li>
+    </ul>
+
+    <h4>Phase 1 Success Criteria</h4>
+    <ul>
+      <li>20,000+ GrabCash signups from GrabOn in Month 1</li>
+      <li>No negative impact on GrabOn bounce rate (&lt;2% change)</li>
+      <li>Email campaign open rate &gt;20%, CTR &gt;4%</li>
+    </ul>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="card" style="margin-bottom:2rem;">
+    <h3>Phase 2: Scale &amp; Optimize <span class="tag tag-orange" style="margin-left:0.5rem;">Month 2-3</span></h3>
+    <p style="margin-bottom:1rem;">Expand placements based on Phase 1 learnings. Add interactive widgets and deeper social integration.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Initiative</th><th>Effort</th><th>Owner</th><th>Timeline</th><th>Expected Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Homepage hero banner</td><td>1 day (design + dev)</td><td>GrabOn Frontend</td><td>Month 2, Week 1</td><td>4,500 signups/mo</td></tr>
+          <tr><td>Store page sidebar widget</td><td>3 days (dynamic content)</td><td>GrabOn Frontend</td><td>Month 2, Week 1-2</td><td>10,368 signups/mo</td></tr>
+          <tr><td>Deal card "Earn by Sharing" button</td><td>2 days</td><td>GrabOn Frontend</td><td>Month 2, Week 2</td><td>6,600 signups/mo</td></tr>
+          <tr><td>After-coupon-reveal CTA</td><td>2 days</td><td>GrabOn Frontend</td><td>Month 2, Week 3</td><td>22,000 signups/mo</td></tr>
+          <tr><td>Earning calculator widget</td><td>5 days (interactive)</td><td>GrabCash Engineering</td><td>Month 2, Week 3-4</td><td>3,000 signups/mo</td></tr>
+          <tr><td>Social proof widget (live earners)</td><td>3 days (API + frontend)</td><td>GrabCash Engineering</td><td>Month 3, Week 1</td><td>2,000 signups/mo</td></tr>
+          <tr><td>Exit-intent popup</td><td>1 day</td><td>GrabOn Frontend</td><td>Month 3, Week 1</td><td>4,950 signups/mo</td></tr>
+          <tr><td>Mobile sticky bar</td><td>0.5 day</td><td>GrabOn Frontend</td><td>Month 3, Week 2</td><td>2,772 signups/mo</td></tr>
+          <tr><td>Email Campaigns #3-7</td><td>5 days (content)</td><td>Email Marketing</td><td>Month 2-3</td><td>15,000 signups/mo</td></tr>
+          <tr><td>Influencer activation (20 micro)</td><td>2 weeks (outreach)</td><td>Social Media</td><td>Month 2-3</td><td>5,000-10,000 signups</td></tr>
+          <tr><td>Remaining 7 blog articles</td><td>7 days</td><td>Content Team</td><td>Month 2-3</td><td>3,000 signups/mo (growing)</td></tr>
+          <tr><td>A/B testing across all placements</td><td>Ongoing</td><td>Growth</td><td>Month 2-3</td><td>+20-40% improvement</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Phase 2 Resources</h4>
+    <ul>
+      <li><strong>People:</strong> 1 dedicated manager + 1 frontend developer (50% time) + content writer (50% time)</li>
+      <li><strong>Budget:</strong> &#8377;2L (influencer fees, content, tools)</li>
+      <li><strong>Engineering:</strong> 15-20 days total</li>
+    </ul>
+
+    <h4>Phase 2 Success Criteria</h4>
+    <ul>
+      <li>50,000+ GrabCash signups from GrabOn in Months 2-3 combined</li>
+      <li>After-coupon-reveal CTA achieves &gt;5% CTR</li>
+      <li>Earning calculator widget engagement &gt;30% of visitors who see it</li>
+    </ul>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="card" style="margin-bottom:2rem;">
+    <h3>Phase 3: Deep Integration <span class="tag tag-purple" style="margin-left:0.5rem;">Month 4-6</span></h3>
+    <p style="margin-bottom:1rem;">Product-level integration between GrabOn and GrabCash. Requires significant engineering investment but creates lasting competitive moat.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Initiative</th><th>Effort</th><th>Owner</th><th>Timeline</th><th>Expected Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Unified SSO system</td><td>3 weeks</td><td>Backend Engineering</td><td>Month 4</td><td>2x signup rate (frictionless)</td></tr>
+          <tr><td>GrabOn app "Earn" tab</td><td>2 weeks (WebView)</td><td>Mobile Engineering</td><td>Month 4</td><td>4,000 signups/mo</td></tr>
+          <tr><td>"Earn Mode" toggle in GrabOn app</td><td>3 weeks</td><td>Mobile Engineering</td><td>Month 5</td><td>5,000 signups/mo</td></tr>
+          <tr><td>Unified Deal API</td><td>4 weeks</td><td>Backend Engineering</td><td>Month 4-5</td><td>Operational efficiency</td></tr>
+          <tr><td>Deep linking between apps</td><td>1 week</td><td>Mobile Engineering</td><td>Month 5</td><td>Better conversion flow</td></tr>
+          <tr><td>Combined brand dashboard</td><td>3 weeks</td><td>Backend + Frontend</td><td>Month 5-6</td><td>Brand partnership leverage</td></tr>
+          <tr><td>Personalized migration (browsing data)</td><td>2 weeks</td><td>Data Engineering</td><td>Month 6</td><td>+50% conversion rate</td></tr>
+          <tr><td>Email Campaign #10 (phantom earnings)</td><td>2 weeks (data pipeline)</td><td>Data + Email</td><td>Month 6</td><td>20,000+ signups/mo</td></tr>
+          <tr><td>Commission negotiation with top 50 brands</td><td>Ongoing</td><td>BD Team</td><td>Month 4-6</td><td>1.5-2.5% rate uplift</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Phase 3 Resources</h4>
+    <ul>
+      <li><strong>People:</strong> 1 dedicated manager + 2 backend engineers (50% time) + 1 mobile engineer (50% time) + 1 data engineer (25% time)</li>
+      <li><strong>Budget:</strong> &#8377;5L (development, testing, brand outreach)</li>
+      <li><strong>Engineering:</strong> 50-60 days total</li>
+    </ul>
+
+    <h4>Phase 3 Success Criteria</h4>
+    <ul>
+      <li>100,000+ total GrabCash users acquired from GrabOn by Month 6</li>
+      <li>SSO reduces signup friction: conversion rate from click-to-signup doubles</li>
+      <li>GrabOn app "Earn" tab used by &gt;10% of app users</li>
+      <li>Commission rates improved for 30+ brands</li>
+    </ul>
+  </div>
+
+  <!-- Stakeholder Communication Plan -->
+  <div class="labeled-divider"><span>Stakeholder Communication Plan</span></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stakeholder</th><th>Communication</th><th>Frequency</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>CEO / Founder</td><td>Executive dashboard + 1-pager</td><td>Monthly</td><td>Revenue impact, user growth, strategic progress</td></tr>
+        <tr><td>GrabOn Team Lead</td><td>Impact assessment meeting</td><td>Weekly</td><td>GrabOn metric impacts, A/B test results, resource asks</td></tr>
+        <tr><td>GrabCash Team</td><td>Standup / async update</td><td>Daily</td><td>New user volume, activation rates, issues</td></tr>
+        <tr><td>Engineering</td><td>Sprint planning + review</td><td>Bi-weekly</td><td>Technical deliverables, dependencies, blockers</td></tr>
+        <tr><td>Brand Partners</td><td>Joint performance update</td><td>Monthly</td><td>Combined platform performance, upcoming campaigns</td></tr>
+        <tr><td>All Hands</td><td>Company update presentation</td><td>Quarterly</td><td>Cross-promo success metrics, strategic narrative</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 14: RISK MANAGEMENT                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section" id="risk">
+  <div class="section-header">
+    <div class="section-num">Section 14</div>
+    <h2>Risk <span class="accent">Management</span></h2>
+    <p class="section-subtitle">Comprehensive risk analysis covering cannibalization, user experience, brand concerns, and technical risks, with specific mitigation strategies and monitoring triggers.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Risk</th><th>Category</th><th>Probability</th><th>Impact</th><th>Risk Score</th><th>Mitigation</th><th>Monitoring Trigger</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GrabOn revenue cannibalization</strong><br><span class="dim" style="font-size:0.75rem;">Users shift from GrabOn affiliate clicks to GrabCash self-referrals</span></td>
+          <td>Revenue</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-red">High</span></td>
+          <td><span class="tag tag-orange">Medium-High</span></td>
+          <td>Position GrabCash as "share with others," not "buy for yourself." Track self-referral rates.</td>
+          <td>GrabOn affiliate revenue drops &gt;3% month-over-month</td>
+        </tr>
+        <tr>
+          <td><strong>GrabOn UX degradation</strong><br><span class="dim" style="font-size:0.75rem;">Too many GrabCash CTAs annoy GrabOn users</span></td>
+          <td>User Experience</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>Max 2 CTA touchpoints per page. A/B test every placement. Kill-switch ready.</td>
+          <td>Bounce rate increases &gt;5% or session duration drops &gt;10%</td>
+        </tr>
+        <tr>
+          <td><strong>Brand partner pushback</strong><br><span class="dim" style="font-size:0.75rem;">Brands concerned about earner-generated spam</span></td>
+          <td>Partnership</td>
+          <td><span class="tag tag-yellow">Low-Med</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-yellow">Low-Medium</span></td>
+          <td>Earner content guidelines. Brand approval for promotional content. Quality monitoring.</td>
+          <td>Any brand complaint about GrabCash earner behavior</td>
+        </tr>
+        <tr>
+          <td><strong>GrabOn team resource conflict</strong><br><span class="dim" style="font-size:0.75rem;">GrabOn team deprioritizes cross-promo tasks</span></td>
+          <td>Operational</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-yellow">Low-Med</span></td>
+          <td><span class="tag tag-yellow">Low-Medium</span></td>
+          <td>Dedicated cross-promo manager. GrabOn team incentivized on GrabCash KPIs. Executive mandate.</td>
+          <td>Cross-promo tasks consistently delayed in sprints</td>
+        </tr>
+        <tr>
+          <td><strong>SSO security vulnerabilities</strong><br><span class="dim" style="font-size:0.75rem;">Unified auth system introduces attack vectors</span></td>
+          <td>Technical</td>
+          <td><span class="tag tag-yellow">Low</span></td>
+          <td><span class="tag tag-red">High</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>Security audit before launch. OAuth 2.0 best practices. Separate session management.</td>
+          <td>Any unauthorized access incident</td>
+        </tr>
+        <tr>
+          <td><strong>Data privacy concerns</strong><br><span class="dim" style="font-size:0.75rem;">User data sharing between platforms without proper consent</span></td>
+          <td>Legal/Compliance</td>
+          <td><span class="tag tag-yellow">Low</span></td>
+          <td><span class="tag tag-red">High</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>Explicit consent for data sharing. DPDP Act compliance. Granular privacy controls.</td>
+          <td>Any user complaint about unexpected data usage</td>
+        </tr>
+        <tr>
+          <td><strong>Email list fatigue</strong><br><span class="dim" style="font-size:0.75rem;">GrabCash emails increase unsubscribe rates for GrabOn emails</span></td>
+          <td>Channel Health</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>Separate unsubscribe for GrabCash emails. Max 2 dedicated emails/month. Quality content.</td>
+          <td>GrabOn email unsubscribe rate increases &gt;0.5% from baseline</td>
+        </tr>
+        <tr>
+          <td><strong>GrabCash unable to scale with influx</strong><br><span class="dim" style="font-size:0.75rem;">GrabCash infrastructure/support can't handle 10x user growth</span></td>
+          <td>Technical</td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-red">High</span></td>
+          <td><span class="tag tag-red">High</span></td>
+          <td>Load testing before Phase 2. Scale support team proactively. Payout system stress test.</td>
+          <td>Page load time &gt;3s, support ticket response &gt;24h, payout delays</td>
+        </tr>
+        <tr>
+          <td><strong>Competitor response (EarnKaro)</strong><br><span class="dim" style="font-size:0.75rem;">EarnKaro accelerates own coupon platform or poaches GrabCash earners</span></td>
+          <td>Competitive</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td><span class="tag tag-yellow">Low-Med</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td>Move fast. Lock in brand exclusives. Build switching costs through SSO and seamless UX.</td>
+          <td>EarnKaro launches coupon product or increases marketing spend &gt;2x</td>
+        </tr>
+        <tr>
+          <td><strong>Regulatory changes</strong><br><span class="dim" style="font-size:0.75rem;">Changes in affiliate marketing regulations or tax implications</span></td>
+          <td>Legal</td>
+          <td><span class="tag tag-yellow">Low</span></td>
+          <td><span class="tag tag-orange">Medium</span></td>
+          <td><span class="tag tag-yellow">Low</span></td>
+          <td>Legal review of cross-promotion structure. TDS compliance for payouts. Regulatory monitoring.</td>
+          <td>New regulation affecting affiliate marketing or data sharing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Risk Mitigation Playbooks -->
+  <div class="labeled-divider"><span>Risk Mitigation Playbooks</span></div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Playbook: Cannibalization Detected</h3>
+      <p><span class="tag tag-red">Trigger:</span> GrabOn affiliate revenue drops &gt;3% MoM</p>
+      <h4>Immediate Actions (Day 1-3)</h4>
+      <ol>
+        <li>Pause all high-visibility GrabCash CTAs on GrabOn</li>
+        <li>Analyze: Is the drop from GrabCash or external factors?</li>
+        <li>Check self-referral rates (users buying through their own GrabCash links)</li>
+        <li>If confirmed cannibalization: block self-referral earning on GrabCash</li>
+      </ol>
+      <h4>Short-term Actions (Week 1-2)</h4>
+      <ol>
+        <li>Reposition CTA copy: emphasize "share with friends" not "buy through your link"</li>
+        <li>Reduce GrabCash placement density to minimum</li>
+        <li>A/B test new messaging that reinforces GrabOn's primary value</li>
+      </ol>
+      <h4>Long-term Fix</h4>
+      <p>Implement "earning vs. saving" mode distinction. GrabOn = personal savings. GrabCash = social earning. Different UX, different intent.</p>
+    </div>
+
+    <div class="card">
+      <h3>Playbook: UX Degradation Detected</h3>
+      <p><span class="tag tag-orange">Trigger:</span> Bounce rate +5% or session duration -10%</p>
+      <h4>Immediate Actions (Day 1)</h4>
+      <ol>
+        <li>Identify which placement(s) correlate with the degradation</li>
+        <li>Kill-switch the suspect placement(s)</li>
+        <li>Check if change is statistically significant (not just noise)</li>
+      </ol>
+      <h4>Short-term Actions (Week 1)</h4>
+      <ol>
+        <li>Reduce CTA density (from 2 per page to 1)</li>
+        <li>Make CTAs less intrusive (smaller, more contextual)</li>
+        <li>Test "opt-in" approach: only show GrabCash after user interaction</li>
+      </ol>
+      <h4>Long-term Fix</h4>
+      <p>User segmentation: only show GrabCash CTAs to segments with high earning potential. Don't show to users who've dismissed it 3+ times.</p>
+    </div>
+
+    <div class="card">
+      <h3>Playbook: GrabCash Can't Scale</h3>
+      <p><span class="tag tag-red">Trigger:</span> Load time &gt;3s, support backlog &gt;48h, payout delays</p>
+      <h4>Immediate Actions</h4>
+      <ol>
+        <li>Throttle GrabOn cross-promo traffic (pause high-volume placements)</li>
+        <li>Emergency infrastructure scaling (add servers, CDN, caching)</li>
+        <li>Communicate with affected users (delay notifications, ETA)</li>
+        <li>Prioritize payout processing over new features</li>
+      </ol>
+      <h4>Prevention</h4>
+      <ul>
+        <li>Load test before each phase escalation</li>
+        <li>Auto-scaling infrastructure (AWS/GCP)</li>
+        <li>Pre-hire support staff before Phase 2 rollout</li>
+        <li>Payout batch processing with headroom</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Playbook: Brand Partner Complaint</h3>
+      <p><span class="tag tag-orange">Trigger:</span> Any brand contacts InspireLabs about GrabCash concerns</p>
+      <h4>Immediate Actions</h4>
+      <ol>
+        <li>Acknowledge within 4 hours</li>
+        <li>Investigate the specific concern (spam? misleading content? brand misuse?)</li>
+        <li>If earner misconduct: warn/ban the specific earner, share action taken with brand</li>
+        <li>If systemic issue: implement content review for that brand's deals</li>
+      </ol>
+      <h4>Prevention</h4>
+      <ul>
+        <li>Earner content guidelines published and enforced</li>
+        <li>Automated content scanning for brand guideline violations</li>
+        <li>Brand-specific approval workflows for high-sensitivity brands</li>
+        <li>Proactive brand communication before major campaigns</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Summary Risk Matrix -->
+  <div class="labeled-divider"><span>Risk Matrix Summary</span></div>
+
+  <div class="callout">
+    <div class="callout-title">Overall Risk Assessment</div>
+    <p>The cross-promotion strategy carries <strong>moderate overall risk</strong> with <strong>high controllability</strong>. Every identified risk has a clear mitigation strategy and kill-switch. The phased rollout approach ensures risks are contained and detected early. The upside (6-8x user growth, &#8377;6.66 Cr annual revenue potential) far outweighs the downside risks when properly managed.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="value">10</div>
+      <div class="label">Risks Identified</div>
+    </div>
+    <div class="kpi">
+      <div class="value">10/10</div>
+      <div class="label">Mitigations Defined</div>
+    </div>
+    <div class="kpi">
+      <div class="value">10/10</div>
+      <div class="label">Monitoring Triggers</div>
+    </div>
+    <div class="kpi">
+      <div class="value">4</div>
+      <div class="label">Detailed Playbooks</div>
+    </div>
+    <div class="kpi">
+      <div class="value" style="color:var(--green);">LOW</div>
+      <div class="label">Net Risk (After Mitigation)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FINAL SECTION: EXECUTIVE SUMMARY & KEY DECISIONS            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<section class="section">
+  <div class="section-header">
+    <div class="section-num">Executive Summary</div>
+    <h2>Key Decisions <span class="accent">Required</span></h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card card-highlight">
+      <h3>Decision 1: Approve Phase 1 Launch</h3>
+      <p><strong>Ask:</strong> Green light for email campaigns, blog integration, footer/sidebar placements on GrabOn.in.</p>
+      <p><strong>Investment:</strong> &#8377;50K + 1 dedicated person + 3 days engineering</p>
+      <p><strong>Expected Return:</strong> 20,000+ GrabCash signups in Month 1</p>
+      <p><strong>Risk:</strong> Minimal &mdash; all placements A/B tested with kill-switches</p>
+      <p><strong>Decision Maker:</strong> CEO / Head of Product</p>
+    </div>
+    <div class="card card-highlight">
+      <h3>Decision 2: Assign Cross-Promo Manager</h3>
+      <p><strong>Ask:</strong> Dedicate 1 full-time person to own the cross-promotion program across both platforms.</p>
+      <p><strong>Profile:</strong> Growth marketer with product sense, data literacy, and cross-team coordination skills</p>
+      <p><strong>Reporting:</strong> Dotted line to both GrabOn and GrabCash leads</p>
+      <p><strong>Decision Maker:</strong> VP of Product / COO</p>
+    </div>
+    <div class="card">
+      <h3>Decision 3: GrabOn Team KPI Integration</h3>
+      <p><strong>Ask:</strong> Add "GrabCash conversions from GrabOn" as a secondary KPI for the GrabOn team.</p>
+      <p><strong>Purpose:</strong> Ensure GrabOn team actively supports cross-promo, not just tolerates it</p>
+      <p><strong>Weight:</strong> 10-15% of team performance metrics</p>
+      <p><strong>Decision Maker:</strong> CEO</p>
+    </div>
+    <div class="card">
+      <h3>Decision 4: Phase 2 Budget Approval</h3>
+      <p><strong>Ask:</strong> &#8377;2L budget for Phase 2 (contingent on Phase 1 success)</p>
+      <p><strong>Conditional on:</strong> Phase 1 achieves &gt;15,000 signups with no GrabOn metric degradation</p>
+      <p><strong>Timeline:</strong> Approve in principle now, release after Phase 1 review</p>
+      <p><strong>Decision Maker:</strong> CEO / Finance</p>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="callout" style="margin-top:3rem;">
+    <div class="callout-title">The Bottom Line</div>
+    <p>GrabOn.in is InspireLabs' single most powerful growth lever for GrabCash. With 3.7M monthly visitors, 2.5M email subscribers, 1,500+ brand relationships, and massive social reach, the cross-promotion opportunity can transform GrabCash from 5,000 users to 100,000+ within 6 months. The estimated annual revenue uplift of <strong>&#8377;6.66 Cr</strong> at near-zero CAC makes this the highest-ROI initiative available. The phased approach ensures zero risk to GrabOn's core business while unlocking massive growth for GrabCash. <strong>The only risk is not doing this fast enough before EarnKaro figures out a similar play.</strong></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align:center; padding:3rem 2rem; border-top:1px solid var(--card-border); margin-top:2rem;">
+  <p style="font-size:0.72rem; color:var(--text-dimmer); text-transform:uppercase; letter-spacing:0.1em; font-family:'JetBrains Mono',monospace;">
+    GrabCash &times; GrabOn Cross-Promotion Playbook &bull; InspireLabs Solutions Ltd &bull; Confidential &bull; June 2026
+  </p>
+  <p style="font-size:0.68rem; color:var(--text-dimmer); margin-top:0.5rem;">
+    Document Version 1.0 &bull; Prepared for Executive Review
+  </p>
+</footer>
+
+</body>
+</html>

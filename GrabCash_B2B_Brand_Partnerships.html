@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrabCash B2B Brand Partnerships Playbook | InspireLabs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(13,207,26,0.3);
+  --green: #0dcf1a;
+  --green-dim: rgba(13,207,26,0.15);
+  --green-glow: rgba(13,207,26,0.4);
+  --text: #e0e0e0;
+  --text-dim: #888;
+  --text-bright: #fff;
+  --accent2: #00b4d8;
+  --accent3: #f72585;
+  --accent4: #fca311;
+  --accent5: #7209b7;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+::selection { background: var(--green); color: #000; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* Fixed Navigation */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.3s ease;
+}
+.nav.scrolled { background: rgba(10,10,10,0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+.nav-logo {
+  font-weight: 800; font-size: 1.3rem; color: var(--text-bright);
+  display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+}
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 0.25rem; overflow-x: auto; max-width: 70%; }
+.nav-links a {
+  color: var(--text-dim); text-decoration: none; font-size: 0.75rem;
+  padding: 0.4rem 0.7rem; border-radius: 6px; white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--green); background: var(--green-dim); }
+.nav-links a.active { color: var(--green); background: var(--green-dim); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at 50% 50%, var(--green-dim) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.hero-badge {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--green-dim); border: 1px solid rgba(13,207,26,0.2);
+  padding: 0.5rem 1.2rem; border-radius: 50px;
+  font-size: 0.85rem; color: var(--green); font-weight: 600;
+  margin-bottom: 2rem;
+}
+.hero-badge::before {
+  content: ''; width: 8px; height: 8px; background: var(--green);
+  border-radius: 50%; animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.hero h1 {
+  position: relative;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900; color: var(--text-bright);
+  line-height: 1.1; margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+.hero h1 em { font-style: normal; color: var(--green); }
+.hero-sub {
+  position: relative;
+  font-size: 1.2rem; color: var(--text-dim);
+  max-width: 700px; margin-bottom: 3rem;
+}
+.hero-stats {
+  position: relative;
+  display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem; font-weight: 700; color: var(--green);
+  display: block;
+}
+.hero-stat .label { font-size: 0.85rem; color: var(--text-dim); }
+
+/* Section Styling */
+.section {
+  padding: 5rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.section-header {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem; color: var(--green);
+  font-weight: 600; margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-num::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--green-dim), transparent);
+}
+.section h2 {
+  font-size: 2.2rem; font-weight: 800;
+  color: var(--text-bright); margin-bottom: 0.5rem;
+}
+.section h2 em { font-style: normal; color: var(--green); }
+.section-desc { color: var(--text-dim); font-size: 1rem; max-width: 700px; }
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(13,207,26,0.08);
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.card-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.card-icon {
+  width: 48px; height: 48px;
+  background: var(--green-dim);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-bright); }
+.card h4 { font-size: 1rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.75rem; }
+.card p { color: var(--text-dim); font-size: 0.92rem; }
+.card ul { list-style: none; padding: 0; }
+.card ul li {
+  padding: 0.4rem 0; font-size: 0.9rem; color: var(--text-dim);
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+.card ul li::before { content: '▸'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--green-dim);
+  color: var(--green);
+  margin: 0.15rem;
+}
+.tag.blue { background: rgba(0,180,216,0.15); color: var(--accent2); }
+.tag.pink { background: rgba(247,37,133,0.15); color: var(--accent3); }
+.tag.orange { background: rgba(252,163,17,0.15); color: var(--accent4); }
+.tag.purple { background: rgba(114,9,183,0.15); color: var(--accent5); }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.88rem;
+}
+thead { background: rgba(13,207,26,0.08); }
+th {
+  padding: 1rem 1.2rem; text-align: left;
+  font-weight: 700; color: var(--green);
+  font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+.green { color: var(--green); font-weight: 600; }
+.highlight-row td { background: rgba(13,207,26,0.05); }
+
+/* Email Templates */
+.email-template {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+.email-header {
+  background: rgba(13,207,26,0.06);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 1rem;
+}
+.email-header .type {
+  font-weight: 700; color: var(--green);
+  font-size: 0.9rem;
+}
+.email-header .context {
+  font-size: 0.8rem; color: var(--text-dim);
+}
+.email-body {
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+.email-body .field {
+  display: flex; gap: 0.5rem; margin-bottom: 0.5rem;
+}
+.email-body .field-label {
+  font-weight: 600; color: var(--text-dim);
+  min-width: 80px; font-size: 0.8rem;
+}
+.email-body .field-value { color: var(--text); }
+.email-body .body-text {
+  margin-top: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  white-space: pre-wrap;
+  color: var(--text-dim);
+}
+.email-body .body-text strong { color: var(--text); }
+.email-body .body-text em { color: var(--green); font-style: normal; }
+
+/* Script Blocks */
+.script-block {
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.script-block .speaker {
+  font-weight: 700; color: var(--green);
+  font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 0.5rem;
+}
+.script-block .dialogue {
+  color: var(--text-dim); line-height: 1.8;
+}
+.script-block .dialogue em { color: var(--accent4); font-style: italic; }
+.script-block .note {
+  margin-top: 0.75rem; padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.82rem; color: var(--text-dim);
+  font-style: italic;
+}
+
+/* Funnel */
+.funnel { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+.funnel-stage {
+  display: flex; align-items: stretch; gap: 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  transition: all 0.3s;
+}
+.funnel-stage:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.funnel-stage:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); }
+.funnel-stage:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+.funnel-num {
+  width: 60px; display: flex; align-items: center; justify-content: center;
+  background: var(--green-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; font-size: 1.1rem; color: var(--green);
+  flex-shrink: 0;
+}
+.funnel-content { flex: 1; padding: 1.5rem; }
+.funnel-content h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.5rem; }
+.funnel-content p { font-size: 0.88rem; color: var(--text-dim); }
+.funnel-meta {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap;
+}
+.funnel-meta span {
+  font-size: 0.78rem; color: var(--text-dim);
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.funnel-meta span strong { color: var(--green); font-family: 'JetBrains Mono', monospace; }
+
+/* Checklist */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  padding: 0.7rem 1rem; margin-bottom: 0.5rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--green);
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.checklist li:hover { background: rgba(255,255,255,0.04); }
+.checklist li .step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; color: var(--green);
+  font-size: 0.8rem; min-width: 30px;
+}
+.checklist li .step-text { color: var(--text); }
+.checklist li .step-owner {
+  margin-left: auto; font-size: 0.75rem;
+  color: var(--text-dim); white-space: nowrap;
+}
+
+/* KPI Dashboard */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.kpi-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(13,207,26,0.1);
+}
+.kpi-card .kpi-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem; font-weight: 700; color: var(--green);
+}
+.kpi-card .kpi-label {
+  font-size: 0.78rem; color: var(--text-dim);
+  margin-top: 0.3rem; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.kpi-card .kpi-trend {
+  font-size: 0.75rem; margin-top: 0.5rem;
+  color: var(--green);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%; height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.progress-bar .fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--green), #0f9);
+  transition: width 0.5s ease;
+}
+
+/* Wireframe */
+.wireframe {
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+.wireframe-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border);
+}
+.wireframe-header h4 { color: var(--green); font-size: 0.9rem; }
+.wireframe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.wireframe-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem;
+  text-align: center;
+  min-height: 100px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.wireframe-box .wf-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.wireframe-box .wf-label { font-size: 0.78rem; color: var(--text-dim); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 2rem; margin: 2rem 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.timeline-item {
+  position: relative; margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute; left: -1.5rem; top: 0.5rem;
+  width: 12px; height: 12px;
+  background: var(--green);
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--green);
+}
+.timeline-item h4 { font-size: 1rem; font-weight: 700; color: var(--text-bright); }
+.timeline-item .timeline-meta { font-size: 0.78rem; color: var(--green); margin-bottom: 0.5rem; }
+.timeline-item p { font-size: 0.88rem; color: var(--text-dim); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
+  .hero-stats { gap: 1.5rem; }
+  .card-grid, .card-grid-3 { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 3rem 1.2rem; }
+  .funnel-stage { flex-direction: column; }
+  .funnel-num { width: 100%; height: 40px; }
+}
+
+/* Utility */
+.mt-2 { margin-top: 1.5rem; }
+.mt-3 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 2rem; }
+.text-green { color: var(--green); }
+.text-dim { color: var(--text-dim); }
+.text-bright { color: var(--text-bright); }
+.fw-700 { font-weight: 700; }
+.fs-sm { font-size: 0.85rem; }
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 3rem 0;
+}
+.callout {
+  background: var(--green-dim);
+  border: 1px solid rgba(13,207,26,0.2);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--green);
+}
+.callout strong { color: var(--text-bright); }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo">Grab<span>Cash</span> B2B</a>
+  <div class="nav-links">
+    <a href="#opportunity">Opportunity</a>
+    <a href="#funnel">Acq. Funnel</a>
+    <a href="#categories">Categories</a>
+    <a href="#grabon-leverage">GrabOn Leverage</a>
+    <a href="#collateral">Sales Collateral</a>
+    <a href="#negotiation">Negotiation</a>
+    <a href="#onboarding">Onboarding</a>
+    <a href="#portal">Self-Serve Portal</a>
+    <a href="#retention">Retention</a>
+    <a href="#networks">Aff. Networks</a>
+    <a href="#d2c">D2C Strategy</a>
+    <a href="#enterprise">Enterprise</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#team">Team</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="hero-badge">CONFIDENTIAL PLAYBOOK — Q3 2026</div>
+  <h1>GrabCash <em>B2B Brand</em> Partnership Playbook</h1>
+  <p class="hero-sub">The definitive strategy to scale GrabCash from 500 to 2,500+ brand partnerships by leveraging GrabOn's 1,500+ brand relationships, affiliate network integrations, and direct D2C/Enterprise outreach.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">500+</span><span class="label">Current Brand Partners</span></div>
+    <div class="hero-stat"><span class="num">1,500+</span><span class="label">GrabOn Brand Contacts</span></div>
+    <div class="hero-stat"><span class="num">3.7M</span><span class="label">Monthly GrabOn Visitors</span></div>
+    <div class="hero-stat"><span class="num">2,500+</span><span class="label">Target by Q4 2027</span></div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: Brand Partnership Opportunity -->
+<!-- ============================================================ -->
+<section class="section" id="opportunity">
+  <div class="section-header">
+    <div class="section-num">01 — BRAND PARTNERSHIP OPPORTUNITY</div>
+    <h2>Why Brands <em>Need</em> Affiliate Channels in 2026</h2>
+    <p class="section-desc">The performance marketing revolution is here. Brands are shifting budgets from impression-based to outcome-based channels. GrabCash sits at the intersection of this shift.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">$21B</div>
+      <div class="kpi-label">India Digital Ad Spend 2026</div>
+      <div class="kpi-trend">+28% YoY growth</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">18%</div>
+      <div class="kpi-label">Affiliate Share of Digital</div>
+      <div class="kpi-trend">Up from 12% in 2024</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">$3.8B</div>
+      <div class="kpi-label">India Affiliate Market Size</div>
+      <div class="kpi-trend">CAGR 25% (2024-2028)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">4.2x</div>
+      <div class="kpi-label">Affiliate ROI vs Display</div>
+      <div class="kpi-trend">Highest among digital channels</div>
+    </div>
+  </div>
+
+  <div class="card-grid mt-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <h3>Performance Marketing Shift</h3>
+      </div>
+      <p>Brands are moving from CPM/CPC models to CPA/CPS. The CFO-friendly model of "pay only for results" is winning budget allocation battles. In 2026, 72% of India's top 500 advertisers have active affiliate programs, up from 48% in 2023.</p>
+      <ul class="mt-2">
+        <li>Zero risk for brands — pay only on confirmed sales</li>
+        <li>Attribution transparency — last-click/multi-touch models</li>
+        <li>Budget efficiency — no wasted impressions or clicks</li>
+        <li>Scalable distribution — thousands of publishers per campaign</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🚀</div>
+        <h3>GrabCash Value Proposition to Brands</h3>
+      </div>
+      <p>GrabCash offers brands a unique distribution channel that combines the trust of personal recommendations with the scale of a platform.</p>
+      <ul class="mt-2">
+        <li><strong class="text-green">Performance-Based:</strong> Pure CPA model, brands pay only for confirmed sales</li>
+        <li><strong class="text-green">Micro-Influencer Distribution:</strong> 10,000+ active sharers pushing deals via WhatsApp, Telegram, social</li>
+        <li><strong class="text-green">Messaging-Native:</strong> Deals spread through private messaging — highest trust channel</li>
+        <li><strong class="text-green">GrabOn Ecosystem:</strong> Built on GrabOn's 12+ years of coupon industry trust, 1,500+ brand relationships</li>
+        <li><strong class="text-green">Cost-Efficient:</strong> Lower CPA than influencer marketing, higher intent than display</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Affiliate as % of Digital Spend — Category Breakdown</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Affiliate % of Digital (2024)</th>
+            <th>Affiliate % of Digital (2026E)</th>
+            <th>Growth Driver</th>
+            <th>GrabCash Opportunity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-700">Fashion & Apparel</td>
+            <td class="mono">14%</td>
+            <td class="mono green">22%</td>
+            <td>D2C explosion, coupon-driven purchases</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Beauty & Personal Care</td>
+            <td class="mono">16%</td>
+            <td class="mono green">25%</td>
+            <td>Influencer-driven discovery, high margins</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Electronics</td>
+            <td class="mono">10%</td>
+            <td class="mono green">15%</td>
+            <td>Price comparison behavior, high AOV</td>
+            <td><span class="tag">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Travel & Hospitality</td>
+            <td class="mono">18%</td>
+            <td class="mono green">28%</td>
+            <td>Post-COVID surge, deal-seeking behavior</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Financial Services</td>
+            <td class="mono">22%</td>
+            <td class="mono green">30%</td>
+            <td>Lead gen models, fintech competition</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Food & Grocery</td>
+            <td class="mono">6%</td>
+            <td class="mono green">12%</td>
+            <td>Quick commerce growth, frequency</td>
+            <td><span class="tag">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Education</td>
+            <td class="mono">12%</td>
+            <td class="mono green">20%</td>
+            <td>EdTech competition for enrollments</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td class="fw-700">Health & Wellness</td>
+            <td class="mono">8%</td>
+            <td class="mono green">16%</td>
+            <td>D2C supplements, telemedicine</td>
+            <td><span class="tag">MEDIUM</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout mt-2">
+    <strong>Key Insight:</strong> The India affiliate market is growing at 25% CAGR, 2x faster than overall digital ad spend. GrabCash is positioned to capture this by combining GrabOn's brand trust with a mobile-first, messaging-native distribution model that no competitor offers at scale.
+  </div>
+</section>
+
+<!-- Market Deep Dive Cards -->
+<div class="section" style="padding-top:0;">
+  <div class="card-grid mb-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🌏</div>
+        <h3>India Affiliate Market — 2026 Landscape</h3>
+      </div>
+      <p>The Indian affiliate marketing industry has undergone a structural transformation. What was once a niche channel dominated by coupon sites and cashback platforms has evolved into a multi-billion dollar performance marketing ecosystem spanning micro-influencers, content creators, messaging-based distribution, and AI-powered recommendation engines.</p>
+      <h4 class="mt-2">Key Market Dynamics</h4>
+      <ul>
+        <li><strong class="text-green">Post-Cookie World:</strong> With third-party cookie deprecation, brands are shifting budgets from retargeting to first-party affiliate relationships where attribution is deterministic</li>
+        <li><strong class="text-green">Creator Economy Convergence:</strong> The line between affiliate marketing and influencer marketing is blurring. Micro-influencers with 1K-50K followers are the fastest-growing affiliate segment</li>
+        <li><strong class="text-green">Messaging Commerce:</strong> WhatsApp Commerce is the #1 emerging channel. 78% of Indian consumers have purchased a product after receiving a deal link via WhatsApp</li>
+        <li><strong class="text-green">Vernacular Growth:</strong> Tier 2-3 city adoption is driving the next wave. Hindi, Telugu, Tamil, and Bengali deal-sharing communities are growing 3x faster than English</li>
+        <li><strong class="text-green">AI-Powered Personalization:</strong> Smart deal matching based on user purchase history and preference signals is improving conversion rates by 40-60%</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏆</div>
+        <h3>Competitive Landscape Analysis</h3>
+      </div>
+      <p>Understanding where GrabCash sits in the competitive landscape and how to differentiate against incumbents.</p>
+      <div class="table-wrap mt-2">
+        <table>
+          <thead><tr><th>Platform</th><th>Model</th><th>Strength</th><th>Weakness</th><th>GrabCash Advantage</th></tr></thead>
+          <tbody>
+            <tr><td class="fw-700">EarnKaro</td><td>Affiliate sharing</td><td>First mover, large sharer base</td><td>Limited brand relationships, no content platform</td><td>GrabOn ecosystem, brand trust</td></tr>
+            <tr><td class="fw-700">CashKaro</td><td>Cashback + affiliate</td><td>Strong consumer brand, funded</td><td>Consumer-focused, not sharer-centric</td><td>Higher sharer commissions, messaging-native</td></tr>
+            <tr><td class="fw-700">Cuelinks</td><td>Auto-link monetization</td><td>Publisher tools, content monetization</td><td>Blog-focused, not messaging-native</td><td>WhatsApp-first distribution</td></tr>
+            <tr><td class="fw-700">Admitad India</td><td>Affiliate network</td><td>Global brand catalog</td><td>Network, not consumer platform</td><td>End-to-end platform (not just links)</td></tr>
+            <tr><td class="fw-700">Amazon Associates</td><td>Direct affiliate</td><td>Amazon inventory, trust</td><td>Single brand, low commissions</td><td>Multi-brand, higher rates on D2C</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mt-2">
+        <strong>GrabCash's Unique Position:</strong> No competitor combines a 12-year-old coupon platform (GrabOn) with a messaging-native affiliate distribution model. This dual advantage — brand trust + distribution reach — is our moat.
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Brand Pain Points That GrabCash Solves</h4>
+    <div class="card-grid-3 mt-2">
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Rising CAC on Meta/Google</h4>
+        <p class="fs-sm text-dim">Average CPC on Google Ads India is up 35% YoY. Facebook CPM is up 28%. Brands are desperately seeking lower-cost acquisition channels. GrabCash CPA is 50-70% lower than paid search.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Attribution Uncertainty</h4>
+        <p class="fs-sm text-dim">iOS privacy changes and cookie deprecation have made attribution murky on traditional channels. GrabCash offers deterministic, click-to-sale attribution with zero ambiguity.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Reaching Tier 2-3 Cities</h4>
+        <p class="fs-sm text-dim">Traditional digital advertising over-indexes on metro users. GrabCash sharers in 500+ cities distribute deals via WhatsApp groups that reach audiences no ad platform can target.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Influencer Marketing ROI</h4>
+        <p class="fs-sm text-dim">Brands spend ₹50K-5L per influencer post with unpredictable ROI. GrabCash micro-influencers deliver the same trust-based recommendation at pure performance pricing.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Stale Coupon Channels</h4>
+        <p class="fs-sm text-dim">Coupon sites drive volume but are commoditized. GrabCash adds a social distribution layer that makes deals feel personal, not generic — driving 2-3x higher conversion.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pain: Budget Predictability</h4>
+        <p class="fs-sm text-dim">Fixed-fee campaigns lock up budget with uncertain returns. GrabCash's CPA model means brands control exactly what they spend per sale — pure variable cost, infinitely scalable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>The Performance Marketing Flywheel — Why Affiliate Wins</h4>
+    <div class="script-block mt-2" style="border-left-color: var(--accent4);">
+      <div class="speaker" style="color: var(--accent4);">The Virtuous Cycle</div>
+      <div class="dialogue" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+More Brands → Better Deals → More Sharers → More Sales → More Brands
+
+Step 1: GrabCash signs new brands with compelling offers
+    │
+    ▼
+Step 2: Better deals attract more sharers to distribute
+    │
+    ▼
+Step 3: More sharers = more distribution = more customer reach
+    │
+    ▼
+Step 4: More customers = more sales for brands
+    │
+    ▼
+Step 5: Successful brands increase investment + refer other brands
+    │
+    ▼
+Step 6: More brands join → cycle accelerates
+
+<strong>Current Position:</strong> 500 brands, 10,000 sharers
+<strong>Inflection Point:</strong> 1,500 brands, 50,000 sharers (expected Q2 2027)
+<strong>Flywheel Velocity:</strong> At inflection, organic brand inbound should exceed outbound acquisition
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: Partnership Acquisition Funnel -->
+<!-- ============================================================ -->
+<section class="section" id="funnel">
+  <div class="section-header">
+    <div class="section-num">02 — PARTNERSHIP ACQUISITION FUNNEL</div>
+    <h2>Five-Stage Brand <em>Acquisition</em> Engine</h2>
+    <p class="section-desc">A systematic approach to growing from 500 to 2,500+ brand partners across five parallel acquisition channels.</p>
+  </div>
+
+  <div class="funnel">
+    <div class="funnel-stage">
+      <div class="funnel-num">S1</div>
+      <div class="funnel-content">
+        <h4>GrabOn Relationship Leverage</h4>
+        <p>Convert GrabOn's existing 1,500+ brand relationships into GrabCash affiliate partnerships. These brands already trust the InspireLabs ecosystem and understand coupon/affiliate economics. The pitch is simple: extend your GrabOn coupon presence into GrabCash's messenger-based distribution for incremental sales.</p>
+        <div class="funnel-meta">
+          <span>Pipeline: <strong>1,500 brands</strong></span>
+          <span>Conv. Rate: <strong>35-45%</strong></span>
+          <span>Timeline: <strong>Q3-Q4 2026</strong></span>
+          <span>Owner: <strong>BD Lead + GrabOn AM Team</strong></span>
+          <span>Expected Yield: <strong>525-675 brands</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="funnel-stage">
+      <div class="funnel-num">S2</div>
+      <div class="funnel-content">
+        <h4>Affiliate Network Integration</h4>
+        <p>Integrate with vCommission, Admitad, Cuelinks, and other Indian affiliate networks via API. This gives GrabCash instant access to 5,000+ brand programs without individual brand outreach. Focus on high-commission categories and auto-populate the brand catalog.</p>
+        <div class="funnel-meta">
+          <span>Pipeline: <strong>5,000+ programs</strong></span>
+          <span>Activation Rate: <strong>20-30%</strong></span>
+          <span>Timeline: <strong>Q3 2026 (ongoing)</strong></span>
+          <span>Owner: <strong>Tech Team + Partnerships</strong></span>
+          <span>Expected Yield: <strong>1,000-1,500 brands</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="funnel-stage">
+      <div class="funnel-num">S3</div>
+      <div class="funnel-content">
+        <h4>Direct D2C Brand Outreach</h4>
+        <p>Proactively target high-growth D2C brands in fashion, beauty, health, and food categories. These brands typically offer 10-20% commissions (vs 3-8% for marketplaces), are flexible on deal structures, and value incremental distribution channels. Use LinkedIn, industry events, and D2C directories for sourcing.</p>
+        <div class="funnel-meta">
+          <span>Pipeline: <strong>2,000+ D2C brands</strong></span>
+          <span>Conv. Rate: <strong>8-12%</strong></span>
+          <span>Timeline: <strong>Q4 2026 - Q2 2027</strong></span>
+          <span>Owner: <strong>D2C Sales Rep</strong></span>
+          <span>Expected Yield: <strong>160-240 brands</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="funnel-stage">
+      <div class="funnel-num">S4</div>
+      <div class="funnel-content">
+        <h4>Enterprise Brand Partnerships</h4>
+        <p>Deepen relationships with enterprise brands (Amazon, Flipkart, Myntra, Ajio, MakeMyTrip, etc.) for exclusive deals, higher commissions, and co-marketing campaigns. These top 50 brands drive 60%+ of affiliate revenue industry-wide.</p>
+        <div class="funnel-meta">
+          <span>Pipeline: <strong>50-100 enterprise brands</strong></span>
+          <span>Conv. Rate: <strong>40-60%</strong></span>
+          <span>Timeline: <strong>Ongoing</strong></span>
+          <span>Owner: <strong>Head of Partnerships</strong></span>
+          <span>Expected Yield: <strong>20-60 brands</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="funnel-stage">
+      <div class="funnel-num">S5</div>
+      <div class="funnel-content">
+        <h4>Self-Serve Brand Portal</h4>
+        <p>Build a self-serve portal where brands can sign up, set commission rates, upload creatives, and go live without manual intervention. This is the long-term scale engine that enables GrabCash to onboard 100+ brands/month with minimal team effort.</p>
+        <div class="funnel-meta">
+          <span>Pipeline: <strong>Unlimited (inbound)</strong></span>
+          <span>Activation Rate: <strong>50-60%</strong></span>
+          <span>Timeline: <strong>Portal launch Q1 2027</strong></span>
+          <span>Owner: <strong>Product + Engineering</strong></span>
+          <span>Expected Yield: <strong>300-500 brands/year</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <h4>Funnel Conversion Model — Brand Acquisition Economics</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Leads</th>
+            <th>Qualified</th>
+            <th>Pitched</th>
+            <th>Signed</th>
+            <th>Active (90d)</th>
+            <th>Cost/Brand</th>
+            <th>LTV (12mo)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td class="fw-700">GrabOn Leverage</td>
+            <td class="mono">1,500</td>
+            <td class="mono">1,200</td>
+            <td class="mono">900</td>
+            <td class="mono green">600</td>
+            <td class="mono">480</td>
+            <td class="mono">₹2,500</td>
+            <td class="mono green">₹45,000</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Network Integration</td>
+            <td class="mono">5,000</td>
+            <td class="mono">3,500</td>
+            <td class="mono">N/A</td>
+            <td class="mono green">1,200</td>
+            <td class="mono">800</td>
+            <td class="mono">₹500</td>
+            <td class="mono green">₹25,000</td>
+          </tr>
+          <tr>
+            <td class="fw-700">D2C Outreach</td>
+            <td class="mono">2,000</td>
+            <td class="mono">800</td>
+            <td class="mono">400</td>
+            <td class="mono green">200</td>
+            <td class="mono">140</td>
+            <td class="mono">₹8,000</td>
+            <td class="mono green">₹60,000</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Enterprise</td>
+            <td class="mono">100</td>
+            <td class="mono">80</td>
+            <td class="mono">60</td>
+            <td class="mono green">40</td>
+            <td class="mono">36</td>
+            <td class="mono">₹25,000</td>
+            <td class="mono green">₹5,00,000</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Self-Serve Portal</td>
+            <td class="mono">1,000/yr</td>
+            <td class="mono">700</td>
+            <td class="mono">N/A</td>
+            <td class="mono green">400</td>
+            <td class="mono">240</td>
+            <td class="mono">₹200</td>
+            <td class="mono green">₹18,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Total 18-Month Target:</strong> 2,440 new brand partners (combined across all stages), bringing total active brands to 2,500+. Blended cost per active brand: ₹4,200. Blended 12-month LTV per brand: ₹52,000. Payback period: < 1 month.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: Category-by-Category Strategy -->
+<!-- ============================================================ -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <div class="section-num">03 — CATEGORY-BY-CATEGORY STRATEGY</div>
+    <h2>Priority Categories <em>Ranked</em> by Commission Potential</h2>
+    <p class="section-desc">Eight core categories with target brands, commission benchmarks, seasonal patterns, and competitive landscape analysis.</p>
+  </div>
+
+  <div class="card-grid">
+    <!-- Fashion -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👗</div>
+        <div>
+          <h3>Fashion & Apparel</h3>
+          <span class="tag">PRIORITY 1</span> <span class="tag orange">8-15% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">Myntra, Ajio, Nykaa Fashion, Meesho, Urbanic, SUGAR Cosmetics, Bewakoof, The Souled Store, H&M India, Zara India, FabIndia, Westside, Max Fashion, Tata Cliq Fashion</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Marketplace (Myntra/Ajio): 5-8% on new customers, 3-5% on existing</li>
+        <li>D2C brands (Bewakoof, Souled Store): 10-15% flat</li>
+        <li>Luxury (Tata Cliq Luxury): 4-6% but high AOV (₹5,000+)</li>
+        <li>New customer bonuses: +2-3% for first-time buyers</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>End-of-season sales (EOSS) — 40-70% off, highest conversion</li>
+        <li>Cashback stacking — brand discount + GrabCash commission</li>
+        <li>New collection launches with early-access deals</li>
+        <li>Festival season combos (Diwali, Navratri, Christmas)</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Jan (Republic Day), Mar (Holi), Jun-Jul (EOSS), Sep-Oct (Festive), Nov (Singles Day), Dec (Year-end)</p>
+      <h4 class="mt-2">Competitive Landscape</h4>
+      <p class="fs-sm text-dim">EarnKaro dominates fashion with 40% share. CashKaro focuses on cashback. GrabCash differentiator: GrabOn's SEO traffic funneling fashion deal-seekers into the affiliate funnel.</p>
+    </div>
+
+    <!-- Beauty -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💄</div>
+        <div>
+          <h3>Beauty & Personal Care</h3>
+          <span class="tag">PRIORITY 1</span> <span class="tag orange">10-20% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">Nykaa, Purplle, Mamaearth, mCaffeine, Plum Goodness, The Body Shop, L'Oreal India, Maybelline, Forest Essentials, Kama Ayurveda, Minimalist, Dot & Key, WOW Skin Science, Biotique</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Nykaa/Purplle marketplace: 6-10%</li>
+        <li>D2C beauty brands: 12-20% (highest category commissions)</li>
+        <li>Premium/luxury beauty: 8-12% with ₹3,000+ AOV</li>
+        <li>Subscription boxes: ₹150-300 per subscription sale</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>BOGO (Buy One Get One) — highest conversion in beauty</li>
+        <li>Starter kits and sample bundles at 30-50% off</li>
+        <li>Influencer collab products with exclusive codes</li>
+        <li>Seasonal skincare regimen bundles</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Feb (Valentine's), Mar (Women's Day), Jun-Jul (Monsoon skincare), Oct (Karwa Chauth, Diwali), Nov (Pink Friday/Beauty sales)</p>
+      <h4 class="mt-2">Competitive Landscape</h4>
+      <p class="fs-sm text-dim">Beauty affiliate is fragmented — no single player dominates. Instagram creators drive most beauty affiliate revenue. GrabCash opportunity: WhatsApp-native beauty deals shared among friend groups.</p>
+    </div>
+
+    <!-- Electronics -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📱</div>
+        <div>
+          <h3>Electronics & Gadgets</h3>
+          <span class="tag blue">PRIORITY 2</span> <span class="tag orange">3-8% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">Amazon India, Flipkart, Croma, Reliance Digital, boAt, Noise, OnePlus, Samsung India, Apple (via authorized resellers), Xiaomi, realme, JBL, Sony India, LG India</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Amazon/Flipkart: 2-4% on electronics, 6-8% on accessories</li>
+        <li>D2C brands (boAt, Noise): 5-8% flat</li>
+        <li>High-ticket items (laptops, TVs): 1.5-3% but ₹500-2,000 per sale</li>
+        <li>Accessories/peripherals: 6-10% (higher margin)</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>Flash sales with deep discounts on flagship products</li>
+        <li>Bank card offers (SBI, HDFC) stacked with GrabCash</li>
+        <li>Exchange/upgrade deals on smartphones</li>
+        <li>Bundle deals (phone + earbuds + case)</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Jan (CES launches), Mar (financial year-end), Jul (Prime Day), Oct (Big Billion Days, Great Indian Festival), Nov (Black Friday)</p>
+    </div>
+
+    <!-- Travel -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">✈️</div>
+        <div>
+          <h3>Travel & Hospitality</h3>
+          <span class="tag">PRIORITY 1</span> <span class="tag orange">5-12% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">MakeMyTrip, Goibibo, Cleartrip, EaseMyTrip, Yatra, OYO, Booking.com, Agoda, Airbnb India, IRCTC, IndiGo, SpiceJet, Ixigo, TripAdvisor, Skyscanner</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Hotels: 6-12% of booking value (highest in travel)</li>
+        <li>Flights: ₹100-300 per domestic, ₹300-800 per international</li>
+        <li>Holiday packages: 5-8% of package value</li>
+        <li>Bus/train: ₹15-40 per booking (high volume)</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>Weekend getaway packages with 30-50% off hotels</li>
+        <li>Flight + hotel combos with exclusive GrabCash pricing</li>
+        <li>Last-minute deals (24-48 hour flash offers)</li>
+        <li>Festival travel deals (Diwali, summer holidays, long weekends)</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Feb-Mar (summer planning), May-Jun (summer travel), Oct (Diwali/festive travel), Dec (year-end holidays, New Year). Travel peaks align with long weekends and school holidays.</p>
+    </div>
+
+    <!-- Food -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🍔</div>
+        <div>
+          <h3>Food & Grocery</h3>
+          <span class="tag blue">PRIORITY 2</span> <span class="tag orange">3-5% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">Swiggy, Zomato, Blinkit, BigBasket, Zepto, Dunzo, Domino's, McDonald's, Burger King, Pizza Hut, Licious, FreshToHome, Country Delight, EatFit</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Food delivery (Swiggy/Zomato): 2-4% or ₹25-50 per new user</li>
+        <li>Grocery (BigBasket, Blinkit): 2-3% per order</li>
+        <li>D2C food brands: 5-8% (higher margin products)</li>
+        <li>Restaurant chains: ₹30-60 per new customer</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>Free delivery + discount combos for first-time users</li>
+        <li>BOGO on restaurant orders (Friday/weekend focus)</li>
+        <li>Subscription discounts (Swiggy One, Zomato Gold)</li>
+        <li>Meal kit and grocery bundle deals</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Consistent year-round demand. Peaks during IPL season, monsoon (indoor ordering), festivals (gift hampers), weekends. Low seasonality = steady revenue base.</p>
+    </div>
+
+    <!-- Finance -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div>
+          <h3>Financial Services</h3>
+          <span class="tag">PRIORITY 1</span> <span class="tag orange">₹200-500/Lead</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">CRED, PhonePe, Paytm, Groww, Zerodha, Angel One, Upstox, PolicyBazaar, Acko, Digit Insurance, BankBazaar, Bajaj Finserv, HDFC Bank, ICICI Bank, SBI Card</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Credit cards: ₹300-800 per approved application</li>
+        <li>Demat accounts: ₹200-500 per activated account</li>
+        <li>Insurance leads: ₹150-400 per qualified lead</li>
+        <li>Loans: ₹500-2,000 per disbursement (highest per-lead)</li>
+        <li>UPI/wallet signups: ₹30-80 per new user</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>Credit card signup bonuses (₹500-1,000 welcome rewards)</li>
+        <li>Zero brokerage trading offers for new demat accounts</li>
+        <li>Insurance comparison + cashback on first premium</li>
+        <li>Pre-approved personal loan offers at competitive rates</li>
+      </ul>
+      <h4 class="mt-2">Competitive Landscape</h4>
+      <p class="fs-sm text-dim">BankBazaar, PaisaBazaar, and CRED dominate finance affiliate. GrabCash angle: bundle financial product recommendations with shopping deals (e.g., "Get this credit card for 5% extra cashback on Myntra").</p>
+    </div>
+
+    <!-- Education -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎓</div>
+        <div>
+          <h3>Education & EdTech</h3>
+          <span class="tag blue">PRIORITY 2</span> <span class="tag orange">8-15% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">Unacademy, Byju's, upGrad, Coursera, Udemy, Scaler Academy, Newton School, Simplilearn, Great Learning, Physics Wallah, Vedantu, Emeritus, Coding Ninjas, Testbook</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Short courses (Udemy): 8-12% per enrollment</li>
+        <li>Certification programs: ₹500-2,000 per enrollment</li>
+        <li>Degree programs (upGrad, Emeritus): ₹3,000-10,000 per enrollment</li>
+        <li>Test prep platforms: 10-15% or ₹200-500 per subscription</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>Free trial + discounted first month subscriptions</li>
+        <li>Scholarship/discount codes for specific courses</li>
+        <li>Bundled course packages at 40-60% off</li>
+        <li>Referral bonuses that stack with affiliate commissions</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Jan-Mar (new year resolutions, exam prep), Jun-Jul (admission season), Sep-Oct (upskilling season). Udemy has major sales 5-6 times per year with 85-90% discounts.</p>
+    </div>
+
+    <!-- Health -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div>
+          <h3>Health & Wellness</h3>
+          <span class="tag blue">PRIORITY 2</span> <span class="tag orange">5-10% Commission</span>
+        </div>
+      </div>
+      <h4>Top Target Brands</h4>
+      <p class="fs-sm text-dim">PharmEasy, 1mg (Tata), Netmeds, HealthKart, MuscleBlaze, Cult.fit, Decathlon India, GNC India, Oziva, Kapiva, MyProtein India, Practo, Apollo 24/7, Lybrate</p>
+      <h4 class="mt-2">Commission Benchmarks</h4>
+      <ul>
+        <li>Online pharmacy (PharmEasy, 1mg): 4-6% per order</li>
+        <li>Supplements (HealthKart, MuscleBlaze): 6-10%</li>
+        <li>Fitness subscriptions (Cult.fit): ₹200-500 per signup</li>
+        <li>D2C wellness (Oziva, Kapiva): 10-15%</li>
+        <li>Telemedicine consultations: ₹50-150 per booking</li>
+      </ul>
+      <h4 class="mt-2">Deal Types That Convert</h4>
+      <ul>
+        <li>First-order discounts on pharmacy orders (15-25% off)</li>
+        <li>Supplement subscription bundles with free shaker/accessories</li>
+        <li>Health checkup packages at 40-60% off</li>
+        <li>Fitness membership trials (7-14 day free access)</li>
+      </ul>
+      <h4 class="mt-2">Seasonal Peaks</h4>
+      <p class="fs-sm text-dim">Jan (New Year fitness), Mar-Apr (summer body prep), Jul (International Yoga Day), Nov-Dec (immunity products, health checkups). Supplements have steady year-round demand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Category Deep-Dive: Sub-Category Priority Matrix -->
+<div class="section" style="padding-top:0;">
+  <div class="card mb-3">
+    <h4>Sub-Category Priority Matrix — Revenue Potential vs Acquisition Effort</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Sub-Category</th><th>Parent</th><th>Avg Commission</th><th>Avg AOV</th><th>Revenue/Order</th><th>Acquisition Effort</th><th>Priority Score</th></tr></thead>
+        <tbody>
+          <tr class="highlight-row"><td class="fw-700">D2C Skincare</td><td>Beauty</td><td class="mono">15-20%</td><td class="mono">₹1,200</td><td class="mono green">₹180-240</td><td>Low (founder-led, open to affiliates)</td><td class="mono green">9.5/10</td></tr>
+          <tr class="highlight-row"><td class="fw-700">D2C Fashion</td><td>Fashion</td><td class="mono">12-15%</td><td class="mono">₹1,500</td><td class="mono green">₹180-225</td><td>Low-Medium</td><td class="mono green">9.2/10</td></tr>
+          <tr><td class="fw-700">Credit Cards</td><td>Finance</td><td class="mono">₹500-800/app</td><td class="mono">N/A</td><td class="mono green">₹500-800</td><td>Medium (compliance-heavy)</td><td class="mono green">9.0/10</td></tr>
+          <tr><td class="fw-700">Hotel Bookings</td><td>Travel</td><td class="mono">8-12%</td><td class="mono">₹4,000</td><td class="mono green">₹320-480</td><td>Medium</td><td class="mono green">8.8/10</td></tr>
+          <tr><td class="fw-700">Online Courses</td><td>Education</td><td class="mono">10-15%</td><td class="mono">₹3,000</td><td class="mono green">₹300-450</td><td>Medium</td><td class="mono">8.5/10</td></tr>
+          <tr><td class="fw-700">D2C Supplements</td><td>Health</td><td class="mono">10-15%</td><td class="mono">₹1,800</td><td class="mono green">₹180-270</td><td>Low</td><td class="mono">8.3/10</td></tr>
+          <tr><td class="fw-700">Demat Accounts</td><td>Finance</td><td class="mono">₹300-500/acct</td><td class="mono">N/A</td><td class="mono green">₹300-500</td><td>Medium</td><td class="mono">8.0/10</td></tr>
+          <tr><td class="fw-700">Luxury Fashion</td><td>Fashion</td><td class="mono">4-6%</td><td class="mono">₹8,000</td><td class="mono green">₹320-480</td><td>High (brand gatekeeping)</td><td class="mono">7.8/10</td></tr>
+          <tr><td class="fw-700">Electronics Accessories</td><td>Electronics</td><td class="mono">6-10%</td><td class="mono">₹1,500</td><td class="mono">₹90-150</td><td>Low (boAt, Noise etc.)</td><td class="mono">7.5/10</td></tr>
+          <tr><td class="fw-700">Food Delivery</td><td>Food</td><td class="mono">₹25-50/new user</td><td class="mono">N/A</td><td class="mono">₹25-50</td><td>Low (always acquiring)</td><td class="mono">7.0/10</td></tr>
+          <tr><td class="fw-700">Smartphones</td><td>Electronics</td><td class="mono">1.5-3%</td><td class="mono">₹15,000</td><td class="mono">₹225-450</td><td>High (Amazon/Flipkart dominated)</td><td class="mono">6.8/10</td></tr>
+          <tr><td class="fw-700">Domestic Flights</td><td>Travel</td><td class="mono">₹100-200</td><td class="mono">₹5,000</td><td class="mono">₹100-200</td><td>Low (MMT, EaseMyTrip open)</td><td class="mono">6.5/10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout mt-2">
+      <strong>Strategy Implication:</strong> Focus BD efforts on sub-categories with priority score 8.0+ first. D2C skincare, D2C fashion, credit cards, and hotel bookings represent the highest-value targets with manageable acquisition effort. These four sub-categories alone can generate ₹50L+/month in commission revenue.
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Seasonal Revenue Heat Map — Commission Revenue by Month by Category</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Category</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="fw-700">Fashion</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.4);">Peak</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Beauty</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.4);">Peak</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Electronics</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.08);">Low</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.4);">Peak</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Travel</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.4);">Peak</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Finance</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.3);">V.High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Food</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+            <td style="background:rgba(13,207,26,0.15);">Med</td>
+            <td style="background:rgba(13,207,26,0.25);">High</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-dim fs-sm mt-2">Peak = 2x+ normal revenue. V.High = 1.5-2x. High = 1.2-1.5x. Med = baseline. Low = 0.7-0.9x baseline. Use this to plan brand outreach timing and seasonal campaign pitches.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Top 10 Brand Targets by Category — Immediate Outreach List</h4>
+      <h4 class="text-green mt-2 fs-sm">Fashion (Immediate)</h4>
+      <ul>
+        <li>Bewakoof — D2C, 12-15% commission, young audience, deal-responsive</li>
+        <li>The Souled Store — D2C, 10-12%, pop culture + merch, high repeat rate</li>
+        <li>Urbanic — D2C, 12-14%, fast fashion, Instagram-native audience</li>
+        <li>Snitch — D2C menswear, 10-12%, fast-growing, heavy on social commerce</li>
+        <li>FabIndia — Ethnic wear, 6-8%, festival season powerhouse</li>
+      </ul>
+      <h4 class="text-green mt-2 fs-sm">Beauty (Immediate)</h4>
+      <ul>
+        <li>Minimalist — D2C skincare, 15-18%, science-backed, viral product launches</li>
+        <li>Dot & Key — D2C, 14-18%, millennial skincare, strong social presence</li>
+        <li>mCaffeine — D2C, 12-15%, coffee-based skincare, unique positioning</li>
+        <li>Plum Goodness — D2C, 12-16%, vegan beauty, subscription model</li>
+        <li>WOW Skin Science — D2C, 10-14%, mass-market, Amazon bestseller</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="text-green fs-sm">Finance (Immediate)</h4>
+      <ul>
+        <li>Groww — Demat account, ₹300-500/activation, fastest-growing trading app</li>
+        <li>Angel One — ₹250-400/activation, established brand, high conversion</li>
+        <li>CRED — Credit card payments, ₹100-200/new user, premium audience</li>
+        <li>Acko Insurance — ₹200-400/policy, digital-native, quick quotes</li>
+        <li>Jupiter (Banking) — ₹150-250/account, neo-bank, millennial-focused</li>
+      </ul>
+      <h4 class="text-green mt-2 fs-sm">Travel (Immediate)</h4>
+      <ul>
+        <li>EaseMyTrip — 5-8% on hotels, aggressive on affiliate, growing market share</li>
+        <li>OYO — 6-10% on bookings, high volume, budget-friendly fits GrabCash audience</li>
+        <li>Ixigo — ₹80-150/flight booking, trains + flights, mass-market appeal</li>
+        <li>Cleartrip — 5-9% on hotels, Flipkart-owned, integration synergies</li>
+        <li>Airbnb India — 4-6% on bookings, high AOV (₹5,000+), experiential travel</li>
+      </ul>
+      <h4 class="text-green mt-2 fs-sm">Education (Immediate)</h4>
+      <ul>
+        <li>Udemy — 8-12% per enrollment, frequent mega-sales, high volume</li>
+        <li>Scaler Academy — ₹3,000-5,000/enrollment, premium tech courses</li>
+        <li>Physics Wallah — 10-15%, mass-market test prep, huge student base</li>
+        <li>Testbook — ₹200-400/subscription, government exam prep, high demand</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: GrabOn Leverage Playbook -->
+<!-- ============================================================ -->
+<section class="section" id="grabon-leverage">
+  <div class="section-header">
+    <div class="section-num">04 — GRABON LEVERAGE PLAYBOOK</div>
+    <h2>Leveraging GrabOn's <em>Brand Equity</em></h2>
+    <p class="section-desc">GrabOn.in has 12+ years of coupon industry dominance, 3.7M monthly visitors, and 1,500+ active brand relationships. Here is how to convert that into GrabCash brand partnerships.</p>
+  </div>
+
+  <div class="card mb-3">
+    <h4>The "GrabOn + GrabCash" Combined Performance Package</h4>
+    <p class="mt-2">Position GrabCash as the natural extension of a brand's GrabOn presence. The pitch: "You are already getting coupon visibility on GrabOn. Now extend that into WhatsApp-native distribution through GrabCash for an additional performance-only channel."</p>
+    <div class="two-col mt-2">
+      <div>
+        <h4 class="text-green">What Brands Get with GrabOn Alone</h4>
+        <ul>
+          <li>Coupon listing on GrabOn.in (3.7M monthly visitors)</li>
+          <li>SEO-driven organic traffic from deal searches</li>
+          <li>Brand page with all active offers consolidated</li>
+          <li>Editorial mentions in deal roundups and blog posts</li>
+          <li>Standard affiliate tracking via network links</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-green">What Brands Get Adding GrabCash</h4>
+        <ul>
+          <li>Everything in GrabOn, PLUS:</li>
+          <li>WhatsApp/Telegram distribution via 10,000+ active sharers</li>
+          <li>Micro-influencer reach into private messaging groups</li>
+          <li>High-intent traffic from personal recommendations</li>
+          <li>Real-time deal performance analytics dashboard</li>
+          <li>Incremental 15-30% sales lift over GrabOn alone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-2">
+    <h4>Cross-Promotion Benefits for Brands — Combined Reach Metrics</h4>
+    <div class="kpi-grid mt-2">
+      <div class="kpi-card">
+        <div class="kpi-value">3.7M</div>
+        <div class="kpi-label">GrabOn Monthly Visitors</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">500K+</div>
+        <div class="kpi-label">GrabCash Monthly Reach</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">4.2M</div>
+        <div class="kpi-label">Combined Unique Reach</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">85%</div>
+        <div class="kpi-label">Incremental (Non-Overlap)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Case Study: How a Brand Gets 2x Distribution Through Both Platforms</h4>
+    <div class="callout mt-2">
+      <strong>Brand: [Fashion D2C Brand] — "StyleCraft" (Illustrative Example)</strong>
+    </div>
+    <div class="timeline mt-2">
+      <div class="timeline-item">
+        <div class="timeline-meta">Week 1 — GrabOn Activation</div>
+        <h4>Coupon Listing Goes Live</h4>
+        <p>StyleCraft's "Flat 40% Off" coupon goes live on GrabOn. Within 7 days, the listing generates 12,000 page views and 1,800 clicks to StyleCraft's website. Conversion rate: 4.2%. Revenue generated: ₹3.2L. Commission earned by GrabOn: ₹38,400 (12%).</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Week 2 — GrabCash Layer Added</div>
+        <h4>Deal Goes Live on GrabCash</h4>
+        <p>The same deal is now available on GrabCash. 340 active sharers pick up the deal and distribute via WhatsApp groups, Instagram stories, and Telegram channels. The deal reaches an estimated 85,000 unique users through private messaging. An additional 2,400 clicks are generated with a 5.8% conversion rate (higher due to personal recommendation trust). Additional revenue: ₹4.8L. Additional commission: ₹57,600.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Week 3-4 — Combined Performance</div>
+        <h4>2x Revenue Lift Achieved</h4>
+        <p>Total 30-day performance: ₹8.0L in revenue (vs ₹3.2L GrabOn alone = 2.5x lift). Brand's CPA dropped 35% due to higher conversion rates from GrabCash's trust-based distribution. StyleCraft upgrades to premium partnership tier with GrabCash.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="script-block mt-3">
+    <div class="speaker">Sales Script — GrabOn Upsell to GrabCash</div>
+    <div class="dialogue">
+"Hi [Brand Contact], this is [Name] from InspireLabs. We manage both GrabOn and GrabCash.
+
+I see your brand is already doing great on GrabOn — your [category] coupons generated [X clicks] last month. I wanted to share something exciting.
+
+We've launched GrabCash, which takes your existing deals and distributes them through a network of 10,000+ micro-influencers who share links via WhatsApp and social media. The best part? It's the same performance model — you only pay when a sale happens.
+
+Our early brand partners are seeing a <em>15-30% incremental revenue lift</em> on top of what they get from GrabOn, with <em>zero additional creative or setup effort</em> — we use the same deals.
+
+Can I set up a 15-minute call to show you the dashboard and how [competitive brand] is already using this?"
+    </div>
+    <div class="note">Key talking points: Same deals, zero extra work, pay only on results, 15-30% incremental lift, competitors are already on it.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: Brand Sales Collateral -->
+<!-- ============================================================ -->
+<section class="section" id="collateral">
+  <div class="section-header">
+    <div class="section-num">05 — BRAND SALES COLLATERAL</div>
+    <h2>Sales <em>Collateral</em> & Templates</h2>
+    <p class="section-desc">Complete set of pitch materials, email templates, and follow-up sequences for brand acquisition.</p>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Brand Pitch Deck Outline — 10 Slides</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr><th>Slide</th><th>Title</th><th>Content</th><th>Key Visual</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono green">01</td><td class="fw-700">The Affiliate Revolution</td><td>Market size ($3.8B), growth rate (25% CAGR), why performance marketing is winning</td><td>Market growth chart</td></tr>
+          <tr><td class="mono green">02</td><td class="fw-700">Meet InspireLabs</td><td>GrabOn heritage (12+ years, 3.7M visitors), GrabCash as the next evolution</td><td>Brand ecosystem diagram</td></tr>
+          <tr><td class="mono green">03</td><td class="fw-700">How GrabCash Works</td><td>User journey: brand deal → share link → friend buys → everyone earns</td><td>3-step flow animation</td></tr>
+          <tr><td class="mono green">04</td><td class="fw-700">Distribution Power</td><td>10,000+ sharers, WhatsApp/Telegram reach, messaging-native trust</td><td>Distribution network map</td></tr>
+          <tr><td class="mono green">05</td><td class="fw-700">Performance Metrics</td><td>Avg conversion rate (4-6%), avg AOV, click-to-sale metrics by category</td><td>Performance dashboard screenshot</td></tr>
+          <tr><td class="mono green">06</td><td class="fw-700">Brand Success Stories</td><td>2-3 anonymized case studies with revenue numbers</td><td>Before/after charts</td></tr>
+          <tr><td class="mono green">07</td><td class="fw-700">Partnership Model</td><td>Commission structure, payment terms, tracking transparency</td><td>Pricing table</td></tr>
+          <tr><td class="mono green">08</td><td class="fw-700">GrabOn + GrabCash Combo</td><td>Combined reach, incremental lift, zero extra effort</td><td>Venn diagram of reach</td></tr>
+          <tr><td class="mono green">09</td><td class="fw-700">Onboarding Process</td><td>7-step onboarding, 48-hour go-live timeline</td><td>Process timeline</td></tr>
+          <tr><td class="mono green">10</td><td class="fw-700">Let's Partner</td><td>CTA, next steps, contact info, QR code to brand portal</td><td>CTA with QR code</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>One-Pager Template — Key Elements</h4>
+    <div class="card-grid-3 mt-2">
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Header Section</h4>
+        <p class="fs-sm text-dim">GrabCash logo, tagline ("India's Fastest-Growing Affiliate Earning Platform"), key stat (500+ brands trust us)</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Value Prop (3 pillars)</h4>
+        <p class="fs-sm text-dim">1. Performance-Only Pricing 2. WhatsApp-Native Distribution 3. GrabOn Ecosystem Power</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Social Proof</h4>
+        <p class="fs-sm text-dim">3 brand logos, 2 stat callouts, 1 testimonial quote</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">How It Works</h4>
+        <p class="fs-sm text-dim">4-step visual: List Deal → Sharers Distribute → Customers Buy → Brand Pays Commission</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">Pricing</h4>
+        <p class="fs-sm text-dim">Category-wise commission ranges, "You set the rate" flexibility, zero setup fees</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.2rem;">
+        <h4 class="text-green fs-sm">CTA</h4>
+        <p class="fs-sm text-dim">QR code to brand portal, email, phone, "Go live in 48 hours"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>ROI Calculator Framework</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr><th>Input</th><th>Example Value</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Average Order Value (AOV)</td><td class="mono">₹2,500</td><td>Brand provides</td></tr>
+          <tr><td>Commission Rate</td><td class="mono">10%</td><td>Negotiated</td></tr>
+          <tr><td>Expected Monthly Clicks</td><td class="mono">5,000</td><td>GrabCash estimate (based on category)</td></tr>
+          <tr><td>Expected Conversion Rate</td><td class="mono">4.5%</td><td>GrabCash benchmark</td></tr>
+          <tr><td>Monthly Orders</td><td class="mono green">225</td><td>Calculated: Clicks × CVR</td></tr>
+          <tr><td>Monthly Revenue for Brand</td><td class="mono green">₹5,62,500</td><td>Calculated: Orders × AOV</td></tr>
+          <tr><td>Monthly Commission Cost</td><td class="mono">₹56,250</td><td>Calculated: Revenue × Commission</td></tr>
+          <tr><td>Effective CPA</td><td class="mono green">₹250</td><td>Calculated: Commission / Orders</td></tr>
+          <tr><td>Brand's Typical CPA (Google Ads)</td><td class="mono">₹600-800</td><td>Industry benchmark</td></tr>
+          <tr class="highlight-row"><td class="fw-700">CPA Savings vs Google Ads</td><td class="mono green fw-700">58-69%</td><td>GrabCash advantage</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Email Templates -->
+  <h3 class="text-bright mb-2">Partnership Proposal Email Templates</h3>
+
+  <div class="email-template mb-2">
+    <div class="email-header">
+      <span class="type">Template 1: Cold Outreach</span>
+      <span class="context">For brands with no existing GrabOn/InspireLabs relationship</span>
+    </div>
+    <div class="email-body">
+      <div class="field"><span class="field-label">Subject:</span><span class="field-value">[Brand Name] + GrabCash: Performance-Only Distribution for [Category] Deals</span></div>
+      <div class="field"><span class="field-label">Alt Subject:</span><span class="field-value">How [Competitor Brand] added 20% incremental revenue through WhatsApp distribution</span></div>
+      <div class="body-text">
+Hi <strong>[First Name]</strong>,
+
+I'm <strong>[Your Name]</strong> from GrabCash (by InspireLabs, the team behind GrabOn.in — India's leading coupon platform with <em>3.7M monthly visitors</em>).
+
+I noticed <strong>[Brand Name]</strong> is doing great in the <strong>[category]</strong> space, and I believe we can help you reach a completely new audience — at zero risk.
+
+<strong>Here's the idea:</strong>
+GrabCash has 10,000+ micro-influencers who share brand deals through WhatsApp, Telegram, and social media. Unlike traditional advertising, you only pay when a confirmed sale happens.
+
+<strong>Quick stats:</strong>
+• 500+ brands already partnered (including [2-3 relevant brands in their category])
+• Average 4-6% conversion rate (vs 1-2% for display ads)
+• 15-30% incremental revenue lift for brands already on affiliate
+• Zero setup fees, go live in 48 hours
+
+<strong>How it works for [Brand Name]:</strong>
+1. You set your commission rate (typically <em>[X-Y%]</em> for [category])
+2. We create trackable links for your best deals
+3. Our sharers distribute via messaging + social
+4. You pay only for confirmed sales
+
+Would you be open to a quick 15-minute call this week? I'd love to show you our brand dashboard and walk through the numbers.
+
+Best,
+<strong>[Your Name]</strong>
+Brand Partnerships, GrabCash
+[Phone] | [Email]
+grabcash.in</div>
+    </div>
+  </div>
+
+  <div class="email-template mb-2">
+    <div class="email-header">
+      <span class="type">Template 2: Warm Outreach (GrabOn Existing)</span>
+      <span class="context">For brands already listed on GrabOn.in</span>
+    </div>
+    <div class="email-body">
+      <div class="field"><span class="field-label">Subject:</span><span class="field-value">Your GrabOn performance + a new channel that can 2x it</span></div>
+      <div class="field"><span class="field-label">Alt Subject:</span><span class="field-value">[Brand Name] on GrabOn: Here's how to unlock 30% more sales — same deals, zero extra work</span></div>
+      <div class="body-text">
+Hi <strong>[First Name]</strong>,
+
+Thanks for being a valued GrabOn partner — your <strong>[Brand Name]</strong> coupons generated <em>[X clicks/revenue]</em> last month on our platform.
+
+I'm reaching out because we've launched <strong>GrabCash</strong>, a sister platform that extends your GrabOn deals into a completely new distribution channel: <em>private messaging.</em>
+
+<strong>What's different:</strong>
+GrabCash has 10,000+ users who earn commissions by sharing brand deals via WhatsApp, Telegram, and Instagram. When their friends buy using the shared link, everyone wins — the friend gets a deal, the sharer earns, and you get an incremental sale.
+
+<strong>Why this matters for [Brand Name]:</strong>
+• Same deals you already have on GrabOn — <em>zero additional creative/setup work</em>
+• Reaches audiences that never visit coupon sites (messaging-native)
+• Our early brands are seeing <em>15-30% incremental revenue</em> on top of GrabOn
+• Same performance model — pay only on confirmed sales
+
+<strong>Brands like [similar brand 1] and [similar brand 2]</strong> are already live on GrabCash and seeing strong results.
+
+Can I get 15 minutes on your calendar to show you the dashboard?
+
+Cheers,
+<strong>[Your Name]</strong>
+Brand Partnerships, GrabCash (by InspireLabs)
+[Phone] | [Email]</div>
+    </div>
+  </div>
+
+  <div class="email-template mb-3">
+    <div class="email-header">
+      <span class="type">Template 3: Upsell — Premium Partnership</span>
+      <span class="context">For brands already on GrabCash, upgrading to premium tier</span>
+    </div>
+    <div class="email-body">
+      <div class="field"><span class="field-label">Subject:</span><span class="field-value">[Brand Name] GrabCash Performance Review + Premium Partnership Opportunity</span></div>
+      <div class="body-text">
+Hi <strong>[First Name]</strong>,
+
+Great news — <strong>[Brand Name]</strong> has generated <em>₹[X]L in revenue</em> through GrabCash over the past <em>[X] months</em>. You're in our top <strong>[X%]</strong> of brand partners.
+
+Based on your performance, I'd like to propose upgrading to our <strong>Premium Partnership Tier</strong>, which unlocks:
+
+<strong>Premium Benefits:</strong>
+• <em>Priority placement</em> — your deals appear first in the sharer feed
+• <em>Dedicated sharer campaigns</em> — we run targeted pushes to our top 500 sharers
+• <em>Exclusive deal slots</em> — 2 "GrabCash Exclusive" features per month
+• <em>Custom analytics dashboard</em> — real-time performance, audience insights, cohort analysis
+• <em>Quarterly strategy sessions</em> — with our brand success team
+
+<strong>Investment:</strong>
+The premium tier requires a minimum monthly commitment of ₹[X] in commission spend (you're already at ₹[Y], so this is well within your current run-rate). In exchange, we commit to a <em>[X%] incremental traffic guarantee</em>.
+
+<strong>ROI projection:</strong>
+Based on your current metrics, premium placement should drive an additional <em>₹[X]L/month</em> in revenue, making the ROI <em>[X]x</em> on the premium commitment.
+
+Would you like to discuss this on a call? I can also share performance data from similar brands in the <strong>[category]</strong> who've upgraded.
+
+Best,
+<strong>[Your Name]</strong></div>
+    </div>
+  </div>
+
+  <!-- Follow-up Sequence -->
+  <div class="card">
+    <h4>Follow-Up Sequence — 5 Touchpoints</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr><th>Touch</th><th>Timing</th><th>Channel</th><th>Subject / Message</th><th>Goal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono green">1</td>
+            <td>Day 0</td>
+            <td><span class="tag">Email</span></td>
+            <td>Initial partnership proposal (templates above)</td>
+            <td>Get reply / meeting booked</td>
+          </tr>
+          <tr>
+            <td class="mono green">2</td>
+            <td>Day 3</td>
+            <td><span class="tag blue">LinkedIn</span></td>
+            <td>Connection request + short note: "Sent you an email about GrabCash x [Brand]. Would love to connect!"</td>
+            <td>Multi-channel visibility</td>
+          </tr>
+          <tr>
+            <td class="mono green">3</td>
+            <td>Day 7</td>
+            <td><span class="tag">Email</span></td>
+            <td>"Quick follow-up: [Competitor] just went live on GrabCash — thought you'd want to know"</td>
+            <td>FOMO + competitive angle</td>
+          </tr>
+          <tr>
+            <td class="mono green">4</td>
+            <td>Day 14</td>
+            <td><span class="tag">Email</span></td>
+            <td>"[Category] performance report: How brands like yours are doing on GrabCash" (attach category benchmark PDF)</td>
+            <td>Value-add content</td>
+          </tr>
+          <tr>
+            <td class="mono green">5</td>
+            <td>Day 21</td>
+            <td><span class="tag pink">Phone/WhatsApp</span></td>
+            <td>"Hi [Name], quick call about GrabCash. We have a festive season exclusive slot opening — wanted to give you first priority."</td>
+            <td>Urgency + direct conversation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout mt-2">
+      <strong>Sequence Rules:</strong> Stop the sequence if brand responds at any point. If no response after 5 touchpoints, move to quarterly "category newsletter" nurture. Never send more than 1 outreach per week. Always personalize with brand-specific data points.
+    </div>
+  </div>
+</section>
+
+<!-- Additional Collateral: Case Study Template & Objection Handling -->
+<div class="section" style="padding-top:0;">
+  <div class="card mb-3">
+    <h4>Case Study Template — Reusable Format for Brand Success Stories</h4>
+    <div class="email-template mt-2">
+      <div class="email-header">
+        <span class="type">Case Study Structure</span>
+        <span class="context">Fill in with real brand data as results come in</span>
+      </div>
+      <div class="email-body">
+        <div class="body-text">
+<strong>TITLE:</strong> How [Brand Name] Generated ₹[X]L in Incremental Revenue Through GrabCash in [X] Months
+
+<strong>THE CHALLENGE:</strong>
+[Brand Name], a [category] brand with [context], was facing [specific challenge: rising CAC / stagnant growth / new market entry / seasonal slump]. Their existing channels (Google Ads, Facebook, influencer marketing) were delivering diminishing returns with CPAs rising [X]% quarter-over-quarter.
+
+<strong>THE SOLUTION:</strong>
+[Brand Name] partnered with GrabCash to activate a performance-only affiliate distribution channel:
+• Commission rate: [X]% on confirmed sales
+• Deal types activated: [specific deals]
+• Integration method: [direct pixel / network / Shopify app]
+• Time to go live: [X] days
+
+<strong>THE RESULTS (After [X] Months):</strong>
+• Total revenue generated: <em>₹[X]L</em>
+• Total orders: <em>[X]</em>
+• Average conversion rate: <em>[X]%</em> (vs [X]% industry average)
+• Customer acquisition cost: <em>₹[X]</em> (vs ₹[X] on Google Ads — [X]% lower)
+• Active sharers promoting the brand: <em>[X]</em>
+• Top-performing deal: "[Deal name]" generated ₹[X]L alone
+• New customer %: <em>[X]%</em> were first-time buyers of the brand
+• Repeat purchase rate: <em>[X]%</em> within 60 days
+
+<strong>BRAND QUOTE:</strong>
+"[Testimonial from brand contact — 2-3 sentences about the impact and experience]"
+— [Name], [Title], [Brand Name]
+
+<strong>KEY TAKEAWAY:</strong>
+GrabCash's messaging-native distribution delivered [X]% incremental revenue at [X]% lower CPA compared to paid channels, proving that peer-to-peer deal sharing is one of the highest-converting acquisition channels for [category] brands in India.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Objection Handling Matrix — Top 15 Brand Objections & Responses</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>#</th><th>Objection</th><th>Response Framework</th><th>Proof Point</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="mono">1</td>
+            <td class="fw-700">"We don't have budget for affiliate"</td>
+            <td>There's no upfront budget needed. You pay only when a sale happens. Think of it as a variable cost line item, not a marketing budget allocation.</td>
+            <td>₹0 upfront cost. 100% performance-based.</td>
+          </tr>
+          <tr>
+            <td class="mono">2</td>
+            <td class="fw-700">"We tried affiliate before and it didn't work"</td>
+            <td>Most affiliate failures are distribution failures, not model failures. GrabCash's messaging-native approach reaches audiences that traditional affiliate sites never touch.</td>
+            <td>WhatsApp distribution = 3x higher conversion vs coupon site traffic</td>
+          </tr>
+          <tr>
+            <td class="mono">3</td>
+            <td class="fw-700">"We're concerned about brand dilution"</td>
+            <td>GrabCash sharers are real people sharing with their friends, not anonymous publishers plastering banners. You approve all creatives, and we enforce brand guidelines.</td>
+            <td>100% creative approval control for brands</td>
+          </tr>
+          <tr>
+            <td class="mono">4</td>
+            <td class="fw-700">"Our margins can't support affiliate commissions"</td>
+            <td>Compare CPA, not commission %. A 10% commission on a ₹2,000 order = ₹200 CPA. Your Google Ads CPA is likely ₹500-800. Affiliate is your most margin-friendly channel.</td>
+            <td>50-70% lower CPA vs paid search</td>
+          </tr>
+          <tr>
+            <td class="mono">5</td>
+            <td class="fw-700">"We need to discuss internally"</td>
+            <td>Absolutely. I'll send a one-pager and ROI calculator customized to your brand. Can we schedule a follow-up next [day]?</td>
+            <td>Send collateral within 2 hours + calendar link</td>
+          </tr>
+          <tr>
+            <td class="mono">6</td>
+            <td class="fw-700">"We only work with large publishers"</td>
+            <td>GrabCash's combined reach (GrabOn 3.7M visitors + GrabCash 500K+ sharer network) makes us one of the largest affiliate publishers in India. Plus, we're backed by InspireLabs with 12+ years in the deals space.</td>
+            <td>Top 5 affiliate reach in India by combined audience</td>
+          </tr>
+          <tr>
+            <td class="mono">7</td>
+            <td class="fw-700">"Can you guarantee minimum sales?"</td>
+            <td>We don't guarantee minimums on standard tier, but we can share expected ranges based on similar brands. For premium/enterprise tiers, we offer traffic guarantees tied to minimum commitments.</td>
+            <td>Category benchmark data + premium tier guarantee options</td>
+          </tr>
+          <tr>
+            <td class="mono">8</td>
+            <td class="fw-700">"We're happy with our current affiliate partners"</td>
+            <td>Great — we're not asking you to switch. GrabCash is additive. Our audience overlap with other affiliates is less than 15%. Run us as a 60-day pilot alongside existing partners and measure incremental lift.</td>
+            <td>Less than 15% audience overlap with competitors</td>
+          </tr>
+          <tr>
+            <td class="mono">9</td>
+            <td class="fw-700">"Affiliate attracts coupon-seekers, not loyal customers"</td>
+            <td>Our data shows GrabCash-acquired customers have a 22% higher repeat purchase rate than paid channel customers. Why? Because they came through a friend's recommendation, not an anonymous ad.</td>
+            <td>22% higher repeat rate for GrabCash customers</td>
+          </tr>
+          <tr>
+            <td class="mono">10</td>
+            <td class="fw-700">"We need approval from leadership"</td>
+            <td>I completely understand. Would it help if I prepare a custom ROI projection specific to your brand and category? I can also join a brief call with your leadership to answer questions directly.</td>
+            <td>Custom ROI deck + executive meeting offer</td>
+          </tr>
+          <tr>
+            <td class="mono">11</td>
+            <td class="fw-700">"Our tracking setup is complex"</td>
+            <td>We support three integration methods: server-to-server postback (recommended), JS pixel (simple), or affiliate network API (if you're on vCommission/Admitad). Our tech team handles 90% of setup — your team's effort is minimal.</td>
+            <td>48-hour onboarding SLA including tech setup</td>
+          </tr>
+          <tr>
+            <td class="mono">12</td>
+            <td class="fw-700">"We have a no-discount policy"</td>
+            <td>GrabCash works with non-discount deals too: free shipping, gift-with-purchase, exclusive bundles, early access to new collections, loyalty points multipliers. The deal doesn't have to be a price cut.</td>
+            <td>15% of our top deals are non-discount formats</td>
+          </tr>
+          <tr>
+            <td class="mono">13</td>
+            <td class="fw-700">"How do you prevent fraud?"</td>
+            <td>We have a multi-layer fraud prevention system: IP deduplication, device fingerprinting, order velocity checks, return rate monitoring, and manual review for suspicious patterns. Brands can also set their own validation criteria.</td>
+            <td>Fraud rate below 0.3% (industry avg: 1.5-2%)</td>
+          </tr>
+          <tr>
+            <td class="mono">14</td>
+            <td class="fw-700">"We need exclusivity on your platform"</td>
+            <td>We offer category exclusivity on premium tier. For [X+2]% commission (vs standard [X]%), your brand gets exclusive placement in [category] — no direct competitors alongside you in featured sections.</td>
+            <td>Exclusive brands see 40-60% higher CTR</td>
+          </tr>
+          <tr>
+            <td class="mono">15</td>
+            <td class="fw-700">"Let's revisit next quarter"</td>
+            <td>Of course. Just so you know, we're approaching [festive season/sale event] — brands that onboard now will have their deals distributed by [X,000] sharers during the peak period. Shall I put you on priority for [quarter] onboarding?</td>
+            <td>Seasonal urgency + waitlist positioning</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Brand Pitch — Pre-Call Research Checklist</h4>
+    <p class="text-dim fs-sm mt-2">Before every brand outreach call or email, the BD team must complete this research checklist to personalize the pitch:</p>
+    <ol class="checklist mt-2">
+      <li>
+        <span class="step-num">01</span>
+        <span class="step-text"><strong>Check GrabOn Relationship:</strong> Is the brand already on GrabOn? What's their monthly performance? Who's the existing contact?</span>
+        <span class="step-owner">CRM Check</span>
+      </li>
+      <li>
+        <span class="step-num">02</span>
+        <span class="step-text"><strong>Visit Brand Website:</strong> Note current offers, pricing, product range, target audience, brand voice and positioning.</span>
+        <span class="step-owner">Manual Review</span>
+      </li>
+      <li>
+        <span class="step-num">03</span>
+        <span class="step-text"><strong>Check Competitor Activity:</strong> Are similar brands already on GrabCash? On EarnKaro/CashKaro? What commissions are competitors offering?</span>
+        <span class="step-owner">Platform Check</span>
+      </li>
+      <li>
+        <span class="step-num">04</span>
+        <span class="step-text"><strong>LinkedIn Research:</strong> Identify the right contact (Head of Digital Marketing, Performance Marketing Manager, Growth Lead). Review their recent posts and interests.</span>
+        <span class="step-owner">LinkedIn</span>
+      </li>
+      <li>
+        <span class="step-num">05</span>
+        <span class="step-text"><strong>Estimate Revenue Potential:</strong> Based on category benchmarks, estimate monthly revenue and commission. Customize the ROI calculator with brand-specific AOV.</span>
+        <span class="step-owner">Spreadsheet</span>
+      </li>
+      <li>
+        <span class="step-num">06</span>
+        <span class="step-text"><strong>Check Affiliate Networks:</strong> Is the brand already on vCommission, Admitad, or other networks? If yes, note their existing program terms.</span>
+        <span class="step-owner">Network Dashboard</span>
+      </li>
+      <li>
+        <span class="step-num">07</span>
+        <span class="step-text"><strong>Prepare Personalized Hook:</strong> One specific data point or observation about the brand that shows you've done your homework (new product launch, recent funding, seasonal opportunity).</span>
+        <span class="step-owner">Research Notes</span>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: Commission Negotiation Playbook -->
+<!-- ============================================================ -->
+<section class="section" id="negotiation">
+  <div class="section-header">
+    <div class="section-num">06 — COMMISSION NEGOTIATION PLAYBOOK</div>
+    <h2>Negotiation <em>Strategies</em> & Commission Structures</h2>
+    <p class="section-desc">Standard and premium commission tiers, volume escalators, exclusivity premiums, and negotiation scripts for every scenario.</p>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Commission Tier Structure</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr><th>Tier</th><th>Monthly Volume</th><th>Base Commission</th><th>Bonus</th><th>Payment Terms</th><th>Features</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag">STARTER</span></td>
+            <td class="mono">0-100 orders</td>
+            <td class="mono">Category standard rate</td>
+            <td class="mono">None</td>
+            <td>Net 30</td>
+            <td>Basic listing, standard placement</td>
+          </tr>
+          <tr>
+            <td><span class="tag blue">GROWTH</span></td>
+            <td class="mono">100-500 orders</td>
+            <td class="mono">Standard + 1-2%</td>
+            <td class="mono">₹5K/mo bonus at 300+ orders</td>
+            <td>Net 21</td>
+            <td>Featured placement, monthly reports</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><span class="tag orange">PREMIUM</span></td>
+            <td class="mono">500-2,000 orders</td>
+            <td class="mono">Standard + 2-4%</td>
+            <td class="mono">₹15K/mo + 0.5% kicker</td>
+            <td>Net 15</td>
+            <td>Priority placement, dedicated AM, weekly reports, exclusive slots</td>
+          </tr>
+          <tr>
+            <td><span class="tag purple">ENTERPRISE</span></td>
+            <td class="mono">2,000+ orders</td>
+            <td class="mono">Custom negotiated</td>
+            <td class="mono">Custom (target: 20% above standard)</td>
+            <td>Net 7-15</td>
+            <td>All premium + custom integrations, co-marketing, QBRs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="two-col mb-3">
+    <div class="card">
+      <h4>Volume-Based Escalators</h4>
+      <p class="text-dim fs-sm mt-2">Commission rates increase automatically as brands hit volume milestones:</p>
+      <ul class="mt-2">
+        <li><strong class="text-green">Tier 1 (0-₹5L/mo revenue):</strong> Base rate (e.g., 8%)</li>
+        <li><strong class="text-green">Tier 2 (₹5-15L/mo):</strong> Base + 1% (e.g., 9%)</li>
+        <li><strong class="text-green">Tier 3 (₹15-50L/mo):</strong> Base + 2% (e.g., 10%)</li>
+        <li><strong class="text-green">Tier 4 (₹50L+/mo):</strong> Base + 3% (e.g., 11%)</li>
+      </ul>
+      <div class="callout mt-2">
+        <strong>Tip:</strong> Present escalators as "rewards for your growth on our platform" rather than negotiating concessions. Brands love automatic upgrades.
+      </div>
+    </div>
+    <div class="card">
+      <h4>Premium Negotiation Levers</h4>
+      <ul class="mt-2">
+        <li><strong class="text-green">Category Exclusivity:</strong> +2-5% commission for being the only brand in a sub-category on featured placement (e.g., only sneaker brand in "Today's Top Deals")</li>
+        <li><strong class="text-green">Performance Bonuses:</strong> ₹10-50K monthly bonus for hitting stretch targets (1.5x baseline volume)</li>
+        <li><strong class="text-green">Minimum Guarantees:</strong> Brand guarantees ₹X/mo spend in exchange for priority treatment and rate lock for 12 months</li>
+        <li><strong class="text-green">Seasonal Premiums:</strong> +1-3% during festive periods (Oct-Dec) in exchange for exclusive deal access</li>
+        <li><strong class="text-green">New Customer Premium:</strong> +3-5% for new-to-brand customers (verified via pixel or customer data match)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-bright mb-2">Negotiation Scripts — Common Scenarios</h3>
+
+  <div class="script-block mb-2">
+    <div class="speaker">Scenario 1: Brand Says "Your Commission Rate Is Too High"</div>
+    <div class="dialogue">
+"I understand the concern, [Name]. Let me reframe this.
+
+You're currently paying <em>₹600-800 per acquisition on Google Ads</em>, and that includes wasted clicks. With GrabCash, you're paying <em>₹250 per confirmed sale</em> — that's 60-70% lower CPA.
+
+Plus, these are high-intent customers coming through personal recommendations. Our data shows that GrabCash-acquired customers have a <em>22% higher repeat purchase rate</em> compared to paid search customers.
+
+What if we start with a <em>3-month pilot at your proposed rate</em>, and if we hit [X orders/month], we revisit the rate? We're confident in the performance, so we're happy to prove it first."
+    </div>
+    <div class="note">Always shift the conversation from commission % to CPA and customer quality. Have brand's Google/Meta CPA data ready.</div>
+  </div>
+
+  <div class="script-block mb-2">
+    <div class="speaker">Scenario 2: Brand Wants Exclusivity but Low Commission</div>
+    <div class="dialogue">
+"Exclusivity is definitely something we can discuss, [Name]. We actually have a premium tier for category-exclusive partners.
+
+Here's how it works: For a [X+2]% commission rate (vs the standard [X]%), we can guarantee that <em>no direct competitor appears alongside your brand</em> in our featured placements, push notifications, and top sharer recommendations.
+
+Our data shows exclusive brands see <em>40-60% higher click-through rates</em> because there's no choice paralysis. The extra 2% pays for itself in volume.
+
+If exclusivity at [X]% is essential, we could structure it as: <em>[X]% base rate with a ₹[Y]K monthly minimum commitment</em>. This gives us the predictability to reserve the exclusive slot for you."
+    </div>
+    <div class="note">Never give exclusivity at standard rates. Always tie it to a premium — either higher rate or minimum commitment.</div>
+  </div>
+
+  <div class="script-block mb-2">
+    <div class="speaker">Scenario 3: Brand Wants to Pay on Last-Click Only</div>
+    <div class="dialogue">
+"Absolutely, [Name] — last-click attribution is our default model, so we're aligned there.
+
+That said, I want to flag something: our sharers often initiate the customer journey. A user sees a deal on WhatsApp, visits your site, browses around, and might come back the next day via Google to purchase. In a last-click model, Google gets the credit.
+
+We're fine with last-click for now, but I'd love to <em>run a 30-day assisted-conversion analysis</em> alongside it. If we can show that GrabCash is driving significant awareness that converts through other channels, we can discuss a <em>small view-through commission (1-2%)</em> on top of the last-click model.
+
+This way, you're making decisions based on data, not assumptions."
+    </div>
+    <div class="note">Accept last-click to close the deal, but plant the seed for multi-touch attribution later. Always offer to prove value with data.</div>
+  </div>
+
+  <div class="script-block">
+    <div class="speaker">Scenario 4: Brand Says "We Already Work with EarnKaro/CashKaro"</div>
+    <div class="dialogue">
+"That's great — it means you already understand the value of affiliate distribution. We're not asking you to replace them; we're asking you to <em>add an incremental channel.</em>
+
+Here's what makes GrabCash different:
+1. <em>GrabOn ecosystem</em> — 3.7M monthly visitors who are already searching for your brand's deals
+2. <em>Messaging-first</em> — our sharers distribute via WhatsApp groups, not blogs or websites. This reaches a completely different audience.
+3. <em>Non-cannibalizing</em> — our audience overlap with EarnKaro is less than 15%. This is true incremental revenue.
+
+Most of our top 50 brands run GrabCash alongside other affiliate platforms. It's not either/or — it's and.
+
+Can we do a <em>60-day pilot</em> where you track GrabCash revenue separately? If it cannibalizes, you can switch off. If it's incremental, you've found a new growth channel."
+    </div>
+    <div class="note">Position as additive, not competitive. Offer a no-risk pilot. Have audience overlap data ready.</div>
+  </div>
+
+  <div class="card mt-3">
+    <h4>Standard Contract Terms</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Term</th><th>Standard</th><th>Premium</th><th>Enterprise</th></tr></thead>
+        <tbody>
+          <tr><td>Contract Duration</td><td>Month-to-month</td><td>6 months</td><td>12 months</td></tr>
+          <tr><td>Notice Period</td><td>7 days</td><td>30 days</td><td>60 days</td></tr>
+          <tr><td>Commission Lock</td><td>None (can change anytime)</td><td>Locked for contract period</td><td>Locked + annual review</td></tr>
+          <tr><td>Payment Terms</td><td>Net 30</td><td>Net 15-21</td><td>Net 7-15</td></tr>
+          <tr><td>Minimum Commitment</td><td>None</td><td>₹50K/quarter</td><td>₹5L/quarter</td></tr>
+          <tr><td>Reporting</td><td>Monthly summary</td><td>Weekly detailed</td><td>Real-time dashboard + weekly call</td></tr>
+          <tr><td>Dedicated AM</td><td>No (shared)</td><td>Yes (shared 1:10)</td><td>Yes (dedicated 1:3)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: Brand Onboarding Process -->
+<!-- ============================================================ -->
+<section class="section" id="onboarding">
+  <div class="section-header">
+    <div class="section-num">07 — BRAND ONBOARDING PROCESS</div>
+    <h2>7-Step Brand <em>Onboarding</em> Flow</h2>
+    <p class="section-desc">From signed agreement to first live transaction in 48 hours. A standardized onboarding process that scales.</p>
+  </div>
+
+  <ol class="checklist">
+    <li>
+      <span class="step-num">STEP 1</span>
+      <span class="step-text"><strong>Agreement Execution</strong> — Brand signs partnership agreement (digital/DocuSign). Legal reviews non-standard terms. Commission rate, payment terms, and contact details confirmed.</span>
+      <span class="step-owner">BD Lead | Day 0</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 2</span>
+      <span class="step-text"><strong>Technical Integration</strong> — Tracking link setup via affiliate network API or direct pixel. Brand provides product feed URL (if available). GrabCash tech team generates unique tracking parameters.</span>
+      <span class="step-owner">Tech Team | Day 0-1</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 3</span>
+      <span class="step-text"><strong>Creative Asset Collection</strong> — Brand provides: logo (SVG/PNG), product images (min 800x800), brand guidelines, current active offers/coupons, banner creatives (1200x628 for social, 400x400 for app).</span>
+      <span class="step-owner">Design + Brand AM | Day 0-1</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 4</span>
+      <span class="step-text"><strong>Deal Configuration</strong> — Ops team creates deal listings: offer title, description, T&C, validity, commission rate, tracking link, category tagging, priority score, target audience tags.</span>
+      <span class="step-owner">Ops Team | Day 1</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 5</span>
+      <span class="step-text"><strong>Test Transaction Verification</strong> — Run 2-3 test purchases through the tracking flow. Verify: click tracking, redirect to brand site, purchase attribution, commission calculation, cookie duration. Document any discrepancies.</span>
+      <span class="step-owner">QA + Tech | Day 1</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 6</span>
+      <span class="step-text"><strong>Sharer Notification & Launch</strong> — Push new brand/deals to GrabCash sharer base via in-app notification, email digest, and WhatsApp broadcast. Top sharers in relevant category get personalized notification with commission highlight.</span>
+      <span class="step-owner">Growth Team | Day 2</span>
+    </li>
+    <li>
+      <span class="step-num">STEP 7</span>
+      <span class="step-text"><strong>7-Day Performance Check</strong> — Review first week metrics: clicks, conversions, commission earned, sharer adoption. Share performance snapshot with brand. Address any tracking issues. Optimize deal positioning if needed.</span>
+      <span class="step-owner">Brand AM | Day 9</span>
+    </li>
+  </ol>
+
+  <div class="card mt-3">
+    <h4>Integration Checklist — Technical Requirements</h4>
+    <div class="two-col mt-2">
+      <div>
+        <h4 class="text-green fs-sm">From Brand (Required)</h4>
+        <ul>
+          <li>Affiliate network program ID (if applicable)</li>
+          <li>Direct tracking pixel or postback URL</li>
+          <li>Product feed URL (XML/JSON/CSV)</li>
+          <li>Brand logo in SVG or high-res PNG</li>
+          <li>At least 3 active offers with terms and conditions</li>
+          <li>Designated point of contact (email + phone)</li>
+          <li>Brand guidelines document</li>
+          <li>Landing page URLs for each offer</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-green fs-sm">From GrabCash (Delivered)</h4>
+        <ul>
+          <li>Unique brand dashboard access</li>
+          <li>Tracking link generator with UTM parameters</li>
+          <li>Real-time click and conversion reporting</li>
+          <li>Creative templates pre-filled with brand assets</li>
+          <li>Sharer communication announcing brand launch</li>
+          <li>Test transaction confirmation report</li>
+          <li>Onboarding completion certificate</li>
+          <li>First-week performance report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Tracking Pixel Setup — Technical Specs</h4>
+    <div class="script-block mt-2" style="border-left-color: var(--accent2);">
+      <div class="speaker" style="color: var(--accent2);">Conversion Tracking Implementation</div>
+      <div class="dialogue" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+<strong>Option A: Server-to-Server Postback (Recommended)</strong>
+Brand fires a postback to GrabCash on each confirmed order:
+GET https://track.grabcash.in/postback?click_id={click_id}&order_id={order_id}&amount={sale_amount}&status=confirmed
+
+<strong>Option B: JavaScript Pixel (Fallback)</strong>
+Brand places pixel on thank-you/confirmation page:
+The pixel captures order ID, sale amount, and attributes back to the originating GrabCash click.
+
+<strong>Option C: Affiliate Network Integration</strong>
+If brand is on vCommission/Admitad/Cuelinks, we pull conversion data via API.
+No additional pixel needed — network handles attribution.
+
+<strong>Cookie Duration:</strong> 30 days (standard), 60 days (premium partners)
+<strong>Attribution Model:</strong> Last-click (default), multi-touch (enterprise)
+      </div>
+    </div>
+  </div>
+
+  <div class="email-template mt-3">
+    <div class="email-header">
+      <span class="type">Launch Communication to Brand</span>
+      <span class="context">Sent after Step 6 — confirming go-live</span>
+    </div>
+    <div class="email-body">
+      <div class="field"><span class="field-label">Subject:</span><span class="field-value">[Brand Name] is LIVE on GrabCash! Here's what happens next.</span></div>
+      <div class="body-text">
+Hi <strong>[First Name]</strong>,
+
+Exciting news — <strong>[Brand Name]</strong> is now live on GrabCash!
+
+<strong>What we've done:</strong>
+• Created <em>[X] deal listings</em> across your active offers
+• Set up tracking with <em>[postback/pixel/network]</em> integration
+• Verified test transactions — all tracking confirmed
+• Notified <em>[X] active sharers</em> in the [category] vertical
+
+<strong>What to expect:</strong>
+• Clicks and shares will start flowing within 24-48 hours
+• First conversions typically happen within 3-5 days
+• You'll receive your first <em>performance report on [Date]</em>
+
+<strong>Your dashboard:</strong>
+You can monitor real-time performance at: <em>[Dashboard URL]</em>
+Login: <em>[Email]</em> | Temporary Password: <em>[Sent separately]</em>
+
+<strong>Your Account Manager:</strong>
+<em>[AM Name]</em> ([AM Email], [AM Phone]) is your dedicated contact. Reach out anytime.
+
+Welcome to the GrabCash family!
+
+Best,
+<strong>[Your Name]</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: Self-Serve Brand Portal -->
+<!-- ============================================================ -->
+<section class="section" id="portal">
+  <div class="section-header">
+    <div class="section-num">08 — SELF-SERVE BRAND PORTAL</div>
+    <h2>Brand Portal <em>Feature</em> Specifications</h2>
+    <p class="section-desc">Product specs for the self-serve brand portal — enabling brands to sign up, configure, and go live without manual intervention.</p>
+  </div>
+
+  <div class="card-grid-3 mb-3">
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">📝</div>
+      <h4>Brand Signup Flow</h4>
+      <ul>
+        <li>Company name, category, website URL</li>
+        <li>GSTIN verification (auto-validate via API)</li>
+        <li>Contact person details + phone OTP</li>
+        <li>Business type (D2C / Marketplace / Service)</li>
+        <li>Existing affiliate network selection</li>
+        <li>Estimated monthly budget range</li>
+        <li>Auto-approval for known networks</li>
+        <li>Manual review queue for direct brands</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">💵</div>
+      <h4>Commission Rate Setting</h4>
+      <ul>
+        <li>Category-wise recommended ranges shown</li>
+        <li>Slider interface for commission % (with recommended range highlighted)</li>
+        <li>Separate rates for new vs returning customers</li>
+        <li>Volume-based escalator configuration</li>
+        <li>Seasonal rate adjustment calendar</li>
+        <li>Real-time competitiveness score ("Your rate vs category avg")</li>
+        <li>Commission simulator showing projected sharer interest</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">🎨</div>
+      <h4>Creative Upload</h4>
+      <ul>
+        <li>Drag-and-drop asset uploader</li>
+        <li>Auto-resize to required dimensions</li>
+        <li>Template library (social, banner, story)</li>
+        <li>AI-generated deal card from offer text</li>
+        <li>Brand color auto-detection from logo</li>
+        <li>Preview across WhatsApp, Instagram, Telegram</li>
+        <li>Version control with approval workflow</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">📊</div>
+      <h4>Real-Time Analytics Dashboard</h4>
+      <ul>
+        <li>Live click, share, and conversion counters</li>
+        <li>Revenue attribution by sharer tier</li>
+        <li>Geographic heatmap of conversions</li>
+        <li>Device and platform breakdown</li>
+        <li>Top-performing deals ranked by ROI</li>
+        <li>Hour-by-hour performance graph</li>
+        <li>Custom date range with comparison</li>
+        <li>Export to CSV/PDF</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">💳</div>
+      <h4>Payout Tracking</h4>
+      <ul>
+        <li>Monthly invoice auto-generation</li>
+        <li>Commission reconciliation dashboard</li>
+        <li>Dispute resolution workflow</li>
+        <li>Payment status tracking (pending/processed/paid)</li>
+        <li>TDS deduction and certificate download</li>
+        <li>Payment method management (bank, UPI)</li>
+        <li>Historical payment records</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="margin-bottom:1rem;">📈</div>
+      <h4>Performance Reports</h4>
+      <ul>
+        <li>Automated weekly summary emails</li>
+        <li>Monthly detailed performance PDF</li>
+        <li>Category benchmark comparison</li>
+        <li>Sharer quality scoring (conversion-weighted)</li>
+        <li>Customer cohort analysis (LTV by channel)</li>
+        <li>Recommendation engine for commission optimization</li>
+        <li>Seasonal forecast based on historical data</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-bright mb-2">UX Wireframes — Brand Dashboard</h3>
+
+  <div class="wireframe mb-2">
+    <div class="wireframe-header">
+      <h4>Dashboard — Overview Screen</h4>
+      <span class="tag">WIREFRAME v1.0</span>
+    </div>
+    <div class="wireframe-grid">
+      <div class="wireframe-box" style="grid-column: span 4; min-height: 60px; flex-direction: row; justify-content: space-between; padding: 0.8rem 1.5rem;">
+        <span class="wf-label">[Logo] Brand Dashboard</span>
+        <span class="wf-label">Deals | Analytics | Payouts | Settings | Support</span>
+      </div>
+      <div class="wireframe-box">
+        <div class="wf-icon" style="font-size:1.8rem; color:var(--green);">₹4.2L</div>
+        <div class="wf-label">Revenue This Month</div>
+        <div style="font-size:0.7rem; color:var(--green); margin-top:0.3rem;">+18% vs last month</div>
+      </div>
+      <div class="wireframe-box">
+        <div class="wf-icon" style="font-size:1.8rem; color:var(--accent2);">1,847</div>
+        <div class="wf-label">Orders This Month</div>
+        <div style="font-size:0.7rem; color:var(--accent2); margin-top:0.3rem;">+22% vs last month</div>
+      </div>
+      <div class="wireframe-box">
+        <div class="wf-icon" style="font-size:1.8rem; color:var(--accent4);">4.8%</div>
+        <div class="wf-label">Conversion Rate</div>
+        <div style="font-size:0.7rem; color:var(--accent4); margin-top:0.3rem;">Category avg: 3.9%</div>
+      </div>
+      <div class="wireframe-box">
+        <div class="wf-icon" style="font-size:1.8rem; color:var(--accent5);">342</div>
+        <div class="wf-label">Active Sharers</div>
+        <div style="font-size:0.7rem; color:var(--accent5); margin-top:0.3rem;">+45 new this month</div>
+      </div>
+      <div class="wireframe-box" style="grid-column: span 2; min-height: 150px;">
+        <div class="wf-label" style="margin-bottom:0.5rem;">Revenue Trend (30 Days)</div>
+        <div style="width:100%; height:80px; background: linear-gradient(180deg, var(--green-dim), transparent); border-radius:8px; display:flex; align-items:flex-end; padding:0 0.5rem;">
+          <div style="width:8%; height:40%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:55%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:45%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:60%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:50%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:70%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:65%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:80%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:75%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+          <div style="width:8%; height:90%; background:var(--green); margin:0 1px; border-radius:2px 2px 0 0;"></div>
+        </div>
+      </div>
+      <div class="wireframe-box" style="grid-column: span 2; min-height: 150px;">
+        <div class="wf-label" style="margin-bottom:0.5rem;">Top Deals by Performance</div>
+        <div style="width:100%; text-align:left; font-size:0.72rem; color:var(--text-dim);">
+          <div style="display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border);">
+            <span>Flat 40% Off Summer Collection</span>
+            <span class="text-green">₹1.8L</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border);">
+            <span>BOGO on Accessories</span>
+            <span class="text-green">₹1.1L</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid var(--border);">
+            <span>New User: Extra 15% Off</span>
+            <span class="text-green">₹82K</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.3rem 0;">
+            <span>Weekend Flash Sale</span>
+            <span class="text-green">₹49K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wireframe">
+    <div class="wireframe-header">
+      <h4>Deal Management Screen</h4>
+      <span class="tag blue">WIREFRAME v1.0</span>
+    </div>
+    <div style="display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap;">
+      <div style="background:var(--green); color:#000; padding:0.5rem 1.2rem; border-radius:8px; font-size:0.85rem; font-weight:600;">+ Create New Deal</div>
+      <div style="background:rgba(255,255,255,0.05); padding:0.5rem 1.2rem; border-radius:8px; font-size:0.85rem; color:var(--text-dim); border:1px solid var(--border);">Filter: All Deals ▾</div>
+      <div style="background:rgba(255,255,255,0.05); padding:0.5rem 1.2rem; border-radius:8px; font-size:0.85rem; color:var(--text-dim); border:1px solid var(--border);">Sort: Performance ▾</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Deal Title</th><th>Status</th><th>Commission</th><th>Clicks</th><th>Conv.</th><th>Revenue</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-700">Flat 40% Off Summer Collection</td>
+            <td><span class="tag">ACTIVE</span></td>
+            <td class="mono">10%</td>
+            <td class="mono">8,420</td>
+            <td class="mono green">4.8%</td>
+            <td class="mono green">₹1.8L</td>
+            <td class="text-dim fs-sm">Edit | Pause | Clone</td>
+          </tr>
+          <tr>
+            <td class="fw-700">BOGO on Accessories</td>
+            <td><span class="tag">ACTIVE</span></td>
+            <td class="mono">12%</td>
+            <td class="mono">5,120</td>
+            <td class="mono green">5.2%</td>
+            <td class="mono green">₹1.1L</td>
+            <td class="text-dim fs-sm">Edit | Pause | Clone</td>
+          </tr>
+          <tr>
+            <td class="fw-700">Monsoon Sale Preview</td>
+            <td><span class="tag orange">SCHEDULED</span></td>
+            <td class="mono">15%</td>
+            <td class="mono">—</td>
+            <td class="mono">—</td>
+            <td class="mono">—</td>
+            <td class="text-dim fs-sm">Edit | Cancel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: Brand Retention & Growth -->
+<!-- ============================================================ -->
+<section class="section" id="retention">
+  <div class="section-header">
+    <div class="section-num">09 — BRAND RETENTION & GROWTH</div>
+    <h2>Keeping Brands <em>Active</em> & Growing</h2>
+    <p class="section-desc">Retention is the real game. A churned brand costs 5x more to replace than to retain. Here is the playbook for keeping brands engaged and growing their GrabCash investment.</p>
+  </div>
+
+  <div class="card-grid mb-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <h3>Quarterly Business Reviews (QBRs)</h3>
+      </div>
+      <h4>QBR Agenda Template</h4>
+      <ul>
+        <li><strong>Performance recap:</strong> Revenue, orders, CPA vs previous quarter</li>
+        <li><strong>Top deals analysis:</strong> What worked, what didn't, why</li>
+        <li><strong>Sharer insights:</strong> Who's driving volume, audience demographics</li>
+        <li><strong>Competitive benchmarking:</strong> How brand performs vs category peers</li>
+        <li><strong>Recommendations:</strong> Commission optimization, new deal types, seasonal planning</li>
+        <li><strong>Next quarter roadmap:</strong> Campaigns, exclusive deals, targets</li>
+        <li><strong>Product updates:</strong> New GrabCash features relevant to brand</li>
+      </ul>
+      <div class="callout mt-2">
+        <strong>Cadence:</strong> Premium brands — monthly reviews. Growth tier — quarterly. Starter — automated reports only.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <h3>Performance Reporting</h3>
+      </div>
+      <h4>Automated Report Contents</h4>
+      <ul>
+        <li><strong>Weekly digest (email):</strong> Clicks, conversions, revenue, top deal, top sharer</li>
+        <li><strong>Monthly report (PDF):</strong> Full performance breakdown, trend analysis, ROI summary, category comparison</li>
+        <li><strong>Quarterly deep-dive:</strong> Customer cohort analysis, LTV insights, sharer quality assessment, commission optimization recs</li>
+        <li><strong>Annual review:</strong> Year in review, growth trajectory, partnership value summary, renewal proposal</li>
+      </ul>
+      <h4 class="mt-2">Report Delivery</h4>
+      <p class="fs-sm text-dim">Automated via email + in-dashboard. Brand AM adds personalized commentary to monthly reports for premium partners. Annual reviews are presented live on a call.</p>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Relationship Health Scoring</h4>
+    <p class="text-dim mt-2">Every brand gets a health score (0-100) updated weekly, combining engagement and performance signals.</p>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Signal</th><th>Weight</th><th>Healthy (Green)</th><th>At Risk (Yellow)</th><th>Churning (Red)</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly order volume trend</td><td class="mono">25%</td><td class="green">Growing or stable</td><td class="text-dim">Declined 10-25%</td><td style="color:var(--accent3);">Declined 25%+</td></tr>
+          <tr><td>Dashboard login frequency</td><td class="mono">15%</td><td class="green">Weekly+</td><td class="text-dim">Monthly</td><td style="color:var(--accent3);">No login in 30d</td></tr>
+          <tr><td>Deal refresh rate</td><td class="mono">20%</td><td class="green">New deal every 2 weeks</td><td class="text-dim">No new deal in 30d</td><td style="color:var(--accent3);">No new deal in 60d</td></tr>
+          <tr><td>Commission rate competitiveness</td><td class="mono">15%</td><td class="green">Above category avg</td><td class="text-dim">At category avg</td><td style="color:var(--accent3);">Below avg by 20%+</td></tr>
+          <tr><td>AM engagement (response time)</td><td class="mono">10%</td><td class="green">Responds within 24h</td><td class="text-dim">48-72h response</td><td style="color:var(--accent3);">No response in 7d</td></tr>
+          <tr><td>Payment timeliness</td><td class="mono">15%</td><td class="green">On time or early</td><td class="text-dim">1-7 days late</td><td style="color:var(--accent3);">7+ days late</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout mt-2">
+      <strong>Alert Rules:</strong> Score drops below 60 — AM gets alert + must call within 48h. Below 40 — escalated to Head of Partnerships for intervention. Below 25 — "save" campaign activated (special deal, commission boost offer, executive call).
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Seasonal Campaign Planning — Annual Calendar</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Month</th><th>Event</th><th>Categories</th><th>Brand Action Required</th><th>GrabCash Activation</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">January</td><td>Republic Day, New Year</td><td>Fashion, Electronics, Fitness</td><td>Refresh offers, submit New Year deals</td><td>Republic Day mega-push, fitness resolution deals</td></tr>
+          <tr><td class="fw-700">February</td><td>Valentine's Day</td><td>Beauty, Fashion, Food, Travel</td><td>Gift-focused deals, couples packages</td><td>Gift guide curation, sharer contest</td></tr>
+          <tr><td class="fw-700">March</td><td>Holi, Women's Day, FY-end</td><td>All categories</td><td>FY-end clearance deals</td><td>Color of savings campaign</td></tr>
+          <tr><td class="fw-700">May-June</td><td>Summer Sale, EOSS</td><td>Fashion, Travel, Electronics</td><td>EOSS deals, summer collection launches</td><td>Summer deals marathon, travel deal blitz</td></tr>
+          <tr><td class="fw-700">July-August</td><td>Independence Day, Raksha Bandhan</td><td>Electronics, Fashion, Food</td><td>Independence Day offers, gifting deals</td><td>Patriotic savings push, rakhi gift curation</td></tr>
+          <tr><td class="fw-700">October</td><td>Navratri, Dussehra, Diwali</td><td>All categories (peak season)</td><td>Biggest deals of the year, exclusive coupons</td><td>30-day festive deal marathon, daily mega-deals</td></tr>
+          <tr><td class="fw-700">November</td><td>Singles Day, Black Friday</td><td>Electronics, Fashion, Beauty</td><td>Flash sales, doorbusters</td><td>Global sale tie-ins, countdown deals</td></tr>
+          <tr><td class="fw-700">December</td><td>Christmas, Year-End</td><td>Travel, Fashion, Food</td><td>Year-end clearance, holiday deals</td><td>Year-end savings roundup, travel deals push</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: Affiliate Network Integration -->
+<!-- ============================================================ -->
+<section class="section" id="networks">
+  <div class="section-header">
+    <div class="section-num">10 — AFFILIATE NETWORK INTEGRATION</div>
+    <h2>Network <em>Integration</em> Specifications</h2>
+    <p class="section-desc">Technical integration details for major affiliate networks — API specs, commission aggregation, reporting consolidation.</p>
+  </div>
+
+  <div class="card-grid mb-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(247,37,133,0.15);">V</div>
+        <div>
+          <h3>vCommission</h3>
+          <span class="tag pink">INDIA FOCUS</span>
+        </div>
+      </div>
+      <h4>Integration Details</h4>
+      <ul>
+        <li><strong>API Type:</strong> REST API with JSON responses</li>
+        <li><strong>Brand Coverage:</strong> 800+ Indian brands, strong in fashion, electronics, travel</li>
+        <li><strong>Commission Data:</strong> Real-time conversion API, 15-min delay</li>
+        <li><strong>Tracking:</strong> Cookie-based + server-to-server postback</li>
+        <li><strong>Payout:</strong> Monthly, Net 60 from network (we pay sharers Net 30)</li>
+        <li><strong>Key Endpoints:</strong> /campaigns, /conversions, /reports, /creatives</li>
+        <li><strong>Rate Limits:</strong> 1,000 requests/hour</li>
+      </ul>
+      <h4 class="mt-2">Integration Priority: HIGH</h4>
+      <div class="progress-bar"><div class="fill" style="width:85%;"></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(0,180,216,0.15);">A</div>
+        <div>
+          <h3>Admitad</h3>
+          <span class="tag blue">GLOBAL + INDIA</span>
+        </div>
+      </div>
+      <h4>Integration Details</h4>
+      <ul>
+        <li><strong>API Type:</strong> REST API with OAuth 2.0 authentication</li>
+        <li><strong>Brand Coverage:</strong> 2,000+ programs, strong global + Indian brands</li>
+        <li><strong>Commission Data:</strong> Near real-time, 5-min sync available</li>
+        <li><strong>Tracking:</strong> Multi-method (cookie, fingerprint, server postback)</li>
+        <li><strong>Payout:</strong> Bi-weekly option available, Net 45</li>
+        <li><strong>Key Endpoints:</strong> /advcampaigns, /statistics, /actions, /banners</li>
+        <li><strong>Rate Limits:</strong> 2,000 requests/hour</li>
+      </ul>
+      <h4 class="mt-2">Integration Priority: HIGH</h4>
+      <div class="progress-bar"><div class="fill" style="width:80%;"></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(252,163,17,0.15);">CJ</div>
+        <div>
+          <h3>CJ Affiliate (Commission Junction)</h3>
+          <span class="tag orange">GLOBAL</span>
+        </div>
+      </div>
+      <h4>Integration Details</h4>
+      <ul>
+        <li><strong>API Type:</strong> REST API with Personal Access Token</li>
+        <li><strong>Brand Coverage:</strong> 3,000+ global programs, premium brands</li>
+        <li><strong>Commission Data:</strong> Batch reporting, hourly updates</li>
+        <li><strong>Tracking:</strong> Advanced cross-device tracking, ITP-compliant</li>
+        <li><strong>Payout:</strong> Monthly, Net 30 (fastest among networks)</li>
+        <li><strong>Key Endpoints:</strong> /publishers, /commissions, /advertiser-lookup</li>
+        <li><strong>Rate Limits:</strong> 5,000 requests/hour (highest)</li>
+      </ul>
+      <h4 class="mt-2">Integration Priority: MEDIUM</h4>
+      <div class="progress-bar"><div class="fill" style="width:60%;"></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(114,9,183,0.15);">IM</div>
+        <div>
+          <h3>Impact (impact.com)</h3>
+          <span class="tag purple">PREMIUM BRANDS</span>
+        </div>
+      </div>
+      <h4>Integration Details</h4>
+      <ul>
+        <li><strong>API Type:</strong> REST API with API key + account SID</li>
+        <li><strong>Brand Coverage:</strong> 1,500+ premium brands (Uber, Airbnb, Adidas, etc.)</li>
+        <li><strong>Commission Data:</strong> Real-time event streaming available</li>
+        <li><strong>Tracking:</strong> Cookieless tracking, universal tracking tag</li>
+        <li><strong>Payout:</strong> Flexible (weekly/bi-weekly/monthly)</li>
+        <li><strong>Key Endpoints:</strong> /Campaigns, /Actions, /Reports, /PromoCode</li>
+        <li><strong>Rate Limits:</strong> 3,000 requests/hour</li>
+      </ul>
+      <h4 class="mt-2">Integration Priority: MEDIUM</h4>
+      <div class="progress-bar"><div class="fill" style="width:55%;"></div></div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Commission Aggregation Architecture</h4>
+    <div class="script-block mt-2" style="border-left-color: var(--accent2);">
+      <div class="speaker" style="color: var(--accent2);">Data Flow</div>
+      <div class="dialogue" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+Network APIs (vCommission, Admitad, CJ, Impact)
+    │
+    ▼
+[Ingestion Layer] — Cron jobs pulling conversion data every 15 min
+    │
+    ▼
+[Normalization Engine] — Standardize fields: order_id, brand, amount, commission, status, timestamp
+    │
+    ▼
+[Deduplication Service] — Match orders across networks, resolve conflicts (same brand on 2 networks)
+    │
+    ▼
+[Commission Calculator] — Apply GrabCash margin split: Sharer % | Platform % | Tax
+    │
+    ▼
+[Unified Dashboard] — Single view for all brands regardless of source network
+    │
+    ▼
+[Payout Engine] — Aggregate sharer earnings across all networks, single payout
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Brand Deduplication Rules</h4>
+    <p class="text-dim mt-2">When a brand is available on multiple networks, apply these priority rules:</p>
+    <ul class="mt-2">
+      <li><strong class="text-green">Rule 1 — Direct Integration First:</strong> If GrabCash has a direct brand partnership, always use direct tracking (higher commission, better data)</li>
+      <li><strong class="text-green">Rule 2 — Highest Commission Network:</strong> Among networks, route traffic to the one offering highest effective commission</li>
+      <li><strong class="text-green">Rule 3 — Best Tracking Reliability:</strong> If commission rates are similar (within 0.5%), prefer the network with better tracking/attribution</li>
+      <li><strong class="text-green">Rule 4 — Fastest Payout:</strong> As tiebreaker, prefer networks with faster payout cycles</li>
+      <li><strong class="text-green">Rule 5 — Manual Override:</strong> BD team can manually assign a brand to a specific network for strategic reasons</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 11: D2C Brand Strategy -->
+<!-- ============================================================ -->
+<section class="section" id="d2c">
+  <div class="section-header">
+    <div class="section-num">11 — D2C BRAND STRATEGY</div>
+    <h2>Why <em>D2C Brands</em> Are Ideal Partners</h2>
+    <p class="section-desc">D2C brands offer higher commissions (10-20%), are more flexible on deal structures, are growing rapidly, and value every distribution channel.</p>
+  </div>
+
+  <div class="card-grid-3 mb-3">
+    <div class="card">
+      <h4 class="text-green">Higher Commissions</h4>
+      <p class="mt-2 text-dim fs-sm">D2C brands own their margins (no marketplace cut). They can afford 10-20% affiliate commissions vs 3-8% from marketplaces. This means higher earnings for GrabCash sharers, which means more engagement and distribution.</p>
+    </div>
+    <div class="card">
+      <h4 class="text-green">Flexible Deal Structures</h4>
+      <p class="mt-2 text-dim fs-sm">D2C brands can create exclusive coupon codes, custom bundles, limited-edition deals, and flash sales without marketplace approval. Faster deal creation = fresher content for sharers.</p>
+    </div>
+    <div class="card">
+      <h4 class="text-green">Growing Fast</h4>
+      <p class="mt-2 text-dim fs-sm">India's D2C market is projected to reach $100B by 2027. New brands launch daily, each needing acquisition channels. GrabCash can be their Day 1 affiliate partner.</p>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>D2C Brand Identification — Sourcing Channels</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Source</th><th>Method</th><th>Expected Leads/Month</th><th>Quality</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">Shopify India Store Directory</td><td>Scrape top-rated Indian Shopify stores by category</td><td class="mono">200+</td><td><span class="tag">HIGH</span></td></tr>
+          <tr><td class="fw-700">LinkedIn D2C Founder Groups</td><td>Join and engage in D2C founder communities</td><td class="mono">50-80</td><td><span class="tag">HIGH</span></td></tr>
+          <tr><td class="fw-700">Instagram Brand Discovery</td><td>Monitor trending D2C brands with 10K-500K followers</td><td class="mono">100+</td><td><span class="tag blue">MEDIUM</span></td></tr>
+          <tr><td class="fw-700">D2C Industry Events</td><td>D2C Summit, Razorpay FTX, YourStory TechSparks</td><td class="mono">30-50 per event</td><td><span class="tag">HIGH</span></td></tr>
+          <tr><td class="fw-700">Funding Announcements</td><td>Track recently funded D2C startups (Crunchbase, Inc42)</td><td class="mono">20-30</td><td><span class="tag">HIGH</span></td></tr>
+          <tr><td class="fw-700">GrabOn Inbound</td><td>D2C brands applying to list on GrabOn → cross-sell GrabCash</td><td class="mono">40-60</td><td><span class="tag">HIGH</span></td></tr>
+          <tr><td class="fw-700">WooCommerce/Magento Directories</td><td>Indian ecommerce stores on open-source platforms</td><td class="mono">150+</td><td><span class="tag blue">MEDIUM</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>D2C Outreach Strategy</h4>
+    <div class="script-block mt-2">
+      <div class="speaker">D2C Cold Outreach Script (LinkedIn DM)</div>
+      <div class="dialogue">
+"Hey [Founder Name],
+
+Love what you're building with [Brand Name] — your [specific product or collection] is getting great buzz.
+
+Quick question: are you running any affiliate programs for [Brand Name]?
+
+We're GrabCash (by InspireLabs/GrabOn — 3.7M monthly visitors). We have 10,000+ users who earn by sharing brand deals on WhatsApp and social. Pure performance model — you only pay on sales.
+
+D2C brands on our platform typically see <em>₹2-8L/mo in incremental revenue</em> within 90 days.
+
+Happy to share more if you're interested — zero cost to get started."
+      </div>
+      <div class="note">Keep it casual for LinkedIn DMs. Lead with product compliment. Emphasize zero-risk and incremental revenue. Works best with founder/CMO level contacts.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Shopify / WooCommerce Integration — Technical Approach</h4>
+    <ul class="mt-2">
+      <li><strong class="text-green">Shopify App (Phase 1):</strong> Build a GrabCash Shopify app that brands install in 2 clicks. Auto-configures tracking, pulls product feed, creates deal templates. Target: 200+ installs in first quarter.</li>
+      <li><strong class="text-green">WooCommerce Plugin (Phase 2):</strong> WordPress plugin for WooCommerce stores. Similar auto-setup. Wider addressable market but more fragmented (hosting, versions, etc.).</li>
+      <li><strong class="text-green">Universal Pixel (Phase 3):</strong> For brands on custom platforms — a simple JavaScript snippet that works with any ecommerce platform. Minimal setup, broad compatibility.</li>
+    </ul>
+    <h4 class="mt-2">D2C-Specific Deal Formats</h4>
+    <ul>
+      <li><strong class="text-green">Founder's Pick:</strong> Curated deals by the D2C founder (authentic storytelling)</li>
+      <li><strong class="text-green">Build Your Bundle:</strong> Custom bundle deals exclusive to GrabCash</li>
+      <li><strong class="text-green">First 100 Customers:</strong> Limited-quantity deals that create urgency</li>
+      <li><strong class="text-green">Behind the Brand:</strong> Deal + brand story content for sharers</li>
+      <li><strong class="text-green">Subscribe & Save:</strong> Recurring subscription deals (higher LTV)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 12: Enterprise Brand Strategy -->
+<!-- ============================================================ -->
+<section class="section" id="enterprise">
+  <div class="section-header">
+    <div class="section-num">12 — ENTERPRISE BRAND STRATEGY</div>
+    <h2><em>Enterprise</em> Brand Partnerships</h2>
+    <p class="section-desc">Deepening relationships with India's largest ecommerce and consumer brands for maximum revenue impact.</p>
+  </div>
+
+  <div class="card-grid mb-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(252,163,17,0.15);">🛒</div>
+        <h3>Amazon India</h3>
+      </div>
+      <h4>Current Relationship & Growth Plan</h4>
+      <ul>
+        <li><strong>Current:</strong> Standard Associates Program (1-10% by category)</li>
+        <li><strong>Target:</strong> Amazon SPN (Special Publisher Network) tier — higher rates + exclusive deals</li>
+        <li><strong>Strategy:</strong> Hit ₹50L/quarter in attributable GMV to qualify for SPN</li>
+        <li><strong>Exclusive Deal Angle:</strong> Lightning Deal early access for GrabCash sharers</li>
+        <li><strong>Co-Marketing:</strong> Joint "GrabCash x Amazon Deals" campaign during Prime Day and Great Indian Festival</li>
+        <li><strong>Key Contact Level:</strong> Amazon Affiliate Program Manager → Head of Affiliate Partnerships</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(0,180,216,0.15);">🛍️</div>
+        <h3>Flipkart</h3>
+      </div>
+      <h4>Current Relationship & Growth Plan</h4>
+      <ul>
+        <li><strong>Current:</strong> Flipkart Affiliate Program (standard tier)</li>
+        <li><strong>Target:</strong> Premium Publisher tier — higher commissions + API access</li>
+        <li><strong>Strategy:</strong> Drive 10,000+ orders/month to qualify for premium</li>
+        <li><strong>Exclusive Deal Angle:</strong> Early access to Big Billion Days deals for GrabCash</li>
+        <li><strong>Co-Marketing:</strong> Flipkart-branded deal cards for GrabCash sharers</li>
+        <li><strong>Key Contact Level:</strong> Flipkart Affiliate Partnerships → VP Digital Marketing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(247,37,133,0.15);">👔</div>
+        <h3>Myntra & Ajio</h3>
+      </div>
+      <h4>Current Relationship & Growth Plan</h4>
+      <ul>
+        <li><strong>Current:</strong> Network-based affiliate (via vCommission/Admitad)</li>
+        <li><strong>Target:</strong> Direct partnership with custom commission structure</li>
+        <li><strong>Strategy:</strong> Leverage GrabOn's existing Myntra/Ajio relationship for introduction</li>
+        <li><strong>Exclusive Deal Angle:</strong> "Myntra Insider" deals exclusively shared through GrabCash</li>
+        <li><strong>Co-Marketing:</strong> Seasonal fashion lookbook curation with Myntra deals</li>
+        <li><strong>Key Contact Level:</strong> Head of Performance Marketing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(114,9,183,0.15);">✈️</div>
+        <h3>MakeMyTrip / Goibibo</h3>
+      </div>
+      <h4>Current Relationship & Growth Plan</h4>
+      <ul>
+        <li><strong>Current:</strong> Standard affiliate (likely via network)</li>
+        <li><strong>Target:</strong> Direct partnership with hotel-specific high commissions</li>
+        <li><strong>Strategy:</strong> Focus on hotel bookings (6-12% commission vs 1-2% on flights)</li>
+        <li><strong>Exclusive Deal Angle:</strong> Weekend getaway packages exclusive to GrabCash</li>
+        <li><strong>Co-Marketing:</strong> "GrabCash Travel Deals" section with MMT-powered inventory</li>
+        <li><strong>Key Contact Level:</strong> Head of Affiliate Channel → CMO</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Enterprise Deal Negotiation — The Co-Marketing Proposition</h4>
+    <div class="script-block mt-2">
+      <div class="speaker">Enterprise Pitch — Co-Marketing Campaign</div>
+      <div class="dialogue">
+"[Enterprise Contact], I'd like to propose something beyond a standard affiliate relationship.
+
+GrabCash, combined with GrabOn's <em>3.7M monthly visitors</em>, offers [Enterprise Brand] a unique co-marketing opportunity:
+
+<strong>The Proposition:</strong>
+1. <em>GrabOn editorial feature</em> — dedicated brand page + blog coverage for your [campaign/sale]
+2. <em>GrabCash sharer activation</em> — targeted push of your deals to our top 1,000 sharers
+3. <em>WhatsApp broadcast</em> — your deals distributed to 50,000+ opted-in users
+4. <em>Social amplification</em> — GrabOn + GrabCash social channels (combined 500K+ followers)
+
+<strong>What we need from [Brand]:</strong>
+• Exclusive deal or early access (24-48 hours before public)
+• Slightly higher commission during campaign period (+2-3%)
+• Co-branded creative assets (we'll design, you approve)
+
+<strong>Expected Results:</strong>
+Based on similar campaigns: <em>₹15-30L in attributable revenue</em> over a 7-day campaign window.
+
+Shall we plan this for your next major sale?"
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Enterprise Brand Revenue Targets</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Brand</th><th>Current Monthly Rev</th><th>6-Month Target</th><th>12-Month Target</th><th>Commission Rate Target</th><th>Key Initiative</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">Amazon India</td><td class="mono">₹5L</td><td class="mono green">₹20L</td><td class="mono green">₹50L</td><td class="mono">4-10%</td><td>SPN tier qualification</td></tr>
+          <tr><td class="fw-700">Flipkart</td><td class="mono">₹4L</td><td class="mono green">₹15L</td><td class="mono green">₹40L</td><td class="mono">5-12%</td><td>Premium publisher tier</td></tr>
+          <tr><td class="fw-700">Myntra</td><td class="mono">₹2L</td><td class="mono green">₹8L</td><td class="mono green">₹20L</td><td class="mono">6-10%</td><td>Direct partnership</td></tr>
+          <tr><td class="fw-700">Ajio</td><td class="mono">₹1.5L</td><td class="mono green">₹6L</td><td class="mono green">₹15L</td><td class="mono">7-12%</td><td>Category exclusives</td></tr>
+          <tr><td class="fw-700">MakeMyTrip</td><td class="mono">₹1L</td><td class="mono green">₹5L</td><td class="mono green">₹12L</td><td class="mono">5-12%</td><td>Hotel-focused campaign</td></tr>
+          <tr class="highlight-row"><td class="fw-700">Top 10 Enterprise Total</td><td class="mono">₹20L</td><td class="mono green">₹80L</td><td class="mono green">₹2Cr</td><td class="mono">—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 13: Partnership KPIs -->
+<!-- ============================================================ -->
+<section class="section" id="kpis">
+  <div class="section-header">
+    <div class="section-num">13 — PARTNERSHIP KPIs</div>
+    <h2>Brand Partnership <em>KPI Dashboard</em></h2>
+    <p class="section-desc">The metrics that matter — tracked weekly, reported monthly, reviewed quarterly.</p>
+  </div>
+
+  <div class="kpi-grid mb-3">
+    <div class="kpi-card">
+      <div class="kpi-value">50</div>
+      <div class="kpi-label">Brands Signed / Quarter</div>
+      <div class="kpi-trend">Target: 75 by Q1 2027</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">500+</div>
+      <div class="kpi-label">Active Brands (Current)</div>
+      <div class="kpi-trend">Target: 1,200 by Q4 2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">₹52K</div>
+      <div class="kpi-label">Avg Revenue / Brand / Mo</div>
+      <div class="kpi-trend">Target: ₹75K by Q2 2027</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">8%</div>
+      <div class="kpi-label">Brand Churn Rate (Quarterly)</div>
+      <div class="kpi-trend">Target: < 5%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">7.2%</div>
+      <div class="kpi-label">Avg Commission Rate</div>
+      <div class="kpi-trend">Target: 8.5%+ (shift to D2C)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">85%</div>
+      <div class="kpi-label">Category Coverage (8 verticals)</div>
+      <div class="kpi-trend">Target: 95% with sub-categories</div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Top 20 Brand Performance — Monthly Tracker Template</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Brand</th><th>Category</th><th>Revenue</th><th>Orders</th><th>Comm. Rate</th><th>Commission</th><th>Trend</th><th>Health</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">1</td><td class="fw-700">Amazon India</td><td>Multi-Category</td><td class="mono green">₹5.2L</td><td class="mono">2,100</td><td class="mono">4.5%</td><td class="mono">₹23.4K</td><td class="green">+12%</td><td><span class="tag">92</span></td></tr>
+          <tr><td class="mono">2</td><td class="fw-700">Flipkart</td><td>Multi-Category</td><td class="mono green">₹4.1L</td><td class="mono">1,850</td><td class="mono">5.0%</td><td class="mono">₹20.5K</td><td class="green">+8%</td><td><span class="tag">88</span></td></tr>
+          <tr><td class="mono">3</td><td class="fw-700">Myntra</td><td>Fashion</td><td class="mono green">₹2.4L</td><td class="mono">960</td><td class="mono">7.0%</td><td class="mono">₹16.8K</td><td class="green">+22%</td><td><span class="tag">95</span></td></tr>
+          <tr><td class="mono">4</td><td class="fw-700">MakeMyTrip</td><td>Travel</td><td class="mono green">₹1.8L</td><td class="mono">320</td><td class="mono">8.0%</td><td class="mono">₹14.4K</td><td class="green">+15%</td><td><span class="tag">85</span></td></tr>
+          <tr><td class="mono">5</td><td class="fw-700">Nykaa</td><td>Beauty</td><td class="mono green">₹1.5L</td><td class="mono">720</td><td class="mono">8.5%</td><td class="mono">₹12.8K</td><td class="green">+30%</td><td><span class="tag">90</span></td></tr>
+          <tr><td class="mono">6</td><td class="fw-700">[D2C Fashion Brand]</td><td>Fashion</td><td class="mono green">₹1.2L</td><td class="mono">480</td><td class="mono">12.0%</td><td class="mono">₹14.4K</td><td class="green">+45%</td><td><span class="tag">97</span></td></tr>
+          <tr><td class="mono">7</td><td class="fw-700">[D2C Beauty Brand]</td><td>Beauty</td><td class="mono green">₹95K</td><td class="mono">380</td><td class="mono">15.0%</td><td class="mono">₹14.3K</td><td class="green">+38%</td><td><span class="tag">94</span></td></tr>
+          <tr><td class="mono" colspan="3" style="text-align:center;">... Brands 8-20 ...</td><td colspan="6" class="text-dim" style="text-align:center;">Fill with actual brand data as partnerships scale</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout mt-2">
+      <strong>Key Insight:</strong> D2C brands (rows 6-7) generate comparable commission revenue to enterprise brands despite lower GMV, due to 2-3x higher commission rates. The optimal portfolio mix is 30% enterprise (volume) + 50% D2C (margin) + 20% network (breadth).
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Commission Rate Trends — Category-Wise Tracking</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Category</th><th>Q1 2026 Avg Rate</th><th>Q2 2026 Target</th><th>Q4 2026 Target</th><th>Strategy to Improve</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">Fashion</td><td class="mono">7.5%</td><td class="mono green">8.2%</td><td class="mono green">9.5%</td><td>Shift mix toward D2C fashion brands (12-15% rates)</td></tr>
+          <tr><td class="fw-700">Beauty</td><td class="mono">9.0%</td><td class="mono green">10.5%</td><td class="mono green">12.0%</td><td>Onboard more D2C beauty (15-20% rates)</td></tr>
+          <tr><td class="fw-700">Electronics</td><td class="mono">3.5%</td><td class="mono green">4.0%</td><td class="mono green">4.5%</td><td>Focus on accessories (6-10%) over devices (2-4%)</td></tr>
+          <tr><td class="fw-700">Travel</td><td class="mono">6.0%</td><td class="mono green">7.0%</td><td class="mono green">8.0%</td><td>Shift to hotel bookings (8-12%) over flights (1-2%)</td></tr>
+          <tr><td class="fw-700">Finance</td><td class="mono">Flat ₹300/lead</td><td class="mono green">₹350/lead</td><td class="mono green">₹400/lead</td><td>Premium fintech partners (credit cards, demat)</td></tr>
+          <tr class="highlight-row"><td class="fw-700">Blended Average</td><td class="mono">7.2%</td><td class="mono green">8.0%</td><td class="mono green">8.5%</td><td>Category mix optimization + D2C shift</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 14: Team Structure -->
+<!-- ============================================================ -->
+<section class="section" id="team">
+  <div class="section-header">
+    <div class="section-num">14 — TEAM STRUCTURE</div>
+    <h2>Brand Partnership <em>Team</em></h2>
+    <p class="section-desc">Roles, KPIs, compensation structure, and hiring timeline for the brand partnerships team.</p>
+  </div>
+
+  <div class="card-grid mb-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(252,163,17,0.15);">👑</div>
+        <h3>Head of Brand Partnerships</h3>
+      </div>
+      <span class="tag orange">HIRE: Q3 2026</span>
+      <h4 class="mt-2">Responsibilities</h4>
+      <ul>
+        <li>Own overall brand acquisition and revenue targets</li>
+        <li>Enterprise relationship management (top 20 brands)</li>
+        <li>Commission negotiation strategy and rate optimization</li>
+        <li>Team hiring, training, and performance management</li>
+        <li>Cross-functional collaboration with Product and Growth</li>
+      </ul>
+      <h4 class="mt-2">KPIs</h4>
+      <ul>
+        <li>Total brand count growth (target: 2,500 by Q4 2027)</li>
+        <li>Brand revenue per month (target: ₹2Cr+ by Q4 2027)</li>
+        <li>Blended commission rate (target: 8.5%+)</li>
+        <li>Brand churn rate (target: below 5%/quarter)</li>
+        <li>Enterprise brand NPS score (target: 70+)</li>
+      </ul>
+      <h4 class="mt-2">Compensation</h4>
+      <p class="text-dim fs-sm">Base: ₹25-35 LPA | Variable: 15-20% of base tied to brand revenue targets | ESOPs: 0.3-0.5%</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(13,207,26,0.15);">🤝</div>
+        <h3>Brand Development Managers (x2)</h3>
+      </div>
+      <span class="tag">HIRE: Q3-Q4 2026</span>
+      <h4 class="mt-2">Responsibilities</h4>
+      <ul>
+        <li>New brand acquisition — outreach, pitching, closing</li>
+        <li>GrabOn upsell pipeline management</li>
+        <li>D2C brand outreach and onboarding</li>
+        <li>Commission negotiation (standard and growth tiers)</li>
+        <li>Pipeline reporting and CRM hygiene</li>
+      </ul>
+      <h4 class="mt-2">KPIs</h4>
+      <ul>
+        <li>New brands signed per month (target: 15-20 each)</li>
+        <li>Pipeline value and conversion rate</li>
+        <li>Average commission rate on signed brands</li>
+        <li>Time from first contact to go-live (target: &lt; 14 days)</li>
+      </ul>
+      <h4 class="mt-2">Compensation</h4>
+      <p class="text-dim fs-sm">Base: ₹10-15 LPA each | Variable: ₹2K per brand signed + 2% of first 3 months brand commission revenue | Total OTE: ₹14-22 LPA</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(0,180,216,0.15);">📈</div>
+        <h3>Brand Account Managers (x2)</h3>
+      </div>
+      <span class="tag blue">HIRE: Q4 2026</span>
+      <h4 class="mt-2">Responsibilities</h4>
+      <ul>
+        <li>Existing brand relationship management (portfolio of 100-150 brands each)</li>
+        <li>Quarterly business reviews for premium brands</li>
+        <li>Performance optimization recommendations</li>
+        <li>Commission optimization and upsell to higher tiers</li>
+        <li>Brand health score monitoring and churn prevention</li>
+        <li>Seasonal campaign coordination with brands</li>
+      </ul>
+      <h4 class="mt-2">KPIs</h4>
+      <ul>
+        <li>Portfolio revenue growth (target: 15% QoQ)</li>
+        <li>Brand churn in portfolio (target: below 3%/quarter)</li>
+        <li>Upsells to premium tier (target: 5 per quarter)</li>
+        <li>Average brand health score in portfolio (target: 75+)</li>
+      </ul>
+      <h4 class="mt-2">Compensation</h4>
+      <p class="text-dim fs-sm">Base: ₹8-12 LPA each | Variable: 1% of portfolio commission revenue growth (QoQ) | Total OTE: ₹11-17 LPA</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(114,9,183,0.15);">⚙️</div>
+        <h3>Brand Operations Associate (x1)</h3>
+      </div>
+      <span class="tag purple">HIRE: Q4 2026</span>
+      <h4 class="mt-2">Responsibilities</h4>
+      <ul>
+        <li>Brand onboarding execution (technical setup, creative collection)</li>
+        <li>Deal configuration and listing management</li>
+        <li>Network integration monitoring and troubleshooting</li>
+        <li>Commission reconciliation and payout processing</li>
+        <li>Brand portal content updates and quality assurance</li>
+        <li>Reporting automation and dashboard maintenance</li>
+      </ul>
+      <h4 class="mt-2">KPIs</h4>
+      <ul>
+        <li>Onboarding time (target: below 48 hours)</li>
+        <li>Tracking accuracy (target: 99%+ match rate)</li>
+        <li>Deal listing freshness (target: 90%+ active within T&C dates)</li>
+        <li>Payout accuracy (target: zero reconciliation errors)</li>
+      </ul>
+      <h4 class="mt-2">Compensation</h4>
+      <p class="text-dim fs-sm">Base: ₹5-8 LPA | Variable: ₹5K/mo bonus for zero-error month | Total OTE: ₹5.6-8.6 LPA</p>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Hiring Timeline</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Quarter</th><th>Hires</th><th>Team Size</th><th>Monthly Burn</th><th>Brands/Person Target</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">Q3 2026</td><td>Head of Partnerships + 1 BD Manager</td><td class="mono">2</td><td class="mono">₹3.5L</td><td class="mono">250 brands/person</td></tr>
+          <tr><td class="fw-700">Q4 2026</td><td>+1 BD Manager + 1 Account Manager + 1 Ops Associate</td><td class="mono">5</td><td class="mono">₹7.5L</td><td class="mono">200 brands/person</td></tr>
+          <tr><td class="fw-700">Q1 2027</td><td>+1 Account Manager</td><td class="mono">6</td><td class="mono">₹8.5L</td><td class="mono">300 brands/person</td></tr>
+          <tr class="highlight-row"><td class="fw-700">Q2 2027</td><td>Evaluate — may add 1-2 more based on growth</td><td class="mono">6-8</td><td class="mono">₹8.5-11L</td><td class="mono">300+ brands/person</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout mt-2">
+      <strong>Cost vs Revenue:</strong> At full team (6 people, ₹8.5L/mo burn), the team needs to generate ₹85L/mo in brand commission revenue to achieve 10x ROI on team cost. With 2,000 active brands at ₹52K avg revenue, that is ₹10.4Cr/mo — well above the 10x threshold. The team is highly leveraged.
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Team Org Chart</h4>
+    <div style="text-align:center; padding:2rem 0;">
+      <div style="display:inline-block; background:var(--green-dim); border:1px solid rgba(13,207,26,0.3); border-radius:12px; padding:1rem 2rem; margin-bottom:1rem;">
+        <div style="font-weight:700; color:var(--text-bright);">Head of Brand Partnerships</div>
+        <div style="font-size:0.75rem; color:var(--green);">Owns: Strategy, Enterprise, Revenue</div>
+      </div>
+      <div style="width:2px; height:30px; background:var(--border); margin:0 auto;"></div>
+      <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:1rem;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem 1.5rem; min-width:180px;">
+          <div style="font-weight:600; color:var(--text-bright); font-size:0.9rem;">BD Manager 1</div>
+          <div style="font-size:0.72rem; color:var(--accent4);">GrabOn Upsell + D2C Fashion</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem 1.5rem; min-width:180px;">
+          <div style="font-weight:600; color:var(--text-bright); font-size:0.9rem;">BD Manager 2</div>
+          <div style="font-size:0.72rem; color:var(--accent2);">D2C Beauty/Health + Finance</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem 1.5rem; min-width:180px;">
+          <div style="font-weight:600; color:var(--text-bright); font-size:0.9rem;">Account Manager 1</div>
+          <div style="font-size:0.72rem; color:var(--accent3);">Enterprise + Premium Portfolio</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem 1.5rem; min-width:180px;">
+          <div style="font-weight:600; color:var(--text-bright); font-size:0.9rem;">Account Manager 2</div>
+          <div style="font-size:0.72rem; color:var(--accent5);">Growth + Starter Portfolio</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem 1.5rem; min-width:180px;">
+          <div style="font-weight:600; color:var(--text-bright); font-size:0.9rem;">Ops Associate</div>
+          <div style="font-size:0.72rem; color:var(--text-dim);">Onboarding + Tracking + Payouts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional: Brand Analytics Dashboard Specs -->
+<div class="section" style="padding-top:0;">
+  <div class="card mb-3">
+    <h4>Brand Analytics Dashboard — Detailed Metric Definitions</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Metric</th><th>Definition</th><th>Calculation</th><th>Benchmark</th><th>Alert Threshold</th></tr></thead>
+        <tbody>
+          <tr><td class="fw-700">GMV (Gross Merchandise Value)</td><td>Total value of orders attributed to GrabCash clicks</td><td>Sum of all order values</td><td class="mono">Varies by category</td><td>Decline &gt; 20% MoM</td></tr>
+          <tr><td class="fw-700">Commission Revenue</td><td>Total commission earned from brand (GrabCash's revenue)</td><td>GMV x Commission Rate</td><td class="mono">7-8% of GMV avg</td><td>Decline &gt; 15% MoM</td></tr>
+          <tr><td class="fw-700">Click-Through Rate (CTR)</td><td>% of deal impressions that result in clicks to brand site</td><td>Clicks / Impressions x 100</td><td class="mono green">8-15%</td><td>Below 5%</td></tr>
+          <tr><td class="fw-700">Conversion Rate (CVR)</td><td>% of clicks that result in confirmed orders</td><td>Orders / Clicks x 100</td><td class="mono green">3.5-6%</td><td>Below 2%</td></tr>
+          <tr><td class="fw-700">Average Order Value (AOV)</td><td>Average value per order</td><td>GMV / Orders</td><td class="mono">Category dependent</td><td>Decline &gt; 15%</td></tr>
+          <tr><td class="fw-700">Effective CPA</td><td>Cost to brand per acquired customer</td><td>Commission / Orders</td><td class="mono green">₹150-400</td><td>Above ₹500</td></tr>
+          <tr><td class="fw-700">ROAS (Return on Ad Spend)</td><td>Revenue generated per rupee of commission spent</td><td>GMV / Commission</td><td class="mono green">10-15x</td><td>Below 8x</td></tr>
+          <tr><td class="fw-700">Active Sharer Count</td><td>Unique sharers who generated at least 1 click for brand in 30d</td><td>Distinct sharers with clicks</td><td class="mono">50-500</td><td>Decline &gt; 30%</td></tr>
+          <tr><td class="fw-700">New Customer %</td><td>% of orders from first-time brand customers</td><td>New customer orders / Total orders</td><td class="mono green">40-65%</td><td>Below 25%</td></tr>
+          <tr><td class="fw-700">Return Rate</td><td>% of orders returned/cancelled</td><td>Returns / Orders x 100</td><td class="mono">5-15%</td><td style="color:var(--accent3);">Above 20%</td></tr>
+          <tr><td class="fw-700">Share-to-Click Ratio</td><td>How many clicks each share generates (virality proxy)</td><td>Clicks / Shares</td><td class="mono green">2.5-5x</td><td>Below 1.5x</td></tr>
+          <tr><td class="fw-700">Brand Health Score</td><td>Composite score combining all engagement signals</td><td>Weighted formula (see Retention section)</td><td class="mono green">70-100</td><td style="color:var(--accent3);">Below 60</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Brand-Facing Weekly Report Template</h4>
+    <div class="email-template mt-2">
+      <div class="email-header">
+        <span class="type">Weekly Performance Report</span>
+        <span class="context">Auto-sent every Monday at 9 AM to brand contacts</span>
+      </div>
+      <div class="email-body">
+        <div class="body-text">
+<strong>GrabCash Weekly Performance Report — [Brand Name]</strong>
+Week of [Date] to [Date]
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+<strong>THIS WEEK AT A GLANCE</strong>
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+Revenue:       <em>₹[X]</em>     ([+/-X%] vs last week)
+Orders:        <em>[X]</em>       ([+/-X%] vs last week)
+Clicks:        <em>[X]</em>       ([+/-X%] vs last week)
+CVR:           <em>[X]%</em>      (Category avg: [X]%)
+Active Sharers: <em>[X]</em>      ([+/-X] vs last week)
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+<strong>TOP PERFORMING DEALS</strong>
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. [Deal Title 1] — ₹[X] revenue, [X] orders, [X]% CVR
+2. [Deal Title 2] — ₹[X] revenue, [X] orders, [X]% CVR
+3. [Deal Title 3] — ₹[X] revenue, [X] orders, [X]% CVR
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+<strong>RECOMMENDATIONS</strong>
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+• [Specific recommendation based on data: "Your BOGO deal is converting 2x better than flat discounts — consider running more BOGO offers"]
+• [Seasonal opportunity: "Weekend getaway deals peak next month — submit hotel deals by [date]"]
+• [Commission insight: "Increasing commission by 1% could attract 30% more sharers based on category data"]
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+<strong>MONTH-TO-DATE SUMMARY</strong>
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+MTD Revenue: ₹[X]     ([X]% of monthly target)
+MTD Orders:  [X]       ([X]% of monthly target)
+Commission:  ₹[X]      (your investment this month)
+
+<strong>View full dashboard:</strong> <em>[Dashboard URL]</em>
+Questions? Reach [AM Name] at [AM Email] or [AM Phone].
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Commission Optimization Recommendations Engine — Logic Rules</h4>
+    <p class="text-dim fs-sm mt-2">The automated recommendation engine analyzes brand performance weekly and generates actionable suggestions:</p>
+    <div class="table-wrap mt-2">
+      <table>
+        <thead><tr><th>Condition</th><th>Recommendation</th><th>Expected Impact</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Commission rate &lt; category avg by 2%+</td>
+            <td>"Increase commission rate by [X]% to match category average and attract more sharers"</td>
+            <td>+25-40% sharer activity</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>CVR &gt; 6% but low sharer count</td>
+            <td>"Your deals convert well but need more distribution. Consider a sharer bonus campaign to attract new sharers"</td>
+            <td>+50% clicks within 2 weeks</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>No new deals in 21+ days</td>
+            <td>"Refresh your deal catalog. Brands with weekly deal updates see 2x more sharer engagement"</td>
+            <td>+30% sharer engagement</td>
+            <td><span class="tag blue">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>AOV trending down 3 weeks</td>
+            <td>"Consider bundled deals or minimum order value offers to lift AOV"</td>
+            <td>+15-25% AOV recovery</td>
+            <td><span class="tag blue">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>Return rate &gt; 15%</td>
+            <td>"High return rate is reducing effective commission. Review product descriptions and size guides on landing pages"</td>
+            <td>-5-8% return rate</td>
+            <td><span class="tag blue">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>Top 3 sharers drive &gt; 60% of revenue</td>
+            <td>"Revenue is concentrated — diversify by running a 'new sharer bonus' campaign to reduce dependency"</td>
+            <td>Lower concentration risk</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>Seasonal event approaching (14 days)</td>
+            <td>"[Event] is in 2 weeks. Submit your deals by [date] for inclusion in our mega-event campaign"</td>
+            <td>2-3x revenue during event</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>Competitor brand offering higher commission</td>
+            <td>"[Competitor] is offering [X]% commission vs your [Y]%. Consider matching to retain sharer attention"</td>
+            <td>Prevent sharer migration</td>
+            <td><span class="tag">HIGH</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h4>Brand Churn Prevention Playbook</h4>
+    <p class="text-dim mt-2 fs-sm">When a brand shows signs of churn (health score dropping, no deal refreshes, declining volume), activate this intervention sequence:</p>
+    <div class="timeline mt-2">
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 1 — Early Warning Detected</div>
+        <h4>Health Score Alert Triggered</h4>
+        <p>System detects health score dropping below 60. AM receives automated alert with specific declining metrics and recommended intervention talking points.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 1-2 — Personal Outreach</div>
+        <h4>AM Calls Brand Contact</h4>
+        <p>AM places a personal call (not email) to the brand contact. Goal: understand what's changed. Common reasons: budget cuts, team changes, tracking issues, seasonal downturn, competitive offer. Document findings in CRM.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 3-5 — Value Reinforcement</div>
+        <h4>Custom Performance Review Sent</h4>
+        <p>AM sends a personalized performance review highlighting: total revenue generated to date, CPA comparison vs other channels, top-performing deal highlights, recommendations for improvement. Include specific next steps.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 7 — Incentive Offer</div>
+        <h4>Retention Incentive Deployed</h4>
+        <p>If standard outreach hasn't re-engaged the brand, offer a time-limited incentive: 30-day commission rate reduction (GrabCash absorbs the margin), free premium placement for 2 weeks, dedicated sharer campaign at no extra cost, or a co-marketing feature in GrabOn's newsletter.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 14 — Executive Escalation</div>
+        <h4>Head of Partnerships Intervenes</h4>
+        <p>If health score is still declining, Head of Partnerships makes a personal call to the brand's senior decision-maker. Different conversation: strategic partnership value, roadmap preview, custom terms negotiation, executive commitment.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-meta">Day 21+ — Graceful Wind-Down or Win-Back</div>
+        <h4>Final Decision Point</h4>
+        <p>If brand decides to leave: execute graceful wind-down (disable deals, final payout, exit survey). Add to quarterly win-back campaign list. If brand stays: document intervention success for team learning. Update playbook with new insights.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Brand Partnership Lifecycle — Revenue Curve Model</h4>
+    <div class="script-block mt-2" style="border-left-color: var(--accent5);">
+      <div class="speaker" style="color: var(--accent5);">Typical Brand Revenue Lifecycle on GrabCash</div>
+      <div class="dialogue" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+Month 1:  ▓▓░░░░░░░░░░░░░░  Onboarding — testing, few sharers, learning period
+Month 2:  ▓▓▓▓░░░░░░░░░░░░  Ramp-up — sharer adoption growing, first optimizations
+Month 3:  ▓▓▓▓▓▓▓░░░░░░░░░  Growth — deal catalog expanded, sharer base established
+Month 4:  ▓▓▓▓▓▓▓▓▓░░░░░░░  Acceleration — seasonal campaign, premium placement
+Month 5:  ▓▓▓▓▓▓▓▓▓▓▓░░░░░  Peak — optimized commission, strong sharer engagement
+Month 6:  ▓▓▓▓▓▓▓▓▓▓▓▓░░░░  Mature — steady-state with periodic campaign spikes
+Month 7+: ▓▓▓▓▓▓▓▓▓▓▓▓░░░░  Steady-state — 10-15% QoQ growth with seasonal peaks
+
+<strong>Key Milestone Targets:</strong>
+• Month 1:  First 100 orders
+• Month 3:  Reach ₹1L/month in revenue
+• Month 6:  Reach ₹3L/month, qualify for Growth tier
+• Month 12: Reach ₹5-10L/month, Premium tier candidate
+
+<strong>Warning Signs to Watch:</strong>
+• Revenue plateaus for 3+ consecutive weeks
+• Sharer count declining despite active deals
+• Conversion rate dropping below category average
+• No deal refresh in 30+ days
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="text-align:center; padding:4rem 2rem; border-top:1px solid var(--border); margin-top:3rem;">
+  <div style="font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--green); margin-bottom:0.5rem;">GRABCASH B2B BRAND PARTNERSHIP PLAYBOOK</div>
+  <div style="font-size:0.8rem; color:var(--text-dim); margin-bottom:1rem;">Confidential — InspireLabs Pvt. Ltd. | Last Updated: May 2026</div>
+  <div style="font-size:0.75rem; color:var(--text-dim);">
+    GrabCash (grabcash.in) | GrabOn (grabon.in) | InspireLabs
+  </div>
+  <div style="font-size:0.7rem; color:rgba(255,255,255,0.15); margin-top:2rem;">
+    This document contains proprietary business strategy and is intended for internal use only. Do not distribute externally without approval.
+  </div>
+  <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border);">
+    <div style="max-width:900px; margin:0 auto; text-align:left;">
+      <h4 style="color:var(--text-bright); font-size:0.9rem; margin-bottom:1rem;">Quick Reference: Key Contacts & Resources</h4>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; font-size:0.78rem; color:var(--text-dim);">
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-weight:600; color:var(--green); margin-bottom:0.5rem;">Brand Partnership Inquiries</div>
+          <div>partnerships@grabcash.in</div>
+          <div>brands@inspirelabs.com</div>
+          <div>+91 [Contact Number]</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-weight:600; color:var(--green); margin-bottom:0.5rem;">Technical Integration Support</div>
+          <div>tech-support@grabcash.in</div>
+          <div>API Docs: docs.grabcash.in/brands</div>
+          <div>Status: status.grabcash.in</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-weight:600; color:var(--green); margin-bottom:0.5rem;">Key Internal Links</div>
+          <div>Brand CRM: [Internal CRM URL]</div>
+          <div>Deal Management: [Internal Tool URL]</div>
+          <div>Analytics Dashboard: [Internal URL]</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:1rem;">
+          <div style="font-weight:600; color:var(--green); margin-bottom:0.5rem;">Affiliate Network Contacts</div>
+          <div>vCommission AM: [Name / Email]</div>
+          <div>Admitad AM: [Name / Email]</div>
+          <div>CJ Affiliate AM: [Name / Email]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:2rem;">
+    <div style="max-width:900px; margin:0 auto; text-align:left;">
+      <h4 style="color:var(--text-bright); font-size:0.9rem; margin-bottom:1rem;">Document Version History</h4>
+      <div style="font-size:0.75rem; color:var(--text-dim);">
+        <div style="display:flex; gap:2rem; padding:0.5rem 0; border-bottom:1px solid var(--border);">
+          <span style="min-width:80px; color:var(--green); font-family:'JetBrains Mono',monospace;">v1.0</span>
+          <span style="min-width:100px;">May 2026</span>
+          <span>Initial playbook creation — 14 sections covering brand acquisition, category strategy, sales collateral, negotiation, onboarding, portal specs, retention, network integration, D2C and enterprise strategies, KPIs, and team structure.</span>
+        </div>
+        <div style="display:flex; gap:2rem; padding:0.5rem 0; border-bottom:1px solid var(--border);">
+          <span style="min-width:80px; color:var(--green); font-family:'JetBrains Mono',monospace;">v1.1</span>
+          <span style="min-width:100px;">Planned Q3 2026</span>
+          <span>Update with actual brand performance data, signed brand case studies, and refined conversion rate benchmarks from first quarter of execution.</span>
+        </div>
+        <div style="display:flex; gap:2rem; padding:0.5rem 0;">
+          <span style="min-width:80px; color:var(--green); font-family:'JetBrains Mono',monospace;">v2.0</span>
+          <span style="min-width:100px;">Planned Q4 2026</span>
+          <span>Major revision incorporating self-serve portal launch data, festive season campaign results, and updated 2027 targets and team scaling plan.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navigation scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Active nav link highlight
+const sections = document.querySelectorAll('.section[id], .hero[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const activeLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '-80px 0px -50% 0px' });
+sections.forEach(section => observer.observe(section));
+
+// Smooth scroll for nav links
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Card entrance animations
+const cards = document.querySelectorAll('.card, .funnel-stage, .kpi-card, .email-template, .script-block, .wireframe');
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+cards.forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  cardObserver.observe(card);
+});
+</script>
+</body>
+</html>

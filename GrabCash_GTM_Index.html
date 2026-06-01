@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrabCash GTM Master Suite — Complete Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gc-green: #0dcf1a;
+    --gc-green-hover: #0ab815;
+    --gc-navy: #00123b;
+    --gc-sky-1: #dbefff;
+    --gc-sky-2: #e4f3ff;
+    --gc-gray-bg: #f9fafb;
+    --gc-gray-light: #e5e5e5;
+    --gc-gray-dark: #5c6579;
+    --gc-blue-accent: #2563eb;
+    --gc-white: #ffffff;
+    --gc-red: #ef4444;
+    --gc-cyan: #06d6a0;
+    --gc-orange: #ffa502;
+    --shadow-sm: 0 2px 12px rgba(0,18,59,0.06);
+    --shadow-md: 0 4px 20px rgba(0,18,59,0.10);
+    --shadow-lg: 0 8px 32px rgba(0,18,59,0.14);
+    --radius: 12px;
+    --radius-pill: 50px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--gc-white);
+    color: var(--gc-navy);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== NAVIGATION ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gc-gray-light);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px;
+    display: flex; align-items: center; gap: 2px;
+  }
+  .nav-logo .grab { color: var(--gc-navy); }
+  .nav-logo .cash { color: var(--gc-green); }
+
+  .nav-links {
+    display: flex; gap: 0.25rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links li { list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--gc-gray-dark);
+    font-size: 0.82rem; font-weight: 500;
+    padding: 0.4rem 0.85rem; border-radius: var(--radius-pill);
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--gc-sky-2); color: var(--gc-navy);
+  }
+
+  .nav-mobile-toggle {
+    display: none; background: none; border: none;
+    font-size: 1.5rem; color: var(--gc-navy); cursor: pointer;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 7rem 2rem 4rem;
+    background: linear-gradient(180deg, var(--gc-sky-1) 0%, var(--gc-sky-2) 50%, var(--gc-white) 100%);
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(13,207,26,0.08); color: var(--gc-green);
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill); margin-bottom: 1.5rem;
+    vertical-align: middle;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gc-green); border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800; color: var(--gc-navy);
+    line-height: 1.15; margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--gc-green); }
+
+  .hero-subtitle {
+    font-size: 1.05rem; color: var(--gc-gray-dark);
+    max-width: 600px; margin: 0 auto 2.5rem;
+    font-weight: 400; line-height: 1.6;
+  }
+
+  .stats-bar {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 1.5rem 2.5rem; max-width: 900px; margin: 0 auto;
+    padding: 1.5rem 2rem;
+    background: var(--gc-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gc-gray-light);
+  }
+
+  .stat-item {
+    text-align: center;
+    min-width: 90px;
+  }
+  .stat-item .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--gc-navy); display: block;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  .stat-item .stat-label {
+    font-size: 0.72rem; color: var(--gc-gray-dark);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    font-weight: 500; line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* ===== SECTIONS ===== */
+  .suite-section {
+    padding: 4rem 2rem;
+  }
+  .suite-section:nth-child(odd) {
+    background: var(--gc-gray-bg);
+  }
+  .suite-section:nth-child(even) {
+    background: var(--gc-white);
+  }
+
+  .section-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center; margin-bottom: 2.5rem;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 0.35rem 1rem; border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+  }
+  .section-badge.core { background: rgba(37,99,235,0.1); color: var(--gc-blue-accent); }
+  .section-badge.war { background: rgba(239,68,68,0.1); color: var(--gc-red); }
+  .section-badge.coverage { background: rgba(6,214,160,0.1); color: #059669; }
+  .section-badge.audit { background: rgba(255,165,2,0.1); color: #d97706; }
+
+  .section-header h2 {
+    font-size: 1.75rem; font-weight: 700;
+    color: var(--gc-navy); margin-bottom: 0.4rem;
+  }
+  .section-header p {
+    color: var(--gc-gray-dark); font-size: 0.9rem;
+  }
+
+  /* ===== CARDS GRID ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .doc-card {
+    background: var(--gc-white);
+    border: 1px solid var(--gc-gray-light);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.35rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+  }
+  .doc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .doc-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    opacity: 0; transition: opacity 0.25s ease;
+  }
+  .doc-card:hover::before { opacity: 1; }
+  .doc-card.core-card::before { background: var(--gc-blue-accent); }
+  .doc-card.war-card::before { background: var(--gc-red); }
+  .doc-card.coverage-card::before { background: var(--gc-cyan); }
+  .doc-card.audit-card::before { background: var(--gc-orange); }
+
+  .card-top {
+    display: flex; align-items: center; gap: 0.65rem;
+  }
+
+  .card-number {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600;
+    flex-shrink: 0; line-height: 1;
+  }
+  .core-card .card-number { background: rgba(37,99,235,0.1); color: var(--gc-blue-accent); }
+  .war-card .card-number { background: rgba(239,68,68,0.1); color: var(--gc-red); }
+  .coverage-card .card-number { background: rgba(6,214,160,0.1); color: #059669; }
+  .audit-card .card-number { background: rgba(255,165,2,0.1); color: #d97706; }
+
+  .card-title {
+    font-size: 0.92rem; font-weight: 600;
+    color: var(--gc-navy); line-height: 1.35;
+  }
+
+  .card-desc {
+    font-size: 0.78rem; color: var(--gc-gray-dark);
+    line-height: 1.55;
+  }
+
+  .card-tags {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+    margin-top: 0.15rem;
+  }
+  .card-tag {
+    font-size: 0.6rem; font-weight: 500;
+    padding: 0.15rem 0.5rem; border-radius: 20px;
+    letter-spacing: 0.2px; line-height: 1.3;
+    white-space: nowrap;
+  }
+  .core-card .card-tag { background: rgba(37,99,235,0.07); color: var(--gc-blue-accent); }
+  .war-card .card-tag { background: rgba(239,68,68,0.07); color: var(--gc-red); }
+  .coverage-card .card-tag { background: rgba(6,214,160,0.07); color: #059669; }
+  .audit-card .card-tag { background: rgba(255,165,2,0.07); color: #d97706; }
+
+  .card-connects {
+    font-size: 0.65rem; color: var(--gc-gray-dark);
+    opacity: 0.7; line-height: 1.3;
+    padding-top: 0.15rem;
+  }
+  .card-connects strong { font-weight: 600; opacity: 0.9; }
+
+  /* ===== EXECUTIVE SUMMARY ===== */
+  .exec-section {
+    padding: 3rem 2rem;
+    background: var(--gc-white);
+  }
+  .exec-inner {
+    max-width: 1000px; margin: 0 auto;
+  }
+  .exec-label {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--gc-green); margin-bottom: 0.75rem;
+  }
+  .exec-title {
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--gc-navy); margin-bottom: 1rem; line-height: 1.3;
+  }
+  .exec-text {
+    font-size: 0.88rem; color: var(--gc-gray-dark);
+    line-height: 1.75; margin-bottom: 1.25rem;
+  }
+  .exec-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-top: 2rem;
+  }
+  .exec-kpi {
+    padding: 1.25rem 1rem;
+    background: var(--gc-gray-bg);
+    border-radius: 10px; text-align: center;
+    border: 1px solid var(--gc-gray-light);
+  }
+  .exec-kpi .kpi-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--gc-navy); display: block;
+    line-height: 1.3;
+  }
+  .exec-kpi .kpi-label {
+    font-size: 0.65rem; color: var(--gc-gray-dark);
+    text-transform: uppercase; letter-spacing: 0.3px;
+    font-weight: 500; line-height: 1.4; margin-top: 0.15rem;
+  }
+  .exec-kpi .kpi-sub {
+    font-size: 0.62rem; color: var(--gc-gray-dark);
+    opacity: 0.7; margin-top: 0.1rem; line-height: 1.3;
+  }
+
+  /* ===== SUITE INTRO ===== */
+  .suite-intro {
+    font-size: 0.84rem; color: var(--gc-gray-dark);
+    line-height: 1.7; max-width: 800px; margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .suite-intro strong { color: var(--gc-navy); font-weight: 600; }
+
+  /* ===== FLOW MAP ===== */
+  .flow-section {
+    padding: 3rem 2rem;
+    background: var(--gc-gray-bg);
+    border-top: 1px solid var(--gc-gray-light);
+    border-bottom: 1px solid var(--gc-gray-light);
+  }
+  .flow-inner {
+    max-width: 1000px; margin: 0 auto; text-align: center;
+  }
+  .flow-label {
+    font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--gc-green); margin-bottom: 0.5rem;
+  }
+  .flow-title {
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--gc-navy); margin-bottom: 0.5rem;
+  }
+  .flow-subtitle {
+    font-size: 0.82rem; color: var(--gc-gray-dark);
+    margin-bottom: 2rem;
+  }
+  .flow-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .flow-item {
+    padding: 1.25rem 1rem;
+    background: var(--gc-white);
+    border-radius: 10px;
+    border: 1px solid var(--gc-gray-light);
+    text-align: center;
+    position: relative;
+  }
+  .flow-item::after {
+    content: '→'; position: absolute;
+    right: -0.75rem; top: 50%; transform: translateY(-50%);
+    color: var(--gc-gray-light); font-size: 1.1rem; font-weight: 700;
+  }
+  .flow-item:last-child::after { display: none; }
+  .flow-step {
+    font-size: 0.6rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 0.4rem;
+  }
+  .flow-step-name {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--gc-navy); margin-bottom: 0.25rem; line-height: 1.3;
+  }
+  .flow-step-docs {
+    font-size: 0.68rem; color: var(--gc-gray-dark); line-height: 1.5;
+  }
+
+  .card-meta {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-top: auto; padding-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .card-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--gc-gray-dark);
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .card-meta .file-type {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.3px;
+    padding: 0.2rem 0.55rem; border-radius: 4px;
+    line-height: 1;
+  }
+  .file-html { background: rgba(37,99,235,0.08); color: var(--gc-blue-accent); }
+  .file-xlsx { background: rgba(6,214,160,0.08); color: #059669; }
+
+  /* ===== SUITE TOTALS ===== */
+  .suite-total {
+    margin-top: 1.25rem;
+    padding: 1rem 1.5rem;
+    background: var(--gc-gray-bg);
+    border: 1px solid var(--gc-gray-light);
+    border-radius: var(--radius);
+    display: flex; flex-wrap: wrap;
+    gap: 0.5rem 1.5rem; align-items: center;
+    justify-content: center;
+  }
+  .suite-total .total-label {
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--gc-gray-dark);
+    line-height: 1;
+  }
+  .suite-total .total-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--gc-navy);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .suite-total .total-stat::before {
+    content: '·'; margin-right: 0.5rem; color: var(--gc-gray-light);
+  }
+  .suite-total .total-stat:first-of-type::before {
+    display: none;
+  }
+
+  /* ===== COMBINED TOTALS ===== */
+  .combined-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, var(--gc-white) 0%, var(--gc-sky-1) 100%);
+  }
+
+  .combined-card {
+    max-width: 900px; margin: 0 auto;
+    background: var(--gc-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gc-gray-light);
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .combined-card h3 {
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--gc-navy); margin-bottom: 0.5rem;
+  }
+  .combined-card .combined-sub {
+    font-size: 0.85rem; color: var(--gc-gray-dark);
+    margin-bottom: 2rem;
+  }
+
+  .combined-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .combined-stat {
+    padding: 1.1rem 1rem;
+    background: var(--gc-gray-bg);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .combined-stat .cs-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--gc-navy); display: block;
+    line-height: 1.3; white-space: nowrap;
+  }
+  .combined-stat .cs-label {
+    font-size: 0.68rem; color: var(--gc-gray-dark);
+    text-transform: uppercase; letter-spacing: 0.4px;
+    font-weight: 500; line-height: 1.4;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--gc-gray-light);
+    background: var(--gc-white);
+  }
+  .footer p {
+    font-size: 0.8rem; color: var(--gc-gray-dark);
+  }
+  .footer .footer-brand {
+    font-weight: 600; color: var(--gc-navy);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: block; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 60px; left: 0; right: 0;
+      background: var(--gc-white);
+      border-bottom: 1px solid var(--gc-gray-light);
+      padding: 0.75rem 1rem;
+      box-shadow: 0 4px 12px rgba(0,18,59,0.08);
+      gap: 0;
+    }
+    .nav-links.open li { padding: 0; }
+    .nav-links.open a { display: block; padding: 0.6rem 0.75rem; border-radius: 6px; }
+    .cards-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .stats-bar { gap: 0.75rem 1.25rem; padding: 1rem 1.25rem; flex-wrap: wrap; justify-content: center; }
+    .stat-item .stat-value { font-size: 1.15rem; }
+    .hero { padding: 5.5rem 1.25rem 2.5rem; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero-subtitle { font-size: 0.82rem; }
+    .suite-section { padding: 2.5rem 1.25rem; }
+    .section-title { font-size: 1.1rem; }
+    .combined-card { padding: 1.5rem; }
+    .combined-stats { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .combined-stat { padding: 0.9rem 0.75rem; }
+    .combined-stat .cs-value { font-size: 1.25rem; }
+    .exec-grid { grid-template-columns: repeat(2, 1fr); }
+    .flow-grid { grid-template-columns: repeat(2, 1fr); }
+    .flow-item::after { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .exec-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 1rem; }
+    .stat-item { padding: 0.4rem 0; }
+    .hero h1 { font-size: 1.35rem; }
+    .combined-stats { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .doc-card { padding: 1rem; }
+    .card-number { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="grab">Grab</span><span class="cash">Cash</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#core" class="active">Core GTM</a></li>
+    <li><a href="#war">War Suite</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#audit">Product Audit</a></li>
+    <li><a href="#totals">Totals</a></li>
+  </ul>
+  <button class="nav-mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    &#9776;
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">GTM Master Suite v4.0 &mdash; May 2026</div>
+  <h1>GrabCash <span>GTM</span> Master Suite</h1>
+  <p class="hero-subtitle">
+    The complete go-to-market intelligence system for India's next breakout affiliate cashback platform. 33 interconnected documents spanning strategy, growth channels, competitive warfare, operational playbooks, and full-coverage execution frameworks.
+  </p>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-value">33</span><span class="stat-label">Documents</span></div>
+    <div class="stat-item"><span class="stat-value">~6.7 MB</span><span class="stat-label">Total Size</span></div>
+    <div class="stat-item"><span class="stat-value">125K+</span><span class="stat-label">Lines of Strategy</span></div>
+    <div class="stat-item"><span class="stat-value">30</span><span class="stat-label">HTML Playbooks</span></div>
+    <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">Excel Models</span></div>
+    <div class="stat-item"><span class="stat-value">4</span><span class="stat-label">Integrated Suites</span></div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="exec-section">
+  <div class="exec-inner">
+    <div class="exec-label">Executive Summary</div>
+    <h2 class="exec-title">What This Suite Covers &amp; Why It Exists</h2>
+    <p class="exec-text">
+      <strong>GrabCash</strong> is an affiliate cashback platform built by <strong>GrabOn</strong> (India's largest coupon aggregator with 25M+ monthly visits). With 5,000+ registered users, 500+ brand partnerships, and access to GrabOn's existing traffic and merchant relationships, GrabCash has a unique unfair advantage in the Indian cashback market currently dominated by CashKaro (backed by Ratan Tata, valued at $100M+) and EarnKaro.
+    </p>
+    <p class="exec-text">
+      However, a comprehensive product audit revealed a <strong>GTM readiness score of just 3.25/10</strong> — significant gaps in UX, onboarding, deal discovery, and gamification that must be closed before aggressive growth investment. This suite is the complete playbook to close those gaps, build competitive moats, and capture market share across every distribution channel.
+    </p>
+    <p class="exec-text">
+      The 33 documents are organized into 4 integrated suites that cover the full lifecycle: <strong>Core GTM</strong> (strategic positioning, brand, channels, product) → <strong>Underground War Suite</strong> (Telegram ecosystem, admin networks, competitive warfare) → <strong>Full Coverage</strong> (WhatsApp, creators, compliance, crisis) → <strong>Product Audit</strong> (reality check and improvement roadmap). Every document cross-references related playbooks, creating a single interconnected system rather than isolated strategies.
+    </p>
+    <div class="exec-grid">
+      <div class="exec-kpi"><span class="kpi-val">₹45</span><span class="kpi-label">Target CAC</span><span class="kpi-sub">vs ₹120 industry avg</span></div>
+      <div class="exec-kpi"><span class="kpi-val">₹380</span><span class="kpi-label">Projected LTV</span><span class="kpi-sub">8.4x LTV:CAC ratio</span></div>
+      <div class="exec-kpi"><span class="kpi-val">18 Mo</span><span class="kpi-label">Execution Timeline</span><span class="kpi-sub">3 phases, 6mo each</span></div>
+      <div class="exec-kpi"><span class="kpi-val">3.25/10</span><span class="kpi-label">Current GTM Score</span><span class="kpi-sub">Target: 8.5/10</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW DOCUMENTS CONNECT -->
+<section class="flow-section">
+  <div class="flow-inner">
+    <div class="flow-label">Document Architecture</div>
+    <h3 class="flow-title">How the 4 Suites Connect</h3>
+    <p class="flow-subtitle">Read in order for the full picture, or jump to any document — each links back to related playbooks</p>
+    <div class="flow-grid">
+      <div class="flow-item">
+        <div class="flow-step" style="color:var(--gc-blue-accent)">Phase 1</div>
+        <div class="flow-step-name">Core GTM Suite</div>
+        <div class="flow-step-docs">16 docs: Strategy, brand, channels, product, financials</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step" style="color:var(--gc-red)">Phase 2</div>
+        <div class="flow-step-name">Underground War Suite</div>
+        <div class="flow-step-docs">10 docs: Telegram warfare, admin networks, deal ops</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step" style="color:#059669">Phase 3</div>
+        <div class="flow-step-name">Full Coverage Suite</div>
+        <div class="flow-step-docs">6 docs: WhatsApp, creators, legal, crisis, ASO</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step" style="color:var(--gc-orange)">Foundation</div>
+        <div class="flow-step-name">Product Audit</div>
+        <div class="flow-step-docs">1 doc: Score 3.25/10, roadmap feeds into all suites</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART I — CORE GTM SUITE -->
+<section class="suite-section" id="core">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge core">Part I &mdash; Core GTM Suite</div>
+      <h2>Core GTM Playbooks</h2>
+      <p>16 documents covering strategy, brand, channels, growth, and product</p>
+    </div>
+    <p class="suite-intro">
+      The foundation layer. These 16 documents establish GrabCash's strategic positioning, brand identity, and growth engine across every channel. Start with the <strong>Master Playbook (#01)</strong> for the 18-month roadmap, then explore channel-specific strategies. The <strong>Financial Model (#15)</strong> and <strong>Content Calendar (#16)</strong> provide the operational backbone for execution tracking and budget allocation.
+    </p>
+
+    <div class="cards-grid">
+      <div class="doc-card core-card" onclick="window.open('GrabCash_GTM_Master_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">01</div><div class="card-title">Master GTM Playbook</div></div>
+        <div class="card-desc">The foundational 18-month execution roadmap covering all phases: Foundation &amp; Early Traction (Month 0-6), Scale &amp; Optimize (Month 6-12), and Market Leadership (Month 12-18). Includes OKR framework, team structure blueprint, channel-wise budget allocation, phased milestone tracking, and go/no-go decision gates.</div>
+        <div class="card-tags"><span class="card-tag">Strategy</span><span class="card-tag">Roadmap</span><span class="card-tag">OKRs</span><span class="card-tag">Budget</span><span class="card-tag">Team Structure</span></div>
+        <div class="card-connects"><strong>Links to:</strong> All 32 documents (master reference)</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~91 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Competitive_Intelligence.html','_blank')">
+        <div class="card-top"><div class="card-number">02</div><div class="card-title">Competitive Intelligence</div></div>
+        <div class="card-desc">Deep-dive into CashKaro (Ratan Tata-backed, $100M+ valuation), EarnKaro, PaisaWaapas, and ExtraPe. Feature-by-feature comparison, commission rate benchmarking across 50+ categories, SWOT analysis, market share estimates, and competitive moat identification. Includes war-gaming scenarios for competitive response to pricing attacks and feature launches.</div>
+        <div class="card-tags"><span class="card-tag">CashKaro</span><span class="card-tag">EarnKaro</span><span class="card-tag">SWOT</span><span class="card-tag">Benchmarking</span><span class="card-tag">War Gaming</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #24 War Room, #17 Market Intel, #22 Commission Economics</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~212 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Brand_Voice_Identity.html','_blank')">
+        <div class="card-top"><div class="card-number">03</div><div class="card-title">Brand Voice &amp; Identity</div></div>
+        <div class="card-desc">Complete brand identity system: personality archetype ("the smart friend who saves you money"), tone spectrum from casual to professional per channel, messaging pillars, vocabulary do's/don'ts, Poppins typography system, green/navy color palette, and channel-specific voice adaptations for Telegram vs. Instagram vs. email.</div>
+        <div class="card-tags"><span class="card-tag">Tone</span><span class="card-tag">Messaging</span><span class="card-tag">Visual Identity</span><span class="card-tag">Typography</span><span class="card-tag">Color System</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #05 Social Media, #04 Telegram, #30 Brand Onboarding, #31 Crisis PR</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~225 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Telegram_Growth_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">04</div><div class="card-title">Telegram Growth Playbook</div></div>
+        <div class="card-desc">Channel growth strategy from 0→100K subscribers: deal posting frameworks (format, timing, frequency), engagement tactics (polls, flash deals, countdowns, exclusive drops), admin recruitment incentives, bot integration for automated deal delivery and price alerts, and community management protocols for scaling engagement without spam.</div>
+        <div class="card-tags"><span class="card-tag">Channel Growth</span><span class="card-tag">Bots</span><span class="card-tag">Engagement</span><span class="card-tag">Deal Formats</span><span class="card-tag">Community</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #18 Admin Cracking, #19 Bot Arsenal, #25 Admin Onboarding, #16 Calendar</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~208 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Social_Media_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">05</div><div class="card-title">Social Media Playbook</div></div>
+        <div class="card-desc">Platform-specific strategies for Instagram (Reels, Stories, carousel deal posts), Twitter/X (deal alerts, trending hashtag hijacking, thread strategies), and YouTube (deal tutorials, unboxing, cashback explainers). Content pillar framework, optimal posting schedules, hashtag databases per platform, and engagement benchmarks with growth projections.</div>
+        <div class="card-tags"><span class="card-tag">Instagram</span><span class="card-tag">Twitter</span><span class="card-tag">YouTube</span><span class="card-tag">Reels</span><span class="card-tag">Hashtags</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #03 Brand Voice, #16 Content Calendar, #28 Creator Playbook</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~208 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_SEO_Content_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">06</div><div class="card-title">SEO &amp; Content Playbook</div></div>
+        <div class="card-desc">Keyword research with 500+ target keywords mapped to content clusters (cashback guides, category-specific deal pages, comparison articles, how-to tutorials). Blog editorial calendar, technical SEO checklist (site speed, schema markup, internal linking), backlink acquisition strategy targeting coupon/finance blogs, and content performance measurement framework.</div>
+        <div class="card-tags"><span class="card-tag">Keywords</span><span class="card-tag">Content Clusters</span><span class="card-tag">Blog</span><span class="card-tag">Backlinks</span><span class="card-tag">Technical SEO</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #16 Content Calendar, #32 ASO, #11 GrabOn Cross-Promo</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~208 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Paid_Acquisition_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">07</div><div class="card-title">Paid Acquisition Playbook</div></div>
+        <div class="card-desc">Google Ads (Search, Shopping, Display, YouTube pre-roll), Meta Ads (Facebook feed, Instagram Reels, Dynamic Product Ads), and affiliate network campaigns. Budget allocation models across channels, ROAS targets by category and campaign type, A/B testing frameworks for creatives and landing pages, retargeting strategies, and seasonal bidding adjustments for festive seasons (Diwali, Flipkart BBD, Amazon GPMS).</div>
+        <div class="card-tags"><span class="card-tag">Google Ads</span><span class="card-tag">Meta Ads</span><span class="card-tag">ROAS</span><span class="card-tag">Budget</span><span class="card-tag">Retargeting</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #15 Financial Model, #01 Master Playbook, #06 SEO</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~210 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Campus_Ambassador.html','_blank')">
+        <div class="card-top"><div class="card-number">08</div><div class="card-title">Campus Ambassador Program</div></div>
+        <div class="card-desc">College campus penetration targeting Tier 1-3 cities across India. Ambassador recruitment criteria and 8-week onboarding program, campus-specific activation events (deal fairs, cashback workshops), tiered incentive structure (commission + exclusive perks + leaderboard rewards), university partnership framework, and ambassador-to-admin conversion pipeline for Telegram growth.</div>
+        <div class="card-tags"><span class="card-tag">Colleges</span><span class="card-tag">Ambassadors</span><span class="card-tag">Events</span><span class="card-tag">Incentives</span><span class="card-tag">Tier 1-3 Cities</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #09 Referral Engine, #13 Gamification, #04 Telegram, #14 Regional</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~201 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Referral_Virality_Engine.html','_blank')">
+        <div class="card-top"><div class="card-number">09</div><div class="card-title">Referral &amp; Virality Engine</div></div>
+        <div class="card-desc">Multi-tier referral engine: direct referral cashback rewards, milestone bonuses (5 referrals = bonus unlock), viral sharing mechanics optimized for WhatsApp and social, K-factor optimization tactics to achieve >1.0 viral coefficient, referral link attribution system, anti-fraud measures (device fingerprinting, IP checks), and A/B test framework for incentive amount optimization.</div>
+        <div class="card-tags"><span class="card-tag">Referral Loop</span><span class="card-tag">Viral Coefficient</span><span class="card-tag">Incentives</span><span class="card-tag">Anti-Fraud</span><span class="card-tag">WhatsApp</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #08 Campus, #13 Gamification, #27 WhatsApp, #15 Financial Model</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~203 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_B2B_Brand_Partnerships.html','_blank')">
+        <div class="card-top"><div class="card-number">10</div><div class="card-title">B2B Brand Partnerships</div></div>
+        <div class="card-desc">Enterprise brand partnership acquisition: target brand identification matrix (by category, commission potential, exclusivity value), outreach email/cold call scripts, partnership models (CPA, CPS, hybrid, and exclusive), revenue sharing frameworks, co-marketing agreement templates, and case study templates for proving ROI to prospective brand partners.</div>
+        <div class="card-tags"><span class="card-tag">Partnerships</span><span class="card-tag">CPA/CPS</span><span class="card-tag">Outreach Scripts</span><span class="card-tag">Revenue Share</span><span class="card-tag">Case Studies</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #30 Brand Onboarding, #20 Merchant Acquisition, #11 GrabOn, #22 Commission</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~184 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_GrabOn_CrossPromo.html','_blank')">
+        <div class="card-top"><div class="card-number">11</div><div class="card-title">GrabOn Cross-Promotion</div></div>
+        <div class="card-desc">Strategic leverage of GrabOn's 25M+ monthly visits: user migration funnels (coupon user → cashback user), cross-platform deal syndication, shared coupon infrastructure and API integration, SEO domain authority transfer via backlink strategy, dual-brand campaign frameworks for major sale events, and GrabOn widget placement for maximum conversion.</div>
+        <div class="card-tags"><span class="card-tag">GrabOn Traffic</span><span class="card-tag">User Migration</span><span class="card-tag">Syndication</span><span class="card-tag">API Integration</span><span class="card-tag">SEO Authority</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #10 B2B Partnerships, #06 SEO, #01 Master Playbook</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~185 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Product_Roadmap.html','_blank')">
+        <div class="card-top"><div class="card-number">12</div><div class="card-title">Product Roadmap</div></div>
+        <div class="card-desc">Phased feature roadmap: Phase 1 (MVP fixes — onboarding optimization, deal discovery UX, payment flow), Phase 2 (browser extension, price comparison engine, category pages), Phase 3 (AI deal recommendations, social features, personalized feeds). Includes technical specifications for each feature, sprint planning framework, milestone definitions, and acceptance criteria.</div>
+        <div class="card-tags"><span class="card-tag">Features</span><span class="card-tag">Sprints</span><span class="card-tag">Technical Specs</span><span class="card-tag">Browser Extension</span><span class="card-tag">AI Recommendations</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #33 Product Audit, #13 Gamification, #01 Master Playbook</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~276 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Retention_Gamification.html','_blank')">
+        <div class="card-top"><div class="card-number">13</div><div class="card-title">Retention &amp; Gamification</div></div>
+        <div class="card-desc">Comprehensive retention system: daily login streaks with cashback multipliers, badge/achievement framework (50+ achievements), cashback level tiers (Bronze→Silver→Gold→Diamond), leaderboards (weekly/monthly/all-time), push notification strategy with optimal timing, re-engagement email/SMS campaigns, and churn prediction model with automated intervention triggers at risk thresholds.</div>
+        <div class="card-tags"><span class="card-tag">Streaks</span><span class="card-tag">Badges</span><span class="card-tag">Tiers</span><span class="card-tag">Push Notifications</span><span class="card-tag">Churn Prevention</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #12 Product Roadmap, #09 Referral, #27 WhatsApp, #25 Admin Success</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~212 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Regional_Vernacular.html','_blank')">
+        <div class="card-top"><div class="card-number">14</div><div class="card-title">Regional &amp; Vernacular Expansion</div></div>
+        <div class="card-desc">Expansion blueprint for Hindi belt (UP, Bihar, MP, Rajasthan), South India (Telugu, Tamil, Kannada, Malayalam markets), and Northeast markets. Localization framework (UI translation, deal descriptions, customer support), regional merchant partnerships (local D2C brands, regional e-commerce), vernacular content creation process, and market-specific pricing strategies adjusted for purchasing power parity.</div>
+        <div class="card-tags"><span class="card-tag">Hindi Belt</span><span class="card-tag">South India</span><span class="card-tag">Localization</span><span class="card-tag">Regional Merchants</span><span class="card-tag">Vernacular</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #18 Admin Cracking, #20 Merchant Acquisition, #04 Telegram, #08 Campus</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~254 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Financial_Model.xlsx','_blank')">
+        <div class="card-top"><div class="card-number">15</div><div class="card-title">Financial Model</div></div>
+        <div class="card-desc">18-month P&amp;L projection with 3 scenarios (conservative, base, aggressive). Unit economics breakdown (CAC: ₹45, LTV: ₹380, payback: 2.1 months), channel-wise ROI modeling for all acquisition channels, burn rate tracking against runway, funding requirement analysis at each growth stage, and break-even calculations with sensitivity tables for commission rate and conversion assumptions.</div>
+        <div class="card-tags"><span class="card-tag">P&amp;L</span><span class="card-tag">Unit Economics</span><span class="card-tag">3 Scenarios</span><span class="card-tag">CAC/LTV</span><span class="card-tag">Break-Even</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #07 Paid Acquisition, #22 Commission Economics, #01 Master Playbook</div>
+        <div class="card-meta"><span class="file-type file-xlsx">XLSX</span><span>~54 KB</span></div>
+      </div>
+
+      <div class="doc-card core-card" onclick="window.open('GrabCash_Content_Calendar.xlsx','_blank')">
+        <div class="card-top"><div class="card-number">16</div><div class="card-title">Content Calendar</div></div>
+        <div class="card-desc">12-month editorial calendar across all channels (blog, social, email, Telegram, WhatsApp). Content type matrix mapping format to platform to objective, team assignment workflow with approval gates, seasonal/festive campaign alignment (Diwali, BBD, Republic Day sales, IPL season), performance review cadence, and content repurposing pipeline from long-form → social → email → Telegram.</div>
+        <div class="card-tags"><span class="card-tag">Editorial Plan</span><span class="card-tag">Scheduling</span><span class="card-tag">Festive Campaigns</span><span class="card-tag">Multi-Channel</span><span class="card-tag">Repurposing</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #05 Social Media, #06 SEO, #04 Telegram, #27 WhatsApp</div>
+        <div class="card-meta"><span class="file-type file-xlsx">XLSX</span><span>~55 KB</span></div>
+      </div>
+    </div>
+
+    <div class="suite-total">
+      <span class="total-label">Core Suite Totals:</span>
+      <span class="total-stat">16 Docs</span>
+      <span class="total-stat">14 HTML + 2 XLSX</span>
+      <span class="total-stat">~3.2 MB</span>
+    </div>
+  </div>
+</section>
+
+<!-- PART II — UNDERGROUND WAR SUITE -->
+<section class="suite-section" id="war">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge war">Part II &mdash; Underground War Suite</div>
+      <h2>Underground War Suite</h2>
+      <p>10 documents for competitive warfare, admin networks, and merchant acquisition</p>
+    </div>
+    <p class="suite-intro">
+      The competitive edge. These 10 documents tackle the <strong>underground Telegram affiliate ecosystem</strong> — where 70%+ of India's cashback deals are actually distributed through admin-run channels with 10K-500K subscribers each. This suite covers admin network acquisition, bot automation infrastructure, merchant deal sourcing, and real-time competitive intelligence. The <strong>War Workbook (#26)</strong> ties all operational metrics into a single execution tracker.
+    </p>
+
+    <div class="cards-grid">
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Underground_Market_Intel.html','_blank')">
+        <div class="card-top"><div class="card-number">17</div><div class="card-title">Underground Market Intel</div></div>
+        <div class="card-desc">Complete intelligence mapping of India's Telegram deal ecosystem: channel rankings by subscriber count and engagement rate, admin network hierarchies and relationships, deal volume estimates per channel (₹2-15 Cr monthly GMV for top channels), pricing intelligence for commission rates across 100+ categories, and opportunity scoring framework for identifying high-value untapped admin segments.</div>
+        <div class="card-tags"><span class="card-tag">Market Mapping</span><span class="card-tag">Deal Ecosystem</span><span class="card-tag">Intel</span><span class="card-tag">Channel Rankings</span><span class="card-tag">GMV Analysis</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #02 Competitive Intelligence, #24 War Room, #18 Admin Cracking</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~211 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Admin_Cracking_v2.html','_blank')">
+        <div class="card-top"><div class="card-number">18</div><div class="card-title">Admin Network Cracking v2</div></div>
+        <div class="card-desc">Systematic framework for converting competitor Telegram admins to GrabCash: identification methods (channel scraping, engagement analysis, network graph mapping), multi-touch approach strategies with DM scripts and value proposition decks, negotiation frameworks for guaranteed minimums vs. performance-based payouts, conversion incentives (advance payments, exclusive deals, tools access), and long-term retention programs with escalating rewards.</div>
+        <div class="card-tags"><span class="card-tag">Admin Conversion</span><span class="card-tag">Recruitment Scripts</span><span class="card-tag">Negotiation</span><span class="card-tag">Retention</span><span class="card-tag">Network Mapping</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #04 Telegram Growth, #25 Admin Onboarding, #17 Market Intel, #14 Regional</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~248 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Bot_Automation_Arsenal.html','_blank')">
+        <div class="card-top"><div class="card-number">19</div><div class="card-title">Bot &amp; Automation Arsenal</div></div>
+        <div class="card-desc">Technical playbook for Telegram bot infrastructure: deal posting bots (auto-formatting with product images, pricing, and affiliate links), price tracking bots (real-time alerts when tracked products drop below threshold), auto-sharing bots (cross-post between channels on schedule), performance analytics dashboards, affiliate link rotation for A/B testing, and deal presentation format testing (text vs. image vs. rich media).</div>
+        <div class="card-tags"><span class="card-tag">Bots</span><span class="card-tag">Automation</span><span class="card-tag">Price Tracking</span><span class="card-tag">Auto-Posting</span><span class="card-tag">Analytics</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #04 Telegram, #23 Deal Sourcing, #18 Admin Cracking</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~188 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Merchant_Acquisition_v2.html','_blank')">
+        <div class="card-top"><div class="card-number">20</div><div class="card-title">Merchant Acquisition v2</div></div>
+        <div class="card-desc">War machine for onboarding brands and merchants at scale: prospect identification matrix (by category potential, current network gaps, competitor exclusive deals to poach), commission rate negotiation playbooks with counter-offer strategies, exclusive deal structuring (time-bound exclusives, category exclusives, volume-based unlocks), merchant CRM setup with automated nurture sequences, and conversion pipeline tracking with stage-based KPIs and attribution.</div>
+        <div class="card-tags"><span class="card-tag">Merchants</span><span class="card-tag">Negotiation</span><span class="card-tag">Pipeline</span><span class="card-tag">Exclusive Deals</span><span class="card-tag">CRM</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #10 B2B Partnerships, #30 Brand Onboarding, #22 Commission Economics</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~267 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Bulk_Buying_Engine.html','_blank')">
+        <div class="card-top"><div class="card-number">21</div><div class="card-title">Bulk Buying Engine</div></div>
+        <div class="card-desc">Group commerce mechanics for volume-driven deal arbitrage: bulk deal sourcing from manufacturers and distributors, minimum order negotiation to unlock wholesale pricing, group formation strategies (WhatsApp groups, Telegram communities), flash sale operations (timing psychology, scarcity triggers, countdown mechanics), fulfillment logistics coordination, and margin optimization through volume-based commission tier unlocks with merchants.</div>
+        <div class="card-tags"><span class="card-tag">Group Buying</span><span class="card-tag">Flash Sales</span><span class="card-tag">Volume Deals</span><span class="card-tag">Wholesale</span><span class="card-tag">Scarcity</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #23 Deal Sourcing, #22 Commission Economics, #20 Merchant Acquisition</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~175 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Commission_Economics.html','_blank')">
+        <div class="card-top"><div class="card-number">22</div><div class="card-title">Commission Economics</div></div>
+        <div class="card-desc">Deep financial war model for commission optimization: stacking strategies (cashback + coupon code + bank offer + card reward for 4x value), margin analysis by category (electronics 2-4%, fashion 8-15%, beauty 12-20%), network arbitrage opportunities across affiliate platforms (CJ, Impact, ShareASale, Admitad), admin payout optimization with performance-based splits, and profitability modeling per deal type with break-even volume calculations.</div>
+        <div class="card-tags"><span class="card-tag">Commission Stacking</span><span class="card-tag">Margin Analysis</span><span class="card-tag">Arbitrage</span><span class="card-tag">Category Economics</span><span class="card-tag">Profitability</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #15 Financial Model, #21 Bulk Buying, #20 Merchant Acquisition</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~264 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Deal_Sourcing_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">23</div><div class="card-title">Deal Sourcing Playbook</div></div>
+        <div class="card-desc">End-to-end deal curation pipeline: discovery methods (web scrapers, affiliate network feeds, merchant direct, competitor monitoring), quality scoring algorithm (discount depth × brand recognition × commission × urgency), freshness management system (expiry tracking, auto-archive, re-validation cycles), category coverage balancing to avoid over-indexing, and deal performance analytics with feedback loops for scoring algorithm improvement.</div>
+        <div class="card-tags"><span class="card-tag">Curation</span><span class="card-tag">Quality Scoring</span><span class="card-tag">Freshness</span><span class="card-tag">Scrapers</span><span class="card-tag">Analytics</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #19 Bot Arsenal, #21 Bulk Buying, #24 War Room</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~223 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Competitive_Intel_War_Room.html','_blank')">
+        <div class="card-top"><div class="card-number">24</div><div class="card-title">Competitive Intel War Room</div></div>
+        <div class="card-desc">Real-time competitive monitoring system: automated competitor deal tracking (pricing, commission rate changes, new merchant additions), feature launch detection with response playbooks, admin poaching defense protocols (early warning indicators, counter-retention offers), and scenario-based war gaming for competitive moves including price wars, feature parity races, new market entries, and exclusive deal lock-ups.</div>
+        <div class="card-tags"><span class="card-tag">Monitoring</span><span class="card-tag">War Gaming</span><span class="card-tag">Defense</span><span class="card-tag">Price Wars</span><span class="card-tag">Counter-Ops</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #02 Competitive Intelligence, #17 Market Intel, #18 Admin Cracking</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~204 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Admin_Onboarding_Success.html','_blank')">
+        <div class="card-top"><div class="card-number">25</div><div class="card-title">Admin Onboarding &amp; Success</div></div>
+        <div class="card-desc">Complete admin lifecycle management: 30-day structured onboarding program (tools setup, first deal post, optimization coaching), performance KPI framework (deal volume, CTR, subscriber growth rate, earnings per post), tiered reward system with escalating incentives, escalation paths for underperforming admins, community management training for engagement, and proactive churn prevention with early warning system and retention interventions.</div>
+        <div class="card-tags"><span class="card-tag">Onboarding</span><span class="card-tag">KPIs</span><span class="card-tag">Rewards</span><span class="card-tag">Coaching</span><span class="card-tag">Churn Prevention</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #18 Admin Cracking, #04 Telegram, #13 Gamification</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~206 KB</span></div>
+      </div>
+
+      <div class="doc-card war-card" onclick="window.open('GrabCash_Underground_War_Workbook_v2.xlsx','_blank')">
+        <div class="card-top"><div class="card-number">26</div><div class="card-title">Underground War Workbook v2</div></div>
+        <div class="card-desc">Multi-sheet operational Excel workbook: admin tracking dashboard (status, performance, payout history), deal pipeline tracker (sourced → approved → live → expired), commission calculator with margin projections, competitor monitoring log with weekly snapshots, KPI scorecard with RAG status indicators, weekly/monthly reporting templates, and resource allocation planner for team capacity across admin management, deal ops, and merchant relations.</div>
+        <div class="card-tags"><span class="card-tag">Trackers</span><span class="card-tag">Dashboard</span><span class="card-tag">Calculator</span><span class="card-tag">KPI Scorecard</span><span class="card-tag">Templates</span></div>
+        <div class="card-connects"><strong>Links to:</strong> All War Suite documents (operational hub)</div>
+        <div class="card-meta"><span class="file-type file-xlsx">XLSX</span><span>~51 KB</span></div>
+      </div>
+    </div>
+
+    <div class="suite-total">
+      <span class="total-label">War Suite Totals:</span>
+      <span class="total-stat">10 Docs</span>
+      <span class="total-stat">9 HTML + 1 XLSX</span>
+      <span class="total-stat">~2.0 MB</span>
+    </div>
+  </div>
+</section>
+
+<!-- PART III — FULL COVERAGE SUITE -->
+<section class="suite-section" id="coverage">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge coverage">Part III &mdash; Full Coverage Suite</div>
+      <h2>Full Coverage Suite</h2>
+      <p>6 documents completing WhatsApp, creators, compliance, brand, crisis, and ASO</p>
+    </div>
+    <p class="suite-intro">
+      The completion layer. These 6 documents fill critical operational gaps that the Core GTM and War Suite don't cover: <strong>WhatsApp</strong> as a direct-to-user growth channel (India's #1 messaging app), <strong>influencer partnerships</strong> for trust-based distribution, <strong>legal/tax compliance</strong> for admin payouts, <strong>brand onboarding</strong> processes for sales teams, <strong>crisis management</strong> for reputation protection, and <strong>ASO</strong> for app install growth. Each connects back to the Core strategy while addressing specific operational requirements.
+    </p>
+
+    <div class="cards-grid">
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_WhatsApp_Automation.html','_blank')">
+        <div class="card-top"><div class="card-number">27</div><div class="card-title">WhatsApp Automation &amp; Growth</div></div>
+        <div class="card-desc">WhatsApp Business API integration strategy: broadcast list management with intelligent segmentation (by deal category preference, engagement recency, spending tier), automated deal flows (welcome sequence → preference onboarding → daily personalized deals → win-back), chatbot for natural-language deal discovery ("find me headphone deals under ₹2000"), conversion tracking with UTM attribution, and opt-in/opt-out compliance with TRAI regulations.</div>
+        <div class="card-tags"><span class="card-tag">Business API</span><span class="card-tag">Broadcasts</span><span class="card-tag">Chatbot</span><span class="card-tag">Segmentation</span><span class="card-tag">TRAI Compliance</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #09 Referral, #13 Gamification, #04 Telegram, #16 Calendar</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~231 KB</span></div>
+      </div>
+
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_Creator_Influencer_Playbook.html','_blank')">
+        <div class="card-top"><div class="card-number">28</div><div class="card-title">Creator &amp; Influencer Playbook</div></div>
+        <div class="card-desc">Tiered influencer strategy across 4 levels: nano creators (1K-10K followers, high engagement, ₹500-2K per post), micro (10K-100K, niche authority), macro (100K-1M, mass reach), and celebrity (1M+, brand credibility). Campaign brief templates for each tier, ROI measurement framework with attribution windows, content guidelines with do's/don'ts, payment models (flat fee vs. affiliate commission hybrid), and long-term ambassador conversion program.</div>
+        <div class="card-tags"><span class="card-tag">Influencer Tiers</span><span class="card-tag">Campaign Briefs</span><span class="card-tag">ROI</span><span class="card-tag">Nano-to-Celebrity</span><span class="card-tag">Ambassador</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #05 Social Media, #08 Campus Ambassador, #30 Brand Onboarding</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~200 KB</span></div>
+      </div>
+
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_Admin_Tax_Compliance.html','_blank')">
+        <div class="card-top"><div class="card-number">29</div><div class="card-title">Admin Tax &amp; Compliance</div></div>
+        <div class="card-desc">Legal compliance framework for affiliate operations at scale: TDS deduction requirements (Section 194H for commission, Section 194R for benefits-in-kind), GST implications for platform fees, PAN/KYC collection processes with automated verification, RBI guidelines for cashback payouts and wallet limits, terms of service templates covering liability, user agreements for data handling, and quarterly compliance audit checklists to prevent regulatory exposure.</div>
+        <div class="card-tags"><span class="card-tag">TDS 194H/194R</span><span class="card-tag">GST</span><span class="card-tag">PAN/KYC</span><span class="card-tag">RBI Guidelines</span><span class="card-tag">Compliance Audit</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #22 Commission Economics, #25 Admin Onboarding, #31 Crisis</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~253 KB</span></div>
+      </div>
+
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_Brand_Onboarding_Pitch.html','_blank')">
+        <div class="card-top"><div class="card-number">30</div><div class="card-title">Brand Onboarding &amp; Pitch</div></div>
+        <div class="card-desc">Sales toolkit for brand partnership acquisition: pitch deck templates in 2 versions (5-slide elevator for cold outreach, 15-slide comprehensive for warm leads), ROI calculator demonstrating projected revenue for prospective brands, proposal generation framework with customizable modules, onboarding SOP (account setup → tracking pixel → first campaign → 30-day optimization review), and success story templates with anonymized performance data.</div>
+        <div class="card-tags"><span class="card-tag">Pitch Decks</span><span class="card-tag">ROI Calculator</span><span class="card-tag">Onboarding SOP</span><span class="card-tag">Proposals</span><span class="card-tag">Success Stories</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #10 B2B Partnerships, #20 Merchant Acquisition, #28 Creators</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~235 KB</span></div>
+      </div>
+
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_Crisis_PR_Management.html','_blank')">
+        <div class="card-top"><div class="card-number">31</div><div class="card-title">Crisis &amp; PR Management</div></div>
+        <div class="card-desc">Crisis response playbook with scenario-based plans: data breach (notification timeline, legal obligations, user communication), payment failure cascades (merchant escalation, user compensation, trust recovery), negative press/social media backlash (response templates, influencer advocacy activation), and regulatory action (legal counsel engagement, compliance remediation). Includes escalation matrix, social media monitoring keywords, and reputation recovery protocols with timeline benchmarks.</div>
+        <div class="card-tags"><span class="card-tag">Crisis Plans</span><span class="card-tag">Response Templates</span><span class="card-tag">Escalation Matrix</span><span class="card-tag">Monitoring</span><span class="card-tag">Recovery</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #03 Brand Voice, #29 Tax Compliance, #24 War Room</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~231 KB</span></div>
+      </div>
+
+      <div class="doc-card coverage-card" onclick="window.open('GrabCash_ASO_App_Growth.html','_blank')">
+        <div class="card-top"><div class="card-number">32</div><div class="card-title">ASO &amp; App Growth</div></div>
+        <div class="card-desc">App Store Optimization for Play Store and App Store: keyword research with 200+ target keywords (cashback, coupon, deals, savings by category), listing optimization (title formulas, description structure, feature graphics, screenshot sequencing), review/rating management strategy (in-app prompt timing, negative review response SOPs), paid install campaigns (Google UAC, Apple Search Ads), deep linking setup for web-to-app conversion, and competitive app benchmarking against CashKaro/EarnKaro apps.</div>
+        <div class="card-tags"><span class="card-tag">ASO Keywords</span><span class="card-tag">Reviews</span><span class="card-tag">Install Campaigns</span><span class="card-tag">Deep Links</span><span class="card-tag">App Benchmarking</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #06 SEO, #07 Paid Acquisition, #12 Product Roadmap</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~250 KB</span></div>
+      </div>
+    </div>
+
+    <div class="suite-total">
+      <span class="total-label">Coverage Suite Totals:</span>
+      <span class="total-stat">6 Docs</span>
+      <span class="total-stat">6 HTML</span>
+      <span class="total-stat">~1.4 MB</span>
+    </div>
+  </div>
+</section>
+
+<!-- PART IV — PRODUCT AUDIT -->
+<section class="suite-section" id="audit">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge audit">Part IV &mdash; Product Audit</div>
+      <h2>Product Audit &amp; GTM Readiness</h2>
+      <p>Comprehensive product audit scoring current GTM readiness at 3.25/10</p>
+    </div>
+    <p class="suite-intro">
+      The reality check. A brutally honest assessment of GrabCash's current product state, scoring <strong>3.25 out of 10</strong> across 10 critical dimensions. This audit identifies the gap between current state and competitive parity with CashKaro (estimated 7.5/10), providing a prioritized improvement roadmap that feeds directly into the <strong>Product Roadmap (#12)</strong> and informs budget allocation in the <strong>Financial Model (#15)</strong>. Fix these issues before scaling acquisition spend.
+    </p>
+
+    <div class="cards-grid">
+      <div class="doc-card audit-card" onclick="window.open('GrabCash_Product_Audit.html','_blank')">
+        <div class="card-top"><div class="card-number">33</div><div class="card-title">Full Product Audit</div></div>
+        <div class="card-desc">Comprehensive audit scoring GrabCash 3.25/10 across 10 dimensions: UX/UI design (4/10), onboarding flow (2/10), deal discovery &amp; search (3/10), payment &amp; withdrawal experience (3/10), browser extension (1/10 — non-existent), mobile app quality (4/10), referral system (3/10), gamification &amp; engagement (2/10), analytics &amp; tracking (4/10), and customer support (3/10). Includes 47 specific improvement recommendations categorized as quick wins (week 1-2), medium-term (month 1-3), and strategic initiatives (quarter 2-4), with estimated engineering effort and expected impact scores.</div>
+        <div class="card-tags"><span class="card-tag">Score 3.25/10</span><span class="card-tag">UX Audit</span><span class="card-tag">47 Fixes</span><span class="card-tag">Prioritized Roadmap</span><span class="card-tag">Competitive Gap</span></div>
+        <div class="card-connects"><strong>Links to:</strong> #12 Product Roadmap, #01 Master Playbook, #13 Gamification, #09 Referral</div>
+        <div class="card-meta"><span class="file-type file-html">HTML</span><span>~170 KB</span></div>
+      </div>
+    </div>
+
+    <div class="suite-total">
+      <span class="total-label">Audit Suite:</span>
+      <span class="total-stat">1 Doc</span>
+      <span class="total-stat">1 HTML</span>
+      <span class="total-stat">~170 KB</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMBINED TOTALS -->
+<section class="combined-section" id="totals">
+  <div class="combined-card">
+    <h3>Complete GTM Suite Totals</h3>
+    <p class="combined-sub">All 4 suites combined — the full GrabCash go-to-market intelligence system covering strategy, execution, competitive warfare, compliance, and product development</p>
+    <div class="combined-stats">
+      <div class="combined-stat"><span class="cs-value">33</span><span class="cs-label">Total Documents</span></div>
+      <div class="combined-stat"><span class="cs-value">~6.7 MB</span><span class="cs-label">Total Size</span></div>
+      <div class="combined-stat"><span class="cs-value">125K+</span><span class="cs-label">Lines of Strategy</span></div>
+      <div class="combined-stat"><span class="cs-value">30</span><span class="cs-label">HTML Playbooks</span></div>
+      <div class="combined-stat"><span class="cs-value">3</span><span class="cs-label">Excel Models</span></div>
+      <div class="combined-stat"><span class="cs-value">4</span><span class="cs-label">Integrated Suites</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Built for <span class="footer-brand">GrabCash</span> by InspireLabs Solutions Ltd &middot; May 2026 &middot; v4.0</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('.suite-section, .combined-section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+
+  // Close mobile nav on link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

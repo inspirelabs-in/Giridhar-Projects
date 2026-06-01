@@ -1,0 +1,3338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrabCash Bot &amp; Automation Arsenal | Document 3 of 9</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0dcf1a; }
+
+/* ========== SIDEBAR NAV ========== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 260px;
+  height: 100vh;
+  background: rgba(10,10,10,0.97);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  padding: 24px 0;
+}
+.sidebar.collapsed { transform: translateX(-260px); }
+.sidebar-header {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 12px;
+}
+.sidebar-header .logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0dcf1a;
+  letter-spacing: -0.5px;
+}
+.sidebar-header .doc-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #0a0a0a;
+  background: #0dcf1a;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #555;
+  padding: 16px 20px 6px;
+}
+.nav-link {
+  display: block;
+  padding: 8px 20px;
+  font-size: 13px;
+  color: #888;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+}
+.nav-link:hover {
+  color: #0dcf1a;
+  background: rgba(13,207,26,0.04);
+  border-left-color: #0dcf1a;
+}
+.nav-link.active {
+  color: #0dcf1a;
+  background: rgba(13,207,26,0.08);
+  border-left-color: #0dcf1a;
+  font-weight: 600;
+}
+.nav-link .nav-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #444;
+  margin-right: 8px;
+}
+
+/* ========== MOBILE TOGGLE ========== */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 1100;
+  width: 40px; height: 40px;
+  background: rgba(13,207,26,0.15);
+  border: 1px solid rgba(13,207,26,0.3);
+  border-radius: 8px;
+  color: #0dcf1a;
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+/* ========== MAIN CONTENT ========== */
+.main {
+  margin-left: 260px;
+  padding: 40px 48px 80px;
+  max-width: 1200px;
+}
+
+/* ========== HERO ========== */
+.hero {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-overline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0dcf1a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.hero h1 .accent { color: #0dcf1a; }
+.hero .subtitle {
+  font-size: 17px;
+  color: #888;
+  font-weight: 400;
+  max-width: 680px;
+  line-height: 1.6;
+}
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.hero-meta span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #555;
+}
+.hero-meta span strong { color: #0dcf1a; }
+
+/* ========== SECTION ========== */
+.section {
+  margin-bottom: 56px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(13,207,26,0.2);
+  min-width: 56px;
+}
+.section-header h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.card-accent {
+  border-left: 3px solid #0dcf1a;
+}
+.card-warning {
+  border-left: 3px solid #f59e0b;
+}
+.card-danger {
+  border-left: 3px solid #ef4444;
+}
+.card-info {
+  border-left: 3px solid #3b82f6;
+}
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ccc;
+  margin: 16px 0 8px;
+}
+.card p, .card li {
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.7;
+}
+.card ul, .card ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+.card li { margin-bottom: 4px; }
+
+/* ========== SUBSECTION ========== */
+.subsection {
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+.subsection h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  padding-left: 14px;
+  border-left: 3px solid #0dcf1a;
+}
+.subsection h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ddd;
+  margin: 20px 0 10px;
+}
+
+/* ========== TABLES ========== */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead { position: sticky; top: 0; z-index: 5; }
+th {
+  background: rgba(13,207,26,0.12);
+  color: #0dcf1a;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(13,207,26,0.2);
+  white-space: nowrap;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: #ccc;
+  vertical-align: top;
+}
+tr:nth-child(even) { background: rgba(255,255,255,0.015); }
+tr:hover { background: rgba(13,207,26,0.04); }
+td:first-child { font-weight: 500; color: #e0e0e0; }
+.cell-yes { color: #0dcf1a; font-weight: 600; }
+.cell-no { color: #ef4444; }
+.cell-partial { color: #f59e0b; }
+.cell-exclusive { color: #a855f7; font-weight: 700; }
+
+/* ========== CODE BLOCKS ========== */
+.code-block {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #aaa;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+.code-block .keyword { color: #c792ea; }
+.code-block .string { color: #c3e88d; }
+.code-block .comment { color: #546e7a; }
+.code-block .func { color: #82aaff; }
+.code-block .num { color: #f78c6c; }
+.code-block .type { color: #ffcb6b; }
+
+/* ========== METRIC GRID ========== */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.metric-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+.metric-card .value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0dcf1a;
+}
+.metric-card .label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========== FLOW DIAGRAMS (TEXT) ========== */
+.flow-diagram {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 24px;
+  margin: 16px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #888;
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 1.5;
+}
+.flow-diagram .node {
+  color: #0dcf1a;
+  font-weight: 600;
+}
+.flow-diagram .arrow { color: #555; }
+.flow-diagram .label-text { color: #f59e0b; }
+
+/* ========== TAGS & BADGES ========== */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin: 2px;
+}
+.tag-green { background: rgba(13,207,26,0.15); color: #0dcf1a; }
+.tag-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+.tag-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.tag-blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
+.tag-purple { background: rgba(168,85,247,0.15); color: #a855f7; }
+.tag-white { background: rgba(255,255,255,0.08); color: #ccc; }
+
+.badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge-p0 { background: #ef4444; color: #fff; }
+.badge-p1 { background: #f59e0b; color: #000; }
+.badge-p2 { background: #3b82f6; color: #fff; }
+.badge-p3 { background: #555; color: #ccc; }
+
+/* ========== COLLAPSIBLE ========== */
+.collapsible {
+  margin: 12px 0;
+}
+.collapsible-toggle {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 14px 20px;
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.collapsible-toggle:hover {
+  background: rgba(13,207,26,0.05);
+  border-color: rgba(13,207,26,0.2);
+}
+.collapsible-toggle::after {
+  content: '+';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: #0dcf1a;
+  transition: transform 0.3s;
+}
+.collapsible-toggle.active::after {
+  content: '-';
+}
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 20px;
+}
+.collapsible-content.show {
+  max-height: 8000px;
+  padding: 16px 20px;
+}
+
+/* ========== TIMELINE ========== */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  margin: 20px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(13,207,26,0.2);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 10px; height: 10px;
+  background: #0dcf1a;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+.timeline-item .week {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #0dcf1a;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.timeline-item .title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.timeline-item .desc {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ========== BACK TO TOP ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px; height: 44px;
+  background: rgba(13,207,26,0.15);
+  border: 1px solid rgba(13,207,26,0.3);
+  border-radius: 50%;
+  color: #0dcf1a;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.back-to-top:hover {
+  background: rgba(13,207,26,0.3);
+  transform: translateY(-2px);
+}
+.back-to-top.visible { display: flex; }
+
+/* ========== COMPARISON HIGHLIGHT ROW ========== */
+.row-highlight { background: rgba(13,207,26,0.06) !important; }
+
+/* ========== SPEC BOX ========== */
+.spec-box {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.spec-box .spec-key {
+  background: rgba(255,255,255,0.03);
+  padding: 10px 14px;
+  color: #888;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.spec-box .spec-val {
+  padding: 10px 14px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ========== STEP FLOW ========== */
+.step-flow {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin: 16px 0;
+  align-items: flex-start;
+}
+.step-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 160px;
+  max-width: 200px;
+  flex: 1;
+  text-align: center;
+}
+.step-item .step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0dcf1a;
+  margin-bottom: 6px;
+}
+.step-item .step-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.step-item .step-desc {
+  font-size: 11px;
+  color: #888;
+}
+.step-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  color: #333;
+  font-size: 24px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-260px); }
+  .sidebar.open { transform: translateX(0); }
+  .menu-toggle { display: flex; }
+  .main { margin-left: 0; padding: 60px 20px 80px; }
+  .hero h1 { font-size: 28px; }
+  .section-num { font-size: 24px; min-width: 40px; }
+  .section-header h2 { font-size: 20px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-flow { flex-direction: column; align-items: stretch; }
+  .step-arrow { transform: rotate(90deg); justify-content: center; padding: 8px; }
+  .step-item { max-width: 100%; }
+  .spec-box { grid-template-columns: 1fr; }
+}
+
+/* ========== PRINT ========== */
+@media print {
+  .sidebar, .menu-toggle, .back-to-top { display: none !important; }
+  .main { margin-left: 0; padding: 20px; }
+  body { background: #fff; color: #000; }
+  .card { border: 1px solid #ddd; background: #f9f9f9; }
+  th { background: #333; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== MOBILE MENU TOGGLE ===== -->
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<!-- ===== SIDEBAR NAVIGATION ===== -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">GrabCash</div>
+    <div class="doc-badge">Doc 3 of 9</div>
+  </div>
+
+  <div class="nav-section-label">Sections</div>
+  <a href="#s1" class="nav-link"><span class="nav-num">01</span> Technology Strategy</a>
+  <a href="#s2" class="nav-link"><span class="nav-num">02</span> Core Telegram Bot</a>
+  <a href="#s3" class="nav-link"><span class="nav-num">03</span> Link Converter Engine</a>
+  <a href="#s4" class="nav-link"><span class="nav-num">04</span> Auto-Forwarder System</a>
+  <a href="#s5" class="nav-link"><span class="nav-num">05</span> Deal Sourcing Engine</a>
+  <a href="#s6" class="nav-link"><span class="nav-num">06</span> Analytics Platform</a>
+  <a href="#s7" class="nav-link"><span class="nav-num">07</span> WhatsApp Integration</a>
+  <a href="#s8" class="nav-link"><span class="nav-num">08</span> Chrome Extension</a>
+  <a href="#s9" class="nav-link"><span class="nav-num">09</span> WordPress Plugin</a>
+  <a href="#s10" class="nav-link"><span class="nav-num">10</span> Developer API &amp; SDKs</a>
+  <a href="#s11" class="nav-link"><span class="nav-num">11</span> Anti-Fraud &amp; QC</a>
+  <a href="#s12" class="nav-link"><span class="nav-num">12</span> Infrastructure</a>
+  <a href="#s13" class="nav-link"><span class="nav-num">13</span> Development Roadmap</a>
+  <a href="#s14" class="nav-link"><span class="nav-num">14</span> Competitive Matrix</a>
+
+  <div class="nav-section-label" style="margin-top:24px;">Quick Links</div>
+  <a href="#feature-comparison" class="nav-link">Feature Comparison</a>
+  <a href="#sprint-plan" class="nav-link">Sprint Plan</a>
+  <a href="#mega-matrix" class="nav-link">Mega Competitive Matrix</a>
+</nav>
+
+<!-- ===== BACK TO TOP ===== -->
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</a>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-overline">GrabCash Technical Playbook // Document 3 of 9</div>
+    <h1>Bot &amp; Automation <span class="accent">Arsenal</span></h1>
+    <p class="subtitle">Technical Blueprint for GrabCash's Telegram Automation Infrastructure -- the complete engineering specification to build tools that surpass EK Affiliaters, Magic Tool, Affiliaters.in, and every third-party affiliate automation tool in the market.</p>
+    <div class="hero-meta">
+      <span>Version <strong>1.0</strong></span>
+      <span>Date <strong>May 2026</strong></span>
+      <span>Classification <strong>CONFIDENTIAL</strong></span>
+      <span>Status <strong>DRAFT</strong></span>
+      <span>Series <strong>GrabCash GTM Suite</strong></span>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE METRICS -->
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="value">4,000+</div>
+      <div class="label">Merchant Partners</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">12</div>
+      <div class="label">Core Bot Features</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">8</div>
+      <div class="label">Deal Categories</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">&lt;200ms</div>
+      <div class="label">Link Conversion Speed</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">20 Wks</div>
+      <div class="label">Full Build Timeline</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">99.9%</div>
+      <div class="label">Uptime SLA Target</div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 1: TECHNOLOGY STRATEGY OVERVIEW -->
+  <!-- ================================================================ -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <h2>Technology Strategy Overview</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Strategic Goal</h3>
+      <p>Build best-in-class automation tools that surpass EK Affiliaters + Magic Tool + Affiliaters.in combined, creating an unassailable technical moat that makes migration from EarnKaro to GrabCash not just attractive, but irresistible for every Telegram deal channel admin in India.</p>
+    </div>
+
+    <div class="card">
+      <h3>Governing Principles</h3>
+      <ul>
+        <li><strong>Zero Friction Migration:</strong> Any admin running EK Affiliaters or Affiliaters.in must be able to switch to GrabCash in under 5 minutes, with zero disruption to their channels.</li>
+        <li><strong>Superior Daily Experience:</strong> Every interaction with GrabCash tools must be faster, smoother, and more rewarding than the equivalent EarnKaro interaction.</li>
+        <li><strong>Merchant Breadth as Weapon:</strong> 4,000+ merchants via GrabOn is an 8-20x advantage over EarnKaro's 200-500 merchants. Every tool must expose this advantage prominently.</li>
+        <li><strong>Data-Driven Everything:</strong> Every click, conversion, and commission must be tracked, surfaced, and actionable. Admins who use GrabCash tools must feel they have superpowers their EarnKaro peers lack.</li>
+        <li><strong>Platform Agnosticism:</strong> While Telegram is the primary channel, tools must work across WhatsApp, Instagram, YouTube, and web from day one architecture.</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>Tool Priority Ranking by Admin Impact</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tool / Feature</th>
+              <th>Priority</th>
+              <th>Admin Impact Score</th>
+              <th>Competitor Parity</th>
+              <th>Effort (Weeks)</th>
+              <th>Dependencies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Core Link Converter</td>
+              <td><span class="badge badge-p0">P0</span></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">10/10</td>
+              <td>EK Affiliaters, Magic Tool</td>
+              <td>2</td>
+              <td>GrabOn API access</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Telegram Bot (Basic)</td>
+              <td><span class="badge badge-p0">P0</span></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">10/10</td>
+              <td>EK Affiliaters</td>
+              <td>3</td>
+              <td>Link Converter API</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Channel Linking + Auto-Forward</td>
+              <td><span class="badge badge-p0">P0</span></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9/10</td>
+              <td>EK Affiliaters</td>
+              <td>3</td>
+              <td>TG Bot</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Multi-Link Converter</td>
+              <td><span class="badge badge-p0">P0</span></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9/10</td>
+              <td>Magic Tool</td>
+              <td>1</td>
+              <td>Link Converter API</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Official Deal Channels (8)</td>
+              <td><span class="badge badge-p1">P1</span></td>
+              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td>EK (3 channels only)</td>
+              <td>4</td>
+              <td>Deal Sourcing Engine</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Analytics Dashboard</td>
+              <td><span class="badge badge-p1">P1</span></td>
+              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td>None (GrabCash exclusive)</td>
+              <td>3</td>
+              <td>Click/conversion tracking</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Deal Sourcing Engine</td>
+              <td><span class="badge badge-p1">P1</span></td>
+              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td>Partial (Affiliaters.in)</td>
+              <td>4</td>
+              <td>API integrations</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Chrome Extension</td>
+              <td><span class="badge badge-p1">P1</span></td>
+              <td style="font-family:'JetBrains Mono';color:#f59e0b;">7/10</td>
+              <td>CueLinks</td>
+              <td>3</td>
+              <td>Link Converter API</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Smart Scheduling + A/B Testing</td>
+              <td><span class="badge badge-p2">P2</span></td>
+              <td style="font-family:'JetBrains Mono';color:#3b82f6;">7/10</td>
+              <td>None (exclusive)</td>
+              <td>3</td>
+              <td>Analytics platform</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>WhatsApp Integration</td>
+              <td><span class="badge badge-p2">P2</span></td>
+              <td style="font-family:'JetBrains Mono';color:#3b82f6;">7/10</td>
+              <td>Affiliaters.in</td>
+              <td>4</td>
+              <td>WA Business API</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>WordPress Plugin</td>
+              <td><span class="badge badge-p2">P2</span></td>
+              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td>CueLinks</td>
+              <td>3</td>
+              <td>Link Converter API</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Developer API + SDKs</td>
+              <td><span class="badge badge-p3">P3</span></td>
+              <td style="font-family:'JetBrains Mono';color:#888;">5/10</td>
+              <td>None</td>
+              <td>3</td>
+              <td>All core APIs stable</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Price Drop Alerts</td>
+              <td><span class="badge badge-p2">P2</span></td>
+              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td>None (exclusive)</td>
+              <td>3</td>
+              <td>Price monitoring system</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Deal Quality Scoring (AI)</td>
+              <td><span class="badge badge-p2">P2</span></td>
+              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td>None (exclusive)</td>
+              <td>2</td>
+              <td>Deal Sourcing Engine</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Build vs Buy Analysis</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Decision</th>
+              <th>Rationale</th>
+              <th>Cost Estimate</th>
+              <th>Risk Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Link Converter API</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Core IP. Must integrate with GrabOn's 4,000+ merchant database. No third-party solution covers this.</td>
+              <td style="font-family:'JetBrains Mono';">2 devs x 2 wks</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>Telegram Bot Framework</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Use node-telegram-bot-api or python-telegram-bot as library, but custom application logic.</td>
+              <td style="font-family:'JetBrains Mono';">2 devs x 3 wks</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>URL Shortener</td>
+              <td><span class="tag tag-blue">HYBRID</span></td>
+              <td>Use Bitly Enterprise API or build on top of open-source (Kutt.it) with custom domain grabcash.in/go/</td>
+              <td style="font-family:'JetBrains Mono';">1 dev x 1 wk</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>Redis Queue System</td>
+              <td><span class="tag tag-purple">BUY</span></td>
+              <td>Use managed Redis (AWS ElastiCache or Redis Cloud). No need to self-host.</td>
+              <td style="font-family:'JetBrains Mono';">$50-200/mo</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>Analytics Platform</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Custom dashboards critical for admin retention. Off-shelf analytics cannot surface affiliate-specific metrics.</td>
+              <td style="font-family:'JetBrains Mono';">2 devs x 3 wks</td>
+              <td><span class="tag tag-yellow">Medium</span></td>
+            </tr>
+            <tr>
+              <td>Deal Sourcing / Scraping</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Proprietary deal quality scoring and 4,000+ merchant coverage. Core differentiator.</td>
+              <td style="font-family:'JetBrains Mono';">2 devs x 4 wks</td>
+              <td><span class="tag tag-yellow">Medium</span></td>
+            </tr>
+            <tr>
+              <td>Chrome Extension</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Must deeply integrate with GrabCash link converter + GrabOn coupon database.</td>
+              <td style="font-family:'JetBrains Mono';">1 dev x 3 wks</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>WordPress Plugin</td>
+              <td><span class="tag tag-blue">HYBRID</span></td>
+              <td>Fork open-source affiliate link plugin, customize for GrabCash API. Faster than building from scratch.</td>
+              <td style="font-family:'JetBrains Mono';">1 dev x 2 wks</td>
+              <td><span class="tag tag-green">Low</span></td>
+            </tr>
+            <tr>
+              <td>WhatsApp Integration</td>
+              <td><span class="tag tag-blue">HYBRID</span></td>
+              <td>Use official WA Business API for business accounts; web.whatsapp workaround for personal groups with user consent.</td>
+              <td style="font-family:'JetBrains Mono';">2 devs x 4 wks</td>
+              <td><span class="tag tag-red">High</span></td>
+            </tr>
+            <tr>
+              <td>Anti-Fraud System</td>
+              <td><span class="tag tag-green">BUILD</span></td>
+              <td>Must be tightly integrated with click tracking. Standard fraud detection tools do not understand affiliate fraud patterns.</td>
+              <td style="font-family:'JetBrains Mono';">1 dev x 3 wks</td>
+              <td><span class="tag tag-yellow">Medium</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Required Engineering Resources</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Count</th>
+              <th>Key Skills</th>
+              <th>Phase</th>
+              <th>Monthly Cost (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Backend Lead (Sr.)</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>Node.js/Python, PostgreSQL, Redis, Telegram Bot API, system design</td>
+              <td>Weeks 1-20</td>
+              <td style="font-family:'JetBrains Mono';">2,50,000</td>
+            </tr>
+            <tr>
+              <td>Backend Developer</td>
+              <td style="font-family:'JetBrains Mono';">2</td>
+              <td>Node.js, REST APIs, queue systems, web scraping</td>
+              <td>Weeks 1-20</td>
+              <td style="font-family:'JetBrains Mono';">1,50,000 each</td>
+            </tr>
+            <tr>
+              <td>Frontend Developer</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>React/Next.js, Chrome Extension APIs, responsive dashboards</td>
+              <td>Weeks 3-20</td>
+              <td style="font-family:'JetBrains Mono';">1,50,000</td>
+            </tr>
+            <tr>
+              <td>Mobile Developer (WA)</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>WhatsApp Business API, React Native, push notifications</td>
+              <td>Weeks 13-20</td>
+              <td style="font-family:'JetBrains Mono';">1,50,000</td>
+            </tr>
+            <tr>
+              <td>DevOps / Infra</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>AWS/GCP, Docker, Kubernetes, CI/CD, monitoring</td>
+              <td>Weeks 1-20</td>
+              <td style="font-family:'JetBrains Mono';">2,00,000</td>
+            </tr>
+            <tr>
+              <td>Data Engineer</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>ETL pipelines, analytics, ML basics, price tracking</td>
+              <td>Weeks 5-20</td>
+              <td style="font-family:'JetBrains Mono';">1,80,000</td>
+            </tr>
+            <tr>
+              <td>QA Engineer</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>API testing, bot testing, load testing, security testing</td>
+              <td>Weeks 3-20</td>
+              <td style="font-family:'JetBrains Mono';">1,00,000</td>
+            </tr>
+            <tr>
+              <td>Product Manager</td>
+              <td style="font-family:'JetBrains Mono';">1</td>
+              <td>Affiliate marketing domain, competitor analysis, user research</td>
+              <td>Weeks 1-20</td>
+              <td style="font-family:'JetBrains Mono';">2,00,000</td>
+            </tr>
+            <tr style="background:rgba(13,207,26,0.06);">
+              <td><strong>TOTAL</strong></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>9</strong></td>
+              <td></td>
+              <td></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>15,30,000/mo</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>12-Week Sprint Overview</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="week">Weeks 1-2</div>
+          <div class="title">Foundation Sprint</div>
+          <div class="desc">GrabOn API integration, link converter engine, PostgreSQL schema, Redis queue setup, basic Telegram bot scaffold, CI/CD pipeline</div>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Weeks 3-4</div>
+          <div class="title">Core Bot Sprint</div>
+          <div class="desc">Single-link converter, multi-link converter, channel linking via BotFather token, basic auto-forwarder, onboarding wizard</div>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Weeks 5-6</div>
+          <div class="title">Deal Engine Sprint</div>
+          <div class="desc">Amazon PAAPI, Flipkart API, GrabOn feed integration, deal scoring algorithm v1, 8 official deal channels setup</div>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Weeks 7-8</div>
+          <div class="title">Intelligence Sprint</div>
+          <div class="desc">Analytics dashboard v1, click tracking, conversion tracking, commission tracking, per-channel metrics, admin leaderboard</div>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Weeks 9-10</div>
+          <div class="title">Advanced Features Sprint</div>
+          <div class="desc">Smart scheduling AI, A/B testing engine, price drop alerts, deal quality scoring AI, content templates per category</div>
+        </div>
+        <div class="timeline-item">
+          <div class="week">Weeks 11-12</div>
+          <div class="title">Platform Expansion Sprint</div>
+          <div class="desc">Chrome extension v1, migration tool from EK Affiliaters, admin referral system, load testing, security audit, beta launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 2: GRABCASH TELEGRAM BOT (CORE PRODUCT) -->
+  <!-- ================================================================ -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <h2>GrabCash Telegram Bot -- Core Product</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Architecture Overview</h3>
+      <p>The GrabCash Telegram Bot is the flagship product of the automation arsenal. It is a webhook-based bot built on the Telegram Bot API, with a Node.js (TypeScript) backend, Redis for job queues and caching, and PostgreSQL for persistent storage. The architecture is designed for horizontal scaling, with separate microservices for link conversion, deal sourcing, analytics, and notifications.</p>
+
+      <div class="flow-diagram">
+<span class="node">[Telegram User]</span> <span class="arrow">----&gt;</span> <span class="node">[Telegram Bot API]</span> <span class="arrow">----&gt;</span> <span class="node">[Webhook Endpoint]</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[API Gateway (Nginx)]</span> <span class="arrow">----&gt;</span> <span class="node">[Bot Service (Node.js)]</span>
+        <span class="arrow">|</span>                          <span class="arrow">|</span>
+        <span class="arrow">v</span>                          <span class="arrow">v</span>
+<span class="node">[Rate Limiter]</span>            <span class="node">[Redis Queue (BullMQ)]</span>
+                              <span class="arrow">|</span>
+              <span class="arrow">+---------------+---------------+</span>
+              <span class="arrow">|</span>               <span class="arrow">|</span>               <span class="arrow">|</span>
+              <span class="arrow">v</span>               <span class="arrow">v</span>               <span class="arrow">v</span>
+<span class="node">[Link Converter]</span>  <span class="node">[Deal Sourcer]</span>  <span class="node">[Analytics Worker]</span>
+              <span class="arrow">|</span>               <span class="arrow">|</span>               <span class="arrow">|</span>
+              <span class="arrow">v</span>               <span class="arrow">v</span>               <span class="arrow">v</span>
+<span class="node">[GrabOn API]</span>     <span class="node">[Merchant APIs]</span> <span class="node">[PostgreSQL + TimescaleDB]</span>
+      </div>
+
+      <h4>Core Technology Stack</h4>
+      <div class="spec-box">
+        <div class="spec-key">Runtime</div>
+        <div class="spec-val">Node.js 20 LTS with TypeScript 5.x</div>
+        <div class="spec-key">Bot Framework</div>
+        <div class="spec-val">telegraf.js v4 (Telegram Bot API wrapper)</div>
+        <div class="spec-key">API Framework</div>
+        <div class="spec-val">Fastify v4 (2x faster than Express for webhook handling)</div>
+        <div class="spec-key">Database</div>
+        <div class="spec-val">PostgreSQL 16 with TimescaleDB extension for time-series analytics</div>
+        <div class="spec-key">Cache</div>
+        <div class="spec-val">Redis 7 (ElastiCache) -- link cache, session store, rate limiting</div>
+        <div class="spec-key">Queue</div>
+        <div class="spec-val">BullMQ on Redis -- job scheduling, retry logic, priority queues</div>
+        <div class="spec-key">URL Shortener</div>
+        <div class="spec-val">Custom service on grabcash.in/go/ domain (Cloudflare Workers edge)</div>
+        <div class="spec-key">Monitoring</div>
+        <div class="spec-val">Prometheus + Grafana + PagerDuty alerting</div>
+        <div class="spec-key">Deployment</div>
+        <div class="spec-val">Docker containers on AWS ECS Fargate, auto-scaling 2-20 instances</div>
+        <div class="spec-key">CDN</div>
+        <div class="spec-val">Cloudflare (link redirects at edge, &lt;50ms globally)</div>
+      </div>
+    </div>
+
+    <!-- FEATURE: Link Converter -->
+    <div class="subsection">
+      <h3>Feature 2a: Single Link Converter</h3>
+    </div>
+    <div class="card">
+      <h4>User Flow</h4>
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">Paste Link</div>
+          <div class="step-desc">Admin pastes any product URL into bot chat</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Detect Merchant</div>
+          <div class="step-desc">Bot identifies merchant from URL domain</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Convert Link</div>
+          <div class="step-desc">GrabOn API generates affiliate link with admin's tracking ID</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Return Result</div>
+          <div class="step-desc">Bot replies with short URL + commission info</div>
+        </div>
+      </div>
+
+      <h4>API Specification</h4>
+      <div class="code-block">
+<span class="comment">// POST /api/v1/convert</span>
+<span class="comment">// Request:</span>
+{
+  <span class="string">"url"</span>: <span class="string">"https://www.amazon.in/dp/B0XXXXXXXXXX"</span>,
+  <span class="string">"admin_id"</span>: <span class="string">"gc_admin_12345"</span>,
+  <span class="string">"channel_id"</span>: <span class="string">"@mydealschannel"</span>,   <span class="comment">// optional, for tracking</span>
+  <span class="string">"shorten"</span>: <span class="type">true</span>,
+  <span class="string">"format"</span>: <span class="string">"telegram"</span>   <span class="comment">// telegram | whatsapp | plain</span>
+}
+
+<span class="comment">// Response (success):</span>
+{
+  <span class="string">"status"</span>: <span class="string">"success"</span>,
+  <span class="string">"original_url"</span>: <span class="string">"https://www.amazon.in/dp/B0XXXXXXXXXX"</span>,
+  <span class="string">"affiliate_url"</span>: <span class="string">"https://grabcash.in/go/a7x9k2"</span>,
+  <span class="string">"merchant"</span>: <span class="string">"Amazon India"</span>,
+  <span class="string">"category"</span>: <span class="string">"Electronics"</span>,
+  <span class="string">"commission_rate"</span>: <span class="string">"8.5%"</span>,
+  <span class="string">"product"</span>: {
+    <span class="string">"title"</span>: <span class="string">"boAt Rockerz 450 Bluetooth Headphone"</span>,
+    <span class="string">"price"</span>: <span class="num">1499</span>,
+    <span class="string">"mrp"</span>: <span class="num">3990</span>,
+    <span class="string">"discount"</span>: <span class="string">"62%"</span>,
+    <span class="string">"image"</span>: <span class="string">"https://m.media-amazon.com/images/I/..."</span>
+  },
+  <span class="string">"conversion_time_ms"</span>: <span class="num">143</span>
+}
+      </div>
+
+      <h4>Bot Reply Format (Telegram)</h4>
+      <div class="code-block">
+<span class="comment">// Bot sends formatted message to admin:</span>
+
+<span class="string">&#x1F3AF; Link Converted!</span>
+
+<span class="string">&#x1F6CD; boAt Rockerz 450 Bluetooth Headphone</span>
+<span class="string">&#x1F4B0; Price: Rs.1,499 (MRP Rs.3,990 | 62% OFF)</span>
+<span class="string">&#x1F4C8; Your Commission: ~Rs.127 (8.5%)</span>
+
+<span class="string">&#x1F517; Share Link: https://grabcash.in/go/a7x9k2</span>
+
+<span class="string">Tap to copy | Share to channel | View analytics</span>
+      </div>
+    </div>
+
+    <!-- FEATURE: Multi-Link Converter -->
+    <div class="subsection">
+      <h3>Feature 2b: Multi-Link Converter (Magic Tool Parity)</h3>
+    </div>
+    <div class="card">
+      <p>This feature matches and exceeds EarnKaro's "Magic Tool" -- the ability to paste an entire deal post containing multiple product links, and have ALL links converted simultaneously while preserving the original post formatting.</p>
+
+      <h4>Technical Specification</h4>
+      <div class="spec-box">
+        <div class="spec-key">Input</div>
+        <div class="spec-val">Full text message with embedded product URLs (1-50 links per message)</div>
+        <div class="spec-key">Detection</div>
+        <div class="spec-val">Regex-based URL extraction: supports amazon.in, flipkart.com, myntra.com, ajio.com, nykaa.com, and 4,000+ more</div>
+        <div class="spec-key">Processing</div>
+        <div class="spec-val">Parallel conversion via Promise.allSettled() -- all links converted simultaneously</div>
+        <div class="spec-key">Output</div>
+        <div class="spec-val">Same message with all URLs replaced by GrabCash affiliate links, formatting preserved</div>
+        <div class="spec-key">Speed Target</div>
+        <div class="spec-val">&lt;1 second for up to 10 links; &lt;3 seconds for up to 50 links</div>
+        <div class="spec-key">Fallback</div>
+        <div class="spec-val">If any individual link fails, original URL is preserved. Partial success is acceptable.</div>
+      </div>
+
+      <h4>API Specification</h4>
+      <div class="code-block">
+<span class="comment">// POST /api/v1/convert/batch</span>
+{
+  <span class="string">"text"</span>: <span class="string">"Check out these deals!\n\nAmazon: https://amzn.to/xyz\nFlipkart: https://fkrt.it/abc\nMyntra: https://myntra.com/123"</span>,
+  <span class="string">"admin_id"</span>: <span class="string">"gc_admin_12345"</span>,
+  <span class="string">"preserve_formatting"</span>: <span class="type">true</span>,
+  <span class="string">"add_commission_footer"</span>: <span class="type">true</span>
+}
+
+<span class="comment">// Response:</span>
+{
+  <span class="string">"status"</span>: <span class="string">"success"</span>,
+  <span class="string">"converted_text"</span>: <span class="string">"Check out these deals!\n\nAmazon: https://grabcash.in/go/a1b2c3\nFlipkart: https://grabcash.in/go/d4e5f6\nMyntra: https://grabcash.in/go/g7h8i9"</span>,
+  <span class="string">"links_found"</span>: <span class="num">3</span>,
+  <span class="string">"links_converted"</span>: <span class="num">3</span>,
+  <span class="string">"links_failed"</span>: <span class="num">0</span>,
+  <span class="string">"total_estimated_commission"</span>: <span class="string">"Rs.245"</span>,
+  <span class="string">"processing_time_ms"</span>: <span class="num">387</span>
+}
+      </div>
+    </div>
+
+    <!-- FEATURE: Channel Linking -->
+    <div class="subsection">
+      <h3>Feature 2c: Channel Linking (BotFather Token Integration)</h3>
+    </div>
+    <div class="card">
+      <p>Channel linking allows admins to connect their Telegram channels/groups to the GrabCash Bot so it can auto-post deals and convert links on their behalf. This is the equivalent of EK Affiliaters' token-based channel linking, but with a dramatically simpler setup process.</p>
+
+      <h4>Two Methods of Channel Linking</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>How It Works</th>
+              <th>Admin Effort</th>
+              <th>Capabilities</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Method A: Direct Add</strong> (Recommended)</td>
+              <td>Admin adds @GrabCashBot as admin to their channel. Bot uses its own token to post.</td>
+              <td>30 seconds -- just add bot as admin</td>
+              <td>Auto-post, link conversion, analytics, scheduling</td>
+              <td>Most admins, simple setup</td>
+            </tr>
+            <tr>
+              <td><strong>Method B: BotFather Token</strong> (EK Parity)</td>
+              <td>Admin creates their own bot via BotFather, gives token to GrabCash. Posts appear from admin's own bot.</td>
+              <td>2-3 minutes -- create bot, copy token</td>
+              <td>Same as Method A, plus custom bot branding</td>
+              <td>Power admins who want their own branded bot</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Method A: Direct Add -- Step-by-Step</h4>
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">/link</div>
+          <div class="step-desc">Admin sends /link command to @GrabCashBot</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Enter Channel</div>
+          <div class="step-desc">Admin types @channelname or forwards a message from their channel</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Add Bot</div>
+          <div class="step-desc">Bot prompts admin to add @GrabCashBot as channel admin</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Verify</div>
+          <div class="step-desc">Bot sends test message to channel, confirms link</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-title">Configure</div>
+          <div class="step-desc">Admin picks categories, posting frequency, schedule</div>
+        </div>
+      </div>
+
+      <h4>Channel Linking Database Schema</h4>
+      <div class="code-block">
+<span class="keyword">CREATE TABLE</span> <span class="type">channels</span> (
+  <span class="string">id</span>              <span class="type">UUID</span> <span class="keyword">PRIMARY KEY DEFAULT</span> gen_random_uuid(),
+  <span class="string">admin_id</span>        <span class="type">UUID</span> <span class="keyword">REFERENCES</span> admins(id),
+  <span class="string">telegram_chat_id</span> <span class="type">BIGINT</span> <span class="keyword">NOT NULL UNIQUE</span>,
+  <span class="string">channel_username</span> <span class="type">VARCHAR(64)</span>,
+  <span class="string">channel_title</span>   <span class="type">VARCHAR(255)</span>,
+  <span class="string">link_method</span>     <span class="type">VARCHAR(20)</span> <span class="keyword">DEFAULT</span> <span class="string">'direct'</span>,  <span class="comment">-- 'direct' or 'botfather'</span>
+  <span class="string">bot_token</span>       <span class="type">TEXT</span>,  <span class="comment">-- encrypted, only for botfather method</span>
+  <span class="string">subscriber_count</span> <span class="type">INTEGER</span>,
+  <span class="string">categories</span>      <span class="type">TEXT[]</span> <span class="keyword">DEFAULT</span> <span class="string">'{all}'</span>,
+  <span class="string">posting_frequency</span> <span class="type">VARCHAR(20)</span> <span class="keyword">DEFAULT</span> <span class="string">'normal'</span>,  <span class="comment">-- low, normal, high, max</span>
+  <span class="string">auto_forward</span>    <span class="type">BOOLEAN</span> <span class="keyword">DEFAULT</span> <span class="type">true</span>,
+  <span class="string">schedule</span>        <span class="type">JSONB</span>,  <span class="comment">-- custom posting schedule</span>
+  <span class="string">is_active</span>       <span class="type">BOOLEAN</span> <span class="keyword">DEFAULT</span> <span class="type">true</span>,
+  <span class="string">linked_at</span>       <span class="type">TIMESTAMPTZ</span> <span class="keyword">DEFAULT</span> now(),
+  <span class="string">last_post_at</span>    <span class="type">TIMESTAMPTZ</span>,
+  <span class="string">total_posts</span>     <span class="type">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="num">0</span>,
+  <span class="string">total_clicks</span>    <span class="type">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="num">0</span>,
+  <span class="string">total_revenue</span>   <span class="type">DECIMAL(12,2)</span> <span class="keyword">DEFAULT</span> <span class="num">0</span>
+);
+      </div>
+    </div>
+
+    <!-- FEATURE: Auto-Forwarder -->
+    <div class="subsection">
+      <h3>Feature 2d: Auto-Forwarder</h3>
+    </div>
+    <div class="card">
+      <p>The Auto-Forwarder subscribes an admin's linked channels to GrabCash's official deal channels. When a new deal is posted to @GrabCashDeals (or any category channel), the auto-forwarder picks it up, converts all links to the admin's affiliate links, optionally reformats the post, and forwards it to the admin's channels. This is the single most powerful feature for passive income generation.</p>
+
+      <h4>Auto-Forwarder Processing Pipeline</h4>
+      <div class="flow-diagram">
+<span class="node">[GrabCash Official Channel]</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[New Deal Posted]</span> <span class="arrow">----&gt;</span> <span class="node">[Deal Ingestion Worker]</span>
+                              <span class="arrow">|</span>
+                              <span class="arrow">v</span>
+                    <span class="node">[For Each Subscribed Admin]</span>
+                              <span class="arrow">|</span>
+              <span class="arrow">+---------------+---------------+</span>
+              <span class="arrow">|</span>               <span class="arrow">|</span>               <span class="arrow">|</span>
+              <span class="arrow">v</span>               <span class="arrow">v</span>               <span class="arrow">v</span>
+    <span class="node">[Category Filter]</span> <span class="node">[Dedup Check]</span> <span class="node">[Schedule Check]</span>
+              <span class="arrow">|</span>               <span class="arrow">|</span>               <span class="arrow">|</span>
+              <span class="arrow">+-------+-------+-------+-------+</span>
+                      <span class="arrow">|</span>
+                      <span class="arrow">v</span>
+            <span class="node">[Link Converter (Admin's ID)]</span>
+                      <span class="arrow">|</span>
+                      <span class="arrow">v</span>
+            <span class="node">[Template Formatter]</span>
+                      <span class="arrow">|</span>
+                      <span class="arrow">v</span>
+            <span class="node">[Rate-Limited Poster (BullMQ)]</span>
+                      <span class="arrow">|</span>
+                      <span class="arrow">v</span>
+            <span class="node">[Admin's Channel]</span>
+      </div>
+
+      <h4>Customization Options per Admin</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Option</th>
+              <th>Values</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Categories</td><td>Fashion, Electronics, Travel, Food, Beauty, Home, Finance, Grocery</td><td>All</td><td>Which deal categories to forward</td></tr>
+            <tr><td>Min Discount</td><td>0-90%</td><td>20%</td><td>Only forward deals with discount >= threshold</td></tr>
+            <tr><td>Min Deal Score</td><td>1-100</td><td>50</td><td>Only forward deals scoring above this threshold</td></tr>
+            <tr><td>Posting Frequency</td><td>Low (5/day), Normal (15/day), High (30/day), Max (unlimited)</td><td>Normal</td><td>Max deals forwarded per day</td></tr>
+            <tr><td>Schedule</td><td>Custom hours/days</td><td>8AM-11PM IST daily</td><td>When to post to admin's channel</td></tr>
+            <tr><td>Post Template</td><td>Compact, Standard, Detailed, Custom</td><td>Standard</td><td>How to format the forwarded post</td></tr>
+            <tr><td>Include Image</td><td>Yes/No</td><td>Yes</td><td>Whether to include product image</td></tr>
+            <tr><td>Add Branding</td><td>Yes/No + custom text</td><td>No</td><td>Admin can add their own footer text</td></tr>
+            <tr><td>Merchants Exclude</td><td>List of merchants</td><td>None</td><td>Skip deals from specific merchants</td></tr>
+            <tr><td>Price Range</td><td>Min-Max in Rs.</td><td>No limit</td><td>Only forward products within price range</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FEATURE: Deal Categories -->
+    <div class="subsection">
+      <h3>Feature 2e: Deal Categories (8 vs EarnKaro's 3)</h3>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Channel Handle</th>
+              <th>Key Merchants</th>
+              <th>Avg Commission</th>
+              <th>Daily Deal Volume</th>
+              <th>EarnKaro Equivalent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-purple">Fashion</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashFashion</td>
+              <td>Ajio (10-15%), Myntra (7-12%), H&M (8%), Adidas (9%), Nike (8%), Zara (6%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9.5%</td>
+              <td style="font-family:'JetBrains Mono';">25-40</td>
+              <td>EK Fashion channel</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-blue">Electronics</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashElectronics</td>
+              <td>Samsung (5%), boAt (8%), HP (6%), Lenovo (5%), OnePlus (4%), JBL (7%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">5.8%</td>
+              <td style="font-family:'JetBrains Mono';">15-25</td>
+              <td>EK Electronics channel</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-yellow">Travel</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashTravel</td>
+              <td>MakeMyTrip (4%), Goibibo (4.5%), Yatra (5%), EaseMyTrip (4%), Cleartrip (3.5%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">4.2%</td>
+              <td style="font-family:'JetBrains Mono';">10-15</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-red">Food</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashFood</td>
+              <td>Zomato (3%), Swiggy (3.5%), Dominos (5%), Pizza Hut (4%), Burger King (4%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">3.8%</td>
+              <td style="font-family:'JetBrains Mono';">20-30</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-green">Beauty</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashBeauty</td>
+              <td>Nykaa (9%), Mamaearth (8%), Purplle (7%), Sugar (8%), Forest Essentials (6%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">7.6%</td>
+              <td style="font-family:'JetBrains Mono';">15-25</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-white">Home</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashHome</td>
+              <td>Pepperfry (6%), Urban Ladder (5%), Wakefit (7%), HomeTown (5%), Nilkamal (4%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">5.4%</td>
+              <td style="font-family:'JetBrains Mono';">10-15</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-blue">Finance</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashFinance</td>
+              <td>CRED (Rs.200/signup), PhonePe (Rs.50/txn), Groww (Rs.300/signup), Kuvera (Rs.150/signup)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">CPA Rs.150</td>
+              <td style="font-family:'JetBrains Mono';">5-10</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-green">Grocery</span></td>
+              <td style="font-family:'JetBrains Mono';">@GrabCashGrocery</td>
+              <td>BigBasket (3%), Blinkit (2.5%), JioMart (3%), Amazon Fresh (4%), DMart (2%)</td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">3.1%</td>
+              <td style="font-family:'JetBrains Mono';">15-20</td>
+              <td><span class="tag tag-red">NONE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card card-accent" style="margin-top:16px;">
+        <p><strong>Key Advantage:</strong> GrabCash offers 8 category channels vs EarnKaro's 3 (Fashion, Electronics, Official). The 5 additional categories -- Travel, Food, Beauty, Home, Finance, Grocery -- represent untapped revenue streams that EarnKaro admins currently cannot access. This alone is a compelling migration reason.</p>
+      </div>
+    </div>
+
+    <!-- FEATURE: Smart Scheduling -->
+    <div class="subsection">
+      <h3>Feature 2f: Smart Scheduling (AI-Powered)</h3>
+    </div>
+    <div class="card">
+      <p>Smart Scheduling uses machine learning to determine the optimal posting time for each admin's channel based on historical engagement data. This is a GrabCash exclusive -- no competitor offers this feature.</p>
+
+      <h4>Algorithm Inputs</h4>
+      <div class="spec-box">
+        <div class="spec-key">Channel Data</div>
+        <div class="spec-val">Subscriber count, subscriber timezone distribution, historical post engagement by hour</div>
+        <div class="spec-key">Category Data</div>
+        <div class="spec-val">Peak shopping hours per category (e.g., Fashion peaks 8-10PM; Electronics peaks during sale launches)</div>
+        <div class="spec-key">Deal Data</div>
+        <div class="spec-val">Deal expiry time, deal urgency score, flash sale vs regular deal</div>
+        <div class="spec-key">Platform Data</div>
+        <div class="spec-val">Cross-channel best posting times from all GrabCash admins (anonymized)</div>
+        <div class="spec-key">External Signals</div>
+        <div class="spec-val">Payday cycles (1st/15th month), festival calendar, sale event calendar</div>
+      </div>
+
+      <h4>Scheduling Algorithm Output</h4>
+      <div class="code-block">
+<span class="comment">// Smart Schedule for @mydealschannel</span>
+{
+  <span class="string">"channel"</span>: <span class="string">"@mydealschannel"</span>,
+  <span class="string">"optimal_slots"</span>: [
+    { <span class="string">"time"</span>: <span class="string">"08:15"</span>, <span class="string">"category"</span>: <span class="string">"grocery"</span>, <span class="string">"confidence"</span>: <span class="num">0.87</span> },
+    { <span class="string">"time"</span>: <span class="string">"10:30"</span>, <span class="string">"category"</span>: <span class="string">"electronics"</span>, <span class="string">"confidence"</span>: <span class="num">0.82</span> },
+    { <span class="string">"time"</span>: <span class="string">"13:00"</span>, <span class="string">"category"</span>: <span class="string">"food"</span>, <span class="string">"confidence"</span>: <span class="num">0.79</span> },
+    { <span class="string">"time"</span>: <span class="string">"17:45"</span>, <span class="string">"category"</span>: <span class="string">"fashion"</span>, <span class="string">"confidence"</span>: <span class="num">0.91</span> },
+    { <span class="string">"time"</span>: <span class="string">"20:30"</span>, <span class="string">"category"</span>: <span class="string">"beauty"</span>, <span class="string">"confidence"</span>: <span class="num">0.85</span> },
+    { <span class="string">"time"</span>: <span class="string">"22:00"</span>, <span class="string">"category"</span>: <span class="string">"fashion"</span>, <span class="string">"confidence"</span>: <span class="num">0.88</span> }
+  ],
+  <span class="string">"avoid_hours"</span>: [<span class="num">0</span>,<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>,<span class="num">6</span>,<span class="num">14</span>,<span class="num">15</span>],
+  <span class="string">"engagement_uplift_estimate"</span>: <span class="string">"+34% vs random posting"</span>
+}
+      </div>
+    </div>
+
+    <!-- FEATURE: A/B Testing -->
+    <div class="subsection">
+      <h3>Feature 2g: A/B Testing Engine</h3>
+    </div>
+    <div class="card">
+      <p>Admin creates two versions of a deal post (different headlines, images, or formatting). The bot sends Version A to a random 20% of linked channels and Version B to another 20%. After 2 hours, it measures click-through rate and auto-sends the winner to the remaining 60%.</p>
+
+      <h4>A/B Test Specification</h4>
+      <div class="spec-box">
+        <div class="spec-key">Test Variables</div>
+        <div class="spec-val">Headline text, product image, price display format, CTA text, emoji usage, post length</div>
+        <div class="spec-key">Sample Size</div>
+        <div class="spec-val">20% of channels per variant (configurable: 10-40%)</div>
+        <div class="spec-key">Test Duration</div>
+        <div class="spec-val">2 hours default (configurable: 1-24 hours)</div>
+        <div class="spec-key">Primary Metric</div>
+        <div class="spec-val">Click-through rate (clicks / views)</div>
+        <div class="spec-key">Secondary Metrics</div>
+        <div class="spec-val">Conversion rate, revenue per click, engagement rate</div>
+        <div class="spec-key">Min Statistical Significance</div>
+        <div class="spec-val">95% confidence level before auto-selecting winner</div>
+        <div class="spec-key">Fallback</div>
+        <div class="spec-val">If neither variant reaches significance, send original (Version A) to remaining channels</div>
+      </div>
+    </div>
+
+    <!-- FEATURE: Analytics Dashboard -->
+    <div class="subsection">
+      <h3>Feature 2h: Analytics Dashboard (In-Bot + Web)</h3>
+    </div>
+    <div class="card">
+      <p>Comprehensive analytics accessible both within the Telegram bot (via inline commands) and through a web dashboard. No competitor offers this level of analytics directly inside Telegram.</p>
+
+      <h4>In-Bot Analytics Commands</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Output</th>
+              <th>Metrics Shown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:'JetBrains Mono';">/stats</td><td>Daily summary card</td><td>Today's clicks, conversions, revenue, top deal</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/stats week</td><td>Weekly summary with mini chart</td><td>7-day trend, best day, total revenue, avg per day</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/stats month</td><td>Monthly report</td><td>30-day totals, growth vs last month, category breakdown</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/channels</td><td>Channel performance table</td><td>Per-channel: subscribers, clicks, conversions, revenue, CTR</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/top deals</td><td>Top 10 performing deals</td><td>Deal name, clicks, conversions, revenue, commission earned</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/compare</td><td>Category comparison</td><td>Revenue by category, best performing category, trends</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/heatmap</td><td>Engagement heatmap image</td><td>Clicks by hour x day of week, optimal posting windows</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/earnings</td><td>Commission breakdown</td><td>Pending, confirmed, paid out, lifetime total</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/rank</td><td>Leaderboard position</td><td>Admin's rank among all GrabCash admins, tier, badges</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">/dashboard</td><td>Web dashboard link</td><td>Opens full web analytics dashboard in browser</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Web Dashboard Wireframe Description</h4>
+      <p>The web dashboard at dashboard.grabcash.in features:</p>
+      <ul>
+        <li><strong>Top bar:</strong> Date range selector, real-time toggle, export CSV button</li>
+        <li><strong>Row 1 -- KPI cards (4 across):</strong> Total Clicks (with sparkline), Total Conversions, Revenue (Rs.), Commission Earned</li>
+        <li><strong>Row 2 -- Main chart:</strong> Line chart showing clicks + revenue over time (daily granularity), with tooltips</li>
+        <li><strong>Row 3 -- Two columns:</strong> Left = Category pie chart; Right = Top 10 channels bar chart</li>
+        <li><strong>Row 4 -- Engagement heatmap:</strong> 7 rows (days) x 24 columns (hours), color intensity = clicks. Green cells = recommended posting times.</li>
+        <li><strong>Row 5 -- Deal table:</strong> Sortable table of all deals posted, with columns: Deal, Merchant, Category, Clicks, Conversions, Revenue, CTR, Date Posted</li>
+        <li><strong>Row 6 -- Growth metrics:</strong> Subscriber growth chart, new channels added, admin referral tracking</li>
+      </ul>
+    </div>
+
+    <!-- FEATURE: Multi-Platform Posting -->
+    <div class="subsection">
+      <h3>Feature 2i: Multi-Platform Posting</h3>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Integration Method</th>
+              <th>Post Format</th>
+              <th>Tracking</th>
+              <th>Phase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Telegram Channels</td><td>Bot API (native)</td><td>Rich text + images + buttons</td><td>Full (clicks, conversions, revenue)</td><td><span class="badge badge-p0">P0</span></td></tr>
+            <tr><td>Telegram Groups</td><td>Bot API (native)</td><td>Rich text + images</td><td>Full</td><td><span class="badge badge-p0">P0</span></td></tr>
+            <tr><td>WhatsApp Groups</td><td>WA Business API / web automation</td><td>Text + link preview</td><td>Clicks only</td><td><span class="badge badge-p2">P2</span></td></tr>
+            <tr><td>WhatsApp Channels</td><td>WA Business API</td><td>Text + image</td><td>Clicks only</td><td><span class="badge badge-p2">P2</span></td></tr>
+            <tr><td>Instagram DM Groups</td><td>Instagram Graph API</td><td>Text + product tag</td><td>Click tracking via short URL</td><td><span class="badge badge-p3">P3</span></td></tr>
+            <tr><td>YouTube Community</td><td>YouTube Data API</td><td>Text + image post</td><td>Click tracking via short URL</td><td><span class="badge badge-p3">P3</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FEATURE: Price Drop Alerts -->
+    <div class="subsection">
+      <h3>Feature 2j: Price Drop Alerts</h3>
+    </div>
+    <div class="card">
+      <p>Admins can set price alerts on any product from any of GrabCash's 4,000+ merchants. When the price drops below a threshold, the bot instantly notifies the admin with a ready-to-share deal post including the affiliate link.</p>
+
+      <h4>Alert Configuration</h4>
+      <div class="code-block">
+<span class="comment">// Admin sets alert via bot:</span>
+<span class="comment">// /alert https://www.amazon.in/dp/B0XXXXXXXXXX 999</span>
+
+<span class="comment">// System creates alert:</span>
+{
+  <span class="string">"product_url"</span>: <span class="string">"https://www.amazon.in/dp/B0XXXXXXXXXX"</span>,
+  <span class="string">"product_title"</span>: <span class="string">"Samsung Galaxy Buds2 Pro"</span>,
+  <span class="string">"current_price"</span>: <span class="num">11999</span>,
+  <span class="string">"target_price"</span>: <span class="num">999</span>,
+  <span class="string">"alert_type"</span>: <span class="string">"below_price"</span>,   <span class="comment">// below_price | percent_drop | all_time_low</span>
+  <span class="string">"check_interval"</span>: <span class="string">"15min"</span>,
+  <span class="string">"auto_share"</span>: <span class="type">true</span>,   <span class="comment">// auto-forward to all linked channels</span>
+  <span class="string">"channels"</span>: [<span class="string">"@mydealschannel"</span>, <span class="string">"@myelectronics"</span>]
+}
+      </div>
+    </div>
+
+    <!-- FEATURE: Commission Tracker -->
+    <div class="subsection">
+      <h3>Feature 2k: Real-Time Commission Tracker</h3>
+    </div>
+    <div class="card">
+      <div class="spec-box">
+        <div class="spec-key">Data Source</div>
+        <div class="spec-val">GrabOn affiliate tracking API (real-time callback on each conversion)</div>
+        <div class="spec-key">Update Frequency</div>
+        <div class="spec-val">Real-time for clicks; 15-minute delay for confirmed conversions; 24-48hr for commission validation</div>
+        <div class="spec-key">Bot Command</div>
+        <div class="spec-val">/earnings -- shows pending, validated, paid out, total lifetime</div>
+        <div class="spec-key">Push Notifications</div>
+        <div class="spec-val">Admin gets instant TG notification on each confirmed conversion over Rs.50</div>
+        <div class="spec-key">Payout Tracking</div>
+        <div class="spec-val">Payout request via /payout, status tracking, bank/UPI integration</div>
+      </div>
+    </div>
+
+    <!-- FEATURE: Deal Quality Scoring -->
+    <div class="subsection">
+      <h3>Feature 2l: Deal Quality Scoring (AI)</h3>
+    </div>
+    <div class="card">
+      <h4>Scoring Algorithm Inputs and Weights</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Weight</th>
+              <th>Input Range</th>
+              <th>Scoring Logic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Discount Percentage</td><td style="font-family:'JetBrains Mono';">25%</td><td>0-100%</td><td>Linear: 0% = 0pts, 50% = 50pts, 80%+ = 100pts</td></tr>
+            <tr><td>Price vs Historical Low</td><td style="font-family:'JetBrains Mono';">20%</td><td>0-100%</td><td>100pts if at/below all-time low; decreasing as price rises above ATL</td></tr>
+            <tr><td>Brand Popularity</td><td style="font-family:'JetBrains Mono';">15%</td><td>Tier S/A/B/C</td><td>S-tier brands (Apple, Samsung, Nike) = 100pts; C-tier = 25pts</td></tr>
+            <tr><td>Product Rating</td><td style="font-family:'JetBrains Mono';">10%</td><td>1.0-5.0 stars</td><td>5.0 = 100pts, 4.0 = 75pts, 3.0 = 50pts, below 3.0 = 0pts</td></tr>
+            <tr><td>Category Conversion Rate</td><td style="font-family:'JetBrains Mono';">10%</td><td>0-15%</td><td>Based on GrabCash historical conversion data per category</td></tr>
+            <tr><td>Deal Expiry Urgency</td><td style="font-family:'JetBrains Mono';">10%</td><td>Hours remaining</td><td>Expires in &lt;4hrs = 100pts; &lt;24hrs = 70pts; &gt;7days = 20pts</td></tr>
+            <tr><td>Commission Rate</td><td style="font-family:'JetBrains Mono';">10%</td><td>0-20%</td><td>Higher commission = higher score (incentivizes high-earning deals)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>Score Thresholds and Actions</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Score Range</th>
+              <th>Label</th>
+              <th>Action</th>
+              <th>Visual Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">90-100</td><td>EXCEPTIONAL</td><td>Auto-publish to all channels immediately + push notification to all admins</td><td><span class="tag tag-green">MUST SHARE</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">70-89</td><td>GREAT</td><td>Auto-publish to subscribed channels per admin's schedule</td><td><span class="tag tag-blue">GREAT DEAL</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#f59e0b;">50-69</td><td>GOOD</td><td>Queued for manual review by deal curation team; published if approved</td><td><span class="tag tag-yellow">GOOD</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#ef4444;">Below 50</td><td>SKIP</td><td>Rejected from official channels; admin can still manually convert links</td><td><span class="tag tag-red">LOW VALUE</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETUP FLOW -->
+    <div class="subsection">
+      <h3>Bot Setup Flow: 2-Minute Onboarding</h3>
+    </div>
+    <div class="card card-accent">
+      <p>GrabCash Bot setup is designed to take under 2 minutes, vs 5-10 minutes for EK Affiliaters. The key principle: minimize steps, auto-detect wherever possible, make defaults smart.</p>
+
+      <h4>Setup Comparison</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>GrabCash Bot</th>
+              <th>EK Affiliaters</th>
+              <th>Affiliaters.in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Start Bot</td><td>Open @GrabCashBot, tap /start</td><td>Open @EKAffiliaters, tap /start</td><td>Visit affiliaters.in, sign up</td></tr>
+            <tr><td>2. Account Link</td><td>Auto-detect if GrabCash account exists; if not, create via phone OTP inline</td><td>Enter EarnKaro credentials manually</td><td>Enter multiple platform credentials</td></tr>
+            <tr><td>3. Link Channel</td><td>Enter @channelname OR forward any message from channel</td><td>Create sub-bot via BotFather, paste token</td><td>Paste channel ID, configure separately</td></tr>
+            <tr><td>4. Category Select</td><td>Tap inline buttons to select categories</td><td>Manual command per category</td><td>Web dashboard configuration</td></tr>
+            <tr><td>5. Enable Auto-Post</td><td>Single toggle (on by default)</td><td>Multiple settings to configure</td><td>Configure per source</td></tr>
+            <tr><td>6. Done</td><td><strong>~2 minutes total</strong></td><td><strong>~5-10 minutes total</strong></td><td><strong>~10-15 minutes total</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MIGRATION FROM EK -->
+    <div class="subsection">
+      <h3>Migration from EK Affiliaters</h3>
+    </div>
+    <div class="card card-warning">
+      <h4>One-Click Migration Process</h4>
+      <ol>
+        <li><strong>Admin enters /migrate in @GrabCashBot</strong> -- Bot asks admin to forward any message from each of their channels currently using EK Affiliaters.</li>
+        <li><strong>Bot auto-detects existing setup</strong> -- Identifies which channels are active, current posting frequency, categories being used.</li>
+        <li><strong>Parallel Posting Mode (30-day trial)</strong> -- For 30 days, admin's channels receive BOTH EarnKaro links AND GrabCash links for every deal. Admin can compare earnings side-by-side. This eliminates the risk of switching.</li>
+        <li><strong>Revenue comparison dashboard</strong> -- Special /compare command shows EarnKaro vs GrabCash earnings for the same deals, highlighting GrabCash's higher commissions on 4,000+ merchants.</li>
+        <li><strong>One-click full switch</strong> -- After trial, admin taps one button to go fully GrabCash, removing EK Affiliaters from all channels simultaneously.</li>
+      </ol>
+
+      <h4>Migration Incentives</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Incentive</th>
+              <th>Value</th>
+              <th>Condition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Welcome Bonus</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">Rs. 500</td><td>Complete migration, active for 7 days</td></tr>
+            <tr><td>Commission Boost</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">+2% extra</td><td>First 90 days after migration</td></tr>
+            <tr><td>Priority Support</td><td>Dedicated WhatsApp support line</td><td>First 30 days</td></tr>
+            <tr><td>Deal Priority</td><td>Early access to flash deals (30 min before others)</td><td>First 60 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FEATURE COMPARISON TABLE -->
+    <div class="subsection" id="feature-comparison">
+      <h3>Feature Comparison: GrabCash Bot vs Competitors</h3>
+    </div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:200px;">Feature</th>
+              <th>GrabCash Bot</th>
+              <th>EK Affiliaters</th>
+              <th>Affiliaters.in</th>
+              <th>CueLinks Bot</th>
+              <th>Affiliate Kit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single Link Conversion</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
+            <tr><td>Multi-Link Conversion</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes (Magic Tool)</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td></tr>
+            <tr><td>Conversion Speed</td><td class="cell-exclusive">&lt;200ms</td><td class="cell-partial">500ms-2s</td><td class="cell-yes">&lt;3s (claimed)</td><td class="cell-partial">1-3s</td><td class="cell-partial">2-5s</td></tr>
+            <tr><td>Merchant Coverage</td><td class="cell-exclusive">4,000+</td><td class="cell-partial">200-500</td><td class="cell-partial">300-600</td><td class="cell-yes">1,000+</td><td class="cell-partial">200-400</td></tr>
+            <tr><td>Channel Linking</td><td class="cell-yes">Yes (2 methods)</td><td class="cell-yes">Yes (BotFather)</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Limited</td></tr>
+            <tr><td>Auto-Forwarder</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Basic</td></tr>
+            <tr><td>Deal Categories</td><td class="cell-exclusive">8 categories</td><td class="cell-partial">3 categories</td><td class="cell-partial">4 categories</td><td class="cell-no">None</td><td class="cell-partial">2 categories</td></tr>
+            <tr><td>Smart Scheduling AI</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>A/B Testing</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>In-Bot Analytics</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>Web Analytics Dashboard</td><td class="cell-yes">Yes</td><td class="cell-partial">Basic on EK site</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td></tr>
+            <tr><td>WhatsApp Support</td><td class="cell-yes">Yes (Phase 2)</td><td class="cell-no">No</td><td class="cell-yes">Yes (1000 in &lt;3s)</td><td class="cell-no">No</td><td class="cell-partial">Manual</td></tr>
+            <tr><td>Price Drop Alerts</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>Deal Quality Scoring</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>Commission Tracker (In-Bot)</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>Chrome Extension</td><td class="cell-yes">Yes (Phase 2)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes</td><td class="cell-no">No</td></tr>
+            <tr><td>Migration Tool</td><td class="cell-exclusive">GrabCash Exclusive</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td>Setup Time</td><td class="cell-exclusive">~2 minutes</td><td class="cell-partial">5-10 min</td><td class="cell-partial">10-15 min</td><td class="cell-partial">5-8 min</td><td class="cell-partial">10-20 min</td></tr>
+            <tr><td>Pricing</td><td class="cell-exclusive">FREE</td><td class="cell-yes">Free</td><td class="cell-partial">Free/Rs.499/Rs.999/mo</td><td class="cell-partial">Free tier limited</td><td class="cell-partial">Rs.299+/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 3: LINK CONVERTER ENGINE -->
+  <!-- ================================================================ -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <h2>GrabCash Link Converter Engine</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Architecture</h3>
+      <p>The Link Converter Engine is the foundational API that powers all GrabCash tools -- the Telegram bot, Chrome extension, WordPress plugin, WhatsApp integration, and developer API all consume this single engine.</p>
+
+      <div class="flow-diagram">
+<span class="node">[Input: Any Product URL]</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[URL Parser + Normalizer]</span> <span class="arrow">----&gt;</span> <span class="label-text">Strip tracking params, resolve redirects</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[Merchant Detector]</span> <span class="arrow">----&gt;</span> <span class="label-text">Domain-to-merchant lookup (Redis cache)</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[GrabOn Affiliate API]</span> <span class="arrow">----&gt;</span> <span class="label-text">Generate affiliate link with admin's sub-ID</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[URL Shortener]</span> <span class="arrow">----&gt;</span> <span class="label-text">grabcash.in/go/[6-char hash]</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[Product Enrichment]</span> <span class="arrow">----&gt;</span> <span class="label-text">Title, price, image, discount (optional)</span>
+        <span class="arrow">|</span>
+        <span class="arrow">v</span>
+<span class="node">[Response]</span> <span class="arrow">----&gt;</span> <span class="label-text">Affiliate URL + metadata</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Supported Merchants (Top 50 by Volume)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Merchant</th>
+              <th>Domain Pattern</th>
+              <th>Commission Rate</th>
+              <th>API Available</th>
+              <th>Cookie Duration</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Amazon India</td><td>amazon.in, amzn.to, amzn.in</td><td style="font-family:'JetBrains Mono';">4-10%</td><td class="cell-yes">PAAPI v5</td><td>24 hrs</td><td>Multi</td></tr>
+            <tr><td>2</td><td>Flipkart</td><td>flipkart.com, fkrt.it, dl.flipkart.com</td><td style="font-family:'JetBrains Mono';">5-12%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Multi</td></tr>
+            <tr><td>3</td><td>Ajio</td><td>ajio.com</td><td style="font-family:'JetBrains Mono';">10-15%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
+            <tr><td>4</td><td>Myntra</td><td>myntra.com</td><td style="font-family:'JetBrains Mono';">7-12%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
+            <tr><td>5</td><td>Nykaa</td><td>nykaa.com</td><td style="font-family:'JetBrains Mono';">9%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Beauty</td></tr>
+            <tr><td>6</td><td>MakeMyTrip</td><td>makemytrip.com</td><td style="font-family:'JetBrains Mono';">3-5%</td><td class="cell-yes">API</td><td>30 days</td><td>Travel</td></tr>
+            <tr><td>7</td><td>Pepperfry</td><td>pepperfry.com</td><td style="font-family:'JetBrains Mono';">5-8%</td><td class="cell-partial">Deeplink</td><td>30 days</td><td>Home</td></tr>
+            <tr><td>8</td><td>Zomato</td><td>zomato.com</td><td style="font-family:'JetBrains Mono';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
+            <tr><td>9</td><td>Swiggy</td><td>swiggy.com</td><td style="font-family:'JetBrains Mono';">3.5%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
+            <tr><td>10</td><td>BigBasket</td><td>bigbasket.com</td><td style="font-family:'JetBrains Mono';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Grocery</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:#888;font-size:12px;margin-top:8px;">Table shows top 10 of 4,000+ supported merchants. Full merchant directory available via /merchants command in bot.</p>
+    </div>
+
+    <div class="card">
+      <h3>Link Format Specification</h3>
+      <div class="spec-box">
+        <div class="spec-key">Short URL Format</div>
+        <div class="spec-val">grabcash.in/go/[6-char alphanumeric hash] -- e.g., grabcash.in/go/a7x9k2</div>
+        <div class="spec-key">Hash Generation</div>
+        <div class="spec-val">Base62 encoding of auto-increment ID, padded to 6 chars. Capacity: 62^6 = 56.8 billion unique URLs.</div>
+        <div class="spec-key">Redirect Method</div>
+        <div class="spec-val">Cloudflare Workers edge redirect (HTTP 301/302). Average latency &lt;50ms globally.</div>
+        <div class="spec-key">Fallback Handling</div>
+        <div class="spec-val">If merchant not in GrabCash network, redirect to GrabOn coupon page for that merchant (still earns coupon-click revenue).</div>
+        <div class="spec-key">Tracking Parameters</div>
+        <div class="spec-val">utm_source=grabcash&utm_medium=affiliate&utm_campaign=[admin_id]&gc_channel=[channel_id]</div>
+        <div class="spec-key">Deep Linking</div>
+        <div class="spec-val">Preserves exact product page destination. App deep links for Amazon, Flipkart, Myntra mobile apps.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Batch Conversion API (for Programmatic Access)</h3>
+      <div class="code-block">
+<span class="comment">// POST /api/v1/convert/batch-urls</span>
+<span class="comment">// Convert up to 100 URLs in a single request</span>
+{
+  <span class="string">"urls"</span>: [
+    <span class="string">"https://www.amazon.in/dp/B0XX1"</span>,
+    <span class="string">"https://www.flipkart.com/product/p/itm123"</span>,
+    <span class="string">"https://www.myntra.com/shoes/nike/12345"</span>,
+    <span class="comment">// ... up to 100 URLs</span>
+  ],
+  <span class="string">"admin_id"</span>: <span class="string">"gc_admin_12345"</span>,
+  <span class="string">"shorten"</span>: <span class="type">true</span>,
+  <span class="string">"enrich"</span>: <span class="type">true</span>   <span class="comment">// include product title, price, image</span>
+}
+
+<span class="comment">// Response:</span>
+{
+  <span class="string">"total"</span>: <span class="num">100</span>,
+  <span class="string">"converted"</span>: <span class="num">97</span>,
+  <span class="string">"failed"</span>: <span class="num">3</span>,
+  <span class="string">"results"</span>: [
+    { <span class="string">"original"</span>: <span class="string">"..."</span>, <span class="string">"affiliate"</span>: <span class="string">"grabcash.in/go/a1b2c3"</span>, <span class="string">"status"</span>: <span class="string">"success"</span> },
+    <span class="comment">// ...</span>
+  ],
+  <span class="string">"processing_time_ms"</span>: <span class="num">1847</span>
+}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Speed Benchmark Targets</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Operation</th>
+              <th>GrabCash Target</th>
+              <th>EK Affiliaters</th>
+              <th>Affiliaters.in</th>
+              <th>CueLinks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single link conversion</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;200ms</td><td>500ms-2s</td><td>&lt;3s (claimed)</td><td>1-3s</td></tr>
+            <tr><td>Batch of 10 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;1s</td><td>5-10s</td><td>&lt;3s (claimed)</td><td>N/A</td></tr>
+            <tr><td>Batch of 50 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;3s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+            <tr><td>Batch of 100 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;5s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+            <tr><td>Short URL redirect</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;50ms</td><td>100-300ms</td><td>100-200ms</td><td>&lt;100ms</td></tr>
+            <tr><td>Product enrichment</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;500ms</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Chrome Extension for One-Click Conversion</h3>
+      <p>The Chrome extension detects product pages on any supported merchant site and provides a floating button for instant link conversion. Detailed spec in Section 8.</p>
+      <h4>Inline Conversion (TG/WA)</h4>
+      <p>In any Telegram chat with the GrabCash bot, or in WhatsApp with the GrabCash number, simply send any product URL. The bot automatically replies with the converted link -- no commands needed. The bot uses URL detection regex and processes asynchronously.</p>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 4: AUTO-FORWARDER SYSTEM -->
+  <!-- ================================================================ -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <h2>Auto-Forwarder System</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Source Channel Architecture</h3>
+      <p>GrabCash operates 9 official Telegram channels (1 master + 8 category channels) that serve as the deal source for the auto-forwarder. These channels are operated by GrabCash's deal curation team and automated deal sourcing engine.</p>
+    </div>
+
+    <div class="card">
+      <h3>Official GrabCash Deal Channels</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Handle</th>
+              <th>Content Focus</th>
+              <th>Daily Posts</th>
+              <th>Source Method</th>
+              <th>Curation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>All Deals (Master)</strong></td><td style="font-family:'JetBrains Mono';">@GrabCashDeals</td><td>Best deals across all categories (Score 80+)</td><td style="font-family:'JetBrains Mono';">30-50</td><td>Automated + curated</td><td>AI scored, human reviewed</td></tr>
+            <tr><td>Fashion</td><td style="font-family:'JetBrains Mono';">@GrabCashFashion</td><td>Ajio, Myntra, H&M, Adidas, Nike, Zara, FabIndia</td><td style="font-family:'JetBrains Mono';">25-40</td><td>API feeds + scraping</td><td>AI scored (threshold 60)</td></tr>
+            <tr><td>Electronics</td><td style="font-family:'JetBrains Mono';">@GrabCashElectronics</td><td>Samsung, boAt, HP, Lenovo, OnePlus, JBL, Apple</td><td style="font-family:'JetBrains Mono';">15-25</td><td>PAAPI + Flipkart API</td><td>AI scored (threshold 65)</td></tr>
+            <tr><td>Travel</td><td style="font-family:'JetBrains Mono';">@GrabCashTravel</td><td>Flights, hotels, holiday packages, train, bus</td><td style="font-family:'JetBrains Mono';">10-15</td><td>API + GrabOn feed</td><td>Curated by travel team</td></tr>
+            <tr><td>Food</td><td style="font-family:'JetBrains Mono';">@GrabCashFood</td><td>Zomato, Swiggy, Dominos, restaurant offers, food delivery</td><td style="font-family:'JetBrains Mono';">20-30</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
+            <tr><td>Beauty</td><td style="font-family:'JetBrains Mono';">@GrabCashBeauty</td><td>Nykaa, Mamaearth, Purplle, Sugar, skincare, makeup</td><td style="font-family:'JetBrains Mono';">15-25</td><td>API + GrabOn feed</td><td>AI scored (threshold 60)</td></tr>
+            <tr><td>Home</td><td style="font-family:'JetBrains Mono';">@GrabCashHome</td><td>Pepperfry, Urban Ladder, Wakefit, furniture, decor</td><td style="font-family:'JetBrains Mono';">10-15</td><td>API + GrabOn feed</td><td>Curated by home team</td></tr>
+            <tr><td>Finance</td><td style="font-family:'JetBrains Mono';">@GrabCashFinance</td><td>CRED, PhonePe, Groww, credit cards, fintech signups</td><td style="font-family:'JetBrains Mono';">5-10</td><td>Manual curation</td><td>Fully curated (high CPA)</td></tr>
+            <tr><td>Grocery</td><td style="font-family:'JetBrains Mono';">@GrabCashGrocery</td><td>BigBasket, Blinkit, JioMart, Amazon Fresh, pantry</td><td style="font-family:'JetBrains Mono';">15-20</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Deal Sourcing Pipeline per Channel</h3>
+      <div class="flow-diagram">
+<span class="label-text">[For each category channel]</span>
+
+<span class="node">[Source 1: Merchant APIs]</span> <span class="arrow">-+</span>
+<span class="node">[Source 2: GrabOn Feed]</span>   <span class="arrow">-+-&gt;</span> <span class="node">[Deal Aggregator]</span>
+<span class="node">[Source 3: Web Scraping]</span>  <span class="arrow">-+</span>        <span class="arrow">|</span>
+<span class="node">[Source 4: Manual Submit]</span> <span class="arrow">-+</span>        <span class="arrow">v</span>
+                                  <span class="node">[Deduplication Engine]</span>
+                                         <span class="arrow">|</span>
+                                         <span class="arrow">v</span>
+                                  <span class="node">[Deal Quality Scorer]</span>
+                                         <span class="arrow">|</span>
+                              <span class="arrow">+-----------+-----------+</span>
+                              <span class="arrow">|</span>           <span class="arrow">|</span>           <span class="arrow">|</span>
+                           <span class="label-text">Score 70+</span>  <span class="label-text">Score 50-69</span>  <span class="label-text">Score &lt;50</span>
+                              <span class="arrow">|</span>           <span class="arrow">|</span>           <span class="arrow">|</span>
+                              <span class="arrow">v</span>           <span class="arrow">v</span>           <span class="arrow">v</span>
+                     <span class="node">[Auto-Publish]</span> <span class="node">[Manual Queue]</span>  <span class="node">[Reject]</span>
+                              <span class="arrow">|</span>           <span class="arrow">|</span>
+                              <span class="arrow">v</span>           <span class="arrow">v</span>
+                     <span class="node">[Category Channel]</span> <span class="node">[Curator Dashboard]</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Admin Subscription Flow</h3>
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">/subscribe</div>
+          <div class="step-desc">Admin sends command to @GrabCashBot</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Pick Categories</div>
+          <div class="step-desc">Inline keyboard with 8 category buttons + "All"</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Set Frequency</div>
+          <div class="step-desc">Low / Normal / High / Max slider</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Pick Channels</div>
+          <div class="step-desc">Select which linked channels receive forwards</div>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-title">Active</div>
+          <div class="step-desc">Deals start flowing immediately</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Deduplication Engine</h3>
+      <p>The deduplication engine prevents the same deal from being posted twice to any admin's channel. It operates at three levels:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Method</th>
+              <th>Window</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>URL-level</td><td>Normalized URL hash comparison</td><td>7 days</td><td>Same product URL (after normalization) not posted again within window</td></tr>
+            <tr><td>Product-level</td><td>Product ID matching (ASIN, SKU, etc.)</td><td>3 days</td><td>Same product from same merchant, even if URL differs</td></tr>
+            <tr><td>Similarity-level</td><td>Title similarity (Jaccard &gt; 0.85) + same price range</td><td>24 hours</td><td>Near-duplicate products (e.g., same product different color listed separately)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Content Templates per Category</h3>
+      <p>Each category has optimized post templates designed for maximum click-through rate. Admins can choose from preset templates or create custom ones.</p>
+      <h4>Standard Template (Fashion)</h4>
+      <div class="code-block">
+<span class="string">[Product Image]</span>
+
+<span class="string">&#x1F525; {brand_name} {product_title}</span>
+<span class="string">&#x1F4B0; Rs.{sale_price} (MRP Rs.{mrp} | {discount}% OFF)</span>
+<span class="string">&#x1F3AF; Your cashback: ~Rs.{estimated_commission}</span>
+
+<span class="string">{deal_quality_badge}</span>
+
+<span class="string">&#x1F6D2; Buy Now: {affiliate_link}</span>
+
+<span class="string">&#x23F0; {expiry_text}</span>
+      </div>
+
+      <h4>Compact Template (for High-Frequency Channels)</h4>
+      <div class="code-block">
+<span class="string">{brand_name} {product_title} @ Rs.{sale_price} ({discount}% OFF)</span>
+<span class="string">{affiliate_link}</span>
+      </div>
+
+      <h4>Detailed Template (for Curated Channels)</h4>
+      <div class="code-block">
+<span class="string">[Product Image]</span>
+
+<span class="string">&#x1F31F; {deal_quality_badge} DEAL ALERT</span>
+
+<span class="string">&#x1F3AF; {brand_name} {product_title}</span>
+
+<span class="string">&#x1F4CA; Price Analysis:</span>
+<span class="string">   Current: Rs.{sale_price}</span>
+<span class="string">   MRP: Rs.{mrp} ({discount}% OFF)</span>
+<span class="string">   All-Time Low: Rs.{atl_price}</span>
+<span class="string">   {atl_badge}</span>
+
+<span class="string">&#x2B50; Rating: {rating}/5 ({review_count} reviews)</span>
+<span class="string">&#x1F4B0; Your cashback: ~Rs.{estimated_commission} ({commission_rate}%)</span>
+
+<span class="string">&#x1F6D2; Buy: {affiliate_link}</span>
+
+<span class="string">&#x23F0; {expiry_text}</span>
+<span class="string">&#x1F4AC; {admin_custom_footer}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 5: DEAL SOURCING ENGINE -->
+  <!-- ================================================================ -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <h2>Deal Sourcing Engine</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>API Integrations</h3>
+    </div>
+
+    <div class="collapsible">
+      <button class="collapsible-toggle" onclick="toggleCollapsible(this)">Amazon Product Advertising API (PAAPI v5) Setup</button>
+      <div class="collapsible-content">
+        <h4>Prerequisites</h4>
+        <ul>
+          <li>Amazon Associates account (approved)</li>
+          <li>PAAPI v5 access credentials (Access Key + Secret Key)</li>
+          <li>Request rate: starts at 1 req/sec, scales to 8,400 req/hr based on revenue</li>
+        </ul>
+        <h4>Key Endpoints Used</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Endpoint</th><th>Purpose</th><th>Rate Limit</th></tr></thead>
+            <tbody>
+              <tr><td>SearchItems</td><td>Search products by keyword, category, price range</td><td>1 req/sec base</td></tr>
+              <tr><td>GetItems</td><td>Get product details by ASIN (price, images, reviews)</td><td>1 req/sec base</td></tr>
+              <tr><td>GetBrowseNodes</td><td>Browse category tree for deal discovery</td><td>1 req/sec base</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Data Extracted per Product</h4>
+        <div class="code-block">
+{
+  <span class="string">"asin"</span>: <span class="string">"B0XXXXXXXXXX"</span>,
+  <span class="string">"title"</span>: <span class="string">"Product Title"</span>,
+  <span class="string">"price"</span>: { <span class="string">"amount"</span>: <span class="num">1499</span>, <span class="string">"currency"</span>: <span class="string">"INR"</span> },
+  <span class="string">"mrp"</span>: { <span class="string">"amount"</span>: <span class="num">3990</span> },
+  <span class="string">"savings"</span>: { <span class="string">"amount"</span>: <span class="num">2491</span>, <span class="string">"percentage"</span>: <span class="num">62</span> },
+  <span class="string">"images"</span>: [<span class="string">"url1"</span>, <span class="string">"url2"</span>],
+  <span class="string">"rating"</span>: <span class="num">4.3</span>,
+  <span class="string">"review_count"</span>: <span class="num">12847</span>,
+  <span class="string">"category"</span>: <span class="string">"Electronics > Headphones"</span>,
+  <span class="string">"brand"</span>: <span class="string">"boAt"</span>,
+  <span class="string">"availability"</span>: <span class="string">"In Stock"</span>,
+  <span class="string">"prime_eligible"</span>: <span class="type">true</span>,
+  <span class="string">"affiliate_url"</span>: <span class="string">"..."</span>
+}
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible">
+      <button class="collapsible-toggle" onclick="toggleCollapsible(this)">Flipkart Affiliate API</button>
+      <div class="collapsible-content">
+        <h4>Integration Details</h4>
+        <div class="spec-box">
+          <div class="spec-key">API Type</div>
+          <div class="spec-val">Flipkart Affiliate Feed API + Product Search API</div>
+          <div class="spec-key">Authentication</div>
+          <div class="spec-val">API Key + Affiliate Tracking ID (fkrt_tracking_id)</div>
+          <div class="spec-key">Rate Limit</div>
+          <div class="spec-val">10 req/sec for feed API; 1 req/sec for product API</div>
+          <div class="spec-key">Feed Format</div>
+          <div class="spec-val">JSON feed updated every 4 hours, contains all active deals</div>
+          <div class="spec-key">Deal Discovery</div>
+          <div class="spec-val">Daily feed ingestion + keyword-based search for trending products</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible">
+      <button class="collapsible-toggle" onclick="toggleCollapsible(this)">GrabOn Internal Coupon Feed API</button>
+      <div class="collapsible-content">
+        <h4>Integration Details</h4>
+        <p>GrabOn's internal API provides the single largest merchant coverage in India -- 4,000+ merchants with active coupons and cashback offers. This is GrabCash's primary competitive advantage.</p>
+        <div class="spec-box">
+          <div class="spec-key">API Type</div>
+          <div class="spec-val">Internal REST API (GrabOn backend to GrabCash backend)</div>
+          <div class="spec-key">Endpoint</div>
+          <div class="spec-val">grabon.in/api/v2/affiliate/deals (internal, IP-whitelisted)</div>
+          <div class="spec-key">Data</div>
+          <div class="spec-val">Active coupons, cashback offers, merchant commissions, deal expiry, categories</div>
+          <div class="spec-key">Update Frequency</div>
+          <div class="spec-val">Real-time webhook on new deal + hourly full sync</div>
+          <div class="spec-key">Volume</div>
+          <div class="spec-val">~50,000 active deals across 4,000+ merchants at any time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible">
+      <button class="collapsible-toggle" onclick="toggleCollapsible(this)">Myntra/Ajio Scraping (with Rate Limiting)</button>
+      <div class="collapsible-content">
+        <h4>Scraping Architecture</h4>
+        <p>Myntra and Ajio do not offer public affiliate APIs. Deal discovery uses respectful web scraping with rate limiting and caching.</p>
+        <div class="spec-box">
+          <div class="spec-key">Method</div>
+          <div class="spec-val">Puppeteer headless browser + Cheerio HTML parsing</div>
+          <div class="spec-key">Rate Limit</div>
+          <div class="spec-val">Max 1 request per 5 seconds per domain (720 requests/hr)</div>
+          <div class="spec-key">Rotation</div>
+          <div class="spec-val">Rotating residential proxies (10 IPs per domain)</div>
+          <div class="spec-key">Targets</div>
+          <div class="spec-val">Sale pages, category bestsellers, new arrivals, price drops</div>
+          <div class="spec-key">Caching</div>
+          <div class="spec-val">Product data cached for 1 hour; price data cached for 15 minutes</div>
+          <div class="spec-key">Legal Note</div>
+          <div class="spec-val">Respects robots.txt, uses reasonable request rates, caches aggressively. Scraping to be replaced by API when available.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Price Monitoring System</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Products Tracked</td><td style="font-family:'JetBrains Mono';">Top 10,000 products (by search volume and conversion rate)</td></tr>
+            <tr><td>Check Frequency</td><td>Every 15 minutes for top 1,000; every 1 hour for top 10,000</td></tr>
+            <tr><td>Price History</td><td>90-day rolling history stored in TimescaleDB</td></tr>
+            <tr><td>Alert Threshold</td><td>Configurable per product; default: notify on &gt;20% drop from 7-day average</td></tr>
+            <tr><td>All-Time Low Detection</td><td>Compare current price against 90-day minimum; badge as "ALL-TIME LOW" if matched</td></tr>
+            <tr><td>Storage</td><td>~500 million price data points per year; compressed via TimescaleDB hypertables</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Deal Scoring Algorithm -- Full Specification</h3>
+      <div class="code-block">
+<span class="keyword">function</span> <span class="func">calculateDealScore</span>(deal) {
+  <span class="keyword">const</span> weights = {
+    discount: <span class="num">0.25</span>,
+    priceVsATL: <span class="num">0.20</span>,
+    brandPopularity: <span class="num">0.15</span>,
+    productRating: <span class="num">0.10</span>,
+    categoryConversion: <span class="num">0.10</span>,
+    expiryUrgency: <span class="num">0.10</span>,
+    commissionRate: <span class="num">0.10</span>
+  };
+
+  <span class="keyword">let</span> score = <span class="num">0</span>;
+
+  <span class="comment">// Discount score: 0% = 0, 50% = 50, 80%+ = 100</span>
+  score += weights.discount * Math.min(deal.discountPercent / <span class="num">0.8</span>, <span class="num">1</span>) * <span class="num">100</span>;
+
+  <span class="comment">// Price vs ATL: at ATL = 100, 20% above ATL = 50, 50%+ above = 0</span>
+  <span class="keyword">const</span> atlRatio = (deal.currentPrice - deal.allTimeLow) / deal.allTimeLow;
+  score += weights.priceVsATL * Math.max(<span class="num">0</span>, (<span class="num">1</span> - atlRatio * <span class="num">2</span>)) * <span class="num">100</span>;
+
+  <span class="comment">// Brand popularity: S=100, A=75, B=50, C=25</span>
+  <span class="keyword">const</span> brandScores = { S: <span class="num">100</span>, A: <span class="num">75</span>, B: <span class="num">50</span>, C: <span class="num">25</span> };
+  score += weights.brandPopularity * (brandScores[deal.brandTier] || <span class="num">25</span>);
+
+  <span class="comment">// Product rating: 5.0=100, 4.0=75, 3.0=50, below 3.0=0</span>
+  score += weights.productRating * Math.max(<span class="num">0</span>, (deal.rating - <span class="num">3</span>) / <span class="num">2</span>) * <span class="num">100</span>;
+
+  <span class="comment">// Category conversion rate: normalized to 0-100</span>
+  score += weights.categoryConversion * (deal.categoryConversionRate / <span class="num">0.15</span>) * <span class="num">100</span>;
+
+  <span class="comment">// Expiry urgency: &lt;4hrs=100, &lt;24hrs=70, &gt;7days=20</span>
+  <span class="keyword">const</span> hoursRemaining = deal.hoursUntilExpiry;
+  <span class="keyword">let</span> urgencyScore = hoursRemaining &lt; <span class="num">4</span> ? <span class="num">100</span> : hoursRemaining &lt; <span class="num">24</span> ? <span class="num">70</span> : hoursRemaining &lt; <span class="num">168</span> ? <span class="num">40</span> : <span class="num">20</span>;
+  score += weights.expiryUrgency * urgencyScore;
+
+  <span class="comment">// Commission rate: normalized (20% = 100)</span>
+  score += weights.commissionRate * Math.min(deal.commissionRate / <span class="num">0.20</span>, <span class="num">1</span>) * <span class="num">100</span>;
+
+  <span class="keyword">return</span> Math.round(score);
+}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Flash Sale Monitor</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Sale Type</th>
+              <th>Platform</th>
+              <th>Detection Method</th>
+              <th>Response Time</th>
+              <th>Frequency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Lightning Deals</td><td>Amazon</td><td>PAAPI deal search + landing page scraping</td><td>&lt;2 min from deal going live</td><td>Checked every 5 min</td></tr>
+            <tr><td>Flash Sales</td><td>Flipkart</td><td>Feed API + sale page monitoring</td><td>&lt;5 min</td><td>Checked every 10 min</td></tr>
+            <tr><td>End of Reason Sale</td><td>Myntra</td><td>Sale page scraping + social media monitoring</td><td>&lt;15 min</td><td>During sale periods: every 5 min</td></tr>
+            <tr><td>All Stars Sale</td><td>Ajio</td><td>Sale page scraping</td><td>&lt;15 min</td><td>During sale periods: every 5 min</td></tr>
+            <tr><td>Hot Pink Sale</td><td>Nykaa</td><td>Sale page scraping + newsletter parsing</td><td>&lt;30 min</td><td>During sale periods: every 10 min</td></tr>
+            <tr><td>Big Saving Days</td><td>Flipkart</td><td>Pre-announced; scheduled monitoring</td><td>&lt;1 min (pre-scheduled)</td><td>Pre-loaded schedule</td></tr>
+            <tr><td>Great Indian Festival</td><td>Amazon</td><td>Pre-announced; scheduled monitoring</td><td>&lt;1 min (pre-scheduled)</td><td>Pre-loaded schedule</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Deal Source Coverage Matrix</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Source Method</th>
+              <th># Merchants</th>
+              <th>Data Quality</th>
+              <th>Update Speed</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>GrabOn Internal Feed</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">4,000+</td><td>High (curated)</td><td>Real-time</td><td>Free (internal)</td></tr>
+            <tr><td>Amazon PAAPI</td><td style="font-family:'JetBrains Mono';">1 (Amazon)</td><td>Highest (official)</td><td>Real-time</td><td>Free (revenue-gated)</td></tr>
+            <tr><td>Flipkart Affiliate API</td><td style="font-family:'JetBrains Mono';">1 (Flipkart)</td><td>High (official)</td><td>4-hour feed cycle</td><td>Free</td></tr>
+            <tr><td>Web Scraping</td><td style="font-family:'JetBrains Mono';">50-100</td><td>Medium (parsed)</td><td>15 min - 1 hr</td><td>Proxy costs ~$50/mo</td></tr>
+            <tr><td>Affiliate Network APIs</td><td style="font-family:'JetBrains Mono';">500+</td><td>Medium-High</td><td>Hourly</td><td>Free</td></tr>
+            <tr><td>Manual Curation</td><td style="font-family:'JetBrains Mono';">Unlimited</td><td>Highest (human)</td><td>Manual</td><td>Team salary</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 6: ANALYTICS & INTELLIGENCE PLATFORM -->
+  <!-- ================================================================ -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <h2>Analytics &amp; Intelligence Platform</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Admin Dashboard -- Web + In-Bot</h3>
+      <p>The analytics platform is a key differentiator. No competitor offers in-bot analytics or a dedicated web dashboard for Telegram deal channel admins. This converts GrabCash from a "tool" to a "business intelligence platform."</p>
+    </div>
+
+    <div class="card">
+      <h3>Dashboard Metrics -- Complete List</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric Category</th>
+              <th>Metric Name</th>
+              <th>Data Source</th>
+              <th>Update Freq</th>
+              <th>Visualization</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Revenue</strong></td><td>Daily Revenue</td><td>Commission API callback</td><td>Real-time</td><td>Line chart + KPI card</td></tr>
+            <tr><td>Weekly Revenue</td><td>Aggregated from daily</td><td>Daily</td><td>Bar chart</td></tr>
+            <tr><td>Monthly Revenue</td><td>Aggregated from daily</td><td>Daily</td><td>Bar chart + trend line</td></tr>
+            <tr><td>Lifetime Revenue</td><td>Running total</td><td>Real-time</td><td>Large KPI card</td></tr>
+            <tr><td rowspan="3"><strong>Clicks</strong></td><td>Total Clicks</td><td>Short URL redirect logs</td><td>Real-time</td><td>KPI card + sparkline</td></tr>
+            <tr><td>Clicks per Deal</td><td>Per-link tracking</td><td>Real-time</td><td>Sortable table column</td></tr>
+            <tr><td>Clicks by Hour</td><td>Hourly aggregation</td><td>Hourly</td><td>Heatmap (24h x 7d)</td></tr>
+            <tr><td rowspan="3"><strong>Conversions</strong></td><td>Total Conversions</td><td>Merchant postback</td><td>15-min delay</td><td>KPI card</td></tr>
+            <tr><td>Conversion Rate</td><td>Conversions / Clicks</td><td>Calculated</td><td>Gauge chart</td></tr>
+            <tr><td>AOV (Avg Order Value)</td><td>Revenue / Conversions</td><td>Calculated</td><td>KPI card</td></tr>
+            <tr><td rowspan="3"><strong>Channels</strong></td><td>Per-Channel Revenue</td><td>Channel-tagged tracking</td><td>Real-time</td><td>Horizontal bar chart</td></tr>
+            <tr><td>Channel Growth</td><td>Subscriber API polling</td><td>Daily</td><td>Line chart</td></tr>
+            <tr><td>Channel Engagement (CTR)</td><td>Clicks / Subscribers</td><td>Calculated</td><td>Percentage + trend</td></tr>
+            <tr><td rowspan="2"><strong>Categories</strong></td><td>Revenue by Category</td><td>Deal category tags</td><td>Real-time</td><td>Donut chart</td></tr>
+            <tr><td>Top Category Trend</td><td>7-day rolling category performance</td><td>Daily</td><td>Stacked area chart</td></tr>
+            <tr><td rowspan="2"><strong>Deals</strong></td><td>Top 10 Deals</td><td>Per-deal tracking</td><td>Real-time</td><td>Sortable table</td></tr>
+            <tr><td>Deal Performance Score</td><td>Composite metric</td><td>Calculated</td><td>Score badge per deal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Admin Leaderboard &amp; Gamification</h3>
+      <h4>Tier System</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Monthly Revenue</th>
+              <th>Badge</th>
+              <th>Perks</th>
+              <th>Commission Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Bronze</td><td style="font-family:'JetBrains Mono';">Rs.0 - 999</td><td><span class="tag tag-white">BRONZE</span></td><td>Basic dashboard, standard support</td><td style="font-family:'JetBrains Mono';">+0%</td></tr>
+            <tr><td>Silver</td><td style="font-family:'JetBrains Mono';">Rs.1,000 - 4,999</td><td><span class="tag tag-blue">SILVER</span></td><td>Priority support, early deal access (15 min)</td><td style="font-family:'JetBrains Mono';">+0.5%</td></tr>
+            <tr><td>Gold</td><td style="font-family:'JetBrains Mono';">Rs.5,000 - 19,999</td><td><span class="tag tag-yellow">GOLD</span></td><td>Dedicated account manager, custom templates</td><td style="font-family:'JetBrains Mono';">+1%</td></tr>
+            <tr><td>Platinum</td><td style="font-family:'JetBrains Mono';">Rs.20,000 - 99,999</td><td><span class="tag tag-purple">PLATINUM</span></td><td>Exclusive merchant deals, beta features, weekly call</td><td style="font-family:'JetBrains Mono';">+1.5%</td></tr>
+            <tr><td>Diamond</td><td style="font-family:'JetBrains Mono';">Rs.1,00,000+</td><td><span class="tag tag-green">DIAMOND</span></td><td>Custom commission negotiation, co-branded events, annual retreat</td><td style="font-family:'JetBrains Mono';">+2%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Achievement Badges</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Badge</th><th>Condition</th><th>Reward</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>First Blood</td><td>First conversion ever</td><td>Rs.50 bonus</td></tr>
+            <tr><td>Century</td><td>100 conversions in a single day</td><td>Rs.200 bonus</td></tr>
+            <tr><td>Merchant Explorer</td><td>Earn from 50 different merchants</td><td>+0.5% bonus for 30 days</td></tr>
+            <tr><td>Category King</td><td>Top earner in any category for a week</td><td>Featured in leaderboard</td></tr>
+            <tr><td>Growth Hacker</td><td>Grow channel by 1,000 subscribers in a month</td><td>Priority deal access</td></tr>
+            <tr><td>Flash Master</td><td>Share 10 flash deals within 5 min of going live</td><td>Exclusive flash deal alerts</td></tr>
+            <tr><td>Streak</td><td>Active for 30 consecutive days</td><td>Rs.500 bonus</td></tr>
+            <tr><td>Referral Champion</td><td>Refer 10 new admins who earn Rs.1,000+</td><td>Rs.2,000 bonus</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>GrabCash Internal Analytics (Platform-Level)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Metric</th><th>Description</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Admin Recruitment Funnel</td><td>Bot starts -> Onboarding completed -> Channel linked -> First conversion -> Active 30d</td><td>Identify drop-off points, optimize onboarding</td></tr>
+            <tr><td>Platform GMV</td><td>Total gross merchandise value driven by all GrabCash admins</td><td>Business health metric</td></tr>
+            <tr><td>Merchant Performance</td><td>Revenue per merchant, conversion rates, popular merchants</td><td>Negotiate better commission rates</td></tr>
+            <tr><td>Commission Cost Ratio</td><td>Total commissions paid to admins / Total affiliate revenue</td><td>Profitability monitoring</td></tr>
+            <tr><td>ROI per Admin</td><td>Revenue generated by admin - (Commission paid + support cost)</td><td>Identify high-value vs low-value admins</td></tr>
+            <tr><td>Admin Churn</td><td>% admins inactive for 30+ days</td><td>Retention alerting</td></tr>
+            <tr><td>Tool Usage</td><td>Which bot features used most, feature adoption rates</td><td>Product prioritization</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 7: WHATSAPP INTEGRATION -->
+  <!-- ================================================================ -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <h2>WhatsApp Integration</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>WhatsApp Business API Requirements</h3>
+      <div class="spec-box">
+        <div class="spec-key">API Provider</div>
+        <div class="spec-val">Meta WhatsApp Business Platform (direct) or BSP (Gupshup, Twilio, Wati)</div>
+        <div class="spec-key">Business Verification</div>
+        <div class="spec-val">Meta Business verification required (2-7 days approval)</div>
+        <div class="spec-key">Phone Number</div>
+        <div class="spec-val">Dedicated business number (+91-XXXX-XXXXXX) for GrabCash</div>
+        <div class="spec-key">Message Templates</div>
+        <div class="spec-val">Pre-approved templates for deal notifications, commission alerts, weekly summaries</div>
+        <div class="spec-key">Session Messages</div>
+        <div class="spec-val">Free-form messages within 24hr window after admin's last message</div>
+        <div class="spec-key">Pricing</div>
+        <div class="spec-val">Marketing messages: ~Rs.0.80/msg; Utility messages: ~Rs.0.30/msg; Service: free in 24hr window</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>WhatsApp Features</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Method</th>
+              <th>WA ToS Compliance</th>
+              <th>Limitations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Link Conversion (1:1)</td><td>User sends product URL to GrabCash WA number, gets affiliate link back</td><td class="cell-yes">Compliant (business service)</td><td>None</td></tr>
+            <tr><td>Deal Alerts (Broadcast)</td><td>WhatsApp Business broadcast lists (256 contacts per list)</td><td class="cell-yes">Compliant (opt-in required)</td><td>Max 256 per list, need multiple lists</td></tr>
+            <tr><td>Group Posting</td><td>Admin adds GrabCash number to their WA group; bot posts deals when mentioned</td><td class="cell-partial">Gray area (bot in groups)</td><td>Requires admin to add number; limited formatting</td></tr>
+            <tr><td>WA Channel (Broadcast)</td><td>Official WA Channels feature (one-to-many)</td><td class="cell-yes">Compliant</td><td>New feature, limited reach initially</td></tr>
+            <tr><td>Bulk Group Posting</td><td>Via web.whatsapp automation (Puppeteer) -- admin's own session</td><td class="cell-no">Risky (ToS violation risk)</td><td>Account ban risk, unstable, user consent required</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-warning">
+      <h3>Compliance and Risk Mitigation</h3>
+      <ul>
+        <li><strong>Official API Only for GrabCash-operated features:</strong> All features operated by GrabCash (deal alerts, link conversion, broadcasts) use the official WhatsApp Business API only.</li>
+        <li><strong>web.whatsapp automation is admin's choice:</strong> If an admin wants to auto-post to their own WA groups, GrabCash provides the tool but the admin uses their own WhatsApp session. GrabCash displays clear ToS warning and risk disclosure.</li>
+        <li><strong>Rate limiting:</strong> All WA posting is rate-limited to 1 message per group per 30 minutes to avoid spam detection.</li>
+        <li><strong>Opt-in only:</strong> All broadcast recipients must explicitly opt in. GrabCash never sends unsolicited messages.</li>
+        <li><strong>Content guidelines:</strong> Deal posts formatted to be genuinely useful (not spammy), with clear merchant attribution and pricing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 8: CHROME EXTENSION -->
+  <!-- ================================================================ -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <h2>Chrome Extension</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Extension Features</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Description</th><th>Trigger</th><th>UI Element</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Link Detection</td><td>Detects when user is on a supported merchant product page (4,000+ merchants)</td><td>Page load on supported domain</td><td>Green floating badge appears in bottom-right</td></tr>
+            <tr><td>One-Click Conversion</td><td>Click the badge to instantly convert current page URL to GrabCash affiliate link</td><td>Click on floating badge</td><td>Popup with affiliate link + copy button</td></tr>
+            <tr><td>Auto-Apply Coupon</td><td>Scans GrabOn database for best available coupon for current merchant/product</td><td>Automatic on supported pages</td><td>Banner at top of page showing available coupon</td></tr>
+            <tr><td>Price Comparison</td><td>Shows same/similar product prices across Amazon, Flipkart, Myntra (where applicable)</td><td>Product page detection</td><td>Side panel with comparison table</td></tr>
+            <tr><td>Quick Share</td><td>One-click share converted link to Telegram channel or WhatsApp</td><td>Click share button in popup</td><td>Share modal with channel selector</td></tr>
+            <tr><td>Commission Preview</td><td>Shows estimated commission for current product before sharing</td><td>Automatic on product pages</td><td>Commission amount in floating badge</td></tr>
+            <tr><td>Price History Chart</td><td>Shows price trend for current product (90-day history)</td><td>Click "Price History" in popup</td><td>Mini chart in extension popup</td></tr>
+            <tr><td>Bulk Page Converter</td><td>Convert all product links on a page (e.g., a deal roundup blog post)</td><td>Right-click context menu</td><td>Count of links found + batch convert button</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Extension Architecture</h3>
+      <div class="spec-box">
+        <div class="spec-key">Manifest</div>
+        <div class="spec-val">Chrome Extension Manifest V3</div>
+        <div class="spec-key">Content Script</div>
+        <div class="spec-val">Injected on supported merchant domains; detects product pages, shows floating badge</div>
+        <div class="spec-key">Service Worker</div>
+        <div class="spec-val">Background script handles API calls to GrabCash link converter, caching, auth</div>
+        <div class="spec-key">Popup</div>
+        <div class="spec-val">React-based popup UI for link display, settings, share, analytics mini-view</div>
+        <div class="spec-key">Storage</div>
+        <div class="spec-val">chrome.storage.local for admin credentials, conversion cache, settings</div>
+        <div class="spec-key">Permissions</div>
+        <div class="spec-val">activeTab, storage, notifications, contextMenus</div>
+        <div class="spec-key">Size</div>
+        <div class="spec-val">Target: &lt;500KB packed extension size</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 9: WORDPRESS PLUGIN -->
+  <!-- ================================================================ -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <h2>WordPress Plugin</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Plugin Overview -- CueLinks Parity</h3>
+      <p>CueLinks' biggest moat is their WordPress plugin that auto-monetizes all outbound links on blog posts. The GrabCash WordPress plugin matches this functionality and adds GrabOn coupon integration as a unique differentiator.</p>
+    </div>
+
+    <div class="card">
+      <h3>Feature Specification</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Description</th><th>CueLinks Parity</th><th>GrabCash Exclusive</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Auto-Monetize Links</td><td>Automatically converts all outbound product links in blog posts to GrabCash affiliate links</td><td class="cell-yes">Yes (parity)</td><td></td></tr>
+            <tr><td>Smart Link Insertion</td><td>Detects product mentions in text and adds affiliate links where none exist</td><td class="cell-partial">Partial</td><td class="cell-yes">AI-powered detection</td></tr>
+            <tr><td>Revenue Dashboard Widget</td><td>WordPress admin widget showing earnings, clicks, top posts</td><td class="cell-yes">Yes (parity)</td><td></td></tr>
+            <tr><td>Per-Post Analytics</td><td>See which blog posts generate most affiliate revenue</td><td class="cell-yes">Yes (parity)</td><td></td></tr>
+            <tr><td>GrabOn Coupon Widget</td><td>Sidebar widget showing relevant coupons for merchants mentioned in post</td><td class="cell-no">Not available</td><td class="cell-yes">4,000+ merchant coupons</td></tr>
+            <tr><td>Price Comparison Table</td><td>Shortcode to insert price comparison tables (auto-updated prices)</td><td class="cell-no">Not available</td><td class="cell-yes">Real-time prices</td></tr>
+            <tr><td>Deal Widget</td><td>Sidebar/footer widget showing trending deals in admin's chosen categories</td><td class="cell-no">Not available</td><td class="cell-yes">Auto-updated from deal engine</td></tr>
+            <tr><td>Link Cloaking</td><td>Option to cloak affiliate links as yoursite.com/go/product-name</td><td class="cell-yes">Yes (parity)</td><td></td></tr>
+            <tr><td>Nofollow Control</td><td>Auto-add rel="nofollow sponsored" to affiliate links (SEO best practice)</td><td class="cell-yes">Yes (parity)</td><td></td></tr>
+            <tr><td>WooCommerce Integration</td><td>For WooCommerce shops: auto-add cashback offers on product pages</td><td class="cell-no">Not available</td><td class="cell-yes">WooCommerce hook</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Plugin Technical Spec</h3>
+      <div class="spec-box">
+        <div class="spec-key">WordPress Version</div>
+        <div class="spec-val">5.0+ (Gutenberg compatible)</div>
+        <div class="spec-key">PHP Version</div>
+        <div class="spec-val">7.4+ (8.0+ recommended)</div>
+        <div class="spec-key">Hooks Used</div>
+        <div class="spec-val">the_content filter (link conversion), wp_footer (widget injection), admin_menu (settings page)</div>
+        <div class="spec-key">API Calls</div>
+        <div class="spec-val">Server-side calls to GrabCash Link Converter API, cached for 1 hour per link</div>
+        <div class="spec-key">Performance</div>
+        <div class="spec-val">Zero frontend performance impact (all conversion done server-side, cached)</div>
+        <div class="spec-key">Plugin Size</div>
+        <div class="spec-val">&lt;2MB including all assets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 10: DEVELOPER API & SDKs -->
+  <!-- ================================================================ -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <h2>Developer API &amp; SDKs</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>REST API -- Link Conversion</h3>
+      <div class="spec-box">
+        <div class="spec-key">Base URL</div>
+        <div class="spec-val">https://api.grabcash.in/v1</div>
+        <div class="spec-key">Authentication</div>
+        <div class="spec-val">Bearer token (API key per developer account)</div>
+        <div class="spec-key">Format</div>
+        <div class="spec-val">JSON request/response</div>
+        <div class="spec-key">Rate Limits</div>
+        <div class="spec-val">Free: 100 req/day; Starter: 5,000 req/day; Pro: 50,000 req/day; Enterprise: custom</div>
+        <div class="spec-key">Documentation</div>
+        <div class="spec-val">OpenAPI 3.0 spec at docs.grabcash.in, interactive Swagger UI</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>API Endpoints</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Method</th><th>Endpoint</th><th>Description</th><th>Rate Limit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert</td><td>Convert a single URL to affiliate link</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert/batch</td><td>Convert text with multiple URLs</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert/batch-urls</td><td>Convert array of URLs</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/merchants</td><td>List all supported merchants</td><td>10/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/merchants/{id}</td><td>Get merchant details and commission rates</td><td>30/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/stats</td><td>Get click/conversion stats for your links</td><td>10/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/stats/links/{hash}</td><td>Get stats for a specific short link</td><td>30/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/deals</td><td>Get trending deals (paginated)</td><td>10/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/deals/categories</td><td>Get deals by category</td><td>10/min</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/price-history/{product_id}</td><td>Get 90-day price history</td><td>10/min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Webhook Notifications</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Event</th><th>Payload</th><th>Use Case</th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:'JetBrains Mono';">click.recorded</td><td>Link hash, referrer, timestamp, device, geo</td><td>Real-time click tracking</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">conversion.pending</td><td>Order ID, amount, commission, merchant, product</td><td>Instant conversion notification</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">conversion.confirmed</td><td>Same as pending + confirmed commission amount</td><td>Revenue confirmation</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">conversion.rejected</td><td>Order ID, rejection reason</td><td>Fraud detection, debugging</td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">payout.processed</td><td>Amount, bank/UPI reference, transaction ID</td><td>Payout confirmation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>SDK Examples</h3>
+      <h4>Python SDK</h4>
+      <div class="code-block">
+<span class="keyword">from</span> <span class="type">grabcash</span> <span class="keyword">import</span> GrabCashClient
+
+client = GrabCashClient(api_key=<span class="string">"gc_api_XXXXXXXXXXXXXXXX"</span>)
+
+<span class="comment"># Single link conversion</span>
+result = client.convert(<span class="string">"https://www.amazon.in/dp/B0XXXXXXXXXX"</span>)
+<span class="func">print</span>(result.affiliate_url)   <span class="comment"># grabcash.in/go/a7x9k2</span>
+<span class="func">print</span>(result.commission_rate)  <span class="comment"># 8.5</span>
+
+<span class="comment"># Batch conversion</span>
+results = client.convert_batch([
+    <span class="string">"https://www.amazon.in/dp/B0XX1"</span>,
+    <span class="string">"https://www.flipkart.com/product/p/itm123"</span>,
+    <span class="string">"https://www.myntra.com/shoes/nike/12345"</span>
+])
+<span class="keyword">for</span> r <span class="keyword">in</span> results:
+    <span class="func">print</span>(f<span class="string">"{r.merchant}: {r.affiliate_url}"</span>)
+
+<span class="comment"># Get deals</span>
+deals = client.deals.list(category=<span class="string">"fashion"</span>, min_score=<span class="num">70</span>, limit=<span class="num">20</span>)
+      </div>
+
+      <h4>Node.js SDK</h4>
+      <div class="code-block">
+<span class="keyword">const</span> { GrabCashClient } = <span class="func">require</span>(<span class="string">'@grabcash/sdk'</span>);
+
+<span class="keyword">const</span> client = <span class="keyword">new</span> GrabCashClient({ apiKey: <span class="string">'gc_api_XXXXXXXXXXXXXXXX'</span> });
+
+<span class="comment">// Single link conversion</span>
+<span class="keyword">const</span> result = <span class="keyword">await</span> client.convert(<span class="string">'https://www.amazon.in/dp/B0XXXXXXXXXX'</span>);
+console.<span class="func">log</span>(result.affiliateUrl);   <span class="comment">// grabcash.in/go/a7x9k2</span>
+
+<span class="comment">// Batch text conversion (Magic Tool equivalent)</span>
+<span class="keyword">const</span> converted = <span class="keyword">await</span> client.convertText({
+  text: <span class="string">'Check these deals: https://amzn.to/xyz and https://fkrt.it/abc'</span>,
+  preserveFormatting: <span class="type">true</span>
+});
+console.<span class="func">log</span>(converted.text);  <span class="comment">// All links replaced with affiliate links</span>
+
+<span class="comment">// Webhook listener</span>
+client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) => {
+  console.<span class="func">log</span>(<span class="string">`Commission earned: Rs.${event.commission}`</span>);
+});
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>API Pricing Tiers</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Plan</th><th>Price/Month</th><th>Requests/Day</th><th>Webhooks</th><th>Support</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Free</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">Rs. 0</td><td style="font-family:'JetBrains Mono';">100</td><td class="cell-no">No</td><td>Community</td></tr>
+            <tr><td>Starter</td><td style="font-family:'JetBrains Mono';">Rs. 499</td><td style="font-family:'JetBrains Mono';">5,000</td><td class="cell-yes">Yes</td><td>Email</td></tr>
+            <tr><td>Pro</td><td style="font-family:'JetBrains Mono';">Rs. 1,999</td><td style="font-family:'JetBrains Mono';">50,000</td><td class="cell-yes">Yes + priority</td><td>Priority email + chat</td></tr>
+            <tr><td>Enterprise</td><td style="font-family:'JetBrains Mono';">Custom</td><td style="font-family:'JetBrains Mono';">Unlimited</td><td class="cell-yes">Yes + custom</td><td>Dedicated account manager</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 11: ANTI-FRAUD & QUALITY CONTROL -->
+  <!-- ================================================================ -->
+  <div class="section" id="s11">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <h2>Anti-Fraud &amp; Quality Control</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Fraud Detection Layers</h3>
+      <p>Anti-fraud is critical for maintaining merchant trust and GrabCash's reputation. The system operates as a multi-layered defense that catches fraud at the click, conversion, and payout stages.</p>
+    </div>
+
+    <div class="card">
+      <h3>Fraud Type Detection Matrix</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Fraud Type</th><th>Detection Method</th><th>Signal</th><th>Action</th><th>False Positive Rate</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fake Clicks</strong></td>
+              <td>IP fingerprinting + click velocity analysis</td>
+              <td>&gt;5 clicks from same IP/fingerprint in 1 hour on same link</td>
+              <td>Flag clicks as bot; exclude from metrics; warn admin</td>
+              <td style="font-family:'JetBrains Mono';">&lt;2%</td>
+            </tr>
+            <tr>
+              <td><strong>Self-Purchase</strong></td>
+              <td>IP matching between admin's registered IPs and purchaser IP</td>
+              <td>Conversion from IP matching admin's known IPs/devices</td>
+              <td>Flag conversion; manual review; deduct commission if confirmed</td>
+              <td style="font-family:'JetBrains Mono';">&lt;5%</td>
+            </tr>
+            <tr>
+              <td><strong>Cookie Stuffing</strong></td>
+              <td>Click-to-conversion time analysis + referrer chain inspection</td>
+              <td>Conversion with no genuine click, or click from hidden iframe</td>
+              <td>Reject conversion; flag admin account</td>
+              <td style="font-family:'JetBrains Mono';">&lt;1%</td>
+            </tr>
+            <tr>
+              <td><strong>Bot Traffic</strong></td>
+              <td>User-agent analysis + JavaScript challenge + behavioral patterns</td>
+              <td>Non-browser user agent, no JS execution, inhuman click patterns</td>
+              <td>Block traffic; exclude from metrics</td>
+              <td style="font-family:'JetBrains Mono';">&lt;3%</td>
+            </tr>
+            <tr>
+              <td><strong>Click Farms</strong></td>
+              <td>Geographic clustering + device fingerprint diversity analysis</td>
+              <td>Many clicks from same geo/ASN with similar fingerprints</td>
+              <td>Quarantine clicks; investigate admin; suspend if confirmed</td>
+              <td style="font-family:'JetBrains Mono';">&lt;5%</td>
+            </tr>
+            <tr>
+              <td><strong>Return Fraud</strong></td>
+              <td>Post-purchase monitoring (merchant callback for returns)</td>
+              <td>&gt;30% return rate on admin's conversions</td>
+              <td>Warning at 30%, account review at 50%, suspension at 70%</td>
+              <td style="font-family:'JetBrains Mono';">&lt;1%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Admin Quality Score</h3>
+      <div class="spec-box">
+        <div class="spec-key">Score Range</div>
+        <div class="spec-val">0-100 (calculated weekly)</div>
+        <div class="spec-key">Inputs</div>
+        <div class="spec-val">Fraud flags (negative), conversion rate (positive), return rate (negative), channel quality (positive), tenure (positive)</div>
+        <div class="spec-key">Score 90-100</div>
+        <div class="spec-val">Trusted admin -- all features unlocked, priority payouts (same-day)</div>
+        <div class="spec-key">Score 70-89</div>
+        <div class="spec-val">Good admin -- standard features, normal payout cycle (weekly)</div>
+        <div class="spec-key">Score 50-69</div>
+        <div class="spec-val">Watch list -- enhanced monitoring, delayed payouts (bi-weekly)</div>
+        <div class="spec-key">Score below 50</div>
+        <div class="spec-val">Restricted -- manual review for all conversions, payouts held pending review</div>
+        <div class="spec-key">Score 0</div>
+        <div class="spec-val">Suspended -- account frozen, all pending commissions under review</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Merchant Protection Guarantees</h3>
+      <ul>
+        <li><strong>Click Quality Guarantee:</strong> GrabCash guarantees &lt;5% invalid click rate across all admin traffic. If exceeded, affected clicks are excluded from billing.</li>
+        <li><strong>Return Rate Monitoring:</strong> Admins with abnormally high return rates are flagged and investigated.</li>
+        <li><strong>Brand Safety:</strong> Content posted by admins is periodically audited. Misleading claims, fake scarcity, or deceptive urgency results in warnings and eventual suspension.</li>
+        <li><strong>Cookie Compliance:</strong> All affiliate cookies set via GrabCash are first-party, compliant with India's upcoming data protection regulations.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 12: INFRASTRUCTURE & SECURITY -->
+  <!-- ================================================================ -->
+  <div class="section" id="s12">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <h2>Infrastructure &amp; Security</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Cloud Architecture</h3>
+      <div class="flow-diagram">
+<span class="label-text">GrabCash Infrastructure (AWS ap-south-1, Mumbai)</span>
+
+<span class="node">[Cloudflare CDN]</span> <span class="arrow">----&gt;</span> <span class="node">[AWS ALB]</span> <span class="arrow">----&gt;</span> <span class="node">[ECS Fargate Cluster]</span>
+      <span class="arrow">|</span>                     <span class="arrow">|</span>                     <span class="arrow">|</span>
+      <span class="arrow">v</span>                     <span class="arrow">v</span>           <span class="arrow">+---------+---------+</span>
+<span class="node">[Edge Workers]</span>    <span class="node">[WAF Rules]</span>   <span class="arrow">|</span>         <span class="arrow">|</span>         <span class="arrow">|</span>
+  <span class="label-text">(URL redirects)</span>                <span class="arrow">v</span>         <span class="arrow">v</span>         <span class="arrow">v</span>
+                         <span class="node">[Bot Svc]</span> <span class="node">[API Svc]</span> <span class="node">[Worker Svc]</span>
+                              <span class="arrow">|</span>         <span class="arrow">|</span>         <span class="arrow">|</span>
+                    <span class="arrow">+---------+---------+---------+</span>
+                    <span class="arrow">|</span>                   <span class="arrow">|</span>
+                    <span class="arrow">v</span>                   <span class="arrow">v</span>
+          <span class="node">[RDS PostgreSQL]</span>     <span class="node">[ElastiCache Redis]</span>
+          <span class="label-text">(Multi-AZ, encrypted)</span>  <span class="label-text">(Cluster mode, 3 nodes)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Infrastructure Specifications</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Service</th><th>Config</th><th>Cost/Month</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Compute (Bot + API)</td><td>AWS ECS Fargate</td><td>2-20 tasks, 2 vCPU / 4GB each, auto-scaling</td><td style="font-family:'JetBrains Mono';">$200-800</td></tr>
+            <tr><td>Database</td><td>AWS RDS PostgreSQL 16</td><td>db.r6g.large, Multi-AZ, 500GB SSD, encrypted</td><td style="font-family:'JetBrains Mono';">$400</td></tr>
+            <tr><td>Cache/Queue</td><td>AWS ElastiCache Redis 7</td><td>cache.r6g.large, 3-node cluster, encrypted</td><td style="font-family:'JetBrains Mono';">$300</td></tr>
+            <tr><td>CDN + Edge</td><td>Cloudflare Pro + Workers</td><td>Unlimited requests, Workers for URL redirects</td><td style="font-family:'JetBrains Mono';">$25 + usage</td></tr>
+            <tr><td>Object Storage</td><td>AWS S3</td><td>Product images, backups, logs</td><td style="font-family:'JetBrains Mono';">$50</td></tr>
+            <tr><td>Monitoring</td><td>Prometheus + Grafana + PagerDuty</td><td>Self-hosted Prometheus, Grafana Cloud Free, PagerDuty Pro</td><td style="font-family:'JetBrains Mono';">$50</td></tr>
+            <tr><td>Logging</td><td>AWS CloudWatch + Datadog</td><td>Structured logs, 30-day retention</td><td style="font-family:'JetBrains Mono';">$100</td></tr>
+            <tr><td>CI/CD</td><td>GitHub Actions</td><td>Auto-deploy on merge to main</td><td style="font-family:'JetBrains Mono';">$20</td></tr>
+            <tr style="background:rgba(13,207,26,0.06);">
+              <td><strong>TOTAL</strong></td>
+              <td></td>
+              <td></td>
+              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>$1,150 - $1,750/mo</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Security Measures</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Measure</th><th>Implementation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Data at Rest</td><td>AES-256 encryption</td><td>RDS encryption, S3 SSE-S3, EBS encryption</td></tr>
+            <tr><td>Data in Transit</td><td>TLS 1.3</td><td>Cloudflare full strict SSL, internal mTLS between services</td></tr>
+            <tr><td>Bot Tokens</td><td>Encrypted storage</td><td>BotFather tokens encrypted with AWS KMS before storing in DB</td></tr>
+            <tr><td>API Keys</td><td>Hashed + salted</td><td>API keys stored as bcrypt hashes; plaintext shown only once at creation</td></tr>
+            <tr><td>Rate Limiting</td><td>Multi-layer</td><td>Cloudflare WAF (DDoS), Redis-based per-user rate limiting, Telegram API rate compliance</td></tr>
+            <tr><td>DDoS Protection</td><td>Cloudflare + AWS Shield</td><td>Cloudflare proxies all traffic; AWS Shield Standard on ALB</td></tr>
+            <tr><td>Access Control</td><td>IAM + RBAC</td><td>AWS IAM policies, application-level role-based access for admin dashboard</td></tr>
+            <tr><td>Secrets Management</td><td>AWS Secrets Manager</td><td>All API keys, DB passwords, tokens stored in Secrets Manager, rotated quarterly</td></tr>
+            <tr><td>Vulnerability Scanning</td><td>Automated</td><td>Snyk for dependency scanning, AWS Inspector for infrastructure, OWASP ZAP for APIs</td></tr>
+            <tr><td>Audit Logging</td><td>Immutable logs</td><td>All admin actions, API calls, and configuration changes logged to CloudWatch (immutable, 1-year retention)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>SLA Targets</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Metric</th><th>Target</th><th>Measurement</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Uptime</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">99.9%</td><td>Monthly, excluding scheduled maintenance (max 4hrs/month, announced 48hrs ahead)</td></tr>
+            <tr><td>Link Conversion Latency (p99)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;500ms</td><td>99th percentile response time for /convert endpoint</td></tr>
+            <tr><td>URL Redirect Latency (p99)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;100ms</td><td>Cloudflare edge redirect latency</td></tr>
+            <tr><td>Bot Response Time (p95)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;2s</td><td>Time from user message to bot reply (95th percentile)</td></tr>
+            <tr><td>Data Durability</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">99.999%</td><td>RDS Multi-AZ with daily snapshots + WAL archiving to S3</td></tr>
+            <tr><td>RPO (Recovery Point Objective)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;5 min</td><td>Maximum data loss in disaster recovery scenario</td></tr>
+            <tr><td>RTO (Recovery Time Objective)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;30 min</td><td>Maximum time to restore service after infrastructure failure</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 13: DEVELOPMENT ROADMAP -->
+  <!-- ================================================================ -->
+  <div class="section" id="s13">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <h2>Development Roadmap</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>20-Week Development Plan</h3>
+      <p>The full automation arsenal is built in 5 phases over 20 weeks, with each phase delivering a usable, shippable increment. Phase 1 (Weeks 1-4) delivers a product that already surpasses EK Affiliaters for basic use cases.</p>
+    </div>
+
+    <div id="sprint-plan" class="card">
+      <h3>Sprint Plan -- Detailed Breakdown</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Phase</th>
+              <th>Deliverables</th>
+              <th>Team</th>
+              <th>Dependencies</th>
+              <th>Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:'JetBrains Mono';">W1</td><td rowspan="4"><span class="tag tag-green">Phase 1: Foundation</span></td><td>GrabOn API integration (internal feed); PostgreSQL schema design + migration; Redis cluster setup; CI/CD pipeline (GitHub Actions + ECS)</td><td>Backend Lead + 1 Backend Dev + DevOps</td><td>GrabOn API access (internal approval needed)</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W2</td><td>Link Converter Engine v1 (single link); URL shortener service (grabcash.in/go/); Merchant domain-to-ID mapping table (4,000+ entries); Unit test suite</td><td>Backend Lead + 1 Backend Dev</td><td>GrabOn API live</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W3</td><td>Telegram Bot scaffold (telegraf.js); /start onboarding wizard; Single link conversion via bot; Multi-link conversion (Magic Tool parity); Bot deployed to staging</td><td>Backend Lead + 1 Backend Dev + QA</td><td>Link Converter v1</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W4</td><td>Channel linking (Method A: Direct Add); Channel linking (Method B: BotFather token); Basic auto-forwarder (manual deal source); Admin database + registration; BETA LAUNCH (50 admins)</td><td>Full backend team + QA</td><td>Bot on staging</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W5</td><td rowspan="4"><span class="tag tag-blue">Phase 2: Deal Engine</span></td><td>Amazon PAAPI v5 integration; Flipkart Affiliate API integration; Deal ingestion pipeline; Deduplication engine v1</td><td>2 Backend Devs + Data Engineer</td><td>Amazon/Flipkart affiliate accounts approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W6</td><td>Deal scoring algorithm v1; @GrabCashDeals master channel setup; @GrabCashFashion + @GrabCashElectronics channels; Content template system (3 templates per category)</td><td>2 Backend Devs + Data Engineer</td><td>Deal ingestion live</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W7</td><td>Remaining 6 category channels (@Travel, @Food, @Beauty, @Home, @Finance, @Grocery); Auto-forwarder connected to official channels; Admin subscription management (per-category); Click tracking (short URL + redirect logging)</td><td>Full backend team + Frontend Dev</td><td>Channels populated</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W8</td><td>Conversion tracking (merchant postback integration); Analytics dashboard v1 (web); In-bot analytics commands (/stats, /channels, /top); Commission tracker v1; PUBLIC LAUNCH v1.0</td><td>Full team</td><td>Tracking infrastructure</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W9</td><td rowspan="4"><span class="tag tag-purple">Phase 3: Intelligence</span></td><td>Price monitoring system (top 1,000 products); Price drop alerts v1; Historical price charts; All-time low badge system</td><td>Data Engineer + 1 Backend Dev</td><td>Product data pipeline</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W10</td><td>Smart scheduling AI v1 (channel-level); Engagement heatmap; A/B testing engine v1; Deal quality scoring AI v1</td><td>Data Engineer + 1 Backend Dev</td><td>30 days of analytics data minimum</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W11</td><td>Chrome Extension v1 (link detection + conversion + copy); Admin leaderboard + gamification; Achievement badges system; Migration tool from EK Affiliaters v1</td><td>Frontend Dev + 1 Backend Dev</td><td>Extension APIs documented</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W12</td><td>Flash sale monitor (Amazon Lightning + Flipkart Flash); Analytics dashboard v2 (enhanced charts, heatmaps); Anti-fraud system v1; Load testing + security audit; LAUNCH v2.0</td><td>Full team</td><td>All Phase 3 features</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W13</td><td rowspan="4"><span class="tag tag-yellow">Phase 4: Expansion</span></td><td>WhatsApp Business API setup + approval; WA link conversion (1:1 messaging); WA deal alerts (broadcast lists)</td><td>Mobile Dev + 1 Backend Dev</td><td>Meta Business verification</td><td><span class="tag tag-red">High</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W14</td><td>WA group posting automation (admin's session); WordPress plugin v1 (auto-monetize links); WP revenue dashboard widget</td><td>Mobile Dev + Frontend Dev</td><td>WA API approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W15</td><td>WordPress plugin: GrabOn coupon widget, price comparison table shortcode; Chrome Extension v2: auto-coupon, price comparison, share to TG/WA</td><td>Frontend Dev + 1 Backend Dev</td><td>Plugin v1 stable</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W16</td><td>Multi-platform posting v1 (TG + WA unified interface); Admin referral tracking system; Parallel posting mode (EK + GrabCash); LAUNCH v3.0</td><td>Full team</td><td>WA integration stable</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W17</td><td rowspan="4"><span class="tag tag-red">Phase 5: Scale</span></td><td>Developer API v1 (public); API documentation (Swagger); Python SDK v1; Node.js SDK v1</td><td>Backend Lead + 1 Backend Dev</td><td>Core APIs stable for 60+ days</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W18</td><td>Analytics dashboard v3 (advanced: cohort analysis, predictive revenue, merchant insights); Smart scheduling AI v2 (cross-channel learning)</td><td>Data Engineer + Frontend Dev</td><td>3+ months analytics data</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W19</td><td>Scale infrastructure to handle 10,000 admins; Performance optimization sprint; Anti-fraud v2 (ML-based); Price monitoring expanded to 10,000 products</td><td>DevOps + Backend Lead + Data Engineer</td><td>Growth targets</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'JetBrains Mono';">W20</td><td>Full security audit (external); Penetration testing; Documentation completion; Knowledge transfer; LAUNCH v4.0 (FULL ARSENAL)</td><td>Full team + external auditor</td><td>All features stable</td><td><span class="tag tag-green">Low</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Milestone Summary</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th>Week</th>
+              <th>What Ships</th>
+              <th>Admin Capability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-green">BETA</span></td>
+              <td style="font-family:'JetBrains Mono';">W4</td>
+              <td>Bot + link converter + channel linking + basic auto-forward</td>
+              <td>Admin can convert links, link channel, receive manual deals. Parity with basic EK Affiliaters.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-blue">v1.0</span></td>
+              <td style="font-family:'JetBrains Mono';">W8</td>
+              <td>Full deal engine + 8 channels + analytics + commission tracking</td>
+              <td>Admin has full passive income setup. Surpasses EK Affiliaters on categories and analytics.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-purple">v2.0</span></td>
+              <td style="font-family:'JetBrains Mono';">W12</td>
+              <td>AI features + Chrome extension + migration tool + anti-fraud</td>
+              <td>Admin has AI-powered tools no competitor offers. Migration tool enables rapid EK->GrabCash switch.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-yellow">v3.0</span></td>
+              <td style="font-family:'JetBrains Mono';">W16</td>
+              <td>WhatsApp + WordPress + multi-platform + referral system</td>
+              <td>Admin can monetize across TG + WA + blog. Full platform play.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-red">v4.0</span></td>
+              <td style="font-family:'JetBrains Mono';">W20</td>
+              <td>Developer API + SDKs + advanced analytics + scaled infra</td>
+              <td>Full arsenal deployed. Developer ecosystem enabled. Scaled for 10,000+ admins.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 14: COMPETITIVE FEATURE MATRIX -->
+  <!-- ================================================================ -->
+  <div class="section" id="s14">
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <h2>Competitive Feature Matrix</h2>
+    </div>
+
+    <div class="card card-accent">
+      <h3>The Definitive Comparison</h3>
+      <p>This is the master competitive matrix comparing GrabCash Bot against every known competitor across 35+ features. Legend: <span class="cell-yes">Available</span> | <span class="cell-partial">Partial</span> | <span class="cell-no">Missing</span> | <span class="cell-exclusive">GrabCash Exclusive</span></p>
+    </div>
+
+    <div id="mega-matrix" class="card">
+      <h3>Mega Competitive Matrix (35 Features x 7 Platforms)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:220px;position:sticky;left:0;z-index:10;background:rgba(13,207,26,0.12);">Feature</th>
+              <th>GrabCash Bot</th>
+              <th>EK Affiliaters</th>
+              <th>Affiliaters.in</th>
+              <th>CueLinks Bot</th>
+              <th>Affiliate Kit</th>
+              <th>Deals Converter</th>
+              <th>Affiliate Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- CORE FEATURES -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">CORE LINK CONVERSION</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Single Link Conversion</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Multi-Link (Batch Text)</td><td class="cell-yes">Yes</td><td class="cell-yes">Magic Tool</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-yes">Yes</td><td class="cell-partial">Partial</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Batch URL Array (API)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Conversion Speed (&lt;200ms)</td><td class="cell-exclusive">Exclusive</td><td class="cell-partial">500ms-2s</td><td class="cell-partial">&lt;3s</td><td class="cell-partial">1-3s</td><td class="cell-partial">2-5s</td><td class="cell-partial">1-3s</td><td class="cell-partial">2-5s</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Merchant Coverage (4,000+)</td><td class="cell-exclusive">4,000+</td><td class="cell-partial">200-500</td><td class="cell-partial">300-600</td><td class="cell-yes">1,000+</td><td class="cell-partial">200-400</td><td class="cell-partial">300-500</td><td class="cell-partial">200-400</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Branded Short URLs</td><td class="cell-yes">grabcash.in/go/</td><td class="cell-partial">ekr.in</td><td class="cell-no">No</td><td class="cell-partial">cuel.ink</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Product Enrichment (title/price/image)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+
+            <!-- TELEGRAM BOT -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">TELEGRAM BOT FEATURES</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Channel Linking (Direct Add)</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Channel Linking (BotFather)</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-yes">Yes</td><td class="cell-partial">Partial</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Auto-Forwarder</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-partial">Basic</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Deal Categories (8)</td><td class="cell-exclusive">8 Categories</td><td class="cell-partial">3</td><td class="cell-partial">4</td><td class="cell-no">None</td><td class="cell-partial">2</td><td class="cell-partial">3</td><td class="cell-partial">2</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Category Filtering per Channel</td><td class="cell-yes">Yes</td><td class="cell-partial">Limited</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Custom Post Templates</td><td class="cell-yes">3 presets + custom</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Posting Frequency Control</td><td class="cell-yes">4 levels</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Setup Time</td><td class="cell-exclusive">~2 min</td><td class="cell-partial">5-10 min</td><td class="cell-partial">10-15 min</td><td class="cell-partial">5-8 min</td><td class="cell-partial">10-20 min</td><td class="cell-partial">5-10 min</td><td class="cell-partial">10-15 min</td></tr>
+
+            <!-- AI / INTELLIGENCE -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">AI &amp; INTELLIGENCE</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Smart Scheduling AI</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">A/B Testing</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Deal Quality Scoring</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Price Drop Alerts</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Price History Charts</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+
+            <!-- ANALYTICS -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">ANALYTICS &amp; TRACKING</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">In-Bot Analytics</td><td class="cell-exclusive">Exclusive (10 commands)</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Web Analytics Dashboard</td><td class="cell-yes">Yes (6 rows)</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Basic</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Per-Channel Analytics</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Commission Tracker (In-Bot)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Engagement Heatmap</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Admin Leaderboard</td><td class="cell-exclusive">Exclusive (5 tiers + badges)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+
+            <!-- PLATFORM -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">MULTI-PLATFORM</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">WhatsApp Integration</td><td class="cell-yes">Yes (Business API)</td><td class="cell-no">No</td><td class="cell-yes">Yes (1000 TG+WA)</td><td class="cell-no">No</td><td class="cell-partial">Manual</td><td class="cell-partial">WA only</td><td class="cell-partial">Manual</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Chrome Extension</td><td class="cell-yes">Yes (8 features)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">WordPress Plugin</td><td class="cell-yes">Yes (10 features)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes (their moat)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Developer API</td><td class="cell-yes">Yes (REST + SDKs)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Migration Tool</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+
+            <!-- PRICING / BUSINESS -->
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">BUSINESS &amp; PRICING</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Pricing Model</td><td class="cell-exclusive">FREE (all features)</td><td class="cell-yes">Free</td><td class="cell-partial">Free/Rs.499/999</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.299+/mo</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.199+/mo</td></tr>
+            <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Anti-Fraud System</td><td class="cell-yes">ML-based, 6 types</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Uptime SLA</td><td class="cell-exclusive">99.9%</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Competitive Summary</h3>
+
+      <h4>GrabCash Exclusive Advantages (Features No Competitor Has)</h4>
+      <ul>
+        <li>Smart Scheduling AI -- ML-powered optimal posting time per channel</li>
+        <li>A/B Testing Engine -- test post variants, auto-select winner</li>
+        <li>Deal Quality Scoring -- AI-scored 1-100 with auto-publish thresholds</li>
+        <li>Price Drop Alerts -- monitor 4,000+ merchants, instant notification</li>
+        <li>Price History Charts -- 90-day history, all-time low badge</li>
+        <li>In-Bot Analytics (10 commands) -- full analytics without leaving Telegram</li>
+        <li>Commission Tracker in Bot -- real-time earnings without visiting any website</li>
+        <li>Engagement Heatmap -- visual click pattern by hour/day</li>
+        <li>Admin Leaderboard with Gamification -- 5 tiers, 8+ achievement badges</li>
+        <li>Batch URL Array API -- programmatic batch conversion for developers</li>
+        <li>Product Enrichment -- auto-fetch title, price, image, discount for every link</li>
+        <li>EK Migration Tool -- one-click switch from EarnKaro with parallel posting trial</li>
+      </ul>
+
+      <h4>Parity Features (Match Competitors)</h4>
+      <ul>
+        <li>Single/Multi link conversion (matches EK Affiliaters + Magic Tool)</li>
+        <li>Channel linking via BotFather token (matches EK Affiliaters)</li>
+        <li>Auto-forwarder from deal channels (matches EK Affiliaters)</li>
+        <li>WhatsApp support (matches Affiliaters.in)</li>
+        <li>Chrome extension (matches CueLinks)</li>
+        <li>WordPress plugin (matches CueLinks)</li>
+        <li>Web analytics dashboard (matches Affiliaters.in, CueLinks)</li>
+      </ul>
+
+      <h4>Structural Advantage</h4>
+      <ul>
+        <li><strong>4,000+ merchants</strong> via GrabOn (vs 200-500 for EarnKaro)</li>
+        <li><strong>Higher commissions:</strong> Ajio 10-15%, Nykaa 9%, Amazon up to 10%</li>
+        <li><strong>8 deal categories</strong> (vs EarnKaro's 3)</li>
+        <li><strong>Free for all features</strong> (vs Affiliaters.in Rs.499-999/mo for premium)</li>
+        <li><strong>2-minute setup</strong> (vs 5-20 minutes for competitors)</li>
+        <li><strong>&lt;200ms conversion speed</strong> (vs 500ms-5s for competitors)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
+    <p style="font-family:'JetBrains Mono';font-size:12px;color:#333;">
+      GrabCash Bot &amp; Automation Arsenal // Document 3 of 9 // CONFIDENTIAL<br>
+      Generated May 2026 // GrabCash Technical Team
+    </p>
+    <p style="font-size:11px;color:#222;margin-top:8px;">
+      This document is part of the GrabCash GTM Suite. For questions, contact the GrabCash engineering team.
+    </p>
+  </div>
+
+</div><!-- end .main -->
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Sidebar toggle (mobile)
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+
+// Close sidebar on link click (mobile)
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      sidebar.classList.remove('open');
+    }
+  });
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#s"]');
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (window.scrollY >= sectionTop - 120) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateActiveNav);
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+// Collapsible sections
+function toggleCollapsible(btn) {
+  btn.classList.toggle('active');
+  const content = btn.nextElementSibling;
+  content.classList.toggle('show');
+}
+
+// Smooth scroll polyfill for older browsers
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

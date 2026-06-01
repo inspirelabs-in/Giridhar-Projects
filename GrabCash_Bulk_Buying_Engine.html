@@ -1,0 +1,3583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulk Buying & Group Commerce Engine | GrabCash Underground War</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border-card: rgba(255,255,255,0.06);
+  --border-card-hover: rgba(255,255,255,0.12);
+  --text-primary: #e0e0e0;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+  --accent: #0dcf1a;
+  --accent-dim: rgba(13,207,26,0.15);
+  --accent-glow: rgba(13,207,26,0.3);
+  --red: #ff4444;
+  --red-dim: rgba(255,68,68,0.15);
+  --red-glow: rgba(255,68,68,0.3);
+  --yellow: #ffaa00;
+  --yellow-dim: rgba(255,170,0,0.15);
+  --blue: #4488ff;
+  --blue-dim: rgba(68,136,255,0.15);
+  --orange: #ff6600;
+  --orange-dim: rgba(255,102,0,0.15);
+  --purple: #aa44ff;
+  --purple-dim: rgba(170,68,255,0.15);
+  --cyan: #00cccc;
+  --cyan-dim: rgba(0,204,204,0.15);
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: rgba(10,10,10,0.95);
+  border-right: 1px solid var(--border-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  padding-bottom: 40px;
+}
+
+.sidebar-header {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.sidebar-logo {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.sidebar-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+.sidebar-nav {
+  padding: 12px 0;
+}
+
+.nav-section-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 16px 16px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  gap: 8px;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-item.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.nav-item .nav-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  min-width: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.nav-item.active .nav-num {
+  color: var(--accent);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-card);
+  margin-top: auto;
+}
+
+.sidebar-footer-text {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+/* Mobile toggle */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+
+@media (max-width: 1024px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+  .main-content { margin-left: 0 !important; }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+  }
+  .sidebar-overlay.open { display: block; }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ============================================
+   HERO HEADER
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 80px 60px 60px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0d1a0e 50%, #0a0a0a 100%);
+  border-bottom: 1px solid var(--border-card);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(13,207,26,0.2);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--accent), #44ff44);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-meta-item strong {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   SECTION LAYOUT
+   ============================================ */
+.content-area {
+  padding: 40px 60px 120px;
+  max-width: 1400px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 60px 20px 40px; }
+  .hero h1 { font-size: 1.8rem; }
+  .content-area { padding: 20px 16px 80px; }
+}
+
+.section {
+  margin-bottom: 60px;
+  scroll-margin-top: 30px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-card);
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  flex: 1;
+}
+
+.section-toggle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.section-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+.section-body {
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  max-height: 200000px;
+  opacity: 1;
+}
+
+.section-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .card-grid, .card-grid-2, .card-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.metric-card.red::before { background: var(--red); }
+.metric-card.yellow::before { background: var(--yellow); }
+.metric-card.blue::before { background: var(--blue); }
+.metric-card.orange::before { background: var(--orange); }
+.metric-card.purple::before { background: var(--purple); }
+.metric-card.cyan::before { background: var(--cyan); }
+
+.metric-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.metric-value.green { color: var(--accent); }
+.metric-value.red { color: var(--red); }
+.metric-value.yellow { color: var(--yellow); }
+.metric-value.blue { color: var(--blue); }
+
+.metric-change {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric-change.up { color: var(--accent); }
+.metric-change.down { color: var(--red); }
+
+.metric-detail {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  font-size: 0.78rem;
+}
+
+.stat-chip .label { color: var(--text-muted); }
+.stat-chip .value { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
+.stat-chip.green .value { color: var(--accent); }
+.stat-chip.red .value { color: var(--red); }
+
+/* ============================================
+   TABLES
+   ============================================ */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(13,207,26,0.08);
+  color: var(--accent);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border-card);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  z-index: 10;
+}
+
+tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: rgba(255,255,255,0.015); }
+tbody tr:hover { background: rgba(255,255,255,0.04); }
+
+td.mono { font-family: var(--font-mono); font-size: 0.8rem; }
+td.green { color: var(--accent); }
+td.red { color: var(--red); }
+td.yellow { color: var(--yellow); }
+td.blue { color: var(--blue); }
+td.orange { color: var(--orange); }
+td.purple { color: var(--purple); }
+td.bold { font-weight: 600; color: var(--text-primary); }
+
+.table-caption {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  padding: 8px 16px;
+  border-top: 1px solid var(--border-card);
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   SUBSECTION COLLAPSIBLES
+   ============================================ */
+.subsection { margin-bottom: 20px; }
+
+.subsection-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.subsection-header:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+}
+
+.subsection-icon {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.subsection-icon.collapsed { transform: rotate(-90deg); }
+
+.subsection-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.subsection-tag {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.subsection-tag.red { background: var(--red-dim); color: var(--red); }
+.subsection-tag.yellow { background: var(--yellow-dim); color: var(--yellow); }
+.subsection-tag.blue { background: var(--blue-dim); color: var(--blue); }
+.subsection-tag.orange { background: var(--orange-dim); color: var(--orange); }
+.subsection-tag.purple { background: var(--purple-dim); color: var(--purple); }
+
+.subsection-body {
+  padding: 16px 16px 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  max-height: 80000px;
+  opacity: 1;
+}
+
+.subsection-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+}
+
+/* ============================================
+   PROSE & TYPOGRAPHY
+   ============================================ */
+p { margin-bottom: 14px; color: var(--text-secondary); }
+strong, b { color: var(--text-primary); font-weight: 600; }
+.highlight { color: var(--accent); font-weight: 600; }
+.highlight-red { color: var(--red); font-weight: 600; }
+.highlight-yellow { color: var(--yellow); font-weight: 600; }
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+ul, ol { padding-left: 24px; margin-bottom: 14px; }
+li { margin-bottom: 6px; color: var(--text-secondary); }
+li strong { color: var(--text-primary); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.callout {
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  border-left: 3px solid;
+}
+
+.callout.green { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.callout.red { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+.callout.yellow { background: var(--yellow-dim); border-color: var(--yellow); color: var(--yellow); }
+.callout.blue { background: var(--blue-dim); border-color: var(--blue); color: var(--blue); }
+.callout.orange { background: var(--orange-dim); border-color: var(--orange); color: var(--orange); }
+.callout strong { color: inherit; }
+
+/* Process steps */
+.process-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.process-step { display: flex; gap: 14px; align-items: flex-start; }
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  border: 1px solid rgba(13,207,26,0.3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-content { flex: 1; }
+.step-title { font-weight: 600; color: var(--text-primary); font-size: 0.88rem; margin-bottom: 2px; }
+.step-desc { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* Flow diagram */
+.flow-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+
+.flow-step {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.flow-arrow { color: var(--accent); font-family: var(--font-mono); font-weight: 700; font-size: 1rem; }
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.green { background: var(--accent-dim); color: var(--accent); }
+.badge.red { background: var(--red-dim); color: var(--red); }
+.badge.yellow { background: var(--yellow-dim); color: var(--yellow); }
+.badge.blue { background: var(--blue-dim); color: var(--blue); }
+.badge.orange { background: var(--orange-dim); color: var(--orange); }
+.badge.purple { background: var(--purple-dim); color: var(--purple); }
+
+/* Template box */
+.template-box {
+  background: rgba(13,207,26,0.04);
+  border: 1px dashed rgba(13,207,26,0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.template-box .template-title {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  display: block;
+  font-family: var(--font-mono);
+}
+
+/* Tier cards */
+.tier-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 24px;
+  border-top: 3px solid var(--accent);
+}
+
+.tier-card.bronze { border-top-color: #cd7f32; }
+.tier-card.silver { border-top-color: #c0c0c0; }
+.tier-card.gold { border-top-color: var(--yellow); }
+.tier-card.platinum { border-top-color: var(--purple); }
+
+.tier-name {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.tier-card.bronze .tier-name { color: #cd7f32; }
+.tier-card.silver .tier-name { color: #c0c0c0; }
+.tier-card.gold .tier-name { color: var(--yellow); }
+.tier-card.platinum .tier-name { color: var(--purple); }
+
+.tier-range {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* SWOT */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+@media (max-width: 768px) { .swot-grid { grid-template-columns: 1fr; } }
+
+.swot-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 10px;
+  padding: 18px;
+  border-top: 3px solid;
+}
+
+.swot-card.strength { border-top-color: var(--accent); }
+.swot-card.weakness { border-top-color: var(--red); }
+.swot-card.opportunity { border-top-color: var(--blue); }
+.swot-card.threat { border-top-color: var(--yellow); }
+
+.swot-card-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+}
+
+.swot-card.strength .swot-card-title { color: var(--accent); }
+.swot-card.weakness .swot-card-title { color: var(--red); }
+.swot-card.opportunity .swot-card-title { color: var(--blue); }
+.swot-card.threat .swot-card-title { color: var(--yellow); }
+
+.swot-card ul { padding-left: 16px; }
+.swot-card li { font-size: 0.82rem; margin-bottom: 4px; }
+
+/* Rating bars */
+.rating-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.rating-bar-label { font-size: 0.75rem; color: var(--text-secondary); min-width: 140px; }
+.rating-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.rating-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.6s ease; }
+.rating-bar-fill.red { background: var(--red); }
+.rating-bar-fill.yellow { background: var(--yellow); }
+.rating-bar-fill.blue { background: var(--blue); }
+.rating-bar-value { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); min-width: 32px; text-align: right; }
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(13,207,26,0.3);
+  border-radius: 10px;
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-to-top:hover { background: rgba(13,207,26,0.25); transform: translateY(-2px); }
+.back-to-top.visible { display: flex; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar Overlay (Mobile) -->
+<div class="sidebar-overlay" onclick="document.getElementById('sidebar').classList.remove('open'); this.classList.remove('open');"></div>
+
+<!-- Sidebar Toggle (Mobile) -->
+<button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open'); document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">GrabCash War Room</div>
+    <div class="sidebar-title">Bulk Buying &amp; Group Commerce Engine</div>
+    <div class="sidebar-subtitle">Document 5 of 9 // Underground War Suite</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Intelligence</div>
+    <a href="#s1" class="nav-item" data-section="s1"><span class="nav-num">01</span> The Bulk Buying Underground</a>
+    <a href="#s2" class="nav-item" data-section="s2"><span class="nav-num">02</span> Reseller Ecosystem Deep Dive</a>
+    <div class="nav-section-label">Platform</div>
+    <a href="#s3" class="nav-item" data-section="s3"><span class="nav-num">03</span> Bulk Buying Platform Spec</a>
+    <a href="#s4" class="nav-item" data-section="s4"><span class="nav-num">04</span> GrabOn Merchant Integration</a>
+    <a href="#s5" class="nav-item" data-section="s5"><span class="nav-num">05</span> Admin-as-Distributor Model</a>
+    <div class="nav-section-label">Operations</div>
+    <a href="#s6" class="nav-item" data-section="s6"><span class="nav-num">06</span> Group Buy Operations Playbook</a>
+    <a href="#s7" class="nav-item" data-section="s7"><span class="nav-num">07</span> Logistics &amp; Fulfillment</a>
+    <a href="#s8" class="nav-item" data-section="s8"><span class="nav-num">08</span> Payment &amp; Trust Infrastructure</a>
+    <div class="nav-section-label">Strategy</div>
+    <a href="#s9" class="nav-item" data-section="s9"><span class="nav-num">09</span> Category Playbooks</a>
+    <a href="#s10" class="nav-item" data-section="s10"><span class="nav-num">10</span> Competitive Positioning</a>
+    <a href="#s11" class="nav-item" data-section="s11"><span class="nav-num">11</span> Financial Model</a>
+    <a href="#s12" class="nav-item" data-section="s12"><span class="nav-num">12</span> Risk Analysis</a>
+    <a href="#s13" class="nav-item" data-section="s13"><span class="nav-num">13</span> 90-Day Launch Plan</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-text">CLASSIFIED // INTERNAL ONLY<br>Last Updated: May 2026</div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Document 5 of 9 &mdash; Underground War Suite
+  </div>
+  <h1>Bulk Buying &amp;<br><span>Group Commerce Engine</span></h1>
+  <p class="hero-subtitle">Turning Telegram Communities into India's Largest Group Purchasing Network. The complete playbook for building group commerce infrastructure on top of GrabOn's 4,000+ merchant network.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Market Size:</strong>&nbsp;~&#8377;500-2,000 Cr annual GMV</div>
+    <div class="hero-meta-item"><strong>Active Groups:</strong>&nbsp;600+ reseller channels</div>
+    <div class="hero-meta-item"><strong>Target Admins:</strong>&nbsp;200 by Day 90</div>
+    <div class="hero-meta-item"><strong>Launch Budget:</strong>&nbsp;&#8377;25L</div>
+  </div>
+</header>
+
+<div class="content-area">
+
+<!-- ============================================
+     SECTION 1: THE BULK BUYING UNDERGROUND
+     ============================================ -->
+<section class="section" id="s1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">01</span>
+    <h2 class="section-title">The Bulk Buying Underground</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="callout green"><strong>STRATEGIC INSIGHT:</strong> Bulk buying through Telegram is a &#8377;500-2,000 Cr shadow economy that no affiliate platform has productized. Admins act as micro-distributors, aggregating demand and negotiating bulk pricing &mdash; earning 10-30% margins on top of affiliate commissions. GrabCash can own this by building the infrastructure layer.</div>
+
+    <h3>What is Telegram Bulk Buying?</h3>
+    <p>In the Telegram affiliate underground, bulk buying refers to a structured process where a channel admin aggregates purchase intent from subscribers, negotiates volume-based discounts with suppliers or leverages existing merchant deals, and coordinates group purchases to unlock pricing that individual buyers cannot access. The admin functions as a <strong>curator, negotiator, logistics coordinator, and distributor</strong> rolled into one.</p>
+
+    <p>This is distinct from simple deal-sharing. In deal-sharing, an admin posts an affiliate link and hopes subscribers click. In bulk buying, the admin <strong>actively orchestrates a transaction</strong> &mdash; collecting commitments, processing payments, coordinating with merchants, and often handling fulfillment. The engagement is deeper, the margins are higher, and the admin-subscriber relationship is significantly stickier.</p>
+
+    <p>The bulk buying underground thrives because Indian consumers are inherently price-sensitive and community-oriented. When 50 people in a Telegram group coordinate to buy the same product, they unlock wholesale pricing that would be impossible individually. The admin captures the spread between wholesale and retail, plus their affiliate commission on top &mdash; creating a <strong>double-dip revenue model</strong> that can generate &#8377;50K-3L per month for active operators.</p>
+
+    <h3>Market Size Estimation</h3>
+
+    <div class="card-grid">
+      <div class="metric-card">
+        <div class="metric-label">Active Reseller Groups</div>
+        <div class="metric-value green">600+</div>
+        <div class="metric-detail">Across Telegram, WhatsApp, and Facebook</div>
+      </div>
+      <div class="metric-card blue">
+        <div class="metric-label">Est. Annual GMV</div>
+        <div class="metric-value blue">&#8377;500-2,000 Cr</div>
+        <div class="metric-detail">Through informal group buying channels</div>
+      </div>
+      <div class="metric-card yellow">
+        <div class="metric-label">Avg Group Buy Value</div>
+        <div class="metric-value yellow">&#8377;2.5-15L</div>
+        <div class="metric-detail">Per deal, across all categories</div>
+      </div>
+      <div class="metric-card purple">
+        <div class="metric-label">Admin Monthly Earnings</div>
+        <div class="metric-value">&#8377;25K-3L</div>
+        <div class="metric-detail">From bulk operations alone</div>
+      </div>
+    </div>
+
+    <h3>Types of Bulk Buying Operations</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>How It Works</th>
+            <th>Avg Deal Size</th>
+            <th>Admin Margin</th>
+            <th>Frequency</th>
+            <th>Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Flash Group Buys</td>
+            <td>Limited-time offer: "50 people buy = 40% off". Admin sets timer, collects commitments, deal closes when target hit or timer expires.</td>
+            <td class="mono">&#8377;2-5L</td>
+            <td class="mono green">15-25%</td>
+            <td>2-3x/week</td>
+            <td><span class="badge yellow">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="bold">MOQ Wholesale</td>
+            <td>Minimum order quantity deals from manufacturers. Admin collects orders until MOQ met, then places single bulk order. Products shipped to admin, then redistributed.</td>
+            <td class="mono">&#8377;5-15L</td>
+            <td class="mono green">20-35%</td>
+            <td>2-4x/month</td>
+            <td><span class="badge red">High</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Reseller Pipelines</td>
+            <td>Admin buys wholesale inventory, creates product catalog, subscribers buy at marked-up prices. Admin maintains stock and manages distribution.</td>
+            <td class="mono">&#8377;10-50L</td>
+            <td class="mono green">25-40%</td>
+            <td>Ongoing</td>
+            <td><span class="badge red">High</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Coupon Stacking</td>
+            <td>Combine affiliate commission + exclusive bulk coupon + bank offer + cashback. Admin finds the optimal stack and shares with group for maximum savings.</td>
+            <td class="mono">&#8377;1-3L</td>
+            <td class="mono green">8-15%</td>
+            <td>Daily</td>
+            <td><span class="badge green">Low</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Pre-Order Groups</td>
+            <td>New product launches at discounted pre-order rates. Admin negotiates early-bird pricing, collects orders before product officially ships.</td>
+            <td class="mono">&#8377;3-10L</td>
+            <td class="mono green">10-20%</td>
+            <td>1-2x/month</td>
+            <td><span class="badge yellow">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Liquidation Deals</td>
+            <td>End-of-season, clearance, or overstock buys in bulk. Admin sources from liquidation channels, offers steep discounts to subscribers.</td>
+            <td class="mono">&#8377;5-25L</td>
+            <td class="mono green">30-50%</td>
+            <td>Seasonal</td>
+            <td><span class="badge yellow">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 1.1 &mdash; Bulk Buying Type Classification // GrabCash Intelligence</div>
+    </div>
+
+    <h3>How Admins Operate: The Bulk Buy Lifecycle</h3>
+
+    <div class="flow-row">
+      <span class="flow-step">Find Deal</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Negotiate Price</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Post in Group</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Collect Orders</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Process Payment</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Place Bulk Order</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Distribute</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Post-Delivery</span>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Deal Sourcing</div>
+          <div class="step-desc">Admin scours wholesale markets (IndiaMart, TradeIndia, AliExpress), manufacturer direct contacts, end-of-season sales, liquidation channels, and existing merchant relationships. Evaluates product quality, pricing tiers, and demand potential. Typically spends 2-4 hours daily on sourcing alone.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Price Negotiation</div>
+          <div class="step-desc">Contacts supplier with projected volume. Negotiates tiered pricing: "If I bring 50 orders, what's the price? 100 orders?" Secures exclusive coupon codes or bulk discount not available publicly. Also checks for affiliate commission stack opportunities.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Deal Posting</div>
+          <div class="step-desc">Creates compelling group buy post with product images, price comparison (MRP vs group buy price vs savings), tier structure, deadline, terms and conditions, and payment instructions. Posts across primary channel and cross-promotes in allied groups.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Order Collection</div>
+          <div class="step-desc">Tracks commitments via Google Sheets, Telegram polls, or manual messages. Answers subscriber questions, handles sizing/color/variant preferences, manages waitlists. Updates group on progress toward quantity targets with regular status messages.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Payment Processing</div>
+          <div class="step-desc">Collects payments via UPI (PhonePe, GPay, Paytm), bank transfer, or COD. Maintains payment tracking spreadsheet. Handles partial payments, refund requests, and last-minute cancellations. Screenshots of payment confirmations stored as records.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Bulk Order Placement</div>
+          <div class="step-desc">Places consolidated order with supplier/merchant. Coordinates shipping addresses (to admin's warehouse if redistributing, or direct to buyers if dropshipping). Confirms order with supplier and gets expected delivery timeline and tracking info.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <div class="step-title">Distribution &amp; Delivery</div>
+          <div class="step-desc">If admin-aggregated: receives bulk shipment, sorts individual orders, packages, ships to each buyer via courier. If direct-ship: coordinates with merchant for individual shipments. Shares tracking details with each buyer in the group.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">8</div>
+        <div class="step-content">
+          <div class="step-title">Post-Delivery Management</div>
+          <div class="step-desc">Handles returns, exchanges, quality complaints. Collects feedback for future deals. Follows up for reviews and testimonials. Updates group with deal success metrics to build trust for next group buy.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Admin Earnings Breakdown</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Revenue Stream</th>
+            <th>Source</th>
+            <th>Typical %</th>
+            <th>Example on &#8377;10L GMV</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Markup Margin</td>
+            <td>Difference between wholesale buy price and resale price to group</td>
+            <td class="mono green">10-30%</td>
+            <td class="mono">&#8377;1-3L</td>
+            <td>Primary income for MOQ and reseller models</td>
+          </tr>
+          <tr>
+            <td class="bold">Affiliate Commission</td>
+            <td>Affiliate network payout per tracked sale via affiliate links</td>
+            <td class="mono green">2-15%</td>
+            <td class="mono">&#8377;20K-1.5L</td>
+            <td>Stackable on top of markup for double-dip revenue</td>
+          </tr>
+          <tr>
+            <td class="bold">Volume Bonuses</td>
+            <td>Merchant-specific rewards for hitting volume targets or milestones</td>
+            <td class="mono green">1-5%</td>
+            <td class="mono">&#8377;10K-50K</td>
+            <td>Unlocked at higher tier merchant relationships</td>
+          </tr>
+          <tr>
+            <td class="bold">Service Fee</td>
+            <td>Small fee charged to buyers for sourcing, curation, and logistics coordination</td>
+            <td class="mono green">2-5%</td>
+            <td class="mono">&#8377;20K-50K</td>
+            <td>Common in premium groups with trusted admins</td>
+          </tr>
+          <tr>
+            <td class="bold green">Total Potential</td>
+            <td>Combined revenue stack across all layers</td>
+            <td class="mono green">15-55%</td>
+            <td class="mono green">&#8377;1.5-5.5L</td>
+            <td>Per &#8377;10L GMV group buy cycle</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 1.2 &mdash; Admin Revenue Stack Analysis // GrabCash Intelligence</div>
+    </div>
+
+    <h3>Current Pain Points (GrabCash Opportunity)</h3>
+    <div class="card-grid-2">
+      <div class="card">
+        <h4>No Integrated Payment Collection</h4>
+        <p>Admins collect payments via personal UPI, screenshot-based verification. Fraud risk is high, reconciliation is manual, and there is no escrow protection for buyers. A single bad actor can destroy trust in the entire group.</p>
+        <div class="callout yellow"><strong>GrabCash Solve:</strong> Integrated payment collection with escrow, automatic reconciliation, and buyer protection guarantees.</div>
+      </div>
+      <div class="card">
+        <h4>Manual Order Tracking</h4>
+        <p>Google Sheets, manual WhatsApp messages, handwritten notes. Admins lose track of orders, miscount inventory, waste hours on manual updates, and have no way to scale beyond 50-100 orders per deal.</p>
+        <div class="callout yellow"><strong>GrabCash Solve:</strong> Real-time order management dashboard with automated status tracking, push notifications, and bulk update capabilities.</div>
+      </div>
+      <div class="card">
+        <h4>No Price Discovery Tools</h4>
+        <p>Admins manually search IndiaMart, contact suppliers one by one, compare prices in Excel. No way to instantly find the best deal for a target product and quantity combination across multiple suppliers.</p>
+        <div class="callout yellow"><strong>GrabCash Solve:</strong> Price negotiation engine leveraging GrabOn's 4,000+ merchant relationships for instant bulk pricing quotes.</div>
+      </div>
+      <div class="card">
+        <h4>Trust Deficit</h4>
+        <p>Subscribers risk losing money to admins who collect payment but fail to deliver. No reputation system, no dispute resolution, no buyer protection. New groups struggle to gain trust.</p>
+        <div class="callout yellow"><strong>GrabCash Solve:</strong> Admin trust scoring, escrow payments, structured dispute resolution system, and verified admin badges.</div>
+      </div>
+    </div>
+
+    <h3>Geographic Distribution of Bulk Buying Groups</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Est. Groups</th>
+            <th>Top Categories</th>
+            <th>Avg Deal Size</th>
+            <th>Key Cities</th>
+            <th>Growth Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">North India</td>
+            <td class="mono">180+</td>
+            <td>Fashion, electronics, home decor</td>
+            <td class="mono">&#8377;3-8L</td>
+            <td>Delhi NCR, Jaipur, Lucknow, Chandigarh</td>
+            <td class="mono green">+35% YoY</td>
+          </tr>
+          <tr>
+            <td class="bold">West India</td>
+            <td class="mono">200+</td>
+            <td>Textiles, electronics, beauty</td>
+            <td class="mono">&#8377;5-15L</td>
+            <td>Mumbai, Surat, Ahmedabad, Pune</td>
+            <td class="mono green">+40% YoY</td>
+          </tr>
+          <tr>
+            <td class="bold">South India</td>
+            <td class="mono">120+</td>
+            <td>Electronics, beauty, kitchen</td>
+            <td class="mono">&#8377;2-6L</td>
+            <td>Bangalore, Chennai, Hyderabad, Kochi</td>
+            <td class="mono green">+30% YoY</td>
+          </tr>
+          <tr>
+            <td class="bold">East India</td>
+            <td class="mono">60+</td>
+            <td>Fashion, mobile accessories</td>
+            <td class="mono">&#8377;1-4L</td>
+            <td>Kolkata, Patna, Bhubaneswar</td>
+            <td class="mono green">+25% YoY</td>
+          </tr>
+          <tr>
+            <td class="bold">Tier 3-4 Towns</td>
+            <td class="mono">40+</td>
+            <td>Fashion, kitchen, kids products</td>
+            <td class="mono">&#8377;0.5-2L</td>
+            <td>Various (growing fast)</td>
+            <td class="mono green">+50% YoY</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 1.3 &mdash; Geographic Distribution of Bulk Buying Groups // GrabCash Intelligence</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 2: RESELLER ECOSYSTEM DEEP DIVE
+     ============================================ -->
+<section class="section" id="s2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Reseller Ecosystem Deep Dive</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Who Are the Resellers?</h3>
+    <p>The Indian Telegram reseller ecosystem is dominated by <strong>micro-entrepreneurs</strong> who use group buying as a side hustle or primary income. Understanding their demographics, motivations, and pain points is critical for GrabCash product design and go-to-market strategy.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>% of Resellers</th>
+            <th>Avg Monthly Revenue</th>
+            <th>Primary Channel</th>
+            <th>Key Motivation</th>
+            <th>Tech Savviness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">College Students</td>
+            <td class="mono">25%</td>
+            <td class="mono">&#8377;5K-20K</td>
+            <td>Telegram + Instagram</td>
+            <td>Pocket money, entrepreneurship learning</td>
+            <td><span class="badge green">High</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Homemakers</td>
+            <td class="mono">30%</td>
+            <td class="mono">&#8377;10K-50K</td>
+            <td>WhatsApp + Telegram</td>
+            <td>Financial independence, flexible work</td>
+            <td><span class="badge yellow">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Small Shopkeepers</td>
+            <td class="mono">20%</td>
+            <td class="mono">&#8377;20K-1L</td>
+            <td>WhatsApp + Local network</td>
+            <td>Supplementary inventory sourcing</td>
+            <td><span class="badge yellow">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Side Hustlers</td>
+            <td class="mono">15%</td>
+            <td class="mono">&#8377;15K-75K</td>
+            <td>Telegram + Facebook</td>
+            <td>Additional income stream alongside job</td>
+            <td><span class="badge green">High</span></td>
+          </tr>
+          <tr>
+            <td class="bold">Full-Time Resellers</td>
+            <td class="mono">10%</td>
+            <td class="mono">&#8377;50K-5L</td>
+            <td>Multi-channel operations</td>
+            <td>Primary livelihood, business building</td>
+            <td><span class="badge green">High</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 2.1 &mdash; Reseller Demographic Segmentation // GrabCash Intelligence</div>
+    </div>
+
+    <h3>Reseller Journey Map</h3>
+    <div class="flow-row">
+      <span class="flow-step">Discover wholesale group</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Join &amp; observe</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">First small buy</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Resell locally</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Build own network</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Scale operations</span>
+    </div>
+
+    <p>The typical reseller journey starts with joining a wholesale or deal-sharing Telegram group. They observe for 1-2 weeks, understanding the dynamics and building confidence. Then they make a small purchase (&#8377;2,000-5,000) to test the process and product quality. Once they receive quality products at good prices, they start reselling via WhatsApp status updates, Instagram stories, or direct messages to friends and family. Successful resellers eventually build their own buyer network and start operating at scale with multiple suppliers.</p>
+
+    <h3>Product Categories Ranked by Reselling Volume</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Category</th>
+            <th>% of Volume</th>
+            <th>Avg Margin</th>
+            <th>Avg Order Value</th>
+            <th>Return Rate</th>
+            <th>Seasonality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono bold">1</td>
+            <td class="bold">Fashion / Clothing</td>
+            <td class="mono green">35%</td>
+            <td class="mono">25-45%</td>
+            <td class="mono">&#8377;500-2,000</td>
+            <td class="mono yellow">12-18%</td>
+            <td>Festival &amp; season-end spikes</td>
+          </tr>
+          <tr>
+            <td class="mono bold">2</td>
+            <td class="bold">Mobile Accessories</td>
+            <td class="mono green">18%</td>
+            <td class="mono">40-70%</td>
+            <td class="mono">&#8377;100-800</td>
+            <td class="mono green">3-5%</td>
+            <td>New phone launch cycles</td>
+          </tr>
+          <tr>
+            <td class="mono bold">3</td>
+            <td class="bold">Beauty / Cosmetics</td>
+            <td class="mono green">14%</td>
+            <td class="mono">30-50%</td>
+            <td class="mono">&#8377;300-1,500</td>
+            <td class="mono green">5-8%</td>
+            <td>Wedding season, festivals</td>
+          </tr>
+          <tr>
+            <td class="mono bold">4</td>
+            <td class="bold">Home Decor</td>
+            <td class="mono">10%</td>
+            <td class="mono">20-35%</td>
+            <td class="mono">&#8377;500-3,000</td>
+            <td class="mono yellow">8-12%</td>
+            <td>Festival &amp; moving season</td>
+          </tr>
+          <tr>
+            <td class="mono bold">5</td>
+            <td class="bold">Electronics Accessories</td>
+            <td class="mono">8%</td>
+            <td class="mono">15-30%</td>
+            <td class="mono">&#8377;300-2,000</td>
+            <td class="mono green">4-6%</td>
+            <td>Sale events (BBD, GOSF)</td>
+          </tr>
+          <tr>
+            <td class="mono bold">6</td>
+            <td class="bold">Kitchen Items</td>
+            <td class="mono">6%</td>
+            <td class="mono">20-35%</td>
+            <td class="mono">&#8377;200-1,500</td>
+            <td class="mono green">3-5%</td>
+            <td>Wedding season, Dhanteras</td>
+          </tr>
+          <tr>
+            <td class="mono bold">7</td>
+            <td class="bold">Kids Products</td>
+            <td class="mono">5%</td>
+            <td class="mono">25-40%</td>
+            <td class="mono">&#8377;300-1,000</td>
+            <td class="mono yellow">8-10%</td>
+            <td>Back-to-school, Diwali, birthdays</td>
+          </tr>
+          <tr>
+            <td class="mono bold">8</td>
+            <td class="bold">Footwear</td>
+            <td class="mono">4%</td>
+            <td class="mono">30-50%</td>
+            <td class="mono">&#8377;400-2,000</td>
+            <td class="mono yellow">10-15%</td>
+            <td>Year-round, festival spikes</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 2.2 &mdash; Reselling Category Analysis // GrabCash Intelligence</div>
+    </div>
+
+    <h3>Reseller Group Dynamics</h3>
+
+    <div class="card-grid-3">
+      <div class="card">
+        <h4>Trust Levels</h4>
+        <ul>
+          <li><strong>New members:</strong> Must pay upfront, no COD, limited access to premium deals</li>
+          <li><strong>Regular buyers (5+ orders):</strong> Partial COD allowed, early access to deals</li>
+          <li><strong>Trusted members (20+ orders):</strong> Full COD, credit terms, exclusive wholesale pricing</li>
+          <li><strong>Inner circle:</strong> Wholesale pricing, bulk credit, co-sourcing opportunities, revenue sharing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Payment Methods</h4>
+        <ul>
+          <li><strong>UPI (70%):</strong> GPay, PhonePe, Paytm &mdash; instant, screenshot-verified confirmation</li>
+          <li><strong>Bank Transfer (15%):</strong> For larger orders above &#8377;5,000, NEFT/IMPS</li>
+          <li><strong>COD (10%):</strong> Only for trusted members, carries higher price premium (+5-10%)</li>
+          <li><strong>Credit (5%):</strong> Extended to inner circle members, 7-15 day payment terms</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Delivery Logistics</h4>
+        <ul>
+          <li><strong>Direct ship (40%):</strong> Merchant ships directly to buyer's address</li>
+          <li><strong>Admin hub (35%):</strong> Shipped to admin location, sorted and redistributed locally</li>
+          <li><strong>Local pickup (15%):</strong> Buyer picks up from admin's location or nearby meetpoint</li>
+          <li><strong>Courier (10%):</strong> Admin uses Delhivery, Shiprocket, or local courier services</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Reseller Margins by Category</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Wholesale Price</th>
+            <th>Resale Price</th>
+            <th>Gross Margin</th>
+            <th>After Logistics</th>
+            <th>Net per Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Fashion - T-shirts</td>
+            <td class="mono">&#8377;80-150</td>
+            <td class="mono">&#8377;200-400</td>
+            <td class="mono green">50-65%</td>
+            <td class="mono">35-50%</td>
+            <td class="mono green">&#8377;70-200</td>
+          </tr>
+          <tr>
+            <td class="bold">Fashion - Kurtis</td>
+            <td class="mono">&#8377;150-300</td>
+            <td class="mono">&#8377;400-800</td>
+            <td class="mono green">55-65%</td>
+            <td class="mono">40-50%</td>
+            <td class="mono green">&#8377;150-400</td>
+          </tr>
+          <tr>
+            <td class="bold">Phone Cases</td>
+            <td class="mono">&#8377;20-50</td>
+            <td class="mono">&#8377;100-250</td>
+            <td class="mono green">70-85%</td>
+            <td class="mono">60-75%</td>
+            <td class="mono green">&#8377;60-180</td>
+          </tr>
+          <tr>
+            <td class="bold">TWS Earbuds</td>
+            <td class="mono">&#8377;200-500</td>
+            <td class="mono">&#8377;500-1,200</td>
+            <td class="mono green">55-65%</td>
+            <td class="mono">45-55%</td>
+            <td class="mono green">&#8377;200-600</td>
+          </tr>
+          <tr>
+            <td class="bold">Cosmetics Kit</td>
+            <td class="mono">&#8377;100-250</td>
+            <td class="mono">&#8377;300-600</td>
+            <td class="mono green">55-65%</td>
+            <td class="mono">45-55%</td>
+            <td class="mono green">&#8377;120-300</td>
+          </tr>
+          <tr>
+            <td class="bold">Home Organizers</td>
+            <td class="mono">&#8377;100-200</td>
+            <td class="mono">&#8377;250-500</td>
+            <td class="mono green">50-60%</td>
+            <td class="mono">35-45%</td>
+            <td class="mono green">&#8377;80-200</td>
+          </tr>
+          <tr>
+            <td class="bold">Kitchen Gadgets</td>
+            <td class="mono">&#8377;80-200</td>
+            <td class="mono">&#8377;200-450</td>
+            <td class="mono green">55-60%</td>
+            <td class="mono">40-50%</td>
+            <td class="mono green">&#8377;80-200</td>
+          </tr>
+          <tr>
+            <td class="bold">Kids Clothing</td>
+            <td class="mono">&#8377;60-150</td>
+            <td class="mono">&#8377;200-400</td>
+            <td class="mono green">60-70%</td>
+            <td class="mono">45-55%</td>
+            <td class="mono green">&#8377;80-200</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 2.3 &mdash; Reseller Margin Analysis by Category // GrabCash Intelligence</div>
+    </div>
+
+    <h3>Reseller Ecosystem Map</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Players</th>
+            <th>Role</th>
+            <th>Revenue Model</th>
+            <th>GrabCash Opportunity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Manufacturers</td>
+            <td>Surat textile mills, Shenzhen electronics, Jaipur handicrafts, Tirupur garments</td>
+            <td>Produce goods, set MOQ pricing and wholesale terms</td>
+            <td>Wholesale margin on bulk orders</td>
+            <td>Connect admins directly via Supplier Connect feature</td>
+          </tr>
+          <tr>
+            <td class="bold">Distributors</td>
+            <td>IndiaMart sellers, TradeIndia, AliExpress resellers, local wholesalers</td>
+            <td>Aggregate from manufacturers, sell to smaller resellers</td>
+            <td>Markup (10-20%) on wholesale</td>
+            <td>Replace with GrabOn merchant deals at better pricing</td>
+          </tr>
+          <tr>
+            <td class="bold">Admin-Aggregators</td>
+            <td>Top Telegram admins, WhatsApp group admins, Facebook group moderators</td>
+            <td>Curate deals, aggregate demand, coordinate logistics and payments</td>
+            <td>Markup + affiliate + service fee</td>
+            <td>Primary GrabCash user &mdash; provide commerce tools</td>
+          </tr>
+          <tr>
+            <td class="bold">Sub-Resellers</td>
+            <td>Students, homemakers, local sellers, Instagram shop owners</td>
+            <td>Buy from admins at wholesale, resell to end consumers locally</td>
+            <td>Local markup (15-30%) on admin pricing</td>
+            <td>Secondary GrabCash user &mdash; onboard via admin referral</td>
+          </tr>
+          <tr>
+            <td class="bold">End Consumers</td>
+            <td>Price-conscious buyers in Tier 2-4 cities, value seekers</td>
+            <td>Purchase products at below-retail prices through trusted resellers</td>
+            <td>Savings (20-50% vs MRP)</td>
+            <td>Buyer protection, quality assurance, trust infrastructure</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 2.4 &mdash; Reseller Ecosystem Layer Map // GrabCash Intelligence</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 3: GRABCASH BULK BUYING PLATFORM
+     ============================================ -->
+<section class="section" id="s3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">03</span>
+    <h2 class="section-title">GrabCash Bulk Buying Platform (Product Spec)</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="callout green"><strong>PRODUCT VISION:</strong> Build the Shopify for Telegram group commerce &mdash; a complete infrastructure layer that transforms admins from manual operators into professional micro-distributors with automated tools for deal creation, payment collection, order management, and fulfillment coordination.</div>
+
+    <h3>Feature 1: Group Buy Creator</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Group Buy Creator &mdash; Product Specification</span>
+        <span class="subsection-tag">Core Feature</span>
+      </div>
+      <div class="subsection-body">
+        <p><strong>What it does:</strong> Admin creates a structured group buy with product details, price tiers based on quantity targets, deadlines, and payment terms. The system generates a shareable link/card for Telegram, auto-tracks commitments, and closes the deal when the target is hit or the deadline expires.</p>
+
+        <h4>Price Tier Engine</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Min Quantity</th>
+                <th>Price/Unit</th>
+                <th>Discount vs MRP</th>
+                <th>Admin Margin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">Tier 1</td>
+                <td class="mono">10 units</td>
+                <td class="mono">&#8377;800</td>
+                <td class="mono green">20% off</td>
+                <td class="mono">12%</td>
+                <td><span class="badge green">Base</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Tier 2</td>
+                <td class="mono">25 units</td>
+                <td class="mono">&#8377;700</td>
+                <td class="mono green">30% off</td>
+                <td class="mono">18%</td>
+                <td><span class="badge yellow">Target</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Tier 3</td>
+                <td class="mono">50 units</td>
+                <td class="mono">&#8377;600</td>
+                <td class="mono green">40% off</td>
+                <td class="mono">25%</td>
+                <td><span class="badge blue">Stretch</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Tier 4</td>
+                <td class="mono">100 units</td>
+                <td class="mono">&#8377;550</td>
+                <td class="mono green">45% off</td>
+                <td class="mono">30%</td>
+                <td><span class="badge purple">Mega</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.1 &mdash; Example Price Tier Structure (Product MRP: &#8377;1,000)</div>
+        </div>
+
+        <h4>User Flow</h4>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Admin opens GrabCash Dashboard &rarr; "Create Group Buy"</div>
+              <div class="step-desc">Enters product name, description, images, MRP, and source (GrabOn merchant or external supplier).</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Sets Price Tiers</div>
+              <div class="step-desc">Defines 2-4 quantity tiers with corresponding prices. System auto-calculates margin, discount percentage, and break-even point.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Sets Deadline &amp; Terms</div>
+              <div class="step-desc">Defines closing date, minimum fill rate to proceed, payment deadline, estimated shipping timeline, and return policy.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Generates Shareable Card</div>
+              <div class="step-desc">System creates a rich card with product image, price tiers, live progress bar, countdown timer, and CTA button. Formatted for Telegram forwarding.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-title">Subscribers Commit</div>
+              <div class="step-desc">Buyers click link, select quantity, choose variant (size/color), and confirm commitment. Real-time progress bar updates automatically in the channel.</div>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <div class="step-title">Auto-Close on Target</div>
+              <div class="step-desc">When tier target is hit, system sends payment collection triggers. If deadline hits without minimum fill, deal is cancelled and all participants are notified automatically.</div>
+            </div>
+          </div>
+        </div>
+
+        <h4>API Specification</h4>
+        <div class="template-box"><span class="template-title">API Endpoints</span>POST   /api/v1/group-buys              # Create new group buy
+GET    /api/v1/group-buys/:id          # Get group buy details
+PATCH  /api/v1/group-buys/:id          # Update group buy
+DELETE /api/v1/group-buys/:id          # Cancel group buy
+POST   /api/v1/group-buys/:id/commit   # Buyer commits to purchase
+GET    /api/v1/group-buys/:id/progress # Get fill rate and tier status
+POST   /api/v1/group-buys/:id/close    # Manually close group buy
+GET    /api/v1/group-buys/:id/card     # Generate Telegram card
+GET    /api/v1/group-buys/:id/orders   # List all orders in group buy
+POST   /api/v1/group-buys/:id/notify   # Send update to all participants</div>
+
+        <h4>Data Model</h4>
+        <div class="template-box"><span class="template-title">GroupBuy Schema</span>{
+  id: UUID,
+  admin_id: UUID,
+  product_name: String,
+  product_description: Text,
+  product_images: [URL],
+  mrp: Decimal,
+  source_type: Enum("grabon_merchant", "external_supplier"),
+  source_id: String,
+  tiers: [{
+    min_quantity: Integer,
+    price_per_unit: Decimal,
+    discount_pct: Decimal
+  }],
+  deadline: DateTime,
+  min_fill_rate: Decimal,
+  status: Enum("draft","active","closed","cancelled","fulfilled"),
+  current_commitments: Integer,
+  current_tier: Integer,
+  payment_deadline: DateTime,
+  shipping_estimate: String,
+  return_policy: Text,
+  created_at: DateTime,
+  updated_at: DateTime
+}</div>
+      </div>
+    </div>
+
+    <h3>Feature 2: Deal Aggregation Dashboard</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Deal Aggregation Dashboard &mdash; Product Specification</span>
+        <span class="subsection-tag blue">Analytics</span>
+      </div>
+      <div class="subsection-body">
+        <p>Real-time overview of all active group buys across the admin's channels. Key metrics include fill rate, time remaining, revenue tracking, and tier progress visualization.</p>
+
+        <div class="card-grid">
+          <div class="metric-card">
+            <div class="metric-label">Active Group Buys</div>
+            <div class="metric-value green">12</div>
+            <div class="metric-detail">Across 3 channels</div>
+          </div>
+          <div class="metric-card blue">
+            <div class="metric-label">Total GMV Pipeline</div>
+            <div class="metric-value blue">&#8377;8.4L</div>
+            <div class="metric-detail">Pending fulfillment</div>
+          </div>
+          <div class="metric-card yellow">
+            <div class="metric-label">Avg Fill Rate</div>
+            <div class="metric-value yellow">73%</div>
+            <div class="metric-detail">Across active deals</div>
+          </div>
+          <div class="metric-card purple">
+            <div class="metric-label">Est. Commission</div>
+            <div class="metric-value">&#8377;1.2L</div>
+            <div class="metric-detail">If all deals close</div>
+          </div>
+        </div>
+
+        <h4>Dashboard Components</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Data Displayed</th>
+                <th>Update Frequency</th>
+                <th>Actions Available</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">Active Deals Grid</td>
+                <td>Product thumbnail, name, current fill %, tier progress, time remaining, revenue estimate</td>
+                <td class="mono">Real-time (WebSocket)</td>
+                <td>Edit, Extend deadline, Cancel, Share, Duplicate</td>
+              </tr>
+              <tr>
+                <td class="bold">Revenue Tracker</td>
+                <td>Daily/weekly/monthly GMV, commission earned, payout status, pending settlements</td>
+                <td class="mono">Every 5 min</td>
+                <td>Export CSV, Filter by date range, Download statement</td>
+              </tr>
+              <tr>
+                <td class="bold">Buyer Analytics</td>
+                <td>Top buyers, repeat purchase rate, avg order value, geographic distribution, category preferences</td>
+                <td class="mono">Hourly</td>
+                <td>Segment buyers, Export list, Create targeted deals</td>
+              </tr>
+              <tr>
+                <td class="bold">Performance Heatmap</td>
+                <td>Best-performing categories, optimal posting times, day-of-week performance patterns</td>
+                <td class="mono">Daily</td>
+                <td>Filter by category, Apply time range, Download report</td>
+              </tr>
+              <tr>
+                <td class="bold">Notification Center</td>
+                <td>Tier reached alerts, deadline warnings, payment received, new commitments, dispute alerts</td>
+                <td class="mono">Real-time</td>
+                <td>Mark read, Configure alert preferences, Mute categories</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.2 &mdash; Dashboard Component Specification</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Feature 3: Payment Collection Engine</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Payment Collection Engine &mdash; Product Specification</span>
+        <span class="subsection-tag red">Critical Path</span>
+      </div>
+      <div class="subsection-body">
+        <p>Integrated payment collection via UPI/Razorpay with escrow functionality. Funds held securely until fulfillment is confirmed, protecting both buyers and admins from fraud or non-delivery.</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Payment Feature</th>
+                <th>Description</th>
+                <th>Tech Stack</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">UPI Collection</td>
+                <td>Generate unique UPI payment links per buyer per deal. Auto-reconcile payment with order record instantly.</td>
+                <td>Razorpay Payment Links API</td>
+                <td><span class="badge green">P0</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Escrow Hold</td>
+                <td>Funds held in Razorpay Route until delivery confirmed by buyer. 7-day auto-release after shipping confirmation.</td>
+                <td>Razorpay Route (Marketplace)</td>
+                <td><span class="badge green">P0</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Split Payments</td>
+                <td>Auto-split each payment: merchant share + admin commission + platform fee. Real-time settlement tracking.</td>
+                <td>Razorpay Route Transfers</td>
+                <td><span class="badge green">P0</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Refund Engine</td>
+                <td>Full/partial refund to buyer's source account. Admin-initiated or automatic on deal cancellation.</td>
+                <td>Razorpay Refunds API</td>
+                <td><span class="badge yellow">P1</span></td>
+              </tr>
+              <tr>
+                <td class="bold">COD Support</td>
+                <td>Cash on delivery option for trusted buyers only. Higher price tier to cover logistics risk and RTO cost.</td>
+                <td>Shiprocket COD Integration</td>
+                <td><span class="badge blue">P2</span></td>
+              </tr>
+              <tr>
+                <td class="bold">Payment Reminders</td>
+                <td>Auto-reminder via Telegram bot for pending payments. Escalation alerts after 48 hours of non-payment.</td>
+                <td>Telegram Bot API + Cron Jobs</td>
+                <td><span class="badge yellow">P1</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.3 &mdash; Payment Feature Priority Matrix</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Feature 4: Order Management System</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Order Management System &mdash; Product Specification</span>
+        <span class="subsection-tag">Core Feature</span>
+      </div>
+      <div class="subsection-body">
+        <div class="flow-row">
+          <span class="flow-step">Commitment</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Payment Received</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Order Placed</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Shipped</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Delivered</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Completed</span>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Admin View</th>
+                <th>Buyer View</th>
+                <th>Automated Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge blue">Committed</span></td>
+                <td>Buyer committed, awaiting payment confirmation</td>
+                <td>"Your spot is reserved! Pay by [date]"</td>
+                <td>Payment reminder at 24h and 48h marks</td>
+              </tr>
+              <tr>
+                <td><span class="badge yellow">Paid</span></td>
+                <td>Payment received, funds held in escrow</td>
+                <td>"Payment confirmed! Your order is being processed"</td>
+                <td>Update group buy fill rate, notify admin</td>
+              </tr>
+              <tr>
+                <td><span class="badge orange">Processing</span></td>
+                <td>Bulk order placed with merchant/supplier</td>
+                <td>"Your order is being prepared by the seller"</td>
+                <td>Notify buyer on merchant order confirmation</td>
+              </tr>
+              <tr>
+                <td><span class="badge purple">Shipped</span></td>
+                <td>Tracking number available, package in transit</td>
+                <td>"Shipped! Track your order: [tracking link]"</td>
+                <td>Auto-release escrow after 7 days from ship date</td>
+              </tr>
+              <tr>
+                <td><span class="badge green">Delivered</span></td>
+                <td>Delivery confirmed by carrier or buyer</td>
+                <td>"Delivered! Rate your experience"</td>
+                <td>Release escrow funds, update admin trust score</td>
+              </tr>
+              <tr>
+                <td><span class="badge red">Disputed</span></td>
+                <td>Buyer raised quality/delivery issue</td>
+                <td>"Dispute in progress. We're looking into it."</td>
+                <td>Hold escrow release, notify support team</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.4 &mdash; Order Status Lifecycle</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Feature 5: Supplier Connect</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Supplier Connect &mdash; Product Specification</span>
+        <span class="subsection-tag orange">Differentiator</span>
+      </div>
+      <div class="subsection-body">
+        <p>Connect admins directly with wholesale suppliers and GrabOn merchant deals. Leverage GrabOn's existing 4,000+ merchant relationships to provide pricing that admins cannot get independently through cold outreach.</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Description</th>
+                <th>Value to Admin</th>
+                <th>Value to Merchant</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">Deal Discovery</td>
+                <td>Browse GrabOn merchant catalog filtered for bulk-friendly products and active promotions</td>
+                <td>Instant access to 4,000+ merchants without cold outreach or relationship building</td>
+                <td>New guaranteed-volume demand channel with aggregated orders</td>
+              </tr>
+              <tr>
+                <td class="bold">Auto-Negotiation</td>
+                <td>Admin submits product + target quantity, system fetches best available price from merchant network</td>
+                <td>Save 3-5 hours of manual negotiation per deal</td>
+                <td>Automated bulk inquiry processing, no sales team needed</td>
+              </tr>
+              <tr>
+                <td class="bold">Exclusive Bulk Codes</td>
+                <td>GrabCash-exclusive coupon codes for bulk orders, not available publicly or on other platforms</td>
+                <td>Better pricing means higher margins, more competitive group buys</td>
+                <td>Predictable volume at lower customer acquisition cost</td>
+              </tr>
+              <tr>
+                <td class="bold">Supplier Ratings</td>
+                <td>Admin-reviewed supplier ratings for product quality, shipping speed, communication, return handling</td>
+                <td>Reduce risk of bad supplier experiences and product quality issues</td>
+                <td>Motivation to maintain quality standards and fast fulfillment</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.5 &mdash; Supplier Connect Feature Matrix</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Feature 6: Affiliate + Bulk Commission Stack</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Affiliate + Bulk Stack &mdash; The Double-Dip Model</span>
+        <span class="subsection-tag green">Revenue Multiplier</span>
+      </div>
+      <div class="subsection-body">
+        <div class="callout green"><strong>KEY INSIGHT:</strong> With GrabCash, admins earn BOTH the bulk markup margin AND the affiliate commission on the same deal. No other platform enables this stack. This is the single most compelling value proposition for admin recruitment and retention.</div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Revenue Layer</th>
+                <th>Source</th>
+                <th>Rate</th>
+                <th>On &#8377;5L Group Buy</th>
+                <th>Who Pays</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">Bulk Margin</td>
+                <td>Wholesale-to-retail price difference on group buy</td>
+                <td class="mono">20%</td>
+                <td class="mono green">&#8377;1,00,000</td>
+                <td>End buyer (via markup)</td>
+              </tr>
+              <tr>
+                <td class="bold">Affiliate Commission</td>
+                <td>GrabCash affiliate tracking on each sale transaction</td>
+                <td class="mono">8%</td>
+                <td class="mono green">&#8377;40,000</td>
+                <td>Merchant (via affiliate network)</td>
+              </tr>
+              <tr>
+                <td class="bold">GrabCash Bulk Bonus</td>
+                <td>Volume bonus for hitting monthly bulk targets</td>
+                <td class="mono">3%</td>
+                <td class="mono green">&#8377;15,000</td>
+                <td>GrabCash (from platform fee pool)</td>
+              </tr>
+              <tr>
+                <td class="bold green">Total Admin Earning</td>
+                <td>Combined stack across all revenue layers</td>
+                <td class="mono green">31%</td>
+                <td class="mono green">&#8377;1,55,000</td>
+                <td>&mdash;</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.6 &mdash; The Double-Dip Revenue Stack // GrabCash Exclusive</div>
+        </div>
+
+        <p>Compare this to <strong>EarnKaro</strong> where the same admin would earn only the affiliate commission (&#8377;40,000 on &#8377;5L). GrabCash delivers <span class="highlight">3.9x more income</span> on the same GMV by layering bulk margin infrastructure on top of affiliate tracking.</p>
+      </div>
+    </div>
+
+    <h3>Feature 7: Flash Deal Alert System</h3>
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Flash Deal Alerts &mdash; Product Specification</span>
+        <span class="subsection-tag yellow">Engagement</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Alert Type</th>
+                <th>Trigger</th>
+                <th>Target Admins</th>
+                <th>Response Window</th>
+                <th>Avg Conversion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="bold">Flash Bulk Deal</td>
+                <td>Merchant activates time-limited bulk pricing tier</td>
+                <td>Category-matched admins with 500+ subscribers</td>
+                <td class="mono">2-6 hours</td>
+                <td class="mono green">15-25%</td>
+              </tr>
+              <tr>
+                <td class="bold">Price Drop Alert</td>
+                <td>Product in admin's watchlist drops below target price</td>
+                <td>Admins who added product to watchlist</td>
+                <td class="mono">24 hours</td>
+                <td class="mono">8-12%</td>
+              </tr>
+              <tr>
+                <td class="bold">New Launch Exclusive</td>
+                <td>New product launch with GrabCash-exclusive early pricing</td>
+                <td>Top-tier admins in relevant category</td>
+                <td class="mono">48 hours</td>
+                <td class="mono">10-18%</td>
+              </tr>
+              <tr>
+                <td class="bold">Clearance Opportunity</td>
+                <td>Merchant needs to clear inventory, offers deep bulk discount</td>
+                <td>All active admins in matching category</td>
+                <td class="mono">12-24 hours</td>
+                <td class="mono green">20-35%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 3.7 &mdash; Flash Deal Alert Configuration</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Complete Feature Priority Matrix</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Priority</th>
+            <th>Dev Effort</th>
+            <th>Impact</th>
+            <th>MVP Phase</th>
+            <th>Dependencies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Group Buy Creator</td>
+            <td><span class="badge green">P0</span></td>
+            <td class="mono">3 weeks</td>
+            <td class="mono green">Very High</td>
+            <td>Phase 1</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td class="bold">Payment Collection</td>
+            <td><span class="badge green">P0</span></td>
+            <td class="mono">4 weeks</td>
+            <td class="mono green">Very High</td>
+            <td>Phase 1</td>
+            <td>Razorpay integration</td>
+          </tr>
+          <tr>
+            <td class="bold">Order Management</td>
+            <td><span class="badge green">P0</span></td>
+            <td class="mono">3 weeks</td>
+            <td class="mono green">High</td>
+            <td>Phase 1</td>
+            <td>Payment Collection</td>
+          </tr>
+          <tr>
+            <td class="bold">Deal Dashboard</td>
+            <td><span class="badge yellow">P1</span></td>
+            <td class="mono">2 weeks</td>
+            <td class="mono">Medium</td>
+            <td>Phase 2</td>
+            <td>Group Buy Creator</td>
+          </tr>
+          <tr>
+            <td class="bold">Supplier Connect</td>
+            <td><span class="badge yellow">P1</span></td>
+            <td class="mono">3 weeks</td>
+            <td class="mono green">High</td>
+            <td>Phase 2</td>
+            <td>GrabOn merchant API</td>
+          </tr>
+          <tr>
+            <td class="bold">Price Negotiation Tool</td>
+            <td><span class="badge yellow">P1</span></td>
+            <td class="mono">4 weeks</td>
+            <td class="mono green">High</td>
+            <td>Phase 2</td>
+            <td>Supplier Connect</td>
+          </tr>
+          <tr>
+            <td class="bold">Affiliate + Bulk Stack</td>
+            <td><span class="badge green">P0</span></td>
+            <td class="mono">2 weeks</td>
+            <td class="mono green">Very High</td>
+            <td>Phase 1</td>
+            <td>GrabCash affiliate system</td>
+          </tr>
+          <tr>
+            <td class="bold">Flash Deal Alerts</td>
+            <td><span class="badge blue">P2</span></td>
+            <td class="mono">2 weeks</td>
+            <td class="mono">Medium</td>
+            <td>Phase 3</td>
+            <td>Supplier Connect, Push infra</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 3.8 &mdash; Complete Feature Priority &amp; Development Roadmap</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 4: GRABON MERCHANT BULK INTEGRATION
+     ============================================ -->
+<section class="section" id="s4">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">04</span>
+    <h2 class="section-title">GrabOn Merchant Bulk Integration</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="callout green"><strong>COMPETITIVE MOAT:</strong> GrabOn's 4,000+ merchant relationships are the single biggest asset GrabCash brings to bulk buying. No other affiliate platform has this depth of merchant integration. This section maps exactly how to leverage each category for group commerce.</div>
+
+    <h3>Categories Best Suited for Bulk</h3>
+    <div class="card-grid-3">
+      <div class="card">
+        <h4>Fashion</h4>
+        <p><strong>Merchants:</strong> Ajio, Myntra, H&amp;M, Zara, Max Fashion, FBB</p>
+        <p><strong>Opportunity:</strong> End-of-season clearance, new collection pre-orders, festive bulk buying (Diwali, Eid, Pongal)</p>
+        <p><strong>Discount:</strong> 30-60% off MRP on 50+ units</p>
+        <p><strong>Season:</strong> Jan-Feb (winter clearance), Jul-Aug (monsoon clearance), Oct (pre-Diwali)</p>
+      </div>
+      <div class="card">
+        <h4>Electronics</h4>
+        <p><strong>Merchants:</strong> Samsung, boAt, Noise, OnePlus, Croma, Reliance Digital</p>
+        <p><strong>Opportunity:</strong> New launch group buys, accessories bundles, corporate gifting deals</p>
+        <p><strong>Discount:</strong> 15-35% off MRP on 25+ units</p>
+        <p><strong>Season:</strong> Product launch cycles, sale events (BBD, GOSF, Republic Day)</p>
+      </div>
+      <div class="card">
+        <h4>Beauty &amp; Personal Care</h4>
+        <p><strong>Merchants:</strong> Nykaa, Mamaearth, mCaffeine, Sugar Cosmetics, Plum</p>
+        <p><strong>Opportunity:</strong> Subscription boxes, gift hampers, new product launches, salon bulk supply</p>
+        <p><strong>Discount:</strong> 25-45% off MRP on 30+ units</p>
+        <p><strong>Season:</strong> Wedding season (Nov-Feb), Valentine's, Raksha Bandhan</p>
+      </div>
+      <div class="card">
+        <h4>Home &amp; Living</h4>
+        <p><strong>Merchants:</strong> Pepperfry, Urban Ladder, HomeTown, IKEA, Wakefit</p>
+        <p><strong>Opportunity:</strong> Housing society group furniture orders, kitchen appliance bundles, office furnishing</p>
+        <p><strong>Discount:</strong> 20-40% off MRP on 10+ units</p>
+        <p><strong>Season:</strong> Diwali, new year, moving season (Apr-Jun)</p>
+      </div>
+      <div class="card">
+        <h4>Food &amp; Grocery</h4>
+        <p><strong>Merchants:</strong> Swiggy, Zomato, BigBasket, Blinkit, Amazon Fresh</p>
+        <p><strong>Opportunity:</strong> Corporate meal deals, party orders, festive hampers, office pantry bulk</p>
+        <p><strong>Discount:</strong> 15-30% off on group orders</p>
+        <p><strong>Season:</strong> Corporate events, festivals, year-end parties</p>
+      </div>
+      <div class="card">
+        <h4>Health &amp; Wellness</h4>
+        <p><strong>Merchants:</strong> Pharmeasy, 1mg, HealthKart, MuscleBlaze, Decathlon</p>
+        <p><strong>Opportunity:</strong> Gym group orders, supplement subscriptions, sports equipment for clubs</p>
+        <p><strong>Discount:</strong> 20-35% off MRP on 20+ units</p>
+        <p><strong>Season:</strong> Jan (New Year resolutions), summer (fitness season)</p>
+      </div>
+    </div>
+
+    <h3>Top 20 Merchant Bulk Opportunity Matrix</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Merchant</th>
+            <th>Category</th>
+            <th>Bulk Products</th>
+            <th>Expected Discount</th>
+            <th>Min Order</th>
+            <th>Affiliate Rate</th>
+            <th>Readiness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">1</td><td class="bold">Ajio</td><td>Fashion</td><td>End-of-season apparel, private label brands</td><td class="mono green">40-60%</td><td class="mono">50 units</td><td class="mono">8-12%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">2</td><td class="bold">Myntra</td><td>Fashion</td><td>EOSS collections, Roadster, HRX brands</td><td class="mono green">35-55%</td><td class="mono">25 units</td><td class="mono">6-10%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">3</td><td class="bold">boAt</td><td>Electronics</td><td>Airdopes, headphones, speakers, smartwatches</td><td class="mono green">25-40%</td><td class="mono">30 units</td><td class="mono">5-8%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">4</td><td class="bold">Nykaa</td><td>Beauty</td><td>Gift sets, subscription boxes, new launches</td><td class="mono green">30-45%</td><td class="mono">20 units</td><td class="mono">8-15%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">5</td><td class="bold">Samsung</td><td>Electronics</td><td>Galaxy accessories, wearables, tablets</td><td class="mono">20-30%</td><td class="mono">15 units</td><td class="mono">3-6%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">6</td><td class="bold">Mamaearth</td><td>Beauty</td><td>Skincare kits, baby care bundles, hair care</td><td class="mono green">35-50%</td><td class="mono">25 units</td><td class="mono">10-15%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">7</td><td class="bold">Pepperfry</td><td>Home</td><td>Office furniture bundles, decor sets</td><td class="mono">25-40%</td><td class="mono">10 units</td><td class="mono">6-10%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">8</td><td class="bold">H&amp;M</td><td>Fashion</td><td>Season-end clearance, basics collection</td><td class="mono green">40-60%</td><td class="mono">30 units</td><td class="mono">5-8%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">9</td><td class="bold">Noise</td><td>Electronics</td><td>Smartwatches, earbuds, accessories</td><td class="mono green">30-45%</td><td class="mono">25 units</td><td class="mono">5-8%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">10</td><td class="bold">Sugar Cosmetics</td><td>Beauty</td><td>Lip kits, combo sets, festive collections</td><td class="mono green">30-45%</td><td class="mono">20 units</td><td class="mono">10-15%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">11</td><td class="bold">Max Fashion</td><td>Fashion</td><td>Family packs, workwear bundles</td><td class="mono green">35-50%</td><td class="mono">40 units</td><td class="mono">6-9%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">12</td><td class="bold">HealthKart</td><td>Health</td><td>Protein supplements, vitamins, gym essentials</td><td class="mono">25-35%</td><td class="mono">15 units</td><td class="mono">8-12%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">13</td><td class="bold">Wakefit</td><td>Home</td><td>Mattresses, pillows (housing society orders)</td><td class="mono">20-30%</td><td class="mono">10 units</td><td class="mono">5-8%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">14</td><td class="bold">Swiggy</td><td>Food</td><td>Corporate meal deals, party catering</td><td class="mono">15-25%</td><td class="mono">20 orders</td><td class="mono">2-5%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">15</td><td class="bold">mCaffeine</td><td>Beauty</td><td>Gift sets, corporate gifting bundles</td><td class="mono green">30-45%</td><td class="mono">25 units</td><td class="mono">10-15%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">16</td><td class="bold">OnePlus</td><td>Electronics</td><td>Accessories, Buds, Band wearables</td><td class="mono">20-30%</td><td class="mono">20 units</td><td class="mono">3-6%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">17</td><td class="bold">Decathlon</td><td>Sports</td><td>Team sports gear, gym equipment</td><td class="mono">15-25%</td><td class="mono">15 units</td><td class="mono">4-7%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">18</td><td class="bold">Zomato</td><td>Food</td><td>Group dining, party orders</td><td class="mono">15-25%</td><td class="mono">15 orders</td><td class="mono">2-5%</td><td><span class="badge yellow">Medium</span></td></tr>
+          <tr><td class="mono">19</td><td class="bold">Plum Goodness</td><td>Beauty</td><td>Skincare sets, gifting combos</td><td class="mono green">30-40%</td><td class="mono">20 units</td><td class="mono">10-15%</td><td><span class="badge green">High</span></td></tr>
+          <tr><td class="mono">20</td><td class="bold">MuscleBlaze</td><td>Health</td><td>Whey protein, pre-workout, gym items</td><td class="mono">25-35%</td><td class="mono">15 units</td><td class="mono">8-12%</td><td><span class="badge yellow">Medium</span></td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 4.1 &mdash; Top 20 Merchant Bulk Opportunity Matrix // GrabCash Intelligence</div>
+    </div>
+
+    <h3>Merchant Pitch Framework</h3>
+    <div class="template-box"><span class="template-title">Merchant Bulk Deal Pitch Template</span>Subject: Guaranteed Volume Deal &mdash; [X] Units via GrabCash Group Buying Network
+
+Hi [Merchant Name],
+
+We are reaching out from GrabCash (powered by GrabOn, India's largest coupon platform with 25M+ monthly users).
+
+We have built a group buying network of [X] Telegram communities with [Y] combined subscribers. Our admins run structured group buys where they aggregate demand and deliver guaranteed volume.
+
+THE PROPOSITION:
+- We guarantee [minimum units] orders per group buy
+- You provide exclusive bulk pricing (target: [X]% off MRP)
+- Our admins handle all demand aggregation and buyer coordination
+- You handle fulfillment (direct ship to buyers)
+
+YOUR BENEFIT:
+- Zero customer acquisition cost &mdash; we bring the demand
+- Predictable volume &mdash; orders confirmed before you ship
+- No returns risk &mdash; our escrow model ensures commitment
+- Brand exposure to [X]K+ engaged deal-seekers
+
+NEXT STEPS:
+1. Share your best bulk pricing for [product/category]
+2. We pilot with 1-2 group buys
+3. Scale based on results
+
+Interested? Let's schedule a 15-min call.
+
+Best,
+[Name] | GrabCash Merchant Partnerships</div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 5: ADMIN-AS-DISTRIBUTOR MODEL
+     ============================================ -->
+<section class="section" id="s5">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Admin-as-Distributor Model</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <p>The core strategic shift: transform top Telegram admins from passive link-sharers into <strong>active mini-distributors</strong> with a full commerce stack. This creates lock-in that no competitor can replicate &mdash; because admins are not just using GrabCash for links, they are running their entire group commerce business on it.</p>
+
+    <h3>Revenue Stack Comparison</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Revenue Layer</th>
+            <th>EarnKaro Admin</th>
+            <th>GrabCash (Link Only)</th>
+            <th>GrabCash (Bulk Mode)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Affiliate Commission</td><td class="mono">&#8377;15K/mo</td><td class="mono">&#8377;20K/mo</td><td class="mono">&#8377;25K/mo</td></tr>
+          <tr><td class="bold">Bulk Markup Margin</td><td class="mono red">&#8377;0</td><td class="mono red">&#8377;0</td><td class="mono green">&#8377;45K/mo</td></tr>
+          <tr><td class="bold">Volume Bonus</td><td class="mono">&#8377;2K/mo</td><td class="mono">&#8377;5K/mo</td><td class="mono green">&#8377;12K/mo</td></tr>
+          <tr><td class="bold">Service/Curation Fee</td><td class="mono red">&#8377;0</td><td class="mono red">&#8377;0</td><td class="mono green">&#8377;8K/mo</td></tr>
+          <tr><td class="bold green">Total Monthly Income</td><td class="mono">&#8377;17K/mo</td><td class="mono">&#8377;25K/mo</td><td class="mono green">&#8377;90K/mo</td></tr>
+          <tr><td class="bold green">Income Multiplier</td><td class="mono">1x (baseline)</td><td class="mono">1.5x</td><td class="mono green">5.3x</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 5.1 &mdash; Admin Income Comparison: EarnKaro vs GrabCash Bulk Mode</div>
+    </div>
+
+    <h3>Admin Tier System for Bulk Operations</h3>
+    <div class="card-grid">
+      <div class="tier-card bronze">
+        <div class="tier-name">Bronze Distributor</div>
+        <div class="tier-range">&lt; &#8377;1L GMV/month</div>
+        <ul>
+          <li>Standard affiliate commission rates</li>
+          <li>Group buy creator (max 3 active deals)</li>
+          <li>Basic order management dashboard</li>
+          <li>Email support (48h response time)</li>
+          <li>Standard GrabOn merchant deal access</li>
+        </ul>
+      </div>
+      <div class="tier-card silver">
+        <div class="tier-name">Silver Distributor</div>
+        <div class="tier-range">&#8377;1-5L GMV/month</div>
+        <ul>
+          <li>+2% bonus on affiliate commission</li>
+          <li>Unlimited active group buys</li>
+          <li>Advanced analytics dashboard</li>
+          <li>Priority support (12h response)</li>
+          <li>Early access to deals (6h head start)</li>
+          <li>Supplier Connect access</li>
+        </ul>
+      </div>
+      <div class="tier-card gold">
+        <div class="tier-name">Gold Distributor</div>
+        <div class="tier-range">&#8377;5-15L GMV/month</div>
+        <ul>
+          <li>+5% bonus on affiliate commission</li>
+          <li>Dedicated account manager</li>
+          <li>Price negotiation tool access</li>
+          <li>Custom bulk deal requests (2/month)</li>
+          <li>WhatsApp support (4h response)</li>
+          <li>Exclusive merchant deals</li>
+          <li>Featured in GrabCash admin directory</li>
+        </ul>
+      </div>
+      <div class="tier-card platinum">
+        <div class="tier-name">Platinum Distributor</div>
+        <div class="tier-range">&#8377;15L+ GMV/month</div>
+        <ul>
+          <li>+8% bonus on affiliate commission</li>
+          <li>Direct merchant introductions</li>
+          <li>Custom deal negotiation by GrabCash team</li>
+          <li>Quarterly strategy sessions</li>
+          <li>Phone support (2h response)</li>
+          <li>Co-branded materials and marketing</li>
+          <li>Revenue share on sub-admin referrals</li>
+          <li>Beta access to all new features</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tier Benefits Matrix</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Benefit</th><th>Bronze</th><th>Silver</th><th>Gold</th><th>Platinum</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Commission Bonus</td><td class="mono">Base rate</td><td class="mono">+2%</td><td class="mono green">+5%</td><td class="mono green">+8%</td></tr>
+          <tr><td class="bold">Active Group Buy Limit</td><td class="mono">3</td><td class="mono">Unlimited</td><td class="mono">Unlimited</td><td class="mono">Unlimited</td></tr>
+          <tr><td class="bold">Supplier Connect</td><td class="mono red">No</td><td class="mono green">Yes</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Price Negotiation Tool</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Dedicated Account Manager</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Early Deal Access</td><td class="mono red">No</td><td class="mono">6h head start</td><td class="mono">12h head start</td><td class="mono green">24h head start</td></tr>
+          <tr><td class="bold">Custom Deal Requests</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono green">2/month</td><td class="mono green">Unlimited</td></tr>
+          <tr><td class="bold">Support Level</td><td>Email (48h)</td><td>Priority (12h)</td><td>WhatsApp (4h)</td><td>Phone (2h)</td></tr>
+          <tr><td class="bold">Co-Branded Materials</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Sub-Admin Revenue Share</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono red">No</td><td class="mono green">5% of sub-admin GMV</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 5.2 &mdash; Admin Tier Benefits Matrix // GrabCash Bulk Program</div>
+    </div>
+
+    <h3>GrabCash Bulk Academy &mdash; Training Program</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Module</th><th>Topic</th><th>Duration</th><th>Format</th><th>Outcome</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">M1</td><td class="bold">Bulk Buying Fundamentals</td><td class="mono">45 min</td><td>Video + Quiz</td><td>Understand types of group buys, pricing tiers, margin calculation</td></tr>
+          <tr><td class="mono">M2</td><td class="bold">Deal Sourcing Mastery</td><td class="mono">60 min</td><td>Video + Live demo</td><td>Find profitable products, evaluate suppliers, use Supplier Connect</td></tr>
+          <tr><td class="mono">M3</td><td class="bold">Group Buy Creation</td><td class="mono">30 min</td><td>Hands-on tutorial</td><td>Create and launch first group buy using GrabCash platform</td></tr>
+          <tr><td class="mono">M4</td><td class="bold">Payment &amp; Order Management</td><td class="mono">45 min</td><td>Video + Walkthrough</td><td>Set up payment collection, manage orders, handle disputes</td></tr>
+          <tr><td class="mono">M5</td><td class="bold">Content &amp; Marketing</td><td class="mono">60 min</td><td>Templates + Examples</td><td>Create compelling deal posts, manage community engagement</td></tr>
+          <tr><td class="mono">M6</td><td class="bold">Scaling Operations</td><td class="mono">45 min</td><td>Case studies</td><td>Multi-channel strategy, team building, process automation</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 5.3 &mdash; GrabCash Bulk Academy Curriculum</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 6: GROUP BUY OPERATIONS PLAYBOOK
+     ============================================ -->
+<section class="section" id="s6">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Group Buy Operations Playbook</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>7-Day Group Buy Timeline</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Phase</th><th>Admin Actions</th><th>Platform Actions</th><th>Key Metrics</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono bold">Day 0</td><td><span class="badge blue">Prep</span></td><td>Source product, negotiate pricing, prepare images and description, set tier structure</td><td>Admin creates group buy in dashboard</td><td>Product selected, pricing locked</td></tr>
+          <tr><td class="mono bold">Day 1</td><td><span class="badge green">Launch</span></td><td>Post deal in primary channel, cross-post in allied groups, pin message</td><td>Generate shareable card, activate progress tracking</td><td>First 20% of commitments within 24h</td></tr>
+          <tr><td class="mono bold">Day 2</td><td><span class="badge green">Momentum</span></td><td>Answer FAQs, post testimonials from early commitments, share progress</td><td>Send progress notifications to channel, update card</td><td>40-50% fill rate achieved</td></tr>
+          <tr><td class="mono bold">Day 3</td><td><span class="badge yellow">Mid-Point</span></td><td>Post "halfway there!" update, address objections, share product reviews</td><td>Mid-point notification, tier progress alert</td><td>50-65% fill rate</td></tr>
+          <tr><td class="mono bold">Day 4-5</td><td><span class="badge orange">Push</span></td><td>FOMO messaging ("Only 12 spots left!"), share user testimonials, bonus offers</td><td>Urgency notifications, countdown timer visible</td><td>70-85% fill rate</td></tr>
+          <tr><td class="mono bold">Day 6</td><td><span class="badge red">Final Push</span></td><td>"Last 24 hours!" post, direct DMs to interested non-committed buyers</td><td>Final day alert to all channel members</td><td>85-100% fill rate</td></tr>
+          <tr><td class="mono bold">Day 7</td><td><span class="badge purple">Close</span></td><td>Close deal, send payment collection messages, confirm all order details</td><td>Auto-close, trigger payment links, lock orders</td><td>Deal closed, payment begins</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 6.1 &mdash; 7-Day Group Buy Operation Timeline</div>
+    </div>
+
+    <h3>Deal Post Templates</h3>
+
+    <div class="template-box"><span class="template-title">Flash Group Buy Post Template</span>GROUP BUY ALERT
+
+PRODUCT: [Product Name]
+MRP: Rs.[MRP]
+OUR PRICE:
+  10 orders = Rs.[Price1] (SAVE [X]%)
+  25 orders = Rs.[Price2] (SAVE [X]%)
+  50 orders = Rs.[Price3] (SAVE [X]%)
+
+Quality: [Quality details]
+Shipping: Free / Rs.[X] flat
+Deadline: [Date] at [Time]
+Returns: [Return policy]
+
+PROGRESS: [XX/50] slots filled!
+
+TO ORDER: Click here [GrabCash Link]
+QUESTIONS: Reply to this message
+
+#GroupBuy #[Category] #Deals</div>
+
+    <div class="template-box"><span class="template-title">Pre-Order Group Buy Post Template</span>PRE-ORDER EXCLUSIVE
+
+[Brand] [Product Name] &mdash; LAUNCHING [Date]
+
+Get it BEFORE anyone else at EXCLUSIVE pricing!
+
+Launch Price: Rs.[MRP]
+Our Pre-Order Price: Rs.[Price] (SAVE [X]%)
+Delivery: Within [X] days of launch
+
+Why pre-order with us?
+- Guaranteed allocation (limited stock expected)
+- Best price anywhere (exclusive bulk negotiation)
+- Full refund if product doesn't meet expectations
+
+Slots Available: [XX] only!
+Deadline: [Date]
+
+RESERVE NOW: [GrabCash Link]</div>
+
+    <div class="template-box"><span class="template-title">FAQ Template for Subscriber Questions</span>FREQUENTLY ASKED QUESTIONS
+
+Q: Is this genuine product?
+A: Yes, sourced directly from [brand/authorized seller]. Full warranty applies.
+
+Q: What if I don't like the product?
+A: [Return policy details]. Refund processed within [X] days.
+
+Q: When will I receive it?
+A: Shipping starts within [X] days of deal closing. Delivery in [X-Y] days.
+
+Q: Can I cancel after committing?
+A: Before payment: Yes. After payment: Only if deal cancelled due to low fill rate.
+
+Q: Is my payment safe?
+A: Payments held in escrow via Razorpay. Released to seller only after delivery confirmed.
+
+Q: What sizes/colors are available?
+A: [List available variants]. Select your preference when ordering.
+
+Q: Can I order multiple units?
+A: Yes! Max [X] units per person to ensure fair distribution.</div>
+
+    <h3>Post-Buy Completion Checklist</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Step</th><th>Action</th><th>Timeline</th><th>Responsible</th><th>Status Check</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">1</td><td class="bold">Verify all payments received</td><td>Within 24h of close</td><td>Admin + Platform</td><td>All payments reconciled in dashboard</td></tr>
+          <tr><td class="mono">2</td><td class="bold">Confirm variant selections</td><td>Within 24h of close</td><td>Admin</td><td>All sizes/colors confirmed with buyers</td></tr>
+          <tr><td class="mono">3</td><td class="bold">Place consolidated order</td><td>Within 48h of close</td><td>Admin via Platform</td><td>Order confirmation received from merchant</td></tr>
+          <tr><td class="mono">4</td><td class="bold">Share shipping updates</td><td>Upon dispatch</td><td>Admin</td><td>Tracking info shared in channel</td></tr>
+          <tr><td class="mono">5</td><td class="bold">Handle delivery issues</td><td>Ongoing</td><td>Admin + Support</td><td>All issues resolved within 72h</td></tr>
+          <tr><td class="mono">6</td><td class="bold">Collect feedback</td><td>3 days post-delivery</td><td>Admin</td><td>80%+ feedback collected</td></tr>
+          <tr><td class="mono">7</td><td class="bold">Process returns/exchanges</td><td>Within 7 days</td><td>Admin + Merchant</td><td>All returns processed and refunded</td></tr>
+          <tr><td class="mono">8</td><td class="bold">Post success metrics</td><td>After completion</td><td>Admin</td><td>"This group buy saved our members Rs.X total!"</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 6.2 &mdash; Post-Group-Buy Completion Checklist</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 7: LOGISTICS & FULFILLMENT
+     ============================================ -->
+<section class="section" id="s7">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">07</span>
+    <h2 class="section-title">Logistics &amp; Fulfillment</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Shipping Model Comparison</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Model</th><th>How It Works</th><th>Best For</th><th>Pros</th><th>Cons</th><th>Cost/Unit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Direct from Merchant</td><td>Merchant ships individual orders directly to each buyer's address</td><td>E-commerce merchant deals (Ajio, Myntra, Nykaa)</td><td>No logistics burden on admin, built-in tracking</td><td>Less control, cannot inspect quality pre-ship</td><td class="mono green">Rs.0 (merchant absorbs)</td></tr>
+          <tr><td class="bold">Admin Aggregated</td><td>All orders shipped to admin, then sorted, repackaged, and shipped individually</td><td>Wholesale/manufacturer buys, local communities</td><td>Quality control, branding opportunity</td><td>Storage needed, labor intensive</td><td class="mono yellow">Rs.50-150</td></tr>
+          <tr><td class="bold">Dropship</td><td>Admin places orders; supplier ships directly to each buyer</td><td>High-volume, low-value items, accessories</td><td>No inventory risk, scalable</td><td>No quality control, longer shipping</td><td class="mono">Rs.30-80</td></tr>
+          <tr><td class="bold">Hub &amp; Spoke</td><td>Shipped to regional hub; buyers pick up or get local delivery</td><td>Same-city groups, college campuses</td><td>Lower shipping cost, faster delivery</td><td>Geographic limitation</td><td class="mono green">Rs.0-30</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 7.1 &mdash; Shipping Model Comparison Matrix</div>
+    </div>
+
+    <h3>Preferred Logistics Partners</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Partner</th><th>Type</th><th>Best For</th><th>Rate (per 500g)</th><th>COD</th><th>API</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Shiprocket</td><td>Aggregator</td><td>Multi-carrier rate optimization</td><td class="mono">Rs.30-60</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Delhivery</td><td>Direct</td><td>Pan-India coverage, reliable tracking</td><td class="mono">Rs.40-70</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">Ecom Express</td><td>Direct</td><td>Tier 2-3 city coverage, COD specialist</td><td class="mono">Rs.35-65</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+          <tr><td class="bold">DTDC</td><td>Direct</td><td>Heavy/bulky items, ground shipping</td><td class="mono">Rs.45-80</td><td class="mono green">Yes</td><td class="mono yellow">Partial</td></tr>
+          <tr><td class="bold">India Post</td><td>Government</td><td>Lowest cost, deepest pin code coverage</td><td class="mono green">Rs.20-40</td><td class="mono red">Limited</td><td class="mono red">No</td></tr>
+          <tr><td class="bold">Dunzo / Porter</td><td>Hyperlocal</td><td>Same-city delivery, last mile</td><td class="mono">Rs.40-100</td><td class="mono green">Yes</td><td class="mono green">Yes</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 7.2 &mdash; Logistics Partner Comparison</div>
+    </div>
+
+    <h3>COD vs Prepaid Dynamics</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Factor</th><th>Prepaid (UPI/Online)</th><th>COD</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Order Confirmation Rate</td><td class="mono green">95-98%</td><td class="mono yellow">70-80%</td></tr>
+          <tr><td class="bold">Return to Origin (RTO) Rate</td><td class="mono green">2-5%</td><td class="mono red">15-25%</td></tr>
+          <tr><td class="bold">Admin Cash Flow</td><td class="mono green">Immediate (via escrow)</td><td class="mono red">Delayed (7-14 days post-delivery)</td></tr>
+          <tr><td class="bold">Buyer Trust Required</td><td class="mono">High (pays before receiving)</td><td class="mono green">Low (pays on delivery)</td></tr>
+          <tr><td class="bold">Fraud Risk</td><td class="mono green">Low</td><td class="mono red">Medium-High</td></tr>
+          <tr><td class="bold">Best For</td><td>Established groups, repeat buyers</td><td>New groups, first-time buyers, Tier 3-4 cities</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 7.3 &mdash; COD vs Prepaid Analysis</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 8: PAYMENT & TRUST INFRASTRUCTURE
+     ============================================ -->
+<section class="section" id="s8">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">08</span>
+    <h2 class="section-title">Payment &amp; Trust Infrastructure</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Payment Gateway Integration</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Gateway</th><th>UPI</th><th>Escrow/Route</th><th>Split Pay</th><th>Refunds</th><th>MDR</th><th>Settlement</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Razorpay</td><td class="mono green">Yes</td><td class="mono green">Razorpay Route</td><td class="mono green">Yes</td><td class="mono green">Instant</td><td class="mono">0% UPI / 2% Cards</td><td class="mono">T+2</td></tr>
+          <tr><td class="bold">PayU</td><td class="mono green">Yes</td><td class="mono yellow">PayU Hub</td><td class="mono green">Yes</td><td class="mono green">Instant</td><td class="mono">0% UPI / 2% Cards</td><td class="mono">T+2</td></tr>
+          <tr><td class="bold">Cashfree</td><td class="mono green">Yes</td><td class="mono green">Marketplace</td><td class="mono green">Yes</td><td class="mono green">Instant</td><td class="mono">0% UPI / 1.9% Cards</td><td class="mono green">T+1</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 8.1 &mdash; Payment Gateway Comparison</div>
+    </div>
+
+    <h3>Escrow Flow for Group Buys</h3>
+    <div class="flow-row">
+      <span class="flow-step">Buyer Pays</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Funds in Escrow</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Order Placed</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Delivery Confirmed</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Escrow Released</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Merchant + Admin Paid</span>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Buy Type</th><th>Payment Timing</th><th>Escrow Hold</th><th>Release Trigger</th><th>Dispute Window</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Flash Group Buy</td><td>Full payment on commitment</td><td class="mono">Until delivery + 3 days</td><td>Delivery confirmation or auto after 10 days</td><td class="mono">7 days</td></tr>
+          <tr><td class="bold">MOQ Wholesale</td><td>50% advance, 50% before dispatch</td><td class="mono">Until delivery + 5 days</td><td>Delivery confirmation or auto after 14 days</td><td class="mono">10 days</td></tr>
+          <tr><td class="bold">Pre-Order</td><td>Full payment, refundable until launch</td><td class="mono">Until delivery + 7 days</td><td>Delivery confirmation or auto after 14 days</td><td class="mono">14 days</td></tr>
+          <tr><td class="bold">Reseller Pipeline</td><td>Full payment on order</td><td class="mono">Until delivery + 3 days</td><td>Delivery confirmation or auto after 7 days</td><td class="mono">5 days</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 8.2 &mdash; Escrow Rules by Buy Type</div>
+    </div>
+
+    <h3>Admin Trust Score</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Factor</th><th>Weight</th><th>How Measured</th><th>Impact on Score</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Order Fulfillment Rate</td><td class="mono">30%</td><td>% of committed orders successfully delivered</td><td class="mono green">+0.3 per successful delivery</td></tr>
+          <tr><td class="bold">On-Time Delivery</td><td class="mono">20%</td><td>% of orders delivered within stated timeline</td><td class="mono green">+0.2 per on-time delivery</td></tr>
+          <tr><td class="bold">Buyer Ratings</td><td class="mono">20%</td><td>Average buyer rating (1-5 stars)</td><td class="mono green">+0.2 per 5-star rating</td></tr>
+          <tr><td class="bold">Dispute Rate</td><td class="mono">15%</td><td>% of orders with disputes raised</td><td class="mono red">-0.5 per dispute filed</td></tr>
+          <tr><td class="bold">Response Time</td><td class="mono">10%</td><td>Average response time to buyer queries</td><td class="mono green">+0.1 for sub-4h response</td></tr>
+          <tr><td class="bold">Account Age</td><td class="mono">5%</td><td>Months since first group buy completed</td><td class="mono green">+0.05 per month active</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 8.3 &mdash; Admin Trust Score Calculation</div>
+    </div>
+
+    <h3>Dispute Resolution Process</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Timeline</th><th>Actions</th><th>Resolution Rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Level 1: Admin Resolution</td><td class="mono">0-48 hours</td><td>Buyer contacts admin. Admin resolves (refund, replacement, explanation).</td><td class="mono green">75% resolved</td></tr>
+          <tr><td class="bold">Level 2: Platform Mediation</td><td class="mono">48-96 hours</td><td>Buyer escalates to GrabCash support. Mediator reviews evidence from both sides.</td><td class="mono">20% resolved</td></tr>
+          <tr><td class="bold">Level 3: Platform Decision</td><td class="mono">96-168 hours</td><td>GrabCash makes binding decision. Escrow released per decision. Trust score updated.</td><td class="mono yellow">5% resolved</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 8.4 &mdash; Dispute Resolution Escalation Matrix</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 9: CATEGORY PLAYBOOKS
+     ============================================ -->
+<section class="section" id="s9">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">09</span>
+    <h2 class="section-title">Category Playbooks for Bulk Buying</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Fashion Category Playbook</span>
+        <span class="subsection-tag">Highest Volume</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Top Products</td><td>Kurtis, T-shirts, ethnic wear sets, jeans, sarees, sneakers, Western dresses</td></tr>
+              <tr><td class="bold">Best Months</td><td>Jan-Feb (winter clearance), Jun-Jul (monsoon sale), Oct-Nov (Diwali/festive season)</td></tr>
+              <tr><td class="bold">Avg Group Size</td><td>30-80 buyers per group buy</td></tr>
+              <tr><td class="bold">Typical Discount</td><td class="green">40-65% off MRP on bulk</td></tr>
+              <tr><td class="bold">Risk Factors</td><td class="yellow">High return rate (size issues 12-18%), quality variance, seasonal demand fluctuation</td></tr>
+              <tr><td class="bold">Key Suppliers</td><td>Surat wholesale markets, Ajio EOSS, Myntra clearance, Tirupur manufacturers</td></tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 9.1 &mdash; Fashion Category Parameters</div>
+        </div>
+        <h4>Example Deal Walkthrough: Ajio EOSS Group Buy</h4>
+        <div class="card">
+          <p><strong>Product:</strong> Ajio Private Label Cotton Kurtis (assorted designs)</p>
+          <p><strong>MRP:</strong> Rs.899 per piece | <strong>Ajio EOSS Price:</strong> Rs.449 (50% off, public) | <strong>GrabCash Bulk:</strong> Rs.359 with exclusive code + bank offer (60% off)</p>
+          <p><strong>Admin resale price:</strong> Rs.399 (55% off MRP &mdash; still best price for buyers)</p>
+          <p><strong>Admin earns per unit:</strong> Rs.40 margin + Rs.36 affiliate (8% on Rs.449) = <span class="highlight">Rs.76/unit</span></p>
+          <p><strong>50-unit group buy:</strong> <span class="highlight">Rs.3,800 total</span> | <strong>Time invested:</strong> ~4 hours | <strong>Effective rate:</strong> <span class="highlight">Rs.950/hour</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Electronics Category Playbook</span>
+        <span class="subsection-tag blue">High Value</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Top Products</td><td>TWS earbuds, smartwatches, power banks, phone cases, chargers, speakers</td></tr>
+              <tr><td class="bold">Best Months</td><td>Jan (Republic Day), Jul (Prime Day), Oct (BBD/GOSF), Dec (year-end)</td></tr>
+              <tr><td class="bold">Avg Group Size</td><td>20-50 buyers per group buy</td></tr>
+              <tr><td class="bold">Typical Discount</td><td class="green">20-40% off MRP on bulk</td></tr>
+              <tr><td class="bold">Risk Factors</td><td class="yellow">Warranty claims, counterfeit risk, rapid price depreciation</td></tr>
+              <tr><td class="bold">Key Suppliers</td><td>boAt direct, Amazon bulk, AliExpress, manufacturer direct channels</td></tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 9.2 &mdash; Electronics Category Parameters</div>
+        </div>
+        <h4>Example Deal Walkthrough: boAt Airdopes Group Buy</h4>
+        <div class="card">
+          <p><strong>Product:</strong> boAt Airdopes 141 TWS Earbuds</p>
+          <p><strong>MRP:</strong> Rs.2,490 | <strong>Best Online:</strong> Rs.1,099 | <strong>GrabCash Bulk:</strong> Rs.849 via merchant deal + bank offer</p>
+          <p><strong>Admin resale price:</strong> Rs.949 (62% off MRP)</p>
+          <p><strong>Admin earns per unit:</strong> Rs.100 margin + Rs.51 affiliate (6%) = <span class="highlight">Rs.151/unit</span></p>
+          <p><strong>30-unit group buy:</strong> <span class="highlight">Rs.4,530 total</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Beauty Category Playbook</span>
+        <span class="subsection-tag purple">High Margin</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Top Products</td><td>Lipstick combos, skincare kits, hair care sets, perfume gift sets, nail art kits</td></tr>
+              <tr><td class="bold">Best Months</td><td>Feb (Valentine's), Aug (Raksha Bandhan), Oct-Nov (Diwali gifting), wedding season</td></tr>
+              <tr><td class="bold">Avg Group Size</td><td>20-40 buyers per group buy</td></tr>
+              <tr><td class="bold">Typical Discount</td><td class="green">30-50% off MRP on bulk</td></tr>
+              <tr><td class="bold">Risk Factors</td><td>Shelf life concerns, authenticity questions, shade/variant issues</td></tr>
+              <tr><td class="bold">Key Suppliers</td><td>Nykaa wholesale, Mamaearth bulk, Sugar Cosmetics B2B, brand direct</td></tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 9.3 &mdash; Beauty Category Parameters</div>
+        </div>
+        <h4>Example: Mamaearth Gift Hamper Group Buy</h4>
+        <div class="card">
+          <p><strong>Product:</strong> Mamaearth Complete Skincare Gift Set (5 products)</p>
+          <p><strong>MRP:</strong> Rs.1,599 | <strong>GrabCash Bulk:</strong> Rs.799 (exclusive code + affiliate)</p>
+          <p><strong>Admin resale:</strong> Rs.999 (37% off MRP)</p>
+          <p><strong>Admin earns/unit:</strong> Rs.200 margin + Rs.96 affiliate (12%) = <span class="highlight">Rs.296/unit</span></p>
+          <p><strong>25-unit group buy:</strong> <span class="highlight">Rs.7,400 total</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Home &amp; Living Category Playbook</span>
+        <span class="subsection-tag orange">Large AOV</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Top Products</td><td>Bedsheets, organizers, kitchen appliances, furniture, mattresses, decor</td></tr>
+              <tr><td class="bold">Best Months</td><td>Oct-Nov (Diwali), Jan (new year), Apr-Jun (moving season)</td></tr>
+              <tr><td class="bold">Avg Group Size</td><td>10-25 buyers per group buy</td></tr>
+              <tr><td class="bold">Typical Discount</td><td class="green">25-45% off MRP on bulk</td></tr>
+              <tr><td class="bold">Risk Factors</td><td class="yellow">Bulky shipping, damage in transit, size/fit issues, heavy return cost</td></tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 9.4 &mdash; Home &amp; Living Category Parameters</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection(this)">
+        <span class="subsection-icon">&#9660;</span>
+        <span class="subsection-label">Food &amp; Group Meals Category Playbook</span>
+        <span class="subsection-tag yellow">High Frequency</span>
+      </div>
+      <div class="subsection-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Top Products</td><td>Corporate lunch deals, party catering, festive hampers, office pantry bulk, snack boxes</td></tr>
+              <tr><td class="bold">Best Months</td><td>Year-round (corporate), Oct-Dec (festive), wedding season</td></tr>
+              <tr><td class="bold">Avg Group Size</td><td>15-50 orders per deal</td></tr>
+              <tr><td class="bold">Typical Discount</td><td class="green">15-30% off regular pricing</td></tr>
+              <tr><td class="bold">Risk Factors</td><td>Perishability, delivery timing critical, quality consistency</td></tr>
+            </tbody>
+          </table>
+          <div class="table-caption">Table 9.5 &mdash; Food Category Parameters</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 10: COMPETITIVE POSITIONING
+     ============================================ -->
+<section class="section" id="s10">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">10</span>
+    <h2 class="section-title">Competitive Positioning</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Why Competitors Cannot Do This</h3>
+    <div class="card-grid-2">
+      <div class="card">
+        <h4>EarnKaro / CashKaro</h4>
+        <p><strong>Model:</strong> Pure affiliate link-sharing platform. No commerce infrastructure whatsoever.</p>
+        <p><strong>Why no bulk:</strong> No payment collection, no order management, no merchant bulk pricing relationships. Their entire tech stack is link conversion. Adding group buying would require a ground-up rebuild.</p>
+      </div>
+      <div class="card">
+        <h4>ExtraPe / PaisaWaapas</h4>
+        <p><strong>Model:</strong> Cashback browser extension and link tools for consumers.</p>
+        <p><strong>Why no bulk:</strong> Consumer-facing tool, not admin-facing. No admin dashboard, no group buying infrastructure, no B2B merchant relationships for bulk pricing.</p>
+      </div>
+      <div class="card">
+        <h4>CueLinks</h4>
+        <p><strong>Model:</strong> Automated affiliate link monetization for publishers and bloggers.</p>
+        <p><strong>Why no bulk:</strong> Targets website owners and bloggers, not Telegram admins. No understanding of group buying dynamics or community commerce patterns.</p>
+      </div>
+      <div class="card">
+        <h4>Meesho / GlowRoad</h4>
+        <p><strong>Model:</strong> Social commerce with catalog-based reselling from their own marketplace.</p>
+        <p><strong>Why different:</strong> Products limited to their marketplace. No affiliate commission layer. No multi-merchant support across 4,000+ brands like GrabCash offers.</p>
+      </div>
+    </div>
+
+    <h3>Feature Comparison: Group Commerce Capability</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>GrabCash (Planned)</th><th>EarnKaro</th><th>ExtraPe</th><th>CueLinks</th><th>Meesho</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Affiliate Link Sharing</td><td class="green">Yes</td><td class="green">Yes</td><td class="green">Yes</td><td class="green">Yes</td><td class="red">No</td></tr>
+          <tr><td class="bold">Group Buy Creator</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="red">No</td></tr>
+          <tr><td class="bold">Payment Collection (Escrow)</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="yellow">Partial</td></tr>
+          <tr><td class="bold">Order Management</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="green">Yes</td></tr>
+          <tr><td class="bold">Bulk Price Negotiation</td><td class="green">Yes (4,000+ merchants)</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="red">No</td></tr>
+          <tr><td class="bold">Affiliate + Bulk Stack</td><td class="green">Yes (Double-dip)</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="red">No</td></tr>
+          <tr><td class="bold">Admin Trust Scoring</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="yellow">Basic</td></tr>
+          <tr><td class="bold">Buyer Protection (Escrow)</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="green">Yes</td></tr>
+          <tr><td class="bold">Dispute Resolution</td><td class="green">3-tier system</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="green">Yes</td></tr>
+          <tr><td class="bold">Logistics Integration</td><td class="green">Yes</td><td class="red">No</td><td class="red">No</td><td class="red">No</td><td class="green">Yes</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 10.1 &mdash; Group Commerce Feature Comparison Matrix</div>
+    </div>
+
+    <h3>GrabCash's Unique Moat</h3>
+    <div class="swot-grid">
+      <div class="swot-card strength">
+        <div class="swot-card-title">Moat 1: Merchant Network</div>
+        <ul>
+          <li>GrabOn's 4,000+ merchant relationships built over a decade</li>
+          <li>Exclusive coupon codes and bulk pricing access</li>
+          <li>Cannot be replicated by any startup in less than 3-5 years</li>
+        </ul>
+      </div>
+      <div class="swot-card strength">
+        <div class="swot-card-title">Moat 2: Payment Infrastructure</div>
+        <ul>
+          <li>Escrow-based payment collection solves the top trust problem</li>
+          <li>Split payment routing automates revenue distribution</li>
+          <li>Regulatory compliance built in from day one</li>
+        </ul>
+      </div>
+      <div class="swot-card opportunity">
+        <div class="swot-card-title">Moat 3: Admin Network Effects</div>
+        <ul>
+          <li>More admins = more group buys = more merchant volume = better pricing</li>
+          <li>Better pricing attracts more admins = flywheel effect</li>
+          <li>Switching cost increases with each successful group buy</li>
+        </ul>
+      </div>
+      <div class="swot-card opportunity">
+        <div class="swot-card-title">Moat 4: Data Advantage</div>
+        <ul>
+          <li>Demand data across categories, regions, and price points</li>
+          <li>Predictive bulk pricing intelligence from transaction history</li>
+          <li>Admin performance and buyer preference profiling</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 11: FINANCIAL MODEL
+     ============================================ -->
+<section class="section" id="s11">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">11</span>
+    <h2 class="section-title">Financial Model</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Revenue Streams</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Stream</th><th>Description</th><th>Rate</th><th>On Rs.10L GMV</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Affiliate Commission Share</td><td>Platform takes share of affiliate commission on group buy transactions</td><td class="mono">15-25% of commission</td><td class="mono green">Rs.12K-25K</td><td>Variable</td></tr>
+          <tr><td class="bold">Platform Fee</td><td>Small % fee on total GMV processed through group buy feature</td><td class="mono">1-2% of GMV</td><td class="mono green">Rs.10K-20K</td><td>Variable</td></tr>
+          <tr><td class="bold">Merchant Listing Fees</td><td>Merchants pay for featured placement in bulk deal catalog</td><td class="mono">Rs.5K-25K/month</td><td class="mono green">Rs.5K-25K</td><td>Fixed</td></tr>
+          <tr><td class="bold">Payment MDR</td><td>Margin on payment processing for card/net banking transactions</td><td class="mono">0.3-0.5% of GMV</td><td class="mono green">Rs.3K-5K</td><td>Variable</td></tr>
+          <tr><td class="bold">Premium Subscriptions</td><td>Gold/Platinum tier subscription fees for advanced admin features</td><td class="mono">Rs.999-4,999/mo</td><td class="mono green">Per admin</td><td>Recurring</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 11.1 &mdash; Revenue Stream Breakdown</div>
+    </div>
+
+    <h3>Unit Economics per Group Buy</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Conservative</th><th>Base Case</th><th>Optimistic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Avg Group Buy GMV</td><td class="mono">Rs.1.5L</td><td class="mono">Rs.3L</td><td class="mono">Rs.5L</td></tr>
+          <tr><td class="bold">Platform Fee (1.5%)</td><td class="mono">Rs.2,250</td><td class="mono">Rs.4,500</td><td class="mono">Rs.7,500</td></tr>
+          <tr><td class="bold">Affiliate Share (20% of 8%)</td><td class="mono">Rs.2,400</td><td class="mono">Rs.4,800</td><td class="mono">Rs.8,000</td></tr>
+          <tr><td class="bold">Payment Processing</td><td class="mono">Rs.450</td><td class="mono">Rs.900</td><td class="mono">Rs.1,500</td></tr>
+          <tr><td class="bold green">Total Revenue per Buy</td><td class="mono green">Rs.5,100</td><td class="mono green">Rs.10,200</td><td class="mono green">Rs.17,000</td></tr>
+          <tr><td class="bold">Hosting + Infra Cost</td><td class="mono red">Rs.200</td><td class="mono red">Rs.200</td><td class="mono red">Rs.200</td></tr>
+          <tr><td class="bold">Support Cost</td><td class="mono red">Rs.500</td><td class="mono red">Rs.500</td><td class="mono red">Rs.500</td></tr>
+          <tr><td class="bold green">Net Margin per Buy</td><td class="mono green">Rs.4,400</td><td class="mono green">Rs.9,500</td><td class="mono green">Rs.16,300</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 11.2 &mdash; Unit Economics per Group Buy</div>
+    </div>
+
+    <h3>Admin Economics: Why Bulk 3x+ Their Income</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Link-Sharing Only</th><th>Link + Bulk (GrabCash)</th><th>Improvement</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Monthly GMV</td><td class="mono">Rs.5L</td><td class="mono">Rs.12L</td><td class="mono green">+140%</td></tr>
+          <tr><td class="bold">Affiliate Commission</td><td class="mono">Rs.40,000</td><td class="mono">Rs.96,000</td><td class="mono green">+140%</td></tr>
+          <tr><td class="bold">Bulk Margin</td><td class="mono red">Rs.0</td><td class="mono green">Rs.84,000</td><td class="mono green">New revenue</td></tr>
+          <tr><td class="bold">Volume Bonus</td><td class="mono">Rs.5,000</td><td class="mono">Rs.18,000</td><td class="mono green">+260%</td></tr>
+          <tr><td class="bold green">Total Monthly</td><td class="mono">Rs.45,000</td><td class="mono green">Rs.1,98,000</td><td class="mono green">+340% (4.4x)</td></tr>
+          <tr><td class="bold">Hours/Week</td><td class="mono">20h</td><td class="mono">35h</td><td class="mono">+75%</td></tr>
+          <tr><td class="bold">Effective Rate</td><td class="mono">Rs.563/hr</td><td class="mono green">Rs.1,414/hr</td><td class="mono green">+151%</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 11.3 &mdash; Admin Income: Link-Sharing vs GrabCash Bulk Mode</div>
+    </div>
+
+    <h3>12-Month Revenue Projection</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>Admins</th><th>Group Buys</th><th>GMV</th><th>Platform Revenue</th><th>Cumulative</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono bold">M1</td><td class="mono">10</td><td class="mono">15</td><td class="mono">Rs.15L</td><td class="mono">Rs.1.5L</td><td class="mono">Rs.1.5L</td></tr>
+          <tr><td class="mono bold">M2</td><td class="mono">25</td><td class="mono">40</td><td class="mono">Rs.50L</td><td class="mono">Rs.5L</td><td class="mono">Rs.6.5L</td></tr>
+          <tr><td class="mono bold">M3</td><td class="mono">50</td><td class="mono">90</td><td class="mono">Rs.1.2Cr</td><td class="mono">Rs.12L</td><td class="mono">Rs.18.5L</td></tr>
+          <tr><td class="mono bold">M4</td><td class="mono">80</td><td class="mono">150</td><td class="mono">Rs.2Cr</td><td class="mono green">Rs.20L</td><td class="mono">Rs.38.5L</td></tr>
+          <tr><td class="mono bold">M5</td><td class="mono">120</td><td class="mono">230</td><td class="mono">Rs.3.2Cr</td><td class="mono green">Rs.32L</td><td class="mono">Rs.70.5L</td></tr>
+          <tr><td class="mono bold">M6</td><td class="mono">170</td><td class="mono">320</td><td class="mono">Rs.4.8Cr</td><td class="mono green">Rs.48L</td><td class="mono">Rs.1.19Cr</td></tr>
+          <tr><td class="mono bold">M7</td><td class="mono">220</td><td class="mono">420</td><td class="mono">Rs.6.3Cr</td><td class="mono green">Rs.63L</td><td class="mono">Rs.1.82Cr</td></tr>
+          <tr><td class="mono bold">M8</td><td class="mono">280</td><td class="mono">530</td><td class="mono">Rs.8Cr</td><td class="mono green">Rs.80L</td><td class="mono">Rs.2.62Cr</td></tr>
+          <tr><td class="mono bold">M9</td><td class="mono">350</td><td class="mono">650</td><td class="mono">Rs.9.8Cr</td><td class="mono green">Rs.98L</td><td class="mono">Rs.3.6Cr</td></tr>
+          <tr><td class="mono bold">M10</td><td class="mono">420</td><td class="mono">780</td><td class="mono">Rs.11.7Cr</td><td class="mono green">Rs.1.17Cr</td><td class="mono">Rs.4.77Cr</td></tr>
+          <tr><td class="mono bold">M11</td><td class="mono">500</td><td class="mono">920</td><td class="mono">Rs.13.8Cr</td><td class="mono green">Rs.1.38Cr</td><td class="mono">Rs.6.15Cr</td></tr>
+          <tr><td class="mono bold">M12</td><td class="mono">600</td><td class="mono">1,100</td><td class="mono">Rs.16.5Cr</td><td class="mono green">Rs.1.65Cr</td><td class="mono green">Rs.7.8Cr</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 11.4 &mdash; 12-Month Revenue Projection (Base Case)</div>
+    </div>
+
+    <h3>Scenario Analysis</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Conservative</th><th>Base Case</th><th>Optimistic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Admins at M12</td><td class="mono">300</td><td class="mono">600</td><td class="mono">1,000</td></tr>
+          <tr><td class="bold">Avg Buys/Admin/Mo</td><td class="mono">1.2</td><td class="mono">1.8</td><td class="mono">2.5</td></tr>
+          <tr><td class="bold">Avg Group Buy GMV</td><td class="mono">Rs.1.5L</td><td class="mono">Rs.2.5L</td><td class="mono">Rs.4L</td></tr>
+          <tr><td class="bold">Annual GMV</td><td class="mono">Rs.32Cr</td><td class="mono">Rs.80Cr</td><td class="mono">Rs.180Cr</td></tr>
+          <tr><td class="bold">Annual Revenue</td><td class="mono">Rs.3.2Cr</td><td class="mono green">Rs.7.8Cr</td><td class="mono green">Rs.18Cr</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 11.5 &mdash; Annual Scenario Analysis</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 12: RISK ANALYSIS
+     ============================================ -->
+<section class="section" id="s12">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">12</span>
+    <h2 class="section-title">Risk Analysis</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Severity</th><th>Mitigation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Fraud</td><td>Admin collects payment, fails to deliver</td><td><span class="badge yellow">Medium</span></td><td><span class="badge red">High</span></td><td><span class="badge red">Critical</span></td><td>Escrow model. Admin never touches buyer funds directly. Release only after delivery.</td></tr>
+          <tr><td class="bold">Fraud</td><td>Fake order inflation to hit tier</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">High</span></td><td>Unique buyer verification via phone/UPI. Anti-fraud ML on order patterns.</td></tr>
+          <tr><td class="bold">Fraud</td><td>Payment diversion bypassing platform</td><td><span class="badge green">Low</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td>Mandatory platform payment for buyer protection. No escrow for off-platform.</td></tr>
+          <tr><td class="bold">Quality</td><td>Products don't match description</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">High</span></td><td>Mandatory images, supplier ratings, dispute resolution, escrow hold.</td></tr>
+          <tr><td class="bold">Quality</td><td>Counterfeit products</td><td><span class="badge green">Low</span></td><td><span class="badge red">High</span></td><td><span class="badge red">Critical</span></td><td>Verified supplier list, brand auth checks, zero-tolerance ban policy.</td></tr>
+          <tr><td class="bold">Legal</td><td>Consumer protection violations</td><td><span class="badge yellow">Medium</span></td><td><span class="badge red">High</span></td><td><span class="badge red">Critical</span></td><td>Mandatory return policy, escrow protection, CPA 2019 compliance.</td></tr>
+          <tr><td class="bold">Legal</td><td>E-commerce FDI regulations</td><td><span class="badge green">Low</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td>Operate as marketplace facilitator, not inventory holder. Legal review.</td></tr>
+          <tr><td class="bold">Ops</td><td>Logistics failures</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">High</span></td><td>Insurance on high-value, multiple logistics partners, real-time tracking.</td></tr>
+          <tr><td class="bold">Ops</td><td>Platform downtime during active buys</td><td><span class="badge green">Low</span></td><td><span class="badge red">High</span></td><td><span class="badge yellow">High</span></td><td>99.9% uptime SLA, auto-extend deadlines, real-time monitoring.</td></tr>
+          <tr><td class="bold">Market</td><td>Competitor launches similar feature</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">High</span></td><td>First-mover advantage, lock in with tier benefits, build switching costs.</td></tr>
+          <tr><td class="bold">Market</td><td>Admin churn to competitors</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">High</span></td><td>Progressive tiers, group buy history as asset, community, exclusive deals.</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 12.1 &mdash; Comprehensive Risk Assessment Matrix</div>
+    </div>
+
+    <h3>Risk Severity Summary</h3>
+    <div class="card-grid-3">
+      <div class="card" style="border-top: 3px solid var(--red);">
+        <h4 style="color: var(--red);">Critical (Immediate Action)</h4>
+        <ul>
+          <li>Admin payment fraud &mdash; Escrow mandatory from day one</li>
+          <li>Counterfeit products &mdash; Supplier verification and zero-tolerance</li>
+          <li>Consumer protection &mdash; Full legal compliance framework</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--yellow);">
+        <h4 style="color: var(--yellow);">High (Monitor Closely)</h4>
+        <ul>
+          <li>Fake order inflation &mdash; Anti-fraud detection system</li>
+          <li>Quality mismatch &mdash; Ratings and review system</li>
+          <li>Logistics failures &mdash; Multi-partner strategy</li>
+          <li>Competitor entry &mdash; First-mover lock-in</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h4 style="color: var(--accent);">Medium (Standard Controls)</h4>
+        <ul>
+          <li>Payment diversion &mdash; Platform-only payments</li>
+          <li>FDI regulations &mdash; Legal structure review</li>
+          <li>Platform downtime &mdash; SLA monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Regulatory Compliance Framework</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Regulation</th><th>Applicability</th><th>Key Requirements</th><th>GrabCash Compliance Action</th><th>Timeline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Consumer Protection Act, 2019</td><td><span class="badge red">Mandatory</span></td><td>Product liability, unfair trade practices, consumer rights, e-commerce rules</td><td>Full return/refund policy, mandatory disclosures, grievance officer appointment, no misleading pricing</td><td class="mono">Pre-launch</td></tr>
+          <tr><td class="bold">E-Commerce Rules 2020 (Amended 2021)</td><td><span class="badge red">Mandatory</span></td><td>Marketplace obligations, seller info disclosure, no price manipulation, data retention 180 days</td><td>Display seller/admin details on all buy pages, no flash sale price manipulation, 180-day order data retention</td><td class="mono">Pre-launch</td></tr>
+          <tr><td class="bold">Information Technology Act, 2000</td><td><span class="badge red">Mandatory</span></td><td>Intermediary guidelines, data protection, takedown obligations</td><td>Intermediary status registration, privacy policy, Terms of Service, content takedown SOP</td><td class="mono">Pre-launch</td></tr>
+          <tr><td class="bold">GST Compliance</td><td><span class="badge red">Mandatory</span></td><td>TCS at 1% for e-commerce operators, GSTIN verification, monthly returns</td><td>TCS collection engine, admin GSTIN verification for threshold sellers, automated return filing</td><td class="mono">Phase 1</td></tr>
+          <tr><td class="bold">RBI Payment Aggregator Guidelines</td><td><span class="badge yellow">Applicable</span></td><td>PA/PG license requirements, escrow account, nodal officer, net-worth criteria</td><td>Partner with licensed PA (Razorpay), use their escrow infrastructure, maintain compliance through partner</td><td class="mono">Phase 1</td></tr>
+          <tr><td class="bold">FSSAI (Food Category)</td><td><span class="badge yellow">Conditional</span></td><td>License for food marketplace, hygiene standards, labeling requirements</td><td>FSSAI marketplace license, mandate seller FSSAI numbers, restrict unlicensed food sellers</td><td class="mono">Phase 2</td></tr>
+          <tr><td class="bold">Legal Metrology Act</td><td><span class="badge yellow">Conditional</span></td><td>Weight/measure accuracy, MRP display, net quantity declaration</td><td>Mandatory MRP display, net quantity in product cards, no above-MRP pricing</td><td class="mono">Phase 1</td></tr>
+          <tr><td class="bold">DPDP Act, 2023</td><td><span class="badge yellow">Applicable</span></td><td>Data fiduciary obligations, consent management, data principal rights, breach notification</td><td>Consent management platform, data access/deletion requests, 72-hour breach notification SOP</td><td class="mono">Phase 2</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 12.2 &mdash; Regulatory Compliance Checklist</div>
+    </div>
+
+    <h3>Fraud Detection &amp; Prevention Architecture</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Fraud Vector</th><th>Detection Signal</th><th>Automated Action</th><th>Manual Review Trigger</th><th>Penalty</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Fake order inflation</td><td>Multiple orders from same IP/device, sequential phone numbers, same UPI handle variations</td><td>Flag + hold tier upgrade</td><td>3+ suspicious orders in 24 hours</td><td>Tier freeze (7d), repeat = permanent demotion</td></tr>
+          <tr><td class="bold">Self-buying for commission</td><td>Admin buying own deals, circular payment patterns, admin-linked UPI accounts</td><td>Block commission payout, flag for review</td><td>Any admin self-purchase detected</td><td>Commission forfeiture, account warning, repeat = ban</td></tr>
+          <tr><td class="bold">Counterfeit product listing</td><td>Brand keyword mismatch, suspiciously low pricing (&lt;40% market), no supplier verification</td><td>Auto-hold listing for review</td><td>Any branded product below 50% market price</td><td>Immediate listing removal, 3-strike account ban</td></tr>
+          <tr><td class="bold">Payment diversion</td><td>Admin sharing personal UPI/bank details in deal posts, off-platform payment instructions</td><td>Content filter on deal posts, warning banner</td><td>Any payment info detected in deal description</td><td>Deal suspension, admin warning, repeat = account freeze</td></tr>
+          <tr><td class="bold">Delivery non-fulfillment</td><td>No tracking update after 48h post-collection, multiple buyer complaints on same deal</td><td>Auto-pause new deals for admin</td><td>2+ buyer complaints or no tracking after 72h</td><td>Escrow freeze, trust score -20, repeat = permanent ban</td></tr>
+          <tr><td class="bold">Review manipulation</td><td>Bulk positive reviews from new accounts, review-for-incentive patterns</td><td>Shadow-flag reviews, exclude from score</td><td>5+ reviews from &lt;7-day accounts on same deal</td><td>Review removal, admin trust score -10</td></tr>
+          <tr><td class="bold">Multi-account abuse</td><td>Shared device fingerprints, overlapping KYC data, linked bank accounts</td><td>Account linkage alert</td><td>Any two accounts sharing 2+ identifiers</td><td>Secondary account ban, primary account review</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 12.3 &mdash; Fraud Detection Matrix &amp; Response Protocol</div>
+    </div>
+
+    <h3>Contingency Playbooks</h3>
+    <div class="card-grid-2">
+      <div class="card">
+        <h4 style="color: var(--red);">Scenario: Mass Admin Exodus</h4>
+        <p><strong>Trigger:</strong> 30%+ admin churn in a single month</p>
+        <p><strong>Response Protocol:</strong></p>
+        <ul>
+          <li>Immediate root cause analysis (exit surveys within 24h)</li>
+          <li>Emergency retention package: commission boost +2% for 60 days</li>
+          <li>Personal outreach to top-20 admins by revenue</li>
+          <li>Fast-track feature requests from churned admin feedback</li>
+          <li>CEO-level communication to all admins re: platform commitment</li>
+        </ul>
+        <p><strong>Recovery Target:</strong> Stabilize within 14 days, recover 40% of churned admins within 30 days</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--red);">Scenario: Major Fraud Incident</h4>
+        <p><strong>Trigger:</strong> Single fraud event exceeding Rs.5L or affecting 50+ buyers</p>
+        <p><strong>Response Protocol:</strong></p>
+        <ul>
+          <li>Immediate account freeze + escrow hold for involved admin</li>
+          <li>Buyer notification within 2 hours with refund timeline</li>
+          <li>Full refund from escrow + GrabCash guarantee fund if escrow insufficient</li>
+          <li>FIR filing support for affected buyers</li>
+          <li>Platform-wide admin re-verification within 72 hours</li>
+        </ul>
+        <p><strong>Recovery Target:</strong> All buyers refunded within 7 days, trust comms published within 48h</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--yellow);">Scenario: Regulatory Action</h4>
+        <p><strong>Trigger:</strong> Government notice, CCPA investigation, or legal challenge</p>
+        <p><strong>Response Protocol:</strong></p>
+        <ul>
+          <li>Legal team engagement within 4 hours</li>
+          <li>Compliance audit of flagged area within 24 hours</li>
+          <li>Immediate remediation of any genuine violations</li>
+          <li>Proactive engagement with regulatory body</li>
+          <li>Platform-wide compliance sweep and public report</li>
+        </ul>
+        <p><strong>Recovery Target:</strong> Response filed within statutory deadline, zero repeat violations</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--yellow);">Scenario: Platform Outage During Active Buys</h4>
+        <p><strong>Trigger:</strong> Unplanned downtime exceeding 30 minutes during active group buy window</p>
+        <p><strong>Response Protocol:</strong></p>
+        <ul>
+          <li>Auto-extend all active deal deadlines by outage duration + 2 hours</li>
+          <li>Push notification to all participants with updated timelines</li>
+          <li>Admin communication with incident details within 1 hour</li>
+          <li>Post-mortem published within 48 hours</li>
+          <li>Compensation: affected admins get +1% commission on impacted deals</li>
+        </ul>
+        <p><strong>Recovery Target:</strong> Zero lost transactions, admin satisfaction above 3.5/5 post-incident</p>
+      </div>
+    </div>
+
+    <h3>Insurance &amp; Financial Safety Nets</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Safety Net</th><th>Coverage</th><th>Funding Source</th><th>Trigger Condition</th><th>Annual Budget</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Buyer Protection Fund</td><td>Refund coverage when escrow + admin assets insufficient</td><td>0.5% levy on all completed transactions</td><td>Fraud-confirmed order where escrow &lt; refund amount</td><td class="mono">Rs.25L (projected Year 1)</td></tr>
+          <tr><td class="bold">Transit Insurance</td><td>Damage/loss during shipping for orders above Rs.2,000</td><td>Included in logistics cost (0.3% of order value)</td><td>Buyer files damage claim with photographic evidence</td><td class="mono">Rs.8L (projected Year 1)</td></tr>
+          <tr><td class="bold">Dispute Resolution Reserve</td><td>Goodwill refunds, partial compensation, shipping cost absorption</td><td>Platform operating budget</td><td>Dispute resolution team approves compensation</td><td class="mono">Rs.5L (projected Year 1)</td></tr>
+          <tr><td class="bold">Cyber Insurance</td><td>Data breach liability, business interruption, cyber extortion</td><td>Annual premium</td><td>Any qualifying cyber incident</td><td class="mono">Rs.3L annual premium</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 12.4 &mdash; Financial Safety Net Architecture</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 13: 90-DAY LAUNCH PLAN
+     ============================================ -->
+<section class="section" id="s13">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">13</span>
+    <h2 class="section-title">90-Day Launch Plan</h2>
+    <span class="section-toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="callout green"><strong>OBJECTIVE:</strong> Launch GrabCash Bulk Buying feature, onboard 200 active admins, process 500+ group buys, and generate Rs.5Cr+ GMV within 90 days. Total budget: Rs.25L.</div>
+
+    <h3>Phase Overview</h3>
+    <div class="card-grid-3">
+      <div class="card" style="border-top: 3px solid var(--blue);">
+        <h4 style="color: var(--blue);">Phase 1: MVP (Days 1-30)</h4>
+        <p><strong>Theme:</strong> Build &amp; Pilot</p>
+        <ul>
+          <li>Ship MVP bulk buying features</li>
+          <li>Onboard 10 pilot admins</li>
+          <li>Secure 5 merchant bulk deals</li>
+          <li>Process first 20 group buys</li>
+          <li>Budget: Rs.10L</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--yellow);">
+        <h4 style="color: var(--yellow);">Phase 2: Scale (Days 31-60)</h4>
+        <p><strong>Theme:</strong> Expand &amp; Optimize</p>
+        <ul>
+          <li>Scale to 50 active admins</li>
+          <li>20 merchant bulk partnerships</li>
+          <li>Full payment integration live</li>
+          <li>Launch admin tier system</li>
+          <li>Budget: Rs.8L</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h4 style="color: var(--accent);">Phase 3: Launch (Days 61-90)</h4>
+        <p><strong>Theme:</strong> Full Launch &amp; Growth</p>
+        <ul>
+          <li>200 active admins target</li>
+          <li>Category expansion (6+ verticals)</li>
+          <li>Marketing blitz</li>
+          <li>Bulk Academy launch</li>
+          <li>Budget: Rs.7L</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Week-by-Week Milestones</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>Phase</th><th>Engineering</th><th>Business</th><th>Key Milestone</th><th>Budget</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono bold">W1</td><td><span class="badge blue">P1</span></td><td>Group Buy Creator MVP, DB schema, API structure</td><td>Identify 15 potential pilot admins</td><td>Dev environment ready, admin shortlist</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W2</td><td><span class="badge blue">P1</span></td><td>Payment integration (Razorpay Route), escrow flow</td><td>Contact pilot admins, pitch opportunity</td><td>Payment sandbox working, 10 admins confirmed</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W3</td><td><span class="badge blue">P1</span></td><td>Order management, Telegram card generator</td><td>Negotiate 5 merchant bulk deals</td><td>MVP feature complete, deals signed</td><td class="mono">Rs.3L</td></tr>
+          <tr><td class="mono bold">W4</td><td><span class="badge blue">P1</span></td><td>Bug fixes, performance, monitoring</td><td>Launch first 10 group buys with pilots</td><td class="bold green">First group buys live! 20 buys by month end</td><td class="mono">Rs.3L</td></tr>
+          <tr><td class="mono bold">W5</td><td><span class="badge yellow">P2</span></td><td>Dashboard v2, analytics, tier system</td><td>Onboard 15 more admins, publish case study</td><td>25 active admins, analytics live</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W6</td><td><span class="badge yellow">P2</span></td><td>Supplier Connect v1 (GrabOn catalog)</td><td>10 more merchant deals, referral program</td><td>35 admins, 15 merchants, Supplier Connect</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W7</td><td><span class="badge yellow">P2</span></td><td>Trust scoring, buyer protection</td><td>Cross-promote in GrabOn channels, PR</td><td>45 admins, trust scoring active</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W8</td><td><span class="badge yellow">P2</span></td><td>COD integration, refund automation</td><td>Launch tier system, first Gold admin</td><td class="bold green">50 admins, 20 merchants, 100+ buys</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W9</td><td><span class="badge green">P3</span></td><td>Price negotiation tool, flash alerts</td><td>Launch Bulk Academy, marketing campaign</td><td>80 admins, Bulk Academy live</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W10</td><td><span class="badge green">P3</span></td><td>Mobile improvements, scale perf</td><td>Category expansion: home, food, health</td><td>120 admins, 6 categories active</td><td class="mono">Rs.2L</td></tr>
+          <tr><td class="mono bold">W11</td><td><span class="badge green">P3</span></td><td>Advanced analytics, leaderboard</td><td>Admin community event, success stories</td><td>160 admins, community established</td><td class="mono">Rs.1.5L</td></tr>
+          <tr><td class="mono bold">W12</td><td><span class="badge green">P3</span></td><td>Platform hardening, fraud detection</td><td>Full marketing push, PR coverage</td><td class="bold green">200 admins, 500+ buys, Rs.5Cr+ GMV</td><td class="mono">Rs.1.5L</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 13.1 &mdash; 12-Week Execution Timeline</div>
+    </div>
+
+    <h3>Budget Breakdown</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Phase 1</th><th>Phase 2</th><th>Phase 3</th><th>Total</th><th>%</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Engineering</td><td class="mono">Rs.5L</td><td class="mono">Rs.4L</td><td class="mono">Rs.3L</td><td class="mono green">Rs.12L</td><td class="mono">48%</td></tr>
+          <tr><td class="bold">Admin Onboarding</td><td class="mono">Rs.2L</td><td class="mono">Rs.1.5L</td><td class="mono">Rs.1L</td><td class="mono">Rs.4.5L</td><td class="mono">18%</td></tr>
+          <tr><td class="bold">Merchant Partnerships</td><td class="mono">Rs.1L</td><td class="mono">Rs.1L</td><td class="mono">Rs.0.5L</td><td class="mono">Rs.2.5L</td><td class="mono">10%</td></tr>
+          <tr><td class="bold">Marketing &amp; PR</td><td class="mono">Rs.1L</td><td class="mono">Rs.1L</td><td class="mono">Rs.2L</td><td class="mono">Rs.4L</td><td class="mono">16%</td></tr>
+          <tr><td class="bold">Operations &amp; Support</td><td class="mono">Rs.1L</td><td class="mono">Rs.0.5L</td><td class="mono">Rs.0.5L</td><td class="mono">Rs.2L</td><td class="mono">8%</td></tr>
+          <tr><td class="bold green">Total</td><td class="mono green">Rs.10L</td><td class="mono green">Rs.8L</td><td class="mono green">Rs.7L</td><td class="mono green">Rs.25L</td><td class="mono">100%</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 13.2 &mdash; Budget Allocation: Rs.25L across 90 Days</div>
+    </div>
+
+    <h3>Success Metrics &amp; KPIs</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>KPI</th><th>Day 30</th><th>Day 60</th><th>Day 90</th><th>Measurement</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Active Admins</td><td class="mono">10</td><td class="mono">50</td><td class="mono green">200</td><td>Admins with 1+ buy in last 30 days</td></tr>
+          <tr><td class="bold">Total Group Buys</td><td class="mono">20</td><td class="mono">120</td><td class="mono green">500+</td><td>Cumulative completed buys</td></tr>
+          <tr><td class="bold">GMV Processed</td><td class="mono">Rs.30L</td><td class="mono">Rs.1.5Cr</td><td class="mono green">Rs.5Cr+</td><td>Total value of completed buys</td></tr>
+          <tr><td class="bold">Avg Fill Rate</td><td class="mono">60%</td><td class="mono">70%</td><td class="mono green">80%</td><td>% of target quantity before close</td></tr>
+          <tr><td class="bold">Admin Retention (30d)</td><td class="mono">80%</td><td class="mono">75%</td><td class="mono green">70%</td><td>% active in consecutive months</td></tr>
+          <tr><td class="bold">Buyer Satisfaction</td><td class="mono">4.0/5</td><td class="mono">4.2/5</td><td class="mono green">4.5/5</td><td>Post-delivery rating average</td></tr>
+          <tr><td class="bold">Dispute Rate</td><td class="mono">&lt;5%</td><td class="mono">&lt;3%</td><td class="mono green">&lt;2%</td><td>% of orders with disputes</td></tr>
+          <tr><td class="bold">Merchant Partners</td><td class="mono">5</td><td class="mono">20</td><td class="mono green">40+</td><td>Active bulk pricing partners</td></tr>
+          <tr><td class="bold">Platform Revenue</td><td class="mono">Rs.1.5L</td><td class="mono">Rs.10L</td><td class="mono green">Rs.35L+</td><td>Cumulative platform revenue</td></tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 13.3 &mdash; 90-Day KPI Targets</div>
+    </div>
+
+    <h3>Go/No-Go Decision Points</h3>
+    <div class="card-grid-3">
+      <div class="card" style="border-top: 3px solid var(--blue);">
+        <h4>Day 30 Decision</h4>
+        <p><strong>GO:</strong> 8+ pilot admins active, 15+ group buys completed, positive feedback, payment flow reliable</p>
+        <p><strong>PIVOT:</strong> Less than 5 admins engaged, major payment/escrow issues</p>
+        <p><strong>KILL:</strong> Less than 3 admins willing to continue, fundamental PMF doubt</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--yellow);">
+        <h4>Day 60 Decision</h4>
+        <p><strong>GO:</strong> 40+ admins, 100+ buys, Rs.1Cr+ GMV, 4.0+ satisfaction, sub-5% disputes</p>
+        <p><strong>PIVOT:</strong> 20-39 admins, below 50 buys, dispute rate above 8%</p>
+        <p><strong>KILL:</strong> Less than 15 retained admins, unsustainable unit economics</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <h4>Day 90 Assessment</h4>
+        <p><strong>SCALE:</strong> All KPIs met, positive unit economics, organic admin growth</p>
+        <p><strong>OPTIMIZE:</strong> 60-80% KPIs met, some categories strong, others need work</p>
+        <p><strong>RESTRUCTURE:</strong> Below 50% KPIs but strong qualitative signals</p>
+      </div>
+    </div>
+
+    <div class="callout green"><strong>BOTTOM LINE:</strong> GrabCash's bulk buying engine is not an incremental feature &mdash; it is a category-defining platform shift. By combining GrabOn's merchant network with group commerce infrastructure, GrabCash creates a moat that no competitor can replicate. The Rs.500-2,000 Cr bulk buying underground is waiting for someone to build the rails. GrabCash will be that platform.</div>
+
+  </div>
+</section>
+
+</div><!-- /content-area -->
+</div><!-- /main-content -->
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'});">&#8593;</button>
+
+<script>
+// Section collapse/expand
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.section-toggle');
+  body.classList.toggle('collapsed');
+  toggle.classList.toggle('collapsed');
+}
+
+// Subsection collapse/expand
+function toggleSubsection(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.subsection-icon');
+  body.classList.toggle('collapsed');
+  icon.classList.toggle('collapsed');
+}
+
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 600) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+
+// Active section highlighting in sidebar
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item[data-section]');
+
+function updateActiveNav() {
+  let currentSection = '';
+  sections.forEach(function(section) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 150 && rect.bottom > 150) {
+      currentSection = section.id;
+    }
+  });
+  navItems.forEach(function(item) {
+    if (item.getAttribute('data-section') === currentSection) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
+
+// Close sidebar on nav click (mobile)
+navItems.forEach(function(item) {
+  item.addEventListener('click', function() {
+    if (window.innerWidth <= 1024) {
+      document.getElementById('sidebar').classList.remove('open');
+      document.querySelector('.sidebar-overlay').classList.remove('open');
+    }
+  });
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
