@@ -6,7 +6,7 @@
 <title>Admin Onboarding & Success Program | GrabCash</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    RESET & BASE
@@ -18,11 +18,11 @@
 }
 
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: rgba(255,255,255,0.03);
-  --bg-card-hover: rgba(255,255,255,0.06);
-  --border-card: rgba(255,255,255,0.06);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fbff;
+  --bg-card: #ffffff;
+  --bg-card-hover: rgba(0,18,59,0.1);
+  --border-card: rgba(0,18,59,0.1);
   --border-card-hover: rgba(255,255,255,0.12);
   --text-primary: #e0e0e0;
   --text-secondary: #999999;
@@ -44,7 +44,7 @@
   --sidebar-width: 260px;
   --header-height: 70px;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'Poppins', 'Fira Code', monospace;
 }
 
 html {
@@ -140,7 +140,7 @@ body {
 
 .nav-item:hover {
   color: var(--text-primary);
-  background: rgba(255,255,255,0.03);
+  background: #ffffff;
 }
 
 .nav-item.active {
@@ -224,7 +224,7 @@ body {
 .hero {
   position: relative;
   padding: 80px 60px 60px;
-  background: linear-gradient(135deg, #0a0a0a 0%, #0d1a0e 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #0d1a0e 50%, #ffffff 100%);
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
 }
@@ -565,7 +565,7 @@ thead th {
 
 tbody td {
   padding: 10px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid #ffffff;
   color: var(--text-secondary);
   vertical-align: top;
 }
@@ -739,7 +739,7 @@ li strong {
 code {
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,18,59,0.1);
   padding: 2px 6px;
   border-radius: 4px;
   color: var(--accent);
@@ -796,7 +796,7 @@ code {
 .rating-bar-track {
   flex: 1;
   height: 6px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,18,59,0.1);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -956,7 +956,7 @@ code {
 .doc-tag.earnkaro { background: var(--red-dim); color: var(--red); }
 .doc-tag.extrape { background: var(--yellow-dim); color: var(--yellow); }
 .doc-tag.cuelinks { background: var(--blue-dim); color: var(--blue); }
-.doc-tag.neutral { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+.doc-tag.neutral { background: rgba(0,18,59,0.1); color: var(--text-secondary); }
 
 /* Badges */
 .badge {
@@ -1115,6 +1115,10 @@ code {
 </style>
 </head>
 <body>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
+  </div>
+
 
 <!-- Sidebar Toggle (mobile) -->
 <button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open'); document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
@@ -1340,7 +1344,7 @@ code {
           </ul>
         </div>
 
-        <div class="callout green"><strong>Strategic Principle:</strong> Every admin who churns is a double loss &mdash; we lose their revenue AND they likely return to (or remain with) EarnKaro. Onboarding quality is the single biggest lever in the underground war.</div>
+        <div class="callout green"><strong>Strategic Principle:</strong> Every admin who churns is a double loss &mdash; we lose their revenue AND they likely return to (or remain with) EarnKaro. Onboarding quality is the single biggest lever in the Competitive Strategy.</div>
 
         <h3>Admin Tier Revenue Benchmarks</h3>
 
@@ -3842,7 +3846,7 @@ Powered by GrabCash | GrabOn's #1 Cashback Platform</div>
 
         <div class="callout green"><strong>Year 1 Projection:</strong> If 500 admins at Day 90 grow to 2,000 admins by Month 12 with average revenue increasing to Rs 25K/month, annual GMV through admin channels reaches Rs 6 Crore with GrabCash take of Rs 1.2 Crore/year. ROI on Rs 35L investment: <strong>~34x return in Year 1</strong>.</div>
 
-        <div class="callout blue"><strong>Final Note:</strong> This document completes the 9-document Underground War Suite. From market intelligence (<a href="GrabCash_Underground_Market_Intel.html" class="cross-ref">Doc 1</a>) to admin recruitment (<a href="GrabCash_Admin_Cracking_v2.html" class="cross-ref">Doc 2</a>) to bot automation (<a href="GrabCash_Bot_Automation_Arsenal.html" class="cross-ref">Doc 3</a>) to merchant acquisition (<a href="GrabCash_Merchant_Acquisition_v2.html" class="cross-ref">Doc 4</a>) to bulk buying (<a href="GrabCash_Bulk_Buying_Engine.html" class="cross-ref">Doc 5</a>) to commission economics (<a href="GrabCash_Commission_Economics.html" class="cross-ref">Doc 6</a>) to deal sourcing (<a href="GrabCash_Deal_Sourcing_Playbook.html" class="cross-ref">Doc 7</a>) to competitive intelligence (<a href="GrabCash_Competitive_Intel_War_Room.html" class="cross-ref">Doc 8</a>) and finally this admin onboarding &amp; success program (Doc 9) &mdash; the complete playbook for GrabCash's underground war is now operational. Execute with precision.</div>
+        <div class="callout blue"><strong>Final Note:</strong> This document completes the 9-document Competitive Strategy Suite. From market intelligence (<a href="GrabCash_Underground_Market_Intel.html" class="cross-ref">Doc 1</a>) to admin recruitment (<a href="GrabCash_Admin_Cracking_v2.html" class="cross-ref">Doc 2</a>) to bot automation (<a href="GrabCash_Bot_Automation_Arsenal.html" class="cross-ref">Doc 3</a>) to merchant acquisition (<a href="GrabCash_Merchant_Acquisition_v2.html" class="cross-ref">Doc 4</a>) to bulk buying (<a href="GrabCash_Bulk_Buying_Engine.html" class="cross-ref">Doc 5</a>) to commission economics (<a href="GrabCash_Commission_Economics.html" class="cross-ref">Doc 6</a>) to deal sourcing (<a href="GrabCash_Deal_Sourcing_Playbook.html" class="cross-ref">Doc 7</a>) to competitive intelligence (<a href="GrabCash_Competitive_Intel_War_Room.html" class="cross-ref">Doc 8</a>) and finally this admin onboarding &amp; success program (Doc 9) &mdash; the complete playbook for GrabCash's Competitive Strategy is now operational. Execute with precision.</div>
 
       </div>
     </div>

@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InspireLabs Affiliate Ecosystem — Data-Driven GTM Strategy 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+  :root {
+    --green: #0dcf1a;
+    --navy: #00123b;
+    --blue-1: #3c7df9;
+    --blue-2: #008ee6;
+    --sky: #dbefff;
+    --purple: #5b21b6;
+    --purple-light: #ede9fe;
+    --bg: #ffffff;
+    --bg-2: #f7fbff;
+    --bg-3: #f0f6ff;
+    --text: #00123b;
+    --text-dim: #5c6579;
+    --text-dimmer: #8b95a8;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --orange: #ea580c;
+    --orange-bg: #fff7ed;
+    --green-bg: #f0fdf4;
+    --card-border: rgba(0, 18, 59, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+  .nav-brand img { height: 24px; }
+  .nav-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+  .nav-links { display: flex; gap: 0.15rem; overflow-x: auto; max-width: 70%; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.68rem; font-weight: 500; padding: 0.3rem 0.5rem; border-radius: 6px; white-space: nowrap; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.02em; }
+  .nav-links a:hover { color: var(--blue-1); background: rgba(60,125,249,0.06); }
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 8rem 2rem 4rem;
+    background: linear-gradient(180deg, var(--navy) 0%, #1a3a6e 50%, var(--blue-1) 100%);
+    color: #fff; position: relative;
+  }
+  .hero-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 850px; }
+  .hero h1 .accent { color: var(--green); }
+  .hero h1 .accent-purple { color: #a78bfa; }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin-bottom: 2rem; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.3); border-radius: 100px; font-size: 0.78rem; font-weight: 600; color: #fca5a5; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .hero-stat .label { font-size: 0.68rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+  .hero-stat .src { font-size: 0.6rem; color: rgba(255,255,255,0.3); }
+
+  .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 2.5rem; }
+  .section-num { font-family: 'Poppins', sans-serif; font-size: 0.7rem; color: var(--blue-1); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.5rem; color: var(--navy); }
+  .section h2 .accent { color: var(--green); }
+  .section h2 .accent-purple { color: var(--purple); }
+  .section-subtitle { font-size: 0.95rem; color: var(--text-dim); max-width: 700px; line-height: 1.7; }
+
+  .grid { display: grid; gap: 1rem; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+  .card { background: var(--bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
+  .card:hover { border-color: rgba(60,125,249,0.2); }
+  .card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
+  .card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
+  .kpi { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; text-align: center; }
+  .kpi .value { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--blue-1); }
+  .kpi .label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+  .kpi .source { font-size: 0.6rem; color: var(--text-dimmer); margin-top: 0.15rem; }
+  .kpi.kpi-red .value { color: var(--red); }
+  .kpi.kpi-green .value { color: #16a34a; }
+  .kpi.kpi-purple .value { color: var(--purple); }
+
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--card-border); margin: 1.25rem 0; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: #fff; }
+  thead { background: var(--navy); }
+  th { padding: 0.75rem 0.85rem; text-align: left; font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+  td { padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--card-border); color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg-3); }
+
+  .callout { border-left: 3px solid var(--blue-1); background: rgba(60,125,249,0.04); padding: 1.1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.25rem 0; font-size: 0.88rem; line-height: 1.7; }
+  .callout strong { color: var(--navy); }
+  .callout.honest { border-left-color: var(--red); background: var(--red-bg); }
+  .callout.honest strong { color: var(--red); }
+  .callout.works { border-left-color: #16a34a; background: var(--green-bg); }
+  .callout.works strong { color: #16a34a; }
+  .callout.warn { border-left-color: var(--orange); background: var(--orange-bg); }
+  .callout.warn strong { color: var(--orange); }
+
+  .verdict { background: var(--navy); color: #fff; border-radius: 14px; padding: 2rem; margin: 1.5rem 0; }
+  .verdict h3 { font-family: 'Poppins', sans-serif; color: var(--green); margin-bottom: 0.75rem; }
+  .verdict p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.75; }
+
+  .tag { display: inline-flex; padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .tag-real { background: var(--green-bg); color: #16a34a; }
+  .tag-fake { background: var(--red-bg); color: var(--red); }
+  .tag-target { background: var(--orange-bg); color: var(--orange); }
+  .tag-gc { background: rgba(13,207,26,0.08); color: #0ab315; }
+  .tag-gs { background: var(--purple-light); color: var(--purple); }
+
+  .block { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; margin: 1.25rem 0; }
+  .block h4 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+  .block .meta { font-size: 0.7rem; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .sub-section { margin-top: 2rem; }
+  .sub-section h3 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--navy); }
+  .sub-section p, .sub-section li { font-size: 0.88rem; color: var(--text-dim); line-height: 1.75; }
+  .sub-section ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+  .sub-section li { margin-bottom: 0.3rem; }
+  .sub-section li strong { color: var(--navy); }
+
+  .divider { height: 1px; background: linear-gradient(to right, transparent, var(--card-border), transparent); margin: 3rem 0; }
+
+  .toc { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; margin: 1.5rem 0; columns: 2; column-gap: 2rem; }
+  .toc a { display: block; color: var(--text-dim); text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0; border-bottom: 1px solid var(--card-border); transition: color 0.2s; break-inside: avoid; }
+  .toc a:hover { color: var(--blue-1); }
+  .toc a .toc-num { color: var(--blue-1); font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem; }
+
+  .footer { text-align: center; padding: 3rem 2rem; background: var(--navy); color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+
+  .duo-brand { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
+  .duo-brand .brand-box { padding: 0.75rem 1.25rem; border-radius: 10px; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .duo-brand .gc { background: rgba(13,207,26,0.08); color: #0ab315; border: 1px solid rgba(13,207,26,0.2); }
+  .duo-brand .gs { background: var(--purple-light); color: var(--purple); border: 1px solid rgba(91,33,182,0.2); }
+  .duo-brand .plus { color: var(--text-dimmer); font-size: 1.2rem; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .section { padding: 3rem 1.5rem; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .toc { columns: 1; }
+  }
+
+  @media print {
+    .nav { display: none; }
+    .hero { min-height: auto; padding: 2rem; }
+    .section { padding: 1.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" onerror="this.style.display='none'">
+    <span class="nav-title">GTM Strategy 2026</span>
+  </div>
+  <div class="nav-links">
+    <a href="#truth">Current State</a>
+    <a href="#ecosystem">Ecosystem</a>
+    <a href="#data">Data</a>
+    <a href="#competitive">Competitors</a>
+    <a href="#what-works">What Works</a>
+    <a href="#what-wont">What Won't</a>
+    <a href="#strategy">Strategy</a>
+    <a href="#week0">Week 0</a>
+    <a href="#phase1">Phase 1</a>
+    <a href="#seo">SEO</a>
+    <a href="#financial">Financial</a>
+    <a href="#team">Team</a>
+    <a href="#risks">Risks</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-label">InspireLabs Solutions Ltd · June 2026 · Confidential</div>
+  <div class="hero-badge">Data-Driven Go-To-Market Strategy</div>
+  <h1><span class="accent">GrabCash</span> + <span class="accent-purple">GrabShare</span> GTM Strategy</h1>
+  <p>A unified go-to-market plan for InspireLabs' affiliate ecosystem — grounded in real analytics, verified competitive intelligence, and stage-appropriate execution milestones.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">12K</div>
+      <div class="label">GrabCash MAU (actual)</div>
+      <div class="src">GA4 May 2026</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">1,000+</div>
+      <div class="label">GrabShare Creators</div>
+      <div class="src">grabshare.in claimed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">93K</div>
+      <div class="label">Monthly Impressions</div>
+      <div class="src">GSC May 2026</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">₹600Cr</div>
+      <div class="label">CashKaro FY26 Rev</div>
+      <div class="src">Your biggest competitor</div>
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<section class="section" style="padding-top:0;">
+  <div class="toc">
+    <a href="#truth"><span class="toc-num">01</span> The Uncomfortable Truth</a>
+    <a href="#ecosystem"><span class="toc-num">02</span> Two Products, One Ecosystem</a>
+    <a href="#data"><span class="toc-num">03</span> Real Data — GrabCash Analytics</a>
+    <a href="#competitive"><span class="toc-num">04</span> Competitive Reality (June 2026)</a>
+    <a href="#what-works"><span class="toc-num">05</span> What Will Actually Work</a>
+    <a href="#what-wont"><span class="toc-num">06</span> Approach Adjustments</a>
+    <a href="#strategy"><span class="toc-num">07</span> Phased Execution Strategy</a>
+    <a href="#week0"><span class="toc-num">08</span> Week 0 — Fix the Foundation</a>
+    <a href="#phase1"><span class="toc-num">09</span> Phase 1 — Prove It (90 Days)</a>
+    <a href="#seo"><span class="toc-num">10</span> SEO — Built on Real Rankings</a>
+    <a href="#grabshare-gtm"><span class="toc-num">11</span> GrabShare — Creator GTM</a>
+    <a href="#financial"><span class="toc-num">12</span> Financial Model (Real Math)</a>
+    <a href="#team"><span class="toc-num">13</span> Team — What You Actually Need</a>
+    <a href="#risks"><span class="toc-num">14</span> Risk Assessment</a>
+    <a href="#gates"><span class="toc-num">15</span> Decision Gates & Pivots</a>
+  </div>
+</section>
+
+<!-- ═══════════════════ 01. THE UNCOMFORTABLE TRUTH ═══════════════════ -->
+<section class="section" id="truth">
+  <div class="section-header">
+    <div class="section-num">Section 01</div>
+    <h2>Current <span class="accent">State</span> Assessment</h2>
+    <p class="section-subtitle">Where GrabCash and GrabShare stand as of June 2026 — sourced from live analytics and verified market data.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Approach:</strong> This strategy is built on measured data rather than projections. Every metric below comes from GA4 Property 473253841 (GrabCash) or verified public sources. Where data is unavailable, it's flagged as an unknown to be resolved in Week 0.
+  </div>
+
+  <div class="sub-section">
+    <h3>Verified metrics (sourced)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Fact</th><th>Number</th><th>Source</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>GrabCash monthly active users</strong></td><td>11,764</td><td>GA4 Property 473253841</td><td>May 2026</td></tr>
+          <tr><td><strong>GrabCash monthly sessions</strong></td><td>14,271</td><td>GA4</td><td>May 2026</td></tr>
+          <tr><td><strong>Organic search clicks (monthly)</strong></td><td>2,267</td><td>GSC grabcash.in</td><td>May 2026</td></tr>
+          <tr><td><strong>Organic search impressions (monthly)</strong></td><td>93,592</td><td>GSC</td><td>May 2026</td></tr>
+          <tr><td><strong>Traffic source: Direct</strong></td><td>74% of sessions</td><td>GA4 (Mar-May 2026)</td><td>Q1 2026</td></tr>
+          <tr><td><strong>Traffic source: Organic Search</strong></td><td>17% of sessions</td><td>GA4</td><td>Q1 2026</td></tr>
+          <tr><td><strong>Traffic source: Social</strong></td><td>4.5% of sessions</td><td>GA4</td><td>Q1 2026</td></tr>
+          <tr><td><strong>#1 page by sessions</strong></td><td>/quiz (60% of all sessions)</td><td>GA4</td><td>Mar-May 2026</td></tr>
+          <tr><td><strong>Conversion tracking</strong></td><td>0 key events (nothing tracked)</td><td>GA4</td><td>Full year</td></tr>
+          <tr><td><strong>Device split</strong></td><td>80% mobile, 20% desktop</td><td>GA4</td><td>Mar-May 2026</td></tr>
+          <tr><td><strong>CashKaro + EarnKaro FY26 revenue</strong></td><td>₹600 Crore</td><td>Public reporting</td><td>FY26</td></tr>
+          <tr><td><strong>EarnKaro claimed users</strong></td><td>20 Lakh+ (2M+)</td><td>EarnKaro website</td><td>June 2026</td></tr>
+          <tr><td><strong>EarnKaro Telegram market share</strong></td><td>~80% of affiliate channels</td><td>EarnKaro claims + market reports</td><td>2026</td></tr>
+          <tr><td><strong>GrabShare creators onboarded</strong></td><td>1,000+ (claimed)</td><td>grabshare.in</td><td>June 2026</td></tr>
+          <tr><td><strong>GrabShare brand partners</strong></td><td>100+ D2C + 250+ affiliate brands</td><td>grabshare.in</td><td>June 2026</td></tr>
+          <tr><td><strong>India affiliate market size</strong></td><td>~$639M (₹5,400 Cr)</td><td>Industry reports</td><td>2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Open questions to resolve in Week 0</h3>
+    <div class="grid grid-2">
+      <div class="card" style="border-color: rgba(220,38,38,0.2);">
+        <h3 style="color: var(--red);">Measurement gaps (priority fixes)</h3>
+        <ul style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.8;">
+          <li><strong>Signup conversion rate:</strong> 0 key events in GA4. Production DB shows 26K registered users but GA4 can't measure visitor→signup rate.</li>
+          <li><strong>Activation rate:</strong> <span class="tag tag-real">Now known: 1.2%</span> — 303 of 26,131 registered users made any transaction. Root cause of 98.8% drop-off is unknown.</li>
+          <li><strong>Retention (D7/D30):</strong> No cohort tracking configured in GA4. Production DB timestamps can estimate this — to be analyzed.</li>
+          <li><strong>March commission drop:</strong> Revenue dropped from ₹19.3L (Feb) to ₹0.1L (Mar) while GMV stayed high. Cause unknown — affiliate network change? Tracking issue?</li>
+          <li><strong>CAC:</strong> Cannot calculate — no paid acquisition spend to date.</li>
+          <li><strong>Why /quiz is 60% of traffic:</strong> April signup spike (10.6K) correlates with quiz traffic spike. Likely connected but causation not confirmed.</li>
+          <li><strong>User #5 behavior:</strong> 51,884 transactions from single user (₹0.4/tx avg). Potential automation/bot activity needs investigation.</li>
+          <li><strong>GrabShare actual metrics:</strong> Creator activity rates, average earnings, GMV attribution still needed from GrabShare DB.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color: rgba(22,163,74,0.2);">
+        <h3 style="color: #16a34a;">Validated strengths to build on</h3>
+        <ul style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.8;">
+          <li><strong>Blog SEO is working:</strong> 93K impressions/mo, 2,267 clicks. Real organic traction growing MoM.</li>
+          <li><strong>Content topics that rank:</strong> "earn 100/500 rupees per day", "daily earning apps" — we know exact positions.</li>
+          <li><strong>Quiz drives engagement:</strong> 60% of sessions, 33% bounce rate (best on site). Something is working here.</li>
+          <li><strong>GrabOn ecosystem:</strong> GrabOn.in has millions of users. This is an unfair advantage no competitor has.</li>
+          <li><strong>GrabShare's AutoDM:</strong> Genuinely differentiated feature. EarnKaro doesn't have this.</li>
+          <li><strong>Two-sided ecosystem:</strong> GrabCash (mass) + GrabShare (creators) = supply AND demand side covered.</li>
+          <li><strong>InspireLabs infrastructure:</strong> Engineering team, brand relationships, payment systems already exist.</li>
+          <li><strong>ChatGPT is sending traffic:</strong> 329 sessions from chatgpt.com in last 3 months. AI referrals are real.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>Strategic summary</h3>
+    <p>The InspireLabs affiliate ecosystem has genuine strengths: real user traction (12K MAU), accelerating organic search growth (93K impressions/month, up 15x YoY), differentiated product features (GrabShare AutoDM), and a distribution advantage through GrabOn that no competitor can replicate. The priority is to close the measurement gaps, validate acquisition economics on 2 channels, and then scale what's proven. This strategy is structured in phases with clear gates — each phase earns the right to the next level of investment.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 02. TWO PRODUCTS, ONE ECOSYSTEM ═══════════════════ -->
+<section class="section" id="ecosystem">
+  <div class="section-header">
+    <div class="section-num">Section 02</div>
+    <h2>Two Products, One <span class="accent">Ecosystem</span></h2>
+    <p class="section-subtitle">GrabCash and GrabShare serve different users but create a flywheel together. Here's the analysis of how they relate and the recommended structure.</p>
+  </div>
+
+  <div class="duo-brand">
+    <div class="brand-box gc">GrabCash</div>
+    <div class="plus">+</div>
+    <div class="brand-box gs">GrabShare</div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="block">
+      <h4><span class="tag tag-gc">GrabCash</span> Mass Market Affiliate</h4>
+      <div class="meta"><span>grabcash.in</span><span>Green brand</span><span>Est. 2025</span></div>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Who it's for:</strong> Students, homemakers, tier-2/3 users who want to earn money by sharing deals. No followers needed. Simple: share link → friend buys → you earn.</p>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Direct competitor:</strong> EarnKaro (same user, same model, 400x bigger)</p>
+      <p style="font-size:0.88rem;color:var(--text-dim);"><strong style="color:var(--navy);">Current state:</strong> 12K MAU, blog-driven SEO, quiz engagement, 100+ brands. No paid, no conversion tracking.</p>
+    </div>
+    <div class="block">
+      <h4><span class="tag tag-gs">GrabShare</span> Creator Commerce Platform</h4>
+      <div class="meta"><span>grabshare.in</span><span>Purple brand</span><span>Est. 2025</span></div>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Who it's for:</strong> Instagram/YouTube creators (nano to macro) who want to monetize their audience through affiliate product stores. Requires followers + content creation skills.</p>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Direct competitor:</strong> Meesho Creator Program, Amazon Influencer, ShopStyle, LTK</p>
+      <p style="font-size:0.88rem;color:var(--text-dim);"><strong style="color:var(--navy);">Current state:</strong> 1,000+ creators claimed, AutoDM feature, creator storefront, 250+ brands. Product is more polished than GrabCash.</p>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>The Combine-or-Separate Verdict</h3>
+    <div class="callout works">
+      <strong>Keep them separate. Market them together to brands.</strong><br><br>
+      <strong>Why separate:</strong> A student in Lucknow sharing Amazon links on WhatsApp and a fashion creator with 200K followers on Instagram have completely different needs, language, and expectations. Combining them into one product dilutes both value propositions and confuses onboarding.<br><br>
+      <strong>Why connected:</strong> To brands, you pitch the unified InspireLabs Affiliate Ecosystem: "We give you access to 1,000+ creators (GrabShare) AND a mass-market deal-sharing army (GrabCash). Full funnel: creator awareness at the top, affiliate conversions at the bottom." This is something EarnKaro (mass only) and Meesho Creator (creator only) can't offer individually.<br><br>
+      <strong>Shared backend:</strong> Same affiliate network, same brand partnerships, same commission infrastructure, same engineering team. Only the user-facing brand, UX, and messaging are different.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>The Flywheel: How They Feed Each Other</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>From</th><th>To</th><th>How</th><th>Why This Matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag tag-gs">GrabShare</span> creators</td><td><span class="tag tag-gc">GrabCash</span></td><td>Creator content (Reels, posts) drives awareness → their followers sign up on GrabCash to earn</td><td>Free acquisition channel. Creator does the marketing for you.</td></tr>
+          <tr><td><span class="tag tag-gc">GrabCash</span> power users</td><td><span class="tag tag-gs">GrabShare</span></td><td>Top GrabCash earners who build an audience get upgraded to GrabShare creator accounts</td><td>Built-in pipeline for creator recruitment. Already loyal users.</td></tr>
+          <tr><td><span class="tag tag-gc">GrabCash</span> user base</td><td>Brand pitch</td><td>"We have 50K+ deal-sharing users" makes brand partnerships easier to close</td><td>User numbers strengthen both products' brand negotiations.</td></tr>
+          <tr><td><span class="tag tag-gs">GrabShare</span> brand deals</td><td><span class="tag tag-gc">GrabCash</span></td><td>Exclusive deals negotiated via creator campaigns get distributed on GrabCash too</td><td>Better deals for GrabCash users = better retention.</td></tr>
+          <tr><td>GrabOn</td><td>Both</td><td>Cross-promotion from GrabOn.in (millions of users) feeds signups to both platforms</td><td>The unfair advantage. No other affiliate startup has a GrabOn.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 03. REAL DATA ═══════════════════ -->
+<section class="section" id="data">
+  <div class="section-header">
+    <div class="section-num">Section 03</div>
+    <h2>Real Data — <span class="accent">GrabCash</span> Analytics</h2>
+    <p class="section-subtitle">Every number here is pulled directly from GA4 Property 473253841 and GSC for grabcash.in. Nothing estimated, nothing assumed.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Monthly Traffic Trend (GA4 — 12 Months)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>Sessions</th><th>Active Users</th><th>New Users</th><th>Pageviews</th><th>Bounce Rate</th><th>Avg Duration</th><th>Engagement Rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Jun 2025</td><td>2,891</td><td>751</td><td>636</td><td>17,707</td><td>30.2%</td><td>10m 28s</td><td>69.8%</td></tr>
+          <tr><td>Jul 2025</td><td style="color:#16a34a;font-weight:600;">15,919</td><td>11,000</td><td>10,985</td><td>52,866</td><td>65.1%</td><td>3m 45s</td><td>34.9%</td></tr>
+          <tr><td>Aug 2025</td><td>10,797</td><td>6,396</td><td>6,187</td><td>22,889</td><td>72.3%</td><td>2m 14s</td><td>27.7%</td></tr>
+          <tr><td>Sep 2025</td><td>3,206</td><td>9,854</td><td>691</td><td>12,077</td><td>39.6%</td><td>6m 04s</td><td>60.4%</td></tr>
+          <tr><td>Oct 2025</td><td style="color:var(--red);font-weight:600;">2,900</td><td>1,918</td><td>1,208</td><td>9,174</td><td>49.8%</td><td>4m 11s</td><td>50.2%</td></tr>
+          <tr><td>Nov 2025</td><td>4,048</td><td>2,847</td><td>1,813</td><td>13,004</td><td>53.6%</td><td>5m 03s</td><td>46.4%</td></tr>
+          <tr><td>Dec 2025</td><td>9,221</td><td>7,417</td><td>4,928</td><td>36,122</td><td>45.9%</td><td>6m 43s</td><td>54.1%</td></tr>
+          <tr><td>Jan 2026</td><td>7,911</td><td>7,148</td><td>4,576</td><td>32,766</td><td>47.2%</td><td>6m 07s</td><td>52.8%</td></tr>
+          <tr><td>Feb 2026</td><td>5,919</td><td>5,417</td><td>2,950</td><td>28,501</td><td>42.9%</td><td>7m 49s</td><td>57.1%</td></tr>
+          <tr><td>Mar 2026</td><td>8,596</td><td>7,549</td><td>5,408</td><td>35,136</td><td>38.2%</td><td>6m 34s</td><td>61.8%</td></tr>
+          <tr><td>Apr 2026</td><td style="color:#16a34a;font-weight:600;">26,947</td><td>20,004</td><td>17,372</td><td>105,449</td><td>37.8%</td><td>6m 43s</td><td>62.2%</td></tr>
+          <tr><td>May 2026</td><td>14,271</td><td>11,764</td><td>9,089</td><td>40,251</td><td>42.6%</td><td>5m 15s</td><td>57.4%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <strong>What this data tells us:</strong><br>
+      • Traffic is volatile — swings from 2,900 (Oct) to 26,947 (Apr) suggest campaign-driven spikes, not organic compound growth.<br>
+      • The April spike (27K) dropped 47% to 14K in May. Whatever caused it wasn't sustained.<br>
+      • July 2025 spike (16K) with 72% bounce = likely a campaign that brought wrong audience.<br>
+      • Best engagement months (Jun 2025, Sep 2025, Mar-Apr 2026) correlate with lower bounce rates — quality over quantity.<br>
+      • The trendline from Nov 2025 → May 2026 IS positive (4K → 14K). This is the real growth signal to build on.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Traffic Sources (Mar-May 2026)</h3>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="value">74%</div>
+        <div class="label">Direct Traffic</div>
+        <div class="source">37,780 sessions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">17%</div>
+        <div class="label">Organic Search</div>
+        <div class="source">8,540 sessions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">4.5%</div>
+        <div class="label">Organic Social</div>
+        <div class="source">2,243 sessions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">0%</div>
+        <div class="label">Paid Acquisition</div>
+        <div class="source">Zero spend, zero data</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>Note on 74% direct traffic:</strong> At this scale, a high direct traffic share typically indicates untagged campaign links (UTMs not configured), app-to-web misattribution, or direct URL entry. Implementing comprehensive UTM tagging across all distribution channels (Telegram, WhatsApp, email, social) will reclassify this traffic into actionable channel data — a Week 0 priority.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Top Pages — Where Users Actually Go</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Page</th><th>Sessions</th><th>% of Total</th><th>Bounce Rate</th><th>What This Means</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>/quiz</strong></td><td>29,709</td><td style="color:var(--red);font-weight:600;">59.6%</td><td>33.1%</td><td>Your product IS the quiz right now. Good engagement but massive dependency risk.</td></tr>
+          <tr><td><strong>/login</strong></td><td>5,563</td><td>11.2%</td><td>44.5%</td><td>Active users returning. Healthy sign.</td></tr>
+          <tr><td><strong>/ (homepage)</strong></td><td>3,606</td><td>7.2%</td><td>26.3%</td><td>Best bounce rate on site. Homepage converts curiosity to exploration.</td></tr>
+          <tr><td><strong>/blog/daily-100-rupees-earning…</strong></td><td>2,621</td><td>5.3%</td><td>57.2%</td><td>Top SEO page. Drives new users but high bounce = content doesn't convert.</td></tr>
+          <tr><td><strong>/blog/how-to-earn-1000-per-day…</strong></td><td>2,276</td><td>4.6%</td><td>50.2%</td><td>Second SEO page. Same issue: traffic but no funnel to signup.</td></tr>
+          <tr><td><strong>/dashboard</strong></td><td>527</td><td>1.1%</td><td>41.7%</td><td>Only 527 dashboard visits = very few active earners in 3 months.</td></tr>
+          <tr><td><strong>/blog/how-to-earn-500-per-day</strong></td><td>758</td><td>1.5%</td><td>60.2%</td><td>High bounce. Blog visitors aren't converting to product users.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>GSC — What Google Thinks of GrabCash (Search Performance)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Trend</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Jun 2025</td><td>227</td><td>6,540</td><td>3.5%</td><td>Baseline</td></tr>
+          <tr><td>Jul 2025</td><td>1,228</td><td>24,875</td><td>4.9%</td><td style="color:#16a34a;">+441% spike</td></tr>
+          <tr><td>Aug 2025</td><td>478</td><td>14,725</td><td>3.2%</td><td style="color:var(--red);">-61% drop</td></tr>
+          <tr><td>Sep-Nov 2025</td><td>~390 avg</td><td>~6,800 avg</td><td>~6%</td><td>Stable floor</td></tr>
+          <tr><td>Dec 2025</td><td>608</td><td>14,870</td><td>4.1%</td><td style="color:#16a34a;">Recovery begins</td></tr>
+          <tr><td>Jan 2026</td><td>1,196</td><td>57,165</td><td>2.1%</td><td style="color:#16a34a;">Impressions explode 4x</td></tr>
+          <tr><td>Feb 2026</td><td>1,079</td><td>61,633</td><td>1.8%</td><td>Impressions hold, CTR drops</td></tr>
+          <tr><td>Mar 2026</td><td>1,219</td><td>83,294</td><td>1.5%</td><td style="color:#16a34a;">Impressions still growing</td></tr>
+          <tr><td>Apr 2026</td><td style="color:#16a34a;font-weight:600;">2,645</td><td style="color:#16a34a;font-weight:600;">96,739</td><td>2.7%</td><td style="color:#16a34a;">Best month ever — clicks doubled</td></tr>
+          <tr><td>May 2026</td><td>2,267</td><td>93,592</td><td>2.4%</td><td>Slight pullback, still strong</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout works">
+      <strong>The SEO story is actually good:</strong> Impressions grew from 6K to 94K in 12 months (15x). Clicks grew from 227 to 2,267 (10x). The gap between impression growth and click growth means your titles/descriptions need optimization — Google is showing you but users aren't clicking. CTR improvement from 1.5% to even 3% would double your organic traffic without any new content. This is the single highest-ROI lever.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Top GSC Queries — What People Search Before Finding GrabCash</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Query</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Position</th><th>Assessment</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>grabcash</strong></td><td>783</td><td>1,418</td><td>55.2%</td><td>2.3</td><td><span class="tag tag-real">Brand search — working</span></td></tr>
+          <tr><td><strong>grab cash</strong></td><td>299</td><td>641</td><td>46.6%</td><td>2.0</td><td><span class="tag tag-real">Brand variant — healthy</span></td></tr>
+          <tr><td><strong>how to earn 500 per day</strong></td><td>46</td><td>1,537</td><td>3.0%</td><td>5.6</td><td><span class="tag tag-target">High volume, low CTR — optimize title</span></td></tr>
+          <tr><td><strong>earn 500 per day</strong></td><td>30</td><td>658</td><td>4.6%</td><td>6.0</td><td><span class="tag tag-target">Position 6 — push to top 3</span></td></tr>
+          <tr><td><strong>daily 100 rupees earning app</strong></td><td>25</td><td>366</td><td>6.8%</td><td>4.3</td><td><span class="tag tag-real">Already ranking well</span></td></tr>
+          <tr><td><strong>how to earn rs 500 per day</strong></td><td>25</td><td>453</td><td>5.5%</td><td>4.8</td><td><span class="tag tag-target">Push to position 3 for 2x clicks</span></td></tr>
+          <tr><td><strong>real estate affiliate programs</strong></td><td>11</td><td>65</td><td>16.9%</td><td>4.2</td><td><span class="tag tag-real">Niche win — highest non-brand CTR</span></td></tr>
+          <tr><td><strong>review and earn</strong></td><td>16</td><td>104</td><td>15.4%</td><td>8.2</td><td><span class="tag tag-target">Good CTR, improve position</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>SEO reality:</strong> GrabCash's organic traffic is almost entirely "earn money" informational queries landing on blog posts. The brand queries (grabcash, grab cash) are healthy at 55% CTR. But there's a massive gap: <strong>zero ranking for "affiliate marketing app", "earning app", "cashback app" or any product-intent keyword.</strong> EarnKaro owns all of these. Your blog brings curious readers. Your product pages bring no one from search.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 04. COMPETITIVE REALITY ═══════════════════ -->
+<section class="section" id="competitive">
+  <div class="section-header">
+    <div class="section-num">Section 04</div>
+    <h2>Competitive <span class="accent">Landscape</span> (June 2026)</h2>
+    <p class="section-subtitle">Market positioning based on current verified data — app store listings, public financial filings, and live product analysis.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Users</th><th>Revenue</th><th>Brands</th><th>Key Strength</th><th>Your Realistic Position</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>CashKaro</strong> (cashback)</td><td>~5M+</td><td>₹600Cr FY26</td><td>1,500+</td><td>Market leader. Ratan Tata funded. 10+ year head start.</td><td style="color:var(--red);font-weight:600;">Adjacent market (cashback vs. affiliate). Different model, shared audience.</td></tr>
+        <tr><td><strong>EarnKaro</strong> (affiliate)</td><td>20L+ (2M)</td><td>Part of ₹600Cr</td><td>200+</td><td>80% Telegram share. Affiliate link sharing = same model as GrabCash.</td><td style="font-weight:600;">Primary competitor. Significant scale advantage. Requires differentiation strategy.</td></tr>
+        <tr><td><strong>GoPaisa</strong></td><td>50L (3.5M active)</td><td>~₹50-80Cr est.</td><td>500+</td><td>13-year brand. First cashback app in India. Strong brand trust.</td><td style="color:var(--orange);font-weight:600;">Different model (cashback). Not direct threat but competes for user mindshare.</td></tr>
+        <tr><td><strong>Meesho Creator</strong></td><td>Large</td><td>N/A</td><td>Marketplace</td><td>Massive existing user base. Social commerce focused.</td><td style="color:var(--orange);font-weight:600;">Competes with GrabShare for creator attention.</td></tr>
+        <tr><td><strong>GrabCash</strong></td><td>~12K MAU</td><td>Pre-revenue</td><td>100+</td><td>Quiz engagement. GrabOn distribution. Blog SEO.</td><td style="color:var(--blue-1);">You are here.</td></tr>
+        <tr><td><strong>GrabShare</strong></td><td>1K creators</td><td>Early revenue</td><td>250+</td><td>AutoDM feature. Creator storefront. No direct EarnKaro equivalent.</td><td style="color:#16a34a;">Most differentiated product in the portfolio.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict">
+    <h3>Competitive positioning strategy</h3>
+    <p>CashKaro+EarnKaro operates at ₹600Cr scale with 5M+ users and dominant Telegram presence. Direct head-on competition is not viable at our current stage. Instead, we compete on axes where our ecosystem has structural advantages:<br><br>
+    1. <strong>Creator commerce</strong> (GrabShare) — EarnKaro serves deal sharers, not Instagram/YouTube creators. GrabShare's AutoDM + storefront addresses a segment EarnKaro doesn't serve.<br>
+    2. <strong>GrabOn distribution</strong> — No other affiliate startup has a multi-million-user coupon platform as a built-in acquisition channel. This is a structural moat.<br>
+    3. <strong>Gamification</strong> — The /quiz feature drives 60% of sessions with high engagement. EarnKaro is purely transactional. Gamified earning is a differentiation opportunity.<br>
+    4. <strong>Two-sided ecosystem</strong> — GrabCash (mass market) + GrabShare (creators) together offer brands full-funnel affiliate coverage that no single competitor provides.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 03B. PRODUCTION DATABASE ═══════════════════ -->
+<section class="section" id="prod-data">
+  <div class="section-header">
+    <div class="section-num">Section 03B</div>
+    <h2>Production Database — <span class="accent">Business Metrics</span></h2>
+    <p class="section-subtitle">Direct from grabcash_prod database. Users, transactions, retailers, revenue — the actual business performance.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="value">26,131</div>
+      <div class="label">Total Registered Users</div>
+      <div class="source">grabcash_prod.users</div>
+    </div>
+    <div class="kpi">
+      <div class="value">213K</div>
+      <div class="label">Total Transactions</div>
+      <div class="source">grabcash_prod.affiliatetransactions</div>
+    </div>
+    <div class="kpi kpi-green">
+      <div class="value">₹16.3 Cr</div>
+      <div class="label">Total GMV Driven</div>
+      <div class="source">Order value all time</div>
+    </div>
+    <div class="kpi kpi-green">
+      <div class="value">₹81.2L</div>
+      <div class="label">Total Commission</div>
+      <div class="source">₹64.9L to users + ₹16.2L company</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>User Signup Trend (Production DB)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>New Signups</th><th>Cumulative Users</th><th>MoM Growth</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Apr 2025</td><td>58</td><td>58</td><td>—</td><td>Launch month</td></tr>
+          <tr><td>May 2025</td><td>70</td><td>128</td><td>+21%</td><td>Early traction</td></tr>
+          <tr><td>Jun 2025</td><td>84</td><td>212</td><td>+20%</td><td>Steady</td></tr>
+          <tr><td>Jul 2025</td><td style="color:#16a34a;font-weight:600;">1,867</td><td>2,079</td><td style="color:#16a34a;">+22x</td><td>First growth spike — campaign or feature launch</td></tr>
+          <tr><td>Aug 2025</td><td>312</td><td>2,391</td><td style="color:var(--red);">-83%</td><td>Spike didn't sustain</td></tr>
+          <tr><td>Sep 2025</td><td>255</td><td>2,646</td><td>-18%</td><td>Settling</td></tr>
+          <tr><td>Oct 2025</td><td>173</td><td>2,819</td><td>-32%</td><td>Low point</td></tr>
+          <tr><td>Nov 2025</td><td>275</td><td>3,094</td><td>+59%</td><td>Recovery begins</td></tr>
+          <tr><td>Dec 2025</td><td style="color:#16a34a;font-weight:600;">2,054</td><td>5,148</td><td style="color:#16a34a;">+7.5x</td><td>Holiday season + second growth push</td></tr>
+          <tr><td>Jan 2026</td><td>2,465</td><td>7,613</td><td>+20%</td><td>Sustained growth</td></tr>
+          <tr><td>Feb 2026</td><td>1,106</td><td>8,719</td><td>-55%</td><td>Post-holiday dip</td></tr>
+          <tr><td>Mar 2026</td><td>2,688</td><td>11,407</td><td>+143%</td><td>Strong recovery</td></tr>
+          <tr><td>Apr 2026</td><td style="color:#16a34a;font-weight:600;">10,586</td><td>21,993</td><td style="color:#16a34a;">+294%</td><td>Massive spike — quiz viral? Campaign?</td></tr>
+          <tr><td>May 2026</td><td>4,131</td><td>26,124</td><td>-61%</td><td>Dropped from April peak but still strong</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Growth pattern:</strong> GrabCash grows in spikes, not steadily. July 2025 (1.8K), Dec 2025 (2K), and April 2026 (10.6K) were inflection points. The April spike added more users than the entire first 11 months combined. Understanding what triggered April is critical — if replicable, it's the primary growth lever.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Revenue Trend (Monthly Commission Earned)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>Transactions</th><th>GMV (Order Value)</th><th>Commission</th><th>User Profit</th><th>Company Profit</th><th>Active Users</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>May 2025</td><td>10,822</td><td>—</td><td>₹1.6L</td><td>₹1.3L</td><td>₹0.3L</td><td>30</td></tr>
+          <tr><td>Jun 2025</td><td>14,734</td><td>—</td><td>₹4.3L</td><td>₹3.4L</td><td>₹0.9L</td><td>22</td></tr>
+          <tr><td>Jul 2025</td><td>15,714</td><td>₹0.2L</td><td>₹1.4L</td><td>₹1.1L</td><td>₹0.3L</td><td>85</td></tr>
+          <tr><td>Aug 2025</td><td>37,042</td><td>₹0.1L</td><td>₹5.9L</td><td>₹4.7L</td><td>₹1.2L</td><td>52</td></tr>
+          <tr><td>Sep 2025</td><td>14,604</td><td>₹1.2L</td><td>₹2.4L</td><td>₹1.9L</td><td>₹0.5L</td><td>39</td></tr>
+          <tr><td>Oct 2025</td><td>21,531</td><td>—</td><td>₹6.6L</td><td>₹5.3L</td><td>₹1.3L</td><td>35</td></tr>
+          <tr><td>Nov 2025</td><td>15,573</td><td>₹3.3L</td><td>₹3.1L</td><td>₹2.5L</td><td>₹0.6L</td><td>37</td></tr>
+          <tr><td style="font-weight:600;">Dec 2025</td><td style="font-weight:600;">36,499</td><td style="color:#16a34a;font-weight:600;">₹206L</td><td style="color:#16a34a;font-weight:600;">₹17.6L</td><td>₹14.1L</td><td>₹3.5L</td><td>61</td></tr>
+          <tr><td style="font-weight:600;">Jan 2026</td><td>17,071</td><td style="color:#16a34a;font-weight:600;">₹489L</td><td style="color:#16a34a;font-weight:600;">₹16.1L</td><td>₹12.9L</td><td>₹3.2L</td><td>69</td></tr>
+          <tr><td style="font-weight:600;">Feb 2026</td><td>23,417</td><td>₹216L</td><td style="color:#16a34a;font-weight:600;">₹19.3L</td><td>₹15.5L</td><td>₹3.9L</td><td>50</td></tr>
+          <tr><td>Mar 2026</td><td>543</td><td>₹34L</td><td style="color:var(--red);">₹0.1L</td><td>₹0.1L</td><td>₹0.0L</td><td>19</td></tr>
+          <tr><td>Apr 2026</td><td>3,172</td><td>₹375L</td><td>₹1.6L</td><td>₹1.3L</td><td>₹0.3L</td><td>23</td></tr>
+          <tr><td>May 2026</td><td>2,272</td><td>₹304L</td><td>₹1.2L</td><td>₹0.9L</td><td>₹0.2L</td><td>20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <strong>Key observation:</strong> Dec 2025 – Feb 2026 was the revenue peak (₹17-19L/month commission, ₹3-4L company profit). Since March 2026, commission dropped sharply to ₹0.1-1.6L/month despite GMV staying high (₹300-375L/month). This suggests a commission rate change or affiliate network adjustment occurred in March. Investigating and fixing this revenue drop is the #1 business priority.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Activation Funnel (Production Data)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Count</th><th>% of Previous Stage</th><th>Implication</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Registered users</strong></td><td>26,131</td><td>—</td><td>Top of funnel healthy. 10.6K signups in April alone.</td></tr>
+          <tr><td><strong>Users who made any transaction</strong></td><td>303</td><td style="color:var(--red);font-weight:600;">1.2%</td><td>Massive drop-off. 98.8% of users never complete a transaction. Onboarding → first earn is broken.</td></tr>
+          <tr><td><strong>Users earning > ₹1K</strong></td><td>60</td><td>19.8% of transactors</td><td>Of users who transact, ~20% earn meaningful amounts. 80% earn under ₹1K total.</td></tr>
+          <tr><td><strong>Users earning > ₹10K</strong></td><td>36</td><td>11.9% of transactors</td><td>36 users across the platform's lifetime have earned ₹10K+. These are the real power users.</td></tr>
+          <tr><td><strong>Users earning > ₹1L</strong></td><td>10</td><td>3.3% of transactors</td><td>10 users earning ₹1L+. Top earner: ₹33.9L. The platform works extremely well for a tiny fraction.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>The activation gap is the #1 problem.</strong> 26,131 users signed up. Only 303 (1.2%) ever transacted. The typical user journey: sign up → look around → never share a link → never earn → leave. The GTM's primary focus should be moving this 1.2% activation rate toward 10-15%, which would 10x the active user base without acquiring a single new user.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Retailer Concentration</h3>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="value">91</div>
+        <div class="label">Retailers in DB</div>
+        <div class="source">32 with status=True</div>
+      </div>
+      <div class="kpi kpi-red">
+        <div class="value">98.4%</div>
+        <div class="label">Flipkart Share</div>
+        <div class="source">209,771 of 213,059 transactions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">1.3%</div>
+        <div class="label">Ajio Share</div>
+        <div class="source">2,673 transactions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">0.3%</div>
+        <div class="label">All Others Combined</div>
+        <div class="source">315 transactions across 89 retailers</div>
+      </div>
+    </div>
+    <div class="callout warn">
+      <strong>Retailer diversification is critical.</strong> The platform is effectively a Flipkart affiliate tool. While Flipkart is India's #2 e-commerce platform and a strong partner, 98.4% concentration creates existential risk. If Flipkart adjusts commission rates or terms (which e-commerce companies do regularly), the entire platform economics change overnight. Target: reduce Flipkart to <70% of transactions by adding meaningful volume from Amazon, Myntra, Ajio, and Meesho within 6 months.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Referral Analysis</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Referral Performance</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+          <li><strong>Users with referral code:</strong> 1,302 (5.0%)</li>
+          <li><strong>Organic signups (no referral):</strong> 24,829 (95.0%)</li>
+          <li><strong>Implication:</strong> The referral program exists but drives only 5% of signups. Either the incentive is too low, the sharing UX is too complex, or users don't know about it.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>User Demographics</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+          <li><strong>Male:</strong> 7,924 (57%)</li>
+          <li><strong>Female:</strong> 5,893 (43%)</li>
+          <li><strong>Gender not provided:</strong> 12,277 (47% didn't fill out)</li>
+          <li><strong>Instagram linked:</strong> 0 users</li>
+          <li><strong>Telegram linked:</strong> 1 user</li>
+          <li><strong>Implication:</strong> Zero social integration. Users aren't connecting platforms — this limits GrabShare flywheel potential.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Top Earners Analysis</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Rank</th><th>Transactions</th><th>Total Earned</th><th>GMV Driven</th><th>Avg Commission/Tx</th><th>Profile Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>#1</td><td>2,738</td><td style="color:#16a34a;font-weight:600;">₹33.9L</td><td>₹87.4L</td><td>₹124</td><td>Power user — likely Telegram admin or bulk deal sharer</td></tr>
+          <tr><td>#2</td><td>7,473</td><td>₹6.0L</td><td>₹135.6L</td><td>₹8</td><td>High volume, low margin — mass deal sharing</td></tr>
+          <tr><td>#3</td><td>5,409</td><td>₹3.6L</td><td>₹19.4L</td><td>₹7</td><td>Similar to #2 — volume player</td></tr>
+          <tr><td>#4</td><td>2,023</td><td>₹2.6L</td><td>₹459.7L</td><td>₹13</td><td>Drives massive GMV — high-value orders (electronics?)</td></tr>
+          <tr><td>#5</td><td>51,884</td><td>₹2.0L</td><td>₹47.7L</td><td>₹0.4</td><td>Extreme volume, very low per-transaction earning — bot or automation?</td></tr>
+          <tr><td>#6-10</td><td>~40K total</td><td>₹1.2-1.4L each</td><td>Varies</td><td>₹3-50</td><td>Mix of volume players and occasional high-value referrers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Power user insight:</strong> Top earner (#1) makes ₹124/transaction vs platform average of ₹30. They're either sharing higher-commission products or have optimized their approach. Understanding and replicating their strategy for the next 50 users would be transformative — even getting 50 users to ₹50K/month earning each would 10x the platform's active user economics.
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>What the production data tells us about strategy priorities</h3>
+    <p>
+      <strong>Priority 1: Fix the activation crisis.</strong> 1.2% activation is the bottleneck. Even doubling it to 2.4% doubles active users and revenue without any new acquisition. The onboarding experience from signup to first-earn needs to be rebuilt as the #1 product priority.<br><br>
+      <strong>Priority 2: Investigate the March-May commission drop.</strong> Revenue went from ₹17-19L/month (Dec-Feb) to ₹0.1-1.6L/month (Mar-May) while GMV stayed high. Something changed in the affiliate network — commission rates, attribution, or payment terms. Fixing this could instantly restore ₹15L+/month in commission.<br><br>
+      <strong>Priority 3: Diversify beyond Flipkart.</strong> 98.4% Flipkart concentration is an existential risk. Amazon, Myntra, and Ajio need meaningful promotion within the product.<br><br>
+      <strong>Priority 4: Power user replication.</strong> The top 10 earners prove the model works at scale. Study their behavior and create guided pathways for the next 50-100 users to follow the same patterns.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 04B. GEO & AUDIENCE DEEP-DIVE ═══════════════════ -->
+<section class="section" id="audience">
+  <div class="section-header">
+    <div class="section-num">Section 04B</div>
+    <h2>Audience & <span class="accent">Geographic</span> Analysis</h2>
+    <p class="section-subtitle">Who is actually using GrabCash today — based on GA4 and GSC device/country data, not assumed personas.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Geographic Distribution (GA4, Mar-May 2026)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Country</th><th>Sessions</th><th>% of Total</th><th>Engagement Rate</th><th>Implication</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>India</strong></td><td>48,525</td><td style="color:#16a34a;font-weight:600;">95.3%</td><td>61.1%</td><td>Core market. All GTM resources should focus here. Non-India traffic is noise.</td></tr>
+          <tr><td>United States</td><td>696</td><td>1.4%</td><td>30.3%</td><td>Low engagement = likely bot/scraper or accidental. Not a target market.</td></tr>
+          <tr><td>Singapore</td><td>343</td><td>0.7%</td><td>4.1%</td><td>Extremely low engagement (4.1%). Likely automated traffic.</td></tr>
+          <tr><td>Pakistan</td><td>52</td><td>0.1%</td><td>53.8%</td><td>Decent engagement but tiny volume. NRI/cross-border affiliate interest.</td></tr>
+          <tr><td>UAE</td><td>42</td><td>0.08%</td><td>61.9%</td><td>Strong engagement — possibly Indian diaspora. GrabOnUAE synergy potential.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Geographic conclusion:</strong> 95.3% India. All marketing, content, and product decisions should be India-only. Do not allocate any resources to international markets. The 4.7% non-India traffic should not influence product decisions.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Device Split (GA4, Mar-May 2026)</h3>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="value">80%</div>
+        <div class="label">Mobile</div>
+        <div class="source">40,601 sessions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">20%</div>
+        <div class="label">Desktop</div>
+        <div class="source">10,226 sessions</div>
+      </div>
+      <div class="kpi">
+        <div class="value">0.3%</div>
+        <div class="label">Tablet</div>
+        <div class="source">147 sessions</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Mobile-first implication:</strong> 80% mobile + India-only = product and content must be optimized for Android on 4G connections. Page load speed under 3 seconds on mobile is critical. Hindi/Hinglish content should be the default, not English. GSC confirms this: mobile gets 5,077 clicks at 4.1% CTR vs desktop's 1,013 clicks at 0.7% CTR — mobile users are 6x more engaged with search results.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>User Segments — What the Data Reveals (Not Assumed Personas)</h3>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Quiz Engaged Users</h3>
+        <p><strong>60% of all sessions.</strong> Land on /quiz. 33% bounce (best on site). 3.6 pages/session. 99% new users. They come, engage with the quiz, but we don't know if they sign up — because conversion isn't tracked. This is the single largest user segment.</p>
+        <p style="font-size:0.78rem;color:var(--blue-1);margin-top:0.5rem;">Action: Track quiz → signup conversion. This one metric could reshape the entire strategy.</p>
+      </div>
+      <div class="card">
+        <h3>Blog SEO Visitors</h3>
+        <p><strong>~15% of sessions.</strong> Land on /blog/* pages from Google. 50-60% bounce. 1.4-1.9 pages/session. 99%+ new users. They come for "how to earn money" content, read one article, and leave. Currently: zero conversion path from blog to product.</p>
+        <p style="font-size:0.78rem;color:var(--blue-1);margin-top:0.5rem;">Action: Add inline CTAs, sidebar signup prompts, and end-of-article "Start earning now" modules to every blog post.</p>
+      </div>
+      <div class="card">
+        <h3>Active Earners (Product Users)</h3>
+        <p><strong>~3-5% of sessions.</strong> Visit /dashboard (527), /links (192), /earnings (73), /deals (115), /retailers (101). 0% new users. 5-7 pages/session. 9-18 minute sessions. These are your actual product users — and there are very few of them relative to total traffic.</p>
+        <p style="font-size:0.78rem;color:var(--blue-1);margin-top:0.5rem;">Action: This is the real user base. Estimate: 200-400 active earners. Understanding their behavior and earnings is the #1 product priority.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Engagement Depth by Page Type</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Page Type</th><th>Avg Pages/Session</th><th>Avg Duration</th><th>Bounce Rate</th><th>% New Users</th><th>What This Means</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>/quiz</strong></td><td>3.6</td><td>6m 58s</td><td>33.1%</td><td>99%</td><td>High engagement, almost all new users. Strong discovery/viral channel.</td></tr>
+          <tr><td><strong>/ (homepage)</strong></td><td>6.2</td><td>8m 00s</td><td>26.3%</td><td>81%</td><td>Best conversion page. Users explore deeply. Optimize as primary landing.</td></tr>
+          <tr><td><strong>/onboarding</strong></td><td>6.8</td><td>11m 29s</td><td>40.8%</td><td>25%</td><td>Users going through onboarding spend 11+ minutes. Good depth, but 40% bounce means onboarding drops off.</td></tr>
+          <tr><td><strong>/dashboard</strong></td><td>4.8</td><td>9m 04s</td><td>41.7%</td><td>2%</td><td>Returning users. Healthy depth. These are your power users.</td></tr>
+          <tr><td><strong>/insider</strong></td><td>11.5</td><td>25m 02s</td><td>23.5%</td><td>4%</td><td>Highest engagement page on entire site. Only 51 sessions — understand what this is and replicate it.</td></tr>
+          <tr><td><strong>/blog/* (average)</strong></td><td>1.5</td><td>1m 50s</td><td>55%</td><td>99%</td><td>Low engagement. Read and leave. Blog is a traffic source but not converting to product usage.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 04C. GRABON CROSS-PROMO DEEP-DIVE ═══════════════════ -->
+<section class="section" id="grabon-integration">
+  <div class="section-header">
+    <div class="section-num">Section 04C</div>
+    <h2>GrabOn Integration — <span class="accent">The Unfair Advantage</span></h2>
+    <p class="section-subtitle">GrabOn.in is InspireLabs' flagship product with millions of monthly visitors. This is the single most important growth lever for both GrabCash and GrabShare — and it's currently underutilized.</p>
+  </div>
+
+  <div class="callout works">
+    <strong>Why this matters:</strong> No other affiliate startup in India has access to a multi-million-user coupon platform as a built-in acquisition channel. EarnKaro must spend on ads to reach new users. GrabCash can reach them for free through GrabOn. This is a structural advantage that cannot be replicated by competitors.
+  </div>
+
+  <div class="sub-section">
+    <h3>Current State of Cross-Promotion</h3>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="value">314</div>
+        <div class="label">Sessions from "blog" source</div>
+        <div class="source">Likely internal cross-link traffic</div>
+      </div>
+      <div class="kpi">
+        <div class="value">131</div>
+        <div class="label">Sessions from stage.grabonuae.ae</div>
+        <div class="source">UAE property referral</div>
+      </div>
+      <div class="kpi kpi-red">
+        <div class="value">~445</div>
+        <div class="label">Total cross-promo sessions</div>
+        <div class="source">0.9% of total traffic</div>
+      </div>
+    </div>
+    <p style="font-size:0.88rem;color:var(--text-dim);">Currently, cross-promotion from GrabOn drives less than 1% of GrabCash traffic. This represents massive untapped potential. Even a modest 1% click-through rate on GrabOn's traffic would generate thousands of monthly visits to GrabCash.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Implementation Plan — GrabOn → GrabCash Funnel</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Placement</th><th>Location on GrabOn</th><th>Implementation</th><th>Expected CTR</th><th>Est. Monthly Visits to GrabCash</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Banner on coupon pages</strong></td><td>Below coupons, above footer on top 100 store pages</td><td>"Want to earn money sharing these deals? Try GrabCash →" with earnings proof</td><td>0.5-1%</td><td>5,000-10,000</td><td style="color:var(--red);font-weight:600;">P0 — Week 3</td></tr>
+          <tr><td><strong>Exit intent popup</strong></td><td>Triggered when user moves cursor to leave GrabOn</td><td>"Before you go — earn ₹500 this week by sharing deals with GrabCash"</td><td>1-2%</td><td>3,000-6,000</td><td style="color:var(--red);font-weight:600;">P0 — Week 4</td></tr>
+          <tr><td><strong>Homepage widget</strong></td><td>GrabOn homepage "Earn from Home" section</td><td>Dedicated section: "Turn deal-sharing into income with GrabCash"</td><td>0.3-0.5%</td><td>1,000-2,000</td><td style="color:var(--orange);font-weight:600;">P1 — Week 6</td></tr>
+          <tr><td><strong>Category page sidebar</strong></td><td>Fashion, Electronics, Travel category pages</td><td>"Earn commissions on [category] deals — join GrabCash"</td><td>0.3-0.5%</td><td>2,000-4,000</td><td style="color:var(--orange);font-weight:600;">P1 — Week 8</td></tr>
+          <tr><td><strong>Email footer</strong></td><td>GrabOn newsletter (if exists)</td><td>"Did you know? You can EARN from deals you share. Start with GrabCash."</td><td>0.5-1%</td><td>500-1,000</td><td>P2 — Week 10</td></tr>
+          <tr><td><strong>GrabShare creator CTA</strong></td><td>GrabOn blog/editorial content</td><td>"Are you a content creator? Monetize your audience with GrabShare"</td><td>0.2-0.5%</td><td>200-500</td><td>P2 — Week 10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout works">
+      <strong>Conservative estimate:</strong> Even with modest CTRs, GrabOn cross-promotion could drive 10,000-20,000 monthly visits to GrabCash — potentially doubling current traffic at near-zero cost. If even 5% of those visitors sign up, that's 500-1,000 new users/month from this channel alone.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Making It a Two-Way Value Exchange</h3>
+    <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:1rem;">For GrabOn to dedicate real estate to GrabCash, GrabOn must benefit too. The pitch to GrabOn leadership:</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>What GrabCash gives GrabOn</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.8;">
+          <li><strong>Extended user engagement:</strong> GrabCash users come back to GrabOn to find deals to share, increasing GrabOn's DAU and session depth</li>
+          <li><strong>Affiliate revenue share:</strong> GrabCash earners drive incremental purchases through GrabOn-partnered brands → GrabOn earns affiliate commission</li>
+          <li><strong>User data enrichment:</strong> GrabCash signup data (interests, sharing behavior) can inform GrabOn's personalization</li>
+          <li><strong>Content for GrabOn blog:</strong> "How to earn from deals" content drives SEO traffic to GrabOn domain</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What GrabOn gives GrabCash</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.8;">
+          <li><strong>Free user acquisition:</strong> Millions of monthly visitors exposed to GrabCash</li>
+          <li><strong>Trust transfer:</strong> "From the makers of GrabOn" gives instant credibility</li>
+          <li><strong>Brand partnerships:</strong> GrabOn's existing brand relationships accelerate GrabCash merchant onboarding</li>
+          <li><strong>Technical infrastructure:</strong> Shared coupon/deal data, affiliate network integrations, payment systems</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="what-works">
+  <div class="section-header">
+    <div class="section-num">Section 05</div>
+    <h2>Validated Growth <span class="accent">Channels</span></h2>
+    <p class="section-subtitle">Prioritized based on existing data signals — channels where we have evidence of traction, not hypothetical potential.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card" style="border-left: 3px solid #16a34a;">
+      <h3>1. GrabOn Cross-Promotion (HIGH CONFIDENCE)</h3>
+      <p><strong>Why it will work:</strong> GrabOn.in has millions of monthly visitors. Placing GrabCash CTAs on GrabOn coupon pages is essentially free acquisition from a trusted brand. This is the single most under-leveraged asset.<br><br>
+      <strong>Evidence:</strong> "blog / (not set)" is already driving 314 sessions from what appears to be internal cross-linking. With proper implementation (banners, exit intent, category-level integration), this could 10-50x.<br><br>
+      <strong>Risk:</strong> Medium. Depends on GrabOn team's willingness to dedicate real estate. If GrabCash isn't clearly benefiting GrabOn users, the placements will be deprioritized.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid #16a34a;">
+      <h3>2. Blog SEO — Double Down (HIGH CONFIDENCE)</h3>
+      <p><strong>Why it will work:</strong> Already working. 93K impressions/month, 10x growth in 12 months. The "earn money" content niche has massive search volume in India and GrabCash is already ranking for several terms.<br><br>
+      <strong>Evidence:</strong> Top blog posts drive 5,000+ monthly sessions. "daily 100 rupees earning apps" page gets 2,336 GSC clicks/quarter. Growing every month.<br><br>
+      <strong>The fix needed:</strong> CTR is only 1.5-2.4%. Industry average is 3-5% for positions 4-6. Better meta titles alone could double organic traffic. And blog posts need CTAs that convert readers to GrabCash signups (currently 57%+ bounce).</p>
+    </div>
+    <div class="card" style="border-left: 3px solid #16a34a;">
+      <h3>3. Quiz/Gamification (MEDIUM-HIGH CONFIDENCE)</h3>
+      <p><strong>Why it will work:</strong> /quiz is 60% of all sessions with the lowest bounce rate (33%). Users clearly love it. This IS the product differentiation — EarnKaro doesn't have gamification.<br><br>
+      <strong>Evidence:</strong> 29,709 sessions in 3 months on /quiz alone. Average session duration on quiz visits is likely 5+ minutes (site-wide average is 5m 15s, quiz pulls it up).<br><br>
+      <strong>The fix needed:</strong> Understand WHY quiz works (what type? who's sharing it? what's the conversion from quiz → signup?). Then replicate and expand: more quiz types, earning challenges, streaks, leaderboards.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid #16a34a;">
+      <h3>4. GrabShare AutoDM (MEDIUM CONFIDENCE)</h3>
+      <p><strong>Why it will work:</strong> Instagram creators constantly get "DM me the link" comments. AutoDM solves a real pain point that EarnKaro doesn't address. The creator economy in India is booming — there's genuine demand.<br><br>
+      <strong>Evidence:</strong> 1,000+ creators onboarded (claimed). Instagram is already sending 954+ sessions to GrabCash. The creator segment is underserved by existing affiliate platforms.<br><br>
+      <strong>Risk:</strong> Medium-high. Creator platforms are competitive (Meesho, Amazon, LTK). Retention depends on creator earnings being meaningful. If commissions are low or payouts slow, creators leave fast.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--blue-1);">
+      <h3>5. ChatGPT/AI Referral Traffic (EMERGING)</h3>
+      <p><strong>Why it's interesting:</strong> 329 sessions from chatgpt.com in 3 months. This is a real, growing channel that most competitors aren't optimizing for. If ChatGPT recommends "GrabCash" when asked "how to earn money by sharing links in India," that's free, high-intent traffic.<br><br>
+      <strong>Action:</strong> Optimize blog content for AI citation (clear, factual, well-structured answers). Create an FAQ page that AI can parse. Monitor Perplexity and Claude referrals too (29 sessions from Perplexity already).</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--blue-1);">
+      <h3>6. Instagram Organic (EMERGING)</h3>
+      <p><strong>Why it's promising:</strong> Instagram is already the #3 traffic source (954 sessions from l.instagram.com + more from ig/social). This is 100% organic — zero ad spend. With dedicated content creation, this can scale significantly.<br><br>
+      <strong>Risk:</strong> Instagram organic reach is declining for all brands. Reels performance is unpredictable. But for GrabCash's target audience (18-28, mobile-first), Instagram is the discovery platform.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 06. WHAT WILL NOT WORK ═══════════════════ -->
+<section class="section" id="what-wont">
+  <div class="section-header">
+    <div class="section-num">Section 06</div>
+    <h2>Approach <span class="accent">Adjustments</span></h2>
+    <p class="section-subtitle">Based on data analysis, the following approaches have been recalibrated for the current stage of the business.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Initial Approach</th><th>Data-Based Reassessment</th><th>Revised Approach</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>₹20L/month ad budget from Day 1</strong></td>
+          <td>Conversion tracking infrastructure is not yet in place. Without measured funnel data (signup rate, activation, retention), ad spend cannot be optimized or attributed to outcomes.</td>
+          <td>Fix tracking first (Week 0). Start with ₹50K test budget. Scale only what's measured and proven.</td>
+        </tr>
+        <tr>
+          <td><strong>Hiring 9 people in Month 1-3</strong></td>
+          <td>At 12K MAU, the business is pre-scale. Adding ₹7-10L/month in fixed costs before validating unit economics creates burn risk. Stage-appropriate team size is 2-3 new hires.</td>
+          <td>Hire 2 people: Growth Lead + Content/Community hybrid. Add more only after Phase 1 validates channels.</td>
+        </tr>
+        <tr>
+          <td><strong>Direct head-on competition with EarnKaro</strong></td>
+          <td>EarnKaro operates at 170x our scale with ₹600Cr parent company resources. Direct competition on commission rates or Telegram market share requires capital parity we don't have at this stage.</td>
+          <td>Compete on differentiated axes: creator commerce (GrabShare), gamification (quiz), and GrabOn distribution. Win segments EarnKaro underserves.</td>
+        </tr>
+        <tr>
+          <td><strong>Aggressive 18-month user targets without validated channels</strong></td>
+          <td>Reaching 500K from 12K MAU in 18 months requires ~24% sustained MoM growth. Industry benchmarks for consumer apps in India (with VC funding) average 15-20% MoM. This requires validation before committing to as a target.</td>
+          <td>Phase 1 target: 25K MAU (validated channels). 18-month target: 50K-75K MAU — achievable with SEO compounding + GrabOn funnel + one validated paid channel. Revise upward once channels are proven.</td>
+        </tr>
+        <tr>
+          <td><strong>8 acquisition channels simultaneously</strong></td>
+          <td>With 2-3 people, you can't execute 8 channels well. Each channel needs dedicated attention, testing, and iteration. Spreading across 8 means all 8 are mediocre.</td>
+          <td>Pick 2 channels max. Get both to profitable unit economics. Then add a third. Sequential, not parallel.</td>
+        </tr>
+        <tr>
+          <td><strong>Campus Ambassador Program</strong></td>
+          <td>High operational overhead for low-volume results. Managing 50+ ambassadors requires a dedicated person. Campus programs work for products with campus network effects (food delivery, rides). Affiliate link sharing doesn't have that.</td>
+          <td>Skip campus program entirely. Use the budget for 1 well-paid content creator who produces 20 Reels/month instead.</td>
+        </tr>
+        <tr>
+          <td><strong>Regional/vernacular expansion to 4+ languages</strong></td>
+          <td>Premature. You haven't nailed Hindi + English yet. Tamil/Telugu content creation requires native speakers and cultural context. At 12K MAU, you need depth in 1-2 languages, not breadth in 6.</td>
+          <td>Master Hindi + English first. Add one regional language only after Hindi content proves ROI.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 07. THE HONEST STRATEGY ═══════════════════ -->
+<section class="section" id="strategy">
+  <div class="section-header">
+    <div class="section-num">Section 07</div>
+    <h2>Phased <span class="accent">Execution Strategy</span></h2>
+    <p class="section-subtitle">Three phases. Each phase has a gate. You don't advance until the gate is passed. No hand-waving.</p>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card" style="border-top: 3px solid var(--red);">
+      <h3>Phase 0: Fix the Foundation</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);">
+        <strong>Duration:</strong> Weeks 1-2<br>
+        <strong>Budget:</strong> ₹0 (internal work)<br>
+        <strong>Team:</strong> Existing<br>
+        <strong>Goal:</strong> Get measurement infrastructure working so every future decision is data-backed.
+      </p>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--red);font-weight:600;">MUST COMPLETE BEFORE ANY SPENDING</div>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--orange);">
+      <h3>Phase 1: Prove It (90 Days)</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);">
+        <strong>Duration:</strong> Weeks 3-14<br>
+        <strong>Budget:</strong> ₹3-5L/month<br>
+        <strong>Team:</strong> 2-3 people<br>
+        <strong>Goal:</strong> Validate 2 acquisition channels with real CAC data. Achieve 25K MAU with known unit economics.
+      </p>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--orange);font-weight:600;">GATE 1: MUST HIT 25K MAU + KNOWN CAC BEFORE SCALING</div>
+    </div>
+    <div class="card" style="border-top: 3px solid #16a34a;">
+      <h3>Phase 2: Scale What Works</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);">
+        <strong>Duration:</strong> Months 4-12<br>
+        <strong>Budget:</strong> ₹10-15L/month<br>
+        <strong>Team:</strong> 5-8 people<br>
+        <strong>Goal:</strong> Scale validated channels to 50-75K MAU. Prove revenue model. Reach contribution-positive unit economics.
+      </p>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:#16a34a;font-weight:600;">GATE 2: MUST BE CONTRIBUTION-POSITIVE BEFORE MONTH 12</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 08. WEEK 0 ═══════════════════ -->
+<section class="section" id="week0">
+  <div class="section-header">
+    <div class="section-num">Section 08</div>
+    <h2>Week 0 — Fix the <span class="accent">Foundation</span></h2>
+    <p class="section-subtitle">Nothing else happens until these are done. The previous GTM skipped all of this.</p>
+  </div>
+
+  <div class="callout warn">
+    <strong>Why this phase is non-negotiable:</strong> GA4 currently shows zero key events configured across 12 months of data. This means core funnel metrics (signups, activations, earnings, payouts) are not yet measurable. Establishing this measurement infrastructure is the prerequisite for every downstream strategy decision — CAC targets, channel prioritization, and budget allocation all depend on it.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Task</th><th>Owner</th><th>Days</th><th>Done When</th><th>Why This Can't Wait</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Set up GA4 key events:</strong> signup_complete, first_link_shared, first_earning, payout_requested, payout_completed, referral_sent, quiz_completed</td><td>Engineering</td><td>2-3</td><td>Events firing in GA4 Realtime view</td><td>Without these, you can't measure ANY funnel metric. Everything downstream depends on this.</td></tr>
+        <tr><td>2</td><td><strong>UTM framework:</strong> Every link shared on Telegram, WhatsApp, Instagram, email, cross-promo MUST have UTM tags. Create UTM templates for every channel.</td><td>Growth Lead</td><td>1</td><td>UTM template document + team trained</td><td>74% "direct" traffic is a measurement black hole. UTMs turn it into actionable channel data.</td></tr>
+        <tr><td>3</td><td><strong>Mixpanel/Amplitude setup:</strong> User-level event tracking for: signup → onboarding → first share → first earn → repeat earn → payout. Cohort definitions configured.</td><td>Engineering</td><td>3-4</td><td>First cohort report generated showing D1/D7/D30 retention</td><td>GA4 is session-based. You need user-level analytics to understand retention and LTV.</td></tr>
+        <tr><td>4</td><td><strong>Baseline funnel measurement:</strong> Let events collect for 7 days. Then calculate: Visit → Signup rate, Signup → First Earn rate, First Earn → D7 retention.</td><td>Data/Growth</td><td>7 (wait)</td><td>First real funnel numbers documented</td><td>These numbers are your truth. Every projection must start from here.</td></tr>
+        <tr><td>5</td><td><strong>Blog CTA audit:</strong> Check every top 10 blog post. Does it have a clear CTA to sign up? Is the CTA above the fold? Test: can you go from blog post to signup in under 3 clicks?</td><td>Content</td><td>1</td><td>CTAs added/fixed on top 10 posts</td><td>Blog drives 5K+ monthly sessions but 57% bounce. No CTA = wasted traffic.</td></tr>
+        <tr><td>6</td><td><strong>Quiz investigation:</strong> Why is /quiz 60% of sessions? Where does quiz traffic come from? Is it organic? Shared links? Bots? What's the signup conversion from quiz?</td><td>Growth + Data</td><td>2</td><td>Report: quiz traffic source, user behavior, conversion to signup</td><td>Quiz is the highest-traffic feature but lacks attribution data. Understanding its growth drivers is essential for replication.</td></tr>
+        <tr><td>7</td><td><strong>GrabShare data pull:</strong> Get actual numbers: how many creators posted in last 30 days? Total GMV driven? Average earnings per creator? Commission paid out?</td><td>GrabShare PM</td><td>1</td><td>GrabShare dashboard metrics documented</td><td>Can't plan creator GTM without knowing real creator engagement numbers.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Week 0 costs ₹0 in external spend.</strong> It's 100% internal work. It takes 2 weeks. And it transforms you from "guessing" to "knowing." The previous GTM proposed spending ₹20L/month without doing any of this first. That would have been irresponsible.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 09. PHASE 1 ═══════════════════ -->
+<section class="section" id="phase1">
+  <div class="section-header">
+    <div class="section-num">Section 09</div>
+    <h2>Phase 1 — <span class="accent">Prove It</span> (90 Days)</h2>
+    <p class="section-subtitle">Validate 2 channels with real CAC data. Grow from 12K to 25K MAU. Spend carefully. Measure everything.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Phase 1 budget: ₹3-5L/month total.</strong> Not ₹20L. You earn the right to spend more by proving lower spend works first. This includes: ₹1-2L content production, ₹1L paid tests (Meta), ₹50K tools, ₹50K-1L influencer tests. The rest is team salary (existing + 1-2 new hires).
+  </div>
+
+  <div class="sub-section">
+    <h3>The Two Channels to Prove (GrabCash)</h3>
+
+    <div class="block">
+      <h4>Channel A: Blog SEO + GrabOn Cross-Promo (Organic)</h4>
+      <div class="meta">
+        <span>Cost: ₹50K-1L/month (content production)</span>
+        <span>Target: 5,000 monthly signups from organic</span>
+        <span>Timeline: Results compound over 90 days</span>
+      </div>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Why this channel first:</strong> Already working. 93K impressions, 2,267 clicks. The foundation exists — you're optimizing, not starting from zero.</p>
+
+      <p style="font-size:0.88rem;color:var(--text-dim);"><strong style="color:var(--navy);">90-day plan:</strong></p>
+      <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+        <li><strong>Week 3-4:</strong> Optimize meta titles + descriptions on top 20 GSC pages. Target: CTR from 2.4% to 4%. This alone could add 1,500+ monthly clicks with zero new content.</li>
+        <li><strong>Week 3-6:</strong> Add conversion CTAs to every blog post (inline CTAs, exit-intent, sticky footer). Target: blog-to-signup rate of 3-5% (from current ~0% since there's no tracking).</li>
+        <li><strong>Week 3-8:</strong> Publish 3 blog posts/week targeting "earn money" keywords where GrabCash already has impressions but low position. Prioritize: "money earning apps in india" (37K impr, pos 11.2), "meesho affiliate program" (37K impr, pos 7.2).</li>
+        <li><strong>Week 3-12:</strong> GrabOn cross-promo implementation. Place GrabCash banners on GrabOn's top 100 coupon pages. Target: 1% click-through on GrabOn's traffic = thousands of new GrabCash visitors/month.</li>
+        <li><strong>Week 8-12:</strong> Create comparison pages: "GrabCash vs EarnKaro", "Best Earning Apps 2026", "GrabCash Review". These target product-intent keywords where you currently rank for nothing.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h4>Channel B: Instagram Organic + Micro-Influencers (Social)</h4>
+      <div class="meta">
+        <span>Cost: ₹1-1.5L/month (1 creator + influencer collabs)</span>
+        <span>Target: 2,000 monthly signups from social</span>
+        <span>Timeline: Builds over 90 days</span>
+      </div>
+      <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.75rem;"><strong style="color:var(--navy);">Why this channel second:</strong> Instagram is already #3 traffic source organically. GrabCash's target audience (18-28, mobile) lives on Instagram. UGC-style "earning proof" content performs well in the niche.</p>
+
+      <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+        <li><strong>Week 3-4:</strong> Hire 1 content creator (₹40-60K/month) who can shoot + edit Reels. Target: 5 Reels/week.</li>
+        <li><strong>Week 5-8:</strong> Test 10 micro-influencer collaborations (₹2-5K per Reel). Track with UTM links. Measure: views, profile visits, link clicks, signups.</li>
+        <li><strong>Week 8-12:</strong> Double down on what works. If Reels with earning proof outperform tutorials, make more earning proof. If Hindi outperforms English, go Hindi-heavy.</li>
+        <li><strong>Measurement:</strong> Every Instagram link must be UTM-tagged. Every influencer gets a unique UTM. Weekly report: spend per influencer → clicks → signups → first-earn.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 1 Gate — Week 12 Decision</h3>
+    <div class="callout warn">
+      <strong>GATE 1 — Must meet 4 of 5 to proceed to Phase 2:</strong><br><br>
+      1. <strong>MAU ≥ 25,000</strong> (up from 12K)<br>
+      2. <strong>Signup conversion rate measured and ≥ 5%</strong> (visitors → signups)<br>
+      3. <strong>At least 1 channel with CAC < ₹100</strong> (fully tracked end-to-end)<br>
+      4. <strong>D7 retention ≥ 20%</strong> (users active 7 days after signup)<br>
+      5. <strong>GrabShare: ≥ 100 creators active in last 30 days</strong> (actually posting, not just signed up)<br><br>
+      <strong>If PASS:</strong> Proceed to Phase 2 with ₹10-15L/month budget. Start hiring.<br>
+      <strong>If FAIL (2-3 of 5):</strong> Extend Phase 1 by 30 days. Fix the failing metrics. Do not increase spend.<br>
+      <strong>If FAIL (0-1 of 5):</strong> Fundamental product-market fit problem. Stop all acquisition spend. Focus on product.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 10. SEO BUILT ON REAL RANKINGS ═══════════════════ -->
+<section class="section" id="seo">
+  <div class="section-header">
+    <div class="section-num">Section 10</div>
+    <h2>SEO — Built on <span class="accent">Real Rankings</span></h2>
+    <p class="section-subtitle">Not generic "do keyword research." These are the actual keywords you rank for, the actual positions, and the actual opportunity.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Immediate SEO Wins (Zero New Content Needed)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Page</th><th>Current Impressions</th><th>Current CTR</th><th>Current Position</th><th>Action</th><th>Expected Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>/blog/daily-100-rupees-earning-apps…</td><td>39,526/quarter</td><td>5.9%</td><td>5.5</td><td>Rewrite title to include "2026" + "Without Investment". Add FAQ schema.</td><td>CTR to 8-10% = +1,200 extra clicks/quarter</td></tr>
+          <tr><td>/blog/how-to-earn-500-per-day/</td><td>28,748</td><td>2.4%</td><td>6.1</td><td>Title is too generic. Rewrite: "How to Earn ₹500/Day Without Investment (7 Proven Ways)" + improve content depth.</td><td>Position 6→4 + CTR 2.4%→5% = +1,000 extra clicks</td></tr>
+          <tr><td>/blog/money-earning-apps-in-india/</td><td>37,667</td><td>0.4%</td><td>11.2</td><td>Position 11 = page 2. Content refresh + internal links + schema can push to page 1. Massive volume keyword.</td><td>Page 1 at position 7 with 2% CTR = +750 clicks (from ~157 currently)</td></tr>
+          <tr><td>/blog/meesho-affiliate-program/</td><td>37,595</td><td>0.3%</td><td>7.2</td><td>Position 7 but 0.3% CTR = title doesn't match intent. Rewrite title to "Meesho Affiliate Program 2026: Commission Rates + How to Join"</td><td>CTR 0.3%→2% = +700 extra clicks</td></tr>
+          <tr><td>/blog/how-to-earn-1000-per-day…</td><td>19,834</td><td>1.0%</td><td>8.2</td><td>Position 8.2. Add more content depth, internal links to earning pages, FAQ section.</td><td>Push to position 5 = 3x clicks</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout works">
+      <strong>Total immediate SEO opportunity:</strong> Just optimizing titles and improving these 5 existing pages could add 3,500-4,000 clicks per quarter (1,200+/month) — a 50%+ increase in organic traffic with zero new content spend. This should be Week 3 priority.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Content Gaps — What to Write Next (Priority Order)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Priority</th><th>Topic</th><th>Why</th><th>Keyword Volume Signal</th><th>Difficulty</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><strong>"GrabCash vs EarnKaro" comparison page</strong></td><td>Zero product-intent pages ranking. This captures switch-intent searches.</td><td>EarnKaro has 100K+ brand searches/month</td><td>Low (unique content)</td></tr>
+          <tr><td>2</td><td><strong>"Best Earning Apps India 2026" mega-page</strong></td><td>Category page. GrabCash ranks for individual apps but not the comparison. High intent.</td><td>37K+ impressions on related queries already</td><td>Medium (competitive)</td></tr>
+          <tr><td>3</td><td><strong>"How to Earn Money by Sharing Links" guide</strong></td><td>Direct product-intent. Explains GrabCash's exact use case. No page exists for this.</td><td>Multiple related queries with 500+ monthly impressions each</td><td>Low-Medium</td></tr>
+          <tr><td>4</td><td><strong>"Affiliate Marketing for Beginners India" pillar</strong></td><td>Top-of-funnel educational content. Establishes topical authority. Internal-links to all earning blog posts.</td><td>High search volume category</td><td>Medium</td></tr>
+          <tr><td>5</td><td><strong>Individual brand affiliate pages</strong> (Amazon, Flipkart, Myntra, Ajio)</td><td>"{Brand} affiliate program" keywords have significant volume. GrabCash already ranks for Meesho, Myntra, Nykaa — expand to more.</td><td>10K-40K impressions per brand</td><td>Medium (EarnKaro ranks well)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="sub-section">
+    <h3>Full SEO Keyword Database — Top 50 Non-Brand Queries (GSC, Mar-May 2026)</h3>
+    <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:1rem;">Every query below is real GSC data. Sorted by impressions to show total opportunity size. Position column shows where GrabCash currently ranks.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Query</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Opportunity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>how to earn 500 per day</td><td>46</td><td>1,537</td><td>3.0%</td><td>5.6</td><td style="color:var(--orange);">High vol. Push to pos 3 → 3x clicks</td></tr>
+          <tr><td>2</td><td>earn 500 per day</td><td>30</td><td>658</td><td>4.6%</td><td>6.0</td><td style="color:var(--orange);">Position 6 → improve content depth</td></tr>
+          <tr><td>3</td><td>earn 500 per day working from home</td><td>21</td><td>587</td><td>3.6%</td><td>7.2</td><td style="color:var(--orange);">Related to #1 — consolidate on same page</td></tr>
+          <tr><td>4</td><td>daily 500 earning</td><td>12</td><td>511</td><td>2.3%</td><td>7.2</td><td>Hindi variant of #1. Add Hindi H2 to page.</td></tr>
+          <tr><td>5</td><td>how to earn 100 rupees per day</td><td>21</td><td>470</td><td>4.5%</td><td>4.7</td><td style="color:#16a34a;">Already pos 4.7. Optimize title → 8%+ CTR</td></tr>
+          <tr><td>6</td><td>how to earn rs 500 per day without investment</td><td>25</td><td>453</td><td>5.5%</td><td>4.8</td><td style="color:#16a34a;">Good position. Add "without investment" to title</td></tr>
+          <tr><td>7</td><td>how to earn 500 per day from mobile</td><td>7</td><td>469</td><td>1.5%</td><td>9.0</td><td style="color:var(--orange);">Pos 9 = page 1 bottom. Mobile-specific content section needed</td></tr>
+          <tr><td>8</td><td>best earning app</td><td>7</td><td>424</td><td>1.7%</td><td>18.8</td><td style="color:var(--red);">Pos 19 = page 2. Need dedicated "Best Earning Apps 2026" page</td></tr>
+          <tr><td>9</td><td>how to get 100 rupees instantly</td><td>13</td><td>376</td><td>3.5%</td><td>6.2</td><td>Add "instant earning" section to 100 rupees article</td></tr>
+          <tr><td>10</td><td>daily 100 rupees earning app without investment</td><td>25</td><td>366</td><td>6.8%</td><td>4.3</td><td style="color:#16a34a;">Strong position + CTR. Protect and expand this page.</td></tr>
+          <tr><td>11</td><td>how to earn 100 rupees per day online</td><td>19</td><td>284</td><td>6.7%</td><td>5.1</td><td style="color:#16a34a;">Good CTR. Add more online methods to content.</td></tr>
+          <tr><td>12</td><td>earn 100 rupees</td><td>26</td><td>259</td><td>10.0%</td><td>4.6</td><td style="color:#16a34a;">Highest CTR in top 20. Content resonates. Expand.</td></tr>
+          <tr><td>13</td><td>earn rs 1000 per day without investment</td><td>6</td><td>257</td><td>2.3%</td><td>10.2</td><td style="color:var(--red);">Page 2. Dedicated ₹1000/day article needed.</td></tr>
+          <tr><td>14</td><td>how to earn 100 rs instantly</td><td>15</td><td>225</td><td>6.7%</td><td>4.9</td><td style="color:#16a34a;">Good position. "Instantly" = high purchase intent.</td></tr>
+          <tr><td>15</td><td>earn 100 rupees per day</td><td>19</td><td>204</td><td>9.3%</td><td>4.6</td><td style="color:#16a34a;">Excellent CTR. Top performer to protect.</td></tr>
+          <tr><td>16</td><td>how to earn 500 per day as a student</td><td>10</td><td>185</td><td>5.4%</td><td>5.5</td><td style="color:var(--orange);">Student segment. Add student-specific section to ₹500 article.</td></tr>
+          <tr><td>17</td><td>how to earn 1000 rupees in one hour without investment</td><td>5</td><td>178</td><td>2.8%</td><td>10.2</td><td style="color:var(--red);">Unrealistic query. But volume is real. Address honestly in content.</td></tr>
+          <tr><td>18</td><td>apps that pay $100 a day without investment</td><td>5</td><td>165</td><td>3.0%</td><td>21.4</td><td style="color:var(--red);">Pos 21 = page 3. English-language query. Low priority.</td></tr>
+          <tr><td>19</td><td>free 100 rupees upi</td><td>15</td><td>160</td><td>9.4%</td><td>10.0</td><td>Borderline page 1. UPI-specific content angle.</td></tr>
+          <tr><td>20</td><td>real estate affiliate programs</td><td>11</td><td>65</td><td>16.9%</td><td>4.2</td><td style="color:#16a34a;">Best non-brand CTR! Niche win. Expand to more niches.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>High-Impression Pages Underperforming on CTR (Biggest Quick Wins)</h3>
+    <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:1rem;">These pages get massive Google impressions but have very low CTR — meaning the title/description doesn't compel clicks. Fixing these titles is the single highest-ROI SEO action.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Page</th><th>Impressions</th><th>Current CTR</th><th>Current Clicks</th><th>If CTR → 3%</th><th>Incremental Clicks</th><th>Title Fix Needed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>/blog/money-earning-apps-in-india/</td><td>37,667</td><td style="color:var(--red);">0.4%</td><td>157</td><td style="color:#16a34a;">1,130</td><td style="color:#16a34a;font-weight:600;">+973</td><td>Position 11.2 (page 2). Content refresh + internal links to push to page 1. Current title likely doesn't include "2026".</td></tr>
+          <tr><td>/blog/meesho-affiliate-program/</td><td>37,595</td><td style="color:var(--red);">0.3%</td><td>116</td><td style="color:#16a34a;">1,128</td><td style="color:#16a34a;font-weight:600;">+1,012</td><td>Position 7.2 but 0.3% CTR = title mismatch. Rewrite: "Meesho Affiliate Program 2026: Commission Rates, How to Join & Earn"</td></tr>
+          <tr><td>/blog/how-to-earn-500-per-day/</td><td>28,748</td><td style="color:var(--red);">2.4%</td><td>680</td><td style="color:#16a34a;">862</td><td style="color:#16a34a;font-weight:600;">+182</td><td>Position 6.1. Add "Without Investment" + "2026" + "7 Proven Ways" to title.</td></tr>
+          <tr><td>/blog/how-to-earn-1000-per-day…/</td><td>19,834</td><td style="color:var(--red);">1.0%</td><td>192</td><td style="color:#16a34a;">595</td><td style="color:#16a34a;font-weight:600;">+403</td><td>Position 8.2. Title needs to be specific: "How to Earn ₹1000/Day Online (Realistic Methods for 2026)"</td></tr>
+          <tr><td>/blog/nykaa-affiliate-program/</td><td>18,261</td><td style="color:var(--red);">0.3%</td><td>55</td><td style="color:#16a34a;">548</td><td style="color:#16a34a;font-weight:600;">+493</td><td>Position 7.5. Same issue as Meesho. Rewrite title with commission rates + year.</td></tr>
+          <tr><td>/blog/get-paid-to-answer-questions/</td><td>12,263</td><td>2.3%</td><td>283</td><td style="color:#16a34a;">368</td><td style="color:#16a34a;font-weight:600;">+85</td><td>Position 7.0. Add "In India" + "₹ amounts" to title for relevance.</td></tr>
+          <tr><td>/blog/myntra-affiliate-program/</td><td>10,238</td><td style="color:var(--red);">0.6%</td><td>63</td><td style="color:#16a34a;">307</td><td style="color:#16a34a;font-weight:600;">+244</td><td>Position 8.9. Same pattern — include commission % and year in title.</td></tr>
+          <tr><td>/blog/firstcry-affiliate-program/</td><td>9,738</td><td style="color:var(--red);">0.1%</td><td>6</td><td style="color:#16a34a;">292</td><td style="color:#16a34a;font-weight:600;">+286</td><td>Position 9.1. Severely underperforming. Full content rewrite + title optimization.</td></tr>
+          <tr><td>/blog/flipkart-affiliate-program/</td><td>7,005</td><td style="color:var(--red);">0.2%</td><td>14</td><td style="color:#16a34a;">210</td><td style="color:#16a34a;font-weight:600;">+196</td><td>Position 10.2. Page 2. Competitive keyword — needs 3,000+ word definitive guide.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout works">
+      <strong>Total opportunity from title optimization alone:</strong> Fixing meta titles on these 9 pages could add ~3,874 clicks per quarter (~1,290/month) — a 55% increase in organic traffic with zero new content. This is Week 3 priority work and requires approximately 2-3 hours of a content person's time.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Content Calendar — Month 1-3 SEO Publishing Plan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>Content Piece</th><th>Target Keyword</th><th>Word Count</th><th>Type</th><th>Expected Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3</td><td>Title/meta optimization on top 9 pages (above)</td><td>Multiple</td><td>0 (edits only)</td><td>Optimization</td><td>+1,290 clicks/month</td></tr>
+          <tr><td>3</td><td>Add CTAs to all top 10 blog posts</td><td>N/A</td><td>100 words/post</td><td>CRO</td><td>Blog→signup rate from 0% to 3-5%</td></tr>
+          <tr><td>4</td><td>Best Earning Apps India 2026</td><td>best earning app, money earning apps in india</td><td>3,000+</td><td>New page</td><td>Target: 37K+ impressions keyword. Page 1 within 8 weeks.</td></tr>
+          <tr><td>4</td><td>GrabCash vs EarnKaro Comparison</td><td>earnkaro alternative, grabcash vs earnkaro</td><td>2,500</td><td>New page</td><td>Capture switch-intent traffic. EarnKaro has 100K+ brand searches.</td></tr>
+          <tr><td>5</td><td>How to Earn Money by Sharing Links in India</td><td>earn money by sharing links, link share karke paise kamaye</td><td>2,500</td><td>New page</td><td>Direct product-intent. Currently no page for this exact query.</td></tr>
+          <tr><td>5</td><td>Amazon Affiliate Program Complete Guide</td><td>amazon affiliate program india</td><td>3,000</td><td>New page</td><td>High-volume keyword. Amazon is top brand on GrabCash.</td></tr>
+          <tr><td>6</td><td>Flipkart Affiliate Program (rewrite)</td><td>flipkart affiliate program</td><td>3,000</td><td>Rewrite</td><td>Current page at pos 10.2. Full rewrite to push to page 1.</td></tr>
+          <tr><td>6</td><td>FirstCry Affiliate Program (rewrite)</td><td>firstcry affiliate program</td><td>2,000</td><td>Rewrite</td><td>9,738 impressions but 0.1% CTR. Complete rebuild needed.</td></tr>
+          <tr><td>7</td><td>Affiliate Marketing for Beginners India (pillar)</td><td>affiliate marketing for beginners, affiliate marketing kya hai</td><td>4,000</td><td>Pillar page</td><td>Top-of-funnel. Hub for all affiliate program pages. Internal linking architecture.</td></tr>
+          <tr><td>7</td><td>How to Earn ₹1000 Per Day (rewrite)</td><td>how to earn 1000 per day</td><td>3,000</td><td>Rewrite</td><td>19,834 impressions at 1% CTR. Content refresh + depth → 3%+ CTR.</td></tr>
+          <tr><td>8</td><td>Ajio Affiliate Program</td><td>ajio affiliate program</td><td>2,000</td><td>New page</td><td>3,314 impressions, 9 clicks. Needs dedicated quality content.</td></tr>
+          <tr><td>8</td><td>Top 10 Earning Apps for Students 2026</td><td>earning app for students, how to earn 500 per day as a student</td><td>2,500</td><td>New page</td><td>Student segment. Captures multiple student-specific queries.</td></tr>
+          <tr><td>9-12</td><td>4 additional brand affiliate pages per week</td><td>Samsung, Adidas, Cleartrip, etc.</td><td>2,000 each</td><td>New pages</td><td>Each brand page targets 1,000-10,000 impressions keyword cluster.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Month 1-3 SEO output:</strong> 9 title optimizations + 10 CTAs + 8 new pages + 4 rewrites + 16 brand pages = total 38 content actions. At 3/week pace, requires 1 dedicated content writer + Content Lead oversight. Total cost: ₹35-50K/month in content production.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>AI-Generated Traffic — Emerging Channel</h3>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="value">247</div>
+        <div class="label">ChatGPT Sessions</div>
+        <div class="source">chatgpt.com / (not set)</div>
+      </div>
+      <div class="kpi">
+        <div class="value">82</div>
+        <div class="label">ChatGPT Referral</div>
+        <div class="source">chatgpt.com / referral</div>
+      </div>
+      <div class="kpi">
+        <div class="value">29</div>
+        <div class="label">Perplexity</div>
+        <div class="source">perplexity / (not set)</div>
+      </div>
+      <div class="kpi kpi-green">
+        <div class="value">358</div>
+        <div class="label">Total AI Referrals</div>
+        <div class="source">Growing channel — 38% engagement</div>
+      </div>
+    </div>
+    <p style="font-size:0.88rem;color:var(--text-dim);">358 sessions from AI platforms in 3 months — a small but real and growing channel. When users ask ChatGPT or Perplexity "how to earn money by sharing links in India," GrabCash appears in recommendations. To capitalize:</p>
+    <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+      <li><strong>Ensure FAQ schema on key pages</strong> — AI models parse structured Q&A content more reliably</li>
+      <li><strong>Write factual, well-structured content</strong> — AI models cite sources that are clear and authoritative</li>
+      <li><strong>Include specific numbers and data</strong> — "GrabCash pays up to 15% commission on fashion" is more citable than "earn money online"</li>
+      <li><strong>Create a dedicated "What is GrabCash" page</strong> — optimized for AI citation with company facts, how-it-works, and differentiators</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 10B. TECH STACK ═══════════════════ -->
+<section class="section" id="tech-stack">
+  <div class="section-header">
+    <div class="section-num">Section 10B</div>
+    <h2>Technology & <span class="accent">Tools</span> Stack</h2>
+    <p class="section-subtitle">Every tool needed to execute this strategy, with monthly costs and setup timeline. Prioritized by phase.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 0 Tools (Measurement Infrastructure) — ₹20-25K/month</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Purpose</th><th>Monthly Cost</th><th>Setup Time</th><th>Owner</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Google Analytics 4</strong></td><td>Website analytics, traffic sources, key events</td><td>Free</td><td>Already set up (needs event configuration)</td><td>Engineering</td></tr>
+          <tr><td><strong>Google Search Console</strong></td><td>Search performance, rankings, indexing</td><td>Free</td><td>Already set up</td><td>Content Lead</td></tr>
+          <tr><td><strong>Mixpanel</strong> (Growth plan)</td><td>User-level analytics, funnels, cohorts, retention</td><td>₹15K</td><td>3-5 days</td><td>Engineering + Data</td></tr>
+          <tr><td><strong>Google Tag Manager</strong></td><td>Event tracking without code deploys</td><td>Free</td><td>1 day</td><td>Engineering</td></tr>
+          <tr><td><strong>Hotjar</strong> (Basic)</td><td>Session recordings, heatmaps for quiz + blog pages</td><td>₹5-8K</td><td>1 hour</td><td>Growth Lead</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 1 Tools (Growth + Content) — ₹35-45K/month additional</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Purpose</th><th>Monthly Cost</th><th>Setup Time</th><th>Owner</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Semrush</strong> (Pro)</td><td>Keyword research, competitor analysis, rank tracking</td><td>₹8-10K</td><td>2 hours</td><td>Content Lead</td></tr>
+          <tr><td><strong>Canva Pro</strong></td><td>Blog graphics, social media creatives, ad designs</td><td>₹1K</td><td>Instant</td><td>Content Creator</td></tr>
+          <tr><td><strong>CapCut Pro</strong></td><td>Instagram Reels + YouTube Shorts editing</td><td>₹500</td><td>Instant</td><td>Content Creator</td></tr>
+          <tr><td><strong>Meta Business Suite</strong></td><td>Instagram analytics, ad testing (when ready)</td><td>Free</td><td>1 hour</td><td>Growth Lead</td></tr>
+          <tr><td><strong>Later or Buffer</strong></td><td>Social media scheduling</td><td>₹2-3K</td><td>30 min</td><td>Content Creator</td></tr>
+          <tr><td><strong>Notion</strong> (Team)</td><td>Content calendar, task management, documentation</td><td>₹3-5K</td><td>1 day</td><td>All team</td></tr>
+          <tr><td><strong>Slack</strong> (Free/Pro)</td><td>Team communication, alerts, integrations</td><td>Free-₹5K</td><td>1 hour</td><td>All team</td></tr>
+          <tr><td><strong>SurferSEO</strong></td><td>On-page SEO optimization scoring for blog posts</td><td>₹5-7K</td><td>1 hour</td><td>Content Lead</td></tr>
+          <tr><td><strong>UTM.io or manual spreadsheet</strong></td><td>UTM link management and tracking</td><td>Free-₹2K</td><td>2 hours</td><td>Growth Lead</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Total tool cost:</strong> Phase 0: ₹20-25K/month. Phase 1 adds ₹35-45K/month. Total: ₹55-70K/month. This is modest for the capabilities it provides. Do not cut analytics tools to save budget — measurement is the foundation of everything else.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 10C. WEEK-BY-WEEK EXECUTION ═══════════════════ -->
+<section class="section" id="execution-calendar">
+  <div class="section-header">
+    <div class="section-num">Section 10C</div>
+    <h2>Week-by-Week <span class="accent">Execution</span> Calendar</h2>
+    <p class="section-subtitle">The detailed sprint plan for the first 12 weeks. Every week has specific deliverables, owners, and success criteria.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 0: Weeks 1-2 (Measurement Setup)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Task</th><th>Owner</th><th>Deliverable</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Day 1</strong></td><td>GA4 key events specification: define exact event names, parameters, and triggers for signup_complete, first_link_shared, first_earning, payout_requested, referral_sent, quiz_completed</td><td>Growth Lead + Engineering</td><td>Event spec document approved</td></tr>
+          <tr><td><strong>Day 2-3</strong></td><td>Engineering implements GA4 key events. Test each event fires correctly in GA4 Realtime.</td><td>Engineering</td><td>All 6 events firing in GA4 Realtime</td></tr>
+          <tr><td><strong>Day 3</strong></td><td>UTM framework: create UTM template for every channel (Telegram, WhatsApp, Instagram bio, blog CTAs, GrabOn cross-promo, email). Train team on usage.</td><td>Growth Lead</td><td>UTM template spreadsheet + team briefed</td></tr>
+          <tr><td><strong>Day 4-5</strong></td><td>Mixpanel setup: install SDK, configure user identification, set up funnel (visit → signup → onboarding → first share → first earn → payout).</td><td>Engineering</td><td>Mixpanel funnel live with test data</td></tr>
+          <tr><td><strong>Day 5</strong></td><td>Blog CTA audit: review top 10 blog posts. Add inline CTAs ("Start earning on GrabCash →"), sidebar signup prompt, and end-of-article module.</td><td>Content</td><td>CTAs live on top 10 posts</td></tr>
+          <tr><td><strong>Day 6-7</strong></td><td>Hotjar setup: install on /quiz, homepage, and top 5 blog pages. Start recording sessions.</td><td>Growth Lead</td><td>Hotjar recording, first 100 sessions captured</td></tr>
+          <tr><td><strong>Day 8-9</strong></td><td>Quiz investigation: analyze quiz traffic source (GA4 acquisition report), user flow after quiz, engagement patterns. Document findings.</td><td>Growth Lead + Data</td><td>Quiz analysis report: where traffic comes from, what users do after, conversion estimate</td></tr>
+          <tr><td><strong>Day 10-11</strong></td><td>GrabShare data pull: get actual active creator count (last 30 days), average earnings per creator, top 20 creators by GMV, churn rate.</td><td>GrabShare PM</td><td>GrabShare health dashboard</td></tr>
+          <tr><td><strong>Day 12-14</strong></td><td>Wait for 7 days of event data to accumulate. Generate first funnel report: Visit→Signup rate, Signup→First Earn rate. Document as baseline.</td><td>Data/Growth Lead</td><td>Baseline funnel document with real numbers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 1: Weeks 3-6 (Channel Activation)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>GrabCash Actions</th><th>GrabShare Actions</th><th>Key Metric to Track</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Week 3</strong></td>
+            <td>
+              • Meta title optimization on top 9 GSC pages (see SEO section)<br>
+              • Hire Growth Lead (if not already)<br>
+              • First GrabOn cross-promo banner live on 10 test pages<br>
+              • Instagram account audit + first 3 Reels planned
+            </td>
+            <td>
+              • Interview top 10 GrabShare creators<br>
+              • Document: what works, what doesn't, why they stay<br>
+              • Identify top 3 creator success patterns
+            </td>
+            <td>GSC CTR on optimized pages (target: +50% within 2 weeks)</td>
+          </tr>
+          <tr>
+            <td><strong>Week 4</strong></td>
+            <td>
+              • Publish "Best Earning Apps India 2026" page<br>
+              • Publish "GrabCash vs EarnKaro" comparison page<br>
+              • GrabOn exit-intent popup A/B test live<br>
+              • Hire Content Creator (Reels + editing)<br>
+              • First 5 Instagram Reels published
+            </td>
+            <td>
+              • Start "Creator Success Sprint" — personally onboard 10 creators with white-glove setup<br>
+              • Configure AutoDM for each creator's top products
+            </td>
+            <td>GrabOn cross-promo CTR, Instagram Reel views, new page indexing</td>
+          </tr>
+          <tr>
+            <td><strong>Week 5</strong></td>
+            <td>
+              • Publish "How to Earn by Sharing Links" + "Amazon Affiliate Guide"<br>
+              • GrabOn cross-promo expanded to top 50 pages<br>
+              • First micro-influencer test (5 collaborations, ₹3-5K each)<br>
+              • Instagram posting cadence: 5 Reels/week
+            </td>
+            <td>
+              • White-glove 10 more creators (total: 20)<br>
+              • Track: which creators are earning, how much, from which products<br>
+              • First GrabShare success story documented
+            </td>
+            <td>Blog signups (first real conversion data), influencer test CPAs</td>
+          </tr>
+          <tr>
+            <td><strong>Week 6</strong></td>
+            <td>
+              • Rewrite Flipkart + FirstCry affiliate pages<br>
+              • First paid test: ₹10K Meta Ads budget on 3 ad creatives<br>
+              • Measure: GrabOn cross-promo → signup conversion rate<br>
+              • Review and kill/scale influencer tests from Week 5
+            </td>
+            <td>
+              • 30 creators in Sprint (20 new this week)<br>
+              • First case study content: "[Creator] earned ₹X in 1 week with GrabShare"<br>
+              • Share case study on Instagram for recruitment
+            </td>
+            <td>First real CAC data (from paid test), GrabOn→signup conversion, creator earnings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 1: Weeks 7-12 (Optimization + Scale What Works)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>GrabCash Actions</th><th>GrabShare Actions</th><th>Key Metric to Track</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Week 7</strong></td>
+            <td>
+              • Publish Affiliate Marketing Pillar Page (4,000 words)<br>
+              • Rewrite "How to Earn ₹1000/Day" article<br>
+              • Scale winning Meta Ads (if CAC < ₹100) to ₹25K/week<br>
+              • Kill losing channels from Weeks 3-6 data
+            </td>
+            <td>
+              • Complete Creator Sprint: 50 creators onboarded<br>
+              • Launch "GrabShare Creator Community" Telegram group<br>
+              • Weekly creator earnings leaderboard
+            </td>
+            <td>Blended CAC across channels, D7 retention (first cohort data)</td>
+          </tr>
+          <tr>
+            <td><strong>Week 8</strong></td>
+            <td>
+              • Publish Ajio + Student Earning Apps articles<br>
+              • GrabOn cross-promo expanded to top 100 pages<br>
+              • Scale top 2 influencers to monthly retainers<br>
+              • Instagram follower milestone check
+            </td>
+            <td>
+              • Recruit 50 new creators using Sprint success stories<br>
+              • Launch GrabShare Instagram content: creator earnings proofs, AutoDM demos<br>
+              • Establish creator referral program
+            </td>
+            <td>Total MAU (target: 18K+), creator active rate, GrabShare GMV</td>
+          </tr>
+          <tr>
+            <td><strong>Week 9-10</strong></td>
+            <td>
+              • Brand affiliate pages: 4/week (Samsung, Adidas, Cleartrip, Nykaa refresh, etc.)<br>
+              • Onboarding flow A/B test (if signup rate identified as bottleneck)<br>
+              • Push notification setup (D1, D3, D7 drip sequences)<br>
+              • Telegram channel launch with daily deals
+            </td>
+            <td>
+              • GrabShare → GrabCash flywheel test: do creator posts drive GrabCash signups?<br>
+              • Track UTM-tagged creator links → GrabCash signup attribution<br>
+              • 100+ active creators target
+            </td>
+            <td>Signup→activation rate, notification opt-in rate, flywheel attribution</td>
+          </tr>
+          <tr>
+            <td><strong>Week 11-12</strong></td>
+            <td>
+              • Full channel performance analysis: rank all channels by CAC<br>
+              • SEO audit: which new pages are indexing? Rankings improving?<br>
+              • Prepare Gate 1 presentation with real data<br>
+              • Budget proposal for Phase 2 based on validated economics
+            </td>
+            <td>
+              • GrabShare Gate 1 metrics: how many active creators, average earnings, retention<br>
+              • Prepare combined GrabCash+GrabShare board presentation<br>
+              • Document what worked and what didn't
+            </td>
+            <td><strong>GATE 1:</strong> 25K MAU + signup rate ≥ 5% + 1 channel CAC < ₹100 + D7 retention ≥ 20% + 100 active creators</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Weekly Operating Rhythm</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Meeting</th><th>When</th><th>Duration</th><th>Attendees</th><th>Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Daily Standup</strong></td><td>Mon-Fri 10:00 AM</td><td>15 min</td><td>All team (Slack huddle)</td><td>Blockers surfaced, day's priorities confirmed</td></tr>
+          <tr><td><strong>Growth Review</strong></td><td>Wednesday 2:00 PM</td><td>45 min</td><td>Growth Lead + Data</td><td>Channel performance, budget decisions, A/B test results</td></tr>
+          <tr><td><strong>Content Sync</strong></td><td>Monday 11:00 AM</td><td>30 min</td><td>Content Lead + Creator</td><td>Week's content calendar confirmed, blog + social plan</td></tr>
+          <tr><td><strong>Friday Metrics</strong></td><td>Friday 4:00 PM</td><td>30 min</td><td>All leads</td><td>Week's numbers vs. target, weekend plan if needed</td></tr>
+          <tr><td><strong>Monthly Retro</strong></td><td>Last Friday</td><td>60 min</td><td>Full team</td><td>What worked, what didn't, next month priorities</td></tr>
+          <tr><td><strong>Gate Reviews</strong></td><td>Week 12</td><td>2 hours</td><td>Full team + leadership</td><td>Go/No-Go decision with full data presentation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 11. GRABSHARE GTM ═══════════════════ -->
+<section class="section" id="grabshare-gtm">
+  <div class="section-header">
+    <div class="section-num">Section 11</div>
+    <h2><span class="accent-purple" style="color:var(--purple);">GrabShare</span> — Creator GTM</h2>
+    <p class="section-subtitle">GrabShare's creator-focused model with AutoDM and custom storefronts addresses a segment underserved by existing affiliate platforms. The key metric to track: creator earnings retention.</p>
+  </div>
+
+  <div class="callout warn">
+    <strong>Key metric to validate:</strong> Creator earnings are the primary retention driver. The earnings calculator on grabshare.in shows ₹4L-20L potential, which represents the upper range for high-follower creators. For nano creators (500-10K followers), typical earnings will be significantly lower. Ensuring messaging aligns with realistic earnings by tier is critical for retention and trust.
+  </div>
+
+  <div class="sub-section">
+    <h3>GrabShare — What's Genuinely Strong</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>AutoDM — Real Differentiator</h3>
+        <p>Instagram creators constantly get "link?" comments. AutoDM sends the product link automatically when a trigger keyword is commented. EarnKaro doesn't have this. Meesho doesn't have this. This solves a genuine pain point and should be the #1 marketing message for GrabShare.</p>
+      </div>
+      <div class="card">
+        <h3>Creator Storefront — Genuine Utility</h3>
+        <p>A custom link-in-bio page with affiliate products, analytics, and one-tap link generation. This competes with LinkTree + affiliate platform combined. The "claim your store" CTA is compelling. If the store actually converts for creators, this is sticky.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>GrabShare 90-Day Execution Plan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Week</th><th>Action</th><th>Target</th><th>Key Risk</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1-2</td><td>Baseline audit: active creators (posted last 30 days), average earning per creator, creator churn rate, top-performing categories.</td><td>Creator health dashboard with real metrics</td><td>Baseline may reveal lower active rates than expected — essential to know before scaling recruitment.</td></tr>
+          <tr><td>3-4</td><td>Interview top 20 performing creators. Document: what's driving their success, product feedback, competitive alternatives they've considered.</td><td>20 qualitative insights + success pattern identified</td><td>Creator feedback may surface product gaps requiring engineering prioritization.</td></tr>
+          <tr><td>5-8</td><td>Run "Creator Success Sprint" — personally help 50 creators set up their store, configure AutoDM, optimize their first campaign. White-glove onboarding.</td><td>50 creators earning ₹5K+ in the month</td><td>High effort per creator. Doesn't scale. But proves the model works.</td></tr>
+          <tr><td>9-12</td><td>Use success stories from Sprint to recruit 200 new creators. Offer "we'll set you up in 15 minutes" onboarding. Create case study content for Instagram.</td><td>300 active creators (posting in last 30 days)</td><td>Recruitment is easy. Keeping creators active is hard. Focus on earnings, not signups.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 12. FINANCIAL MODEL ═══════════════════ -->
+<section class="section" id="financial">
+  <div class="section-header">
+    <div class="section-num">Section 12</div>
+    <h2>Financial Model — <span class="accent">Real Math</span></h2>
+    <p class="section-subtitle">Every number shows its source. Where we know, we state the real number. Where we project, we show the assumption and label it clearly.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 1 Budget (Months 1-3) — ₹3-5L/month</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>Monthly Cost</th><th>Source/Justification</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Growth Lead (hire)</strong></td><td>₹1.2-1.5L</td><td>Market rate for 3-5 year performance marketer in Hyderabad</td></tr>
+          <tr><td><strong>Content Creator/Editor (hire or freelance)</strong></td><td>₹40-60K</td><td>Can shoot Reels + edit + post. Freelance market rate.</td></tr>
+          <tr><td><strong>Content production (blog posts)</strong></td><td>₹30-50K</td><td>10-15 blog posts × ₹2-3K per post (freelance writers)</td></tr>
+          <tr><td><strong>Micro-influencer tests</strong></td><td>₹50K-1L</td><td>10-20 collaborations × ₹3-5K each</td></tr>
+          <tr><td><strong>Meta Ads test budget</strong></td><td>₹30-50K</td><td>Small test budget. NOT for scaling — for learning CAC.</td></tr>
+          <tr><td><strong>Tools (Mixpanel, Semrush, Canva)</strong></td><td>₹20-30K</td><td>Mixpanel free tier → Growth plan ₹15K. Semrush ₹8K. Canva ₹1K.</td></tr>
+          <tr><td style="color:var(--navy);font-weight:700;">TOTAL Phase 1</td><td style="color:var(--navy);font-weight:700;">₹3-5L/month</td><td style="color:var(--navy);">₹9-15L for full 90-day Phase 1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Growth Projections (Conservative → Moderate → Optimistic)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Current (Real)</th><th>Month 3 Conservative</th><th>Month 3 Moderate</th><th>Month 3 Optimistic</th><th>Assumption</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>MAU</strong></td><td><span class="tag tag-real">12K</span></td><td>18K</td><td>25K</td><td>35K</td><td>Conservative: organic only. Moderate: +GrabOn funnel. Optimistic: +1 paid channel working.</td></tr>
+          <tr><td><strong>Monthly organic clicks</strong></td><td><span class="tag tag-real">2,267</span></td><td>3,500</td><td>5,000</td><td>7,000</td><td>Title optimizations + 30 new blog posts + GrabOn cross-promo clicks.</td></tr>
+          <tr><td><strong>Blog → signup rate</strong></td><td><span class="tag tag-fake">Unknown (0%?)</span></td><td>2%</td><td>4%</td><td>6%</td><td>Depends on CTA implementation. Industry: 2-5% for content-to-signup.</td></tr>
+          <tr><td><strong>GrabShare active creators</strong></td><td><span class="tag tag-target">~100-200 (est.)</span></td><td>150</td><td>300</td><td>500</td><td>Based on white-glove onboarding sprint + organic creator discovery.</td></tr>
+          <tr><td><strong>Blended CAC</strong></td><td><span class="tag tag-fake">Unknown</span></td><td>₹80-120</td><td>₹50-80</td><td>₹30-50</td><td>First real CAC data. Will likely be high initially and improve with optimization.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Projection methodology:</strong> These projections use bottom-up channel math: known organic growth trajectory (15x impression growth over 12 months) + estimated conversion rates from industry benchmarks + modest paid channel contribution. Conservative case assumes organic-only growth. Moderate case adds GrabOn cross-promotion. Optimistic case adds one validated paid channel. All targets will be recalibrated with actual funnel data after Week 0.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Phase 2 Budget (Months 4-12) — ₹10-15L/month (contingent on Gate 1 pass)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>Monthly Cost</th><th>Gate Dependency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Team salaries (5 people)</strong></td><td>₹3.25-4.55L</td><td>3 new hires only after Gate 1 pass</td></tr>
+          <tr><td><strong>Paid acquisition (Meta + Google)</strong></td><td>₹3-5L</td><td>Scale only channels with proven CAC < ₹100</td></tr>
+          <tr><td><strong>Content production (blog + video)</strong></td><td>₹75K-1L</td><td>Scale content volume based on Phase 1 conversion data</td></tr>
+          <tr><td><strong>Influencer/creator collaborations</strong></td><td>₹1-2L</td><td>Scale influencers with proven ROI from Phase 1 tests</td></tr>
+          <tr><td><strong>GrabShare creator incentives</strong></td><td>₹50K-1L</td><td>Incentive budget based on creator retention economics</td></tr>
+          <tr><td><strong>Tools + infrastructure</strong></td><td>₹55-70K</td><td>Add tools as team grows</td></tr>
+          <tr><td style="color:var(--navy);font-weight:700;">TOTAL Phase 2</td><td style="color:var(--navy);font-weight:700;">₹10-15L/month</td><td style="color:var(--navy);">₹60-90L for 6-month Phase 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>18-Month Projection — Moderate Scenario (with assumptions)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Month</th><th>MAU (GrabCash)</th><th>Active Creators (GrabShare)</th><th>Monthly Spend</th><th>Cumulative Spend</th><th>Key Milestone</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0 (Current)</td><td><span class="tag tag-real">12,000</span></td><td><span class="tag tag-target">~150 est.</span></td><td>₹0</td><td>₹0</td><td>Starting point. Data from GA4 May 2026.</td></tr>
+          <tr><td>1</td><td>13,500</td><td>160</td><td>₹3L</td><td>₹3L</td><td>Measurement setup. First events tracking.</td></tr>
+          <tr><td>2</td><td>16,000</td><td>200</td><td>₹4L</td><td>₹7L</td><td>GrabOn cross-promo live. Blog CTAs active.</td></tr>
+          <tr><td>3</td><td style="font-weight:600;">25,000</td><td style="font-weight:600;">300</td><td>₹5L</td><td>₹12L</td><td style="color:var(--blue-1);font-weight:600;">GATE 1. First real CAC data.</td></tr>
+          <tr><td>4</td><td>28,000</td><td>350</td><td>₹10L</td><td>₹22L</td><td>Phase 2 begins. New hires onboarding.</td></tr>
+          <tr><td>5</td><td>32,000</td><td>400</td><td>₹12L</td><td>₹34L</td><td>Paid channels scaling. SEO compounding.</td></tr>
+          <tr><td>6</td><td style="font-weight:600;">38,000</td><td style="font-weight:600;">500</td><td>₹12L</td><td>₹46L</td><td style="color:var(--blue-1);font-weight:600;">GATE 2. Unit economics validated.</td></tr>
+          <tr><td>9</td><td>50,000</td><td>700</td><td>₹15L</td><td>₹91L</td><td>Organic > 40% of signups. Content flywheel working.</td></tr>
+          <tr><td>12</td><td style="font-weight:600;">65,000</td><td style="font-weight:600;">1,000</td><td>₹15L</td><td>₹1.36Cr</td><td style="color:var(--blue-1);font-weight:600;">GATE 3. Contribution-positive target.</td></tr>
+          <tr><td>18</td><td style="font-weight:600;">75,000</td><td style="font-weight:600;">1,500</td><td>₹15L</td><td>₹2.26Cr</td><td>18-month target. Sustainable growth engine.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Key assumptions for moderate scenario:</strong><br>
+      • SEO continues growing at ~20% MoM (consistent with Nov 2025 → May 2026 trajectory)<br>
+      • GrabOn cross-promo delivers 5,000-10,000 monthly visits at 5% signup rate<br>
+      • One paid channel achieves CAC < ₹80 by Month 3<br>
+      • Blog-to-signup rate reaches 4% with CTAs<br>
+      • GrabShare creator retention: 60% month-over-month<br>
+      • No major Google algorithm penalty or competitor disruption<br><br>
+      <strong>If any assumption fails:</strong> Projections auto-adjust downward. That's why gates exist — we don't scale spending until results prove the assumption. If Month 3 MAU is 18K instead of 25K, Phase 2 budget stays at ₹5-8L/month, not ₹10-15L.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>Unit Economics Framework (To Be Validated in Phase 1)</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Revenue Model — GrabCash (Now with Real Data)</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+          <li><strong>Revenue source:</strong> Commission margin retained. User gets ~80%, company keeps ~20% of commission.</li>
+          <li><strong>Average order value (AOV):</strong> <span class="tag tag-real">₹2,266</span> (from 213K transactions, production DB)</li>
+          <li><strong>Average commission per transaction:</strong> <span class="tag tag-real">₹38.1</span> (₹30.5 to user + ₹7.6 to company)</li>
+          <li><strong>Active users transacting:</strong> <span class="tag tag-real">303 users</span> (1.2% of 26K registered)</li>
+          <li><strong>Company revenue to date:</strong> <span class="tag tag-real">₹16.2L</span> total all-time</li>
+          <li><strong>Peak monthly revenue:</strong> <span class="tag tag-real">₹3.9L</span> (Feb 2026 — company's share of ₹19.3L commission)</li>
+          <li><strong>Revenue per active user (lifetime):</strong> <span class="tag tag-real">₹5,360</span> (₹16.2L ÷ 303 users — heavily skewed by top 10)</li>
+          <li><strong>Median user earning:</strong> <span class="tag tag-real">₹61</span> (most active users earn very little)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Revenue Model — GrabShare</h3>
+        <ul style="font-size:0.85rem;color:var(--text-dim);line-height:1.9;">
+          <li><strong>Revenue source:</strong> Platform fee on creator-driven transactions (5-10% of commission earned by creator)</li>
+          <li><strong>Additional:</strong> Brand partnership fees (brands pay for featured placement in creator stores)</li>
+          <li><strong>Average creator GMV/month:</strong> Unknown — Phase 1 will measure from Sprint creators</li>
+          <li><strong>Revenue per active creator/month:</strong> Estimated ₹50-200 (platform fee on ₹500-2,000 commissions)</li>
+          <li><strong>Creator LTV:</strong> Higher than GrabCash users if they're active. Estimated 6-12 month average lifetime.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn">
+      <strong>Note:</strong> All unit economics are estimates until Phase 1 provides real data. The financial model above uses spend-based projections (what we'll invest) rather than revenue-based projections (what we'll earn) because revenue data doesn't exist yet. Revenue projections will be added after Phase 1 when we have: conversion rates, transactions per user, commission margins, and retention curves.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 13. TEAM ═══════════════════ -->
+<section class="section" id="team">
+  <div class="section-header">
+    <div class="section-num">Section 13</div>
+    <h2>Team <span class="accent">Plan</span></h2>
+    <p class="section-subtitle">Stage-appropriate hiring — each role tied to a specific phase gate, with clear justification based on workload and validated need.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Hire</th><th>Monthly Cost</th><th>Why Now (Not Later)</th><th>What They Do Day 1</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="color:var(--red);font-weight:600;">Phase 0</td><td colspan="4" style="font-style:italic;color:var(--text-dim);">No new hires. Existing team implements tracking.</td></tr>
+        <tr><td rowspan="2" style="color:var(--orange);font-weight:600;">Phase 1</td><td><strong>Growth Lead</strong></td><td>₹1.2-1.5L</td><td>You need someone whose entire job is growth. Currently this is split across multiple people doing it part-time.</td><td>Week 1: Set up UTMs + tracking. Week 2: Audit top blog posts. Week 3: Launch first A/B test on blog CTAs.</td></tr>
+        <tr><td><strong>Content Creator</strong></td><td>₹40-60K</td><td>Instagram Reels require someone who can shoot and edit daily. This can't be done part-time.</td><td>Shoot 5 Reels in first week. Test formats: earning proof vs. tutorial vs. tips.</td></tr>
+        <tr><td rowspan="3" style="color:#16a34a;font-weight:600;">Phase 2 (only if Gate 1 passed)</td><td><strong>Performance Marketer</strong></td><td>₹80K-1.2L</td><td>Take over paid channels from Growth Lead so Growth Lead can focus on strategy.</td><td>Manage Meta Ads. Daily optimization. Creative testing.</td></tr>
+        <tr><td><strong>SEO Content Writer</strong></td><td>₹35-50K</td><td>Scale blog from 3/week to 5/week. Growth Lead shouldn't be writing blog posts.</td><td>Write 5 SEO blog posts per week based on keyword briefs from Growth Lead.</td></tr>
+        <tr><td><strong>Community Manager</strong></td><td>₹50-75K</td><td>Telegram + WhatsApp communities need a dedicated person only when you have 10K+ community members.</td><td>Set up Telegram channel. Post daily deals. Engage with users.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Phase 1 team cost: ₹1.6-2.1L/month (2 new hires).</strong> Phase 2 adds ₹1.65-2.45L/month (3 more hires). Total Phase 2 team: ₹3.25-4.55L/month for 5 people. This staged approach ties headcount growth to validated business metrics rather than upfront assumptions.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 14. RISKS ═══════════════════ -->
+<section class="section" id="risks">
+  <div class="section-header">
+    <div class="section-num">Section 14</div>
+    <h2>Risk <span class="accent">Assessment</span></h2>
+    <p class="section-subtitle">Key risks specific to the InspireLabs affiliate ecosystem, with likelihood ratings and concrete mitigation strategies.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Assessment</th><th>Mitigation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Quiz traffic disappears</strong></td>
+          <td style="color:var(--orange);font-weight:600;">Medium</td>
+          <td style="color:var(--red);font-weight:600;">Critical</td>
+          <td>60% of sessions depend on /quiz. If it's driven by a single viral share or a campaign that ends, traffic halves overnight.</td>
+          <td>Investigate quiz traffic source THIS WEEK. Diversify: if quiz works, create 5 more quizzes. Build SEO as a second pillar so you're not single-channel dependent.</td>
+        </tr>
+        <tr>
+          <td><strong>EarnKaro copies GrabShare's AutoDM</strong></td>
+          <td style="color:var(--orange);font-weight:600;">Medium-High</td>
+          <td style="color:var(--orange);font-weight:600;">High</td>
+          <td>EarnKaro has engineering resources to build AutoDM in weeks if they see it working. Feature-based moats are temporary.</td>
+          <td>Move fast. Build creator relationships (people moat) not just features (code moat). If you have 1,000 active creators earning well, they won't switch even if EarnKaro copies the feature.</td>
+        </tr>
+        <tr>
+          <td><strong>Blog SEO gets hit by Google update</strong></td>
+          <td style="color:var(--orange);font-weight:600;">Medium</td>
+          <td style="color:var(--orange);font-weight:600;">High</td>
+          <td>"Earn money online" content is in Google's crosshairs for YMYL (Your Money Your Life) quality reviews. AI-generated thin content gets penalized.</td>
+          <td>Write genuinely helpful, unique content. Include real GrabCash data and user stories. Add E-E-A-T signals (author bios, real earnings proof). Don't publish AI-generated filler.</td>
+        </tr>
+        <tr>
+          <td><strong>Commission rates get squeezed</strong></td>
+          <td style="color:#16a34a;">Low-Medium</td>
+          <td style="color:var(--orange);font-weight:600;">High</td>
+          <td>Brands regularly cut affiliate commissions. Amazon has done it multiple times. If your top 5 brands cut rates by 30%, your users earn less, retention drops.</td>
+          <td>Diversify brand partnerships across categories. Don't let any single brand be >20% of total earnings. Build GrabShare's value on creator tools, not just commission rates.</td>
+        </tr>
+        <tr>
+          <td><strong>GrabOn deprioritizes cross-promotion</strong></td>
+          <td style="color:#16a34a;">Low</td>
+          <td style="color:var(--red);font-weight:600;">Critical</td>
+          <td>If InspireLabs leadership decides GrabOn real estate is better used for something else, you lose your #1 unfair advantage.</td>
+          <td>Prove ROI of cross-promo immediately. Show GrabOn leadership: "GrabCash users who come from GrabOn spend X% more on GrabOn too." Make it a two-way value exchange.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ 15. KILL GATES ═══════════════════ -->
+<section class="section" id="gates">
+  <div class="section-header">
+    <div class="section-num">Section 15</div>
+    <h2>Decision Gates & <span class="accent">Strategic Pivots</span></h2>
+    <p class="section-subtitle">Clear go/no-go criteria at each stage. Disciplined capital allocation requires defined exit and pivot points alongside growth targets.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Gate framework:</strong> Each phase has defined success criteria, conditional criteria, and pivot triggers. If success criteria aren't met, the strategy adapts rather than continuing on inertia. This includes contingency pivots that redirect resources to the highest-potential opportunity in the portfolio.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Gate</th><th>When</th><th>Pass Criteria</th><th>Fail Signal</th><th>If Fail → Action</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gate 0</strong></td>
+          <td>Week 2</td>
+          <td>All 7 tracking tasks completed. First funnel data visible.</td>
+          <td>Engineering can't/won't implement tracking in 2 weeks.</td>
+          <td>Escalate to InspireLabs leadership. Without tracking, no GTM is possible. This is a go/no-go for the entire initiative.</td>
+        </tr>
+        <tr>
+          <td><strong>Gate 1</strong></td>
+          <td>Week 12</td>
+          <td>25K MAU + signup rate ≥ 5% + at least 1 channel with known CAC < ₹100</td>
+          <td>MAU < 18K AND no channel with measurable CAC AND signup rate < 2%</td>
+          <td>If product metrics are fundamentally broken (signup rate < 2%), the problem is product, not marketing. Redirect all budget to product improvement. Pause acquisition.</td>
+        </tr>
+        <tr>
+          <td><strong>Gate 2</strong></td>
+          <td>Month 9</td>
+          <td>50K MAU + contribution-positive unit economics + GrabShare at 500 active creators</td>
+          <td>MAU < 30K AND CAC still > ₹80 AND creator earnings too low to retain</td>
+          <td>Consider pivoting: (a) Merge GrabCash into GrabOn as a feature (not standalone product), (b) Go all-in on GrabShare (creator commerce is more differentiated), (c) Fundamental business model change.</td>
+        </tr>
+        <tr>
+          <td><strong>Gate 3</strong></td>
+          <td>Month 12</td>
+          <td>75K MAU + positive unit economics + clear path to profitability</td>
+          <td>Still pre-revenue or burning cash faster than growing</td>
+          <td>Strategic review with board: evaluate standalone viability vs. GrabOn integration vs. resource consolidation to GrabShare.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict">
+    <h3>The pivots to keep in your back pocket</h3>
+    <p>
+      <strong>Pivot A — GrabCash → GrabOn Feature:</strong> If GrabCash can't stand alone, integrate affiliate link sharing as a feature within GrabOn. "GrabOn: Coupons + Cashback + Earn by Sharing." This leverages GrabOn's existing user base and eliminates the cold-start problem entirely.<br><br>
+      <strong>Pivot B — All-In on GrabShare:</strong> If GrabShare shows stronger PMF than GrabCash, redirect all resources to creator commerce. The creator economy is growing faster than deal-sharing, and GrabShare has more differentiation (AutoDM).<br><br>
+      <strong>Pivot C — Combined Product:</strong> If neither works standalone, combine into one: "GrabEarn" — a platform that works for both casual deal sharers AND creators, with different tiers of the same product. Simpler to market, fewer brands to manage, unified engineering effort.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="margin-bottom:0.75rem;">
+    <img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" style="height:20px;filter:brightness(10);margin-right:8px;" onerror="this.style.display='none'">
+    <span style="color:rgba(255,255,255,0.7);">+</span>
+    <span style="color:#a78bfa;font-weight:700;margin-left:8px;">GrabShare</span>
+    <span style="color:rgba(255,255,255,0.3);margin:0 0.5rem;">·</span>
+    <span style="color:rgba(255,255,255,0.7);">Data-Driven GTM Strategy 2026</span>
+  </div>
+  <p style="color:rgba(255,255,255,0.4);">Prepared for InspireLabs Solutions Ltd · June 2026 · Confidential</p>
+  <p style="margin-top:0.5rem;color:rgba(255,255,255,0.3);">Data sourced from GA4 Property 473253841, GSC for grabcash.in, and verified competitive research (June 2026). All projections include stated assumptions and source references.</p>
+</footer>
+
+</body>
+</html>

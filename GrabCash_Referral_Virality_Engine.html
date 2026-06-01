@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrabCash Referral & Virality Engine — Complete Playbook</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    RESET & BASE
@@ -26,7 +26,7 @@
   --text-bright: #fff;
   --yellow: #f5c542;
   --orange: #ff8c42;
-  --red: #ff4757;
+  --red: #e53e3e;
   --blue: #4a9eff;
   --purple: #a855f7;
   --cyan: #06d6a0;
@@ -36,7 +36,7 @@
   --glass: rgba(255,255,255,0.04);
   --glass-border: rgba(255,255,255,0.1);
   --font: 'Inter', -apple-system, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --mono: 'Poppins', sans-serif;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -62,7 +62,7 @@ body {
    ============================================ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(10,10,10,0.85);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 2rem;
@@ -686,6 +686,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 </style>
 </head>
 <body>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
+  </div>
+
 
 <!-- ====================================================================
      NAVIGATION
@@ -715,7 +719,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 <section class="hero">
   <div class="hero-badge">STRATEGY DOCUMENT &mdash; CONFIDENTIAL</div>
   <h1>Referral &amp; <span class="green">Virality</span> Engine</h1>
-  <p>The complete playbook for scaling GrabCash from 5K to 500K users through engineered virality, referral mechanics, gamification layers, and network effects. Every system. Every edge case. Every metric.</p>
+  <p>The complete playbook for scaling GrabCash from 5K to 75K MAU target through engineered virality, referral mechanics, gamification layers, and network effects. Every system. Every edge case. Every metric.</p>
   <div class="hero-stats">
     <div class="hero-stat">
       <div class="number">5K&rarr;500K</div>
@@ -2297,7 +2301,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
           <td>₹50/₹25 outperforms other ratios</td>
           <td>A: ₹50/₹25 | B: ₹75/₹25 | C: ₹50/₹50 | D: ₹100/₹0</td>
           <td>Activated referrals per user</td>
-          <td class="td-mono">5K users/variant</td>
+          <td class="td-mono">26K registered users/variant</td>
           <td>30 days</td>
         </tr>
         <tr>
@@ -3383,7 +3387,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       </ul>
     </div>
     <div class="card">
-      <h4>At 500K Users</h4>
+      <h4>At 75K MAU target</h4>
       <ul class="checklist">
         <li>Kubernetes-based auto-scaling for all services</li>
         <li>Database sharding by user region</li>
@@ -3414,7 +3418,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <h4>WhatsApp — Primary Templates</h4>
       <div class="spec-block">
         <span class="key">Template 1 (Earning flex):</span><br>
-        <span class="val">"I earned ₹[X] this week just sharing deals on GrabCash! 🔥 No investment, just share links to 500+ brands and earn commission. Join with my link and get ₹25 free: [LINK]"</span><br><br>
+        <span class="val">"I earned ₹[X] this week just sharing deals on GrabCash! 🔥 No investment, just share links to 91 retailers (32 active) and earn commission. Join with my link and get ₹25 free: [LINK]"</span><br><br>
         <span class="key">Template 2 (Urgency):</span><br>
         <span class="val">"Amazon sale going on — I'm earning commission on every deal I share through GrabCash. You should try this. Sign up free: [LINK]"</span><br><br>
         <span class="key">Template 3 (Social proof):</span><br>
@@ -3427,7 +3431,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <h4>Telegram — Channel Admin Templates</h4>
       <div class="spec-block">
         <span class="key">Template 1 (Channel post):</span><br>
-        <span class="val">"*GrabCash — Earn by Sharing Deals*\n\nI've been using GrabCash to earn commission on the deals I share here. You can too!\n\n✅ 500+ brands\n✅ Instant commission tracking\n✅ Bank withdrawal in 24h\n\nJoin free: [LINK]"</span><br><br>
+        <span class="val">"*GrabCash — Earn by Sharing Deals*\n\nI've been using GrabCash to earn commission on the deals I share here. You can too!\n\n✅ 91 retailers (32 active)\n✅ Instant commission tracking\n✅ Bank withdrawal in 24h\n\nJoin free: [LINK]"</span><br><br>
         <span class="key">Template 2 (Casual):</span><br>
         <span class="val">"For those of you who share deals regularly — check out GrabCash. I earn ₹[X]/week just by sharing my existing deal links through their platform. Free to join: [LINK]"</span>
       </div>
@@ -3485,7 +3489,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
     <div class="card">
       <h4>Variant A — Earning Focused</h4>
       <p><strong>Headline:</strong> "Your friend [Name] is earning money sharing deals. You can too."</p>
-      <p><strong>Subheadline:</strong> "Join GrabCash free and get ₹25 to start. Share links to 500+ brands, earn commission on every sale."</p>
+      <p><strong>Subheadline:</strong> "Join GrabCash free and get ₹25 to start. Share links to 91 retailers (32 active), earn commission on every sale."</p>
       <p><strong>Social proof:</strong> "5,000+ people earning. ₹2Cr+ paid out."</p>
       <p><strong>CTA:</strong> "Start Earning Free"</p>
       <p class="mt-1 text-dim" style="font-size:0.85rem;">Hypothesis: Direct earning proof from a known friend converts best.</p>
@@ -3718,7 +3722,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <span style="color:var(--green);">Grab</span>Cash Virality Engine
     </div>
     <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">
-      Complete referral and growth playbook for scaling from 5K to 500K users through engineered viral mechanics, gamification, and network effects.
+      Complete referral and growth playbook for scaling from 5K to 75K MAU target through engineered viral mechanics, gamification, and network effects.
     </p>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom: 2rem;">
       <span class="badge badge-green">13 Systems</span>

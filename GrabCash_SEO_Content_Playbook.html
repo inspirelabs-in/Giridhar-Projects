@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrabCash SEO & Content Strategy Playbook | InspireLabs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0a;
-  --bg-raised: #111111;
+  --bg: #ffffff;
+  --bg-raised: #f7fbff;
   --bg-card: #161616;
-  --bg-card-alt: #1a1a1a;
+  --bg-card-alt: #f0f6ff;
   --bg-card-hover: #1e1e1e;
   --green: #0dcf1a;
   --green-dim: #0aa614;
@@ -21,7 +21,7 @@
   --text: #d4d4d4;
   --text-dim: #777777;
   --text-bright: #ffffff;
-  --text-muted: #555555;
+  --text-muted: #8b95a8;
   --orange: #ff8c00;
   --orange-glow: rgba(255,140,0,0.12);
   --red: #ff4444;
@@ -34,10 +34,10 @@
   --cyan-glow: rgba(6,182,212,0.1);
   --yellow: #eab308;
   --yellow-glow: rgba(234,179,8,0.1);
-  --border: #222222;
-  --border-light: #2a2a2a;
+  --border: #e4f3ff;
+  --border-light: #dbefff;
   --glass-bg: rgba(22,22,22,0.7);
-  --glass-border: rgba(255,255,255,0.06);
+  --glass-border: rgba(0,18,59,0.1);
   --radius: 12px;
   --radius-sm: 8px;
   --radius-lg: 16px;
@@ -54,7 +54,9 @@ body {
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
 }
-code, .mono { font-family: 'JetBrains Mono', monospace; }
+
+  h1, h2, h3, h4, h5, h6 { font-family: "Poppins", -apple-system, sans-serif; }
+code, .mono { font-family: 'Poppins', sans-serif; }
 
 /* ── Fixed Navigation ── */
 .top-nav {
@@ -63,7 +65,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10,10,10,0.85);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border);
@@ -114,7 +116,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   white-space: nowrap;
   transition: all 0.2s;
 }
-.nav-links a:hover { color: var(--green); background: var(--green-subtle); }
+.nav-links a:hover { color: var(--blue-1, #3c7df9); background: rgba(60,125,249,0.06); }
 .nav-links a.active { color: var(--green); background: var(--green-subtle); }
 
 /* ── Hero Section ── */
@@ -124,7 +126,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   position: relative;
   overflow: hidden;
   background: radial-gradient(ellipse at 50% 0%, rgba(13,207,26,0.06) 0%, transparent 60%),
-              linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+              linear-gradient(180deg, #ffffff 0%, #0f0f0f 100%);
 }
 .hero::before {
   content: '';
@@ -186,7 +188,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--green);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 .hero-stat .label {
   font-size: 0.82rem;
@@ -205,7 +207,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   margin-bottom: 48px;
 }
 .section-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--green);
@@ -345,7 +347,7 @@ tr:last-child td { border-bottom: none; }
   font-size: 2rem;
   font-weight: 800;
   color: var(--green);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 .stat-block .lbl {
   font-size: 0.82rem;
@@ -385,7 +387,7 @@ tr:last-child td { border-bottom: none; }
   font-weight: 700;
   color: var(--text-bright);
   text-align: right;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ── Checklist ── */
@@ -437,7 +439,7 @@ tr:last-child td { border-bottom: none; }
   border: 3px solid var(--bg);
 }
 .timeline-item .week-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--green);
@@ -452,7 +454,7 @@ tr:last-child td { border-bottom: none; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   line-height: 1.8;
   overflow-x: auto;
@@ -589,7 +591,7 @@ tr:last-child td { border-bottom: none; }
   margin: 16px 0;
 }
 .template-box .template-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--green);
@@ -662,7 +664,7 @@ tr:last-child td { border-bottom: none; }
   text-align: center;
   padding: 60px 32px;
   border-top: 1px solid var(--border);
-  color: var(--text-dim);
+  background: #00123b; color: rgba(255,255,255,0.6);
   font-size: 0.85rem;
 }
 .footer .brand { color: var(--green); font-weight: 700; }
@@ -710,6 +712,10 @@ tr:last-child td { border-bottom: none; }
     <div class="hero-stat"><div class="num">13</div><div class="label">Strategy Modules</div></div>
   </div>
 </header>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
+  </div>
+
 
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <!-- TABLE OF CONTENTS -->
@@ -759,16 +765,16 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>Keyword Cluster</th><th>Est. Monthly Volume (India)</th><th>Trend</th><th>GrabCash Current Rank</th><th>Opportunity Score</th></tr>
-      <tr><td>earn money online</td><td style="font-family:'JetBrains Mono';color:var(--green);">550,000</td><td><span class="tag tag-green">Growing +18% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>online paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--green);">450,000</td><td><span class="tag tag-green">Growing +32% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>earning apps</td><td style="font-family:'JetBrains Mono';color:var(--green);">301,000</td><td><span class="tag tag-green">Growing +25% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--green);">246,000</td><td><span class="tag tag-green">Growing +40% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>affiliate marketing</td><td style="font-family:'JetBrains Mono';color:var(--green);">165,000</td><td><span class="tag tag-orange">Stable</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
-      <tr><td>affiliate marketing in India</td><td style="font-family:'JetBrains Mono';color:var(--green);">74,000</td><td><span class="tag tag-green">Growing +15% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>refer and earn</td><td style="font-family:'JetBrains Mono';color:var(--green);">135,000</td><td><span class="tag tag-green">Growing +20% YoY</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
-      <tr><td>cashback apps india</td><td style="font-family:'JetBrains Mono';color:var(--green);">60,500</td><td><span class="tag tag-orange">Stable</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
-      <tr><td>share and earn</td><td style="font-family:'JetBrains Mono';color:var(--green);">40,500</td><td><span class="tag tag-green">Growing +55% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
-      <tr><td>best earning apps 2025</td><td style="font-family:'JetBrains Mono';color:var(--green);">33,100</td><td><span class="tag tag-green">Growing +45% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>earn money online</td><td style="font-family:'Poppins';color:var(--green);">550,000</td><td><span class="tag tag-green">Growing +18% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>online paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--green);">450,000</td><td><span class="tag tag-green">Growing +32% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>earning apps</td><td style="font-family:'Poppins';color:var(--green);">301,000</td><td><span class="tag tag-green">Growing +25% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>paise kamane wala app</td><td style="font-family:'Poppins';color:var(--green);">246,000</td><td><span class="tag tag-green">Growing +40% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>affiliate marketing</td><td style="font-family:'Poppins';color:var(--green);">165,000</td><td><span class="tag tag-orange">Stable</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
+      <tr><td>affiliate marketing in India</td><td style="font-family:'Poppins';color:var(--green);">74,000</td><td><span class="tag tag-green">Growing +15% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>refer and earn</td><td style="font-family:'Poppins';color:var(--green);">135,000</td><td><span class="tag tag-green">Growing +20% YoY</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
+      <tr><td>cashback apps india</td><td style="font-family:'Poppins';color:var(--green);">60,500</td><td><span class="tag tag-orange">Stable</span></td><td>Not ranking</td><td><span class="tag tag-orange">High</span></td></tr>
+      <tr><td>share and earn</td><td style="font-family:'Poppins';color:var(--green);">40,500</td><td><span class="tag tag-green">Growing +55% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
+      <tr><td>best earning apps 2025</td><td style="font-family:'Poppins';color:var(--green);">33,100</td><td><span class="tag tag-green">Growing +45% YoY</span></td><td>Not ranking</td><td><span class="tag tag-green">Very High</span></td></tr>
     </table>
   </div>
 
@@ -927,31 +933,31 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Keyword</th><th>Monthly Volume</th><th>KD</th><th>Content Type</th><th>Target URL</th><th>Priority</th></tr>
-      <tr><td>1</td><td><strong>earn money online</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">550,000</td><td><span class="tag tag-red">85</span></td><td>Pillar Page</td><td>/blog/earn-money-online/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>2</td><td><strong>earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">301,000</td><td><span class="tag tag-red">78</span></td><td>Listicle Pillar</td><td>/blog/best-earning-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>3</td><td><strong>affiliate marketing</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">165,000</td><td><span class="tag tag-red">80</span></td><td>Pillar Page</td><td>/blog/affiliate-marketing-guide/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>4</td><td><strong>refer and earn</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">135,000</td><td><span class="tag tag-orange">62</span></td><td>Listicle</td><td>/blog/refer-and-earn-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>5</td><td><strong>how to earn money online</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">110,000</td><td><span class="tag tag-red">75</span></td><td>How-To Guide</td><td>/blog/how-to-earn-money-online/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>6</td><td><strong>affiliate marketing India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">74,000</td><td><span class="tag tag-orange">55</span></td><td>Pillar Page</td><td>/blog/affiliate-marketing-india/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>7</td><td><strong>cashback apps India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">60,500</td><td><span class="tag tag-orange">58</span></td><td>Listicle</td><td>/blog/best-cashback-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>8</td><td><strong>money earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">49,500</td><td><span class="tag tag-orange">65</span></td><td>Listicle</td><td>/blog/money-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>9</td><td><strong>share and earn</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">40,500</td><td><span class="tag tag-yellow">42</span></td><td>How-To Guide</td><td>/blog/share-and-earn-money/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>10</td><td><strong>online earning without investment</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">40,500</td><td><span class="tag tag-orange">60</span></td><td>Guide</td><td>/blog/earn-online-without-investment/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>11</td><td><strong>best earning apps 2025</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">33,100</td><td><span class="tag tag-orange">58</span></td><td>Listicle (Annual)</td><td>/blog/best-earning-apps-2025/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>12</td><td><strong>affiliate marketing for beginners</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">27,100</td><td><span class="tag tag-orange">52</span></td><td>Beginner Guide</td><td>/blog/affiliate-marketing-beginners/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>13</td><td><strong>earn money from home</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">27,100</td><td><span class="tag tag-red">72</span></td><td>Guide</td><td>/blog/earn-money-from-home/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>14</td><td><strong>make money online India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">22,200</td><td><span class="tag tag-orange">58</span></td><td>Guide</td><td>/blog/make-money-online-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>15</td><td><strong>real earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">22,200</td><td><span class="tag tag-orange">50</span></td><td>Listicle</td><td>/blog/real-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>16</td><td><strong>how to do affiliate marketing</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">18,100</td><td><span class="tag tag-orange">55</span></td><td>Tutorial</td><td>/blog/how-to-start-affiliate-marketing/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>17</td><td><strong>passive income apps India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">14,800</td><td><span class="tag tag-yellow">40</span></td><td>Listicle</td><td>/blog/passive-income-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>18</td><td><strong>side income ideas India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">12,100</td><td><span class="tag tag-yellow">45</span></td><td>Listicle</td><td>/blog/side-income-ideas-india/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>19</td><td><strong>coupon sharing earn money</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">9,900</td><td><span class="tag tag-yellow">35</span></td><td>Guide</td><td>/blog/earn-money-sharing-coupons/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>20</td><td><strong>earning apps for students</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">9,900</td><td><span class="tag tag-yellow">42</span></td><td>Listicle</td><td>/blog/earning-apps-students/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>21</td><td><strong>link sharing earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">8,100</td><td><span class="tag tag-yellow">30</span></td><td>Listicle</td><td>/blog/link-sharing-earning-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>22</td><td><strong>daily earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">8,100</td><td><span class="tag tag-yellow">45</span></td><td>Listicle</td><td>/blog/daily-earning-apps/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>23</td><td><strong>affiliate program India</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">6,600</td><td><span class="tag tag-yellow">38</span></td><td>Guide</td><td>/blog/best-affiliate-programs-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>24</td><td><strong>earn commission online</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">5,400</td><td><span class="tag tag-yellow">32</span></td><td>Guide</td><td>/blog/earn-commission-online/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>25</td><td><strong>product sharing earn money app</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">4,400</td><td><span class="tag tag-green">22</span></td><td>Guide</td><td>/blog/product-sharing-earn-money/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>1</td><td><strong>earn money online</strong></td><td style="font-family:'Poppins';color:var(--green);">550,000</td><td><span class="tag tag-red">85</span></td><td>Pillar Page</td><td>/blog/earn-money-online/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>2</td><td><strong>earning apps</strong></td><td style="font-family:'Poppins';color:var(--green);">301,000</td><td><span class="tag tag-red">78</span></td><td>Listicle Pillar</td><td>/blog/best-earning-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>3</td><td><strong>affiliate marketing</strong></td><td style="font-family:'Poppins';color:var(--green);">165,000</td><td><span class="tag tag-red">80</span></td><td>Pillar Page</td><td>/blog/affiliate-marketing-guide/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>4</td><td><strong>refer and earn</strong></td><td style="font-family:'Poppins';color:var(--green);">135,000</td><td><span class="tag tag-orange">62</span></td><td>Listicle</td><td>/blog/refer-and-earn-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>5</td><td><strong>how to earn money online</strong></td><td style="font-family:'Poppins';color:var(--green);">110,000</td><td><span class="tag tag-red">75</span></td><td>How-To Guide</td><td>/blog/how-to-earn-money-online/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>6</td><td><strong>affiliate marketing India</strong></td><td style="font-family:'Poppins';color:var(--green);">74,000</td><td><span class="tag tag-orange">55</span></td><td>Pillar Page</td><td>/blog/affiliate-marketing-india/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>7</td><td><strong>cashback apps India</strong></td><td style="font-family:'Poppins';color:var(--green);">60,500</td><td><span class="tag tag-orange">58</span></td><td>Listicle</td><td>/blog/best-cashback-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>8</td><td><strong>money earning apps</strong></td><td style="font-family:'Poppins';color:var(--green);">49,500</td><td><span class="tag tag-orange">65</span></td><td>Listicle</td><td>/blog/money-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>9</td><td><strong>share and earn</strong></td><td style="font-family:'Poppins';color:var(--green);">40,500</td><td><span class="tag tag-yellow">42</span></td><td>How-To Guide</td><td>/blog/share-and-earn-money/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>10</td><td><strong>online earning without investment</strong></td><td style="font-family:'Poppins';color:var(--green);">40,500</td><td><span class="tag tag-orange">60</span></td><td>Guide</td><td>/blog/earn-online-without-investment/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>11</td><td><strong>best earning apps 2025</strong></td><td style="font-family:'Poppins';color:var(--green);">33,100</td><td><span class="tag tag-orange">58</span></td><td>Listicle (Annual)</td><td>/blog/best-earning-apps-2025/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>12</td><td><strong>affiliate marketing for beginners</strong></td><td style="font-family:'Poppins';color:var(--green);">27,100</td><td><span class="tag tag-orange">52</span></td><td>Beginner Guide</td><td>/blog/affiliate-marketing-beginners/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>13</td><td><strong>earn money from home</strong></td><td style="font-family:'Poppins';color:var(--green);">27,100</td><td><span class="tag tag-red">72</span></td><td>Guide</td><td>/blog/earn-money-from-home/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>14</td><td><strong>make money online India</strong></td><td style="font-family:'Poppins';color:var(--green);">22,200</td><td><span class="tag tag-orange">58</span></td><td>Guide</td><td>/blog/make-money-online-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>15</td><td><strong>real earning apps</strong></td><td style="font-family:'Poppins';color:var(--green);">22,200</td><td><span class="tag tag-orange">50</span></td><td>Listicle</td><td>/blog/real-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>16</td><td><strong>how to do affiliate marketing</strong></td><td style="font-family:'Poppins';color:var(--green);">18,100</td><td><span class="tag tag-orange">55</span></td><td>Tutorial</td><td>/blog/how-to-start-affiliate-marketing/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>17</td><td><strong>passive income apps India</strong></td><td style="font-family:'Poppins';color:var(--green);">14,800</td><td><span class="tag tag-yellow">40</span></td><td>Listicle</td><td>/blog/passive-income-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>18</td><td><strong>side income ideas India</strong></td><td style="font-family:'Poppins';color:var(--green);">12,100</td><td><span class="tag tag-yellow">45</span></td><td>Listicle</td><td>/blog/side-income-ideas-india/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>19</td><td><strong>coupon sharing earn money</strong></td><td style="font-family:'Poppins';color:var(--green);">9,900</td><td><span class="tag tag-yellow">35</span></td><td>Guide</td><td>/blog/earn-money-sharing-coupons/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>20</td><td><strong>earning apps for students</strong></td><td style="font-family:'Poppins';color:var(--green);">9,900</td><td><span class="tag tag-yellow">42</span></td><td>Listicle</td><td>/blog/earning-apps-students/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>21</td><td><strong>link sharing earning apps</strong></td><td style="font-family:'Poppins';color:var(--green);">8,100</td><td><span class="tag tag-yellow">30</span></td><td>Listicle</td><td>/blog/link-sharing-earning-apps/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>22</td><td><strong>daily earning apps</strong></td><td style="font-family:'Poppins';color:var(--green);">8,100</td><td><span class="tag tag-yellow">45</span></td><td>Listicle</td><td>/blog/daily-earning-apps/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>23</td><td><strong>affiliate program India</strong></td><td style="font-family:'Poppins';color:var(--green);">6,600</td><td><span class="tag tag-yellow">38</span></td><td>Guide</td><td>/blog/best-affiliate-programs-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>24</td><td><strong>earn commission online</strong></td><td style="font-family:'Poppins';color:var(--green);">5,400</td><td><span class="tag tag-yellow">32</span></td><td>Guide</td><td>/blog/earn-commission-online/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>25</td><td><strong>product sharing earn money app</strong></td><td style="font-family:'Poppins';color:var(--green);">4,400</td><td><span class="tag tag-green">22</span></td><td>Guide</td><td>/blog/product-sharing-earn-money/</td><td><span class="tag tag-green">P0</span></td></tr>
     </table>
   </div>
 
@@ -962,26 +968,26 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Keyword</th><th>Monthly Volume</th><th>KD</th><th>Content Type</th><th>Target URL</th><th>Priority</th></tr>
-      <tr><td>1</td><td><strong>EarnKaro app</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">49,500</td><td><span class="tag tag-yellow">38</span></td><td>Alternative Post</td><td>/blog/earnkaro-alternative/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>2</td><td><strong>EarnKaro review</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">18,100</td><td><span class="tag tag-yellow">35</span></td><td>Review + Compare</td><td>/blog/earnkaro-review/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>3</td><td><strong>CashKaro app</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">40,500</td><td><span class="tag tag-yellow">42</span></td><td>Alternative Post</td><td>/blog/cashkaro-alternative/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>4</td><td><strong>CashKaro vs EarnKaro</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">12,100</td><td><span class="tag tag-yellow">30</span></td><td>3-Way Comparison</td><td>/blog/cashkaro-vs-earnkaro-vs-grabcash/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>5</td><td><strong>EarnKaro alternative</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">6,600</td><td><span class="tag tag-green">25</span></td><td>Alternative Listicle</td><td>/blog/earnkaro-alternatives/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>6</td><td><strong>GoPaisa app</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">14,800</td><td><span class="tag tag-yellow">35</span></td><td>Alternative Post</td><td>/blog/gopaisa-alternative/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>7</td><td><strong>is EarnKaro safe</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">9,900</td><td><span class="tag tag-green">20</span></td><td>Trust Article</td><td>/blog/is-earnkaro-safe-legit/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>8</td><td><strong>EarnKaro se paise kaise kamaye</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">8,100</td><td><span class="tag tag-green">22</span></td><td>Hindi How-To</td><td>/hi/blog/earnkaro-se-paise-kaise-kamaye/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>9</td><td><strong>apps like EarnKaro</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">5,400</td><td><span class="tag tag-green">22</span></td><td>Alternative Listicle</td><td>/blog/apps-like-earnkaro/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>10</td><td><strong>EarnKaro vs Meesho</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">4,400</td><td><span class="tag tag-green">25</span></td><td>Comparison</td><td>/blog/earnkaro-vs-meesho/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>11</td><td><strong>CashKaro review</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">9,900</td><td><span class="tag tag-yellow">32</span></td><td>Review + Compare</td><td>/blog/cashkaro-review/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>12</td><td><strong>best cashback app India</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">14,800</td><td><span class="tag tag-yellow">48</span></td><td>Comparison Listicle</td><td>/blog/best-cashback-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>13</td><td><strong>Meesho vs EarnKaro</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">3,600</td><td><span class="tag tag-green">20</span></td><td>Comparison</td><td>/blog/meesho-vs-earnkaro/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>14</td><td><strong>EarnKaro commission rate</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,900</td><td><span class="tag tag-green">18</span></td><td>Data Post</td><td>/blog/affiliate-commission-rates-compared/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>15</td><td><strong>GoPaisa review</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">4,400</td><td><span class="tag tag-green">28</span></td><td>Review + Compare</td><td>/blog/gopaisa-review/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>16</td><td><strong>affiliate earning app India best</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">3,600</td><td><span class="tag tag-yellow">35</span></td><td>Comparison</td><td>/blog/best-affiliate-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>17</td><td><strong>GrabOn earning app</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">1,900</td><td><span class="tag tag-green">10</span></td><td>Brand Page</td><td>/blog/grabon-grabcash-earning/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>18</td><td><strong>CashKaro alternative</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,400</td><td><span class="tag tag-green">22</span></td><td>Alternative Listicle</td><td>/blog/cashkaro-alternatives/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>19</td><td><strong>EarnKaro withdrawal</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,400</td><td><span class="tag tag-green">15</span></td><td>Comparison Post</td><td>/blog/earning-app-withdrawal-comparison/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>20</td><td><strong>CashKaro vs GoPaisa</strong></td><td style="font-family:'JetBrains Mono';color:var(--orange);">1,600</td><td><span class="tag tag-green">18</span></td><td>3-Way Comparison</td><td>/blog/cashkaro-vs-gopaisa-vs-grabcash/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>1</td><td><strong>EarnKaro app</strong></td><td style="font-family:'Poppins';color:var(--orange);">49,500</td><td><span class="tag tag-yellow">38</span></td><td>Alternative Post</td><td>/blog/earnkaro-alternative/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>2</td><td><strong>EarnKaro review</strong></td><td style="font-family:'Poppins';color:var(--orange);">18,100</td><td><span class="tag tag-yellow">35</span></td><td>Review + Compare</td><td>/blog/earnkaro-review/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>3</td><td><strong>CashKaro app</strong></td><td style="font-family:'Poppins';color:var(--orange);">40,500</td><td><span class="tag tag-yellow">42</span></td><td>Alternative Post</td><td>/blog/cashkaro-alternative/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>4</td><td><strong>CashKaro vs EarnKaro</strong></td><td style="font-family:'Poppins';color:var(--orange);">12,100</td><td><span class="tag tag-yellow">30</span></td><td>3-Way Comparison</td><td>/blog/cashkaro-vs-earnkaro-vs-grabcash/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>5</td><td><strong>EarnKaro alternative</strong></td><td style="font-family:'Poppins';color:var(--orange);">6,600</td><td><span class="tag tag-green">25</span></td><td>Alternative Listicle</td><td>/blog/earnkaro-alternatives/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>6</td><td><strong>GoPaisa app</strong></td><td style="font-family:'Poppins';color:var(--orange);">14,800</td><td><span class="tag tag-yellow">35</span></td><td>Alternative Post</td><td>/blog/gopaisa-alternative/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>7</td><td><strong>is EarnKaro safe</strong></td><td style="font-family:'Poppins';color:var(--orange);">9,900</td><td><span class="tag tag-green">20</span></td><td>Trust Article</td><td>/blog/is-earnkaro-safe-legit/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>8</td><td><strong>EarnKaro se paise kaise kamaye</strong></td><td style="font-family:'Poppins';color:var(--orange);">8,100</td><td><span class="tag tag-green">22</span></td><td>Hindi How-To</td><td>/hi/blog/earnkaro-se-paise-kaise-kamaye/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>9</td><td><strong>apps like EarnKaro</strong></td><td style="font-family:'Poppins';color:var(--orange);">5,400</td><td><span class="tag tag-green">22</span></td><td>Alternative Listicle</td><td>/blog/apps-like-earnkaro/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>10</td><td><strong>EarnKaro vs Meesho</strong></td><td style="font-family:'Poppins';color:var(--orange);">4,400</td><td><span class="tag tag-green">25</span></td><td>Comparison</td><td>/blog/earnkaro-vs-meesho/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>11</td><td><strong>CashKaro review</strong></td><td style="font-family:'Poppins';color:var(--orange);">9,900</td><td><span class="tag tag-yellow">32</span></td><td>Review + Compare</td><td>/blog/cashkaro-review/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>12</td><td><strong>best cashback app India</strong></td><td style="font-family:'Poppins';color:var(--orange);">14,800</td><td><span class="tag tag-yellow">48</span></td><td>Comparison Listicle</td><td>/blog/best-cashback-apps-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>13</td><td><strong>Meesho vs EarnKaro</strong></td><td style="font-family:'Poppins';color:var(--orange);">3,600</td><td><span class="tag tag-green">20</span></td><td>Comparison</td><td>/blog/meesho-vs-earnkaro/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>14</td><td><strong>EarnKaro commission rate</strong></td><td style="font-family:'Poppins';color:var(--orange);">2,900</td><td><span class="tag tag-green">18</span></td><td>Data Post</td><td>/blog/affiliate-commission-rates-compared/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>15</td><td><strong>GoPaisa review</strong></td><td style="font-family:'Poppins';color:var(--orange);">4,400</td><td><span class="tag tag-green">28</span></td><td>Review + Compare</td><td>/blog/gopaisa-review/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>16</td><td><strong>affiliate earning app India best</strong></td><td style="font-family:'Poppins';color:var(--orange);">3,600</td><td><span class="tag tag-yellow">35</span></td><td>Comparison</td><td>/blog/best-affiliate-earning-apps/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>17</td><td><strong>GrabOn earning app</strong></td><td style="font-family:'Poppins';color:var(--orange);">1,900</td><td><span class="tag tag-green">10</span></td><td>Brand Page</td><td>/blog/grabon-grabcash-earning/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>18</td><td><strong>CashKaro alternative</strong></td><td style="font-family:'Poppins';color:var(--orange);">2,400</td><td><span class="tag tag-green">22</span></td><td>Alternative Listicle</td><td>/blog/cashkaro-alternatives/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>19</td><td><strong>EarnKaro withdrawal</strong></td><td style="font-family:'Poppins';color:var(--orange);">2,400</td><td><span class="tag tag-green">15</span></td><td>Comparison Post</td><td>/blog/earning-app-withdrawal-comparison/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>20</td><td><strong>CashKaro vs GoPaisa</strong></td><td style="font-family:'Poppins';color:var(--orange);">1,600</td><td><span class="tag tag-green">18</span></td><td>3-Way Comparison</td><td>/blog/cashkaro-vs-gopaisa-vs-grabcash/</td><td><span class="tag tag-blue">P2</span></td></tr>
     </table>
   </div>
 
@@ -992,31 +998,31 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Keyword</th><th>Monthly Volume</th><th>KD</th><th>Content Type</th><th>Target URL</th><th>Priority</th></tr>
-      <tr><td>1</td><td><strong>how to start affiliate marketing with no money</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">8,100</td><td><span class="tag tag-green">18</span></td><td>How-To Guide</td><td>/blog/affiliate-marketing-no-investment/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>2</td><td><strong>what is affiliate marketing in Hindi</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">6,600</td><td><span class="tag tag-green">15</span></td><td>Hindi Explainer</td><td>/hi/blog/affiliate-marketing-kya-hai/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>3</td><td><strong>how much can you earn from affiliate marketing</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">5,400</td><td><span class="tag tag-green">20</span></td><td>Data Article</td><td>/blog/affiliate-marketing-earnings-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>4</td><td><strong>Amazon affiliate program India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">14,800</td><td><span class="tag tag-yellow">45</span></td><td>Brand Guide</td><td>/blog/amazon-affiliate-program-india/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>5</td><td><strong>Flipkart affiliate program</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">9,900</td><td><span class="tag tag-yellow">38</span></td><td>Brand Guide</td><td>/blog/flipkart-affiliate-program/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>6</td><td><strong>how to earn from Instagram</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">12,100</td><td><span class="tag tag-yellow">40</span></td><td>Platform Guide</td><td>/blog/earn-money-instagram/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>7</td><td><strong>WhatsApp se paise kaise kamaye</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">22,200</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Guide</td><td>/hi/blog/whatsapp-se-paise-kamaye/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>8</td><td><strong>earn money from Telegram</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">6,600</td><td><span class="tag tag-green">25</span></td><td>Platform Guide</td><td>/blog/earn-money-telegram/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>9</td><td><strong>affiliate marketing without website</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">4,400</td><td><span class="tag tag-green">22</span></td><td>How-To</td><td>/blog/affiliate-marketing-without-website/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>10</td><td><strong>student earning apps India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">3,600</td><td><span class="tag tag-green">20</span></td><td>Audience Listicle</td><td>/blog/earning-apps-college-students/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>11</td><td><strong>housewife earning ideas</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">4,400</td><td><span class="tag tag-green">22</span></td><td>Audience Guide</td><td>/blog/earning-ideas-homemakers/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>12</td><td><strong>affiliate marketing income tax India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">2,400</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/affiliate-income-tax-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>13</td><td><strong>Myntra affiliate program</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">3,600</td><td><span class="tag tag-green">25</span></td><td>Brand Guide</td><td>/blog/myntra-affiliate-program/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>14</td><td><strong>Ajio affiliate program</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,900</td><td><span class="tag tag-green">15</span></td><td>Brand Guide</td><td>/blog/ajio-affiliate-program/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>15</td><td><strong>how to create affiliate links</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">2,900</td><td><span class="tag tag-green">18</span></td><td>Tutorial</td><td>/blog/how-to-create-affiliate-links/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>16</td><td><strong>affiliate marketing WhatsApp group</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">2,400</td><td><span class="tag tag-green">12</span></td><td>Community Post</td><td>/blog/affiliate-marketing-whatsapp-groups/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>17</td><td><strong>earn from product reviews</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,600</td><td><span class="tag tag-green">15</span></td><td>How-To</td><td>/blog/earn-money-product-reviews/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>18</td><td><strong>affiliate marketing tips for beginners India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,900</td><td><span class="tag tag-green">18</span></td><td>Listicle</td><td>/blog/affiliate-marketing-tips-beginners/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>19</td><td><strong>best products to promote as affiliate India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,300</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/best-affiliate-products-india/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>20</td><td><strong>affiliate link share kaise kare</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">2,900</td><td><span class="tag tag-green">10</span></td><td>Hindi Tutorial</td><td>/hi/blog/affiliate-link-share-kaise-kare/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>21</td><td><strong>earning proof affiliate marketing</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,600</td><td><span class="tag tag-green">10</span></td><td>Social Proof</td><td>/blog/affiliate-marketing-earning-proof/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>22</td><td><strong>deal sharing Telegram channel</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,300</td><td><span class="tag tag-green">8</span></td><td>Guide</td><td>/blog/start-deal-sharing-telegram/</td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>23</td><td><strong>GrabCash app kaise use kare</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">500</td><td><span class="tag tag-green">5</span></td><td>Hindi Tutorial</td><td>/hi/blog/grabcash-app-kaise-use-kare/</td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>24</td><td><strong>how to withdraw money from earning apps</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,900</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/withdraw-money-earning-apps/</td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>25</td><td><strong>affiliate marketing success stories India</strong></td><td style="font-family:'JetBrains Mono';color:var(--blue);">1,000</td><td><span class="tag tag-green">10</span></td><td>Story Roundup</td><td>/blog/affiliate-marketing-success-stories-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>1</td><td><strong>how to start affiliate marketing with no money</strong></td><td style="font-family:'Poppins';color:var(--blue);">8,100</td><td><span class="tag tag-green">18</span></td><td>How-To Guide</td><td>/blog/affiliate-marketing-no-investment/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>2</td><td><strong>what is affiliate marketing in Hindi</strong></td><td style="font-family:'Poppins';color:var(--blue);">6,600</td><td><span class="tag tag-green">15</span></td><td>Hindi Explainer</td><td>/hi/blog/affiliate-marketing-kya-hai/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>3</td><td><strong>how much can you earn from affiliate marketing</strong></td><td style="font-family:'Poppins';color:var(--blue);">5,400</td><td><span class="tag tag-green">20</span></td><td>Data Article</td><td>/blog/affiliate-marketing-earnings-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>4</td><td><strong>Amazon affiliate program India</strong></td><td style="font-family:'Poppins';color:var(--blue);">14,800</td><td><span class="tag tag-yellow">45</span></td><td>Brand Guide</td><td>/blog/amazon-affiliate-program-india/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>5</td><td><strong>Flipkart affiliate program</strong></td><td style="font-family:'Poppins';color:var(--blue);">9,900</td><td><span class="tag tag-yellow">38</span></td><td>Brand Guide</td><td>/blog/flipkart-affiliate-program/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>6</td><td><strong>how to earn from Instagram</strong></td><td style="font-family:'Poppins';color:var(--blue);">12,100</td><td><span class="tag tag-yellow">40</span></td><td>Platform Guide</td><td>/blog/earn-money-instagram/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>7</td><td><strong>WhatsApp se paise kaise kamaye</strong></td><td style="font-family:'Poppins';color:var(--blue);">22,200</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Guide</td><td>/hi/blog/whatsapp-se-paise-kamaye/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>8</td><td><strong>earn money from Telegram</strong></td><td style="font-family:'Poppins';color:var(--blue);">6,600</td><td><span class="tag tag-green">25</span></td><td>Platform Guide</td><td>/blog/earn-money-telegram/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>9</td><td><strong>affiliate marketing without website</strong></td><td style="font-family:'Poppins';color:var(--blue);">4,400</td><td><span class="tag tag-green">22</span></td><td>How-To</td><td>/blog/affiliate-marketing-without-website/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>10</td><td><strong>student earning apps India</strong></td><td style="font-family:'Poppins';color:var(--blue);">3,600</td><td><span class="tag tag-green">20</span></td><td>Audience Listicle</td><td>/blog/earning-apps-college-students/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>11</td><td><strong>housewife earning ideas</strong></td><td style="font-family:'Poppins';color:var(--blue);">4,400</td><td><span class="tag tag-green">22</span></td><td>Audience Guide</td><td>/blog/earning-ideas-homemakers/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>12</td><td><strong>affiliate marketing income tax India</strong></td><td style="font-family:'Poppins';color:var(--blue);">2,400</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/affiliate-income-tax-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>13</td><td><strong>Myntra affiliate program</strong></td><td style="font-family:'Poppins';color:var(--blue);">3,600</td><td><span class="tag tag-green">25</span></td><td>Brand Guide</td><td>/blog/myntra-affiliate-program/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>14</td><td><strong>Ajio affiliate program</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,900</td><td><span class="tag tag-green">15</span></td><td>Brand Guide</td><td>/blog/ajio-affiliate-program/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>15</td><td><strong>how to create affiliate links</strong></td><td style="font-family:'Poppins';color:var(--blue);">2,900</td><td><span class="tag tag-green">18</span></td><td>Tutorial</td><td>/blog/how-to-create-affiliate-links/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>16</td><td><strong>affiliate marketing WhatsApp group</strong></td><td style="font-family:'Poppins';color:var(--blue);">2,400</td><td><span class="tag tag-green">12</span></td><td>Community Post</td><td>/blog/affiliate-marketing-whatsapp-groups/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>17</td><td><strong>earn from product reviews</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,600</td><td><span class="tag tag-green">15</span></td><td>How-To</td><td>/blog/earn-money-product-reviews/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>18</td><td><strong>affiliate marketing tips for beginners India</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,900</td><td><span class="tag tag-green">18</span></td><td>Listicle</td><td>/blog/affiliate-marketing-tips-beginners/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>19</td><td><strong>best products to promote as affiliate India</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,300</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/best-affiliate-products-india/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>20</td><td><strong>affiliate link share kaise kare</strong></td><td style="font-family:'Poppins';color:var(--blue);">2,900</td><td><span class="tag tag-green">10</span></td><td>Hindi Tutorial</td><td>/hi/blog/affiliate-link-share-kaise-kare/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>21</td><td><strong>earning proof affiliate marketing</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,600</td><td><span class="tag tag-green">10</span></td><td>Social Proof</td><td>/blog/affiliate-marketing-earning-proof/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>22</td><td><strong>deal sharing Telegram channel</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,300</td><td><span class="tag tag-green">8</span></td><td>Guide</td><td>/blog/start-deal-sharing-telegram/</td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>23</td><td><strong>GrabCash app kaise use kare</strong></td><td style="font-family:'Poppins';color:var(--blue);">500</td><td><span class="tag tag-green">5</span></td><td>Hindi Tutorial</td><td>/hi/blog/grabcash-app-kaise-use-kare/</td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>24</td><td><strong>how to withdraw money from earning apps</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,900</td><td><span class="tag tag-green">12</span></td><td>Guide</td><td>/blog/withdraw-money-earning-apps/</td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>25</td><td><strong>affiliate marketing success stories India</strong></td><td style="font-family:'Poppins';color:var(--blue);">1,000</td><td><span class="tag tag-green">10</span></td><td>Story Roundup</td><td>/blog/affiliate-marketing-success-stories-india/</td><td><span class="tag tag-orange">P1</span></td></tr>
     </table>
   </div>
 
@@ -1027,21 +1033,21 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Hindi Keyword</th><th>Transliteration</th><th>Monthly Volume</th><th>KD</th><th>Target URL</th></tr>
-      <tr><td>1</td><td><strong>ऑनलाइन पैसे कैसे कमाए</strong></td><td>online paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">450,000</td><td><span class="tag tag-orange">55</span></td><td>/hi/blog/online-paise-kaise-kamaye/</td></tr>
-      <tr><td>2</td><td><strong>पैसे कमाने वाला ऐप</strong></td><td>paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">246,000</td><td><span class="tag tag-orange">50</span></td><td>/hi/blog/paise-kamane-wala-app/</td></tr>
-      <tr><td>3</td><td><strong>घर बैठे पैसे कैसे कमाए</strong></td><td>ghar baithe paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">165,000</td><td><span class="tag tag-yellow">45</span></td><td>/hi/blog/ghar-baithe-paise-kamaye/</td></tr>
-      <tr><td>4</td><td><strong>मोबाइल से पैसे कैसे कमाए</strong></td><td>mobile se paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">135,000</td><td><span class="tag tag-yellow">42</span></td><td>/hi/blog/mobile-se-paise-kamaye/</td></tr>
-      <tr><td>5</td><td><strong>एफिलिएट मार्केटिंग क्या है</strong></td><td>affiliate marketing kya hai</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">33,100</td><td><span class="tag tag-yellow">35</span></td><td>/hi/blog/affiliate-marketing-kya-hai/</td></tr>
-      <tr><td>6</td><td><strong>रोज़ पैसे कमाने वाला ऐप</strong></td><td>roz paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">40,500</td><td><span class="tag tag-yellow">38</span></td><td>/hi/blog/roz-paise-kamane-wala-app/</td></tr>
-      <tr><td>7</td><td><strong>बिना पैसे लगाए पैसे कमाए</strong></td><td>bina paise lagaye paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">27,100</td><td><span class="tag tag-yellow">35</span></td><td>/hi/blog/bina-investment-paise-kamaye/</td></tr>
-      <tr><td>8</td><td><strong>व्हाट्सएप से पैसे कैसे कमाए</strong></td><td>WhatsApp se paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">22,200</td><td><span class="tag tag-yellow">32</span></td><td>/hi/blog/whatsapp-se-paise-kamaye/</td></tr>
-      <tr><td>9</td><td><strong>टेलीग्राम से पैसे कमाए</strong></td><td>Telegram se paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">9,900</td><td><span class="tag tag-green">20</span></td><td>/hi/blog/telegram-se-paise-kamaye/</td></tr>
-      <tr><td>10</td><td><strong>रेफर करके पैसे कमाए</strong></td><td>refer karke paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">18,100</td><td><span class="tag tag-yellow">30</span></td><td>/hi/blog/refer-karke-paise-kamaye/</td></tr>
-      <tr><td>11</td><td><strong>फ्री में पैसे कमाने वाला ऐप</strong></td><td>free mein paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">22,200</td><td><span class="tag tag-yellow">38</span></td><td>/hi/blog/free-paise-kamane-wala-app/</td></tr>
-      <tr><td>12</td><td><strong>लिंक शेयर करके पैसे कमाए</strong></td><td>link share karke paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">8,100</td><td><span class="tag tag-green">18</span></td><td>/hi/blog/link-share-karke-paise-kamaye/</td></tr>
-      <tr><td>13</td><td><strong>स्टूडेंट पैसे कैसे कमाए</strong></td><td>student paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">14,800</td><td><span class="tag tag-green">25</span></td><td>/hi/blog/student-paise-kaise-kamaye/</td></tr>
-      <tr><td>14</td><td><strong>अमेज़न एफिलिएट प्रोग्राम</strong></td><td>Amazon affiliate program Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">6,600</td><td><span class="tag tag-green">25</span></td><td>/hi/blog/amazon-affiliate-program/</td></tr>
-      <tr><td>15</td><td><strong>फ्लिपकार्ट एफिलिएट प्रोग्राम</strong></td><td>Flipkart affiliate program Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">4,400</td><td><span class="tag tag-green">20</span></td><td>/hi/blog/flipkart-affiliate-program/</td></tr>
+      <tr><td>1</td><td><strong>ऑनलाइन पैसे कैसे कमाए</strong></td><td>online paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">450,000</td><td><span class="tag tag-orange">55</span></td><td>/hi/blog/online-paise-kaise-kamaye/</td></tr>
+      <tr><td>2</td><td><strong>पैसे कमाने वाला ऐप</strong></td><td>paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">246,000</td><td><span class="tag tag-orange">50</span></td><td>/hi/blog/paise-kamane-wala-app/</td></tr>
+      <tr><td>3</td><td><strong>घर बैठे पैसे कैसे कमाए</strong></td><td>ghar baithe paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">165,000</td><td><span class="tag tag-yellow">45</span></td><td>/hi/blog/ghar-baithe-paise-kamaye/</td></tr>
+      <tr><td>4</td><td><strong>मोबाइल से पैसे कैसे कमाए</strong></td><td>mobile se paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">135,000</td><td><span class="tag tag-yellow">42</span></td><td>/hi/blog/mobile-se-paise-kamaye/</td></tr>
+      <tr><td>5</td><td><strong>एफिलिएट मार्केटिंग क्या है</strong></td><td>affiliate marketing kya hai</td><td style="font-family:'Poppins';color:var(--cyan);">33,100</td><td><span class="tag tag-yellow">35</span></td><td>/hi/blog/affiliate-marketing-kya-hai/</td></tr>
+      <tr><td>6</td><td><strong>रोज़ पैसे कमाने वाला ऐप</strong></td><td>roz paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">40,500</td><td><span class="tag tag-yellow">38</span></td><td>/hi/blog/roz-paise-kamane-wala-app/</td></tr>
+      <tr><td>7</td><td><strong>बिना पैसे लगाए पैसे कमाए</strong></td><td>bina paise lagaye paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">27,100</td><td><span class="tag tag-yellow">35</span></td><td>/hi/blog/bina-investment-paise-kamaye/</td></tr>
+      <tr><td>8</td><td><strong>व्हाट्सएप से पैसे कैसे कमाए</strong></td><td>WhatsApp se paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">22,200</td><td><span class="tag tag-yellow">32</span></td><td>/hi/blog/whatsapp-se-paise-kamaye/</td></tr>
+      <tr><td>9</td><td><strong>टेलीग्राम से पैसे कमाए</strong></td><td>Telegram se paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">9,900</td><td><span class="tag tag-green">20</span></td><td>/hi/blog/telegram-se-paise-kamaye/</td></tr>
+      <tr><td>10</td><td><strong>रेफर करके पैसे कमाए</strong></td><td>refer karke paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">18,100</td><td><span class="tag tag-yellow">30</span></td><td>/hi/blog/refer-karke-paise-kamaye/</td></tr>
+      <tr><td>11</td><td><strong>फ्री में पैसे कमाने वाला ऐप</strong></td><td>free mein paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">22,200</td><td><span class="tag tag-yellow">38</span></td><td>/hi/blog/free-paise-kamane-wala-app/</td></tr>
+      <tr><td>12</td><td><strong>लिंक शेयर करके पैसे कमाए</strong></td><td>link share karke paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">8,100</td><td><span class="tag tag-green">18</span></td><td>/hi/blog/link-share-karke-paise-kamaye/</td></tr>
+      <tr><td>13</td><td><strong>स्टूडेंट पैसे कैसे कमाए</strong></td><td>student paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">14,800</td><td><span class="tag tag-green">25</span></td><td>/hi/blog/student-paise-kaise-kamaye/</td></tr>
+      <tr><td>14</td><td><strong>अमेज़न एफिलिएट प्रोग्राम</strong></td><td>Amazon affiliate program Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">6,600</td><td><span class="tag tag-green">25</span></td><td>/hi/blog/amazon-affiliate-program/</td></tr>
+      <tr><td>15</td><td><strong>फ्लिपकार्ट एफिलिएट प्रोग्राम</strong></td><td>Flipkart affiliate program Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">4,400</td><td><span class="tag tag-green">20</span></td><td>/hi/blog/flipkart-affiliate-program/</td></tr>
     </table>
   </div>
 
@@ -1650,15 +1656,15 @@ grabcash.in/blog/category/<span class="key">{category-slug}</span>/
   <h3><span class="ico">&#9672;</span> Readability Guidelines</h3>
   <div class="grid-3">
     <div class="card" style="text-align:center;">
-      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'JetBrains Mono';">8</div>
+      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'Poppins';">8</div>
       <div style="font-size:0.82rem;color:var(--text-dim);">Max Flesch-Kincaid Grade Level</div>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'JetBrains Mono';">20</div>
+      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'Poppins';">20</div>
       <div style="font-size:0.82rem;color:var(--text-dim);">Max Words Per Sentence (average)</div>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'JetBrains Mono';">3</div>
+      <div style="font-size:2rem;color:var(--green);font-weight:800;font-family:'Poppins';">3</div>
       <div style="font-size:0.82rem;color:var(--text-dim);">Max Sentences Per Paragraph</div>
     </div>
   </div>
@@ -1844,26 +1850,26 @@ sitemap_index.xml
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Blog / Site</th><th>DA</th><th>Niche</th><th>Guest Post Type</th><th>Link Value</th><th>Priority</th></tr>
-      <tr><td>1</td><td><strong>ShoutMeLoud.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">62</td><td>Blogging / Affiliate</td><td>Expert Roundup + Guest Post</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>2</td><td><strong>BloggersPassion.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">55</td><td>Blogging / SEO</td><td>Detailed Guide</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>3</td><td><strong>WPBeginner.com (Indian edition)</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">72</td><td>WordPress / Tech</td><td>Resource Mention</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>4</td><td><strong>MySmartPrice.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">68</td><td>Tech / Deals</td><td>App Review / Feature</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>5</td><td><strong>Digit.in</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">70</td><td>Tech / Apps</td><td>App Listing / Review</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>6</td><td><strong>91Mobiles.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">65</td><td>Tech / Mobile</td><td>App Review</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>7</td><td><strong>NeilPatel.com/blog (India topics)</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">78</td><td>Digital Marketing</td><td>Case Study Mention</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>8</td><td><strong>YourStory.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">75</td><td>Startups</td><td>Startup Story / PR</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>9</td><td><strong>Inc42.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">72</td><td>Startups / Fintech</td><td>Product Feature / PR</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>10</td><td><strong>MoneyControl.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">80</td><td>Finance</td><td>Expert Quote + Link</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>11</td><td><strong>Beebom.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">65</td><td>Tech / Apps</td><td>App Listicle Inclusion</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>12</td><td><strong>TechPP.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">55</td><td>Tech</td><td>App Review Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>13</td><td><strong>GuidingTech.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">60</td><td>Tech Guides</td><td>How-To Guest Post</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>14</td><td><strong>Savedelete.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">48</td><td>Tech / Finance</td><td>Earning App Review</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>15</td><td><strong>IndianExpress.com/technology</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">85</td><td>News / Tech</td><td>PR / Feature Story</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
-      <tr><td>16</td><td><strong>HindiMe.net</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">52</td><td>Hindi Blogging</td><td>Hindi Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>17</td><td><strong>SupportMeIndia.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">45</td><td>Hindi Earning</td><td>Hindi Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>18</td><td><strong>Techyukti.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">42</td><td>Hindi Tech</td><td>Hindi App Review</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
-      <tr><td>19</td><td><strong>NextBigWhat.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">58</td><td>Startups / Tech</td><td>Startup Feature</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
-      <tr><td>20</td><td><strong>Livemint.com</strong></td><td style="font-family:'JetBrains Mono';color:var(--green);">82</td><td>Finance / Business</td><td>PR / Data Story</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>1</td><td><strong>ShoutMeLoud.com</strong></td><td style="font-family:'Poppins';color:var(--green);">62</td><td>Blogging / Affiliate</td><td>Expert Roundup + Guest Post</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>2</td><td><strong>BloggersPassion.com</strong></td><td style="font-family:'Poppins';color:var(--green);">55</td><td>Blogging / SEO</td><td>Detailed Guide</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>3</td><td><strong>WPBeginner.com (Indian edition)</strong></td><td style="font-family:'Poppins';color:var(--green);">72</td><td>WordPress / Tech</td><td>Resource Mention</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>4</td><td><strong>MySmartPrice.com</strong></td><td style="font-family:'Poppins';color:var(--green);">68</td><td>Tech / Deals</td><td>App Review / Feature</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>5</td><td><strong>Digit.in</strong></td><td style="font-family:'Poppins';color:var(--green);">70</td><td>Tech / Apps</td><td>App Listing / Review</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>6</td><td><strong>91Mobiles.com</strong></td><td style="font-family:'Poppins';color:var(--green);">65</td><td>Tech / Mobile</td><td>App Review</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>7</td><td><strong>NeilPatel.com/blog (India topics)</strong></td><td style="font-family:'Poppins';color:var(--green);">78</td><td>Digital Marketing</td><td>Case Study Mention</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>8</td><td><strong>YourStory.com</strong></td><td style="font-family:'Poppins';color:var(--green);">75</td><td>Startups</td><td>Startup Story / PR</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>9</td><td><strong>Inc42.com</strong></td><td style="font-family:'Poppins';color:var(--green);">72</td><td>Startups / Fintech</td><td>Product Feature / PR</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>10</td><td><strong>MoneyControl.com</strong></td><td style="font-family:'Poppins';color:var(--green);">80</td><td>Finance</td><td>Expert Quote + Link</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>11</td><td><strong>Beebom.com</strong></td><td style="font-family:'Poppins';color:var(--green);">65</td><td>Tech / Apps</td><td>App Listicle Inclusion</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>12</td><td><strong>TechPP.com</strong></td><td style="font-family:'Poppins';color:var(--green);">55</td><td>Tech</td><td>App Review Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>13</td><td><strong>GuidingTech.com</strong></td><td style="font-family:'Poppins';color:var(--green);">60</td><td>Tech Guides</td><td>How-To Guest Post</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>14</td><td><strong>Savedelete.com</strong></td><td style="font-family:'Poppins';color:var(--green);">48</td><td>Tech / Finance</td><td>Earning App Review</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>15</td><td><strong>IndianExpress.com/technology</strong></td><td style="font-family:'Poppins';color:var(--green);">85</td><td>News / Tech</td><td>PR / Feature Story</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-green">P0</span></td></tr>
+      <tr><td>16</td><td><strong>HindiMe.net</strong></td><td style="font-family:'Poppins';color:var(--green);">52</td><td>Hindi Blogging</td><td>Hindi Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>17</td><td><strong>SupportMeIndia.com</strong></td><td style="font-family:'Poppins';color:var(--green);">45</td><td>Hindi Earning</td><td>Hindi Guest Post</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>18</td><td><strong>Techyukti.com</strong></td><td style="font-family:'Poppins';color:var(--green);">42</td><td>Hindi Tech</td><td>Hindi App Review</td><td><span class="tag tag-orange">Medium</span></td><td><span class="tag tag-blue">P2</span></td></tr>
+      <tr><td>19</td><td><strong>NextBigWhat.com</strong></td><td style="font-family:'Poppins';color:var(--green);">58</td><td>Startups / Tech</td><td>Startup Feature</td><td><span class="tag tag-green">High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
+      <tr><td>20</td><td><strong>Livemint.com</strong></td><td style="font-family:'Poppins';color:var(--green);">82</td><td>Finance / Business</td><td>PR / Data Story</td><td><span class="tag tag-green">Very High</span></td><td><span class="tag tag-orange">P1</span></td></tr>
     </table>
   </div>
 
@@ -1937,13 +1943,13 @@ sitemap_index.xml
   <div class="table-wrap">
     <table>
       <tr><th>Tactic</th><th>Links / Month</th><th>Avg DA</th><th>Effort</th><th>Cost</th></tr>
-      <tr><td>Guest Posts (Indian blogs)</td><td style="font-family:'JetBrains Mono';color:var(--green);">4-6</td><td>45-65</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 5,000-15,000 (content cost)</td></tr>
-      <tr><td>GrabOn.in Cross-links</td><td style="font-family:'JetBrains Mono';color:var(--green);">2-3</td><td>60+</td><td><span class="tag tag-green">Low</span></td><td>Rs 0 (internal)</td></tr>
-      <tr><td>Digital PR / Startup Media</td><td style="font-family:'JetBrains Mono';color:var(--green);">1-2</td><td>70+</td><td><span class="tag tag-red">High</span></td><td>Rs 10,000-25,000</td></tr>
-      <tr><td>HARO / Journalist Queries</td><td style="font-family:'JetBrains Mono';color:var(--green);">2-3</td><td>50-80</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 0 (time only)</td></tr>
-      <tr><td>Resource Page / Broken Link</td><td style="font-family:'JetBrains Mono';color:var(--green);">2-4</td><td>35-55</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 0 (time only)</td></tr>
-      <tr><td>College / EDU Partnerships</td><td style="font-family:'JetBrains Mono';color:var(--green);">1-2</td><td>40-60</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 5,000-10,000</td></tr>
-      <tr><td>Quora / Forum / Community</td><td style="font-family:'JetBrains Mono';color:var(--green);">3-5</td><td>90+ (Quora)</td><td><span class="tag tag-green">Low</span></td><td>Rs 0 (time only)</td></tr>
+      <tr><td>Guest Posts (Indian blogs)</td><td style="font-family:'Poppins';color:var(--green);">4-6</td><td>45-65</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 5,000-15,000 (content cost)</td></tr>
+      <tr><td>GrabOn.in Cross-links</td><td style="font-family:'Poppins';color:var(--green);">2-3</td><td>60+</td><td><span class="tag tag-green">Low</span></td><td>Rs 0 (internal)</td></tr>
+      <tr><td>Digital PR / Startup Media</td><td style="font-family:'Poppins';color:var(--green);">1-2</td><td>70+</td><td><span class="tag tag-red">High</span></td><td>Rs 10,000-25,000</td></tr>
+      <tr><td>HARO / Journalist Queries</td><td style="font-family:'Poppins';color:var(--green);">2-3</td><td>50-80</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 0 (time only)</td></tr>
+      <tr><td>Resource Page / Broken Link</td><td style="font-family:'Poppins';color:var(--green);">2-4</td><td>35-55</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 0 (time only)</td></tr>
+      <tr><td>College / EDU Partnerships</td><td style="font-family:'Poppins';color:var(--green);">1-2</td><td>40-60</td><td><span class="tag tag-orange">Medium</span></td><td>Rs 5,000-10,000</td></tr>
+      <tr><td>Quora / Forum / Community</td><td style="font-family:'Poppins';color:var(--green);">3-5</td><td>90+ (Quora)</td><td><span class="tag tag-green">Low</span></td><td>Rs 0 (time only)</td></tr>
       <tr><td style="font-weight:700;color:var(--green);">TOTAL</td><td style="font-weight:700;color:var(--green);">15-25</td><td></td><td></td><td style="font-weight:700;">Rs 20,000-50,000/month</td></tr>
     </table>
   </div>
@@ -2000,36 +2006,36 @@ sitemap_index.xml
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>Hindi Keyword (Devanagari)</th><th>Romanized / Search Form</th><th>Volume</th><th>KD</th><th>Content Strategy</th></tr>
-      <tr><td>1</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>online paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">450K</td><td><span class="tag tag-orange">55</span></td><td>Hindi Pillar Page (5,000 words)</td></tr>
-      <tr><td>2</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">246K</td><td><span class="tag tag-orange">50</span></td><td>Hindi App Listicle</td></tr>
-      <tr><td>3</td><td>&#2328;&#2352; &#2348;&#2376;&#2336;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>ghar baithe paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">165K</td><td><span class="tag tag-yellow">45</span></td><td>Hindi How-To Guide</td></tr>
-      <tr><td>4</td><td>&#2350;&#2379;&#2348;&#2366;&#2311;&#2354; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>mobile se paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">135K</td><td><span class="tag tag-yellow">42</span></td><td>Hindi Mobile Guide</td></tr>
-      <tr><td>5</td><td>&#2352;&#2379;&#2395;&#2364; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>roz paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">40.5K</td><td><span class="tag tag-yellow">38</span></td><td>Hindi Daily Earning Guide</td></tr>
-      <tr><td>6</td><td>&#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2350;&#2366;&#2352;&#2381;&#2325;&#2375;&#2335;&#2367;&#2306;&#2327; &#2325;&#2381;&#2351;&#2366; &#2361;&#2376;</td><td>affiliate marketing kya hai</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">33.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Explainer Pillar</td></tr>
-      <tr><td>7</td><td>&#2348;&#2367;&#2344;&#2366; &#2346;&#2376;&#2360;&#2375; &#2354;&#2327;&#2366;&#2319; &#2325;&#2350;&#2366;&#2312;</td><td>bina paise lagaye kamai</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">27.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi No-Investment Guide</td></tr>
-      <tr><td>8</td><td>&#2357;&#2381;&#2361;&#2366;&#2335;&#2381;&#2360;&#2319;&#2346; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>WhatsApp se paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">22.2K</td><td><span class="tag tag-yellow">32</span></td><td>Hindi Platform Guide</td></tr>
-      <tr><td>9</td><td>&#2347;&#2381;&#2352;&#2368; &#2350;&#2375;&#2306; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>free mein paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">22.2K</td><td><span class="tag tag-yellow">38</span></td><td>Hindi Free Apps Listicle</td></tr>
-      <tr><td>10</td><td>&#2352;&#2375;&#2347;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>refer karke paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">18.1K</td><td><span class="tag tag-yellow">30</span></td><td>Hindi Refer-Earn Guide</td></tr>
-      <tr><td>11</td><td>&#2360;&#2381;&#2335;&#2370;&#2337;&#2375;&#2306;&#2335; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>student paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">14.8K</td><td><span class="tag tag-green">25</span></td><td>Hindi Student Guide</td></tr>
-      <tr><td>12</td><td>&#2335;&#2375;&#2354;&#2368;&#2327;&#2381;&#2352;&#2366;&#2350; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>Telegram se paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">9.9K</td><td><span class="tag tag-green">20</span></td><td>Hindi Platform Guide</td></tr>
-      <tr><td>13</td><td>&#2354;&#2367;&#2306;&#2325; &#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>link share karke paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">8.1K</td><td><span class="tag tag-green">18</span></td><td>Hindi GrabCash Tutorial</td></tr>
-      <tr><td>14</td><td>EarnKaro &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>EarnKaro se paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">8.1K</td><td><span class="tag tag-green">22</span></td><td>Hindi Competitor Comparison</td></tr>
-      <tr><td>15</td><td>&#2309;&#2350;&#2375;&#2395;&#2364;&#2344; &#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2346;&#2381;&#2352;&#2379;&#2327;&#2381;&#2352;&#2366;&#2350;</td><td>Amazon affiliate program Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">6.6K</td><td><span class="tag tag-green">25</span></td><td>Hindi Brand Guide</td></tr>
-      <tr><td>16</td><td>&#2311;&#2306;&#2360;&#2381;&#2335;&#2366;&#2327;&#2381;&#2352;&#2366;&#2350; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>Instagram se paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">12.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Platform Guide</td></tr>
-      <tr><td>17</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2325;&#2375; &#2340;&#2352;&#2368;&#2325;&#2375;</td><td>paise kamane ke tarike</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">33.1K</td><td><span class="tag tag-yellow">42</span></td><td>Hindi Methods Listicle</td></tr>
-      <tr><td>18</td><td>GrabCash &#2320;&#2346; &#2325;&#2376;&#2360;&#2375; &#2311;&#2360;&#2381;&#2340;&#2375;&#2350;&#2366;&#2354; &#2325;&#2352;&#2375;&#2306;</td><td>GrabCash app kaise use kare</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">500</td><td><span class="tag tag-green">5</span></td><td>Hindi App Tutorial (branded)</td></tr>
-      <tr><td>19</td><td>&#2325;&#2376;&#2358;&#2348;&#2376;&#2325; &#2320;&#2346;</td><td>cashback app Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">9.9K</td><td><span class="tag tag-yellow">32</span></td><td>Hindi Cashback Listicle</td></tr>
-      <tr><td>20</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2348;&#2367;&#2395;&#2364;&#2344;&#2375;&#2360;</td><td>online business Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">27.1K</td><td><span class="tag tag-orange">48</span></td><td>Hindi Business Guide</td></tr>
-      <tr><td>21</td><td>&#2347;&#2381;&#2354;&#2367;&#2346;&#2325;&#2366;&#2352;&#2381;&#2335; &#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335;</td><td>Flipkart affiliate Hindi</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">4.4K</td><td><span class="tag tag-green">20</span></td><td>Hindi Brand Guide</td></tr>
-      <tr><td>22</td><td>&#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2325;&#2350;&#2366;&#2312;</td><td>share karke kamai</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">5.4K</td><td><span class="tag tag-green">15</span></td><td>Hindi GrabCash Guide</td></tr>
-      <tr><td>23</td><td>&#2320;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2354;&#2367;&#2306;&#2325; &#2325;&#2376;&#2360;&#2375; &#2348;&#2344;&#2366;&#2319;&#2306;</td><td>affiliate link kaise banaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">2.9K</td><td><span class="tag tag-green">10</span></td><td>Hindi Tutorial</td></tr>
-      <tr><td>24</td><td>&#2325;&#2370;&#2346;&#2344; &#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>coupon share karke paise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">1.9K</td><td><span class="tag tag-green">10</span></td><td>Hindi GrabCash Tutorial</td></tr>
-      <tr><td>25</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2344;&#2367;&#2325;&#2366;&#2354;&#2375;&#2306; &#2320;&#2346; &#2360;&#2375;</td><td>paise kaise nikale app se</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">3.6K</td><td><span class="tag tag-green">12</span></td><td>Hindi Withdrawal Guide</td></tr>
-      <tr><td>26</td><td>&#2360;&#2348;&#2360;&#2375; &#2395;&#2381;&#2351;&#2366;&#2342;&#2366; &#2346;&#2376;&#2360;&#2375; &#2342;&#2375;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>sabse zyada paise dene wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">14.8K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Highest-Paying Listicle</td></tr>
-      <tr><td>27</td><td>&#2346;&#2375;&#2335;&#2368;&#2319;&#2350; &#2325;&#2376;&#2358; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>Paytm cash kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">9.9K</td><td><span class="tag tag-yellow">30</span></td><td>Hindi Paytm-Payout Listicle</td></tr>
-      <tr><td>28</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2325;&#2350;&#2366;&#2312; &#2325;&#2375; &#2340;&#2352;&#2368;&#2325;&#2375; 2025</td><td>online kamai ke tarike 2025</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">6.6K</td><td><span class="tag tag-green">25</span></td><td>Hindi Annual Roundup</td></tr>
-      <tr><td>29</td><td>&#2361;&#2366;&#2313;&#2360;&#2357;&#2366;&#2311;&#2347; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>housewife paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">4.4K</td><td><span class="tag tag-green">18</span></td><td>Hindi Audience Guide</td></tr>
-      <tr><td>30</td><td>&#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2350;&#2366;&#2352;&#2381;&#2325;&#2375;&#2335;&#2367;&#2306;&#2327; &#2325;&#2376;&#2360;&#2375; &#2358;&#2369;&#2352;&#2370; &#2325;&#2352;&#2375;&#2306;</td><td>affiliate marketing kaise shuru kare</td><td style="font-family:'JetBrains Mono';color:var(--cyan);">5.4K</td><td><span class="tag tag-green">22</span></td><td>Hindi Beginner Guide</td></tr>
+      <tr><td>1</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>online paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">450K</td><td><span class="tag tag-orange">55</span></td><td>Hindi Pillar Page (5,000 words)</td></tr>
+      <tr><td>2</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">246K</td><td><span class="tag tag-orange">50</span></td><td>Hindi App Listicle</td></tr>
+      <tr><td>3</td><td>&#2328;&#2352; &#2348;&#2376;&#2336;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>ghar baithe paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">165K</td><td><span class="tag tag-yellow">45</span></td><td>Hindi How-To Guide</td></tr>
+      <tr><td>4</td><td>&#2350;&#2379;&#2348;&#2366;&#2311;&#2354; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>mobile se paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">135K</td><td><span class="tag tag-yellow">42</span></td><td>Hindi Mobile Guide</td></tr>
+      <tr><td>5</td><td>&#2352;&#2379;&#2395;&#2364; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>roz paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">40.5K</td><td><span class="tag tag-yellow">38</span></td><td>Hindi Daily Earning Guide</td></tr>
+      <tr><td>6</td><td>&#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2350;&#2366;&#2352;&#2381;&#2325;&#2375;&#2335;&#2367;&#2306;&#2327; &#2325;&#2381;&#2351;&#2366; &#2361;&#2376;</td><td>affiliate marketing kya hai</td><td style="font-family:'Poppins';color:var(--cyan);">33.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Explainer Pillar</td></tr>
+      <tr><td>7</td><td>&#2348;&#2367;&#2344;&#2366; &#2346;&#2376;&#2360;&#2375; &#2354;&#2327;&#2366;&#2319; &#2325;&#2350;&#2366;&#2312;</td><td>bina paise lagaye kamai</td><td style="font-family:'Poppins';color:var(--cyan);">27.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi No-Investment Guide</td></tr>
+      <tr><td>8</td><td>&#2357;&#2381;&#2361;&#2366;&#2335;&#2381;&#2360;&#2319;&#2346; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>WhatsApp se paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">22.2K</td><td><span class="tag tag-yellow">32</span></td><td>Hindi Platform Guide</td></tr>
+      <tr><td>9</td><td>&#2347;&#2381;&#2352;&#2368; &#2350;&#2375;&#2306; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>free mein paise kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">22.2K</td><td><span class="tag tag-yellow">38</span></td><td>Hindi Free Apps Listicle</td></tr>
+      <tr><td>10</td><td>&#2352;&#2375;&#2347;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>refer karke paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">18.1K</td><td><span class="tag tag-yellow">30</span></td><td>Hindi Refer-Earn Guide</td></tr>
+      <tr><td>11</td><td>&#2360;&#2381;&#2335;&#2370;&#2337;&#2375;&#2306;&#2335; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>student paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">14.8K</td><td><span class="tag tag-green">25</span></td><td>Hindi Student Guide</td></tr>
+      <tr><td>12</td><td>&#2335;&#2375;&#2354;&#2368;&#2327;&#2381;&#2352;&#2366;&#2350; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>Telegram se paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">9.9K</td><td><span class="tag tag-green">20</span></td><td>Hindi Platform Guide</td></tr>
+      <tr><td>13</td><td>&#2354;&#2367;&#2306;&#2325; &#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>link share karke paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">8.1K</td><td><span class="tag tag-green">18</span></td><td>Hindi GrabCash Tutorial</td></tr>
+      <tr><td>14</td><td>EarnKaro &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>EarnKaro se paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">8.1K</td><td><span class="tag tag-green">22</span></td><td>Hindi Competitor Comparison</td></tr>
+      <tr><td>15</td><td>&#2309;&#2350;&#2375;&#2395;&#2364;&#2344; &#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2346;&#2381;&#2352;&#2379;&#2327;&#2381;&#2352;&#2366;&#2350;</td><td>Amazon affiliate program Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">6.6K</td><td><span class="tag tag-green">25</span></td><td>Hindi Brand Guide</td></tr>
+      <tr><td>16</td><td>&#2311;&#2306;&#2360;&#2381;&#2335;&#2366;&#2327;&#2381;&#2352;&#2366;&#2350; &#2360;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>Instagram se paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">12.1K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Platform Guide</td></tr>
+      <tr><td>17</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2344;&#2375; &#2325;&#2375; &#2340;&#2352;&#2368;&#2325;&#2375;</td><td>paise kamane ke tarike</td><td style="font-family:'Poppins';color:var(--cyan);">33.1K</td><td><span class="tag tag-yellow">42</span></td><td>Hindi Methods Listicle</td></tr>
+      <tr><td>18</td><td>GrabCash &#2320;&#2346; &#2325;&#2376;&#2360;&#2375; &#2311;&#2360;&#2381;&#2340;&#2375;&#2350;&#2366;&#2354; &#2325;&#2352;&#2375;&#2306;</td><td>GrabCash app kaise use kare</td><td style="font-family:'Poppins';color:var(--cyan);">500</td><td><span class="tag tag-green">5</span></td><td>Hindi App Tutorial (branded)</td></tr>
+      <tr><td>19</td><td>&#2325;&#2376;&#2358;&#2348;&#2376;&#2325; &#2320;&#2346;</td><td>cashback app Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">9.9K</td><td><span class="tag tag-yellow">32</span></td><td>Hindi Cashback Listicle</td></tr>
+      <tr><td>20</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2348;&#2367;&#2395;&#2364;&#2344;&#2375;&#2360;</td><td>online business Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">27.1K</td><td><span class="tag tag-orange">48</span></td><td>Hindi Business Guide</td></tr>
+      <tr><td>21</td><td>&#2347;&#2381;&#2354;&#2367;&#2346;&#2325;&#2366;&#2352;&#2381;&#2335; &#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335;</td><td>Flipkart affiliate Hindi</td><td style="font-family:'Poppins';color:var(--cyan);">4.4K</td><td><span class="tag tag-green">20</span></td><td>Hindi Brand Guide</td></tr>
+      <tr><td>22</td><td>&#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2325;&#2350;&#2366;&#2312;</td><td>share karke kamai</td><td style="font-family:'Poppins';color:var(--cyan);">5.4K</td><td><span class="tag tag-green">15</span></td><td>Hindi GrabCash Guide</td></tr>
+      <tr><td>23</td><td>&#2320;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2354;&#2367;&#2306;&#2325; &#2325;&#2376;&#2360;&#2375; &#2348;&#2344;&#2366;&#2319;&#2306;</td><td>affiliate link kaise banaye</td><td style="font-family:'Poppins';color:var(--cyan);">2.9K</td><td><span class="tag tag-green">10</span></td><td>Hindi Tutorial</td></tr>
+      <tr><td>24</td><td>&#2325;&#2370;&#2346;&#2344; &#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2325;&#2375; &#2346;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>coupon share karke paise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">1.9K</td><td><span class="tag tag-green">10</span></td><td>Hindi GrabCash Tutorial</td></tr>
+      <tr><td>25</td><td>&#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2344;&#2367;&#2325;&#2366;&#2354;&#2375;&#2306; &#2320;&#2346; &#2360;&#2375;</td><td>paise kaise nikale app se</td><td style="font-family:'Poppins';color:var(--cyan);">3.6K</td><td><span class="tag tag-green">12</span></td><td>Hindi Withdrawal Guide</td></tr>
+      <tr><td>26</td><td>&#2360;&#2348;&#2360;&#2375; &#2395;&#2381;&#2351;&#2366;&#2342;&#2366; &#2346;&#2376;&#2360;&#2375; &#2342;&#2375;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>sabse zyada paise dene wala app</td><td style="font-family:'Poppins';color:var(--cyan);">14.8K</td><td><span class="tag tag-yellow">35</span></td><td>Hindi Highest-Paying Listicle</td></tr>
+      <tr><td>27</td><td>&#2346;&#2375;&#2335;&#2368;&#2319;&#2350; &#2325;&#2376;&#2358; &#2325;&#2350;&#2366;&#2344;&#2375; &#2357;&#2366;&#2354;&#2366; &#2320;&#2346;</td><td>Paytm cash kamane wala app</td><td style="font-family:'Poppins';color:var(--cyan);">9.9K</td><td><span class="tag tag-yellow">30</span></td><td>Hindi Paytm-Payout Listicle</td></tr>
+      <tr><td>28</td><td>&#2321;&#2344;&#2354;&#2366;&#2311;&#2344; &#2325;&#2350;&#2366;&#2312; &#2325;&#2375; &#2340;&#2352;&#2368;&#2325;&#2375; 2025</td><td>online kamai ke tarike 2025</td><td style="font-family:'Poppins';color:var(--cyan);">6.6K</td><td><span class="tag tag-green">25</span></td><td>Hindi Annual Roundup</td></tr>
+      <tr><td>29</td><td>&#2361;&#2366;&#2313;&#2360;&#2357;&#2366;&#2311;&#2347; &#2346;&#2376;&#2360;&#2375; &#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2366;&#2319;</td><td>housewife paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--cyan);">4.4K</td><td><span class="tag tag-green">18</span></td><td>Hindi Audience Guide</td></tr>
+      <tr><td>30</td><td>&#2319;&#2347;&#2367;&#2354;&#2367;&#2319;&#2335; &#2350;&#2366;&#2352;&#2381;&#2325;&#2375;&#2335;&#2367;&#2306;&#2327; &#2325;&#2376;&#2360;&#2375; &#2358;&#2369;&#2352;&#2370; &#2325;&#2352;&#2375;&#2306;</td><td>affiliate marketing kaise shuru kare</td><td style="font-family:'Poppins';color:var(--cyan);">5.4K</td><td><span class="tag tag-green">22</span></td><td>Hindi Beginner Guide</td></tr>
     </table>
   </div>
 
@@ -2108,26 +2114,26 @@ sitemap_index.xml
   <div class="table-wrap">
     <table>
       <tr><th>#</th><th>EarnKaro Page</th><th>Primary Keyword</th><th>Est. Traffic</th><th>GrabCash Status</th><th>Action Required</th></tr>
-      <tr><td>1</td><td>Best Earning Apps in India</td><td>earning apps</td><td style="font-family:'JetBrains Mono';color:var(--orange);">35,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create superior 3,000-word listicle</td></tr>
-      <tr><td>2</td><td>How to Earn Money Online</td><td>earn money online</td><td style="font-family:'JetBrains Mono';color:var(--orange);">28,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create 5,000-word pillar page</td></tr>
-      <tr><td>3</td><td>Refer and Earn Apps</td><td>refer and earn</td><td style="font-family:'JetBrains Mono';color:var(--orange);">18,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create with 20+ app listings</td></tr>
-      <tr><td>4</td><td>What is Affiliate Marketing</td><td>affiliate marketing</td><td style="font-family:'JetBrains Mono';color:var(--orange);">15,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comprehensive beginner guide</td></tr>
-      <tr><td>5</td><td>How to Use EarnKaro (Tutorial)</td><td>EarnKaro app</td><td style="font-family:'JetBrains Mono';color:var(--orange);">12,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create GrabCash tutorial + EarnKaro comparison</td></tr>
-      <tr><td>6</td><td>Share and Earn Money</td><td>share and earn</td><td style="font-family:'JetBrains Mono';color:var(--orange);">10,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create with GrabCash as primary example</td></tr>
-      <tr><td>7</td><td>Amazon Affiliate Program Guide</td><td>Amazon affiliate India</td><td style="font-family:'JetBrains Mono';color:var(--orange);">9,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create detailed brand guide + GrabCash angle</td></tr>
-      <tr><td>8</td><td>Cashback Apps India</td><td>cashback apps</td><td style="font-family:'JetBrains Mono';color:var(--orange);">8,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comparison listicle</td></tr>
-      <tr><td>9</td><td>Online Paise Kaise Kamaye (Hindi)</td><td>online paise kaise kamaye</td><td style="font-family:'JetBrains Mono';color:var(--orange);">7,500</td><td><span class="tag tag-red">No Hindi content</span></td><td>Create Hindi pillar page</td></tr>
-      <tr><td>10</td><td>Flipkart Affiliate Program</td><td>Flipkart affiliate</td><td style="font-family:'JetBrains Mono';color:var(--orange);">6,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create detailed brand guide</td></tr>
-      <tr><td>11</td><td>Best Earning Apps for Students</td><td>earning apps students</td><td style="font-family:'JetBrains Mono';color:var(--orange);">5,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create student-targeted listicle</td></tr>
-      <tr><td>12</td><td>Affiliate Marketing Tips</td><td>affiliate marketing tips</td><td style="font-family:'JetBrains Mono';color:var(--orange);">4,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create actionable tips post</td></tr>
-      <tr><td>13</td><td>Money Earning Games</td><td>earning games</td><td style="font-family:'JetBrains Mono';color:var(--orange);">4,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create (adjacent audience capture)</td></tr>
-      <tr><td>14</td><td>Earn from Instagram</td><td>Instagram se paisa kamaye</td><td style="font-family:'JetBrains Mono';color:var(--orange);">3,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create platform-specific guide</td></tr>
-      <tr><td>15</td><td>EarnKaro Commission Rates</td><td>EarnKaro commission</td><td style="font-family:'JetBrains Mono';color:var(--orange);">3,200</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comparison table post</td></tr>
-      <tr><td>16</td><td>Paise Kamane Wala App (Hindi)</td><td>paise kamane wala app</td><td style="font-family:'JetBrains Mono';color:var(--orange);">3,000</td><td><span class="tag tag-red">No Hindi content</span></td><td>Create Hindi app listicle</td></tr>
-      <tr><td>17</td><td>WhatsApp Se Paise Kamaye</td><td>WhatsApp earning</td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create Hindi WhatsApp guide</td></tr>
-      <tr><td>18</td><td>Passive Income Ideas India</td><td>passive income India</td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comprehensive listicle</td></tr>
-      <tr><td>19</td><td>Is EarnKaro Legit/Safe</td><td>is EarnKaro safe</td><td style="font-family:'JetBrains Mono';color:var(--orange);">2,200</td><td><span class="tag tag-red">No equivalent</span></td><td>Create trust-building alternative post</td></tr>
-      <tr><td>20</td><td>EarnKaro vs Meesho</td><td>EarnKaro vs Meesho</td><td style="font-family:'JetBrains Mono';color:var(--orange);">1,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create 3-way comparison with GrabCash</td></tr>
+      <tr><td>1</td><td>Best Earning Apps in India</td><td>earning apps</td><td style="font-family:'Poppins';color:var(--orange);">35,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create superior 3,000-word listicle</td></tr>
+      <tr><td>2</td><td>How to Earn Money Online</td><td>earn money online</td><td style="font-family:'Poppins';color:var(--orange);">28,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create 5,000-word pillar page</td></tr>
+      <tr><td>3</td><td>Refer and Earn Apps</td><td>refer and earn</td><td style="font-family:'Poppins';color:var(--orange);">18,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create with 20+ app listings</td></tr>
+      <tr><td>4</td><td>What is Affiliate Marketing</td><td>affiliate marketing</td><td style="font-family:'Poppins';color:var(--orange);">15,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comprehensive beginner guide</td></tr>
+      <tr><td>5</td><td>How to Use EarnKaro (Tutorial)</td><td>EarnKaro app</td><td style="font-family:'Poppins';color:var(--orange);">12,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create GrabCash tutorial + EarnKaro comparison</td></tr>
+      <tr><td>6</td><td>Share and Earn Money</td><td>share and earn</td><td style="font-family:'Poppins';color:var(--orange);">10,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create with GrabCash as primary example</td></tr>
+      <tr><td>7</td><td>Amazon Affiliate Program Guide</td><td>Amazon affiliate India</td><td style="font-family:'Poppins';color:var(--orange);">9,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create detailed brand guide + GrabCash angle</td></tr>
+      <tr><td>8</td><td>Cashback Apps India</td><td>cashback apps</td><td style="font-family:'Poppins';color:var(--orange);">8,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comparison listicle</td></tr>
+      <tr><td>9</td><td>Online Paise Kaise Kamaye (Hindi)</td><td>online paise kaise kamaye</td><td style="font-family:'Poppins';color:var(--orange);">7,500</td><td><span class="tag tag-red">No Hindi content</span></td><td>Create Hindi pillar page</td></tr>
+      <tr><td>10</td><td>Flipkart Affiliate Program</td><td>Flipkart affiliate</td><td style="font-family:'Poppins';color:var(--orange);">6,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create detailed brand guide</td></tr>
+      <tr><td>11</td><td>Best Earning Apps for Students</td><td>earning apps students</td><td style="font-family:'Poppins';color:var(--orange);">5,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create student-targeted listicle</td></tr>
+      <tr><td>12</td><td>Affiliate Marketing Tips</td><td>affiliate marketing tips</td><td style="font-family:'Poppins';color:var(--orange);">4,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create actionable tips post</td></tr>
+      <tr><td>13</td><td>Money Earning Games</td><td>earning games</td><td style="font-family:'Poppins';color:var(--orange);">4,000</td><td><span class="tag tag-red">No equivalent</span></td><td>Create (adjacent audience capture)</td></tr>
+      <tr><td>14</td><td>Earn from Instagram</td><td>Instagram se paisa kamaye</td><td style="font-family:'Poppins';color:var(--orange);">3,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create platform-specific guide</td></tr>
+      <tr><td>15</td><td>EarnKaro Commission Rates</td><td>EarnKaro commission</td><td style="font-family:'Poppins';color:var(--orange);">3,200</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comparison table post</td></tr>
+      <tr><td>16</td><td>Paise Kamane Wala App (Hindi)</td><td>paise kamane wala app</td><td style="font-family:'Poppins';color:var(--orange);">3,000</td><td><span class="tag tag-red">No Hindi content</span></td><td>Create Hindi app listicle</td></tr>
+      <tr><td>17</td><td>WhatsApp Se Paise Kamaye</td><td>WhatsApp earning</td><td style="font-family:'Poppins';color:var(--orange);">2,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create Hindi WhatsApp guide</td></tr>
+      <tr><td>18</td><td>Passive Income Ideas India</td><td>passive income India</td><td style="font-family:'Poppins';color:var(--orange);">2,500</td><td><span class="tag tag-red">No equivalent</span></td><td>Create comprehensive listicle</td></tr>
+      <tr><td>19</td><td>Is EarnKaro Legit/Safe</td><td>is EarnKaro safe</td><td style="font-family:'Poppins';color:var(--orange);">2,200</td><td><span class="tag tag-red">No equivalent</span></td><td>Create trust-building alternative post</td></tr>
+      <tr><td>20</td><td>EarnKaro vs Meesho</td><td>EarnKaro vs Meesho</td><td style="font-family:'Poppins';color:var(--orange);">1,800</td><td><span class="tag tag-red">No equivalent</span></td><td>Create 3-way comparison with GrabCash</td></tr>
     </table>
   </div>
 
@@ -2527,18 +2533,18 @@ sitemap_index.xml
   <div class="table-wrap">
     <table>
       <tr><th>Month</th><th>Cumulative Content</th><th>Target Traffic</th><th>Top 100 KWs</th><th>Top 10 KWs</th><th>DA</th><th>Milestone</th></tr>
-      <tr><td><strong>Month 1</strong></td><td>51 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">1,000</td><td>100</td><td>5</td><td>18</td><td>All pillar pages live</td></tr>
-      <tr><td><strong>Month 2</strong></td><td>59 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">2,500</td><td>250</td><td>12</td><td>20</td><td>First guest posts live</td></tr>
-      <tr><td><strong>Month 3</strong></td><td>89+ pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">5,000</td><td>500</td><td>25</td><td>22</td><td>Hindi content indexed</td></tr>
-      <tr><td><strong>Month 4</strong></td><td>120 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">15,000</td><td>800</td><td>40</td><td>25</td><td>First featured snippets</td></tr>
-      <tr><td><strong>Month 5</strong></td><td>150 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">30,000</td><td>1,100</td><td>60</td><td>27</td><td>Tier 2 keywords ranking</td></tr>
-      <tr><td><strong>Month 6</strong></td><td>180 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">50,000</td><td>1,400</td><td>80</td><td>30</td><td>Beating GoPaisa traffic</td></tr>
-      <tr><td><strong>Month 7</strong></td><td>210 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">70,000</td><td>1,700</td><td>100</td><td>31</td><td>Pillar pages in top 5</td></tr>
-      <tr><td><strong>Month 8</strong></td><td>240 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">90,000</td><td>1,900</td><td>120</td><td>32</td><td>Hindi drives 25% traffic</td></tr>
-      <tr><td><strong>Month 9</strong></td><td>270 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">110,000</td><td>2,100</td><td>140</td><td>33</td><td>Challenging EarnKaro</td></tr>
-      <tr><td><strong>Month 10</strong></td><td>300 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">140,000</td><td>2,300</td><td>160</td><td>34</td><td>Content flywheel running</td></tr>
-      <tr><td><strong>Month 11</strong></td><td>330 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">170,000</td><td>2,500</td><td>180</td><td>35</td><td>Top 3 for earning apps</td></tr>
-      <tr><td><strong>Month 12</strong></td><td>360 pages</td><td style="font-family:'JetBrains Mono';color:var(--green);">200,000</td><td>2,800</td><td>200</td><td>35+</td><td><strong>200K target hit</strong></td></tr>
+      <tr><td><strong>Month 1</strong></td><td>51 pages</td><td style="font-family:'Poppins';color:var(--green);">1,000</td><td>100</td><td>5</td><td>18</td><td>All pillar pages live</td></tr>
+      <tr><td><strong>Month 2</strong></td><td>59 pages</td><td style="font-family:'Poppins';color:var(--green);">2,500</td><td>250</td><td>12</td><td>20</td><td>First guest posts live</td></tr>
+      <tr><td><strong>Month 3</strong></td><td>89+ pages</td><td style="font-family:'Poppins';color:var(--green);">5,000</td><td>500</td><td>25</td><td>22</td><td>Hindi content indexed</td></tr>
+      <tr><td><strong>Month 4</strong></td><td>120 pages</td><td style="font-family:'Poppins';color:var(--green);">15,000</td><td>800</td><td>40</td><td>25</td><td>First featured snippets</td></tr>
+      <tr><td><strong>Month 5</strong></td><td>150 pages</td><td style="font-family:'Poppins';color:var(--green);">30,000</td><td>1,100</td><td>60</td><td>27</td><td>Tier 2 keywords ranking</td></tr>
+      <tr><td><strong>Month 6</strong></td><td>180 pages</td><td style="font-family:'Poppins';color:var(--green);">50,000</td><td>1,400</td><td>80</td><td>30</td><td>Beating GoPaisa traffic</td></tr>
+      <tr><td><strong>Month 7</strong></td><td>210 pages</td><td style="font-family:'Poppins';color:var(--green);">70,000</td><td>1,700</td><td>100</td><td>31</td><td>Pillar pages in top 5</td></tr>
+      <tr><td><strong>Month 8</strong></td><td>240 pages</td><td style="font-family:'Poppins';color:var(--green);">90,000</td><td>1,900</td><td>120</td><td>32</td><td>Hindi drives 25% traffic</td></tr>
+      <tr><td><strong>Month 9</strong></td><td>270 pages</td><td style="font-family:'Poppins';color:var(--green);">110,000</td><td>2,100</td><td>140</td><td>33</td><td>Challenging EarnKaro</td></tr>
+      <tr><td><strong>Month 10</strong></td><td>300 pages</td><td style="font-family:'Poppins';color:var(--green);">140,000</td><td>2,300</td><td>160</td><td>34</td><td>Content flywheel running</td></tr>
+      <tr><td><strong>Month 11</strong></td><td>330 pages</td><td style="font-family:'Poppins';color:var(--green);">170,000</td><td>2,500</td><td>180</td><td>35</td><td>Top 3 for earning apps</td></tr>
+      <tr><td><strong>Month 12</strong></td><td>360 pages</td><td style="font-family:'Poppins';color:var(--green);">200,000</td><td>2,800</td><td>200</td><td>35+</td><td><strong>200K target hit</strong></td></tr>
     </table>
   </div>
 

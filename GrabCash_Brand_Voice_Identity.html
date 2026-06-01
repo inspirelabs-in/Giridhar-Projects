@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrabCash — Brand Voice & Identity System</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
   --green: #0dcf1a;
   --green-dark: #0ab315;
   --green-glow: rgba(13,207,26,0.15);
-  --dark: #0a0a0a;
-  --dark-2: #111111;
-  --dark-3: #1a1a1a;
-  --dark-4: #222222;
-  --text: #e8e8e8;
-  --text-dim: #888888;
-  --card-border: rgba(255,255,255,0.06);
-  --card-bg: rgba(255,255,255,0.03);
+  --dark: #ffffff;
+  --dark-2: #f7fbff;
+  --dark-3: #f0f6ff;
+  --dark-4: #e4f3ff;
+  --text: #00123b;
+  --text-dim: #5c6579;
+  --card-border: rgba(0, 18, 59, 0.1);
+  --card-bg: #ffffff;
   --red: #ef4444;
   --amber: #f59e0b;
   --blue: #3b82f6;
@@ -29,7 +29,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--dark);
+  background: var(--dark); /* now #ffffff */
   color: var(--text);
   line-height: 1.7;
   font-size: 15px;
@@ -39,7 +39,7 @@ body {
 .top-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: 60px;
-  background: rgba(10,10,10,0.85);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--card-border);
@@ -128,7 +128,7 @@ body {
 .page-header .meta-item {
   font-size: 12px;
   color: var(--text-dim);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 .page-header .meta-item span {
   color: var(--green);
@@ -151,7 +151,7 @@ body {
 .section-num {
   font-size: 12px;
   font-weight: 700;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   color: var(--green);
   background: var(--green-glow);
   border: 1px solid rgba(13,207,26,0.2);
@@ -276,7 +276,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   border: 1px solid var(--card-border);
   border-radius: 8px;
   padding: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
   color: var(--text-dim);
   overflow-x: auto;
@@ -352,7 +352,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   font-size: 28px;
   font-weight: 800;
   color: var(--green);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 .stat-card .stat-label {
   font-size: 12px;
@@ -385,7 +385,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 }
 .swatch-hex {
   font-size: 10px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-dim);
 }
 
@@ -474,7 +474,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .persona-card .persona-demo {
   font-size: 12px;
   color: var(--text-dim);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 12px;
 }
 
@@ -498,7 +498,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   gap: 8px;
 }
 .template-block .template-body {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
   color: var(--text-dim);
   line-height: 1.8;
@@ -558,7 +558,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .score-value {
   font-size: 12px;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   color: var(--green);
   min-width: 36px;
   text-align: right;
@@ -618,6 +618,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
     <span class="meta-item">Owner <span>Brand & Growth Team</span></span>
   </div>
 </header>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
+  </div>
+
 
 <!-- Key Stats -->
 <div class="stat-row">
@@ -679,7 +683,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 
 <span class="var">GRABCASH IS THE</span> affiliate earning platform
 
-<span class="var">THAT</span> lets you earn commissions from 500+ brands and withdraw real cash to your UPI — instantly
+<span class="var">THAT</span> lets you earn commissions from 91 retailers (32 active) and withdraw real cash to your UPI — instantly
 
 <span class="var">UNLIKE</span> EarnKaro (complicated dashboard, delayed payouts) or CashKaro (focused on personal cashback, not earning)
 
@@ -1538,7 +1542,7 @@ Hook the reader. Lead with the earning outcome or emotional trigger.
 
 <span class="var">SUBHEAD</span> (15-25 words)
 Explain the mechanism. Bridge curiosity to understanding.
-"GrabCash turns your WhatsApp deal shares into real commissions from 500+ brands — withdrawn instantly via UPI."
+"GrabCash turns your WhatsApp deal shares into real commissions from 91 retailers (32 active) — withdrawn instantly via UPI."
 
 <span class="var">BODY</span> (50-150 words, varies by channel)
 Provide proof, details, and specifics. Use numbers, user stories, and clear steps.
@@ -1556,7 +1560,7 @@ One clear action. Use action verbs. Include the benefit.
       <tr><td>[Earn] + [Amount] + [Activity]</td><td>"Earn ₹200/Day Sharing Amazon Deals"</td><td>Acquisition ads, landing pages</td></tr>
       <tr><td>[User Name] + [Achievement]</td><td>"Priya Earned ₹8,000 Last Month on GrabCash"</td><td>Social proof posts, testimonials</td></tr>
       <tr><td>[Question] + [Answer]</td><td>"Sharing Deals for Free? Aur Kitna?"</td><td>Instagram Reels, Telegram hooks</td></tr>
-      <tr><td>[Number] + [Insight]</td><td>"500+ Brands. 1 Link. Instant Cash."</td><td>App store, brand awareness</td></tr>
+      <tr><td>[Number] + [Insight]</td><td>"91 retailers (32 active). 1 Link. Instant Cash."</td><td>App store, brand awareness</td></tr>
       <tr><td>[FOMO] + [Opportunity]</td><td>"Flipkart Sale Starts Tonight — Top Earners Made ₹12K Last Time"</td><td>Event-driven campaigns</td></tr>
       <tr><td>[Contrast] + [Resolution]</td><td>"You Share Deals Daily. Only Some People Get Paid For It."</td><td>Retargeting ads, re-engagement</td></tr>
     </table>
@@ -1768,7 +1772,7 @@ One clear action. Use action verbs. Include the benefit.
     <div class="quote-block">"You review products, recommend brands, and drive purchases every day. GrabCash turns every review into earning — no 50K follower requirement, no brand approval wait."</div>
     <p style="font-size:13px;margin-bottom:8px;"><strong>Objection Handling:</strong></p>
     <ul style="font-size:13px;">
-      <li>"Amazon Associates already exists" → "GrabCash covers 500+ brands in one place (not just Amazon). One dashboard, one payout."</li>
+      <li>"Amazon Associates already exists" → "GrabCash covers 91 retailers (32 active) in one place (not just Amazon). One dashboard, one payout."</li>
       <li>"Will it look spammy?" → "GrabCash links look clean. Add them to your bio, story swipe-ups, and pinned comments naturally."</li>
       <li>"I need analytics" → "Our dashboard shows clicks, conversions, and earnings per link. Perfect for understanding what your audience actually buys."</li>
     </ul>
@@ -1837,7 +1841,7 @@ One clear action. Use action verbs. Include the benefit.
         <td>1</td>
         <td>"Is this a scam?"</td>
         <td>Trust, legitimacy</td>
-        <td>"GrabCash is by InspireLabs Solutions Ltd — the same company that runs GrabOn.in (India's #1 coupon platform, 50M+ users, 10+ years). We've paid out ₹10L+ to 5,000+ users. Check our Play Store reviews — real people, real earnings."</td>
+        <td>"GrabCash is by InspireLabs Solutions Ltd — the same company that runs GrabOn.in (India's #1 coupon platform, 50M+ users, 10+ years). We've paid out ₹10L+ to 26,131 registered users. Check our Play Store reviews — real people, real earnings."</td>
       </tr>
       <tr>
         <td>2</td>
@@ -2073,7 +2077,7 @@ One clear action. Use action verbs. Include the benefit.
     <div class="do-block">
       <span class="label">Good Hinglish</span>
       <p>"Yeh deal share karo — ₹85 ka earning milega"</p>
-      <p>"Bhai, GrabCash pe 500+ brands hain. Link banao, share karo, paisa kamao."</p>
+      <p>"Bhai, GrabCash pe 91 retailers (32 active) hain. Link banao, share karo, paisa kamao."</p>
       <p>"Aaj ka top deal: boAt earbuds ₹799 pe. Commission: ₹35. Go go go!"</p>
       <p>"Tera pehla earning aa gaya! ₹28 confirm ho gaya."</p>
     </div>
@@ -2357,22 +2361,22 @@ One clear action. Use action verbs. Include the benefit.
       <div class="swatch-hex">#0AB315</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#0a0a0a;"></div>
+      <div class="swatch-color" style="background:#ffffff;"></div>
       <div class="swatch-label">Black</div>
       <div class="swatch-hex">#0A0A0A</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#111111;"></div>
+      <div class="swatch-color" style="background:#f7fbff;"></div>
       <div class="swatch-label">Dark Surface</div>
-      <div class="swatch-hex">#111111</div>
+      <div class="swatch-hex">#f7fbff</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#1a1a1a;"></div>
+      <div class="swatch-color" style="background:#f0f6ff;"></div>
       <div class="swatch-label">Dark Card</div>
       <div class="swatch-hex">#1A1A1A</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#e8e8e8;"></div>
+      <div class="swatch-color" style="background:#00123b;"></div>
       <div class="swatch-label">Text Primary</div>
       <div class="swatch-hex">#E8E8E8</div>
     </div>
@@ -2391,19 +2395,19 @@ One clear action. Use action verbs. Include the benefit.
       <div class="swatch-hex">rgba(13,207,26,0.15)</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#222222;"></div>
+      <div class="swatch-color" style="background:#e4f3ff;"></div>
       <div class="swatch-label">Dark Elevated</div>
-      <div class="swatch-hex">#222222</div>
+      <div class="swatch-hex">#e4f3ff</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#888888;"></div>
+      <div class="swatch-color" style="background:#5c6579;"></div>
       <div class="swatch-label">Text Dim</div>
-      <div class="swatch-hex">#888888</div>
+      <div class="swatch-hex">#5c6579</div>
     </div>
     <div class="swatch">
-      <div class="swatch-color" style="background:#555555;"></div>
+      <div class="swatch-color" style="background:#8b95a8;"></div>
       <div class="swatch-label">Text Muted</div>
-      <div class="swatch-hex">#555555</div>
+      <div class="swatch-hex">#8b95a8</div>
     </div>
     <div class="swatch">
       <div class="swatch-color" style="background:#ffffff;"></div>
@@ -2450,7 +2454,7 @@ One clear action. Use action verbs. Include the benefit.
   <ul style="font-size:13px;color:var(--text-dim);">
     <li>GrabCash Green (#0DCF1A) is reserved for: CTAs, earnings amounts, positive states, brand accents</li>
     <li>Never use GrabCash Green as a background colour for large areas — it's an accent colour</li>
-    <li>Dark backgrounds (#0A0A0A to #222222) form the canvas. Content sits on glassmorphic cards.</li>
+    <li>Dark backgrounds (#0A0A0A to #e4f3ff) form the canvas. Content sits on glassmorphic cards.</li>
     <li>Text on dark backgrounds must be #E8E8E8 or lighter for accessibility (WCAG AA minimum)</li>
     <li>Earning amounts should always be in GrabCash Green — users should instantly spot money</li>
     <li>Error states use Red (#EF4444). Never use green for errors or red for earnings.</li>
@@ -2472,9 +2476,9 @@ One clear action. Use action verbs. Include the benefit.
       <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-dim);margin-top:8px;">Weights used: Light (300), Regular (400), Medium (500), SemiBold (600), Bold (700), ExtraBold (800), Black (900)</p>
     </div>
     <div style="background:var(--dark-3);border-radius:10px;padding:20px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;margin-bottom:8px;">JetBrains Mono</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim);">Secondary typeface for data, numbers, earnings displays, code blocks, commission rates, and technical content. Monospaced for tabular alignment.</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim);margin-top:8px;">Weights used: Regular (400), Medium (500), SemiBold (600)</p>
+      <p style="font-family:'Poppins',sans-serif;font-size:24px;font-weight:600;margin-bottom:8px;">Poppins</p>
+      <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--text-dim);">Secondary typeface for data, numbers, earnings displays, code blocks, commission rates, and technical content. Monospaced for tabular alignment.</p>
+      <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--text-dim);margin-top:8px;">Weights used: Regular (400), Medium (500), SemiBold (600)</p>
     </div>
   </div>
 
@@ -2492,9 +2496,9 @@ One clear action. Use action verbs. Include the benefit.
       <tr><td>Body Small</td><td>Inter</td><td>13px</td><td>400 (Regular)</td><td>1.6</td><td>Secondary text, captions</td></tr>
       <tr><td>Caption</td><td>Inter</td><td>12px</td><td>500 (Medium)</td><td>1.5</td><td>Labels, metadata, timestamps</td></tr>
       <tr><td>Overline</td><td>Inter</td><td>11px</td><td>600 (SemiBold)</td><td>1.4</td><td>Section labels, category tags (uppercase, tracked)</td></tr>
-      <tr><td>Data Display</td><td>JetBrains Mono</td><td>28px</td><td>600</td><td>1.2</td><td>Earning amounts, stats, counters</td></tr>
-      <tr><td>Data Body</td><td>JetBrains Mono</td><td>14px</td><td>400</td><td>1.6</td><td>Commission rates, percentages, table data</td></tr>
-      <tr><td>Code</td><td>JetBrains Mono</td><td>13px</td><td>400</td><td>1.8</td><td>API references, technical documentation</td></tr>
+      <tr><td>Data Display</td><td>Poppins</td><td>28px</td><td>600</td><td>1.2</td><td>Earning amounts, stats, counters</td></tr>
+      <tr><td>Data Body</td><td>Poppins</td><td>14px</td><td>400</td><td>1.6</td><td>Commission rates, percentages, table data</td></tr>
+      <tr><td>Code</td><td>Poppins</td><td>13px</td><td>400</td><td>1.8</td><td>API references, technical documentation</td></tr>
     </table>
   </div>
 </div>
@@ -2510,7 +2514,7 @@ One clear action. Use action verbs. Include the benefit.
   <ul style="font-size:13px;color:var(--text-dim);">
     <li><strong>Style:</strong> Outlined (not filled). 2px stroke weight. Rounded corners. Consistent 24x24px grid.</li>
     <li><strong>Library:</strong> Use Phosphor Icons (phosphoricons.com) as the primary icon library. Fallback: Lucide Icons.</li>
-    <li><strong>Colour:</strong> Icons are monocolor — use #888888 for default, #0DCF1A for active/selected, #E8E8E8 for high-emphasis.</li>
+    <li><strong>Colour:</strong> Icons are monocolor — use #5c6579 for default, #0DCF1A for active/selected, #E8E8E8 for high-emphasis.</li>
     <li><strong>Custom Icons:</strong> Earning-specific icons (₹ symbol, UPI logo, link chain) should be custom-designed in the same outlined style.</li>
   </ul>
 
@@ -2540,7 +2544,7 @@ One clear action. Use action verbs. Include the benefit.
   </div>
 
   <h4>Cards</h4>
-  <p style="font-size:13px;color:var(--text-dim);">All cards use glassmorphic style: semi-transparent background (rgba(255,255,255,0.03)), backdrop-filter: blur(20px), 1px border with rgba(255,255,255,0.06), 12px border-radius. Cards should feel like they float above the dark canvas.</p>
+  <p style="font-size:13px;color:var(--text-dim);">All cards use glassmorphic style: semi-transparent background (#ffffff), backdrop-filter: blur(20px), 1px border with rgba(0,18,59,0.1), 12px border-radius. Cards should feel like they float above the dark canvas.</p>
 
   <h4>Buttons</h4>
   <div class="table-wrap">
@@ -2548,7 +2552,7 @@ One clear action. Use action verbs. Include the benefit.
       <tr><th>Type</th><th>Background</th><th>Text</th><th>Border</th><th>Use Case</th></tr>
       <tr><td>Primary</td><td>#0DCF1A</td><td>#000000</td><td>None</td><td>Main CTAs: "Start Earning", "Withdraw", "Share Deal"</td></tr>
       <tr><td>Secondary</td><td>Transparent</td><td>#0DCF1A</td><td>1px solid #0DCF1A</td><td>Secondary actions: "Learn More", "View Details"</td></tr>
-      <tr><td>Ghost</td><td>Transparent</td><td>#888888</td><td>1px solid rgba(255,255,255,0.1)</td><td>Tertiary actions: "Cancel", "Skip"</td></tr>
+      <tr><td>Ghost</td><td>Transparent</td><td>#5c6579</td><td>1px solid rgba(255,255,255,0.1)</td><td>Tertiary actions: "Cancel", "Skip"</td></tr>
       <tr><td>Danger</td><td>#EF4444</td><td>#FFFFFF</td><td>None</td><td>Destructive actions: "Delete Account"</td></tr>
     </table>
   </div>
@@ -2560,7 +2564,7 @@ One clear action. Use action verbs. Include the benefit.
       <span style="font-size:12px;color:var(--text-dim);">Commission Confirmed</span>
       <span class="tag tag-green">Myntra</span>
     </div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:600;color:var(--green);">+₹180</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:32px;font-weight:600;color:var(--green);">+₹180</div>
     <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">Women's Kurta Set — Order #MYN4521</div>
     <div style="display:flex;gap:8px;margin-top:16px;">
       <span style="background:var(--green);color:#000;font-size:12px;font-weight:600;padding:6px 16px;border-radius:6px;">Withdraw Now</span>
@@ -2768,7 +2772,7 @@ Share this deal → Earn ₹35 per sale</div>
       <tr><th>Trigger</th><th>Bot Response</th></tr>
       <tr><td>/start</td><td>"Hey! Welcome to GrabCash. Ready to earn from deals you share? Send me any product link and I'll create your earning link in 2 seconds."</td></tr>
       <tr><td>User sends a link</td><td>"Got it! Here's your GrabCash link: [link]. Commission: ₹[amount] per sale. Share it and start earning!"</td></tr>
-      <tr><td>Invalid link</td><td>"Hmm, this link doesn't seem to be from a brand we support. Try Amazon, Flipkart, Myntra, or any of our 500+ brands."</td></tr>
+      <tr><td>Invalid link</td><td>"Hmm, this link doesn't seem to be from a brand we support. Try Amazon, Flipkart, Myntra, or any of our 91 retailers (32 active)."</td></tr>
       <tr><td>/earnings</td><td>"Your earnings this month: ₹[amount]. Pending: ₹[amount]. Confirmed (withdrawable): ₹[amount]. Keep sharing!"</td></tr>
       <tr><td>/withdraw</td><td>"Sending ₹[amount] to your UPI [upi_id]. Should arrive in under 5 minutes!"</td></tr>
       <tr><td>/help</td><td>"Need help? Here's what I can do:\n/link — Create an earning link\n/earnings — Check your earnings\n/withdraw — Withdraw to UPI\n/deals — Today's top earning deals\n\nOr just send me any product link!"</td></tr>
@@ -2898,7 +2902,7 @@ Takes 30 seconds. No investment needed 🙏</div>
       <tr><th>Screen</th><th>Empty State Text</th></tr>
       <tr><td>Earnings page (new user)</td><td><strong>Title:</strong> "Your earnings story starts here"<br><strong>Body:</strong> "Share your first deal and watch the earnings roll in. Pick a brand below to create your first link."<br><strong>CTA:</strong> "Create First Link"</td></tr>
       <tr><td>Earnings page (no earnings this month)</td><td><strong>Title:</strong> "Quiet month so far"<br><strong>Body:</strong> "You haven't earned yet this month. Your audience is waiting — share a hot deal and get back on track."<br><strong>CTA:</strong> "Browse Top Deals"</td></tr>
-      <tr><td>Links page (no links created)</td><td><strong>Title:</strong> "No links yet"<br><strong>Body:</strong> "Paste any product link from Amazon, Flipkart, or 500+ brands. We'll turn it into your earning link."<br><strong>CTA:</strong> "Paste a Product Link"</td></tr>
+      <tr><td>Links page (no links created)</td><td><strong>Title:</strong> "No links yet"<br><strong>Body:</strong> "Paste any product link from Amazon, Flipkart, or 91 retailers (32 active). We'll turn it into your earning link."<br><strong>CTA:</strong> "Paste a Product Link"</td></tr>
       <tr><td>Withdrawal page (no balance)</td><td><strong>Title:</strong> "Nothing to withdraw — yet"<br><strong>Body:</strong> "Earn at least ₹10 from sharing deals, then withdraw instantly to UPI. You're ₹10 away from your first payout."<br><strong>CTA:</strong> "Start Earning"</td></tr>
     </table>
   </div>
@@ -3363,14 +3367,14 @@ InspireLabs Solutions Ltd</div>
 
 <span class="var">[KEY FACT/ACHIEVEMENT]</span>
 
-Since its launch, GrabCash has enabled 5,000+ users across India to earn real income by sharing product deals from 500+ partner brands. The platform has disbursed over ₹10 lakh in commissions, with users able to withdraw earnings instantly via UPI with a minimum threshold of just ₹10.
+Since its launch, GrabCash has enabled 26,131 registered users across India to earn real income by sharing product deals from 500+ partner brands. The platform has disbursed over ₹10 lakh in commissions, with users able to withdraw earnings instantly via UPI with a minimum threshold of just ₹10.
 
 "<span class="var">[QUOTE FROM FOUNDER/CEO]</span>," said <span class="var">[NAME]</span>, <span class="var">[TITLE]</span> at InspireLabs Solutions Ltd.
 
 <span class="var">[ADDITIONAL DETAILS]</span>
 
 <span class="var">About GrabCash:</span>
-GrabCash is an affiliate earning platform that allows users to earn real cash by sharing product deals from 500+ brands. Users create personalised earning links, share them across social channels, and earn commissions when purchases are made through their links. Built by InspireLabs Solutions Ltd, the company behind GrabOn.in — India's largest coupon platform with 50M+ users — GrabCash combines a decade of brand partnerships with an easy-to-use mobile platform. For more information, visit grabcash.in.
+GrabCash is an affiliate earning platform that allows users to earn real cash by sharing product deals from 91 retailers (32 active). Users create personalised earning links, share them across social channels, and earn commissions when purchases are made through their links. Built by InspireLabs Solutions Ltd, the company behind GrabOn.in — India's largest coupon platform with 50M+ users — GrabCash combines a decade of brand partnerships with an easy-to-use mobile platform. For more information, visit grabcash.in.
 
 <span class="var">Media Contact:</span>
 <span class="var">[NAME]</span> | <span class="var">[EMAIL]</span> | <span class="var">[PHONE]</span></div>
@@ -3780,7 +3784,7 @@ Every story must include:
         <td style="font-weight:700;">4</td>
         <td><strong>Zero Entry Barrier</strong></td>
         <td>No followers, no blog, no tech skills, no investment. 30-second signup.</td>
-        <td>5,000+ users, many with zero social following.</td>
+        <td>26,131 registered users, many with zero social following.</td>
         <td>Acquisition, accessibility messaging.</td>
       </tr>
       <tr>
@@ -3901,7 +3905,7 @@ Fair enough?"</div>
       <ul class="checklist">
         <li>9. Is "GrabCash" spelled correctly (capital G, capital C, one word)?</li>
         <li>10. Are colours on-brand (#0DCF1A green, dark theme)?</li>
-        <li>11. Is the correct font used (Inter body, JetBrains Mono data)?</li>
+        <li>11. Is the correct font used (Inter body, Poppins data)?</li>
         <li>12. Is the logo used correctly (clear space, no distortion)?</li>
         <li>13. Are partner brand names spelled correctly (boAt, AJIO)?</li>
         <li>14. Is the GrabOn relationship mentioned correctly (not exaggerated)?</li>
@@ -4369,7 +4373,7 @@ Fair enough?"</div>
         <td>"Push notifications mentioning ₹ amounts get 30% higher click rates"</td>
         <td>Push notification</td>
         <td>Click-through rate</td>
-        <td>5,000+ users per variant</td>
+        <td>26,131 registered users per variant</td>
         <td>2 weeks</td>
       </tr>
       <tr>
@@ -4509,7 +4513,7 @@ Fair enough?"</div>
     <span style="color:var(--green);">Grab</span><span style="color:var(--text);">Cash</span>
   </div>
   <p style="font-size:13px;color:var(--text-dim);margin-bottom:4px;">Brand Voice & Identity System v3.0</p>
-  <p style="font-size:12px;color:var(--text-dim);">InspireLabs Solutions Ltd | grabcash.in | May 2026</p>
+  <p style="font-size:12px;color:var(--text-dim);">InspireLabs Solutions Ltd | grabcash.in | June 2026 · Data-Backed Edition</p>
   <p style="font-size:11px;color:#555;margin-top:16px;">This document is confidential and intended for internal use by the GrabCash brand and growth team.<br>For questions, contact the Content Lead or Brand & Growth Team.</p>
 </footer>
 

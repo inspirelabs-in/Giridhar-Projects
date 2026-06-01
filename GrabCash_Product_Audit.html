@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Audit Report | GrabCash Underground War Suite</title>
+<title>Product Audit Report | GrabCash Competitive Strategy Suite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    RESET & BASE
@@ -18,11 +18,11 @@
 }
 
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: rgba(255,255,255,0.03);
-  --bg-card-hover: rgba(255,255,255,0.06);
-  --border-card: rgba(255,255,255,0.06);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fbff;
+  --bg-card: #ffffff;
+  --bg-card-hover: rgba(0,18,59,0.1);
+  --border-card: rgba(0,18,59,0.1);
   --border-card-hover: rgba(255,255,255,0.12);
   --text-primary: #e0e0e0;
   --text-secondary: #999999;
@@ -44,7 +44,7 @@
   --sidebar-width: 260px;
   --header-height: 70px;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'Poppins', 'Fira Code', monospace;
 }
 
 html {
@@ -186,7 +186,7 @@ body {
 
 .nav-item:hover {
   color: var(--text-primary);
-  background: rgba(255,255,255,0.03);
+  background: #ffffff;
 }
 
 .nav-item.active {
@@ -270,7 +270,7 @@ body {
 .hero {
   position: relative;
   padding: 80px 60px 60px;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a0808 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #1a0808 50%, #ffffff 100%);
   border-bottom: 1px solid var(--border-card);
   overflow: hidden;
 }
@@ -618,7 +618,7 @@ thead th {
 
 tbody td {
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid #ffffff;
   color: var(--text-secondary);
   vertical-align: top;
 }
@@ -1225,6 +1225,10 @@ td.purple { color: var(--purple); }
 </style>
 </head>
 <body>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
+  </div>
+
 
 <!-- Sidebar Toggle (mobile) -->
 <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
@@ -2100,7 +2104,7 @@ td.purple { color: var(--purple); }
       <div class="finding major">
         <div class="finding-header">
           <span class="finding-id">UX-18</span>
-          <span class="finding-title">Stats contradiction: 200+ vs 500+ brands</span>
+          <span class="finding-title">Stats contradiction: 200+ vs 91 retailers (32 active)</span>
           <span class="finding-severity">MAJOR</span>
         </div>
         <div class="finding-body">
@@ -2626,7 +2630,7 @@ td.purple { color: var(--purple); }
             </tr>
             <tr>
               <td class="fw-700">Social Proof</td>
-              <td>"5000+ users and counting"</td>
+              <td>"26,131 registered users and counting"</td>
               <td><span class="tag red">WEAK</span></td>
               <td>Very low for platform backed by India's #1 coupon site</td>
             </tr>
@@ -2654,17 +2658,17 @@ td.purple { color: var(--purple); }
 
       <div class="alert-card yellow">
         <h4>Social Proof Comparison</h4>
-        <p>GrabCash says "5000+ users" — CashKaro says "36M+ transactions" — EarnKaro says "1Cr+ earners". GrabCash's claim is approximately 7,200x weaker than its parent company's. Even if true, the number is too small to impress the target audience of affiliate marketers who have seen competitor claims.</p>
+        <p>GrabCash says "26,131 registered users" — CashKaro says "36M+ transactions" — EarnKaro says "1Cr+ earners". GrabCash's claim is approximately 7,200x weaker than its parent company's. Even if true, the number is too small to impress the target audience of affiliate marketers who have seen competitor claims.</p>
       </div>
 
       <div class="finding major">
         <div class="finding-header">
           <span class="finding-id">COPY-01</span>
-          <span class="finding-title">Weak social proof — "5000+ users" insufficient</span>
+          <span class="finding-title">Weak social proof — "26,131 registered users" insufficient</span>
           <span class="finding-severity">MAJOR</span>
         </div>
         <div class="finding-body">
-          For a platform backed by GrabOn (India's #1 coupon site), "5000+ users and counting" is embarrassingly low social proof. Competitors cite millions of transactions and crores of earners. This makes GrabCash look new and unproven.
+          For a platform backed by GrabOn (India's #1 coupon site), "26,131 registered users and counting" is embarrassingly low social proof. Competitors cite millions of transactions and crores of earners. This makes GrabCash look new and unproven.
         </div>
         <div class="finding-fix">
           <div class="fix-label">Recommended Fix</div>
@@ -2879,7 +2883,7 @@ td.purple { color: var(--purple); }
               <td>More specific, addresses zero-cost barrier</td>
             </tr>
             <tr>
-              <td>"5000+ users and counting"</td>
+              <td>"26,131 registered users and counting"</td>
               <td>Low number, weak social proof</td>
               <td>"Backed by GrabOn — India's #1 Coupon Platform (50M+ users)"</td>
               <td>Leverage parent brand credibility</td>
@@ -2970,7 +2974,7 @@ td.purple { color: var(--purple); }
             <tr>
               <td class="fw-700">Intent (Pre-signup)</td>
               <td>Weak social proof, no dashboard preview</td>
-              <td>"5000+ users" vs competitor "36M+ transactions"</td>
+              <td>"26,131 registered users" vs competitor "36M+ transactions"</td>
               <td>Insufficient trust to commit</td>
               <td><span class="tag orange">MAJOR</span></td>
             </tr>
@@ -3024,7 +3028,7 @@ td.purple { color: var(--purple); }
             </tr>
             <tr>
               <td class="fw-700">Social Proof Near CTA</td>
-              <td>"5000+ users"</td>
+              <td>"26,131 registered users"</td>
               <td>Below hero</td>
               <td>Present but weak</td>
               <td><span class="tag yellow">WEAK</span></td>
@@ -3277,7 +3281,7 @@ td.purple { color: var(--purple); }
             </tr>
             <tr>
               <td class="fw-700">Social Proof (Transactions)</td>
-              <td class="yellow">"5000+ users"</td>
+              <td class="yellow">"26,131 registered users"</td>
               <td class="accent">"36M+ transactions"</td>
               <td class="accent">"1Cr+ earners"</td>
               <td><span class="tag red">CRITICAL</span></td>
@@ -3539,7 +3543,7 @@ td.purple { color: var(--purple); }
     <div class="cross-ref-block">
       <div class="ref-label">Related Documents</div>
       <a href="GrabCash_Competitive_Intelligence.html" class="cross-ref">Competitive Intelligence Playbook — Full Market Analysis</a>
-      <a href="GrabCash_Competitive_Intel_War_Room.html" class="cross-ref">Competitive Intelligence War Room — Deep Operational Intel</a>
+      <a href="GrabCash_Competitive_Intel_War_Room.html" class="cross-ref">Competitive Intelligence Intelligence Center — Deep Operational Intel</a>
     </div>
   </div>
 </div>
@@ -4228,7 +4232,7 @@ td.purple { color: var(--purple); }
           </thead>
           <tbody>
             <tr><td>Document Number</td><td class="mono">16</td></tr>
-            <tr><td>Suite</td><td>GrabCash Underground War Suite</td></tr>
+            <tr><td>Suite</td><td>GrabCash Competitive Strategy Suite</td></tr>
             <tr><td>Audit Date</td><td class="mono">2026-05-31</td></tr>
             <tr><td>Target</td><td class="mono">grabcash.in</td></tr>
             <tr><td>Overall Score</td><td class="mono red">35/100</td></tr>
@@ -4236,7 +4240,7 @@ td.purple { color: var(--purple); }
             <tr><td>Verdict</td><td class="fw-700 text-red">NOT READY for aggressive GTM</td></tr>
             <tr><td>Re-audit Trigger</td><td>After P1 completion (~Week 3)</td></tr>
             <tr><td>Classification</td><td>CONFIDENTIAL — Internal Use Only</td></tr>
-            <tr><td>Author</td><td>InspireLabs Solutions Ltd — GTM War Room</td></tr>
+            <tr><td>Author</td><td>InspireLabs Solutions Ltd — GTM Intelligence Center</td></tr>
           </tbody>
         </table>
       </div>

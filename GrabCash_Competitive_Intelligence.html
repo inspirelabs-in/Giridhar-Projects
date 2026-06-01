@@ -6,14 +6,14 @@
     <title>GrabCash Competitive Intelligence Playbook | InspireLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900;700&display=swap" rel="stylesheet">
     <style>
         /* ===== CSS RESET & BASE ===== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-tertiary: #1a1a1a;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fbff;
+            --bg-tertiary: #f0f6ff;
             --bg-card: rgba(26, 26, 26, 0.6);
             --bg-glass: rgba(26, 26, 26, 0.4);
             --accent: #0dcf1a;
@@ -29,7 +29,7 @@
             --border: rgba(255,255,255,0.08);
             --border-accent: rgba(13, 207, 26, 0.25);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+            --font-mono: 'Poppins', 'SF Mono', monospace;
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -51,10 +51,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
+  h1, h2, h3, h4, h5, h6 { font-family: "Poppins", -apple-system, sans-serif; }
+
         /* ===== FIXED NAVIGATION ===== */
         .nav-fixed {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(255,255,255,0.92);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid var(--border);
@@ -667,6 +669,10 @@
     </style>
 </head>
 <body>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
+  </div>
+
 
 <!-- ============================================================ -->
 <!--                     FIXED NAVIGATION                          -->
@@ -999,7 +1005,7 @@
     <div class="grid-3">
         <div class="glass-card-compact">
             <h4 style="color:var(--accent); font-size:0.85rem; font-weight:700; margin-bottom:10px;">LINK CONVERTER</h4>
-            <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.6;">Core feature: paste any product URL from supported merchants, get an affiliate tracking link instantly. Works with Amazon, Flipkart, Myntra, Ajio, and 1500+ brands. One-click copy to clipboard for sharing.</p>
+            <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.6;">Core feature: paste any product URL from supported merchants, get an affiliate tracking link instantly. Works with Amazon, Flipkart, Myntra, Ajio, and 191 retailers (32 active). One-click copy to clipboard for sharing.</p>
         </div>
         <div class="glass-card-compact">
             <h4 style="color:var(--accent); font-size:0.85rem; font-weight:700; margin-bottom:10px;">DEAL FEED</h4>
@@ -1953,7 +1959,7 @@
         </div>
         <div class="metric-bar-row">
             <span class="metric-bar-label">CueLinks</span>
-            <div class="metric-bar-track"><div class="metric-bar-fill" style="width:4%; background: linear-gradient(90deg, #ffd60a, #ffa502);">500K</div></div>
+            <div class="metric-bar-track"><div class="metric-bar-fill" style="width:4%; background: linear-gradient(90deg, #ffd60a, #dd6b20);">500K</div></div>
             <span class="metric-bar-value">~500K</span>
         </div>
         <div class="metric-bar-row">
@@ -2380,7 +2386,7 @@
                 <li><strong>Early Content Stage:</strong> Blog, SEO content, and social media presence are in early development vs. EarnKaro's established content engine</li>
                 <li><strong>No iOS App Yet:</strong> Missing a significant user segment, especially among premium earners and influencers</li>
                 <li><strong>Limited Telegram Presence:</strong> EarnKaro dominates ~80% of Telegram deal channels; GrabCash needs to build this from scratch</li>
-                <li><strong>Fewer Brand Partners:</strong> 500+ brands vs. EarnKaro's 1500+; gap in merchant coverage</li>
+                <li><strong>Fewer Brand Partners:</strong> 91 retailers (32 active) vs. EarnKaro's 1500+; gap in merchant coverage</li>
                 <li><strong>No Earner Community:</strong> Lacks the community momentum and peer learning networks that EarnKaro has cultivated</li>
                 <li><strong>Unproven at Scale:</strong> Platform has not been tested with millions of concurrent users and high-volume deal sharing</li>
             </ul>
@@ -2421,10 +2427,10 @@
         <div class="spider-wrapper">
             <svg viewBox="0 0 500 500" width="420" height="420" xmlns="http://www.w3.org/2000/svg">
                 <!-- Background rings -->
-                <polygon points="250,50 430,140 430,360 250,450 70,360 70,140" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <polygon points="250,100 390,170 390,330 250,400 110,330 110,170" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <polygon points="250,150 350,200 350,300 250,350 150,300 150,200" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                <polygon points="250,200 310,230 310,270 250,300 190,270 190,230" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <polygon points="250,50 430,140 430,360 250,450 70,360 70,140" fill="none" stroke="rgba(0,18,59,0.1)" stroke-width="1"/>
+                <polygon points="250,100 390,170 390,330 250,400 110,330 110,170" fill="none" stroke="rgba(0,18,59,0.1)" stroke-width="1"/>
+                <polygon points="250,150 350,200 350,300 250,350 150,300 150,200" fill="none" stroke="rgba(0,18,59,0.1)" stroke-width="1"/>
+                <polygon points="250,200 310,230 310,270 250,300 190,270 190,230" fill="none" stroke="rgba(0,18,59,0.1)" stroke-width="1"/>
                 <!-- Axis lines -->
                 <line x1="250" y1="250" x2="250" y2="50" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
                 <line x1="250" y1="250" x2="430" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
@@ -2513,7 +2519,7 @@
                 <ul>
                     <li>India's #1 affiliate earning app</li>
                     <li>Backed by CashKaro (Ratan Tata invested)</li>
-                    <li>4M+ earners and 1500+ brands</li>
+                    <li>4M+ earners and 191 retailers (32 active)</li>
                     <li>Dominant Telegram presence (~80% of channels)</li>
                 </ul>
             </div>
@@ -2586,7 +2592,7 @@
                 <h4>Common Objections &amp; Responses</h4>
                 <ul>
                     <li><strong>"I use CashKaro for my own shopping"</strong> &mdash; Great! Use CashKaro for your purchases AND GrabCash to share deals with others. Double your income.</li>
-                    <li><strong>"CashKaro is bigger and safer"</strong> &mdash; GrabCash is by GrabOn (14+ years, 500+ brands). Both are trusted. GrabCash pays you for sharing, not just shopping.</li>
+                    <li><strong>"CashKaro is bigger and safer"</strong> &mdash; GrabCash is by GrabOn (14+ years, 91 retailers (32 active)). Both are trusted. GrabCash pays you for sharing, not just shopping.</li>
                 </ul>
             </div>
             <div class="battlecard-section">

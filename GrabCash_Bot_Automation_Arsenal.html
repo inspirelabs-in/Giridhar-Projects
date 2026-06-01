@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrabCash Bot &amp; Automation Arsenal | Document 3 of 9</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900;700&display=swap" rel="stylesheet">
 <style>
 /* ========== RESET & BASE ========== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 15px; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0a0a0a;
+  background: #ffffff;
   color: #e0e0e0;
   line-height: 1.7;
   overflow-x: hidden;
@@ -30,7 +30,7 @@ body {
   width: 260px;
   height: 100vh;
   background: rgba(10,10,10,0.97);
-  border-right: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(0,18,59,0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 1000;
@@ -41,11 +41,11 @@ body {
 .sidebar.collapsed { transform: translateX(-260px); }
 .sidebar-header {
   padding: 0 20px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,18,59,0.1);
   margin-bottom: 12px;
 }
 .sidebar-header .logo {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #0dcf1a;
@@ -55,7 +55,7 @@ body {
   display: inline-block;
   font-size: 10px;
   font-weight: 600;
-  color: #0a0a0a;
+  color: #ffffff;
   background: #0dcf1a;
   padding: 2px 8px;
   border-radius: 10px;
@@ -92,7 +92,7 @@ body {
   font-weight: 600;
 }
 .nav-link .nav-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 11px;
   color: #444;
   margin-right: 8px;
@@ -127,10 +127,10 @@ body {
 .hero {
   margin-bottom: 48px;
   padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,18,59,0.1);
 }
 .hero-overline {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #0dcf1a;
@@ -161,7 +161,7 @@ body {
   flex-wrap: wrap;
 }
 .hero-meta span {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #555;
 }
@@ -177,10 +177,10 @@ body {
   gap: 16px;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,18,59,0.1);
 }
 .section-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: rgba(13,207,26,0.2);
@@ -195,8 +195,8 @@ body {
 
 /* ========== CARDS ========== */
 .card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  border: 1px solid rgba(0,18,59,0.1);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
@@ -263,7 +263,7 @@ body {
   overflow-x: auto;
   margin: 16px 0;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,18,59,0.1);
 }
 table {
   width: 100%;
@@ -304,7 +304,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   border-radius: 8px;
   padding: 16px 20px;
   margin: 12px 0;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
   color: #aaa;
   overflow-x: auto;
@@ -325,15 +325,15 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   margin: 20px 0;
 }
 .metric-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  border: 1px solid rgba(0,18,59,0.1);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
   backdrop-filter: blur(20px);
 }
 .metric-card .value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 700;
   color: #0dcf1a;
@@ -353,7 +353,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   border-radius: 10px;
   padding: 24px;
   margin: 16px 0;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #888;
   overflow-x: auto;
@@ -385,7 +385,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 
 .badge {
   display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 10px;
   font-weight: 700;
   padding: 2px 8px;
@@ -405,8 +405,8 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 .collapsible-toggle {
   width: 100%;
   text-align: left;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  border: 1px solid rgba(0,18,59,0.1);
   border-radius: 8px;
   padding: 14px 20px;
   color: #ddd;
@@ -425,7 +425,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 }
 .collapsible-toggle::after {
   content: '+';
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   color: #0dcf1a;
   transition: transform 0.3s;
@@ -470,10 +470,10 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   width: 10px; height: 10px;
   background: #0dcf1a;
   border-radius: 50%;
-  border: 2px solid #0a0a0a;
+  border: 2px solid #ffffff;
 }
 .timeline-item .week {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #0dcf1a;
   font-weight: 600;
@@ -523,14 +523,14 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 0;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,18,59,0.1);
   border-radius: 8px;
   overflow: hidden;
   margin: 12px 0;
   font-size: 13px;
 }
 .spec-box .spec-key {
-  background: rgba(255,255,255,0.03);
+  background: #ffffff;
   padding: 10px 14px;
   color: #888;
   font-weight: 500;
@@ -551,8 +551,8 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   align-items: flex-start;
 }
 .step-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  border: 1px solid rgba(0,18,59,0.1);
   border-radius: 10px;
   padding: 16px;
   min-width: 160px;
@@ -561,7 +561,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   text-align: center;
 }
 .step-item .step-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: #0dcf1a;
@@ -612,6 +612,10 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 </style>
 </head>
 <body>
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+    <strong style="color:var(--navy,#00123b);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
+  </div>
+
 
 <!-- ===== MOBILE MENU TOGGLE ===== -->
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
@@ -738,7 +742,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>1</td>
               <td>Core Link Converter</td>
               <td><span class="badge badge-p0">P0</span></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">10/10</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">10/10</td>
               <td>EK Affiliaters, Magic Tool</td>
               <td>2</td>
               <td>GrabOn API access</td>
@@ -747,7 +751,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>2</td>
               <td>Telegram Bot (Basic)</td>
               <td><span class="badge badge-p0">P0</span></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">10/10</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">10/10</td>
               <td>EK Affiliaters</td>
               <td>3</td>
               <td>Link Converter API</td>
@@ -756,7 +760,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>3</td>
               <td>Channel Linking + Auto-Forward</td>
               <td><span class="badge badge-p0">P0</span></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9/10</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">9/10</td>
               <td>EK Affiliaters</td>
               <td>3</td>
               <td>TG Bot</td>
@@ -765,7 +769,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>4</td>
               <td>Multi-Link Converter</td>
               <td><span class="badge badge-p0">P0</span></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9/10</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">9/10</td>
               <td>Magic Tool</td>
               <td>1</td>
               <td>Link Converter API</td>
@@ -774,7 +778,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>5</td>
               <td>Official Deal Channels (8)</td>
               <td><span class="badge badge-p1">P1</span></td>
-              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td style="font-family:'Poppins';color:#f59e0b;">8/10</td>
               <td>EK (3 channels only)</td>
               <td>4</td>
               <td>Deal Sourcing Engine</td>
@@ -783,7 +787,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>6</td>
               <td>Analytics Dashboard</td>
               <td><span class="badge badge-p1">P1</span></td>
-              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td style="font-family:'Poppins';color:#f59e0b;">8/10</td>
               <td>None (GrabCash exclusive)</td>
               <td>3</td>
               <td>Click/conversion tracking</td>
@@ -792,7 +796,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>7</td>
               <td>Deal Sourcing Engine</td>
               <td><span class="badge badge-p1">P1</span></td>
-              <td style="font-family:'JetBrains Mono';color:#f59e0b;">8/10</td>
+              <td style="font-family:'Poppins';color:#f59e0b;">8/10</td>
               <td>Partial (Affiliaters.in)</td>
               <td>4</td>
               <td>API integrations</td>
@@ -801,7 +805,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>8</td>
               <td>Chrome Extension</td>
               <td><span class="badge badge-p1">P1</span></td>
-              <td style="font-family:'JetBrains Mono';color:#f59e0b;">7/10</td>
+              <td style="font-family:'Poppins';color:#f59e0b;">7/10</td>
               <td>CueLinks</td>
               <td>3</td>
               <td>Link Converter API</td>
@@ -810,7 +814,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>9</td>
               <td>Smart Scheduling + A/B Testing</td>
               <td><span class="badge badge-p2">P2</span></td>
-              <td style="font-family:'JetBrains Mono';color:#3b82f6;">7/10</td>
+              <td style="font-family:'Poppins';color:#3b82f6;">7/10</td>
               <td>None (exclusive)</td>
               <td>3</td>
               <td>Analytics platform</td>
@@ -819,7 +823,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>10</td>
               <td>WhatsApp Integration</td>
               <td><span class="badge badge-p2">P2</span></td>
-              <td style="font-family:'JetBrains Mono';color:#3b82f6;">7/10</td>
+              <td style="font-family:'Poppins';color:#3b82f6;">7/10</td>
               <td>Affiliaters.in</td>
               <td>4</td>
               <td>WA Business API</td>
@@ -828,7 +832,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>11</td>
               <td>WordPress Plugin</td>
               <td><span class="badge badge-p2">P2</span></td>
-              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td style="font-family:'Poppins';color:#3b82f6;">6/10</td>
               <td>CueLinks</td>
               <td>3</td>
               <td>Link Converter API</td>
@@ -837,7 +841,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>12</td>
               <td>Developer API + SDKs</td>
               <td><span class="badge badge-p3">P3</span></td>
-              <td style="font-family:'JetBrains Mono';color:#888;">5/10</td>
+              <td style="font-family:'Poppins';color:#888;">5/10</td>
               <td>None</td>
               <td>3</td>
               <td>All core APIs stable</td>
@@ -846,7 +850,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>13</td>
               <td>Price Drop Alerts</td>
               <td><span class="badge badge-p2">P2</span></td>
-              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td style="font-family:'Poppins';color:#3b82f6;">6/10</td>
               <td>None (exclusive)</td>
               <td>3</td>
               <td>Price monitoring system</td>
@@ -855,7 +859,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>14</td>
               <td>Deal Quality Scoring (AI)</td>
               <td><span class="badge badge-p2">P2</span></td>
-              <td style="font-family:'JetBrains Mono';color:#3b82f6;">6/10</td>
+              <td style="font-family:'Poppins';color:#3b82f6;">6/10</td>
               <td>None (exclusive)</td>
               <td>2</td>
               <td>Deal Sourcing Engine</td>
@@ -883,70 +887,70 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>Link Converter API</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Core IP. Must integrate with GrabOn's 4,000+ merchant database. No third-party solution covers this.</td>
-              <td style="font-family:'JetBrains Mono';">2 devs x 2 wks</td>
+              <td style="font-family:'Poppins';">2 devs x 2 wks</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>Telegram Bot Framework</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Use node-telegram-bot-api or python-telegram-bot as library, but custom application logic.</td>
-              <td style="font-family:'JetBrains Mono';">2 devs x 3 wks</td>
+              <td style="font-family:'Poppins';">2 devs x 3 wks</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>URL Shortener</td>
               <td><span class="tag tag-blue">HYBRID</span></td>
               <td>Use Bitly Enterprise API or build on top of open-source (Kutt.it) with custom domain grabcash.in/go/</td>
-              <td style="font-family:'JetBrains Mono';">1 dev x 1 wk</td>
+              <td style="font-family:'Poppins';">1 dev x 1 wk</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>Redis Queue System</td>
               <td><span class="tag tag-purple">BUY</span></td>
               <td>Use managed Redis (AWS ElastiCache or Redis Cloud). No need to self-host.</td>
-              <td style="font-family:'JetBrains Mono';">$50-200/mo</td>
+              <td style="font-family:'Poppins';">$50-200/mo</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>Analytics Platform</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Custom dashboards critical for admin retention. Off-shelf analytics cannot surface affiliate-specific metrics.</td>
-              <td style="font-family:'JetBrains Mono';">2 devs x 3 wks</td>
+              <td style="font-family:'Poppins';">2 devs x 3 wks</td>
               <td><span class="tag tag-yellow">Medium</span></td>
             </tr>
             <tr>
               <td>Deal Sourcing / Scraping</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Proprietary deal quality scoring and 4,000+ merchant coverage. Core differentiator.</td>
-              <td style="font-family:'JetBrains Mono';">2 devs x 4 wks</td>
+              <td style="font-family:'Poppins';">2 devs x 4 wks</td>
               <td><span class="tag tag-yellow">Medium</span></td>
             </tr>
             <tr>
               <td>Chrome Extension</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Must deeply integrate with GrabCash link converter + GrabOn coupon database.</td>
-              <td style="font-family:'JetBrains Mono';">1 dev x 3 wks</td>
+              <td style="font-family:'Poppins';">1 dev x 3 wks</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>WordPress Plugin</td>
               <td><span class="tag tag-blue">HYBRID</span></td>
               <td>Fork open-source affiliate link plugin, customize for GrabCash API. Faster than building from scratch.</td>
-              <td style="font-family:'JetBrains Mono';">1 dev x 2 wks</td>
+              <td style="font-family:'Poppins';">1 dev x 2 wks</td>
               <td><span class="tag tag-green">Low</span></td>
             </tr>
             <tr>
               <td>WhatsApp Integration</td>
               <td><span class="tag tag-blue">HYBRID</span></td>
               <td>Use official WA Business API for business accounts; web.whatsapp workaround for personal groups with user consent.</td>
-              <td style="font-family:'JetBrains Mono';">2 devs x 4 wks</td>
+              <td style="font-family:'Poppins';">2 devs x 4 wks</td>
               <td><span class="tag tag-red">High</span></td>
             </tr>
             <tr>
               <td>Anti-Fraud System</td>
               <td><span class="tag tag-green">BUILD</span></td>
               <td>Must be tightly integrated with click tracking. Standard fraud detection tools do not understand affiliate fraud patterns.</td>
-              <td style="font-family:'JetBrains Mono';">1 dev x 3 wks</td>
+              <td style="font-family:'Poppins';">1 dev x 3 wks</td>
               <td><span class="tag tag-yellow">Medium</span></td>
             </tr>
           </tbody>
@@ -970,66 +974,66 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
           <tbody>
             <tr>
               <td>Backend Lead (Sr.)</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>Node.js/Python, PostgreSQL, Redis, Telegram Bot API, system design</td>
               <td>Weeks 1-20</td>
-              <td style="font-family:'JetBrains Mono';">2,50,000</td>
+              <td style="font-family:'Poppins';">2,50,000</td>
             </tr>
             <tr>
               <td>Backend Developer</td>
-              <td style="font-family:'JetBrains Mono';">2</td>
+              <td style="font-family:'Poppins';">2</td>
               <td>Node.js, REST APIs, queue systems, web scraping</td>
               <td>Weeks 1-20</td>
-              <td style="font-family:'JetBrains Mono';">1,50,000 each</td>
+              <td style="font-family:'Poppins';">1,50,000 each</td>
             </tr>
             <tr>
               <td>Frontend Developer</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>React/Next.js, Chrome Extension APIs, responsive dashboards</td>
               <td>Weeks 3-20</td>
-              <td style="font-family:'JetBrains Mono';">1,50,000</td>
+              <td style="font-family:'Poppins';">1,50,000</td>
             </tr>
             <tr>
               <td>Mobile Developer (WA)</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>WhatsApp Business API, React Native, push notifications</td>
               <td>Weeks 13-20</td>
-              <td style="font-family:'JetBrains Mono';">1,50,000</td>
+              <td style="font-family:'Poppins';">1,50,000</td>
             </tr>
             <tr>
               <td>DevOps / Infra</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>AWS/GCP, Docker, Kubernetes, CI/CD, monitoring</td>
               <td>Weeks 1-20</td>
-              <td style="font-family:'JetBrains Mono';">2,00,000</td>
+              <td style="font-family:'Poppins';">2,00,000</td>
             </tr>
             <tr>
               <td>Data Engineer</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>ETL pipelines, analytics, ML basics, price tracking</td>
               <td>Weeks 5-20</td>
-              <td style="font-family:'JetBrains Mono';">1,80,000</td>
+              <td style="font-family:'Poppins';">1,80,000</td>
             </tr>
             <tr>
               <td>QA Engineer</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>API testing, bot testing, load testing, security testing</td>
               <td>Weeks 3-20</td>
-              <td style="font-family:'JetBrains Mono';">1,00,000</td>
+              <td style="font-family:'Poppins';">1,00,000</td>
             </tr>
             <tr>
               <td>Product Manager</td>
-              <td style="font-family:'JetBrains Mono';">1</td>
+              <td style="font-family:'Poppins';">1</td>
               <td>Affiliate marketing domain, competitor analysis, user research</td>
               <td>Weeks 1-20</td>
-              <td style="font-family:'JetBrains Mono';">2,00,000</td>
+              <td style="font-family:'Poppins';">2,00,000</td>
             </tr>
             <tr style="background:rgba(13,207,26,0.06);">
               <td><strong>TOTAL</strong></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>9</strong></td>
+              <td style="font-family:'Poppins';color:#0dcf1a;"><strong>9</strong></td>
               <td></td>
               <td></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>15,30,000/mo</strong></td>
+              <td style="font-family:'Poppins';color:#0dcf1a;"><strong>15,30,000/mo</strong></td>
             </tr>
           </tbody>
         </table>
@@ -1434,66 +1438,66 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
           <tbody>
             <tr>
               <td><span class="tag tag-purple">Fashion</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashFashion</td>
+              <td style="font-family:'Poppins';">@GrabCashFashion</td>
               <td>Ajio (10-15%), Myntra (7-12%), H&M (8%), Adidas (9%), Nike (8%), Zara (6%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">9.5%</td>
-              <td style="font-family:'JetBrains Mono';">25-40</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">9.5%</td>
+              <td style="font-family:'Poppins';">25-40</td>
               <td>EK Fashion channel</td>
             </tr>
             <tr>
               <td><span class="tag tag-blue">Electronics</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashElectronics</td>
+              <td style="font-family:'Poppins';">@GrabCashElectronics</td>
               <td>Samsung (5%), boAt (8%), HP (6%), Lenovo (5%), OnePlus (4%), JBL (7%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">5.8%</td>
-              <td style="font-family:'JetBrains Mono';">15-25</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">5.8%</td>
+              <td style="font-family:'Poppins';">15-25</td>
               <td>EK Electronics channel</td>
             </tr>
             <tr>
               <td><span class="tag tag-yellow">Travel</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashTravel</td>
+              <td style="font-family:'Poppins';">@GrabCashTravel</td>
               <td>MakeMyTrip (4%), Goibibo (4.5%), Yatra (5%), EaseMyTrip (4%), Cleartrip (3.5%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">4.2%</td>
-              <td style="font-family:'JetBrains Mono';">10-15</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">4.2%</td>
+              <td style="font-family:'Poppins';">10-15</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
             <tr>
               <td><span class="tag tag-red">Food</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashFood</td>
+              <td style="font-family:'Poppins';">@GrabCashFood</td>
               <td>Zomato (3%), Swiggy (3.5%), Dominos (5%), Pizza Hut (4%), Burger King (4%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">3.8%</td>
-              <td style="font-family:'JetBrains Mono';">20-30</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">3.8%</td>
+              <td style="font-family:'Poppins';">20-30</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
             <tr>
               <td><span class="tag tag-green">Beauty</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashBeauty</td>
+              <td style="font-family:'Poppins';">@GrabCashBeauty</td>
               <td>Nykaa (9%), Mamaearth (8%), Purplle (7%), Sugar (8%), Forest Essentials (6%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">7.6%</td>
-              <td style="font-family:'JetBrains Mono';">15-25</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">7.6%</td>
+              <td style="font-family:'Poppins';">15-25</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
             <tr>
               <td><span class="tag tag-white">Home</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashHome</td>
+              <td style="font-family:'Poppins';">@GrabCashHome</td>
               <td>Pepperfry (6%), Urban Ladder (5%), Wakefit (7%), HomeTown (5%), Nilkamal (4%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">5.4%</td>
-              <td style="font-family:'JetBrains Mono';">10-15</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">5.4%</td>
+              <td style="font-family:'Poppins';">10-15</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
             <tr>
               <td><span class="tag tag-blue">Finance</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashFinance</td>
+              <td style="font-family:'Poppins';">@GrabCashFinance</td>
               <td>CRED (Rs.200/signup), PhonePe (Rs.50/txn), Groww (Rs.300/signup), Kuvera (Rs.150/signup)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">CPA Rs.150</td>
-              <td style="font-family:'JetBrains Mono';">5-10</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">CPA Rs.150</td>
+              <td style="font-family:'Poppins';">5-10</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
             <tr>
               <td><span class="tag tag-green">Grocery</span></td>
-              <td style="font-family:'JetBrains Mono';">@GrabCashGrocery</td>
+              <td style="font-family:'Poppins';">@GrabCashGrocery</td>
               <td>BigBasket (3%), Blinkit (2.5%), JioMart (3%), Amazon Fresh (4%), DMart (2%)</td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;">3.1%</td>
-              <td style="font-family:'JetBrains Mono';">15-20</td>
+              <td style="font-family:'Poppins';color:#0dcf1a;">3.1%</td>
+              <td style="font-family:'Poppins';">15-20</td>
               <td><span class="tag tag-red">NONE</span></td>
             </tr>
           </tbody>
@@ -1588,16 +1592,16 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td style="font-family:'JetBrains Mono';">/stats</td><td>Daily summary card</td><td>Today's clicks, conversions, revenue, top deal</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/stats week</td><td>Weekly summary with mini chart</td><td>7-day trend, best day, total revenue, avg per day</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/stats month</td><td>Monthly report</td><td>30-day totals, growth vs last month, category breakdown</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/channels</td><td>Channel performance table</td><td>Per-channel: subscribers, clicks, conversions, revenue, CTR</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/top deals</td><td>Top 10 performing deals</td><td>Deal name, clicks, conversions, revenue, commission earned</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/compare</td><td>Category comparison</td><td>Revenue by category, best performing category, trends</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/heatmap</td><td>Engagement heatmap image</td><td>Clicks by hour x day of week, optimal posting windows</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/earnings</td><td>Commission breakdown</td><td>Pending, confirmed, paid out, lifetime total</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/rank</td><td>Leaderboard position</td><td>Admin's rank among all GrabCash admins, tier, badges</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">/dashboard</td><td>Web dashboard link</td><td>Opens full web analytics dashboard in browser</td></tr>
+            <tr><td style="font-family:'Poppins';">/stats</td><td>Daily summary card</td><td>Today's clicks, conversions, revenue, top deal</td></tr>
+            <tr><td style="font-family:'Poppins';">/stats week</td><td>Weekly summary with mini chart</td><td>7-day trend, best day, total revenue, avg per day</td></tr>
+            <tr><td style="font-family:'Poppins';">/stats month</td><td>Monthly report</td><td>30-day totals, growth vs last month, category breakdown</td></tr>
+            <tr><td style="font-family:'Poppins';">/channels</td><td>Channel performance table</td><td>Per-channel: subscribers, clicks, conversions, revenue, CTR</td></tr>
+            <tr><td style="font-family:'Poppins';">/top deals</td><td>Top 10 performing deals</td><td>Deal name, clicks, conversions, revenue, commission earned</td></tr>
+            <tr><td style="font-family:'Poppins';">/compare</td><td>Category comparison</td><td>Revenue by category, best performing category, trends</td></tr>
+            <tr><td style="font-family:'Poppins';">/heatmap</td><td>Engagement heatmap image</td><td>Clicks by hour x day of week, optimal posting windows</td></tr>
+            <tr><td style="font-family:'Poppins';">/earnings</td><td>Commission breakdown</td><td>Pending, confirmed, paid out, lifetime total</td></tr>
+            <tr><td style="font-family:'Poppins';">/rank</td><td>Leaderboard position</td><td>Admin's rank among all GrabCash admins, tier, badges</td></tr>
+            <tr><td style="font-family:'Poppins';">/dashboard</td><td>Web dashboard link</td><td>Opens full web analytics dashboard in browser</td></tr>
           </tbody>
         </table>
       </div>
@@ -1705,13 +1709,13 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>Discount Percentage</td><td style="font-family:'JetBrains Mono';">25%</td><td>0-100%</td><td>Linear: 0% = 0pts, 50% = 50pts, 80%+ = 100pts</td></tr>
-            <tr><td>Price vs Historical Low</td><td style="font-family:'JetBrains Mono';">20%</td><td>0-100%</td><td>100pts if at/below all-time low; decreasing as price rises above ATL</td></tr>
-            <tr><td>Brand Popularity</td><td style="font-family:'JetBrains Mono';">15%</td><td>Tier S/A/B/C</td><td>S-tier brands (Apple, Samsung, Nike) = 100pts; C-tier = 25pts</td></tr>
-            <tr><td>Product Rating</td><td style="font-family:'JetBrains Mono';">10%</td><td>1.0-5.0 stars</td><td>5.0 = 100pts, 4.0 = 75pts, 3.0 = 50pts, below 3.0 = 0pts</td></tr>
-            <tr><td>Category Conversion Rate</td><td style="font-family:'JetBrains Mono';">10%</td><td>0-15%</td><td>Based on GrabCash historical conversion data per category</td></tr>
-            <tr><td>Deal Expiry Urgency</td><td style="font-family:'JetBrains Mono';">10%</td><td>Hours remaining</td><td>Expires in &lt;4hrs = 100pts; &lt;24hrs = 70pts; &gt;7days = 20pts</td></tr>
-            <tr><td>Commission Rate</td><td style="font-family:'JetBrains Mono';">10%</td><td>0-20%</td><td>Higher commission = higher score (incentivizes high-earning deals)</td></tr>
+            <tr><td>Discount Percentage</td><td style="font-family:'Poppins';">25%</td><td>0-100%</td><td>Linear: 0% = 0pts, 50% = 50pts, 80%+ = 100pts</td></tr>
+            <tr><td>Price vs Historical Low</td><td style="font-family:'Poppins';">20%</td><td>0-100%</td><td>100pts if at/below all-time low; decreasing as price rises above ATL</td></tr>
+            <tr><td>Brand Popularity</td><td style="font-family:'Poppins';">15%</td><td>Tier S/A/B/C</td><td>S-tier brands (Apple, Samsung, Nike) = 100pts; C-tier = 25pts</td></tr>
+            <tr><td>Product Rating</td><td style="font-family:'Poppins';">10%</td><td>1.0-5.0 stars</td><td>5.0 = 100pts, 4.0 = 75pts, 3.0 = 50pts, below 3.0 = 0pts</td></tr>
+            <tr><td>Category Conversion Rate</td><td style="font-family:'Poppins';">10%</td><td>0-15%</td><td>Based on GrabCash historical conversion data per category</td></tr>
+            <tr><td>Deal Expiry Urgency</td><td style="font-family:'Poppins';">10%</td><td>Hours remaining</td><td>Expires in &lt;4hrs = 100pts; &lt;24hrs = 70pts; &gt;7days = 20pts</td></tr>
+            <tr><td>Commission Rate</td><td style="font-family:'Poppins';">10%</td><td>0-20%</td><td>Higher commission = higher score (incentivizes high-earning deals)</td></tr>
           </tbody>
         </table>
       </div>
@@ -1727,10 +1731,10 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">90-100</td><td>EXCEPTIONAL</td><td>Auto-publish to all channels immediately + push notification to all admins</td><td><span class="tag tag-green">MUST SHARE</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">70-89</td><td>GREAT</td><td>Auto-publish to subscribed channels per admin's schedule</td><td><span class="tag tag-blue">GREAT DEAL</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#f59e0b;">50-69</td><td>GOOD</td><td>Queued for manual review by deal curation team; published if approved</td><td><span class="tag tag-yellow">GOOD</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#ef4444;">Below 50</td><td>SKIP</td><td>Rejected from official channels; admin can still manually convert links</td><td><span class="tag tag-red">LOW VALUE</span></td></tr>
+            <tr><td style="font-family:'Poppins';color:#0dcf1a;">90-100</td><td>EXCEPTIONAL</td><td>Auto-publish to all channels immediately + push notification to all admins</td><td><span class="tag tag-green">MUST SHARE</span></td></tr>
+            <tr><td style="font-family:'Poppins';color:#0dcf1a;">70-89</td><td>GREAT</td><td>Auto-publish to subscribed channels per admin's schedule</td><td><span class="tag tag-blue">GREAT DEAL</span></td></tr>
+            <tr><td style="font-family:'Poppins';color:#f59e0b;">50-69</td><td>GOOD</td><td>Queued for manual review by deal curation team; published if approved</td><td><span class="tag tag-yellow">GOOD</span></td></tr>
+            <tr><td style="font-family:'Poppins';color:#ef4444;">Below 50</td><td>SKIP</td><td>Rejected from official channels; admin can still manually convert links</td><td><span class="tag tag-red">LOW VALUE</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1791,8 +1795,8 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>Welcome Bonus</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">Rs. 500</td><td>Complete migration, active for 7 days</td></tr>
-            <tr><td>Commission Boost</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">+2% extra</td><td>First 90 days after migration</td></tr>
+            <tr><td>Welcome Bonus</td><td style="font-family:'Poppins';color:#0dcf1a;">Rs. 500</td><td>Complete migration, active for 7 days</td></tr>
+            <tr><td>Commission Boost</td><td style="font-family:'Poppins';color:#0dcf1a;">+2% extra</td><td>First 90 days after migration</td></tr>
             <tr><td>Priority Support</td><td>Dedicated WhatsApp support line</td><td>First 30 days</td></tr>
             <tr><td>Deal Priority</td><td>Early access to flash deals (30 min before others)</td><td>First 60 days</td></tr>
           </tbody>
@@ -1895,16 +1899,16 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Amazon India</td><td>amazon.in, amzn.to, amzn.in</td><td style="font-family:'JetBrains Mono';">4-10%</td><td class="cell-yes">PAAPI v5</td><td>24 hrs</td><td>Multi</td></tr>
-            <tr><td>2</td><td>Flipkart</td><td>flipkart.com, fkrt.it, dl.flipkart.com</td><td style="font-family:'JetBrains Mono';">5-12%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Multi</td></tr>
-            <tr><td>3</td><td>Ajio</td><td>ajio.com</td><td style="font-family:'JetBrains Mono';">10-15%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
-            <tr><td>4</td><td>Myntra</td><td>myntra.com</td><td style="font-family:'JetBrains Mono';">7-12%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
-            <tr><td>5</td><td>Nykaa</td><td>nykaa.com</td><td style="font-family:'JetBrains Mono';">9%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Beauty</td></tr>
-            <tr><td>6</td><td>MakeMyTrip</td><td>makemytrip.com</td><td style="font-family:'JetBrains Mono';">3-5%</td><td class="cell-yes">API</td><td>30 days</td><td>Travel</td></tr>
-            <tr><td>7</td><td>Pepperfry</td><td>pepperfry.com</td><td style="font-family:'JetBrains Mono';">5-8%</td><td class="cell-partial">Deeplink</td><td>30 days</td><td>Home</td></tr>
-            <tr><td>8</td><td>Zomato</td><td>zomato.com</td><td style="font-family:'JetBrains Mono';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
-            <tr><td>9</td><td>Swiggy</td><td>swiggy.com</td><td style="font-family:'JetBrains Mono';">3.5%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
-            <tr><td>10</td><td>BigBasket</td><td>bigbasket.com</td><td style="font-family:'JetBrains Mono';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Grocery</td></tr>
+            <tr><td>1</td><td>Amazon India</td><td>amazon.in, amzn.to, amzn.in</td><td style="font-family:'Poppins';">4-10%</td><td class="cell-yes">PAAPI v5</td><td>24 hrs</td><td>Multi</td></tr>
+            <tr><td>2</td><td>Flipkart</td><td>flipkart.com, fkrt.it, dl.flipkart.com</td><td style="font-family:'Poppins';">5-12%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Multi</td></tr>
+            <tr><td>3</td><td>Ajio</td><td>ajio.com</td><td style="font-family:'Poppins';">10-15%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
+            <tr><td>4</td><td>Myntra</td><td>myntra.com</td><td style="font-family:'Poppins';">7-12%</td><td class="cell-partial">Deeplink only</td><td>30 days</td><td>Fashion</td></tr>
+            <tr><td>5</td><td>Nykaa</td><td>nykaa.com</td><td style="font-family:'Poppins';">9%</td><td class="cell-yes">Affiliate API</td><td>30 days</td><td>Beauty</td></tr>
+            <tr><td>6</td><td>MakeMyTrip</td><td>makemytrip.com</td><td style="font-family:'Poppins';">3-5%</td><td class="cell-yes">API</td><td>30 days</td><td>Travel</td></tr>
+            <tr><td>7</td><td>Pepperfry</td><td>pepperfry.com</td><td style="font-family:'Poppins';">5-8%</td><td class="cell-partial">Deeplink</td><td>30 days</td><td>Home</td></tr>
+            <tr><td>8</td><td>Zomato</td><td>zomato.com</td><td style="font-family:'Poppins';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
+            <tr><td>9</td><td>Swiggy</td><td>swiggy.com</td><td style="font-family:'Poppins';">3.5%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Food</td></tr>
+            <tr><td>10</td><td>BigBasket</td><td>bigbasket.com</td><td style="font-family:'Poppins';">3%</td><td class="cell-partial">Deeplink</td><td>7 days</td><td>Grocery</td></tr>
           </tbody>
         </table>
       </div>
@@ -1974,12 +1978,12 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>Single link conversion</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;200ms</td><td>500ms-2s</td><td>&lt;3s (claimed)</td><td>1-3s</td></tr>
-            <tr><td>Batch of 10 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;1s</td><td>5-10s</td><td>&lt;3s (claimed)</td><td>N/A</td></tr>
-            <tr><td>Batch of 50 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;3s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
-            <tr><td>Batch of 100 links</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;5s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
-            <tr><td>Short URL redirect</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;50ms</td><td>100-300ms</td><td>100-200ms</td><td>&lt;100ms</td></tr>
-            <tr><td>Product enrichment</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;500ms</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+            <tr><td>Single link conversion</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;200ms</td><td>500ms-2s</td><td>&lt;3s (claimed)</td><td>1-3s</td></tr>
+            <tr><td>Batch of 10 links</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;1s</td><td>5-10s</td><td>&lt;3s (claimed)</td><td>N/A</td></tr>
+            <tr><td>Batch of 50 links</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;3s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+            <tr><td>Batch of 100 links</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;5s</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+            <tr><td>Short URL redirect</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;50ms</td><td>100-300ms</td><td>100-200ms</td><td>&lt;100ms</td></tr>
+            <tr><td>Product enrichment</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;500ms</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
           </tbody>
         </table>
       </div>
@@ -2022,15 +2026,15 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td><strong>All Deals (Master)</strong></td><td style="font-family:'JetBrains Mono';">@GrabCashDeals</td><td>Best deals across all categories (Score 80+)</td><td style="font-family:'JetBrains Mono';">30-50</td><td>Automated + curated</td><td>AI scored, human reviewed</td></tr>
-            <tr><td>Fashion</td><td style="font-family:'JetBrains Mono';">@GrabCashFashion</td><td>Ajio, Myntra, H&M, Adidas, Nike, Zara, FabIndia</td><td style="font-family:'JetBrains Mono';">25-40</td><td>API feeds + scraping</td><td>AI scored (threshold 60)</td></tr>
-            <tr><td>Electronics</td><td style="font-family:'JetBrains Mono';">@GrabCashElectronics</td><td>Samsung, boAt, HP, Lenovo, OnePlus, JBL, Apple</td><td style="font-family:'JetBrains Mono';">15-25</td><td>PAAPI + Flipkart API</td><td>AI scored (threshold 65)</td></tr>
-            <tr><td>Travel</td><td style="font-family:'JetBrains Mono';">@GrabCashTravel</td><td>Flights, hotels, holiday packages, train, bus</td><td style="font-family:'JetBrains Mono';">10-15</td><td>API + GrabOn feed</td><td>Curated by travel team</td></tr>
-            <tr><td>Food</td><td style="font-family:'JetBrains Mono';">@GrabCashFood</td><td>Zomato, Swiggy, Dominos, restaurant offers, food delivery</td><td style="font-family:'JetBrains Mono';">20-30</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
-            <tr><td>Beauty</td><td style="font-family:'JetBrains Mono';">@GrabCashBeauty</td><td>Nykaa, Mamaearth, Purplle, Sugar, skincare, makeup</td><td style="font-family:'JetBrains Mono';">15-25</td><td>API + GrabOn feed</td><td>AI scored (threshold 60)</td></tr>
-            <tr><td>Home</td><td style="font-family:'JetBrains Mono';">@GrabCashHome</td><td>Pepperfry, Urban Ladder, Wakefit, furniture, decor</td><td style="font-family:'JetBrains Mono';">10-15</td><td>API + GrabOn feed</td><td>Curated by home team</td></tr>
-            <tr><td>Finance</td><td style="font-family:'JetBrains Mono';">@GrabCashFinance</td><td>CRED, PhonePe, Groww, credit cards, fintech signups</td><td style="font-family:'JetBrains Mono';">5-10</td><td>Manual curation</td><td>Fully curated (high CPA)</td></tr>
-            <tr><td>Grocery</td><td style="font-family:'JetBrains Mono';">@GrabCashGrocery</td><td>BigBasket, Blinkit, JioMart, Amazon Fresh, pantry</td><td style="font-family:'JetBrains Mono';">15-20</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
+            <tr><td><strong>All Deals (Master)</strong></td><td style="font-family:'Poppins';">@GrabCashDeals</td><td>Best deals across all categories (Score 80+)</td><td style="font-family:'Poppins';">30-50</td><td>Automated + curated</td><td>AI scored, human reviewed</td></tr>
+            <tr><td>Fashion</td><td style="font-family:'Poppins';">@GrabCashFashion</td><td>Ajio, Myntra, H&M, Adidas, Nike, Zara, FabIndia</td><td style="font-family:'Poppins';">25-40</td><td>API feeds + scraping</td><td>AI scored (threshold 60)</td></tr>
+            <tr><td>Electronics</td><td style="font-family:'Poppins';">@GrabCashElectronics</td><td>Samsung, boAt, HP, Lenovo, OnePlus, JBL, Apple</td><td style="font-family:'Poppins';">15-25</td><td>PAAPI + Flipkart API</td><td>AI scored (threshold 65)</td></tr>
+            <tr><td>Travel</td><td style="font-family:'Poppins';">@GrabCashTravel</td><td>Flights, hotels, holiday packages, train, bus</td><td style="font-family:'Poppins';">10-15</td><td>API + GrabOn feed</td><td>Curated by travel team</td></tr>
+            <tr><td>Food</td><td style="font-family:'Poppins';">@GrabCashFood</td><td>Zomato, Swiggy, Dominos, restaurant offers, food delivery</td><td style="font-family:'Poppins';">20-30</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
+            <tr><td>Beauty</td><td style="font-family:'Poppins';">@GrabCashBeauty</td><td>Nykaa, Mamaearth, Purplle, Sugar, skincare, makeup</td><td style="font-family:'Poppins';">15-25</td><td>API + GrabOn feed</td><td>AI scored (threshold 60)</td></tr>
+            <tr><td>Home</td><td style="font-family:'Poppins';">@GrabCashHome</td><td>Pepperfry, Urban Ladder, Wakefit, furniture, decor</td><td style="font-family:'Poppins';">10-15</td><td>API + GrabOn feed</td><td>Curated by home team</td></tr>
+            <tr><td>Finance</td><td style="font-family:'Poppins';">@GrabCashFinance</td><td>CRED, PhonePe, Groww, credit cards, fintech signups</td><td style="font-family:'Poppins';">5-10</td><td>Manual curation</td><td>Fully curated (high CPA)</td></tr>
+            <tr><td>Grocery</td><td style="font-family:'Poppins';">@GrabCashGrocery</td><td>BigBasket, Blinkit, JioMart, Amazon Fresh, pantry</td><td style="font-family:'Poppins';">15-20</td><td>API + scraping</td><td>AI scored (threshold 55)</td></tr>
           </tbody>
         </table>
       </div>
@@ -2294,7 +2298,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>Products Tracked</td><td style="font-family:'JetBrains Mono';">Top 10,000 products (by search volume and conversion rate)</td></tr>
+            <tr><td>Products Tracked</td><td style="font-family:'Poppins';">Top 10,000 products (by search volume and conversion rate)</td></tr>
             <tr><td>Check Frequency</td><td>Every 15 minutes for top 1,000; every 1 hour for top 10,000</td></tr>
             <tr><td>Price History</td><td>90-day rolling history stored in TimescaleDB</td></tr>
             <tr><td>Alert Threshold</td><td>Configurable per product; default: notify on &gt;20% drop from 7-day average</td></tr>
@@ -2391,12 +2395,12 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>GrabOn Internal Feed</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">4,000+</td><td>High (curated)</td><td>Real-time</td><td>Free (internal)</td></tr>
-            <tr><td>Amazon PAAPI</td><td style="font-family:'JetBrains Mono';">1 (Amazon)</td><td>Highest (official)</td><td>Real-time</td><td>Free (revenue-gated)</td></tr>
-            <tr><td>Flipkart Affiliate API</td><td style="font-family:'JetBrains Mono';">1 (Flipkart)</td><td>High (official)</td><td>4-hour feed cycle</td><td>Free</td></tr>
-            <tr><td>Web Scraping</td><td style="font-family:'JetBrains Mono';">50-100</td><td>Medium (parsed)</td><td>15 min - 1 hr</td><td>Proxy costs ~$50/mo</td></tr>
-            <tr><td>Affiliate Network APIs</td><td style="font-family:'JetBrains Mono';">500+</td><td>Medium-High</td><td>Hourly</td><td>Free</td></tr>
-            <tr><td>Manual Curation</td><td style="font-family:'JetBrains Mono';">Unlimited</td><td>Highest (human)</td><td>Manual</td><td>Team salary</td></tr>
+            <tr><td>GrabOn Internal Feed</td><td style="font-family:'Poppins';color:#0dcf1a;">4,000+</td><td>High (curated)</td><td>Real-time</td><td>Free (internal)</td></tr>
+            <tr><td>Amazon PAAPI</td><td style="font-family:'Poppins';">1 (Amazon)</td><td>Highest (official)</td><td>Real-time</td><td>Free (revenue-gated)</td></tr>
+            <tr><td>Flipkart Affiliate API</td><td style="font-family:'Poppins';">1 (Flipkart)</td><td>High (official)</td><td>4-hour feed cycle</td><td>Free</td></tr>
+            <tr><td>Web Scraping</td><td style="font-family:'Poppins';">50-100</td><td>Medium (parsed)</td><td>15 min - 1 hr</td><td>Proxy costs ~$50/mo</td></tr>
+            <tr><td>Affiliate Network APIs</td><td style="font-family:'Poppins';">500+</td><td>Medium-High</td><td>Hourly</td><td>Free</td></tr>
+            <tr><td>Manual Curation</td><td style="font-family:'Poppins';">Unlimited</td><td>Highest (human)</td><td>Manual</td><td>Team salary</td></tr>
           </tbody>
         </table>
       </div>
@@ -2468,11 +2472,11 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             </tr>
           </thead>
           <tbody>
-            <tr><td>Bronze</td><td style="font-family:'JetBrains Mono';">Rs.0 - 999</td><td><span class="tag tag-white">BRONZE</span></td><td>Basic dashboard, standard support</td><td style="font-family:'JetBrains Mono';">+0%</td></tr>
-            <tr><td>Silver</td><td style="font-family:'JetBrains Mono';">Rs.1,000 - 4,999</td><td><span class="tag tag-blue">SILVER</span></td><td>Priority support, early deal access (15 min)</td><td style="font-family:'JetBrains Mono';">+0.5%</td></tr>
-            <tr><td>Gold</td><td style="font-family:'JetBrains Mono';">Rs.5,000 - 19,999</td><td><span class="tag tag-yellow">GOLD</span></td><td>Dedicated account manager, custom templates</td><td style="font-family:'JetBrains Mono';">+1%</td></tr>
-            <tr><td>Platinum</td><td style="font-family:'JetBrains Mono';">Rs.20,000 - 99,999</td><td><span class="tag tag-purple">PLATINUM</span></td><td>Exclusive merchant deals, beta features, weekly call</td><td style="font-family:'JetBrains Mono';">+1.5%</td></tr>
-            <tr><td>Diamond</td><td style="font-family:'JetBrains Mono';">Rs.1,00,000+</td><td><span class="tag tag-green">DIAMOND</span></td><td>Custom commission negotiation, co-branded events, annual retreat</td><td style="font-family:'JetBrains Mono';">+2%</td></tr>
+            <tr><td>Bronze</td><td style="font-family:'Poppins';">Rs.0 - 999</td><td><span class="tag tag-white">BRONZE</span></td><td>Basic dashboard, standard support</td><td style="font-family:'Poppins';">+0%</td></tr>
+            <tr><td>Silver</td><td style="font-family:'Poppins';">Rs.1,000 - 4,999</td><td><span class="tag tag-blue">SILVER</span></td><td>Priority support, early deal access (15 min)</td><td style="font-family:'Poppins';">+0.5%</td></tr>
+            <tr><td>Gold</td><td style="font-family:'Poppins';">Rs.5,000 - 19,999</td><td><span class="tag tag-yellow">GOLD</span></td><td>Dedicated account manager, custom templates</td><td style="font-family:'Poppins';">+1%</td></tr>
+            <tr><td>Platinum</td><td style="font-family:'Poppins';">Rs.20,000 - 99,999</td><td><span class="tag tag-purple">PLATINUM</span></td><td>Exclusive merchant deals, beta features, weekly call</td><td style="font-family:'Poppins';">+1.5%</td></tr>
+            <tr><td>Diamond</td><td style="font-family:'Poppins';">Rs.1,00,000+</td><td><span class="tag tag-green">DIAMOND</span></td><td>Custom commission negotiation, co-branded events, annual retreat</td><td style="font-family:'Poppins';">+2%</td></tr>
           </tbody>
         </table>
       </div>
@@ -2720,16 +2724,16 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             <tr><th>Method</th><th>Endpoint</th><th>Description</th><th>Rate Limit</th></tr>
           </thead>
           <tbody>
-            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert</td><td>Convert a single URL to affiliate link</td><td>Per plan</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert/batch</td><td>Convert text with multiple URLs</td><td>Per plan</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#0dcf1a;">POST</td><td style="font-family:'JetBrains Mono';">/convert/batch-urls</td><td>Convert array of URLs</td><td>Per plan</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/merchants</td><td>List all supported merchants</td><td>10/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/merchants/{id}</td><td>Get merchant details and commission rates</td><td>30/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/stats</td><td>Get click/conversion stats for your links</td><td>10/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/stats/links/{hash}</td><td>Get stats for a specific short link</td><td>30/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/deals</td><td>Get trending deals (paginated)</td><td>10/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/deals/categories</td><td>Get deals by category</td><td>10/min</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';color:#3b82f6;">GET</td><td style="font-family:'JetBrains Mono';">/price-history/{product_id}</td><td>Get 90-day price history</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#0dcf1a;">POST</td><td style="font-family:'Poppins';">/convert</td><td>Convert a single URL to affiliate link</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'Poppins';color:#0dcf1a;">POST</td><td style="font-family:'Poppins';">/convert/batch</td><td>Convert text with multiple URLs</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'Poppins';color:#0dcf1a;">POST</td><td style="font-family:'Poppins';">/convert/batch-urls</td><td>Convert array of URLs</td><td>Per plan</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/merchants</td><td>List all supported merchants</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/merchants/{id}</td><td>Get merchant details and commission rates</td><td>30/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/stats</td><td>Get click/conversion stats for your links</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/stats/links/{hash}</td><td>Get stats for a specific short link</td><td>30/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/deals</td><td>Get trending deals (paginated)</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/deals/categories</td><td>Get deals by category</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Poppins';color:#3b82f6;">GET</td><td style="font-family:'Poppins';">/price-history/{product_id}</td><td>Get 90-day price history</td><td>10/min</td></tr>
           </tbody>
         </table>
       </div>
@@ -2743,11 +2747,11 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             <tr><th>Event</th><th>Payload</th><th>Use Case</th></tr>
           </thead>
           <tbody>
-            <tr><td style="font-family:'JetBrains Mono';">click.recorded</td><td>Link hash, referrer, timestamp, device, geo</td><td>Real-time click tracking</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">conversion.pending</td><td>Order ID, amount, commission, merchant, product</td><td>Instant conversion notification</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">conversion.confirmed</td><td>Same as pending + confirmed commission amount</td><td>Revenue confirmation</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">conversion.rejected</td><td>Order ID, rejection reason</td><td>Fraud detection, debugging</td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">payout.processed</td><td>Amount, bank/UPI reference, transaction ID</td><td>Payout confirmation</td></tr>
+            <tr><td style="font-family:'Poppins';">click.recorded</td><td>Link hash, referrer, timestamp, device, geo</td><td>Real-time click tracking</td></tr>
+            <tr><td style="font-family:'Poppins';">conversion.pending</td><td>Order ID, amount, commission, merchant, product</td><td>Instant conversion notification</td></tr>
+            <tr><td style="font-family:'Poppins';">conversion.confirmed</td><td>Same as pending + confirmed commission amount</td><td>Revenue confirmation</td></tr>
+            <tr><td style="font-family:'Poppins';">conversion.rejected</td><td>Order ID, rejection reason</td><td>Fraud detection, debugging</td></tr>
+            <tr><td style="font-family:'Poppins';">payout.processed</td><td>Amount, bank/UPI reference, transaction ID</td><td>Payout confirmation</td></tr>
           </tbody>
         </table>
       </div>
@@ -2811,10 +2815,10 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
             <tr><th>Plan</th><th>Price/Month</th><th>Requests/Day</th><th>Webhooks</th><th>Support</th></tr>
           </thead>
           <tbody>
-            <tr><td>Free</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">Rs. 0</td><td style="font-family:'JetBrains Mono';">100</td><td class="cell-no">No</td><td>Community</td></tr>
-            <tr><td>Starter</td><td style="font-family:'JetBrains Mono';">Rs. 499</td><td style="font-family:'JetBrains Mono';">5,000</td><td class="cell-yes">Yes</td><td>Email</td></tr>
-            <tr><td>Pro</td><td style="font-family:'JetBrains Mono';">Rs. 1,999</td><td style="font-family:'JetBrains Mono';">50,000</td><td class="cell-yes">Yes + priority</td><td>Priority email + chat</td></tr>
-            <tr><td>Enterprise</td><td style="font-family:'JetBrains Mono';">Custom</td><td style="font-family:'JetBrains Mono';">Unlimited</td><td class="cell-yes">Yes + custom</td><td>Dedicated account manager</td></tr>
+            <tr><td>Free</td><td style="font-family:'Poppins';color:#0dcf1a;">Rs. 0</td><td style="font-family:'Poppins';">100</td><td class="cell-no">No</td><td>Community</td></tr>
+            <tr><td>Starter</td><td style="font-family:'Poppins';">Rs. 499</td><td style="font-family:'Poppins';">5,000</td><td class="cell-yes">Yes</td><td>Email</td></tr>
+            <tr><td>Pro</td><td style="font-family:'Poppins';">Rs. 1,999</td><td style="font-family:'Poppins';">50,000</td><td class="cell-yes">Yes + priority</td><td>Priority email + chat</td></tr>
+            <tr><td>Enterprise</td><td style="font-family:'Poppins';">Custom</td><td style="font-family:'Poppins';">Unlimited</td><td class="cell-yes">Yes + custom</td><td>Dedicated account manager</td></tr>
           </tbody>
         </table>
       </div>
@@ -2848,42 +2852,42 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
               <td>IP fingerprinting + click velocity analysis</td>
               <td>&gt;5 clicks from same IP/fingerprint in 1 hour on same link</td>
               <td>Flag clicks as bot; exclude from metrics; warn admin</td>
-              <td style="font-family:'JetBrains Mono';">&lt;2%</td>
+              <td style="font-family:'Poppins';">&lt;2%</td>
             </tr>
             <tr>
               <td><strong>Self-Purchase</strong></td>
               <td>IP matching between admin's registered IPs and purchaser IP</td>
               <td>Conversion from IP matching admin's known IPs/devices</td>
               <td>Flag conversion; manual review; deduct commission if confirmed</td>
-              <td style="font-family:'JetBrains Mono';">&lt;5%</td>
+              <td style="font-family:'Poppins';">&lt;5%</td>
             </tr>
             <tr>
               <td><strong>Cookie Stuffing</strong></td>
               <td>Click-to-conversion time analysis + referrer chain inspection</td>
               <td>Conversion with no genuine click, or click from hidden iframe</td>
               <td>Reject conversion; flag admin account</td>
-              <td style="font-family:'JetBrains Mono';">&lt;1%</td>
+              <td style="font-family:'Poppins';">&lt;1%</td>
             </tr>
             <tr>
               <td><strong>Bot Traffic</strong></td>
               <td>User-agent analysis + JavaScript challenge + behavioral patterns</td>
               <td>Non-browser user agent, no JS execution, inhuman click patterns</td>
               <td>Block traffic; exclude from metrics</td>
-              <td style="font-family:'JetBrains Mono';">&lt;3%</td>
+              <td style="font-family:'Poppins';">&lt;3%</td>
             </tr>
             <tr>
               <td><strong>Click Farms</strong></td>
               <td>Geographic clustering + device fingerprint diversity analysis</td>
               <td>Many clicks from same geo/ASN with similar fingerprints</td>
               <td>Quarantine clicks; investigate admin; suspend if confirmed</td>
-              <td style="font-family:'JetBrains Mono';">&lt;5%</td>
+              <td style="font-family:'Poppins';">&lt;5%</td>
             </tr>
             <tr>
               <td><strong>Return Fraud</strong></td>
               <td>Post-purchase monitoring (merchant callback for returns)</td>
               <td>&gt;30% return rate on admin's conversions</td>
               <td>Warning at 30%, account review at 50%, suspension at 70%</td>
-              <td style="font-family:'JetBrains Mono';">&lt;1%</td>
+              <td style="font-family:'Poppins';">&lt;1%</td>
             </tr>
           </tbody>
         </table>
@@ -2958,19 +2962,19 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
             <tr><th>Component</th><th>Service</th><th>Config</th><th>Cost/Month</th></tr>
           </thead>
           <tbody>
-            <tr><td>Compute (Bot + API)</td><td>AWS ECS Fargate</td><td>2-20 tasks, 2 vCPU / 4GB each, auto-scaling</td><td style="font-family:'JetBrains Mono';">$200-800</td></tr>
-            <tr><td>Database</td><td>AWS RDS PostgreSQL 16</td><td>db.r6g.large, Multi-AZ, 500GB SSD, encrypted</td><td style="font-family:'JetBrains Mono';">$400</td></tr>
-            <tr><td>Cache/Queue</td><td>AWS ElastiCache Redis 7</td><td>cache.r6g.large, 3-node cluster, encrypted</td><td style="font-family:'JetBrains Mono';">$300</td></tr>
-            <tr><td>CDN + Edge</td><td>Cloudflare Pro + Workers</td><td>Unlimited requests, Workers for URL redirects</td><td style="font-family:'JetBrains Mono';">$25 + usage</td></tr>
-            <tr><td>Object Storage</td><td>AWS S3</td><td>Product images, backups, logs</td><td style="font-family:'JetBrains Mono';">$50</td></tr>
-            <tr><td>Monitoring</td><td>Prometheus + Grafana + PagerDuty</td><td>Self-hosted Prometheus, Grafana Cloud Free, PagerDuty Pro</td><td style="font-family:'JetBrains Mono';">$50</td></tr>
-            <tr><td>Logging</td><td>AWS CloudWatch + Datadog</td><td>Structured logs, 30-day retention</td><td style="font-family:'JetBrains Mono';">$100</td></tr>
-            <tr><td>CI/CD</td><td>GitHub Actions</td><td>Auto-deploy on merge to main</td><td style="font-family:'JetBrains Mono';">$20</td></tr>
+            <tr><td>Compute (Bot + API)</td><td>AWS ECS Fargate</td><td>2-20 tasks, 2 vCPU / 4GB each, auto-scaling</td><td style="font-family:'Poppins';">$200-800</td></tr>
+            <tr><td>Database</td><td>AWS RDS PostgreSQL 16</td><td>db.r6g.large, Multi-AZ, 500GB SSD, encrypted</td><td style="font-family:'Poppins';">$400</td></tr>
+            <tr><td>Cache/Queue</td><td>AWS ElastiCache Redis 7</td><td>cache.r6g.large, 3-node cluster, encrypted</td><td style="font-family:'Poppins';">$300</td></tr>
+            <tr><td>CDN + Edge</td><td>Cloudflare Pro + Workers</td><td>Unlimited requests, Workers for URL redirects</td><td style="font-family:'Poppins';">$25 + usage</td></tr>
+            <tr><td>Object Storage</td><td>AWS S3</td><td>Product images, backups, logs</td><td style="font-family:'Poppins';">$50</td></tr>
+            <tr><td>Monitoring</td><td>Prometheus + Grafana + PagerDuty</td><td>Self-hosted Prometheus, Grafana Cloud Free, PagerDuty Pro</td><td style="font-family:'Poppins';">$50</td></tr>
+            <tr><td>Logging</td><td>AWS CloudWatch + Datadog</td><td>Structured logs, 30-day retention</td><td style="font-family:'Poppins';">$100</td></tr>
+            <tr><td>CI/CD</td><td>GitHub Actions</td><td>Auto-deploy on merge to main</td><td style="font-family:'Poppins';">$20</td></tr>
             <tr style="background:rgba(13,207,26,0.06);">
               <td><strong>TOTAL</strong></td>
               <td></td>
               <td></td>
-              <td style="font-family:'JetBrains Mono';color:#0dcf1a;"><strong>$1,150 - $1,750/mo</strong></td>
+              <td style="font-family:'Poppins';color:#0dcf1a;"><strong>$1,150 - $1,750/mo</strong></td>
             </tr>
           </tbody>
         </table>
@@ -3008,13 +3012,13 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
             <tr><th>Metric</th><th>Target</th><th>Measurement</th></tr>
           </thead>
           <tbody>
-            <tr><td>Uptime</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">99.9%</td><td>Monthly, excluding scheduled maintenance (max 4hrs/month, announced 48hrs ahead)</td></tr>
-            <tr><td>Link Conversion Latency (p99)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;500ms</td><td>99th percentile response time for /convert endpoint</td></tr>
-            <tr><td>URL Redirect Latency (p99)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;100ms</td><td>Cloudflare edge redirect latency</td></tr>
-            <tr><td>Bot Response Time (p95)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;2s</td><td>Time from user message to bot reply (95th percentile)</td></tr>
-            <tr><td>Data Durability</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">99.999%</td><td>RDS Multi-AZ with daily snapshots + WAL archiving to S3</td></tr>
-            <tr><td>RPO (Recovery Point Objective)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;5 min</td><td>Maximum data loss in disaster recovery scenario</td></tr>
-            <tr><td>RTO (Recovery Time Objective)</td><td style="font-family:'JetBrains Mono';color:#0dcf1a;">&lt;30 min</td><td>Maximum time to restore service after infrastructure failure</td></tr>
+            <tr><td>Uptime</td><td style="font-family:'Poppins';color:#0dcf1a;">99.9%</td><td>Monthly, excluding scheduled maintenance (max 4hrs/month, announced 48hrs ahead)</td></tr>
+            <tr><td>Link Conversion Latency (p99)</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;500ms</td><td>99th percentile response time for /convert endpoint</td></tr>
+            <tr><td>URL Redirect Latency (p99)</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;100ms</td><td>Cloudflare edge redirect latency</td></tr>
+            <tr><td>Bot Response Time (p95)</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;2s</td><td>Time from user message to bot reply (95th percentile)</td></tr>
+            <tr><td>Data Durability</td><td style="font-family:'Poppins';color:#0dcf1a;">99.999%</td><td>RDS Multi-AZ with daily snapshots + WAL archiving to S3</td></tr>
+            <tr><td>RPO (Recovery Point Objective)</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;5 min</td><td>Maximum data loss in disaster recovery scenario</td></tr>
+            <tr><td>RTO (Recovery Time Objective)</td><td style="font-family:'Poppins';color:#0dcf1a;">&lt;30 min</td><td>Maximum time to restore service after infrastructure failure</td></tr>
           </tbody>
         </table>
       </div>
@@ -3050,26 +3054,26 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
             </tr>
           </thead>
           <tbody>
-            <tr><td style="font-family:'JetBrains Mono';">W1</td><td rowspan="4"><span class="tag tag-green">Phase 1: Foundation</span></td><td>GrabOn API integration (internal feed); PostgreSQL schema design + migration; Redis cluster setup; CI/CD pipeline (GitHub Actions + ECS)</td><td>Backend Lead + 1 Backend Dev + DevOps</td><td>GrabOn API access (internal approval needed)</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W2</td><td>Link Converter Engine v1 (single link); URL shortener service (grabcash.in/go/); Merchant domain-to-ID mapping table (4,000+ entries); Unit test suite</td><td>Backend Lead + 1 Backend Dev</td><td>GrabOn API live</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W3</td><td>Telegram Bot scaffold (telegraf.js); /start onboarding wizard; Single link conversion via bot; Multi-link conversion (Magic Tool parity); Bot deployed to staging</td><td>Backend Lead + 1 Backend Dev + QA</td><td>Link Converter v1</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W4</td><td>Channel linking (Method A: Direct Add); Channel linking (Method B: BotFather token); Basic auto-forwarder (manual deal source); Admin database + registration; BETA LAUNCH (50 admins)</td><td>Full backend team + QA</td><td>Bot on staging</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W5</td><td rowspan="4"><span class="tag tag-blue">Phase 2: Deal Engine</span></td><td>Amazon PAAPI v5 integration; Flipkart Affiliate API integration; Deal ingestion pipeline; Deduplication engine v1</td><td>2 Backend Devs + Data Engineer</td><td>Amazon/Flipkart affiliate accounts approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W6</td><td>Deal scoring algorithm v1; @GrabCashDeals master channel setup; @GrabCashFashion + @GrabCashElectronics channels; Content template system (3 templates per category)</td><td>2 Backend Devs + Data Engineer</td><td>Deal ingestion live</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W7</td><td>Remaining 6 category channels (@Travel, @Food, @Beauty, @Home, @Finance, @Grocery); Auto-forwarder connected to official channels; Admin subscription management (per-category); Click tracking (short URL + redirect logging)</td><td>Full backend team + Frontend Dev</td><td>Channels populated</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W8</td><td>Conversion tracking (merchant postback integration); Analytics dashboard v1 (web); In-bot analytics commands (/stats, /channels, /top); Commission tracker v1; PUBLIC LAUNCH v1.0</td><td>Full team</td><td>Tracking infrastructure</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W9</td><td rowspan="4"><span class="tag tag-purple">Phase 3: Intelligence</span></td><td>Price monitoring system (top 1,000 products); Price drop alerts v1; Historical price charts; All-time low badge system</td><td>Data Engineer + 1 Backend Dev</td><td>Product data pipeline</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W10</td><td>Smart scheduling AI v1 (channel-level); Engagement heatmap; A/B testing engine v1; Deal quality scoring AI v1</td><td>Data Engineer + 1 Backend Dev</td><td>30 days of analytics data minimum</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W11</td><td>Chrome Extension v1 (link detection + conversion + copy); Admin leaderboard + gamification; Achievement badges system; Migration tool from EK Affiliaters v1</td><td>Frontend Dev + 1 Backend Dev</td><td>Extension APIs documented</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W12</td><td>Flash sale monitor (Amazon Lightning + Flipkart Flash); Analytics dashboard v2 (enhanced charts, heatmaps); Anti-fraud system v1; Load testing + security audit; LAUNCH v2.0</td><td>Full team</td><td>All Phase 3 features</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W13</td><td rowspan="4"><span class="tag tag-yellow">Phase 4: Expansion</span></td><td>WhatsApp Business API setup + approval; WA link conversion (1:1 messaging); WA deal alerts (broadcast lists)</td><td>Mobile Dev + 1 Backend Dev</td><td>Meta Business verification</td><td><span class="tag tag-red">High</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W14</td><td>WA group posting automation (admin's session); WordPress plugin v1 (auto-monetize links); WP revenue dashboard widget</td><td>Mobile Dev + Frontend Dev</td><td>WA API approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W15</td><td>WordPress plugin: GrabOn coupon widget, price comparison table shortcode; Chrome Extension v2: auto-coupon, price comparison, share to TG/WA</td><td>Frontend Dev + 1 Backend Dev</td><td>Plugin v1 stable</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W16</td><td>Multi-platform posting v1 (TG + WA unified interface); Admin referral tracking system; Parallel posting mode (EK + GrabCash); LAUNCH v3.0</td><td>Full team</td><td>WA integration stable</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W17</td><td rowspan="4"><span class="tag tag-red">Phase 5: Scale</span></td><td>Developer API v1 (public); API documentation (Swagger); Python SDK v1; Node.js SDK v1</td><td>Backend Lead + 1 Backend Dev</td><td>Core APIs stable for 60+ days</td><td><span class="tag tag-green">Low</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W18</td><td>Analytics dashboard v3 (advanced: cohort analysis, predictive revenue, merchant insights); Smart scheduling AI v2 (cross-channel learning)</td><td>Data Engineer + Frontend Dev</td><td>3+ months analytics data</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W19</td><td>Scale infrastructure to handle 10,000 admins; Performance optimization sprint; Anti-fraud v2 (ML-based); Price monitoring expanded to 10,000 products</td><td>DevOps + Backend Lead + Data Engineer</td><td>Growth targets</td><td><span class="tag tag-yellow">Med</span></td></tr>
-            <tr><td style="font-family:'JetBrains Mono';">W20</td><td>Full security audit (external); Penetration testing; Documentation completion; Knowledge transfer; LAUNCH v4.0 (FULL ARSENAL)</td><td>Full team + external auditor</td><td>All features stable</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W1</td><td rowspan="4"><span class="tag tag-green">Phase 1: Foundation</span></td><td>GrabOn API integration (internal feed); PostgreSQL schema design + migration; Redis cluster setup; CI/CD pipeline (GitHub Actions + ECS)</td><td>Backend Lead + 1 Backend Dev + DevOps</td><td>GrabOn API access (internal approval needed)</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W2</td><td>Link Converter Engine v1 (single link); URL shortener service (grabcash.in/go/); Merchant domain-to-ID mapping table (4,000+ entries); Unit test suite</td><td>Backend Lead + 1 Backend Dev</td><td>GrabOn API live</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W3</td><td>Telegram Bot scaffold (telegraf.js); /start onboarding wizard; Single link conversion via bot; Multi-link conversion (Magic Tool parity); Bot deployed to staging</td><td>Backend Lead + 1 Backend Dev + QA</td><td>Link Converter v1</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W4</td><td>Channel linking (Method A: Direct Add); Channel linking (Method B: BotFather token); Basic auto-forwarder (manual deal source); Admin database + registration; BETA LAUNCH (50 admins)</td><td>Full backend team + QA</td><td>Bot on staging</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W5</td><td rowspan="4"><span class="tag tag-blue">Phase 2: Deal Engine</span></td><td>Amazon PAAPI v5 integration; Flipkart Affiliate API integration; Deal ingestion pipeline; Deduplication engine v1</td><td>2 Backend Devs + Data Engineer</td><td>Amazon/Flipkart affiliate accounts approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W6</td><td>Deal scoring algorithm v1; @GrabCashDeals master channel setup; @GrabCashFashion + @GrabCashElectronics channels; Content template system (3 templates per category)</td><td>2 Backend Devs + Data Engineer</td><td>Deal ingestion live</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W7</td><td>Remaining 6 category channels (@Travel, @Food, @Beauty, @Home, @Finance, @Grocery); Auto-forwarder connected to official channels; Admin subscription management (per-category); Click tracking (short URL + redirect logging)</td><td>Full backend team + Frontend Dev</td><td>Channels populated</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W8</td><td>Conversion tracking (merchant postback integration); Analytics dashboard v1 (web); In-bot analytics commands (/stats, /channels, /top); Commission tracker v1; PUBLIC LAUNCH v1.0</td><td>Full team</td><td>Tracking infrastructure</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W9</td><td rowspan="4"><span class="tag tag-purple">Phase 3: Intelligence</span></td><td>Price monitoring system (top 1,000 products); Price drop alerts v1; Historical price charts; All-time low badge system</td><td>Data Engineer + 1 Backend Dev</td><td>Product data pipeline</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W10</td><td>Smart scheduling AI v1 (channel-level); Engagement heatmap; A/B testing engine v1; Deal quality scoring AI v1</td><td>Data Engineer + 1 Backend Dev</td><td>30 days of analytics data minimum</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W11</td><td>Chrome Extension v1 (link detection + conversion + copy); Admin leaderboard + gamification; Achievement badges system; Migration tool from EK Affiliaters v1</td><td>Frontend Dev + 1 Backend Dev</td><td>Extension APIs documented</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W12</td><td>Flash sale monitor (Amazon Lightning + Flipkart Flash); Analytics dashboard v2 (enhanced charts, heatmaps); Anti-fraud system v1; Load testing + security audit; LAUNCH v2.0</td><td>Full team</td><td>All Phase 3 features</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W13</td><td rowspan="4"><span class="tag tag-yellow">Phase 4: Expansion</span></td><td>WhatsApp Business API setup + approval; WA link conversion (1:1 messaging); WA deal alerts (broadcast lists)</td><td>Mobile Dev + 1 Backend Dev</td><td>Meta Business verification</td><td><span class="tag tag-red">High</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W14</td><td>WA group posting automation (admin's session); WordPress plugin v1 (auto-monetize links); WP revenue dashboard widget</td><td>Mobile Dev + Frontend Dev</td><td>WA API approved</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W15</td><td>WordPress plugin: GrabOn coupon widget, price comparison table shortcode; Chrome Extension v2: auto-coupon, price comparison, share to TG/WA</td><td>Frontend Dev + 1 Backend Dev</td><td>Plugin v1 stable</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W16</td><td>Multi-platform posting v1 (TG + WA unified interface); Admin referral tracking system; Parallel posting mode (EK + GrabCash); LAUNCH v3.0</td><td>Full team</td><td>WA integration stable</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W17</td><td rowspan="4"><span class="tag tag-red">Phase 5: Scale</span></td><td>Developer API v1 (public); API documentation (Swagger); Python SDK v1; Node.js SDK v1</td><td>Backend Lead + 1 Backend Dev</td><td>Core APIs stable for 60+ days</td><td><span class="tag tag-green">Low</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W18</td><td>Analytics dashboard v3 (advanced: cohort analysis, predictive revenue, merchant insights); Smart scheduling AI v2 (cross-channel learning)</td><td>Data Engineer + Frontend Dev</td><td>3+ months analytics data</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W19</td><td>Scale infrastructure to handle 10,000 admins; Performance optimization sprint; Anti-fraud v2 (ML-based); Price monitoring expanded to 10,000 products</td><td>DevOps + Backend Lead + Data Engineer</td><td>Growth targets</td><td><span class="tag tag-yellow">Med</span></td></tr>
+            <tr><td style="font-family:'Poppins';">W20</td><td>Full security audit (external); Penetration testing; Documentation completion; Knowledge transfer; LAUNCH v4.0 (FULL ARSENAL)</td><td>Full team + external auditor</td><td>All features stable</td><td><span class="tag tag-green">Low</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -3090,31 +3094,31 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
           <tbody>
             <tr>
               <td><span class="tag tag-green">BETA</span></td>
-              <td style="font-family:'JetBrains Mono';">W4</td>
+              <td style="font-family:'Poppins';">W4</td>
               <td>Bot + link converter + channel linking + basic auto-forward</td>
               <td>Admin can convert links, link channel, receive manual deals. Parity with basic EK Affiliaters.</td>
             </tr>
             <tr>
               <td><span class="tag tag-blue">v1.0</span></td>
-              <td style="font-family:'JetBrains Mono';">W8</td>
+              <td style="font-family:'Poppins';">W8</td>
               <td>Full deal engine + 8 channels + analytics + commission tracking</td>
               <td>Admin has full passive income setup. Surpasses EK Affiliaters on categories and analytics.</td>
             </tr>
             <tr>
               <td><span class="tag tag-purple">v2.0</span></td>
-              <td style="font-family:'JetBrains Mono';">W12</td>
+              <td style="font-family:'Poppins';">W12</td>
               <td>AI features + Chrome extension + migration tool + anti-fraud</td>
               <td>Admin has AI-powered tools no competitor offers. Migration tool enables rapid EK->GrabCash switch.</td>
             </tr>
             <tr>
               <td><span class="tag tag-yellow">v3.0</span></td>
-              <td style="font-family:'JetBrains Mono';">W16</td>
+              <td style="font-family:'Poppins';">W16</td>
               <td>WhatsApp + WordPress + multi-platform + referral system</td>
               <td>Admin can monetize across TG + WA + blog. Full platform play.</td>
             </tr>
             <tr>
               <td><span class="tag tag-red">v4.0</span></td>
-              <td style="font-family:'JetBrains Mono';">W20</td>
+              <td style="font-family:'Poppins';">W20</td>
               <td>Developer API + SDKs + advanced analytics + scaled infra</td>
               <td>Full arsenal deployed. Developer ecosystem enabled. Scaled for 10,000+ admins.</td>
             </tr>
@@ -3156,56 +3160,56 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
           </thead>
           <tbody>
             <!-- CORE FEATURES -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">CORE LINK CONVERSION</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Single Link Conversion</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">CORE LINK CONVERSION</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Single Link Conversion</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Multi-Link (Batch Text)</td><td class="cell-yes">Yes</td><td class="cell-yes">Magic Tool</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-yes">Yes</td><td class="cell-partial">Partial</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Batch URL Array (API)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Batch URL Array (API)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Conversion Speed (&lt;200ms)</td><td class="cell-exclusive">Exclusive</td><td class="cell-partial">500ms-2s</td><td class="cell-partial">&lt;3s</td><td class="cell-partial">1-3s</td><td class="cell-partial">2-5s</td><td class="cell-partial">1-3s</td><td class="cell-partial">2-5s</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Merchant Coverage (4,000+)</td><td class="cell-exclusive">4,000+</td><td class="cell-partial">200-500</td><td class="cell-partial">300-600</td><td class="cell-yes">1,000+</td><td class="cell-partial">200-400</td><td class="cell-partial">300-500</td><td class="cell-partial">200-400</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Merchant Coverage (4,000+)</td><td class="cell-exclusive">4,000+</td><td class="cell-partial">200-500</td><td class="cell-partial">300-600</td><td class="cell-yes">1,000+</td><td class="cell-partial">200-400</td><td class="cell-partial">300-500</td><td class="cell-partial">200-400</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Branded Short URLs</td><td class="cell-yes">grabcash.in/go/</td><td class="cell-partial">ekr.in</td><td class="cell-no">No</td><td class="cell-partial">cuel.ink</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Product Enrichment (title/price/image)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Product Enrichment (title/price/image)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
 
             <!-- TELEGRAM BOT -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">TELEGRAM BOT FEATURES</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Channel Linking (Direct Add)</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">TELEGRAM BOT FEATURES</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Channel Linking (Direct Add)</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Channel Linking (BotFather)</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-yes">Yes</td><td class="cell-partial">Partial</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Auto-Forwarder</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-partial">Basic</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Auto-Forwarder</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-partial">Basic</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Deal Categories (8)</td><td class="cell-exclusive">8 Categories</td><td class="cell-partial">3</td><td class="cell-partial">4</td><td class="cell-no">None</td><td class="cell-partial">2</td><td class="cell-partial">3</td><td class="cell-partial">2</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Category Filtering per Channel</td><td class="cell-yes">Yes</td><td class="cell-partial">Limited</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Category Filtering per Channel</td><td class="cell-yes">Yes</td><td class="cell-partial">Limited</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Custom Post Templates</td><td class="cell-yes">3 presets + custom</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Posting Frequency Control</td><td class="cell-yes">4 levels</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Posting Frequency Control</td><td class="cell-yes">4 levels</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Setup Time</td><td class="cell-exclusive">~2 min</td><td class="cell-partial">5-10 min</td><td class="cell-partial">10-15 min</td><td class="cell-partial">5-8 min</td><td class="cell-partial">10-20 min</td><td class="cell-partial">5-10 min</td><td class="cell-partial">10-15 min</td></tr>
 
             <!-- AI / INTELLIGENCE -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">AI &amp; INTELLIGENCE</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Smart Scheduling AI</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">AI &amp; INTELLIGENCE</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Smart Scheduling AI</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">A/B Testing</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Deal Quality Scoring</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Deal Quality Scoring</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Price Drop Alerts</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Price History Charts</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Price History Charts</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
 
             <!-- ANALYTICS -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">ANALYTICS &amp; TRACKING</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">In-Bot Analytics</td><td class="cell-exclusive">Exclusive (10 commands)</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">ANALYTICS &amp; TRACKING</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">In-Bot Analytics</td><td class="cell-exclusive">Exclusive (10 commands)</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Web Analytics Dashboard</td><td class="cell-yes">Yes (6 rows)</td><td class="cell-partial">Basic</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Basic</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Per-Channel Analytics</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Per-Channel Analytics</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-partial">Partial</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Commission Tracker (In-Bot)</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Engagement Heatmap</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Engagement Heatmap</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Admin Leaderboard</td><td class="cell-exclusive">Exclusive (5 tiers + badges)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
 
             <!-- PLATFORM -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">MULTI-PLATFORM</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">WhatsApp Integration</td><td class="cell-yes">Yes (Business API)</td><td class="cell-no">No</td><td class="cell-yes">Yes (1000 TG+WA)</td><td class="cell-no">No</td><td class="cell-partial">Manual</td><td class="cell-partial">WA only</td><td class="cell-partial">Manual</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">MULTI-PLATFORM</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">WhatsApp Integration</td><td class="cell-yes">Yes (Business API)</td><td class="cell-no">No</td><td class="cell-yes">Yes (1000 TG+WA)</td><td class="cell-no">No</td><td class="cell-partial">Manual</td><td class="cell-partial">WA only</td><td class="cell-partial">Manual</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Chrome Extension</td><td class="cell-yes">Yes (8 features)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">WordPress Plugin</td><td class="cell-yes">Yes (10 features)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes (their moat)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">WordPress Plugin</td><td class="cell-yes">Yes (10 features)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-yes">Yes (their moat)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Developer API</td><td class="cell-yes">Yes (REST + SDKs)</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Migration Tool</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Migration Tool</td><td class="cell-exclusive">Exclusive</td><td class="cell-no">N/A</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
 
             <!-- PRICING / BUSINESS -->
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">BUSINESS &amp; PRICING</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Pricing Model</td><td class="cell-exclusive">FREE (all features)</td><td class="cell-yes">Free</td><td class="cell-partial">Free/Rs.499/999</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.299+/mo</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.199+/mo</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;font-weight:700;color:#0dcf1a;" colspan="8">BUSINESS &amp; PRICING</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Pricing Model</td><td class="cell-exclusive">FREE (all features)</td><td class="cell-yes">Free</td><td class="cell-partial">Free/Rs.499/999</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.299+/mo</td><td class="cell-partial">Free limited</td><td class="cell-partial">Rs.199+/mo</td></tr>
             <tr><td style="position:sticky;left:0;background:rgba(255,255,255,0.015);z-index:5;">Anti-Fraud System</td><td class="cell-yes">ML-based, 6 types</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-partial">Basic</td><td class="cell-no">No</td><td class="cell-no">No</td><td class="cell-no">No</td></tr>
-            <tr><td style="position:sticky;left:0;background:#0a0a0a;z-index:5;">Uptime SLA</td><td class="cell-exclusive">99.9%</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td></tr>
+            <tr><td style="position:sticky;left:0;background:#ffffff;z-index:5;">Uptime SLA</td><td class="cell-exclusive">99.9%</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td><td class="cell-partial">No SLA</td></tr>
           </tbody>
         </table>
       </div>
@@ -3254,8 +3258,8 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
   </div>
 
   <!-- FOOTER -->
-  <div style="margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
-    <p style="font-family:'JetBrains Mono';font-size:12px;color:#333;">
+  <div style="margin-top:80px;padding-top:32px;border-top:1px solid rgba(0,18,59,0.1);text-align:center;">
+    <p style="font-family:'Poppins';font-size:12px;color:#333;">
       GrabCash Bot &amp; Automation Arsenal // Document 3 of 9 // CONFIDENTIAL<br>
       Generated May 2026 // GrabCash Technical Team
     </p>
