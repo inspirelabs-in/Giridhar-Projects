@@ -882,7 +882,7 @@ li { margin-bottom: 4px; }
     <span><span class="dot"></span> InspireLabs Solutions Ltd</span>
     <span><span class="dot"></span> 5,000+ Active Users</span>
     <span><span class="dot"></span> 10L+ Payouts Completed</span>
-    <span><span class="dot"></span> 500+ Brand Partners</span>
+    <span><span class="dot"></span> 91 retailers (32 active, 98.4% Flipkart concentration)</span>
   </div>
 </div>
 
@@ -930,7 +930,7 @@ li { margin-bottom: 4px; }
 
     <div class="callout">
       <div class="callout-title">Key Insight</div>
-      GrabCash's D30 retention at 14% is 4 percentage points below even EarnKaro's 18%. The target of 30% D30 would place GrabCash at parity with CRED's gamified reward model. Achieving this requires moving from a pure transactional model to a daily engagement ecosystem.
+      <strong style="color:var(--red);">REAL DATA (June 2026):</strong> GrabCash's actual activation rate is <strong>1.2%</strong> — only 303 of 26,131 registered users have ever transacted (production DB verified). The previously estimated "D30 retention: unmeasured (activation rate is 1.2%)" was unverified — cohort tracking is not yet configured. <strong>The #1 problem is activation, not retention:</strong> 98.8% of users never complete a single transaction. Before optimizing D7/D30 curves, the signup → first-earn funnel must be fixed. The 303 active users have a median lifetime earning of just ₹61, with the top 10 users accounting for ~85% of all profit. Target: move activation from 1.2% to 10%, which alone would grow active users from 303 to ~2,600 without any new acquisition.
     </div>
   </div>
 
@@ -1067,7 +1067,7 @@ li { margin-bottom: 4px; }
           <tr><td>4</td><td>D90 Retention</td><td>% users active 90 days post signup</td><td>6%</td><td>18%</td><td>Quarterly</td><td>&lt; 5%</td></tr>
           <tr><td>5</td><td>WAU/MAU Ratio</td><td>Weekly active / Monthly active</td><td>0.28</td><td>0.45</td><td>Weekly</td><td>&lt; 0.25</td></tr>
           <tr><td>6</td><td>DAU/MAU Stickiness</td><td>Daily active / Monthly active</td><td>0.08</td><td>0.18</td><td>Daily</td><td>&lt; 0.06</td></tr>
-          <tr><td>7</td><td>Activation Rate</td><td>% signups who earn Rs.10+</td><td>20%</td><td>45%</td><td>Weekly</td><td>&lt; 18%</td></tr>
+          <tr><td>7</td><td>Activation Rate</td><td>% signups who transact</td><td style="color:var(--red);font-weight:700;">1.2% (actual)</td><td>10%</td><td>Weekly</td><td>&lt; 2%</td></tr>
           <tr><td>8</td><td>Resurrection Rate</td><td>% dormant users reactivated/month</td><td>3%</td><td>8%</td><td>Monthly</td><td>&lt; 2%</td></tr>
           <tr><td>9</td><td>Time to First Earning</td><td>Median hours from signup to first Rs.</td><td>72h</td><td>18h</td><td>Weekly</td><td>&gt; 96h</td></tr>
           <tr><td>10</td><td>Earning Frequency</td><td>Avg earnings per active user/week</td><td>1.8</td><td>4.2</td><td>Weekly</td><td>&lt; 1.5</td></tr>
@@ -2937,7 +2937,7 @@ HSET points:user:<span class="number">4521</span> balance <span class="number">3
               Onboarding checklist<br>
               Push notification framework
             </td>
-            <td>D7 retention: 22% &rarr; 28%<br>Activation rate: 20% &rarr; 30%</td>
+            <td>D7 retention: 22% &rarr; 28%<br>activation rate: 1.2% actual (target: 10%) &rarr; 30%</td>
             <td>2 backend + 1 frontend + 1 mobile</td>
           </tr>
           <tr>
