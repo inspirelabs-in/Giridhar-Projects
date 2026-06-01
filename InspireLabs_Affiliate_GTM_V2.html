@@ -59,7 +59,7 @@
   .hero {
     min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center; padding: 8rem 2rem 4rem;
-    background: linear-gradient(180deg, var(--navy) 0%, #1a3a6e 50%, var(--blue-1) 100%);
+    background: #0E0F0A;
     color: #fff; position: relative;
   }
   .hero-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
@@ -74,9 +74,9 @@
   .hero-stat .label { font-size: 0.68rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
   .hero-stat .src { font-size: 0.6rem; color: rgba(255,255,255,0.3); }
 
-  .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section { padding: 4rem 2rem; max-width: 940px; margin: 0 auto; }
   .section-header { margin-bottom: 2.5rem; }
-  .section-num { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.7rem; color: var(--blue-1); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--blue-1); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .section h2 { font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.5rem; color: var(--navy); }
   .section h2 .accent { color: var(--green); }
   .section h2 .accent-purple { color: var(--purple); }
@@ -87,7 +87,7 @@
   .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
-  .card { background: var(--bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
+  .card { background: var(--bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
   .card:hover { border-color: rgba(60,125,249,0.2); }
   .card h3 { font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
   .card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
@@ -103,13 +103,13 @@
 
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--card-border); margin: 1.25rem 0; box-shadow: 0 1px 3px rgba(0,18,59,0.04); }
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: #fff; }
-  thead { background: var(--navy); }
-  th { padding: 0.75rem 0.85rem; text-align: left; font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+  thead { background: #FAF7F1; }
+  th { padding: 0.75rem 0.85rem; text-align: left; font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #0E0F0A; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
   td { padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--card-border); color: var(--text); }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: var(--bg-3); }
 
-  .callout { border-left: 3px solid var(--blue-1); background: rgba(60,125,249,0.04); padding: 1.1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.25rem 0; font-size: 0.88rem; line-height: 1.7; }
+  .callout { border-left: 3px solid var(--blue-1); background: rgba(60,125,249,0.04); padding: 1.1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.25rem 0; font-size: 0.88rem; line-height: 1.7;   word-wrap: break-word; overflow-wrap: break-word;}
   .callout strong { color: var(--navy); }
   .callout.honest { border-left-color: var(--red); background: var(--red-bg); }
   .callout.honest strong { color: var(--red); }
@@ -126,7 +126,7 @@
   .tag-real { background: var(--green-bg); color: #16a34a; }
   .tag-fake { background: var(--red-bg); color: var(--red); }
   .tag-target { background: var(--orange-bg); color: var(--orange); }
-  .tag-gc { background: rgba(13,207,26,0.08); color: #FF7A45; }
+  .tag-gc { background: rgba(255,122,69,0.06); color: #FF7A45; }
   .tag-gs { background: var(--purple-light); color: var(--purple); }
 
   .block { background: var(--bg-2); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.75rem; margin: 1.25rem 0; }
@@ -151,7 +151,7 @@
 
   .duo-brand { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
   .duo-brand .brand-box { padding: 0.75rem 1.25rem; border-radius: 10px; font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; font-size: 1.1rem; }
-  .duo-brand .gc { background: rgba(13,207,26,0.08); color: #FF7A45; border: 1px solid rgba(13,207,26,0.2); }
+  .duo-brand .gc { background: rgba(255,122,69,0.06); color: #FF7A45; border: 1px solid rgba(255,122,69,0.15); }
   .duo-brand .gs { background: var(--purple-light); color: var(--purple); border: 1px solid rgba(91,33,182,0.2); }
   .duo-brand .plus { color: var(--text-dimmer); font-size: 1.2rem; }
 
@@ -175,7 +175,7 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-brand">
-    <img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" onerror="this.style.display='none'">
+    <span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:1.2rem;"><span style="color:#0E0F0A;">Grab</span><span style="color:#FF7A45;">Cash</span></span>
     <span class="nav-title">GTM Workflow 2026</span>
   </div>
   <div class="nav-links">
@@ -1893,7 +1893,7 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div style="margin-bottom:0.75rem;">
-    <img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" style="height:20px;filter:brightness(10);margin-right:8px;" onerror="this.style.display='none'">
+    <span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:1.2rem;"><span style="color:#0E0F0A;">Grab</span><span style="color:#FF7A45;">Cash</span></span>
     <span style="color:rgba(255,255,255,0.7);">+</span>
     <span style="color:#a78bfa;font-weight:700;margin-left:8px;">GrabShare</span>
     <span style="color:rgba(255,255,255,0.3);margin:0 0.5rem;">·</span>

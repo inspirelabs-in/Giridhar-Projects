@@ -11,8 +11,8 @@
     /* ── GrabCash Brand System (extracted from grabcash.in) ── */
     --green: #FF7A45;
     --green-dark: #FF7A45;
-    --green-glow: rgba(13, 207, 26, 0.12);
-    --green-subtle: rgba(13, 207, 26, 0.06);
+    --green-glow: rgba(255, 122, 69, 0.08);
+    --green-subtle: rgba(255, 122, 69, 0.04);
     --navy: #0E0F0A;
     --navy-light: rgba(0, 18, 59, 0.5);
     --blue-1: #3c7df9;
@@ -118,7 +118,7 @@
     padding: 8rem 2rem 4rem;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, var(--blue-1) 0%, #5ba3f9 40%, var(--sky-blue) 100%);
+    background: #0E0F0A;
     color: #ffffff;
   }
   .hero::before {
@@ -128,7 +128,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    background: transparent;
   }
   .hero-badge {
     position: relative;
@@ -192,14 +192,14 @@
   /* ── SECTION FRAMEWORK ── */
   .section {
     padding: 5rem 2rem;
-    max-width: 1200px;
+    max-width: 940px;
     margin: 0 auto;
   }
   .section-header {
     margin-bottom: 3rem;
   }
   .section-num {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     color: var(--blue-1);
     font-weight: 600;
@@ -233,7 +233,7 @@
   .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 1.75rem;
     transition: all 0.3s;
     position: relative;
@@ -280,7 +280,7 @@
   .kpi {
     background: var(--bg-2);
     border: 1px solid var(--card-border);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 1.5rem;
     text-align: center;
   }
@@ -313,7 +313,7 @@
     font-size: 0.85rem;
     background: #ffffff;
   }
-  thead { background: var(--navy); }
+  thead { background: #FAF7F1; }
   th {
     padding: 0.85rem 1rem;
     text-align: left;
@@ -321,7 +321,7 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.9);
+    color: #0E0F0A;
     border-bottom: 1px solid var(--card-border);
     white-space: nowrap;
   }
@@ -374,7 +374,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, var(--blue-1), var(--sky-blue), transparent);
+    background: #0E0F0A;
   }
   .timeline-item {
     position: relative;
@@ -420,7 +420,7 @@
     margin: 1.5rem 0;
     font-size: 0.9rem;
     line-height: 1.7;
-  }
+    word-wrap: break-word; overflow-wrap: break-word;}
   .callout.warning { border-left-color: var(--orange); background: rgba(221,107,32,0.06); }
   .callout.danger { border-left-color: var(--red); background: rgba(229,62,62,0.06); }
   .callout strong { color: var(--navy); }
@@ -545,7 +545,7 @@
   .persona {
     background: var(--bg-2);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 1.75rem;
     position: relative;
   }
@@ -610,7 +610,7 @@
 
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav class="nav">
-  <div class="nav-brand"><img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="nav-brand-text" style="display:none"><span class="gc-green">Grab</span>Cash</span> <span style="color:var(--text-dim);font-weight:400;font-size:0.8rem;">GTM Playbook</span></div>
+  <div class="nav-brand"><span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:1.2rem;"><span style="color:#0E0F0A;">Grab</span><span style="color:#FF7A45;">Cash</span></span><span class="nav-brand-text" style="display:none"><span class="gc-green">Grab</span>Cash</span> <span style="color:var(--text-dim);font-weight:400;font-size:0.8rem;">GTM Playbook</span></div>
   <div class="nav-links">
     <a href="#market">Market</a>
     <a href="#competitive">Competitive</a>
@@ -653,10 +653,10 @@
     </div>
   </div>
 </header>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
   </div>
-  <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
     <strong style="color:#e53e3e;">Competitive Update (June 2026 — READ THIS FIRST):</strong><br>
     <strong>WishLink</strong> raised $17.5M Series B, has 40,000 active creators/month, drives ₹350Cr GMV/month, launched "InfluenceOS" — full creator commerce OS. 250+ brands, 6M orders/month.<br>
     <strong>EarnKaro</strong>: 20L+ users, ~80% Telegram share, part of CashKaro's ₹600Cr FY26 revenue. Ratan Tata backed.<br>
@@ -1410,7 +1410,7 @@
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer class="footer">
   <div style="margin-bottom:1rem;">
-    <img src="https://grabcash.in/v2/grabcash-logo.svg" alt="GrabCash" style="height:24px;filter:brightness(10);margin-bottom:0.5rem;" onerror="this.outerHTML='<span style=font-weight:800;font-size:1.1rem;color:#FF7A45>Grab</span><span style=font-weight:800;font-size:1.1rem;color:white>Cash</span>'">
+    <span style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:1.2rem;"><span style="color:#0E0F0A;">Grab</span><span style="color:#FF7A45;">Cash</span></span>Grab</span><span style=font-weight:800;font-size:1.1rem;color:white>Cash</span>'">
     <span style="color:rgba(255,255,255,0.4);margin:0 0.5rem;">·</span>
     <span style="color:rgba(255,255,255,0.8);">Go-To-Market Master Playbook</span>
   </div>

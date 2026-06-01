@@ -16,7 +16,7 @@
   --green: #FF7A45;
   --green-dim: #0aa614;
   --green-glow: rgba(13,207,26,0.15);
-  --green-subtle: rgba(13,207,26,0.08);
+  --green-subtle: rgba(255,122,69,0.06);
   --green-border: rgba(13,207,26,0.25);
   --text: #d4d4d4;
   --text-dim: #777777;
@@ -199,7 +199,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
 
 /* ── Section Styles ── */
 .section {
-  max-width: 1200px;
+  max-width: 940px;
   margin: 0 auto;
   padding: 80px 32px;
 }
@@ -207,7 +207,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
   margin-bottom: 48px;
 }
 .section-num {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--green);
@@ -312,7 +312,7 @@ td {
   color: var(--text);
   vertical-align: top;
 }
-tr:hover td { background: rgba(13,207,26,0.03); }
+tr:hover td { background: rgba(255,122,69,0.03); }
 tr:last-child td { border-bottom: none; }
 
 /* ── Tags & Badges ── */
@@ -474,7 +474,7 @@ tr:last-child td { border-bottom: none; }
   display: flex;
   gap: 14px;
   align-items: flex-start;
-}
+  word-wrap: break-word; overflow-wrap: break-word;}
 .callout-green { background: var(--green-subtle); border: 1px solid var(--green-border); }
 .callout-orange { background: var(--orange-glow); border: 1px solid rgba(255,140,0,0.25); }
 .callout-blue { background: var(--blue-glow); border: 1px solid rgba(59,130,246,0.25); }
@@ -632,7 +632,7 @@ tr:last-child td { border-bottom: none; }
   font-size: 1.1rem;
   border-radius: var(--radius);
   margin-bottom: 20px;
-  box-shadow: 0 0 40px rgba(13,207,26,0.2);
+  box-shadow: 0 0 40px rgba(255,122,69,0.15);
 }
 .pillar-spokes {
   display: flex;
@@ -712,10 +712,10 @@ tr:last-child td { border-bottom: none; }
     <div class="hero-stat"><div class="num">13</div><div class="label">Strategy Modules</div></div>
   </div>
 </header>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
   </div>
-  <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
     <strong style="color:#e53e3e;">Competitive Update (June 2026 — READ THIS FIRST):</strong><br>
     <strong>WishLink</strong> raised $17.5M Series B, has 40,000 active creators/month, drives ₹350Cr GMV/month, launched "InfluenceOS" — full creator commerce OS. 250+ brands, 6M orders/month.<br>
     <strong>EarnKaro</strong>: 20L+ users, ~80% Telegram share, part of CashKaro's ₹600Cr FY26 revenue. Ratan Tata backed.<br>
@@ -913,7 +913,7 @@ tr:last-child td { border-bottom: none; }
   <div class="table-wrap">
     <table>
       <tr><th>Period</th><th>Monthly Clicks (Actual/Projected)</th><th>Monthly Impressions</th><th>CTR Target</th><th>Key Actions</th><th>Basis</th></tr>
-      <tr><td><strong>Current (May 2026)</strong></td><td style="color:var(--green);font-weight:700;">2,267 (actual)</td><td>93,592 (actual)</td><td>2.4% (actual)</td><td>—</td><td><span style="font-size:0.75rem;padding:2px 6px;border-radius:4px;background:rgba(13,207,26,0.08);color:#FF7A45;">GSC VERIFIED</span></td></tr>
+      <tr><td><strong>Current (May 2026)</strong></td><td style="color:var(--green);font-weight:700;">2,267 (actual)</td><td>93,592 (actual)</td><td>2.4% (actual)</td><td>—</td><td><span style="font-size:0.75rem;padding:2px 6px;border-radius:4px;background:rgba(255,122,69,0.06);color:#FF7A45;">GSC VERIFIED</span></td></tr>
       <tr><td>Month 1-2</td><td>3,500</td><td>100,000</td><td>3.5%</td><td>Title optimization on 9 underperforming pages</td><td>CTR improvement alone adds ~1,200 clicks/month</td></tr>
       <tr><td>Month 3-4</td><td>5,000</td><td>120,000</td><td>4.2%</td><td>+20 new blog posts published + comparison pages live</td><td>New content starts indexing. GrabOn cross-promo adds referral traffic.</td></tr>
       <tr><td>Month 5-6</td><td>7,500</td><td>150,000</td><td>5.0%</td><td>Pillar pages ranking. Internal linking architecture complete.</td><td>Compounding: older posts mature + new posts index. SEO snowball effect.</td></tr>
