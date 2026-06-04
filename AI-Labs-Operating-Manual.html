@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Labs: The Operating Manual · Inspirelabs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Inspirelabs brand system */
+  --ink:#0E0F0A;        /* base ink, primary text, dark surfaces */
+  --paper:#FFFFFF;      /* pure white */
+  --warm:#FAF7F1;       /* warm tint, premium/callout panels */
+  --orange:#FF7A45;     /* ACTIVE ORANGE, active/CTA ONLY, never decorative */
+  --grey:#6F7583;       /* soft grey, secondary text */
+  /* functional UI extensions (kept minimal, brand-true) */
+  --line:#E7E3DA; --line2:#D8D3C8;
+  --warm2:#F4EFE6;
+  --ink70:#3A3B36; --ink50:#6F7583;
+  --ok:#3F7D5B; --okbg:#EAF3EE;
+  --warnc:#9A6B12; --warnbg:#FBF2DC;
+  --badc:#A33A2B; --badbg:#FBEBE7;
+  --disp:'Hanken Grotesk',sans-serif; --body:'Hanken Grotesk',sans-serif; --mono:'JetBrains Mono',monospace;
+  --maxw:920px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink); font-family:var(--body);
+  font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ── MAIN ── */
+main{min-width:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+.sec{padding:56px 0 8px;scroll-margin-top:14px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:10px}
+.sec h2{font-family:var(--disp);font-size:32px;font-weight:800;letter-spacing:-.7px;line-height:1.08;color:var(--ink);margin-bottom:4px}
+.sec h3{font-size:18px;font-weight:700;margin:28px 0 6px;color:var(--ink);letter-spacing:-.2px}
+.sec h4{font-size:14px;font-weight:700;margin:18px 0 4px;color:var(--ink)}
+.sec p{color:var(--ink70);margin:11px 0}
+.sec p strong, li strong{color:var(--ink);font-weight:700}
+.lead{font-size:19px;line-height:1.55;color:var(--ink);font-weight:500}
+ul,ol{margin:11px 0 11px 2px;padding-left:22px;color:var(--ink70)}
+li{margin:6px 0}
+code{font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--warm);padding:2px 7px;border-radius:5px}
+.em{color:var(--orange);font-weight:700}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:0;border-radius:0}
+.hero .inner{max-width:var(--maxw);margin:0 auto;padding:64px 40px 60px}
+.hero .logo-w{height:22px;margin-bottom:40px;opacity:.95}
+.hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:24px;font-weight:600}
+.hero .wordmark{font-family:var(--disp);font-size:168px;font-weight:900;line-height:.86;letter-spacing:-7px;margin:8px 0 22px;color:#fff}
+.hero .wordmark .o{color:var(--orange)}
+.hero .wordmark .brandmark{display:inline-block;width:.42em;height:.42em;vertical-align:baseline;margin-left:.06em}
+.hero .tagline-hero{font-family:var(--disp);font-size:38px;font-weight:700;line-height:1.12;letter-spacing:-1.4px;color:#fff;max-width:22ch;margin-bottom:24px}
+.hero .tagline-hero .o{color:var(--orange)}
+.hero h1{font-family:var(--disp);font-size:62px;font-weight:900;line-height:.95;letter-spacing:-2.4px;margin-bottom:22px;max-width:15ch}
+.hero h1 .o{color:var(--orange)}
+.hero .sub{font-size:18px;line-height:1.55;color:#C9CBC4;max-width:620px;font-weight:400;margin-bottom:42px}
+.hero .sub b{color:#fff;font-weight:600}
+/* the SYSTEM.md artifact */
+.sysfile{border:1px solid #2C2D26;border-radius:12px;overflow:hidden;background:#141510;max-width:760px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.sysbar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#1B1C16;border-bottom:1px solid #2C2D26}
+.sysbar .dot{width:11px;height:11px;border-radius:50%}
+.sysbar .d1{background:#FF5F56}.sysbar .d2{background:#FFBD2E}.sysbar .d3{background:#27C93F}
+.sysbar .fname{font-family:var(--mono);font-size:12px;color:#9DA096;margin-left:8px;letter-spacing:.5px}
+.sysbar .badge{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--orange);border:1px solid #3A3B30;border-radius:20px;padding:3px 10px;letter-spacing:1px}
+.sysbody{padding:24px 26px 26px;font-family:var(--mono);font-size:13px;line-height:1.7;white-space:normal}
+.sysbody>div{margin:0}
+.sysbody .key,.sysbody .val{display:inline}
+.sysbody .fm{color:#6F7567}
+.sysbody .key{color:#C9A24B}
+.sysbody .val{color:#E8E5DC}
+.sysbody .cm{color:#5E6358}
+.sysbody .hr{border:none;border-top:1px solid #26271F;margin:16px 0}
+.sysbody .h{color:#fff;font-weight:600;font-size:13px}
+.sysbody .obj{color:#fff}
+.sysbody .obj .n{font-family:var(--disp);font-size:34px;font-weight:900;color:var(--orange);vertical-align:-6px;letter-spacing:-1px;margin-right:4px}
+.sysbody ul.sys{list-style:none;margin:8px 0 0;padding:0}
+.sysbody ul.sys li{margin:5px 0;color:#C2C4BA;padding-left:18px;position:relative}
+.sysbody ul.sys li::before{content:"–";position:absolute;left:0;color:var(--orange)}
+.sysbody .ok{color:#27C93F}
+/* markdown checklist inside a sysfile */
+.sysbody .task{color:#C2C4BA;margin:6px 0;padding-left:30px;position:relative;line-height:1.5}
+.sysbody .task .box{position:absolute;left:0;color:#5E6358}
+.sysbody .task.h1now{color:#fff}
+.sysbody .task .ref{color:#6F7567}
+.sysbody .grp{color:var(--orange);font-weight:600;margin:18px 0 8px;font-size:12px;letter-spacing:1px}
+.sysbody .grp:first-child{margin-top:0}
+.sysbody .lawk{color:#C9A24B;font-weight:600}
+.hmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.hmeta span{font-family:var(--mono);font-size:11px;padding:7px 13px;border:1px solid #2A2B26;border-radius:30px;color:#9DA096}
+
+/* ── PROGRESS BAR ── */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:999;transition:width .1s linear}
+
+/* ── CARDS / GRID ── */
+.grid{display:grid;gap:13px;margin:18px 0}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card.warm{background:var(--warm);border-color:var(--line2)}
+.card.ink{background:var(--ink);color:var(--paper);border:none}
+.card.ink h4,.card.ink p{color:var(--paper)}.card.ink p{color:#C9CBC4}
+.card.ink p strong,.card.ink strong{color:#fff;font-weight:700}
+.card.ink em{color:#fff;font-style:italic}
+.card h4{font-size:15px;margin-bottom:5px}
+.card p{font-size:14px;margin:4px 0;color:var(--ink70)}
+.stat{text-align:center;padding:22px 12px}
+.stat .v{font-family:var(--disp);font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px}
+.stat .v.o{color:var(--orange)}
+.stat .l{font-family:var(--mono);font-size:11px;color:var(--grey);margin-top:9px;letter-spacing:.3px}
+
+/* ── CALLOUTS ── */
+.call{border-radius:10px;padding:15px 18px;margin:18px 0;border:1px solid;font-size:14.5px}
+.call .t{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
+.call p{margin:4px 0}
+.call.ok{background:var(--okbg);border-color:#BcdCC8}.call.ok .t{color:var(--ok)}
+.call.warn{background:var(--warnbg);border-color:#EBD9A6}.call.warn .t{color:var(--warnc)}
+.call.bad{background:var(--badbg);border-color:#EFCcC4}.call.bad .t{color:var(--badc)}
+.call.cta{background:var(--ink);border-color:var(--ink);color:var(--paper)}.call.cta .t{color:var(--orange)}.call.cta p{color:#D5D7D0}
+.call.cta p strong,.call.cta strong{color:#fff;font-weight:700}.call.cta em{color:#fff}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tbl th{background:var(--warm2);text-align:left;padding:11px 13px;font-family:var(--mono);font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink70);font-weight:600;border-bottom:1px solid var(--line2)}
+.tbl td{padding:11px 13px;border-bottom:1px solid var(--line);color:var(--ink70);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td strong{color:var(--ink)}
+.tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:500;border:1px solid}
+.t-ship{background:var(--okbg);color:var(--ok);border-color:#BcdCC8}
+.t-build{background:var(--warm2);color:var(--ink70);border-color:var(--line2)}
+.t-prio{background:var(--badbg);color:var(--badc);border-color:#EFCcC4}
+.t-test{background:var(--warnbg);color:var(--warnc);border-color:#EBD9A6}
+
+/* ── FLOW ── */
+.flow{counter-reset:s;margin:18px 0}
+.step{display:grid;grid-template-columns:38px 1fr;gap:15px;padding:15px 0;border-bottom:1px dashed var(--line2)}
+.step:last-child{border:none}
+.step .b{counter-increment:s;width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:14px}
+.step .b::before{content:counter(s)}
+.step h4{margin-bottom:2px}.step p{font-size:14px;margin:3px 0}
+
+/* ── PEOPLE ── */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.person .nm{font-weight:800;font-size:15px}
+.person .rl{font-family:var(--mono);font-size:11px;color:var(--orange);margin:1px 0 7px}
+.person .ds{font-size:13px;color:var(--ink70)}
+
+/* ── VALUE / PRINCIPLE BLOCKS ── */
+.val{display:grid;grid-template-columns:54px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.val:last-child{border:none}
+.val .nv{font-family:var(--disp);font-size:34px;font-weight:900;color:var(--orange);line-height:1;letter-spacing:-1px}
+.val h3{margin:0 0 4px}
+.val p{margin:4px 0;font-size:14.5px}
+.val .mantra{font-family:var(--mono);font-size:12px;color:var(--grey);margin-top:6px}
+
+.divider{height:1px;background:var(--line);margin:0;border:none}
+
+/* ── PLAYBOOK CARDS ── */
+.pb{border:1px solid var(--line);border-radius:12px;margin:18px 0;overflow:hidden;background:var(--paper)}
+.pb-head{background:var(--ink);color:var(--paper);padding:16px 20px}
+.pb-head .pb-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);font-weight:600}
+.pb-head h3{color:var(--paper);margin:5px 0 0;font-size:19px;font-weight:800;letter-spacing:-.3px}
+.pb-head .pb-for{font-family:var(--mono);font-size:11px;color:#9DA096;margin-top:4px}
+.pb-body{padding:18px 20px}
+.pb-body .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pb-body .row:last-child{border-bottom:none}
+.pb-body .row .k{font-family:var(--mono);font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.4px;padding-top:2px}
+.pb-body .row .v{color:var(--ink70)}
+.pb-body .row .v strong{color:var(--ink)}
+.pb-steps{counter-reset:ps;margin:4px 0 0;padding:0;list-style:none}
+.pb-steps li{counter-increment:ps;position:relative;padding:4px 0 4px 26px;font-size:14px;color:var(--ink70)}
+.pb-steps li::before{content:counter(ps);position:absolute;left:0;top:3px;width:18px;height:18px;background:var(--warm2);border:1px solid var(--line2);border-radius:5px;font-family:var(--mono);font-size:10px;display:grid;place-items:center;color:var(--ink70)}
+
+/* ── CODE BLOCKS ── */
+.code{background:var(--ink);border-radius:10px;margin:14px 0;overflow:hidden;border:1px solid #23241D}
+.code-bar{background:#16170F;padding:8px 14px;font-family:var(--mono);font-size:11px;color:#8A8F82;border-bottom:1px solid #23241D;display:flex;justify-content:space-between;align-items:center}
+.code-bar .dot3{display:flex;gap:5px}.code-bar .dot3 i{width:9px;height:9px;border-radius:50%;display:block}
+.code pre{margin:0;padding:14px 16px;overflow-x:auto}
+.code pre code{background:none;border:none;padding:0;color:#E4E7DD;font-family:var(--mono);font-size:12.5px;line-height:1.7;display:block}
+.cc{color:#6E7567}.cs{color:#9DD8A8}.ck{color:var(--orange)}.cf{color:#8FD0E8}.cn{color:#E4E7DD}
+.tree{background:var(--warm);border:1px solid var(--line2);border-radius:10px;padding:16px 18px;font-family:var(--mono);font-size:12.5px;color:var(--ink70);line-height:1.7;white-space:pre;overflow-x:auto;margin:14px 0}
+.tree b{color:var(--ink)}.tree .cm{color:var(--grey)}
+.callout-mini{font-family:var(--mono);font-size:11px;color:var(--grey);margin:6px 0 0}
+footer{background:var(--warm);border-top:1px solid var(--line);margin-top:60px}
+footer .inner{max-width:var(--maxw);margin:0 auto;padding:34px 40px;color:var(--grey);font-size:12.5px;font-family:var(--mono);line-height:1.7}
+
+@media(max-width:960px){
+  .g2,.g3,.g4,.people{grid-template-columns:1fr}
+  .hero h1{font-size:40px;letter-spacing:-1.6px}
+  .hero .wordmark{font-size:84px;letter-spacing:-3px}
+  .hero .tagline-hero{font-size:26px}
+  .hero .inner{padding-top:48px}
+  .sysbody{font-size:12px;padding:18px 18px 20px}
+  .sysbody .obj{font-size:15px}.sysbody .obj .n{font-size:28px}
+  .wrap,.hero .inner{padding-left:24px;padding-right:24px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="inner">
+    <img class="logo-w" src="https://www.inspirelabs.in/logos/lockup-light-tagline.png" alt="Inspirelabs" onerror="this.style.display='none'">
+    <div class="wordmark">AI Labs<svg class="brandmark" viewBox="0 0 100 100" aria-hidden="true"><rect x="4" y="4" width="92" height="92" rx="10" fill="none" stroke="#6F7583" stroke-width="6" stroke-dasharray="16 12"/></svg></div>
+    <div class="tagline-hero">We turn AI into <span class="o">revenue.</span></div>
+    <p class="sub">We're the product &amp; R&amp;D team for Inspirelabs. We build agents, tools, and systems that make the company faster from the inside, and products that sell on the outside. The whole Inspirelabs ecosystem is our proving ground, not our ceiling. <b>This manual is the system prompt for a new builder here, read it once, top to bottom, and you're loaded.</b></p>
+    <div class="sysfile">
+      <div class="sysbar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="fname">SYSTEM.md</span><span class="badge">CONTEXT · LOADING</span></div>
+      <div class="sysbody">
+<div class="fm">---</div>
+<div><span class="key">role</span><span class="val">: AI Labs, the AI product engine of Inspirelabs</span></div>
+<div><span class="key">mandate</span><span class="val">: turn the company's data, traffic &amp; problems into AI that earns</span></div>
+<div><span class="key">proving_ground</span><span class="val">: the whole Inspirelabs ecosystem: GrabOn, GrabCash, GrabShare, RankDrive &amp; more (IN · US · UAE). the floor, not the ceiling.</span></div>
+<div class="fm">---</div>
+<hr class="hr">
+<div class="cm"># OBJECTIVE: the reward signal</div>
+<div class="obj"><span class="n">5</span> products live &amp; earning revenue this year.</div>
+<div class="cm">// one of eight lines on the company's Win-The-Year scoreboard. this one is ours.</div>
+<div class="cm">// a product is anything packaged &amp; sold, an agent, skill, automation or API.</div>
+<div class="cm">// the same thing unsold in our repo is a building block. the five are what we sell.</div>
+<div class="cm">// the bar isn't "shipped." it's revenue. a demo scores 0. a pilot scores 0.</div>
+<hr class="hr">
+<div class="cm"># OPERATING LAWS</div>
+<ul class="sys">
+<li><span class="lawk">build_for_money</span>: every build aims at a product that earns, internally or out in the market. interesting ≠ valuable.</li>
+<li><span class="lawk">think_then_ship</span>: research &amp; spec before code. the thinking is the work; with it, building is fast.</li>
+<li><span class="lawk">own_the_outcome</span>: you're measured on the metric that moved, not the agent you wrote.</li>
+<li><span class="lawk">two_tracks</span>: internal leverage and external products carry equal weight. both are the job.</li>
+<li><span class="lawk">human_in_the_loop</span>: agents propose, humans dispose. nothing destructive runs unapproved.</li>
+</ul>
+<hr class="hr">
+<div class="val"><span class="ok">●</span> context loaded. the clock is already running. <span style="color:#fff">now go build something that earns.</span></div>
+      </div>
+    </div>
+    <div class="hmeta">
+      <span>Living document</span>
+    </div>
+  </div>
+</section>
+
+<!-- 00 WELCOME -->
+<section class="sec wrap" id="welcome">
+  <div class="kicker">00 · System Prompt</div>
+  <h2>Load This First</h2>
+  <p class="lead">You're holding the system prompt for a new builder on AI Labs. Everything you need to start creating value here, the mission, the company, the objective, the constraints, the tools, is in this one file. Read it once, top to bottom, and you go from new hire to builder. Not in months. This week.</p>
+  <p>Most onboarding docs are reference manuals you skim once and forget. This isn't that. It's written to be loaded like context: read in full, then lived in. By the time you reach the end, you'll know what we build, why it matters, where the money is, and how we ship. It runs in five phases, the same way you'd load context into an agent before inference:</p>
+  <div class="grid g3">
+    <div class="card warm"><h4>// System Prompt</h4><p><span class="ref" style="font-family:var(--mono);font-size:10px;color:var(--grey)">§00–04</span><br>Who we are and what we're judged on. The charter, the one number that defines our year, what we optimize for, and how we operate. This is the lens for everything after it. Load it first.</p></div>
+    <div class="card warm"><h4>// Domain Context</h4><p><span class="ref" style="font-family:var(--mono);font-size:10px;color:var(--grey)">§05–14</span><br>How the business actually works and earns. You cannot build AI that creates value for a company you don't understand, and most failed builds fail right here, not in the code.</p></div>
+    <div class="card warm"><h4>// The Objective Function</h4><p><span class="ref" style="font-family:var(--mono);font-size:10px;color:var(--grey)">§15–17</span><br>How we decide what's worth building. The value test, the biggest problems worth pointing AI at, and the North Star that gives shape to it all.</p></div>
+    <div class="card warm"><h4>// Search Space</h4><p><span class="ref" style="font-family:var(--mono);font-size:10px;color:var(--grey)">§18–20</span><br>What's worth building and how to choose: the opportunity map, the selection method, and runnable playbooks other teams can use.</p></div>
+    <div class="card warm"><h4>// The Training Loop</h4><p><span class="ref" style="font-family:var(--mono);font-size:10px;color:var(--grey)">§21–27</span><br>How we build, in depth. Research before code, using your tools well, the agent template, the guardrails, the Wiki, how an internal tool becomes a product, and how we communicate while doing it.</p></div>
+  </div>
+  <div class="call cta"><div class="t">▲ The one rule, up front</div><p>Reading this document <strong>is</strong> your first task, not a warm-up to one. Finish a section, note what's unclear, come back with observations and a proposal. The one behavior that does not survive in AI Labs is waiting to be told what to do next. The board is visible, the objective is fixed, so the next move is always knowable. Find it and bring it.</p></div>
+  <div class="call warn"><div class="t">◆ On numbers</div><p>This document uses relative descriptors, percentages, tiers, "significant", rather than exact revenue figures. That's deliberate. When you need a precise number for a model or a decision, ask Giridhar directly.</p></div>
+</section>
+
+<!-- 01 CHARTER -->
+<section class="sec wrap" id="charter">
+  <div class="kicker">01 · System Prompt</div>
+  <h2>The Charter: Our System Prompt</h2>
+  <p class="lead">AI Labs is a product and R&D team inside Inspirelabs. Not an internal IT function. Not a feature factory. Not a research group that publishes and moves on. We exist to <strong>turn AI capability into things of real value</strong>, and that value lands in two equally serious places.</p>
+  <p>The mandate comes straight from the CEO: build AI products, agents, and systems that matter. Some make the company dramatically faster and smarter from the inside. Some go out as standalone products the wider world pays for. <strong>Neither is the "real" work and neither is the leftover.</strong> They're parallel tracks of one mission, and you'll be expected to move on both.</p>
+  <div class="grid g2">
+    <div class="card"><h4>Mandate 1: Internal leverage</h4><p>Build the tools and systems that let Inspirelabs run at a speed and intelligence competitors can't match. Automate the manual work. Turn raw data into answers. Give every team a capability it didn't have yesterday. The whole ecosystem is our proving ground, and GrabOn is the richest, first arena within it: real users, real data, real stakes.</p></div>
+    <div class="card"><h4>Mandate 2: External products</h4><p>Build AI products that stand on their own in the market. A tool proven inside the company can become a product others buy; some ideas get built for the world from day one. This is how AI Labs becomes a venture engine instead of a cost center, and how it fills the Services revenue stream that sits near zero today.</p></div>
+  </div>
+  <div class="card"><h4>What winning looks like</h4><p>Things that shipped and created measurable value: hours saved, revenue recovered, decisions accelerated, or a product people adopt and pay for. A demo that dazzles in a meeting and never ships isn't a milestone. It's a <em>failure</em>, on either track. We are judged on what's live, not what's promising.</p></div>
+  <div class="call warn"><div class="t">★ The bar is public</div><p>The CEO's reference points are explicit: agents running companies 24/7, the "Company Brain" architecture (YC's 2026 Request for Startups), Karpathy-style LLM Wikis. We're not trying to catch the market, we're trying to <strong>build at the frontier of it</strong>, for ourselves and for customers.</p></div>
+  <p>That's the mandate. The obvious next question is how anyone knows whether we delivered on it, and for that there's a single number.</p>
+</section>
+
+<!-- 02 TARGET -->
+<section class="sec wrap" id="target">
+  <div class="kicker">02 · System Prompt</div>
+  <h2>The Reward Signal: 5 Shipped Products</h2>
+  <p class="lead">That number is on the company's scoreboard, in black and white: <strong>five products, live and earning revenue this year.</strong> Not five prototypes. Not five pilots. Not "shipped to production" and quietly left there. Five products that <em>sell</em>. We'll build dozens of features, automations, and skills along the way, and any one of them can <em>become</em> a product the moment we package it and someone pays. But the five are what we're measured on: things that earn.</p>
+
+  <h3>This isn't a side goal: it's a company scoreboard line</h3>
+  <p>Inspirelabs runs a 12-month operating doctrine called <strong>Win The Year</strong>, built to take the company up by roughly half again, a step-change in revenue over the year, not a stretch on the old trajectory. It has a public scoreboard of <strong>eight outcomes the whole company plays the same game on</strong>, published every Monday without exception. One of those eight, <strong>"AI-led products / features shipped, in production"</strong>, belongs to us. AI Labs doesn't sit beside the company's goals. <strong>It owns one of the eight.</strong> That's the scoreboard's wording; <em>our</em> internal bar is tougher and simpler, a product only counts when it's <strong>earning revenue</strong>, not merely live.</p>
+  <div class="card ink"><h4>What counts: and what doesn't</h4><p>A <strong>product</strong> is anything <strong>packaged and sold</strong>: something a customer pays for, internally or in the market. An agent can be a product. So can a skill, an automation, or an API, if you package it and someone pays to use it. What <em>doesn't</em> count is the same artifact sitting unsold in our repo, that's a building block, not a product. The line isn't the artifact type. It's whether it <strong>earns revenue</strong>. A thing in production that nobody pays for scores zero here, the same way a demo does.</p></div>
+
+  <h3>The company's real bottleneck: and where we fit</h3>
+  <p>Win The Year is blunt that the thing slowing the company isn't the market or the technology, it's the <strong>calendar</strong>: too many decisions routed through one person. That's being fixed by giving managers real authority, not by us. <strong>Our job is to remove the other drag</strong>, the manual work, the data with no synthesis, the hours spent producing instead of deciding, so every team gets its time back. (The full diagnosis, and the search-shift arena we build against, is in §16.)</p>
+
+  <h3>How everything in this manual ladders to the five</h3>
+  <p>This is the connective tissue. Read the manual through this lens and it stops being a pile of sections and becomes one argument:</p>
+  <table class="tbl">
+    <tr><th>The five come from…</th><th>…which this manual gives you</th></tr>
+    <tr><td>Knowing where the value is</td><td>The strategic picture and revenue leaks (§16), the value framework (§15)</td></tr>
+    <tr><td>Knowing what to build</td><td>The automation opportunity map (§18) and the team playbooks (§20)</td></tr>
+    <tr><td>Building it well and fast</td><td>Research-first (§21), effective tooling (§22), and the agent template (§23)</td></tr>
+    <tr><td>Turning a build into a product</td><td>The two tracks and the productization pipeline (§26)</td></tr>
+  </table>
+
+  <h3>What the five could actually be</h3>
+  <p>The number isn't abstract. Here are five illustrative candidates of the <em>kind</em> of product that counts, drawn from real needs in this manual. They are examples, not a locked or final list, and the specifics will shift as work ships; what's durable is the shape of each: a real beneficiary and a clear <strong>earning</strong> bar. Your job is to land five like these.</p>
+  <div class="grid g2">
+    <div class="card"><h4>1 · Leads Agent <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">internal → external</span></h4><p>B2B lead research as a product: type a company, get its ICP, buying signals, and a scored, evidence-backed lead list. <strong>Earns when:</strong> it drives Sales pipeline internally, then sells as a research tool to any B2B team, the Apollo/Clearbit lane.</p></div>
+    <div class="card"><h4>2 · HR Agent <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">internal → product</span></h4><p>An agent that takes the manual weight out of hiring and people-ops: screening, structured feedback, onboarding. <strong>Earns when:</strong> it saves real recruiter and manager hours inside the company, then ships as a product other teams pay to run.</p></div>
+    <div class="card"><h4>3 · Search Intelligence Platform <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">internal → product</span></h4><p>A rankings-to-revenue layer: raw SERP and rankings data turned into ranked, owner-assigned recovery actions (the RankDrive direction, §20 Playbook 01). <strong>Earns when:</strong> recovered #1s bring back organic CPS internally, then sold as a SaaS to any SEO shop with the same problem.</p></div>
+    <div class="card"><h4>4 · The GrabOn MCP Server <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">internal → external</span></h4><p>Offer data exposed so AI agents answer "best coupon for X" from us (§17, §23). <strong>Earns when:</strong> our offers surface in AI answers and drive attributable CPS, and, sold to other catalogues, becomes a paid infrastructure product. The defining strategic bet.</p></div>
+    <div class="card"><h4>5 · The Synthesis Dashboard <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">internal</span></h4><p>The data→answer layer that kills manual revenue-stitching (§20, Playbook 04). <strong>Earns when:</strong> it replaces paid manual reporting hours and the recovered time shows up as OPP, value the company would otherwise pay headcount for. Internal revenue is still revenue.</p></div>
+    <div class="card ink"><h4>The portfolio logic</h4><p>Notice the spread: a lead-research product, an internal agent that travels, a search platform, infrastructure, and a pure internal-leverage build. Each one <em>earns</em>, internally (recovered or saved rupees) or externally (a customer pays). Features, automations, and skills feed these, and any of them can graduate into a product of its own once it's packaged and sold. Again: candidates, not the locked five, but proof the number is reachable from what we're already building.</p></div>
+  </div>
+
+  <h3>How the five connect to the rest of the scoreboard</h3>
+  <p>Our number doesn't stand alone, it pulls the others. This is how AI Labs becomes a force multiplier on the whole company's year, not a department off to the side:</p>
+  <div class="grid g3">
+    <div class="card warm"><h4>→ Revenue</h4><p>Products that recover CPS, fix the funnel, or monetize dead traffic feed the top-line number directly. External products open the near-empty Services stream (§8).</p></div>
+    <div class="card warm"><h4>→ Big Bet Wins</h4><p>Several of the company's Big Bets <em>are</em> AI builds: a cashback deal-scraper feeding GrabCash is one example. Land a product and you've often landed a Big Bet too.</p></div>
+    <div class="card warm"><h4>→ OPP (output per person)</h4><p>The headline lever of the whole year: same team, more output. Internal tools that eliminate manual hours raise OPP across every team that adopts them, productivity the company doesn't have to hire to earn.</p></div>
+  </div>
+  <div class="call cta"><div class="t">▲ Carry this with you</div><p>When you wonder whether something is worth building, ask one question: <strong>does this move us toward five products that earn?</strong> If yes, directly, or as the feature/automation/skill that feeds one, it's the work. If no, it's a distraction, however interesting. Everything else in this manual exists to help you answer that question well and act on it fast.</p></div>
+</section>
+<section class="sec wrap" id="values">
+  <div class="kicker">03 · System Prompt</div>
+  <h2>The Weights: What We Optimize For</h2>
+  <p class="lead">Knowing the target is one thing; knowing how to choose when the path to it is unclear is another. These are the decision rules we fall back on when the right move isn't obvious, the weights behind every judgment call. Values aren't posters here. When in doubt, re-read these; they break ties.</p>
+  <div class="val">
+    <div class="nv">01</div>
+    <div><h3>Value or it didn't happen</h3>
+    <p>Every single thing we build must create measurable value, for a GrabOn team (recovered revenue, eliminated hours, reduced risk, a faster decision) or for a customer in the market (a product they adopt and pay for). "It's technically impressive" is not value. "It's interesting" is not value. If you can't name who is better off and by how much, inside or outside, stop and rethink the build.</p>
+    <p class="mantra">→ Test: name the beneficiary and the number, on either track.</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">02</div>
+    <div><h3>Think first, then ship fast</h3>
+    <p>Deep research and documentation come before code, always. Understand the problem, study how it's solved, ask many questions, write the spec in full. Do that and the build becomes fast and easy. The mistake is vibe-coding your way to a demo; the discipline is doing the hard thinking upstream so the building downstream is quick. A working V1 that came from a real spec beats a fast hack that solved the wrong problem.</p>
+    <p class="mantra">→ Test: could someone build it from your doc, before you code?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">03</div>
+    <div><h3>Own the outcome, not the task</h3>
+    <p>Your job is not "I wrote the agent." It's "the metric moved." Ownership means you chase the result through QA, adoption, and the messy last mile where most automation quietly dies. You don't hand off a half-finished thing and call it done.</p>
+    <p class="mantra">→ Test: did the number actually change?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">04</div>
+    <div><h3>Initiative is the baseline</h3>
+    <p>The roadmap is visible and the priorities are published. So the next thing to do is almost always knowable without being told. Proposing the plan is the expected behavior; asking "what should I do?" when the board is full is the exception that needs a reason.</p>
+    <p class="mantra">→ Test: did you bring a proposal, or a question?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">05</div>
+    <div><h3>Write it down</h3>
+    <p>Knowledge that lives only in your head is a liability to the team. Everything non-trivial goes into the Wiki in a form an agent, or the next hire, can act on. If a teammate can't rebuild your work from what you wrote, you're not finished.</p>
+    <p class="mantra">→ Test: could someone rebuild this without asking you?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">06</div>
+    <div><h3>Think in revenue</h3>
+    <p>We are a business, not a lab that happens to be inside one. Tie every build to a revenue stream and a challenge. The most elegant agent that touches no stream and solves no real problem is a hobby project we can't afford.</p>
+    <p class="mantra">→ Test: which stream does this move?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">07</div>
+    <div><h3>Challenge bad specs</h3>
+    <p>If an ask is wrong, vague, or aimed at the wrong problem, say so and propose a better version. Silently building the wrong thing wastes everyone's time; stalling because the spec is imperfect wastes it differently. Push back <em>with a proposal</em>.</p>
+    <p class="mantra">→ Test: did you improve the ask, or just execute it?</p></div>
+  </div>
+  <div class="val">
+    <div class="nv">08</div>
+    <div><h3>Stay on the frontier</h3>
+    <p>The tooling shifts weekly. Knowing the latest model, technique, or tool is part of the job, not extra credit. Bring what you find to the team. The day we stop being current is the day we stop being AI Labs.</p>
+    <p class="mantra">→ Test: what did you bring the team this week?</p></div>
+  </div>
+</section>
+
+<!-- 03 CULTURE -->
+<section class="sec wrap" id="culture">
+  <div class="kicker">04 · System Prompt</div>
+  <h2>The Priors: How It Works Here</h2>
+  <p>The values above describe how we decide. These beliefs describe how it <em>feels</em> to work here, and what's true about this team that may differ from anywhere you've worked before.</p>
+  <div class="grid g2">
+    <div class="card"><h4>Small, founding, high-trust</h4><p>This is a tiny team by design. There's no layer to hide behind and no one to wait on. That's the trade for the autonomy and the speed, you're trusted with real ownership from week one.</p></div>
+    <div class="card"><h4>The CEO is in the room</h4><p>Ashok doesn't delegate the AI vision and disappear. He shares the articles, sets the bets, and occasionally asks for builds directly. That access is rare, treat it as a responsibility, not a novelty.</p></div>
+    <div class="card"><h4>Speed is cultural, not just operational</h4><p>We move faster than the rest of the org on purpose. That means tolerating rough edges on V1, deciding quickly, and correcting in the next iteration rather than agonizing before the first.</p></div>
+    <div class="card"><h4>Output is visible</h4><p>What you ship, what you write, and what you record (Graphify walkthroughs, playbooks, Wiki entries) is how the team, and the CEO, sees your work. Visible output is the currency here.</p></div>
+  </div>
+  <div class="call cta"><div class="t">◆ The cultural fault line</div><p>The fastest way to struggle here is to operate like a ticket-taker: wait for assignment, build exactly what's asked, mark it done before QA, and keep the knowledge in your head. <strong>"I'm waiting for you to assign me a task" is the one sentence that gets flagged.</strong> The fastest way to thrive is the inverse, propose, ship, verify, write it down, and tie it to a number.</p></div>
+</section>
+
+<!-- 05 COMPANY -->
+<section class="sec wrap" id="company">
+  <div class="kicker">05 · Domain Context</div>
+  <h2>Domain Context: Inspirelabs & GrabOn</h2>
+  <p class="lead">A good prompt needs good context. The same is true for a builder. The sections ahead are the full context on the business you're building for, and you won't need every detail on day one. But the engineer who understands the company deeply, where the money comes from, where it leaks, what the user actually does, makes sharper calls at every step than one who only knows the task in front of them. Load this the way you'd load context into a model before a hard problem: completely, so nothing downstream is a guess.</p>
+  <p>Start here. <strong>Inspirelabs Solutions</strong> is a bootstrapped, profitable, Hyderabad-based company. Its flagship is <strong>GrabOn</strong>: India's leading coupons and deals platform. It's live in three markets today (India, US, UAE) and heading toward 10+ countries over the next few years, with a portfolio of products built around it.</p>
+  <div class="grid g4">
+    <div class="card stat"><div class="v o">2013</div><div class="l">GrabOn founded</div></div>
+    <div class="card stat"><div class="v">Bootstrapped</div><div class="l">& Profitable</div></div>
+    <div class="card stat"><div class="v">3 <span style="font-size:.55em;color:var(--grey)">&rarr; 10+</span></div><div class="l">Markets · live in IN/US/UAE, expanding</div></div>
+    <div class="card stat"><div class="v o">~2×</div><div class="l">FY27 revenue target</div></div>
+  </div>
+  <h3>The one sentence to hold in your head</h3>
+  <p>If you remember nothing else from this whole cluster, remember this: GrabOn sits between a <strong>user hunting for a discount</strong> and a <strong>brand willing to pay for a customer who converts</strong>. Everything, the SEO, the content, the coupon pages, the apps, exists to move a user from a search query into a brand's checkout, and to get paid when that purchase happens. The entire business, and almost every build you'll ever ship here, hangs off that single sentence. When a build feels disconnected from it, that's usually the signal something's off.</p>
+  <div class="call warn"><div class="t">◆ Legal vs. brand</div><p>The legal entity is <strong>Inspirelabs Solutions</strong> (Hyderabad; GrabOn itself founded 2013 by Ashok Reddy). You'll see "Pvt Ltd" and "Ltd" both used historically. The brand you build for is Inspirelabs; the engine is GrabOn.</p></div>
+</section>
+
+<!-- 06 HISTORY -->
+<section class="sec wrap" id="history">
+  <div class="kicker">06 · Domain Context</div>
+  <h2>The Training Data: Origin & Timeline</h2>
+  <p>That two-sided model didn't appear overnight; it was built over a decade, and the shape of that history explains both the culture you're joining and the bets on the table now. You don't need the full corporate timeline, just the arc.</p>
+  <table class="tbl">
+    <tr><th>Era</th><th>What happened</th></tr>
+    <tr><td><strong>2013</strong></td><td>GrabOn is founded by Ashok Reddy into a fragmented Indian coupon market, with one bet: make validated deals one click away. It reaches profitability without raising, a trait that still governs how the company spends, hires, and decides today.</td></tr>
+    <tr><td><strong>Growth years</strong></td><td>Thousands of merchant relationships, a billion-plus coupon redemptions, and an SEO-led traffic engine built category by category. That engine is the ground the entire revenue model still stands on, which is exactly why a shift in search is a shift in the business.</td></tr>
+    <tr><td><strong>Expansion</strong></td><td>The model crosses borders, the US (GrabOn.com) and UAE (GrabOnUAE.ae), and spawns a portfolio around the core: GrabCash, GrabShare, and more, all under Inspirelabs.</td></tr>
+    <tr><td><strong>Now, the inflection</strong></td><td>Search itself is being rewritten. AI Overviews answer the query before the user ever clicks, eroding the traffic the model was built on. The company's response is to become AI-native faster than its competitors can, and that response runs straight through this team.</td></tr>
+  </table>
+  <div class="call ok"><div class="t">▲ Why this matters to you</div><p>Bootstrapped and profitable means there's no investor runway to set on fire, the value you create is real and immediate, not a slide for the next round. And the AI inflection is the whole reason AI Labs exists. You didn't arrive at a quiet moment; you arrived at the one that decides the next decade.</p></div>
+</section>
+
+<!-- 07 PORTFOLIO -->
+<section class="sec wrap" id="portfolio">
+  <div class="kicker">07 · Domain Context</div>
+  <h2>The Model Family: Product Portfolio</h2>
+  <p>That inflection is being met by more than one product. Inspirelabs runs a portfolio, not a single bet. <strong>GrabOn is the engine</strong>, the overwhelming majority of revenue and traffic flows through it, and the rest are extensions, bets, and tools arranged around it. An <strong>AI Layer</strong> runs across all of them, and that layer is where AI Labs lives. Here's each one in depth: what it is, how it earns, who it's a good fit for, and where it's weak. Knowing the weak parts matters as much as the strong ones, because the weak parts are usually where a build creates the most value.</p>
+
+  <h3>GrabOn <span class="tag t-ship">Core engine</span></h3>
+  <p>The flagship coupons-and-deals platform, live in India (the deepest market), the US, and the UAE. This is the business: when people say "how did we do this month," they almost always mean GrabOn. A user searching for a discount lands on a GrabOn store page, reveals a code or clicks a deal, and is routed to the brand; GrabOn earns when that converts (the full mechanics are in §8 Revenue and §9 the user flow).</p>
+  <div class="grid g2">
+    <div class="card ok"><h4>What's strong</h4><p>An SEO-built traffic moat across thousands of categories, a billion-plus redemptions of trust, and direct relationships with a very large base of merchants. Profitable and bootstrapped, so the cash is real. Most builds that touch GrabOn have an immediate, measurable revenue line to move.</p></div>
+    <div class="card bad"><h4>The risk to manage</h4><p>Most of it rides on <strong>Google organic traffic</strong>, which is exactly the ground AI Overviews are now shifting (§16), so protecting and diversifying it is high-leverage work. There's meaningful room at the go-to-merchant step (§9), and high-traffic pages that aren't yet monetized. Because one channel carries so much, improvements to it compound across the whole business, which is what makes builds here so valuable.</p></div>
+  </div>
+
+  <h3>GrabCash <span class="tag t-test">Scaling</span></h3>
+  <p>The rewards / cashback platform: instead of just showing a coupon, GrabCash gives the user cashback when they buy, which deepens loyalty and repeat use. It's fed by deal-scraping automation (an AI Labs build) so offers stay fresh without manual entry.</p>
+  <div class="grid g2">
+    <div class="card ok"><h4>Good fit for</h4><p>Building a repeat-user, logged-in relationship that a pure coupon page never gets, cashback gives a reason to come back and a reason to sign in. A natural home for AI personalization and a distribution surface for the wider ecosystem.</p></div>
+    <div class="card bad"><h4>Where the upside is</h4><p>Cashback is capital-intensive and trust-sensitive (users must believe the payout is real and on time), and there's a real gap between what it earns today and what the model can support, which is exactly the upside. Scaling it is an execution challenge, not an idea problem, and a natural target for AI leverage.</p></div>
+  </div>
+
+  <h3>GrabShare <span class="tag t-build">Growth</span></h3>
+  <p>Creator commerce: affiliate built for creators and influencers rather than for a search-driven coupon page. Creators share offers to their audiences and earn on what converts; the network reach is large.</p>
+  <div class="grid g2">
+    <div class="card ok"><h4>Good fit for</h4><p>A traffic source that <em>isn't</em> Google, which is strategically priceless given the search risk. Every creator link can also carry GrabOn's affiliate tracking, so a single piece of plumbing turns creator sales into ecosystem revenue. Brands will pay for managed reach they can't build themselves.</p></div>
+    <div class="card bad"><h4>Where the upside is</h4><p>Creator networks take work to monetize well, attribution is harder and payouts are more involved. The reach is already there; the systematic monetization of it is still largely greenfield, which is precisely the opportunity.</p></div>
+  </div>
+
+  <h3>RankDrive <span class="tag t-build">Build</span></h3>
+  <p>Search-revenue intelligence: the layer that connects <em>rankings</em> to <em>revenue</em>, which SERP positions actually drive money, what's slipping, what to recover. It's the data backbone behind the SEO operation (and the Search Intelligence product candidate in §2).</p>
+  <div class="grid g2">
+    <div class="card ok"><h4>Good fit for</h4><p>Turning raw rankings data into prioritized, revenue-weighted action, the single most valuable thing you can do for an SEO-dependent business. A clear path to an external SaaS: every SEO-driven company has the same problem and no clean tool for it.</p></div>
+    <div class="card bad"><h4>Where the upside is</h4><p>It's intelligence, not action, it surfaces what to fix, but a human or another agent still does the fixing, so the payoff comes when its output is wired into the weekly workflow and actually acted on. Closing that adoption loop is where an AI build adds the most.</p></div>
+  </div>
+
+  <h3>Alternatives.co <span class="tag t-build">Growth</span></h3>
+  <p>A B2B software-discovery property, helping people find alternatives to software tools. A different audience (business buyers, not deal hunters) and a different monetization (B2B affiliate / lead-gen, higher value per action).</p>
+  <div class="grid g2">
+    <div class="card ok"><h4>Good fit for</h4><p>Higher-value, lower-volume traffic than coupons, and a foothold in B2B where intent is worth far more per click. Synergy with Leads Agent and the B2B services motion.</p></div>
+    <div class="card bad"><h4>Where the upside is</h4><p>It's outside the core coupon competency, so it competes for attention with the engine. Needs its own content and SEO investment to matter, and that investment competes with GrabOn's.</p></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h4>WriteGenius <span class="tag t-build">AI Layer</span></h4><p>AI content automation, part of the AI Layer. Content at scale is a direct input to the SEO engine (more quality pages, more rankings), and a candidate to package and sell. Risk: AI content quality and Google's stance on it are both moving targets, volume without quality can hurt rankings rather than help.</p></div>
+    <div class="card"><h4>GrabCredit <span class="tag t-test">2027 bet</span></h4><p>The fintech / credit direction (with GrabInsurance alongside), a future <em>second engine</em>, not a today product. The thesis: turn purchase intent into financial products. Risk: regulated, capital-heavy, and far from the core competency, the highest-upside and highest-uncertainty item in the portfolio.</p></div>
+  </div>
+
+  <div class="call warn"><div class="t">★ The cross-ecosystem insight</div><p>Most of these products touch the <strong>same brands</strong> but monetize in isolation, a brand might pay through GrabOn's affiliate link but not through GrabCash creators, GrabShare storefronts, or RankDrive intelligence. The biggest unbuilt opportunity isn't a new product; it's <strong>connecting the ones we have</strong>. Keep that in mind, several of the strongest AI Labs builds live in the seams between these platforms, not inside any one of them.</p></div>
+  <p>Externally, this is framed as a <strong>Growth Engine</strong> on four pillars with an <strong>AI Layer</strong> across all of them. When you build, you're building that AI Layer made real.</p>
+</section>
+
+<!-- 08 REVENUE -->
+<section class="sec wrap" id="revenue">
+  <div class="kicker">08 · Domain Context</div>
+  <h2>The Revenue Function: How We Earn</h2>
+  <p>So that's what we sell. <em>How</em> the money actually comes in splits into four revenue streams. Learn these now, you'll hear them constantly, and two of them mean something <em>different</em> from what the words suggest.</p>
+  <div class="grid g4">
+    <div class="card stat"><div class="v o">~43%</div><div class="l">Delivery</div></div>
+    <div class="card stat"><div class="v">~38%</div><div class="l">CPS (Affiliate)</div></div>
+    <div class="card stat"><div class="v">~14%</div><div class="l">Branding</div></div>
+    <div class="card stat"><div class="v">~3%</div><div class="l">Services</div></div>
+  </div>
+  <table class="tbl">
+    <tr><th>Stream</th><th>What it actually means</th></tr>
+    <tr><td><strong>Delivery</strong> <span class="tag t-ship">Largest</span></td><td>Sales driven through <strong>external partners / publishers</strong>, not package delivery, and not us sending our traffic away. External publishers run campaigns that drive sales, and we earn on what they deliver. The single biggest stream.</td></tr>
+    <tr><td><strong>CPS (Affiliate)</strong></td><td>Cost-Per-Sale commissions. User clicks a coupon → buys on the brand's site → we earn a cut. The classic coupon-site model.</td></tr>
+    <tr><td><strong>Branding</strong></td><td><strong>Sponsored listings</strong>, brands paying for placement and visibility. NOT brand/design work.</td></tr>
+    <tr><td><strong>Services</strong></td><td>B2B services. The smallest stream today, with the most open runway, which is itself the opportunity (see §13, §16).</td></tr>
+  </table>
+  <div class="call warn"><div class="t">★ Why this matters for every build</div><p>Each agent must answer: <em>which stream does this move, and how?</em> "Saves time" is necessary but not sufficient. "Saves time <strong>and</strong> recovers CPS from stale coupons" is the bar.</p></div>
+</section>
+
+<!-- 09 USER FLOW -->
+<section class="sec wrap" id="userflow">
+  <div class="kicker">09 · Domain Context</div>
+  <h2>The Forward Pass: How Revenue Flows</h2>
+  <p>Those streams aren't abstract, they're the payoff at the end of a specific journey every user takes. This is that journey, the exact path that turns a search into money. Walk it yourself on Day 1: open GrabOn, search a brand, click through. Every step is something an agent can improve.</p>
+  <div class="flow">
+    <div class="step"><div class="b"></div><div><h4>Google Search</h4><p>A user searches "[brand] coupons" / "[brand] promo code". Our ranking decides whether they land on us or a competitor, and this is exactly where the AIO/SGE crisis bites (§16).</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Store Page</h4><p>They land on a GrabOn store page: coupon boxes, the editorial "extension" content, internal links to similar stores. The page's job is to get them to reveal and use a code.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Coupon Reveal Page</h4><p>The user reveals a code. High-traffic, high-leverage, and where the <strong>Go-To-Merchant bottleneck (~1.4%)</strong> lives. Most who reveal don't continue. Fixing this is one of the largest levers in the business.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Merchant Site</h4><p>The user is redirected to the brand with our affiliate tracking attached. Buy within the validation window → CPS commission (rates vary by category). This is where Delivery and CPS revenue actually lands.</p></div></div>
+  </div>
+  <div class="call ok"><div class="t">▲ Action item</div><p>Do this end-to-end yourself before you write a line of code. You can't improve a funnel you've never walked.</p></div>
+</section>
+
+<!-- 10 SEARCH -->
+<section class="sec wrap" id="search">
+  <div class="kicker">10 · Domain Context</div>
+  <h2>How Search Actually Works</h2>
+  <p class="lead">Almost all of GrabOn's revenue starts with one thing: someone typing into Google and clicking our result instead of a competitor's. If you understand nothing else about the business, understand this chain, because nearly every internal build either protects it, measures it, or tries to recover it. No SEO background needed; we'll build it up from zero.</p>
+
+  <h3>The five words you'll hear constantly</h3>
+  <p>These are the metrics the whole search operation runs on. Plain definitions first:</p>
+  <table class="tbl">
+    <tr><th>Term</th><th>What it actually means</th></tr>
+    <tr><td><strong>Keyword</strong></td><td>What a person types into Google. For us, that's things like "myntra coupons", "dominos promo code", "ajio offers". Each keyword is a tiny market: some are huge (millions of searches), some are tiny, and the valuable ones are where buying intent is highest.</td></tr>
+    <tr><td><strong>Impression</strong></td><td>Your page <em>showed up</em> in someone's search results for a keyword, whether or not they clicked. If we rank for "nykaa coupons" and 100k people search it, that's up to 100k impressions. Impressions measure <em>visibility</em>.</td></tr>
+    <tr><td><strong>Ranking (position)</strong></td><td>Where your link sits on the results page. Position 1 is the top organic result; position 10 is the bottom of page one; page two might as well not exist. Ranking is the single biggest driver of everything downstream.</td></tr>
+    <tr><td><strong>CTR (click-through rate)</strong></td><td>Of the people who saw you (impressions), what fraction <em>clicked</em>. Clicks ÷ impressions. Position 1 might get a large share of clicks; position 8 gets a tiny one. CTR is how visibility turns into actual visitors.</td></tr>
+    <tr><td><strong>Bounce rate</strong></td><td>Of the people who landed on your page, what fraction <em>left without doing anything</em>, no click, no reveal, no journey onward. High bounce = the page didn't deliver what the search promised.</td></tr>
+    <tr><td><strong>Avg. session time</strong></td><td>How long people actually stay and engage. Longer, engaged sessions signal a useful page; instant exits signal a mismatch. Google watches these engagement signals when it decides who deserves to rank.</td></tr>
+  </table>
+
+  <h3>How they chain into revenue</h3>
+  <p>Here's the part that matters: these aren't separate numbers, they're a <strong>pipeline where each stage multiplies the next</strong>. Read it as one equation:</p>
+  <div class="tree"><b>KEYWORD</b> people search it
+   │
+   ▼ <b>RANKING</b> decides how often we appear  ──▶  <b>IMPRESSIONS</b>
+   │
+   ▼ <b>CTR</b> decides how many of those clicks  ──▶  <b>VISITORS</b>
+   │
+   ▼ page quality (low <b>BOUNCE</b>, good <b>SESSION</b>) keeps them moving
+   │
+   ▼ they reveal a code, go to the merchant, buy
+   │
+   ▼ <b>REVENUE</b> (CPS / Delivery)</div>
+  <p>Because it multiplies, a weakness at any stage caps everything after it. The best keyword in the world earns nothing if we rank position 9 (few impressions convert to clicks). A great ranking earns nothing if the page bounces everyone straight back. <strong>This is why "rankings" and "revenue" are almost the same conversation here</strong>, move a page from position 5 to position 2 on a high-intent keyword and you've multiplied impressions × CTR at the same time, which is why it shows up directly in the money.</p>
+
+  <div class="grid g2">
+    <div class="card"><h4>Why a small ranking change is a big deal</h4><p>Click share falls off a cliff with position, the top one or two results take the large majority of clicks, and everything below page one is rounding error. So recovering a single high-value keyword from position 6 to position 2 isn't a 4-step nudge; it can multiply the traffic (and revenue) from that keyword several times over. This is the entire thesis behind the SERP loss-recovery work (§20, §2).</p></div>
+    <div class="card"><h4>Why engagement metrics feed back</h4><p>Bounce rate and session time aren't just outcomes, they're <em>inputs</em> to future rankings. Google promotes pages people engage with and quietly demotes pages they bounce from. So a page that loads slowly or buries the coupon doesn't just lose today's user; it slowly loses its ranking, which loses tomorrow's impressions. The funnel and the ranking are the same system.</p></div>
+  </div>
+
+  <h3>GrabOn's reality, and why it's worth protecting</h3>
+  <p>GrabOn's traffic engine was built over a decade, category by category, into thousands of high-intent keywords where we rank at or near the top. That's the moat. But it rests on one assumption: <strong>that Google keeps sending the clicks</strong>. Two things now threaten that, and they're the reason AI Labs exists on the Track A side:</p>
+  <div class="grid g2">
+    <div class="card bad"><h4>AI Overviews answer before the click</h4><p>Google increasingly answers the query <em>on the results page itself</em> (AI Overviews / SGE). The impression still happens, but the click doesn't, so CTR collapses even when our ranking is unchanged. We can hold position 1 and still lose the visit. This is the existential pressure on the whole model (§16).</p></div>
+    <div class="card bad"><h4>The funnel leak after the click</h4><p>Even when we win the click, most users who reach the reveal step don't make it to the merchant (the ~1.4% go-to-merchant reality, §9). So we lose revenue twice: some before the click (AI Overviews) and most after it (the funnel). Both are measurable, and both are exactly where an agent can move a number.</p></div>
+  </div>
+  <div class="call cta"><div class="t">◆ What this means for what you build</div><p>When you touch anything SEO-adjacent, you now know the levers: <strong>keyword value, ranking position, CTR, and on-page engagement</strong>, and that they multiply. A build that lifts CTR on high-intent pages, recovers slipping rankings, or cuts bounce on the reveal page isn't "an SEO nicety", it's pulling directly on the largest revenue lever in the company. The data to do this is real and queryable in our analytics warehouse; you don't have to take any of this on faith.</p></div>
+</section>
+
+<!-- 11 MARKETS -->
+<section class="sec wrap" id="markets">
+  <div class="kicker">11 · Domain Context</div>
+  <h2>Deployment Targets: Live in 3, Heading to 10+</h2>
+  <p>That search engine doesn't run in one place, it runs in several, and the rules shift between them. One model, deployed across markets, where the competitive picture, the data, and the seasonality all differ. Three are live today; the plan is 10+ countries over the next few years. So know which market a task lives in before you build for it, an assumption that's true in India can be flat wrong in the US, and build as if a fourth and fifth market are coming, because they are.</p>
+  <div class="grid g3">
+    <div class="card"><h4>GrabOn.in: India</h4><p>The flagship and the deepest well: the largest traffic and revenue base, the richest data, the most merchant relationships, and the front line of the search shift. Most of what you build proves out here first.</p></div>
+    <div class="card"><h4>GrabOn.com: US</h4><p>A different fight entirely, against entrenched incumbents like RetailMeNot and CouponFollow, with their own SEO dynamics and commission structures. Note the Feb-2026 subdomain migration (merchant pages moved to <code>brand.grabon.com</code>); it changes how you read the data.</p></div>
+    <div class="card"><h4>GrabOnUAE.ae: UAE</h4><p>Smaller but strategically its own thing: different merchants, language and seasonality, a separate ranking landscape. Newer data (GA4 from early 2026), so treat trends with appropriate caution.</p></div>
+  </div>
+  <div class="call cta"><div class="t">▲ Build for ten, not three</div><p>The expansion plan is the reason multi-market thinking is baked into how we build. The LLM Wiki is scoped per market because context true in India isn't automatically true elsewhere, and any tool you ship should assume a new country can be added without a rewrite. A build that hard-codes "India" is a build that breaks at market four.</p></div>
+</section>
+
+<!-- 11 ORG -->
+<section class="sec wrap" id="org">
+  <div class="kicker">12 · Domain Context</div>
+  <h2>The Routing Layer: Org & Ownership</h2>
+  <p>Markets, products, and revenue all run on people, and you'll need them: to ground-truth data, unblock agents, and adopt what you build. Here's who owns what.</p>
+  <table class="tbl">
+    <tr><th>Person</th><th>Role</th><th>You'll need them for</th></tr>
+    <tr><td><strong>Ashok Reddy</strong></td><td>Founder & CEO</td><td>Vision, the big bets, final calls.</td></tr>
+    <tr><td><strong>Giridhar Darla</strong></td><td>Founder's Office, RevOps & AI</td><td>Your manager. Priorities, RevOps, GTM, AI direction.</td></tr>
+    <tr><td><strong>Harshith</strong></td><td>Founder's Office</td><td>Cross-functional execution, operations, and strategic projects out of the Founder's Office.</td></tr>
+    <tr><td><strong>Rhea Agarwal</strong></td><td>Founder's Office</td><td>Cross-functional execution, operations, and strategic projects out of the Founder's Office.</td></tr>
+    <tr><td><strong>Ashoka Raju</strong></td><td>Core & Client Services</td><td>Core platform, merchant relationships, coupon validity, the top-50 brand programme.</td></tr>
+    <tr><td><strong>Ramya Betalam</strong></td><td>SEO & Outreach</td><td>Rankings, the traffic engine, backlinks, the foundation the whole revenue model rests on.</td></tr>
+    <tr><td><strong>Tagore Chennamsetti</strong></td><td>Delivery</td><td>Anything touching the Delivery stream / publisher traffic.</td></tr>
+    <tr><td><strong>Pravallika Chakilam</strong></td><td>Sales & BD</td><td>Branding / sponsored deals, the direct-brand pipeline.</td></tr>
+    <tr><td><strong>Purna Kiran</strong></td><td>Tech & DevOps</td><td>Production infra, deployment, anything your agents need to run reliably.</td></tr>
+    <tr><td><strong>Anjul Shukla</strong></td><td>Marketing / PR & Social</td><td>Campaigns, launches, external positioning of what you ship.</td></tr>
+    <tr><td><strong>Esha Saxena</strong></td><td>Content</td><td>Editorial, store-page extension content, content at scale.</td></tr>
+  </table>
+  <div class="call warn"><div class="t">◆ Note on "CS"</div><p>"CS" means <strong>Client Services</strong> (merchant-facing): NOT customer support. The CS team manages merchant tracking and coupon validity, a frequent collaborator for any coupon-quality agent.</p></div>
+</section>
+
+<!-- 13 SALES -->
+<section class="sec wrap" id="sales">
+  <div class="kicker">13 · Domain Context</div>
+  <h2>How Sales Actually Works</h2>
+  <p class="lead">If Search is how GrabOn earns from <em>users</em>, Sales is how it earns from <em>brands</em>, the deals, the commercial terms, the relationships that turn traffic into paid partnerships. Most AI builders have never worked a sales pipeline, so here it is from zero: the words you'll hear, what they mean, and how they connect to money.</p>
+
+  <h3>The vocabulary, plainly</h3>
+  <table class="tbl">
+    <tr><th>Term</th><th>What it actually means</th></tr>
+    <tr><td><strong>Lead</strong></td><td>A potential customer, here, usually a <em>brand</em> we could sign (for a branding deal, a direct partnership, or a service). A lead is just a name with potential; it isn't money yet. Leads Agent (§2) exists to find and qualify these.</td></tr>
+    <tr><td><strong>Pipeline</strong></td><td>All the leads in progress, staged by how close they are to closing (e.g. contacted → in talks → negotiating → closed). "Pipeline of ₹X" means the total potential value of open deals, not money in the bank.</td></tr>
+    <tr><td><strong>Conversion rate (CR)</strong></td><td>What fraction of leads actually become paying deals. 100 leads, 5 closes = 5% CR. It's the efficiency of the whole motion: a small CR improvement on a big pipeline is large money. (Note: CR also describes <em>user</em> purchase conversion on-site, same word, two contexts, watch which one's meant.)</td></tr>
+    <tr><td><strong>Top line</strong></td><td>Revenue, the money coming in, before costs. "Grow the top line" = sell more.</td></tr>
+    <tr><td><strong>Bottom line</strong></td><td>Profit, what's left after costs. You can grow the top line and shrink the bottom line if a deal is expensive to deliver. A bootstrapped, profitable company watches both.</td></tr>
+    <tr><td><strong>IO / deal</strong></td><td>The actual signed agreement (an "insertion order" for a branding/campaign deal). Closing an IO is the moment a lead becomes top-line revenue.</td></tr>
+  </table>
+
+  <h3>The brand-side money streams</h3>
+  <p>Recall the four revenue streams (§8). Three of them are sold or managed through commercial relationships:</p>
+  <div class="grid g3">
+    <div class="card"><h4>CPS / Affiliate</h4><p>The brand pays a cut of each sale we drive. Often runs through an <strong>affiliate network</strong> (a middleman platform like the ones tracked in Trackier) rather than a direct contract, the network sits between us and the brand, tracks the sales, and handles payouts.</p></div>
+    <div class="card"><h4>Branding</h4><p>Brands pay for <strong>placement and visibility</strong>, sponsored listings, featured spots. This is sold directly by Sales as deals/IOs and renewed over time. Higher-margin and more predictable than pure affiliate.</p></div>
+    <div class="card"><h4>Delivery</h4><p>Sales driven through <strong>external publishers / partners</strong> (§8), managed as campaigns with budgets, targets, and retained margins. They run campaigns that drive sales; we earn on what's delivered. Quality and validation matter, a partner that delivers junk doesn't renew.</p></div>
+  </div>
+
+  <h3>How a deal actually moves, and where the numbers live</h3>
+  <div class="grid g2">
+    <div class="card"><h4>Campaigns</h4><p>A live commercial arrangement with a brand, a budget to spend, a target to hit (sales, clicks, installs), a window of time. "Paused campaign" = stopped, usually because targets slipped or budget ran out; reactivating paused campaigns is real recoverable revenue.</p></div>
+    <div class="card"><h4>Affiliate networks</h4><p>Platforms that connect publishers (us) to advertisers (brands) and track conversions. Tools like <strong>Trackier</strong> record who drove which sale so payouts are correct. When networks and direct deals overlap, attribution gets messy, which is exactly where errors (and recoverable money) hide.</p></div>
+    <div class="card"><h4>Validation data</h4><p>Brands don't pay for every reported sale, they <strong>validate</strong> first (was it real? returned? within terms?). The gap between <em>reported</em> and <em>validated</em> is where revenue leaks or gets disputed. Getting validation right is unglamorous and worth a lot.</p></div>
+    <div class="card"><h4>Client calls</h4><p>The relationship layer: QBRs (quarterly business reviews), renewals, escalations, "what would you pay more for?" These conversations decide retention and upsell, and they generate signals (what's working, what's not) that a good system should capture, not lose.</p></div>
+  </div>
+  <div class="call cta"><div class="t">◆ Why a builder should care</div><p>Every one of these has an AI lever. Finding and scoring <strong>leads</strong> (Leads Agent). Lifting <strong>CR</strong> by prioritizing the right leads and arming reps. Catching <strong>validation</strong> gaps automatically. Turning <strong>client-call</strong> notes into structured signals. The Services stream sits near zero today (§8), which means the sales motion is one of the most under-automated, highest-upside surfaces in the whole company.</p></div>
+</section>
+
+<!-- 14 CORE & CS -->
+<section class="sec wrap" id="coreteam">
+  <div class="kicker">14 · Domain Context</div>
+  <h2>Core, CS & the Teams You'll Build With</h2>
+  <p class="lead">You won't build in a vacuum. Most AI Labs work touches a business team that owns the data, the relationship, or the process you're automating. Knowing who owns what saves you days, you'll know exactly whose door to knock on, and you'll design tools that fit how the work actually flows. Here's the map.</p>
+
+  <div class="grid g2">
+    <div class="card"><h4>Core, the economics engine</h4><p>Core runs the <strong>monetization machinery</strong> behind the platform: affiliate economics, payout optimization, panel strategy, inventory monetization, how CPS and Branding are structured, and media-house economics. When a question is about <em>how a non-direct brand is monetized or paid</em>, how the underlying deal mechanics work, that's Core. Led out of the VP Core function; deep institutional knowledge lives here.</p></div>
+    <div class="card"><h4>CS (Client Services), the relationship engine</h4><p>CS is <strong>merchant-facing</strong> (again: not customer support). They own brand performance data, campaign performance tracking, QBRs, <strong>direct-brand</strong> escalations, churn intervention, renewals and payout, validation disputes, and invoice raising. When a question is about <em>a specific brand's performance or relationship</em>, that's CS. The merchant-tracking POCs (Yamini, Meena, Svati) sit here.</p></div>
+    <div class="card"><h4>Sales / BD, the closing engine</h4><p>Sales owns <strong>new</strong> commercial value: closing new brand deals (then handing the relationship to CS), branding renewals, commercial partnerships, the service pipeline, and high-value negotiations. A lead becomes revenue here. Contact: Pravallika.</p></div>
+    <div class="card"><h4>Delivery, the campaign engine</h4><p>Delivery owns the external-partner campaigns that drive sales: publisher management, retained margins, agency coordination, campaign quality, and first-level invoice validation for delivery campaigns (before CS raises). When sales come <em>through</em> an external publisher rather than GrabOn's own pages, Delivery runs that relationship.</p></div>
+  </div>
+
+  <div class="call warn"><div class="t">◆ The ownership line that trips people up</div><p>Direct vs. non-direct brands split across two teams: <strong>CS owns direct-brand</strong> escalations, churn, renewals, and payout; <strong>Core owns the same for non-direct brands</strong>, plus the underlying affiliate economics. Sales <em>closes</em> and hands to CS. Delivery <em>validates first</em>, then CS raises the invoice. When you build something touching brand money, ask early which of these owns the case, the answer changes who your tool serves and what data you can trust.</p></div>
+  <p>Beyond these, you'll also work with <strong>SEO</strong> (rankings, the traffic engine, §10), <strong>Content</strong> (the editorial/extension pages), <strong>Tech/DevOps</strong> (where your agents run), and <strong>Marketing/PR</strong> (launches). Ask your manager to point you to the right owner for each.</p>
+</section>
+
+<!-- 15 VALUE FRAMEWORK -->
+<section class="sec wrap" id="valueframe">
+  <div class="kicker">15 · Objective Function</div>
+  <h2>The Objective Function: How We Score Value</h2>
+  <p class="lead">You now know the business: how it earns, where it leaks, who runs it. The question this section answers is what to <em>do</em> with that knowledge, how we decide whether a build is worth your week. This is the heart of the document. "Value or it didn't happen" is the first value (§3); here it becomes a method you can actually run, not just a slogan. Before you build anything, put it through this.</p>
+  <h3>The kinds of value we create</h3>
+  <p>Every worthwhile build creates at least one. The first four are <strong>internal</strong> value (Track A); the fifth is <strong>external</strong> value (Track B). The best builds create several, and a build that delivers internal value and then becomes a product delivers both.</p>
+  <div class="grid g2">
+    <div class="card warm"><h4>① Revenue captured <span style="font-family:var(--mono);font-size:10px;color:var(--grey)">internal</span></h4><p>Recovers or grows money we'd otherwise lose or never earn. Stale-coupon recovery (CPS), funnel fixes (Go-To-Merchant), monetizing dead-traffic pages. The most direct internal value.</p></div>
+    <div class="card warm"><h4>② Time eliminated <span style="font-family:var(--mono);font-size:10px;color:var(--grey)">internal</span></h4><p>Removes manual hours so humans do higher-leverage work. The synthesis dashboard that ends manual report-stitching. Leads generation that replaces hand-research. Measured in hours/week reclaimed.</p></div>
+    <div class="card warm"><h4>③ Risk reduced <span style="font-family:var(--mono);font-size:10px;color:var(--grey)">internal</span></h4><p>Prevents costly errors, expired codes shown to users, compliance slips, brand-keyword violations, missed escalations. Harder to measure but real; quantify the avoided cost.</p></div>
+    <div class="card warm"><h4>④ Decisions accelerated <span style="font-family:var(--mono);font-size:10px;color:var(--grey)">internal</span></h4><p>Turns raw data into a trusted answer faster. The synthesis layer the org lacks. Better decisions, sooner, with more confidence, the Company Brain thesis in miniature.</p></div>
+    <div class="card"><h4>⑤ Market value created <span style="font-family:var(--mono);font-size:10px;color:var(--orange)">external</span></h4><p>A product, skill, agent, or API that a customer outside Inspirelabs adopts and pays for. Value here is measured the way any product is: adoption, retention, revenue. This is Track B (§26), and it counts every bit as much as the four above.</p></div>
+  </div>
+  <h3>The value test: answer these before building</h3>
+  <table class="tbl">
+    <tr><th>#</th><th>Question</th><th>If you can't answer…</th></tr>
+    <tr><td>1</td><td><strong>Which track?</strong> Internal (a GrabOn team) or external (a market)?</td><td>…you don't yet know what you're building.</td></tr>
+    <tr><td>2</td><td><strong>Who is better off?</strong> Name the team, person, or customer.</td><td>…you're solving an imaginary problem.</td></tr>
+    <tr><td>3</td><td><strong>By how much?</strong> A number or a tight range.</td><td>…you can't prove it worked later.</td></tr>
+    <tr><td>4</td><td><strong>What's the baseline?</strong> The "before" state.</td><td>…you have no proof of impact.</td></tr>
+    <tr><td>5</td><td><strong>Could it travel?</strong> If internal, could it cross to a product? If external, is the ecosystem a proving ground first?</td><td>…fine, but note it; many builds travel (§26).</td></tr>
+  </table>
+  <div class="call cta"><div class="t">▲ The discipline</div><p>This isn't bureaucracy, it's what separates AI Labs from every team that built impressive demos nobody used. Two minutes. If the build survives the test on <em>either</em> track, it's worth your week. If it doesn't, you just saved your week.</p></div>
+</section>
+
+<!-- 13 CHALLENGES -->
+<section class="sec wrap" id="challenges">
+  <div class="kicker">16 · Objective Function</div>
+  <h2>The Loss Landscape: Where the Biggest Opportunities Are</h2>
+  <p class="lead">The value test tells you how to judge a build. This section tells you where the high-value builds actually are. It's the Track A arena, the internal terrain, and one framing note up front: the company's own Win The Year diagnosis is that its ceiling has been <strong>the calendar</strong>, decisions bottlenecked through one person. That's being fixed by giving managers authority, not by us. What's below is different. It's the terrain AI Labs builds <em>against</em>: the search shift, the data drag, the revenue leaks. Not why the Labs exists, but where its highest-value internal work lives, and often the first step to a product that travels to Track B (§26).</p>
+
+  <h3>Force 1: The search-and-agent shift (the big one)</h3>
+  <p>The coupon-aggregator model is simple: rank in search → a human browses → they grab a coupon → we earn affiliate revenue. <strong>That chain is being reshaped by AI at every link:</strong></p>
+  <div class="grid g3">
+    <div class="card"><h4>AI Overviews / AI Mode</h4><p>Google answers deal queries directly in the results. Users never click through. Some retailers report ~30% organic traffic declines. Every point of CTR lost is meaningful annual CPS gone.</p></div>
+    <div class="card"><h4>Google Universal Cart</h4><p>Google is building the deal-and-checkout layer <em>itself</em>, competing directly with GrabOn's core discovery-and-redirect function, from inside the search box.</p></div>
+    <div class="card"><h4>Autonomous shopping agents</h4><p>Gemini Spark, Perplexity Comet, and OpenAI's agents shop <em>for</em> the user. They skip the human browsing behaviour the whole model depends on. No human eyeballs, no coupon page, no affiliate click.</p></div>
+  </div>
+  <div class="call bad"><div class="t">⚠ Read this twice</div><p>This is not a SEO slump to optimize around. It is a structural change in how people find and buy things. The destination-for-humans business has a shrinking runway. The companies that survive make themselves <strong>useful to the AI systems</strong> instead of competing with them for human attention. The strategic window to build that is roughly <strong>6–9 months</strong>, while competitors are still debating whether it's real.</p></div>
+
+  <h3>The counter-move: become infrastructure, not a destination</h3>
+  <p>The response, and the most important strategic idea in this document, is to stop fighting for the human's click and instead become <strong>the source the machine cites</strong>: expose GrabOn's coupon and merchant data as agent-accessible infrastructure so that when an AI agent needs "the best offer for X," it pulls from us. That's the North Star, and §17 lays out exactly what it means and how it's built.</p>
+
+  <h3>Force 2: The synthesis vacuum (self-perpetuating)</h3>
+  <p>Here is a fact that explains half of the daily pain in this company: <code>reports@grabon.in</code> auto-emits "Dynamic Coupon Codes Data" <strong>twice a day, it has fired over 700 times</strong>, blasting raw merchant/coupon tables to team mailing lists. So the org has plenty of automated <em>data emission</em>. What it has <strong>none</strong> of is a synthesis layer that turns that data into an answer.</p>
+  <div class="call bad"><div class="t">⚠ Our highest-leverage internal target</div><p>The number the CEO asks for daily is assembled <strong>by hand</strong>. Revenue is tallied manually. There is no dashboard, no automated revenue report, no data→answer layer. So a human becomes the integration layer, pulling, stitching, reconciling, time that should be spent deciding, not assembling. This sits right alongside the company's calendar problem: both are about people doing by hand what a system should do. <strong>Building that missing synthesis layer is the single highest-leverage thing AI Labs can do internally</strong>, and it gives every team back hours, which is exactly the OPP lever Win The Year is built on.</p></div>
+
+  <h3>The everyday recoverable revenue (where the upside is)</h3>
+  <table class="tbl">
+    <tr><th>Leak</th><th>What's happening</th><th>The opportunity</th></tr>
+    <tr><td><strong>Go-To-Merchant funnel</strong></td><td>Only ~1.4% of users move from coupon reveal to the merchant site, they drop at the highest-intent moment.</td><td>One of the single largest revenue levers in the business. Even 0.1% is significant.</td></tr>
+    <tr><td><strong>Lost #1 rankings</strong></td><td>~67% of GrabOn India's lost #1 positions went to <em>direct brands</em> (Dominos, Agoda, Uber); ~31% to coupon competitors led by Desidime. Most losses are a single drop to #2.</td><td>Targeted, winnable. Single-position recoveries on high-value terms.</td></tr>
+    <tr><td><strong>Unmonetized high-traffic pages</strong></td><td>Blinkit, Swiggy, Zomato, Rapido pull big traffic but earn little, no affiliate program or no monetization wired in.</td><td>Significant revenue sitting in pages we already rank for.</td></tr>
+    <tr><td><strong>Services pipeline at zero</strong></td><td>The B2B Services stream is largely untapped today.</td><td>Every internal tool that works can be externalized to fill it (§26).</td></tr>
+  </table>
+</section>
+
+<!-- 14 VISION -->
+<section class="sec wrap" id="vision">
+  <div class="kicker">17 · Objective Function</div>
+  <h2>The North Star: Infrastructure & the Company Brain</h2>
+  <p>Where this is going, in the CEO's own framing. Internalize the language, it shows up in every strategic conversation, and it gives shape to what you build.</p>
+  <h3>Outward: GrabOn as agent infrastructure</h3>
+  <p>The survival move from §16 made concrete. The flagship bet is a <strong>GrabOn MCP server</strong>, structuring offer data as machine-readable and exposing it so any AI client can answer "best coupon for X" from GrabOn's catalogue. The arc is: stand up a pilot on a subset of stores → measure whether GrabOn offers start surfacing in Claude/Gemini/ChatGPT/Perplexity answers (AI-visibility tracking) → scale coverage toward the full catalogue with a documented, non-manual pipeline. Feed it with everything: structured offer feeds, competitor offer data, and partner commerce APIs. <strong>This is the difference between being disintermediated and being the thing the agents depend on.</strong></p>
+  <h3>Inward: the Company Brain</h3>
+  <div class="grid g3">
+    <div class="card ink"><h4>Agents running 24/7</h4><p>Functions that operate continuously without human babysitting, the company keeps working while people sleep.</p></div>
+    <div class="card ink"><h4>Company Brain</h4><p>One architecture (YC 2026 RFS) where the org's knowledge, data, and decisions live in a system agents can read and act on, directly filling the synthesis vacuum from §16.</p></div>
+    <div class="card ink"><h4>LLM Wiki</h4><p>A Karpathy-style, incrementally-built, interlinked markdown knowledge base humans and agents both use. The company's persistent memory (§25).</p></div>
+  </div>
+  <p>Two principles flow from this and apply to everything you build: <strong>(1)</strong> write everything down in a form an agent can consume, you're feeding the Brain, and <strong>(2)</strong> structure your outputs to be machine-readable and reusable, never one-off scripts that die in a folder.</p>
+  <div class="call cta"><div class="t">◆ The through-line</div><p>Outward (MCP/infrastructure) and inward (Company Brain/synthesis) are the same idea pointed in two directions: <strong>turn GrabOn's data into something intelligence can act on</strong>, for external agents, and for the company itself. Almost every high-value thing you'll build ladders up to one of these.</p></div>
+</section>
+
+<!-- 16 AUTO MAP -->
+<section class="sec wrap" id="auto-map">
+  <div class="kicker">18 · Search Space</div>
+  <h2>The Search Space: Automation Opportunity Map</h2>
+  <p>A standing inventory of the <em>kinds</em> of things worth building across the business, by function. Think of it as a menu, not a tracker: the specific examples below are illustrative and will change as builds ship and new needs appear, so treat the patterns as durable and confirm what's actually live or claimed at the Daily Huddle. Each row notes which track it tends to serve, internal leverage (A), an external product (B), or both.</p>
+
+  <h3>Strategic Infrastructure <span style="font-family:var(--mono);font-size:11px;color:var(--orange)">, the existential bets</span></h3>
+  <table class="tbl">
+    <tr><th>Opportunity</th><th>Value type</th><th>Track</th></tr>
+    <tr><td><strong>GrabOn MCP server</strong>, expose offer data as machine-readable infrastructure so AI agents pull offers from GrabOn (the defense against Universal Cart / shopping agents)</td><td>Revenue + Decisions</td><td>A → B</td></tr>
+    <tr><td><strong>AI-visibility tracking</strong>, measure whether GrabOn offers surface in Claude/Gemini/ChatGPT/Perplexity answers</td><td>Decisions + Risk</td><td>A</td></tr>
+    <tr><td><strong>Competitor offer extraction</strong>, full-store extraction where server-side access is blocked</td><td>Decisions</td><td>A</td></tr>
+    <tr><td><strong>Partner data feeds</strong>, wire partner commerce APIs into the offer layer for freshness & breadth</td><td>Revenue</td><td>A</td></tr>
+  </table>
+
+  <h3>Revenue & RevOps</h3>
+  <table class="tbl">
+    <tr><th>Opportunity</th><th>Value type</th><th>Track</th></tr>
+    <tr><td><strong>Stale coupon detection</strong>, flag expired/broken codes (human approves removal)</td><td>Revenue + Risk</td><td>A → B</td></tr>
+    <tr><td><strong>Go-To-Merchant funnel agent</strong>, diagnose & nudge the ~1.4% reveal→merchant drop</td><td>Revenue</td><td>A</td></tr>
+    <tr><td><strong>Dead-traffic monetization finder</strong>, surface affiliate/AdSense/sponsorship paths for high-traffic, low-revenue pages</td><td>Revenue</td><td>A</td></tr>
+    <tr><td><strong>Revenue Dashboard / synthesis layer</strong>, one trusted view stitching rankings + traffic + revenue</td><td>Decisions + Time</td><td>A → B</td></tr>
+    <tr><td><strong>Cashback deal scraping</strong>, keep cashback offers fresh without manual entry</td><td>Revenue + Time</td><td>A</td></tr>
+  </table>
+
+  <h3>SEO & Content</h3>
+  <table class="tbl">
+    <tr><th>Opportunity</th><th>Value type</th><th>Track</th></tr>
+    <tr><td><strong>Rankings intelligence</strong>, track and analyze SERP positions across markets, tie them to revenue</td><td>Decisions</td><td>A → B</td></tr>
+    <tr><td><strong>Extension-content generation</strong>, editorial store-page content at scale (brand-compliant)</td><td>Time + Revenue</td><td>A → B</td></tr>
+    <tr><td><strong>Internal-linking optimizer</strong>, auto-suggest similar/popular store links from the sitemap</td><td>Revenue + Time</td><td>A</td></tr>
+    <tr><td><strong>AIO/SGE visibility tracker</strong>, monitor how brands surface in AI answers (the existential threat)</td><td>Risk + Decisions</td><td>A</td></tr>
+  </table>
+
+  <h3>Sales, GTM & Leads</h3>
+  <table class="tbl">
+    <tr><th>Opportunity</th><th>Value type</th><th>Track</th></tr>
+    <tr><td><strong>GTM automation</strong>, a go-to-market system spanning the major sales modes</td><td>Revenue + Time</td><td>A → B</td></tr>
+    <tr><td><strong>Lead research & sourcing</strong>, prospect and qualify leads for sales</td><td>Revenue + Time</td><td>A → B</td></tr>
+    <tr><td><strong>Sales-intelligence enrichment</strong>, auto-enrich and dedupe lead lists</td><td>Time</td><td>A</td></tr>
+  </table>
+
+  <h3>Internal Ops & People</h3>
+  <table class="tbl">
+    <tr><th>Opportunity</th><th>Value type</th><th>Track</th></tr>
+    <tr><td><strong>People-ops automation</strong>, take manual weight out of hiring and onboarding</td><td>Time</td><td>A → B</td></tr>
+    <tr><td><strong>Daily Huddle synthesis</strong>, auto-compile team status into a digest</td><td>Time + Decisions</td><td>A</td></tr>
+    <tr><td><strong>Knowledge capture → Wiki</strong>, ingest sources into the LLM Wiki automatically</td><td>Decisions</td><td>A</td></tr>
+    <tr><td><strong>Personal LLM Wiki</strong>, a private Karpathy-style knowledge base for an exec</td><td>Decisions</td><td>A</td></tr>
+  </table>
+  <div class="call ok"><div class="t">▲ How to use this map</div><p>Looking for your next build? Start here. Pick a high-value pattern, check at the Huddle whether it's already claimed or live, run it through the value test (§15) and the prioritization method (§19), draft an agent spec (§23), and bring it back. Don't wait to be assigned a row, claim one.</p></div>
+</section>
+
+<!-- 17 AUTO METHOD -->
+<section class="sec wrap" id="auto-method">
+  <div class="kicker">19 · Search Space</div>
+  <h2>What's Worth Solving, And How We Pick</h2>
+  <p class="lead">The map gives you more candidates than you can build at once. Two questions narrow it: is this even the right <em>kind</em> of task to automate, and if several qualify, which one first?</p>
+  <h3>What makes a task worth automating</h3>
+  <div class="grid g2">
+    <div class="card"><h4>✓ Good candidates</h4><p>Repetitive and frequent · clear inputs and outputs · rule-driven or pattern-driven · currently eating human hours · tied to a revenue stream · low cost of a reversible mistake.</p></div>
+    <div class="card"><h4>✕ Poor candidates (for now)</h4><p>One-off tasks · pure human judgment with no signal · irreversible actions with no checkpoint · tasks where the data doesn't exist yet · things where a mistake is catastrophic and unrecoverable.</p></div>
+  </div>
+  <p>The reframe that matters: don't ask "can AI do this?", almost everything has an AI angle. Ask "<strong>should we automate this first?</strong>" The constraint is never capability; it's prioritization. So when several qualify, score them. We use a simple ICE-style lens adapted for AI Labs, fast enough to do in your head, rigorous enough to defend.</p>
+  <table class="tbl">
+    <tr><th>Factor</th><th>Ask</th><th>Score 1–5</th></tr>
+    <tr><td><strong>Impact</strong></td><td>How much value (revenue/time/risk/decision) if it works?</td><td>5 = moves a stream</td></tr>
+    <tr><td><strong>Confidence</strong></td><td>How sure are we it'll work and get adopted?</td><td>5 = near-certain</td></tr>
+    <tr><td><strong>Ease</strong></td><td>How fast can a V1 ship? Is the data available?</td><td>5 = days, data ready</td></tr>
+    <tr><td><strong>Leverage</strong></td><td>Does it compound, reusable, externally sellable, unblocks other builds?</td><td>5 = highly reusable</td></tr>
+  </table>
+  <p>Multiply or sum, then sort. <strong>Bias toward high-Ease, high-Confidence builds early</strong>, shipping a real V1 fast builds trust and teaches you the domain faster than a six-week moonshot. Save the big bets for when you've earned context.</p>
+  <div class="call warn"><div class="t">★ The adoption multiplier</div><p>The most common reason automation fails here isn't the code, it's that nobody uses it. Weight <em>Confidence of adoption</em> heavily. An 80%-accurate agent people trust and run beats a 99% agent that sits unused because the owner wasn't brought along. Build <em>with</em> the team that'll use it.</p></div>
+
+  <h3>The thinking lenses we apply</h3>
+  <p>Before scoring, interrogate the problem with these. They're how we find the real target instead of the obvious one.</p>
+  <div class="grid g2">
+    <div class="card"><h4>Pareto (the 20%)</h4><p>Which 20% of this creates 80% of the value? Automate that slice first; ignore the long tail until the core proves out.</p></div>
+    <div class="card"><h4>Theory of Constraints</h4><p>What is the ONE bottleneck? Improving anything that isn't the constraint feels productive and changes nothing. Find the constraint, aim there.</p></div>
+    <div class="card"><h4>Leverage analysis</h4><p>One-time fix or compounding one? A template saves time once; a system that runs every day saves more every week. Always prefer compounding.</p></div>
+    <div class="card"><h4>Inversion</h4><p>Don't only ask "what should we build?" Ask "what should the team STOP doing entirely?" The removals are often bigger wins than the additions.</p></div>
+    <div class="card"><h4>First principles</h4><p>When you hear "that's just how it works here," break it to base parts. Why does this process exist? Is the assumption under it still true? Often it isn't.</p></div>
+    <div class="card"><h4>Jobs-to-be-done</h4><p>What's the real job this task is doing for the person? Build for the job, not the surface request, the request is usually a guess at a solution.</p></div>
+  </div>
+
+  <h3>Quantify the pain: always</h3>
+  <p>Vague pain doesn't drive action; quantified pain is undeniable. The moment someone describes a manual task, put a number on it. This is how you make the case for a build, and how you prove its value after.</p>
+  <table class="tbl">
+    <tr><th>Cost type</th><th>How to size it</th></tr>
+    <tr><td><strong>Time cost</strong></td><td>"This reporting takes ~3 hrs every Monday = ~16 hrs/month = 2 full working days a month."</td></tr>
+    <tr><td><strong>Rupee cost</strong></td><td>Convert those hours at the person's effective rate → annual cost of the manual process.</td></tr>
+    <tr><td><strong>Revenue at risk</strong></td><td>Where's the single point of failure with no early warning? Size the exposure.</td></tr>
+    <tr><td><strong>Speed cost</strong></td><td>If a report takes 3 days to compile, that's 3 days of decisions made blind.</td></tr>
+    <tr><td><strong>Accumulation cost</strong></td><td>"20 min/day hunting for info = 8+ hrs/month = ~12 working days/year." Small frictions compound.</td></tr>
+  </table>
+
+  <h3>Anti-patterns to watch for (and name)</h3>
+  <p>When you spot one of these in a team's workflow, you've usually found an automation target. Name it out loud, naming the cost is half the case.</p>
+  <div class="grid g3">
+    <div class="card warm"><h4>Reporting theater</h4><p>Effort spent producing reports nobody acts on.</p></div>
+    <div class="card warm"><h4>Data swamp</h4><p>Lots of raw data emitted, no synthesis, the GrabOn signature.</p></div>
+    <div class="card warm"><h4>Tribal knowledge trap</h4><p>Critical know-how living in one person's head, not the Wiki.</p></div>
+    <div class="card warm"><h4>Hero culture</h4><p>A process that only works because someone heroically firefights it.</p></div>
+    <div class="card warm"><h4>Tool graveyard</h4><p>Tools bought/built and abandoned, adoption was never designed in.</p></div>
+    <div class="card warm"><h4>Invisible work</h4><p>Manual stitching nobody counts because "it's just part of the job."</p></div>
+  </div>
+</section>
+
+<!-- 19 PLAYBOOKS -->
+<section class="sec wrap" id="playbooks">
+  <div class="kicker">20 · Deployable Agents</div>
+  <h2>Deployable Agents: Playbooks For Other Teams</h2>
+  <p class="lead">Some of those builds aren't just internal tools, they're things other teams can run. AI Labs doesn't only build for itself, and its highest-visibility wins come from handing another team, SEO, Client Services, Sales, the CEO, a tool that makes their hardest recurring work dramatically easier. These are real, proven playbooks drawn from work already done here. Treat each as a template you can pick up, adapt, and run. Shipping any one of them in your first weeks is a strong start.</p>
+  <div class="call warn"><div class="t">★ How to use this section</div><p>Each playbook names the team it serves, the pain it kills, the build, the steps, and the proof. They're deliberately concrete. Don't reinvent, extend. And when you run one, write what you learned back into the Wiki so the next person runs it faster.</p></div>
+
+  <div class="pb">
+    <div class="pb-head"><div class="pb-tag">Playbook 01 · for the SEO team</div><h3>SERP Loss-Recovery Engine</h3><div class="pb-for">Turns a raw rankings crawl into a prioritized, owner-assigned recovery list.</div></div>
+    <div class="pb-body">
+      <div class="row"><div class="k">Pain</div><div class="v">The SEO team gets giant rankings crawls (8,000+ keywords per market) and no time to turn them into action. Lost positions sit undiagnosed. We already know ~67% of lost #1s went to <strong>direct brands</strong> (Dominos, Agoda, Uber) and ~31% to coupon competitors led by <strong>Desidime</strong>, and most losses are a single drop to #2, i.e. winnable.</div></div>
+      <div class="row"><div class="k">Build</div><div class="v">An agent that ingests the crawl, computes date-over-date movement, classifies each loss (to a brand vs. a competitor vs. AIO), and outputs a ranked recovery list, biggest, most-winnable losses first, with the likely cause and a suggested fix per row.</div></div>
+      <div class="row"><div class="k">Steps</div><div class="v"><ol class="pb-steps"><li>Ingest the multi-date crawl; dedupe keywords across dates; confirm position #1 mapping.</li><li>Compute movement per keyword; flag drops, especially single-position #1→#2 losses on high-value terms.</li><li>Classify the winner: direct brand, coupon competitor, or AI Overview taking the slot.</li><li>Score by value × winnability; output a ranked sheet with cause + suggested action per row.</li><li>Hand SEO a one-screen "fix these ten first" list, not a 8,000-row dump.</li></ol></div></div>
+      <div class="row"><div class="k">Proof</div><div class="v">Single-position recoveries on high-value terms; lost-#1 count trending down week over week.</div></div>
+      <div class="row"><div class="k">Externalize</div><div class="v">Any SEO team buried in rank-tracker exports has this exact problem, a clean "loss-recovery" report is a sellable skill.</div></div>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><div class="pb-tag">Playbook 02 · for Client Services (CS)</div><h3>Merchant Daily-Tracking Conversion Engine</h3><div class="pb-for">Drives the company-wide push to move every merchant to daily tracking, and keeps it self-running.</div></div>
+    <div class="pb-body">
+      <div class="row"><div class="k">Pain</div><div class="v">Moving merchants to daily tracking is a slow, manual, person-by-person chase across the CS POCs (Yamini, Meena, Svati). Progress is uneven, some POCs close fast, others stall with soft language and no urgency, and the lead (Giridhar) ends up chasing it personally instead of it running itself.</div></div>
+      <div class="row"><div class="k">Build</div><div class="v">A self-updating CS scorecard + nudge system: it tracks each POC's brands and status, flags overdue P1/P2 conversions, and surfaces exactly which brands need escalation, so the weekly review runs on data, not on the lead's memory.</div></div>
+      <div class="row"><div class="k">Steps</div><div class="v"><ol class="pb-steps"><li>Ingest the tracking-methods sheet + revenue brands; clean duplicate brand entries (a known data issue).</li><li>Filter to P1/P2 brands not yet on daily; assign each to its POC.</li><li>Auto-generate a per-POC focus list with status (Converted / In-progress / Overdue).</li><li>Flag escalation cases (e.g. high-value brands stuck) for the lead's direct involvement.</li><li>Refresh weekly into a one-page dashboard; the rhythm holds without anyone chasing.</li></ol></div></div>
+      <div class="row"><div class="k">Proof</div><div class="v">% of merchants on daily tracking climbing toward >80%; weekly review self-running; lead stops being the engine.</div></div>
+      <div class="row"><div class="k">Externalize</div><div class="v">A "partner-tracking conversion" dashboard generalizes to any affiliate/partnerships team.</div></div>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><div class="pb-tag">Playbook 03 · for SEO / Link-building</div><h3>Backlink Target & Outreach Engine</h3><div class="pb-for">Finds real, winnable link targets and writes the outreach, no generic spray.</div></div>
+    <div class="pb-body">
+      <div class="row"><div class="k">Pain</div><div class="v">Generic backlink advice (guest posts, forums, Quora) is useless, competitors and forums will never link to us. What works is specific: dead competitor pages, blogs that mention a brand but link to no aggregator, a clear value exchange. Finding those by hand is slow.</div></div>
+      <div class="row"><div class="k">Build</div><div class="v">An agent that, for a target page (e.g. a store's coupons page), finds broken/expired competitor pages (404/410 targets), blogs that discuss the brand but link nowhere, and competitor backlink gaps, then drafts a tailored outreach email per target type, each built around <em>why they'd say yes</em>.</div></div>
+      <div class="row"><div class="k">Steps</div><div class="v"><ol class="pb-steps"><li>Crawl for dead competitor pages on the brand (verify 404/410/timeout), broken-link targets convert 15–25%.</li><li>Find editorial pages (credit-card blogs, travel/NRI sites, niche blogs) that mention the brand but link to no coupon aggregator.</li><li>Pull competitor backlink profiles to find link-gap targets.</li><li>For each target type, draft outreach framed on the value exchange, reciprocal DR link, deal data, or writing the update paragraph for them.</li><li>Output a verified target sheet + ready-to-send templates; never contact OTAs, Quora, Reddit, or guest-post farms.</li></ol></div></div>
+      <div class="row"><div class="k">Proof</div><div class="v">Referring domains up on target pages; outreach reply/placement rate by target type.</div></div>
+      <div class="row"><div class="k">Externalize</div><div class="v">A "verified backlink targets + outreach" engine is a clean SaaS for any SEO/affiliate shop.</div></div>
+    </div>
+  </div>
+
+  <div class="pb">
+    <div class="pb-head"><div class="pb-tag">Playbook 04 · for the CEO & leadership</div><h3>The Synthesis Dashboard</h3><div class="pb-for">Kills the manual data-stitching that traps the Founder's Office, the highest-leverage internal build.</div></div>
+    <div class="pb-body">
+      <div class="row"><div class="k">Pain</div><div class="v">The org emits raw data twice daily (<code>reports@grabon.in</code>, 700+ times) but the revenue number the CEO wants is assembled <strong>by hand</strong>. There's no data→answer layer, so a human becomes the integration layer, the exact trap described in §16.</div></div>
+      <div class="row"><div class="k">Build</div><div class="v">An ingestion + synthesis layer that consumes the raw coupon/merchant dumps and other feeds, and emits the answers leadership actually asks for, a trusted daily revenue view, merchant performance, ranking-to-revenue links, automatically, in one place.</div></div>
+      <div class="row"><div class="k">Steps</div><div class="v"><ol class="pb-steps"><li>Capture the raw feeds at the source (the twice-daily dumps, delivery reports, rankings data).</li><li>Model them into a clean store (a simple schema; this has been prototyped against real GrabOn formats).</li><li>Build the synthesis: the daily revenue number, top movers, and the questions the CEO repeats.</li><li>Surface it as one dashboard leadership trusts, no manual tally, no spreadsheet stitching.</li><li>Automate refresh; document the pipeline so it isn't you running it by hand.</li></ol></div></div>
+      <div class="row"><div class="k">Proof</div><div class="v">The daily revenue number is no longer assembled by hand; hours/week of manual reporting eliminated; a leader relies on it.</div></div>
+      <div class="row"><div class="k">Externalize</div><div class="v">Every data-rich company has this gap. A "raw-feeds → trusted dashboard" synthesis layer is a strong product.</div></div>
+    </div>
+  </div>
+
+  <div class="call ok"><div class="t">▲ The pattern across all four</div><p>Each takes a team's worst recurring manual job, turns it into something an agent does reliably, and hands the team back a clean answer instead of raw data. That's the AI Labs move in miniature, and every one of them, proven internally, becomes a product (§26). When you finish onboarding, picking one of these to run is often the fastest path to a visible win.</p></div>
+</section>
+
+<!-- 20 RESEARCH FIRST -->
+<section class="sec wrap" id="research-first">
+  <div class="kicker">21 · Training Loop</div>
+  <h2>Pre-Training: Research & Docs Before Code</h2>
+  <p class="lead">Before you pick up that first build, read this section twice. It corrects the single most common, and most expensive, wrong assumption people bring to AI Labs: that the job is to sit down, vibe-code, and a working product falls out the other end. It doesn't. That's not how anything good here gets built.</p>
+  <div class="call bad"><div class="t">⚠ The mindset to unlearn</div><p>"I'll just start building and figure it out as I go." This feels productive and fast. It is neither. It produces agents that solve the wrong problem, miss the data they needed, skip the human checkpoint, and quietly fail in production, after you've spent a week on them. The code was never the hard part.</p></div>
+  <h3>The actual sequence</h3>
+  <p>The valuable, difficult work happens <strong>before</strong> any code. When you do it properly, the build itself becomes almost mechanical, fast and easy, because every hard decision is already made. Get this order right and you'll out-ship people who started coding on day one.</p>
+  <div class="flow">
+    <div class="step"><div class="b"></div><div><h4>Understand the problem deeply</h4><p>Not the surface ask, the real problem underneath it. Who has it, how often, what it actually costs, what they do today instead. Most "build me X" requests are a guess at a solution; your job is to find the problem behind the guess.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Research relentlessly</h4><p>How is this solved elsewhere? What data exists and where does it live? What's the system around it? What have we already built that's close? Research is not procrastination, it's the work. The hour you spend here saves the week you'd waste later.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Ask many questions</h4><p>Ask the data owner, ask the person with the pain, ask Giridhar, ask the model. The number of good questions you ask before building is the single best predictor of whether the build will work. Asking is a strength here, not a weakness, <em>after</em> you've done your own thinking and you're bringing sharp questions, not vague ones.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Write the documentation</h4><p>Document the problem, the inputs, the logic, the edge cases, the checkpoints, the success metric, in full, before you build. This is the agent spec (§23) made serious. A complete, well-researched spec is 80% of the work; the code is the remaining 20% and it's the easy 20%.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Then build: fast</h4><p>Now you build, and now "speed over polish on V1" applies cleanly, because you're executing a clear plan instead of discovering the plan through trial and error. This is where vibe-coding-style speed is an asset, <em>downstream</em> of the thinking, never as a replacement for it.</p></div></div>
+  </div>
+  <div class="call ok"><div class="t">▲ How "ship fast" and "document first" fit together</div><p>They're not in tension, they're sequential. Documentation and research come first and they're slow and rigorous. Building comes second and it's fast and loose. People who confuse the order, building fast <em>instead</em> of thinking first, produce demos that don't ship. People who get the order right produce products that work on the first real try.</p></div>
+  <div class="call warn"><div class="t">★ The test</div><p>Before you write code, you should be able to hand your documentation to another engineer and have them build roughly the same thing without talking to you. If you can't, you haven't researched and documented enough, keep going. The keyboard can wait.</p></div>
+</section>
+
+<!-- 26 USING EFFECTIVELY -->
+<section class="sec wrap" id="effective">
+  <div class="kicker">22 · Training Loop</div>
+  <h2>Context Engineering: Using Your Tools Well</h2>
+  <p class="lead">Owning Claude Code or any frontier tool isn't a skill, using it <em>well</em> is, and it's one of the highest-leverage things you'll learn here. Two engineers with identical tools produce wildly different output. The difference is almost entirely in how they prompt, context, and direct the model.</p>
+  <h3>What effective use actually looks like</h3>
+  <div class="grid g2">
+    <div class="card"><h4>Context is everything</h4><p>The model is only as good as what you give it. Feed it the research, the documentation, the real data, the constraints, the examples. A vague prompt gets a vague result; a richly-contexted prompt gets something you can ship. This is exactly why §24 comes first, the documentation you write <em>is</em> the context you'll feed the tool.</p></div>
+    <div class="card"><h4>Specify the output</h4><p>Tell it the format, the structure, the length, the tone, the edge cases. "Write the agent" is weak. "Write a Python agent that reads X, applies these rules, flags (never removes), outputs a ranked list as JSON, and handles these three edge cases" is strong.</p></div>
+    <div class="card"><h4>Iterate deliberately</h4><p>Don't accept the first output and don't start over from scratch when it's 80% right. Steer: "good, now handle the empty case," "tighten this," "you missed the checkpoint." Direction beats regeneration.</p></div>
+    <div class="card"><h4>Use examples & negatives</h4><p>Show it a good example and a bad one. Tell it what <em>not</em> to do. Models latch onto patterns, give them the right pattern to latch onto.</p></div>
+    <div class="card"><h4>Break big asks down</h4><p>Don't ask for the whole system in one shot. Decompose: research, then spec, then one module, then the next. Each step is more controllable and easier to verify than a monolith.</p></div>
+    <div class="card"><h4>Verify, never trust blindly</h4><p>The tool is confident even when it's wrong. Check outputs against reality, run the code, test the edge cases, confirm the data. Effective use includes healthy skepticism of what the model hands back.</p></div>
+  </div>
+  <div class="call ok"><div class="t">▲ The compounding skill</div><p>Prompting and context-engineering get dramatically better with deliberate practice. Keep a running note of what worked. Share your best patterns with the team, and check the Wiki for theirs. The team that prompts well out-builds the team that just has the same tools.</p></div>
+  <div class="call warn"><div class="t">★ Why this ties back to research-first</div><p>Notice the through-line: effective tool use depends on good context, and good context comes from the research and documentation you did first (§24). You cannot prompt your way out of not understanding the problem. The thinking upstream is what makes the tool downstream powerful.</p></div>
+</section>
+
+<!-- 22 AGENT TEMPLATE -->
+<section class="sec wrap" id="agent-template">
+  <div class="kicker">23 · Training Loop</div>
+  <h2>The Agent Template: A Reusable Pattern</h2>
+  <p>Before you build any agent, fill this out. If you can't answer every line, you're not ready to code, you're ready to think more. This is the reusable spec the whole team uses.</p>
+  <table class="tbl">
+    <tr><th>Field</th><th>Define it</th></tr>
+    <tr><td><strong>Problem</strong></td><td>The specific pain, in one sentence. Who feels it, how often.</td></tr>
+    <tr><td><strong>Value type & link</strong></td><td>Which of the four value types (§15), which stream (§8), which challenge (§16).</td></tr>
+    <tr><td><strong>Inputs</strong></td><td>What data the agent reads, where it lives, who owns it (§12).</td></tr>
+    <tr><td><strong>Logic</strong></td><td>What the agent does with the inputs, the actual decision/transformation.</td></tr>
+    <tr><td><strong>Human checkpoint</strong></td><td>What a human must approve before any irreversible action. Agents flag; humans decide on destructive actions.</td></tr>
+    <tr><td><strong>Output</strong></td><td>What ships, in what form, to whom.</td></tr>
+    <tr><td><strong>Success metric</strong></td><td>The number that proves it worked: "from X to Y by when."</td></tr>
+    <tr><td><strong>External potential</strong></td><td>Could this be sold as SaaS? To whom? Rough pricing tier.</td></tr>
+  </table>
+  <p>Here's the template filled out for real, the kind of spec you'd commit as <code>AGENT.md</code> before writing a line of code:</p>
+  <div class="sysfile" style="max-width:none;margin:18px 0">
+    <div class="sysbar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="fname">AGENT.md</span><span class="badge">SPEC · READY</span></div>
+    <div class="sysbody">
+<div class="fm">---</div>
+<div><span class="key">name</span><span class="val">: stale-coupon-agent</span></div>
+<div><span class="key">value</span><span class="val">: revenue + risk &nbsp;·&nbsp; recovers CPS (a dead code = a lost sale), cuts CS load</span></div>
+<div><span class="key">links</span><span class="val">: stream → CPS (§8) · challenge → coupon quality (§16)</span></div>
+<div class="fm">---</div>
+<hr class="hr">
+<div class="cm"># PROBLEM</div>
+<div class="val">Expired coupons on store pages hurt conversion and trigger CS complaints.</div>
+<hr class="hr">
+<div class="cm"># INPUTS</div>
+<ul class="sys">
+<li>Coupon feed (codes, validity, merchant)</li>
+<li>Page-health signals, owner: CS</li>
+</ul>
+<hr class="hr">
+<div class="cm"># LOGIC</div>
+<div class="val">Test codes → score page health → flag anything failing.</div>
+<hr class="hr">
+<div class="cm"># HUMAN_CHECKPOINT &nbsp;<span style="color:var(--orange)">// non-negotiable</span></div>
+<div class="val">Agent flags; CS / core decides remove vs update vs contact brand.</div>
+<div class="cm">// the agent NEVER auto-removes. it proposes; a human disposes.</div>
+<hr class="hr">
+<div class="cm"># OUTPUT</div>
+<div class="val">Ranked daily flag list · alert only if a page drops below threshold.</div>
+<hr class="hr">
+<div class="cm"># SUCCESS_METRIC</div>
+<div class="val"><span class="ok">●</span> stale-coupon rate &lt; 5% · store-page bounce down · CS complaints down</div>
+<hr class="hr">
+<div class="cm"># EXTERNAL_POTENTIAL</div>
+<div class="val">"CouponWatch", a SaaS for other coupon sites / affiliates. Track B (§26).</div>
+    </div>
+  </div>
+  <div class="call ok"><div class="t">▲ Read the shape</div><p>Every field above maps to the agent pattern (§23): inputs → logic → <strong>human checkpoint</strong> → output → measure. If you can fill this file in completely, you're ready to build. If any line is blank, that blank is exactly what to go research first (§24).</p></div>
+</section>
+
+<!-- 22 GUARDRAILS -->
+<section class="sec wrap" id="guardrails">
+  <div class="kicker">24 · Training Loop</div>
+  <h2>Guardrails: Human-In-The-Loop</h2>
+  <p>Speed is the culture, but it never overrides safety on irreversible actions. These are non-negotiable.</p>
+  <div class="grid g2">
+    <div class="card"><h4>Agents flag; humans approve</h4><p>Any destructive or irreversible action, removing a coupon, deleting data, sending an external email, changing a setting, requires a human decision. The agent surfaces and recommends; it does not execute alone.</p></div>
+    <div class="card"><h4>No silent failure</h4><p>Agents must report when they can't do something or hit low confidence. A wrong answer delivered confidently is worse than an honest "I'm not sure."</p></div>
+    <div class="card"><h4>Brand & compliance respect</h4><p>Anything user-facing follows Inspirelabs brand guidelines and the platform's content/compliance rules. When unsure, check with your manager before shipping.</p></div>
+    <div class="card"><h4>Data stays where it belongs</h4><p>Be deliberate with sensitive data, credentials, internal numbers, merchant terms. Don't pipe them into places they shouldn't go. Ask if unsure.</p></div>
+  </div>
+  <div class="call bad"><div class="t">⚠ The line</div><p>"The agent did it automatically" is not an excuse for an irreversible mistake. If you didn't build a checkpoint where one belonged, that's on the build, not the model.</p></div>
+</section>
+
+<!-- 23 WIKI -->
+<section class="sec wrap" id="wiki">
+  <div class="kicker">25 · Training Loop</div>
+  <h2>Persistent Memory: The LLM Wiki</h2>
+  <p>The Wiki is strategic infrastructure, not documentation hygiene. It's the persistent memory that lets agents, and the next hire, act without re-learning everything.</p>
+  <h3>The pattern (Karpathy-style)</h3>
+  <p>Instead of one-off retrieval, an LLM incrementally builds and maintains a <strong>persistent, interlinked markdown knowledge base</strong> compiled from raw sources. It gets richer over time; each note carries structured frontmatter so agents can reason over it.</p>
+  <h3>The stack</h3>
+  <ul>
+    <li><strong>Claude Code</strong> with the <code>praneybehl</code> llm-wiki plugin as the engine.</li>
+    <li><strong>tonbistudio</strong> CLAUDE.md schema as the base; coupon-specific frontmatter (<code>valid_until</code>, <code>last_verified</code>, <code>confidence</code>).</li>
+    <li><strong>Obsidian</strong> as the human editor; <strong>private GitHub</strong> for team sync.</li>
+    <li>Folder structure scoped to the three markets (IN / US / UAE).</li>
+  </ul>
+  <div class="call warn"><div class="t">★ Your obligation to the Wiki</div><p>Every non-trivial thing you learn or build gets written into the Wiki. The test: could a teammate rebuild your work from the Wiki without asking you? If not, the entry isn't done. This is how a small team moves fast, knowledge compounds instead of living in one head.</p></div>
+</section>
+
+<!-- 30 TWO TRACKS -->
+<section class="sec wrap" id="monetize">
+  <div class="kicker">26 · Training Loop</div>
+  <h2>Two Tracks: Internal & External</h2>
+  <p class="lead">Everything so far, the value test, the architecture, the agent template, the Wiki, serves work that lands in one of two places. AI Labs builds on two tracks at once, and they carry equal weight: one serves GrabOn, one serves the market. A build can start on either, and the best ones travel between them. Hold both in your head; don't collapse the Labs into "the team that automates GrabOn."</p>
+  <div class="grid g2">
+    <div class="card"><h4>Track A: Internal products</h4><p>Tools, agents, and dashboards that make Inspirelabs' teams and operations faster and smarter. The customer is any team across the ecosystem, most often a GrabOn team, since that's where the data is deepest; the proving ground is real users, real data, real stakes. This is where most of you will start, because the feedback loop is instant and the data is right here.</p></div>
+    <div class="card"><h4>Track B: External products</h4><p>AI products built to stand on their own in the market, a SaaS, a skill, a plugin, an API, an agent someone outside Inspirelabs pays for. These can grow out of a proven internal tool, or be built directly for the world when the opportunity is clearly there. This is how the Labs becomes a venture engine.</p></div>
+  </div>
+  <h3>How builds travel between tracks</h3>
+  <p>The most powerful pattern is a build that earns its place internally, then crosses to the market, de-risked, because it's already proven on real workflows. But that's a <em>route</em>, not a rule. Some builds are external from day one. Some stay purely internal forever, and that's a complete success. What matters is that <strong>every build creates real value somewhere</strong>, the value test (§15) is the same on both tracks.</p>
+  <div class="flow">
+    <div class="step"><div class="b"></div><div><h4>Internal → External (the common route)</h4><p>Build for a GrabOn team, prove it moves a real number, then ask "who else has this exact problem?" Ship it outward as the lightest form that captures the value. De-risked by reality, we sell what we know works.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>External from day one</h4><p>When the market opportunity is obvious and GrabOn isn't the natural first user, build straight for the world. You still validate against real users and real data, they're just outside the building.</p></div></div>
+    <div class="step"><div class="b"></div><div><h4>Internal forever</h4><p>Some tools are too GrabOn-specific to sell, and that's fine. If it saves the company real time or recovers real revenue, it succeeded. Not everything needs a second life.</p></div></div>
+  </div>
+  <div class="call ok"><div class="t">▲ Example of a build that travels</div><p>A stale-coupon agent starts on Track A, internal cleanup for our store pages (recovers CPS, cuts CS load). Proven on GrabOn, the same engine could cross to Track B as a coupon-health product any coupon site or affiliate buys. One build, value on both tracks. Because any internal tool might cross like this, <strong>architect for it from the start</strong>: config over hardcoding, clean inputs, reusable logic. It costs little extra and keeps the external door open.</p></div>
+
+  <h3>The productization pipeline: what internal builds become</h3>
+  <p>Track B isn't a someday aspiration; it has a clear logic. The table below is illustrative, the kinds of external products our internal builds can become, who'd buy them, and what form they'd take. Names and specifics will be decided when something actually ships; the point is the pattern: every external product starts as something we needed ourselves, which is what makes "we build external products too" credible instead of a slogan.</p>
+  <table class="tbl">
+    <tr><th>Internal build (Track A)</th><th>Could become (Track B)</th><th>Who'd pay</th><th>Form</th></tr>
+    <tr><td><strong>Stale-coupon agent</strong><br><span style="color:var(--grey);font-size:12px">flags expired/broken codes</span></td><td>Coupon-health monitoring</td><td>Any coupon site, affiliate network, deals publisher</td><td>SaaS</td></tr>
+    <tr><td><strong>SERP loss-recovery engine</strong><br><span style="color:var(--grey);font-size:12px">ranks winnable ranking losses</span></td><td>Rank-recovery from tracker exports → a prioritized fix list</td><td>SEO teams, agencies drowning in crawl data</td><td>SaaS / skill</td></tr>
+    <tr><td><strong>Synthesis dashboard</strong><br><span style="color:var(--grey);font-size:12px">raw feeds → trusted answers</span></td><td>Ingestion + dashboard for data-rich SMBs</td><td>Any company emitting data with no synthesis (most of them)</td><td>Services + SaaS</td></tr>
+    <tr><td><strong>GrabOn MCP server</strong><br><span style="color:var(--grey);font-size:12px">offer data as agent infrastructure</span></td><td>Offer-feed-as-a-service: the MCP layer other catalogues run</td><td>Other coupon/deal catalogues, retailers wanting AI visibility</td><td>API / infra</td></tr>
+    <tr><td><strong>Backlink target engine</strong><br><span style="color:var(--grey);font-size:12px">verified targets + outreach</span></td><td>Verified backlink targets + drafted outreach</td><td>SEO/affiliate shops, link-building agencies</td><td>SaaS / skill</td></tr>
+    <tr><td><strong>Leads / GTM agents</strong><br><span style="color:var(--grey);font-size:12px">prospecting + go-to-market</span></td><td>Reusable sales-intelligence tooling</td><td>B2B sales teams, other Inspirelabs products</td><td>Skill / agent</td></tr>
+  </table>
+  <div class="call cta"><div class="t">◆ Why this matters to you</div><p>When you build on Track A, glance at this table and ask "which product could this become?" That question costs nothing and changes how you architect. And it's not abstract: <strong>several of the five scoreboard products (§2) are likely to come straight off this pipeline</strong>. The Services revenue stream is wide open today (§16); this is how AI Labs fills it, and how the team becomes a venture engine rather than a cost center. A build of yours could be a row here.</p></div>
+</section>
+
+<!-- 27 COMMS -->
+<section class="sec wrap" id="comms">
+  <div class="kicker">27 · Training Loop</div>
+  <h2>The Protocol: How We Communicate</h2>
+  <p>How we build matters; so does how we talk about it, to each other and to the rest of the org. The rule under all four: clarity and proactivity over volume. Say the useful thing early, in a form the reader can act on.</p>
+  <div class="grid g2">
+    <div class="card"><h4>Status before silence</h4><p>Stuck? Say so early, with what you've already tried. Silence doesn't read as "working hard", it reads as "stuck and hiding." A blocker surfaced early is a blocker someone can clear that day; a blocker sat on for three days is lost time you can't recover.</p></div>
+    <div class="card"><h4>Proposals, not open questions</h4><p>Bring "here's what I'd do, and why", not "what do you want me to do?" Even a wrong proposal moves the conversation forward; a blank question hands your thinking to someone with less context than you. The company is actively killing the route-everything-upward habit. Don't rebuild it here.</p></div>
+    <div class="card"><h4>Respect the room, and the time</h4><p>Upward communication is deliberate and tight. Lead with the decision or the ask, then the why. The CEO's attention is the scarcest resource in the building: Win The Year exists partly because too much routed through it. Don't add to the queue; clear it.</p></div>
+    <div class="card"><h4>Write so an agent could read it</h4><p>Structured, decision-first, unambiguous. It's good for the human reading it now, and it's literally how the Company Brain will consume your work later. Every clear note you write is training data for the system you're building.</p></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// reading progress, frames it as context loading
+const bar=document.getElementById('progress'), pct=document.getElementById('readpct');
+function updateProgress(){
+  const sc=document.documentElement.scrollTop||document.body.scrollTop;
+  const h=(document.documentElement.scrollHeight-document.documentElement.clientHeight)||1;
+  const p=Math.min(100,Math.max(0,Math.round((sc/h)*100)));
+  bar.style.width=p+'%';
+  if(pct) pct.textContent=p+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+window.addEventListener('resize',updateProgress);
+updateProgress();
+</script>
+</body>
+</html>
