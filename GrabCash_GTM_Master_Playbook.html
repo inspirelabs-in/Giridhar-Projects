@@ -15,8 +15,8 @@
     --green-subtle: rgba(255, 122, 69, 0.04);
     --navy: #0E0F0A;
     --navy-light: rgba(0, 18, 59, 0.5);
-    --blue-1: #3c7df9;
-    --blue-2: #008ee6;
+    --blue-1: #FF7A45;
+    --blue-2: #cc5e2f;
     --sky-blue: #FAF7F1;
     --sky-blue-2: #FAF7F1;
     --bg: #ffffff;
@@ -29,7 +29,7 @@
     --text-dimmer: #6F7583;
     --red: #e53e3e;
     --orange: #dd6b20;
-    --blue: #3c7df9;
+    --blue: #FF7A45;
     --purple: #805ad5;
     --cyan: #0694a2;
     --yellow: #d69e2e;
@@ -105,7 +105,7 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
-  .nav-links a:hover { color: var(--blue-1); background: rgba(60,125,249,0.08); }
+  .nav-links a:hover { color: var(--blue-1); background: rgba(255,122,69,0.08); }
 
   /* ── HERO ── */
   .hero {
@@ -241,8 +241,8 @@
     box-shadow: 0 1px 3px rgba(0,18,59,0.04);
   }
   .card:hover {
-    border-color: rgba(60,125,249,0.25);
-    box-shadow: 0 4px 12px rgba(60,125,249,0.08);
+    border-color: rgba(255,122,69,0.25);
+    box-shadow: 0 4px 12px rgba(255,122,69,0.08);
     transform: translateY(-2px);
   }
   .card-icon {
@@ -346,7 +346,7 @@
   .tag-green { background: rgba(13,207,26,0.1); color: #FF7A45; }
   .tag-red { background: rgba(229,62,62,0.1); color: var(--red); }
   .tag-orange { background: rgba(221,107,32,0.1); color: var(--orange); }
-  .tag-blue { background: rgba(60,125,249,0.1); color: var(--blue-1); }
+  .tag-blue { background: rgba(255,122,69,0.1); color: var(--blue-1); }
   .tag-purple { background: rgba(128,90,213,0.1); color: var(--purple); }
   .tag-cyan { background: rgba(6,148,162,0.1); color: var(--cyan); }
 
@@ -414,7 +414,7 @@
   /* ── CALLOUT ── */
   .callout {
     border-left: 3px solid var(--blue-1);
-    background: rgba(60,125,249,0.06);
+    background: rgba(255,122,69,0.06);
     padding: 1.25rem 1.5rem;
     border-radius: 0 12px 12px 0;
     margin: 1.5rem 0;
@@ -503,7 +503,10 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav { padding: 0 1rem; }
+    .nav-brand-text { font-size: 1rem; }
+    .nav-links { max-width: 62%; gap: 0.1rem; -webkit-overflow-scrolling: touch; }
+    .nav-links a { padding: 0.35rem 0.5rem; font-size: 0.66rem; }
     .hero { padding: 6rem 1.5rem 3rem; }
     .hero-stats { gap: 1.5rem; }
     .section { padding: 3rem 1.5rem; }
@@ -600,7 +603,7 @@
   /* ── PRINT ── */
   @media print {
     .nav { display: none; }
-    .hero { min-height: auto; padding: 2rem; background: var(--blue-1); }
+    .hero { min-height: auto; padding: 2rem; background: #0E0F0A; }
     .section { padding: 1.5rem 0; }
     .card, .kpi, .channel-block, .persona { border: 1px solid #ddd; }
   }
@@ -653,7 +656,7 @@
     </div>
   </div>
 </header>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
