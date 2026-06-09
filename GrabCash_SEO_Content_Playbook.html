@@ -10,33 +10,33 @@
 :root {
   --bg: #ffffff;
   --bg-raised: #FAF7F1;
-  --bg-card: #161616;
+  --bg-card: #ffffff;
   --bg-card-alt: #FAF7F1;
-  --bg-card-hover: #1e1e1e;
+  --bg-card-hover: #ffffff;
   --green: #FF7A45;
   --green-dim: #0aa614;
-  --green-glow: rgba(13,207,26,0.15);
+  --green-glow: rgba(255,122,69,0.10);
   --green-subtle: rgba(255,122,69,0.06);
-  --green-border: rgba(13,207,26,0.25);
-  --text: #d4d4d4;
+  --green-border: rgba(255,122,69,0.25);
+  --text: #0E0F0A;
   --text-dim: #777777;
-  --text-bright: #ffffff;
+  --text-bright: #0E0F0A;
   --text-muted: #6F7583;
   --orange: #ff8c00;
-  --orange-glow: rgba(255,140,0,0.12);
+  --orange-glow: rgba(255,122,69,0.10);
   --red: #ff4444;
-  --red-glow: rgba(255,68,68,0.1);
-  --blue: #3b82f6;
-  --blue-glow: rgba(59,130,246,0.1);
-  --purple: #a855f7;
-  --purple-glow: rgba(168,85,247,0.1);
+  --red-glow: rgba(255,122,69,0.10);
+  --blue: #FF7A45;
+  --blue-glow: rgba(255,122,69,0.10);
+  --purple: #FAF7F1;
+  --purple-glow: rgba(255,122,69,0.10);
   --cyan: #06b6d4;
-  --cyan-glow: rgba(6,182,212,0.1);
+  --cyan-glow: rgba(255,122,69,0.10);
   --yellow: #eab308;
-  --yellow-glow: rgba(234,179,8,0.1);
+  --yellow-glow: rgba(255,122,69,0.10);
   --border: #FAF7F1;
   --border-light: #FAF7F1;
-  --glass-bg: rgba(22,22,22,0.7);
+  --glass-bg: #FAF7F1;
   --glass-border: #E5E7EB;
   --radius: 12px;
   --radius-sm: 8px;
@@ -116,7 +116,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
   white-space: nowrap;
   transition: all 0.2s;
 }
-.nav-links a:hover { color: var(--blue-1, #3c7df9); background: rgba(60,125,249,0.06); }
+.nav-links a:hover { color: var(--blue-1, #FF7A45); background: rgba(255,122,69,0.06); }
 .nav-links a.active { color: var(--green); background: var(--green-subtle); }
 
 /* ── Hero Section ── */
@@ -125,7 +125,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
   padding: 140px 40px 80px;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 0%, rgba(13,207,26,0.06) 0%, transparent 60%),
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,122,69,0.06) 0%, transparent 60%),
               linear-gradient(180deg, #ffffff 0%, #0f0f0f 100%);
 }
 .hero::before {
@@ -136,7 +136,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
   transform: translateX(-50%);
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(13,207,26,0.04) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,122,69,0.04) 0%, transparent 70%);
   animation: heroPulse 6s ease-in-out infinite;
 }
 @keyframes heroPulse {
@@ -264,7 +264,7 @@ code, .mono { font-family: 'Hanken Grotesk', sans-serif; }
 }
 .card:hover {
   border-color: var(--green-border);
-  box-shadow: 0 0 30px rgba(13,207,26,0.05);
+  box-shadow: 0 0 30px rgba(255,122,69,0.05);
   transform: translateY(-2px);
 }
 .card-green {
@@ -574,13 +574,13 @@ tr:last-child td { border-bottom: none; }
   color: #000;
   font-size: 1.3rem;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(13,207,26,0.3);
+  box-shadow: 0 4px 20px rgba(255,122,69,0.3);
   transition: all 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.toc-trigger:hover { transform: scale(1.1); box-shadow: 0 4px 30px rgba(13,207,26,0.5); }
+.toc-trigger:hover { transform: scale(1.1); box-shadow: 0 4px 30px rgba(255,122,69,0.5); }
 
 /* ── Template Boxes ── */
 .template-box {
@@ -712,7 +712,7 @@ tr:last-child td { border-bottom: none; }
     <div class="hero-stat"><div class="num">13</div><div class="label">Strategy Modules</div></div>
   </div>
 </header>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
@@ -730,7 +730,7 @@ tr:last-child td { border-bottom: none; }
 <!-- TABLE OF CONTENTS -->
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <section class="section" style="padding-bottom:20px;">
-  <div class="card" style="background: linear-gradient(135deg, rgba(13,207,26,0.04), transparent); border: 1px solid var(--green-border);">
+  <div class="card" style="background: linear-gradient(135deg, rgba(255,122,69,0.04), transparent); border: 1px solid var(--green-border);">
     <h3 style="margin-top:0;"><span class="ico">&#9776;</span> Playbook Contents</h3>
     <div class="grid-3" style="margin-top:16px;">
       <div><a href="#opportunity" style="color:var(--green);text-decoration:none;font-weight:600;">01. SEO Opportunity Assessment</a><br><span style="font-size:0.8rem;color:var(--text-dim);">Market sizing, audit, competitive landscape</span></div>
@@ -833,7 +833,7 @@ tr:last-child td { border-bottom: none; }
     </div>
   </div>
 
-  <div class="callout" style="border-left-color:var(--green);background:rgba(13,207,26,0.04);margin-top:1.5rem;">
+  <div class="callout" style="border-left-color:var(--green);background:rgba(255,122,69,0.04);margin-top:1.5rem;">
     <strong>Top 10 GSC Pages by Clicks (Mar-May 2026 — Real Data):</strong>
     <table style="width:100%;margin-top:0.75rem;font-size:0.82rem;">
       <tr style="border-bottom:1px solid var(--card-border);"><th style="text-align:left;padding:0.4rem;background:transparent;color:var(--text-dim);">Page</th><th style="background:transparent;color:var(--text-dim);">Clicks</th><th style="background:transparent;color:var(--text-dim);">Impressions</th><th style="background:transparent;color:var(--text-dim);">CTR</th><th style="background:transparent;color:var(--text-dim);">Position</th></tr>
@@ -922,7 +922,7 @@ tr:last-child td { border-bottom: none; }
     </table>
   </div>
 
-  <div class="callout" style="border-left-color:var(--green);background:rgba(13,207,26,0.04);">
+  <div class="callout" style="border-left-color:var(--green);background:rgba(255,122,69,0.04);">
     <strong>12-month SEO target: 15,000 monthly organic clicks (6.6x current).</strong> This is achievable because: (1) CTR optimization alone doubles traffic with zero new content, (2) the impression growth trend (6K → 94K in 12 months) shows Google is already expanding GrabCash's visibility, (3) 30-50 new targeted pages will capture keyword clusters currently showing impressions but no clicks. The projection assumes no Google algorithm penalty — see risk section for contingency.
   </div>
 </section>

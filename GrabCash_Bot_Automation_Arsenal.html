@@ -12,7 +12,7 @@ html { scroll-behavior: smooth; font-size: 15px; }
 body {
   font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #ffffff;
-  color: #e0e0e0;
+  color: #0E0F0A;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -82,7 +82,7 @@ body {
 }
 .nav-link:hover {
   color: #FF7A45;
-  background: rgba(13,207,26,0.04);
+  background: rgba(255,122,69,0.04);
   border-left-color: #FF7A45;
 }
 .nav-link.active {
@@ -105,8 +105,8 @@ body {
   top: 16px; left: 16px;
   z-index: 1100;
   width: 40px; height: 40px;
-  background: rgba(13,207,26,0.15);
-  border: 1px solid rgba(13,207,26,0.3);
+  background: rgba(255,122,69,0.15);
+  border: 1px solid rgba(255,122,69,0.3);
   border-radius: 8px;
   color: #FF7A45;
   font-size: 20px;
@@ -213,7 +213,7 @@ body {
   border-left: 3px solid #ef4444;
 }
 .card-info {
-  border-left: 3px solid #3b82f6;
+  border-left: 3px solid #FF7A45;
 }
 .card h3 {
   font-size: 18px;
@@ -272,7 +272,7 @@ table {
 }
 thead { position: sticky; top: 0; z-index: 5; }
 th {
-  background: rgba(13,207,26,0.12);
+  background: rgba(255,122,69,0.12);
   color: #FF7A45;
   font-weight: 600;
   font-size: 12px;
@@ -290,8 +290,8 @@ td {
   vertical-align: top;
 }
 tr:nth-child(even) { background: rgba(255,255,255,0.015); }
-tr:hover { background: rgba(13,207,26,0.04); }
-td:first-child { font-weight: 500; color: #e0e0e0; }
+tr:hover { background: rgba(255,122,69,0.04); }
+td:first-child { font-weight: 500; color: #0E0F0A; }
 .cell-yes { color: #FF7A45; font-weight: 600; }
 .cell-no { color: #ef4444; }
 .cell-partial { color: #f59e0b; }
@@ -376,10 +376,10 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   border-radius: 12px;
   margin: 2px;
 }
-.tag-green { background: rgba(13,207,26,0.15); color: #FF7A45; }
+.tag-green { background: rgba(255,122,69,0.15); color: #FF7A45; }
 .tag-red { background: rgba(239,68,68,0.15); color: #ef4444; }
 .tag-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
-.tag-blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
+.tag-blue { background: rgba(59,130,246,0.15); color: #FF7A45; }
 .tag-purple { background: rgba(168,85,247,0.15); color: #a855f7; }
 .tag-white { background: rgba(255,255,255,0.08); color: #ccc; }
 
@@ -395,7 +395,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 }
 .badge-p0 { background: #ef4444; color: #fff; }
 .badge-p1 { background: #f59e0b; color: #000; }
-.badge-p2 { background: #3b82f6; color: #fff; }
+.badge-p2 { background: #FF7A45; color: #fff; }
 .badge-p3 { background: #555; color: #ccc; }
 
 /* ========== COLLAPSIBLE ========== */
@@ -420,7 +420,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   font-family: 'Hanken Grotesk', sans-serif;
 }
 .collapsible-toggle:hover {
-  background: rgba(13,207,26,0.05);
+  background: rgba(255,122,69,0.05);
   border-color: rgba(255,122,69,0.15);
 }
 .collapsible-toggle::after {
@@ -496,8 +496,8 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   bottom: 32px;
   right: 32px;
   width: 44px; height: 44px;
-  background: rgba(13,207,26,0.15);
-  border: 1px solid rgba(13,207,26,0.3);
+  background: rgba(255,122,69,0.15);
+  border: 1px solid rgba(255,122,69,0.3);
   border-radius: 50%;
   color: #FF7A45;
   font-size: 20px;
@@ -510,13 +510,13 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
   text-decoration: none;
 }
 .back-to-top:hover {
-  background: rgba(13,207,26,0.3);
+  background: rgba(255,122,69,0.3);
   transform: translateY(-2px);
 }
 .back-to-top.visible { display: flex; }
 
 /* ========== COMPARISON HIGHLIGHT ROW ========== */
-.row-highlight { background: rgba(13,207,26,0.06) !important; }
+.row-highlight { background: rgba(255,122,69,0.06) !important; }
 
 /* ========== SPEC BOX ========== */
 .spec-box {
@@ -612,7 +612,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
 </style>
 </head>
 <body>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.</td>
               <td style="font-family:'Hanken Grotesk';">2 devs x 4 wks</td>
               <td><span class="tag tag-yellow">Medium</span></td>
@@ -720,7 +720,7 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
               <td>Weeks 1-20</td>
               <td style="font-family:'Hanken Grotesk';">2,00,000</td>
             </tr>
-            <tr style="background:rgba(13,207,26,0.06);">
+            <tr style="background:rgba(255,122,69,0.06);">
               <td><strong>TOTAL</strong></td>
               <td style="font-family:'Hanken Grotesk';color:#FF7A45;"><strong>9</strong></td>
               <td></td>
@@ -2419,13 +2419,13 @@ td:first-child { font-weight: 500; color: #e0e0e0; }
             <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">POST</td><td style="font-family:'Hanken Grotesk';">/convert</td><td>Convert a single URL to affiliate link</td><td>Per plan</td></tr>
             <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">POST</td><td style="font-family:'Hanken Grotesk';">/convert/batch</td><td>Convert text with multiple URLs</td><td>Per plan</td></tr>
             <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">POST</td><td style="font-family:'Hanken Grotesk';">/convert/batch-urls</td><td>Convert array of URLs</td><td>Per plan</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/merchants</td><td>List all supported merchants</td><td>10/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/merchants/{id}</td><td>Get merchant details and commission rates</td><td>30/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/stats</td><td>Get click/conversion stats for your links</td><td>10/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/stats/links/{hash}</td><td>Get stats for a specific short link</td><td>30/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/deals</td><td>Get trending deals (paginated)</td><td>10/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/deals/categories</td><td>Get deals by category</td><td>10/min</td></tr>
-            <tr><td style="font-family:'Hanken Grotesk';color:#3b82f6;">GET</td><td style="font-family:'Hanken Grotesk';">/price-history/{product_id}</td><td>Get 90-day price history</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/merchants</td><td>List all supported merchants</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/merchants/{id}</td><td>Get merchant details and commission rates</td><td>30/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/stats</td><td>Get click/conversion stats for your links</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/stats/links/{hash}</td><td>Get stats for a specific short link</td><td>30/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/deals</td><td>Get trending deals (paginated)</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/deals/categories</td><td>Get deals by category</td><td>10/min</td></tr>
+            <tr><td style="font-family:'Hanken Grotesk';color:#FF7A45;">GET</td><td style="font-family:'Hanken Grotesk';">/price-history/{product_id}</td><td>Get 90-day price history</td><td>10/min</td></tr>
           </tbody>
         </table>
       </div>
@@ -2662,7 +2662,7 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
             <tr><td>Monitoring</td><td>Prometheus + Grafana + PagerDuty</td><td>Self-hosted Prometheus, Grafana Cloud Free, PagerDuty Pro</td><td style="font-family:'Hanken Grotesk';">$50</td></tr>
             <tr><td>Logging</td><td>AWS CloudWatch + Datadog</td><td>Structured logs, 30-day retention</td><td style="font-family:'Hanken Grotesk';">$100</td></tr>
             <tr><td>CI/CD</td><td>GitHub Actions</td><td>Auto-deploy on merge to main</td><td style="font-family:'Hanken Grotesk';">$20</td></tr>
-            <tr style="background:rgba(13,207,26,0.06);">
+            <tr style="background:rgba(255,122,69,0.06);">
               <td><strong>TOTAL</strong></td>
               <td></td>
               <td></td>
@@ -2840,7 +2840,7 @@ client.webhooks.on(<span class="string">'conversion.confirmed'</span>, (event) =
         <table>
           <thead>
             <tr>
-              <th style="min-width:220px;position:sticky;left:0;z-index:10;background:rgba(13,207,26,0.12);">Feature</th>
+              <th style="min-width:220px;position:sticky;left:0;z-index:10;background:rgba(255,122,69,0.12);">Feature</th>
               <th>GrabCash Bot</th>
               <th>EK Affiliaters</th>
               <th>Affiliaters.in</th>

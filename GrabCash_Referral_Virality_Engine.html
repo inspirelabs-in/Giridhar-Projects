@@ -13,28 +13,28 @@
 
 :root {
   --bg: #ffffff;
-  --bg-card: rgba(255,255,255,0.03);
-  --bg-card-hover: rgba(255,255,255,0.06);
-  --border: rgba(255,255,255,0.08);
-  --border-hover: rgba(13,207,26,0.3);
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --border: #E5E7EB;
+  --border-hover: rgba(255,122,69,0.3);
   --green: #FF7A45;
-  --green-dim: rgba(13,207,26,0.15);
-  --green-glow: rgba(13,207,26,0.4);
+  --green-dim: rgba(255,122,69,0.15);
+  --green-glow: rgba(255,122,69,0.10);
   --green-dark: #0a9e14;
-  --text: #e0e0e0;
+  --text: #0E0F0A;
   --text-dim: #888;
-  --text-bright: #fff;
+  --text-bright: #0E0F0A;
   --yellow: #f5c542;
   --orange: #ff8c42;
-  --red: #e53e3e;
-  --blue: #4a9eff;
-  --purple: #a855f7;
+  --red: #FAF7F1;
+  --blue: #FF7A45;
+  --purple: #FAF7F1;
   --cyan: #06d6a0;
   --pink: #ff6b9d;
   --radius: 12px;
   --radius-lg: 20px;
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.1);
+  --glass: #FAF7F1;
+  --glass-border: #E5E7EB;
   --font: 'Hanken Grotesk', -apple-system, sans-serif;
   --mono: 'Hanken Grotesk', sans-serif;
 }
@@ -54,7 +54,7 @@ body {
    ============================================ */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: rgba(13,207,26,0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255,122,69,0.3); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--green); }
 
 /* ============================================
@@ -109,7 +109,7 @@ body {
   content: '';
   position: absolute; top: -50%; left: -50%;
   width: 200%; height: 200%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(13,207,26,0.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,122,69,0.06) 0%, transparent 50%);
   animation: heroGlow 8s ease-in-out infinite alternate;
 }
 
@@ -122,7 +122,7 @@ body {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 8px 20px; border-radius: 50px;
   background: var(--green-dim);
-  border: 1px solid rgba(13,207,26,0.25);
+  border: 1px solid rgba(255,122,69,0.25);
   font-size: 0.85rem; font-weight: 600;
   color: var(--green); margin-bottom: 2rem;
   position: relative; z-index: 1;
@@ -212,8 +212,8 @@ body {
 }
 
 .card-highlight {
-  border-color: rgba(13,207,26,0.3);
-  background: rgba(13,207,26,0.04);
+  border-color: rgba(255,122,69,0.3);
+  background: rgba(255,122,69,0.04);
 }
 
 .card h3 {
@@ -470,8 +470,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
    CODE/SPEC BLOCKS
    ============================================ */
 .spec-block {
-  background: rgba(13,207,26,0.04);
-  border: 1px solid rgba(13,207,26,0.15);
+  background: rgba(255,122,69,0.04);
+  border: 1px solid rgba(255,122,69,0.15);
   border-left: 3px solid var(--green);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 1.5rem;
@@ -519,7 +519,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   font-size: 0.65rem; font-weight: 600;
   color: var(--text-bright);
   animation: flywheelCounterSpin 20s linear infinite;
-  box-shadow: 0 0 20px rgba(13,207,26,0.15);
+  box-shadow: 0 0 20px rgba(255,122,69,0.15);
 }
 
 @keyframes flywheelCounterSpin {
@@ -686,7 +686,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 </style>
 </head>
 <body>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
@@ -1746,7 +1746,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
           <td>1 (monthly champion)</td>
           <td>₹5,000</td>
         </tr>
-        <tr style="background: rgba(13,207,26,0.06);">
+        <tr style="background: rgba(255,122,69,0.06);">
           <td class="td-highlight" style="color:var(--green);">TOTAL</td>
           <td class="td-mono">₹19,000</td>
           <td class="td-mono" style="font-size:1.1rem;">₹86,000</td>
@@ -1945,15 +1945,15 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 
   <h4 class="mt-3 text-green">Earning Badges (12)</h4>
   <div class="badge-showcase mt-2">
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">💰</div><div class="badge-name">First Earning</div><div class="badge-req">Earn ₹1</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">📈</div><div class="badge-name">₹1K Club</div><div class="badge-req">Lifetime ₹1K</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">💰</div><div class="badge-name">First Earning</div><div class="badge-req">Earn ₹1</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">📈</div><div class="badge-name">₹1K Club</div><div class="badge-req">Lifetime ₹1K</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">🎯</div><div class="badge-name">₹5K Achiever</div><div class="badge-req">Lifetime ₹5K</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">⚡</div><div class="badge-name">₹10K Earner</div><div class="badge-req">Lifetime ₹10K</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(168,85,247,0.15)">🏆</div><div class="badge-name">₹25K Pro</div><div class="badge-req">Lifetime ₹25K</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(168,85,247,0.15)">👑</div><div class="badge-name">₹50K King</div><div class="badge-req">Lifetime ₹50K</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(245,197,66,0.15)">💎</div><div class="badge-name">Lakhpati</div><div class="badge-req">Lifetime ₹1L</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">🌙</div><div class="badge-name">Night Earner</div><div class="badge-req">Earn after 11PM</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">☀️</div><div class="badge-name">Early Bird</div><div class="badge-req">Earn before 7AM</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">🌙</div><div class="badge-name">Night Earner</div><div class="badge-req">Earn after 11PM</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">☀️</div><div class="badge-name">Early Bird</div><div class="badge-req">Earn before 7AM</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(255,140,66,0.15)">🔥</div><div class="badge-name">Hot Streak</div><div class="badge-req">₹500+ in a day</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(255,140,66,0.15)">💥</div><div class="badge-name">Power Day</div><div class="badge-req">₹1K+ in a day</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(245,197,66,0.15)">🚀</div><div class="badge-name">Jackpot</div><div class="badge-req">₹5K+ in a day</div></div>
@@ -1985,8 +1985,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 
   <h4 class="mt-3 text-green">Social & Sharing Badges (8)</h4>
   <div class="badge-showcase mt-2">
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">📱</div><div class="badge-name">Social Sharer</div><div class="badge-req">Share 10 cards</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">📸</div><div class="badge-name">Card Collector</div><div class="badge-req">Own 25 cards</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">📱</div><div class="badge-name">Social Sharer</div><div class="badge-req">Share 10 cards</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">📸</div><div class="badge-name">Card Collector</div><div class="badge-req">Own 25 cards</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">🏅</div><div class="badge-name">Leaderboard Regular</div><div class="badge-req">Top 50 three times</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">🥇</div><div class="badge-name">Champion</div><div class="badge-req">Reach #1 on any board</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(168,85,247,0.15)">🎪</div><div class="badge-name">Challenge Champ</div><div class="badge-req">Complete 3 challenges</div></div>
@@ -2001,8 +2001,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
     <div class="badge-item"><div class="badge-icon" style="background:rgba(255,71,87,0.15)">☀️</div><div class="badge-name">Summer Star</div><div class="badge-req">Summer challenge</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">🎓</div><div class="badge-name">Campus King</div><div class="badge-req">College board #1</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(74,158,255,0.15)">🎒</div><div class="badge-name">Back to School</div><div class="badge-req">BTS challenge done</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">🎄</div><div class="badge-name">Holiday Hustle</div><div class="badge-req">NY challenge done</div></div>
-    <div class="badge-item"><div class="badge-icon" style="background:rgba(13,207,26,0.15)">🇮🇳</div><div class="badge-name">Republic Earner</div><div class="badge-req">R-Day challenge</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">🎄</div><div class="badge-name">Holiday Hustle</div><div class="badge-req">NY challenge done</div></div>
+    <div class="badge-item"><div class="badge-icon" style="background:rgba(255,122,69,0.15)">🇮🇳</div><div class="badge-name">Republic Earner</div><div class="badge-req">R-Day challenge</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(168,85,247,0.15)">🧑‍🤝‍🧑</div><div class="badge-name">Team Player</div><div class="badge-req">Complete team challenge</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(168,85,247,0.15)">👶</div><div class="badge-name">Mentor</div><div class="badge-req">3 referees earn ₹5K+</div></div>
     <div class="badge-item"><div class="badge-icon" style="background:rgba(245,197,66,0.15)">🎂</div><div class="badge-name">Anniversary</div><div class="badge-req">1 year on GrabCash</div></div>
@@ -2460,7 +2460,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
         <tr><td class="td-highlight">Leaderboard Prizes</td><td class="td-mono">₹86,000</td><td>21.5%</td><td>100+ prize recipients across all boards</td></tr>
         <tr><td class="td-highlight">Challenge Prize Pools</td><td class="td-mono">₹30,000</td><td>7.5%</td><td>1 monthly + 1 beginner challenge running</td></tr>
         <tr><td class="td-highlight">Infrastructure & Tools</td><td class="td-mono">₹14,000</td><td>3.5%</td><td>Card generation, analytics, fraud detection</td></tr>
-        <tr style="background:rgba(13,207,26,0.06);">
+        <tr style="background:rgba(255,122,69,0.06);">
           <td class="td-highlight text-green">TOTAL</td>
           <td class="td-mono" style="font-size:1.1rem;">₹4,00,000</td>
           <td>100%</td>
@@ -2480,14 +2480,14 @@ tr:hover td { background: rgba(255,255,255,0.02); }
         <tr><td>Month 2</td><td class="td-mono">5,800</td><td class="td-mono">1,100</td><td class="td-mono">₹3.0L</td><td class="td-mono">6,900</td><td class="td-mono">0.85</td></tr>
         <tr><td>Month 3</td><td class="td-mono">6,900</td><td class="td-mono">1,500</td><td class="td-mono">₹3.5L</td><td class="td-mono">8,400</td><td class="td-mono">0.95</td></tr>
         <tr><td>Month 4</td><td class="td-mono">8,400</td><td class="td-mono">2,200</td><td class="td-mono">₹4.0L</td><td class="td-mono">10,600</td><td class="td-mono">1.05</td></tr>
-        <tr style="background:rgba(13,207,26,0.04);"><td>Month 5</td><td class="td-mono">10,600</td><td class="td-mono">3,500</td><td class="td-mono">₹4.0L</td><td class="td-mono">14,100</td><td class="td-mono text-green fw-700">1.20</td></tr>
+        <tr style="background:rgba(255,122,69,0.04);"><td>Month 5</td><td class="td-mono">10,600</td><td class="td-mono">3,500</td><td class="td-mono">₹4.0L</td><td class="td-mono">14,100</td><td class="td-mono text-green fw-700">1.20</td></tr>
         <tr><td>Month 6</td><td class="td-mono">14,100</td><td class="td-mono">5,200</td><td class="td-mono">₹4.5L</td><td class="td-mono">19,300</td><td class="td-mono">1.35</td></tr>
         <tr><td>Month 7</td><td class="td-mono">19,300</td><td class="td-mono">8,000</td><td class="td-mono">₹5.0L</td><td class="td-mono">27,300</td><td class="td-mono">1.50</td></tr>
         <tr><td>Month 8</td><td class="td-mono">27,300</td><td class="td-mono">12,500</td><td class="td-mono">₹5.5L</td><td class="td-mono">39,800</td><td class="td-mono">1.62</td></tr>
         <tr><td>Month 9</td><td class="td-mono">39,800</td><td class="td-mono">19,000</td><td class="td-mono">₹6.0L</td><td class="td-mono">58,800</td><td class="td-mono">1.70</td></tr>
         <tr><td>Month 10</td><td class="td-mono">58,800</td><td class="td-mono">28,000</td><td class="td-mono">₹7.0L</td><td class="td-mono">86,800</td><td class="td-mono">1.75</td></tr>
         <tr><td>Month 11</td><td class="td-mono">86,800</td><td class="td-mono">42,000</td><td class="td-mono">₹8.5L</td><td class="td-mono">128,800</td><td class="td-mono">1.80</td></tr>
-        <tr style="background:rgba(13,207,26,0.06);"><td class="fw-700">Month 12</td><td class="td-mono fw-700">128,800</td><td class="td-mono fw-700">60,000</td><td class="td-mono fw-700">₹10.0L</td><td class="td-mono fw-700 text-green" style="font-size:1.1rem;">188,800</td><td class="td-mono text-green fw-700">1.87</td></tr>
+        <tr style="background:rgba(255,122,69,0.06);"><td class="fw-700">Month 12</td><td class="td-mono fw-700">128,800</td><td class="td-mono fw-700">60,000</td><td class="td-mono fw-700">₹10.0L</td><td class="td-mono fw-700 text-green" style="font-size:1.1rem;">188,800</td><td class="td-mono text-green fw-700">1.87</td></tr>
       </tbody>
     </table>
   </div>
@@ -2551,7 +2551,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
                   <tr><td>Design (UX, referral page)</td><td class="td-mono">30 hours</td></tr>
                   <tr><td>QA + testing</td><td class="td-mono">20 hours</td></tr>
                   <tr><td>Fraud detection (basic)</td><td class="td-mono">25 hours</td></tr>
-                  <tr style="background:rgba(13,207,26,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">215 hours</td></tr>
+                  <tr style="background:rgba(255,122,69,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">215 hours</td></tr>
                 </tbody>
               </table>
             </div>
@@ -2595,7 +2595,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
                   <tr><td>Leaderboard frontend</td><td class="td-mono">35 hours</td></tr>
                   <tr><td>Design (cards + leaderboard UI)</td><td class="td-mono">50 hours</td></tr>
                   <tr><td>QA</td><td class="td-mono">25 hours</td></tr>
-                  <tr style="background:rgba(13,207,26,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">310 hours</td></tr>
+                  <tr style="background:rgba(255,122,69,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">310 hours</td></tr>
                 </tbody>
               </table>
             </div>
@@ -2640,7 +2640,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
                   <tr><td>Frontend (gamification UI)</td><td class="td-mono">60 hours</td></tr>
                   <tr><td>Design (badges, animations)</td><td class="td-mono">45 hours</td></tr>
                   <tr><td>QA</td><td class="td-mono">30 hours</td></tr>
-                  <tr style="background:rgba(13,207,26,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">395 hours</td></tr>
+                  <tr style="background:rgba(255,122,69,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">395 hours</td></tr>
                 </tbody>
               </table>
             </div>
@@ -2685,7 +2685,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
                   <tr><td>Admin analytics dashboard</td><td class="td-mono">40 hours</td></tr>
                   <tr><td>Star Partner features</td><td class="td-mono">35 hours</td></tr>
                   <tr><td>Design + QA</td><td class="td-mono">50 hours</td></tr>
-                  <tr style="background:rgba(13,207,26,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">385 hours</td></tr>
+                  <tr style="background:rgba(255,122,69,0.06);"><td class="fw-600">Total</td><td class="td-mono fw-700">385 hours</td></tr>
                 </tbody>
               </table>
             </div>
@@ -2754,7 +2754,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       </div>
       <div>
         <h4>Lessons for GrabCash</h4>
-        <div class="card-highlight" style="background:rgba(13,207,26,0.04);border:1px solid rgba(255,122,69,0.15);padding:1.5rem;border-radius:var(--radius);">
+        <div class="card-highlight" style="background:rgba(255,122,69,0.04);border:1px solid rgba(255,122,69,0.15);padding:1.5rem;border-radius:var(--radius);">
           <ul class="checklist">
             <li><strong>WhatsApp-first sharing:</strong> Meesho's entire viral loop was WhatsApp image sharing. GrabCash should optimize all shareable content for WhatsApp first, other platforms second.</li>
             <li><strong>Homemaker persona:</strong> Meesho proved that homemakers are aggressive referrers when given earning proof. GrabCash's earning cards and payout confirmations serve the same function as Meesho's product catalogs.</li>

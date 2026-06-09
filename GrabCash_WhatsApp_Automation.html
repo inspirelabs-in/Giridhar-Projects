@@ -23,27 +23,27 @@
   --bg-card: #ffffff;
   --bg-card-hover: #E5E7EB;
   --border-card: #E5E7EB;
-  --border-card-hover: rgba(255,255,255,0.12);
-  --text-primary: #e0e0e0;
+  --border-card-hover: #E5E7EB;
+  --text-primary: #0E0F0A;
   --text-secondary: #999999;
   --text-muted: #666666;
   --accent: #FF7A45;
-  --accent-dim: rgba(13,207,26,0.15);
-  --accent-glow: rgba(13,207,26,0.3);
+  --accent-dim: rgba(255,122,69,0.15);
+  --accent-glow: rgba(255,122,69,0.10);
   --red: #ff4444;
   --red-dim: rgba(255,68,68,0.15);
-  --red-glow: rgba(255,68,68,0.3);
+  --red-glow: rgba(255,122,69,0.10);
   --yellow: #ffaa00;
   --yellow-dim: rgba(255,170,0,0.15);
-  --blue: #4488ff;
+  --blue: #FF7A45;
   --blue-dim: rgba(68,136,255,0.15);
   --orange: #ff6600;
   --orange-dim: rgba(255,102,0,0.15);
-  --purple: #aa44ff;
-  --purple-dim: rgba(170,68,255,0.15);
+  --purple: #FAF7F1;
+  --purple-dim: #FAF7F1;
   --whatsapp: #25D366;
   --whatsapp-dim: rgba(37,211,102,0.15);
-  --whatsapp-dark: #128C7E;
+  --whatsapp-dark: #FAF7F1;
   --sidebar-width: 260px;
   --header-height: 70px;
   --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -905,7 +905,7 @@ pre code {
   height: 28px;
   border-radius: 50%;
   background: var(--accent-dim);
-  border: 1px solid rgba(13,207,26,0.3);
+  border: 1px solid rgba(255,122,69,0.3);
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -983,7 +983,7 @@ pre code {
   width: 44px;
   height: 44px;
   background: var(--accent-dim);
-  border: 1px solid rgba(13,207,26,0.3);
+  border: 1px solid rgba(255,122,69,0.3);
   border-radius: 10px;
   color: var(--accent);
   font-size: 1.2rem;
@@ -997,7 +997,7 @@ pre code {
 }
 
 .back-to-top:hover {
-  background: rgba(13,207,26,0.25);
+  background: rgba(255,122,69,0.25);
   transform: translateY(-2px);
 }
 
@@ -1071,7 +1071,7 @@ pre code {
 .cross-ref {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px dashed rgba(13,207,26,0.4);
+  border-bottom: 1px dashed rgba(255,122,69,0.4);
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -1224,7 +1224,7 @@ pre code {
 </style>
 </head>
 <body>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
@@ -4127,7 +4127,7 @@ messageQueue.on('completed', (job, result) => {
           <tr><th>Cost Category</th><th>Month 1</th><th>Month 3</th><th>Month 6</th><th>Month 12</th><th>Notes</th></tr>
         </thead>
         <tbody>
-          <tr><td colspan="6" class="bold" style="background: rgba(13,207,26,0.05); color: var(--accent);">PLATFORM & API COSTS</td></tr>
+          <tr><td colspan="6" class="bold" style="background: rgba(255,122,69,0.05); color: var(--accent);">PLATFORM & API COSTS</td></tr>
           <tr><td class="bold">BSP Subscription (AiSensy)</td><td class="mono">Rs 999</td><td class="mono">Rs 3,200</td><td class="mono">Rs 3,200</td><td class="mono">Rs 3,200</td><td>Start with basic, upgrade to Pro by M3</td></tr>
           <tr><td class="bold">Meta API &mdash; Marketing Messages</td><td class="mono">Rs 8,631</td><td class="mono">Rs 43,155</td><td class="mono">Rs 1,72,620</td><td class="mono">Rs 4,31,550</td><td>10K/50K/200K/500K subs x 1 msg/day x Rs 0.863</td></tr>
           <tr><td class="bold">Meta API &mdash; Utility Messages</td><td class="mono">Rs 3,450</td><td class="mono">Rs 11,500</td><td class="mono">Rs 34,500</td><td class="mono">Rs 86,250</td><td>30% of subs get utility msgs x Rs 0.115</td></tr>
@@ -4250,7 +4250,7 @@ messageQueue.on('completed', (job, result) => {
           <tr><th>Week</th><th>Deliverable</th><th>Owner</th><th>Success Criteria</th><th>Dependencies</th><th>Status</th></tr>
         </thead>
         <tbody>
-          <tr><td colspan="6" class="bold" style="background: rgba(13,207,26,0.05); color: var(--accent);">WEEK 1-2: API SETUP & BSP SELECTION</td></tr>
+          <tr><td colspan="6" class="bold" style="background: rgba(255,122,69,0.05); color: var(--accent);">WEEK 1-2: API SETUP & BSP SELECTION</td></tr>
           <tr><td class="mono bold">W1 D1-2</td><td>Create Meta Business Account for GrabCash (or use GrabOn's)</td><td>Engineering Lead</td><td>Meta Business Manager account active</td><td>Business documents (GST, PAN)</td><td class="green">PRIORITY</td></tr>
           <tr><td class="mono bold">W1 D2-3</td><td>Complete Meta Business Verification</td><td>Engineering Lead</td><td>Business verified, Tier 1 messaging unlocked</td><td>Meta Business Account</td><td class="green">PRIORITY</td></tr>
           <tr><td class="mono bold">W1 D3-4</td><td>Register WhatsApp Business Account (WABA)</td><td>Engineering Lead</td><td>WABA created, phone number added</td><td>Business verification</td><td class="green">PRIORITY</td></tr>
@@ -4286,7 +4286,7 @@ messageQueue.on('completed', (job, result) => {
           <tr><td class="mono bold">W6 D1-3</td><td>Start daily deal broadcasts (API)</td><td>Content Creator</td><td>3 deals/day sent to 1,000+ subscribers</td><td>Delivery rate (95%), read rate (60%)</td></tr>
           <tr><td class="mono bold">W6 D3-5</td><td>First A/B test: image vs text deals</td><td>WA Ops Manager</td><td>Test running with 500+ per variant</td><td>CTR comparison</td></tr>
           <tr><td class="mono bold">W6 D5</td><td>Beta review meeting</td><td>Full Team</td><td>Review all metrics. Fix issues. Plan W7-8 scaling.</td><td>All KPI dashboard metrics</td></tr>
-          <tr><td colspan="5" class="bold" style="background: rgba(13,207,26,0.05); color: var(--accent);">WEEK 7-8: SCALE TO 200 ADMINS, 500 GROUPS</td></tr>
+          <tr><td colspan="5" class="bold" style="background: rgba(255,122,69,0.05); color: var(--accent);">WEEK 7-8: SCALE TO 200 ADMINS, 500 GROUPS</td></tr>
           <tr><td class="mono bold">W7 D1-5</td><td>Recruit 150 more admins (total: 200)</td><td>Admin Success Team</td><td>200 active admins, 500+ groups</td><td>Admin recruitment rate</td></tr>
           <tr><td class="mono bold">W7 D1-3</td><td>Launch chatbot publicly</td><td>Chatbot Dev</td><td>Chatbot handling 70%+ queries without escalation</td><td>Bot resolution rate</td></tr>
           <tr><td class="mono bold">W7 D3-5</td><td>Scale CTWA ads to Rs 1L/month</td><td>Growth Marketing</td><td>5,000+ new subscribers in Week 7-8</td><td>CPL, conversion rate</td></tr>

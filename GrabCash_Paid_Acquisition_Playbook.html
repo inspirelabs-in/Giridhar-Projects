@@ -10,32 +10,32 @@
 :root {
   --bg: #ffffff;
   --bg-secondary: #FAF7F1;
-  --bg-tertiary: #161616;
-  --card: rgba(22,22,22,0.7);
-  --card-alt: rgba(18,18,18,0.8);
-  --card-border: rgba(13,207,26,0.12);
+  --bg-tertiary: #FAF7F1;
+  --card: #ffffff;
+  --card-alt: #ffffff;
+  --card-border: rgba(255,122,69,0.12);
   --green: #FF7A45;
   --green-light: #3de847;
   --green-dim: #0a9c13;
-  --green-glow: rgba(13,207,26,0.15);
-  --green-glow-strong: rgba(13,207,26,0.3);
+  --green-glow: rgba(255,122,69,0.10);
+  --green-glow-strong: rgba(255,122,69,0.10);
   --text: #0E0F0A;
   --text-dim: #6F7583;
   --text-muted: #555555;
-  --accent-blue: #3b82f6;
-  --accent-purple: #a855f7;
+  --accent-blue: #FF7A45;
+  --accent-purple: #FAF7F1;
   --accent-orange: #f97316;
   --accent-red: #ef4444;
   --accent-yellow: #eab308;
   --accent-teal: #14b8a6;
   --accent-pink: #ec4899;
   --accent-cyan: #06b6d4;
-  --border: #222222;
-  --border-light: #333333;
+  --border: #E5E7EB;
+  --border-light: #E5E7EB;
   --gradient-green: linear-gradient(135deg, #FF7A45 0%, #3de847 50%, #FF7A45 100%);
   --gradient-dark: linear-gradient(180deg, #ffffff 0%, #FAF7F1 100%);
-  --glass: rgba(22,22,22,0.6);
-  --glass-border: rgba(255,255,255,0.06);
+  --glass: #FAF7F1;
+  --glass-border: #E5E7EB;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -129,7 +129,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(13,207,26,0.04) 0%, transparent 50%);
+  background: radial-gradient(circle at 50% 50%, rgba(255,122,69,0.04) 0%, transparent 50%);
   animation: heroPulse 10s ease-in-out infinite;
 }
 @keyframes heroPulse {
@@ -378,7 +378,7 @@ body {
 
 /* ─── AD COPY BLOCKS ─── */
 .ad-copy-block {
-  background: linear-gradient(135deg, rgba(13,207,26,0.05) 0%, rgba(13,207,26,0.02) 100%);
+  background: linear-gradient(135deg, rgba(255,122,69,0.05) 0%, rgba(255,122,69,0.02) 100%);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 24px 28px;
@@ -451,7 +451,7 @@ body {
   font-family: 'Hanken Grotesk', sans-serif;
   letter-spacing: 0.3px;
 }
-.tag-green { background: rgba(13,207,26,0.12); color: var(--green); }
+.tag-green { background: rgba(255,122,69,0.12); color: var(--green); }
 .tag-blue { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
 .tag-purple { background: rgba(168,85,247,0.12); color: var(--accent-purple); }
 .tag-orange { background: rgba(249,115,22,0.12); color: var(--accent-orange); }
@@ -516,7 +516,7 @@ body {
   font-size: 0.9em;
   word-wrap: break-word; overflow-wrap: break-word;}
 .callout-green {
-  background: rgba(13,207,26,0.06);
+  background: rgba(255,122,69,0.06);
   border: 1px solid rgba(255,122,69,0.15);
 }
 .callout-blue {
@@ -824,7 +824,7 @@ body {
 </style>
 </head>
 <body>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">

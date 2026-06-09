@@ -14,20 +14,20 @@
             --bg-primary: #ffffff;
             --bg-secondary: #FAF7F1;
             --bg-tertiary: #FAF7F1;
-            --bg-card: rgba(26, 26, 26, 0.6);
-            --bg-glass: rgba(26, 26, 26, 0.4);
+            --bg-card: #ffffff;
+            --bg-glass: #FAF7F1;
             --accent: #FF7A45;
-            --accent-dim: rgba(13, 207, 26, 0.15);
-            --accent-glow: rgba(13, 207, 26, 0.3);
+            --accent-dim: rgba(255,122,69, 0.15);
+            --accent-glow: rgba(255,122,69,0.10);
             --accent-secondary: #00e5ff;
             --accent-warning: #ff9500;
             --accent-danger: #ff3b30;
             --accent-purple: #bf5af2;
-            --text-primary: #f5f5f7;
-            --text-secondary: #a1a1a6;
+            --text-primary: #0E0F0A;
+            --text-secondary: #6F7583;
             --text-tertiary: #6e6e73;
-            --border: rgba(255,255,255,0.08);
-            --border-accent: rgba(13, 207, 26, 0.25);
+            --border: #E5E7EB;
+            --border-accent: rgba(255,122,69, 0.25);
             --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'Hanken Grotesk', 'SF Mono', monospace;
             --radius-sm: 8px;
@@ -37,7 +37,7 @@
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
             --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
-            --shadow-glow: 0 0 20px rgba(13, 207, 26, 0.15);
+            --shadow-glow: rgba(255,122,69,0.10);
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -219,7 +219,7 @@
             font-size: 0.88rem;
         }
         .data-table thead {
-            background: rgba(13, 207, 26, 0.08);
+            background: rgba(255,122,69, 0.08);
             position: sticky; top: 0;
         }
         .data-table th {
@@ -234,7 +234,7 @@
             color: var(--text-secondary); vertical-align: top;
         }
         .data-table tbody tr:hover {
-            background: rgba(13, 207, 26, 0.04);
+            background: rgba(255,122,69, 0.04);
         }
         .data-table tbody tr:last-child td { border-bottom: none; }
 
@@ -244,7 +244,7 @@
             padding: 4px 12px; border-radius: 100px;
             font-size: 0.75rem; font-weight: 600;
         }
-        .badge-green { background: rgba(13, 207, 26, 0.15); color: var(--accent); }
+        .badge-green { background: rgba(255,122,69, 0.15); color: var(--accent); }
         .badge-blue { background: rgba(0, 229, 255, 0.15); color: var(--accent-secondary); }
         .badge-orange { background: rgba(255, 149, 0, 0.15); color: var(--accent-warning); }
         .badge-red { background: rgba(255, 59, 48, 0.15); color: var(--accent-danger); }
@@ -592,7 +592,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 0.75rem; flex-shrink: 0; margin-top: 2px;
         }
-        .icon-green { background: rgba(13, 207, 26, 0.15); color: var(--accent); }
+        .icon-green { background: rgba(255,122,69, 0.15); color: var(--accent); }
         .icon-red { background: rgba(255, 59, 48, 0.15); color: var(--accent-danger); }
         .icon-blue { background: rgba(0, 229, 255, 0.15); color: var(--accent-secondary); }
         .icon-orange { background: rgba(255, 149, 0, 0.15); color: var(--accent-warning); }
@@ -669,7 +669,7 @@
     </style>
 </head>
 <body>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
@@ -848,7 +848,7 @@
             </div>
         </div>
 
-        <div class="glass-card" style="border-color: var(--border-accent); background: rgba(13, 207, 26, 0.03);">
+        <div class="glass-card" style="border-color: var(--border-accent); background: rgba(255,122,69, 0.03);">
             <div class="flex items-center gap-12 mb-16">
                 <span class="badge badge-green" style="font-size:0.85rem;">GRABCASH OPPORTUNITY</span>
             </div>
@@ -2453,7 +2453,7 @@
                          fill="rgba(102,126,234,0.15)" stroke="#667eea" stroke-width="2"/>
                 <!-- GrabCash polygon (green) -->
                 <polygon points="250,130 370,185 350,310 250,370 120,320 130,195"
-                         fill="rgba(13,207,26,0.15)" stroke="#FF7A45" stroke-width="2"/>
+                         fill="rgba(255,122,69,0.15)" stroke="#FF7A45" stroke-width="2"/>
 
                 <!-- Labels -->
                 <text x="250" y="35" text-anchor="middle" fill="#a1a1a6" font-size="11" font-family="Inter, sans-serif">Brand Trust</text>

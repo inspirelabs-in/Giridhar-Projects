@@ -23,24 +23,24 @@
   --bg-card: #ffffff;
   --bg-card-hover: #E5E7EB;
   --border-card: #E5E7EB;
-  --border-card-hover: rgba(255,255,255,0.12);
-  --text-primary: #e0e0e0;
+  --border-card-hover: #E5E7EB;
+  --text-primary: #0E0F0A;
   --text-secondary: #999999;
   --text-muted: #666666;
   --accent: #FF7A45;
-  --accent-dim: rgba(13,207,26,0.15);
-  --accent-glow: rgba(13,207,26,0.3);
+  --accent-dim: rgba(255,122,69,0.15);
+  --accent-glow: rgba(255,122,69,0.10);
   --red: #ff4444;
   --red-dim: rgba(255,68,68,0.15);
-  --red-glow: rgba(255,68,68,0.3);
+  --red-glow: rgba(255,122,69,0.10);
   --yellow: #ffaa00;
   --yellow-dim: rgba(255,170,0,0.15);
-  --blue: #4488ff;
+  --blue: #FF7A45;
   --blue-dim: rgba(68,136,255,0.15);
   --orange: #ff6600;
   --orange-dim: rgba(255,102,0,0.15);
-  --purple: #aa44ff;
-  --purple-dim: rgba(170,68,255,0.15);
+  --purple: #FAF7F1;
+  --purple-dim: #FAF7F1;
   --sidebar-width: 260px;
   --header-height: 70px;
   --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -728,7 +728,7 @@ code {
   width: 44px;
   height: 44px;
   background: var(--accent-dim);
-  border: 1px solid rgba(13,207,26,0.3);
+  border: 1px solid rgba(255,122,69,0.3);
   border-radius: 10px;
   color: var(--accent);
   font-size: 1.2rem;
@@ -741,7 +741,7 @@ code {
   backdrop-filter: blur(10px);
 }
 
-.back-to-top:hover { background: rgba(13,207,26,0.25); transform: translateY(-2px); }
+.back-to-top:hover { background: rgba(255,122,69,0.25); transform: translateY(-2px); }
 .back-to-top.visible { display: flex; }
 
 /* Tags & Badges */
@@ -779,8 +779,8 @@ code {
 
 /* Formula card */
 .formula-card {
-  background: rgba(13,207,26,0.04);
-  border: 1px solid rgba(13,207,26,0.15);
+  background: rgba(255,122,69,0.04);
+  border: 1px solid rgba(255,122,69,0.15);
   border-radius: 10px;
   padding: 18px 22px;
   margin-bottom: 16px;
@@ -806,7 +806,7 @@ code {
 a.xref {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px dashed rgba(13,207,26,0.3);
+  border-bottom: 1px dashed rgba(255,122,69,0.3);
   transition: all 0.2s ease;
 }
 
@@ -934,7 +934,7 @@ a.xref:hover { color: #44ff44; border-bottom-color: #44ff44; }
     <div class="hero-meta-item"><strong>Models:</strong> 15 Sections</div>
   </div>
 </header>
-  <div class="callout" style="border-left:3px solid var(--blue,#3c7df9);background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid var(--blue,#FF7A45);background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:var(--navy,#0E0F0A);">Data Context (June 2026):</strong> GrabCash has 26,131 registered users, 303 active transacting users, ₹16.3Cr GMV driven, ₹81.2L total commission earned (₹64.9L to users, ₹16.2L company revenue). 98.4% of transactions are through Flipkart. Peak commission: ₹19.3L/month (Feb 2026). 12K monthly active users (GA4). 93K monthly search impressions (GSC). GrabShare has 1,000+ creators onboarded. All strategies in this document should be read in this context.
   </div>
   <div class="callout" style="border-left:3px solid #e53e3e;background:rgba(229,62,62,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1rem auto;max-width:1100px;font-size:0.85rem;line-height:1.7;">
@@ -946,7 +946,7 @@ a.xref:hover { color: #44ff44; border-bottom-color: #44ff44; }
     <strong style="color:#0E0F0A;">GrabCash/GrabShare position:</strong> 26,131 users (303 active), ₹16.3Cr GMV, 91 retailers. We are significantly behind on scale. <strong>Our only structural advantage is GrabOn distribution</strong> — no competitor has a multi-million-user coupon platform feeding affiliate signups. Strategy: GrabOn-first distribution, fix 1.2% activation, nano-creator focus for GrabShare (segment WishLink underserves). Execute the 7-day sprint NOW.
   </div>
 
-  <div class="callout" style="border-left:3px solid #3c7df9;background:rgba(60,125,249,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
+  <div class="callout" style="border-left:3px solid #FF7A45;background:rgba(255,122,69,0.04);padding:1.25rem 1.5rem;border-radius:0 12px 12px 0;word-wrap:break-word;overflow-wrap:break-word;margin:1.5rem auto;max-width:1100px;font-size:0.88rem;line-height:1.7;">
     <strong style="color:#0E0F0A;">Real Commission Economics (Production DB):</strong>
     Total commission earned: ₹81.2L (₹64.9L to users, ₹16.2L company — 80/20 split).
     average order value of ₹2,266 (production DB, 213K transactions). average commission of ₹38.1 per transaction (₹30.48 to user, ₹7.62 to company).1 (₹30.48 user / ₹7.62 company).
